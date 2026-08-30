@@ -1,0 +1,18 @@
+{
+  "kodonok": 64,
+  "aminosavak": 20,
+  "degeneraltsag": 3.2,
+  "carnot_fel_05": 0.5,
+  "carnot_viz_jeg": 0.26809651474530827,
+  "delta_szamitott": 8.229999934883381e-7,
+  "delta_deklaralt": 8.23e-7,
+  "alpha_codat": 137.035999177,
+  "alpha_horgony": 137.036,
+  "bizonyitasok_valodi": 41,
+  "bizonyitasok_tautologia": 20,
+  "bizonyitasok_gyenge": 6,
+  "magyar_kinai_modulok": 7,
+  "hibas_regebbi_modulok": 6,
+  "cat_letra": ["Cat^0 = Set", "Cat^1 = Cat", "Cat^2 = Cat^Cat", "Cat^3 = bovitett", "Cat^4 = Carnot", "Cat^∞ = nativ allapot"],
+  "torvenyek_v3": ["Carnot-etasag (300/600)", "Bayes ketszeri frissites", "Bovitas-projekcio retrakcio", "Aspektus tulelese", "F∘G = id a tulélokon", "Zai nem tulelo (negativ)", "Mult nem marad meg (negativ)", "64 kodon ket uton"]
+}

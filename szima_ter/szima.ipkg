@@ -1,0 +1,92 @@
+package szima
+version = 0.1.0
+sourcedir = "modul"
+
+-- ═══════════════════════════════════════════════════════════════
+-- SZIMA CSOMAG — a SZILÁRD ALAP (2026-08-21, "normalisan megalapozva")
+-- SZIMA PACKAGE — the SOLID FOUNDATION · Szima 包 — 坚实的基础
+-- SZIMA-PAKET — das SOLIDE FUNDAMENT · חבילת Szima — היסוד האיתן
+-- ═══════════════════════════════════════════════════════════════
+--
+-- "szethullott alapokra nehez epiteni" (a felhasználó, 2026-08-21).
+-- EZ a 37 modul a leellenőrzött, forduló alap (mind egyenként
+-- idris2 --check-t kapott 2026-08-21-én; l. docs/AlapJegyzek).
+--
+-- A 13 NEM forduló modul SZANDÉKOSAN KIVONVA (l. AlapJegyzek:
+-- ok + sors minden egyeshez; §13/§20 — a fájlok a repóban MARADNAK):
+--   E8Gyokok (v1, nagy-Nat kernel-robbanás — a v2 váltotta fel),
+--   szindromaTer-család ×5 (Neg Nat — egy hiba öt másolatban),
+--   szintaxishibások ×4, "then"-hibások ×2.
+--
+-- Az alap ellenőrzése EGY paranccsal:
+--   idris2 --build szima_ter/szima.ipkg
+-- 基础验证只需一条命令。 | Ein Befehl prüft das Fundament.
+-- ═══════════════════════════════════════════════════════════════
+
+modules = Alap.AlphaKözös
+        , Alap.AlphaKozos
+        , AlphaE8Szigor
+        , AlphaGCheck
+        , AlphaLobaszas
+        , AlphaSteane
+        , AlphaSteaneDashboard
+        , AlphaSteaneE8
+        , AlphaSteaneVegso
+        , E8BelsoSzorzat
+        , E8BelsőSzorzat
+        , E8Fa_v3
+        , E8FazisKapcsolat
+        , E8FazisKapcsolat_v2
+        , E8FázisKapcsolat
+        , E8Gyokok_v2
+        , E8Gyökök
+        , HaromKategoria_v3
+        , KetoldaliE8Fa_v3
+        , KetoldaliKategoria_v3
+        , MagyarCarnotE9_v3_CodatAlpha
+        , TizenhatPenge
+        , E8TizenhatPenge
+        , FazisKubit
+        , GCheck
+        , HolografikusKod49_v2_MantraModul
+        , KomplexByte
+        , Kvaternion
+        , MagyarKinaiAltInverz_v2
+        , MagyarKinaiFazisBayes_v2
+        , MagyarKinaiFolding_v2
+        , MagyarKinaiGenKod_v2
+        , MagyarKinaiInverz_v2
+        , MagyarKinaiPar_v2
+        , MagyarKinaiParkettazas_v2
+        , MagyarKinaiTorvenyek_v3
+        , MagyarNyelvtan_v4
+        , Main
+        , Main_MagyarKinaiGenKod_v2
+        , Main_MagyarKinaiInverz_v2
+        , Main_MagyarKinaiPar_v2
+        , Main_PauliAlgebra_v2
+        , Main_v2
+        , Paragrafus
+        , PiroskaHolografikusKod49_v3_Teljes
+        , PauliAlgebra_v2
+        , PiroskaSztar
+        , PiroskaSztarTeljes
+          , SzimaDashboard
+          , TetrapodaTest
+          , E8Iranymutato_v1
+          , E8Univerzalitas_v1
+        , CarnotCiklus_v1
+        , GyokSzo_v1
+        , Alap.KategoriaT
+        , Kategoriak.MagyarOntologia
+        , Fogalom_v1
+        , SzintaxisMorfizmus_v1
+        , Steane713
+        , HaromKubit
+        , FazisAlgebra_v2
+          , Mondat_v1
+          , Muszerefal_v1
+          , Muszerefal_v2
+           , SziamiRitmus_v1
+          , KonyvAdat_E8Gyokrendszer_v1
+          , EvolutivKereso_v1

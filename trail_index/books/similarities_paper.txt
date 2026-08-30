@@ -1,0 +1,468 @@
+Journal of Chinese Language Teaching in Europe 欧洲中文教育 2025/1, pp. 43–56
+
+SHANSHAN JIANG
+(Eötvös Loránd University, Faculty of Humanities)
+
+A brief discussion on the similarities and differences
+between Chinese and Hungarian intonations
+from the perspective of Chinese teaching
+
+Abstract
+As for what intonation means, linguists Crystal and Trask have each given
+their own definitions, which are the two main views widely recognised by
+the academic world today. The former is a narrow definition, whereas the
+latter is broad. Among learners of Chinese as a second language, the students
+who are considered to have truly mastered the intonation of Chinese should
+be those whom native speakers cannot identify as foreigners just by hearing
+their’ voices. Therefore, the type of intonation discussed here is intonation in
+a broad sense.
+Chinese and Hungarian are linguistically distant far apart and belong to
+different language families. Chinese is a tonal language. Zhao Yuanren (1922)
+believed that Chinese intonation includes sentence tone (intonation) and character tone (tonal morpheme). Chinese intonation is the result of sentence intonation being affected by a character’s tone. However, how does character tone
+affect sentence tone? This is obviously a complex process. Many Chinese
+linguists have done a lot of research trying to reveal this process and the
+relationship between sentence tone and character tone. In recent years, some
+scholars have achieved outstanding results with the help of experimental phonetics methods. We are glad to see that views on the characteristics of Chinese
+intonation have reached a consensus: the changes in Chinese intonation are
+changes of scale, not simply the changing of pitch, and tones are basically unchanged. The core elements of Chinese tones are the focus accent and boundary tone.
+Hungarian is a non-tonal language, where focus and stress play a key
+role. A distinctive feature of Hungarian is that word stress is always placed
+on the first syllable. Focus position in Hungarian is mandatory and is always
+before the verb. In this article, we briefly discuss the similarities and differ-
+
+jiangshanshan2011@gmail.com
+
+https://doi.org/10.61637/cltcee.2025.1.3
+https://orcid.org/0009-0008-2808-1152
+
+44
+
+RESEARCH ARTICLES 研究文章
+
+ences between Chinese and Hungarian intonations from the perspective of
+Chinese teaching, with a view to contribute to the teaching of Chinese as a second language.
+Keywords: Intonation, Chinese intonation, scale, boundary tone, Hungarian
+intonation, stress, focus
+
+姜珊珊
+
+从汉语教学的角度浅谈汉匈语调的异同
+摘要
+对于什么是语调，语言学家Crystal和Trask都各自给出过定义，也是当
+今学术界广泛认可的两种主要观点。前者是狭义的语调定义，后者是
+广义的语调定义。在国际汉语教学中，真正掌握了汉语语调的学生，
+应该是未见其面，只闻其声的情况下，作为母语者的我们听不出来他
+是一个外国人。因此，我们这里讨论的语调，是广义的语调。
+汉语和匈牙利语相去甚远，分属不同的语系。汉语是声调语言。赵
+元任（1922）认为汉语语调包括句调和字调。汉语语调是句调受字调
+影响的结果。但是字调如何影响句调呢？显然这是一个复杂的过程。
+许多中国语言学家做了大量的研究，试图揭示这个过程以及句调和字
+调的关系。近年来，一些学者借助实验语音学方法取得了可喜的成果。
+匈牙利语是非声调语言，焦点和重音起着关键的作用。匈牙利语的
+一个显著特征是词重音总是在第一个音节。匈牙利语的焦点位置是强
+制的，总是位于动词前。
+本文从汉语教学的角度，浅议汉匈语调的异同，以期有助于国际汉
+语教学。
+关键词：语调，汉语语调，音阶，边界调，匈牙利语语调，重音，焦点
+
+SHANSHAN JIANG: A brief discussion on the similarities and differences
+
+45
+
+Introduction
+In 2004, the first Confucius Institute in the world was established in Seoul,
+South Korea, for teaching Chinese language and strengthening cultural exchanges between China and other countries. In the following 20 years, international Chinese language education has flourished. To date, more than
+500 Confucius Institutes and more than 1,000 Confucius Classrooms have
+been established around the world. According to data released by the National
+Language and Characters Policy Research Center (国家语言文字政策研究
+中心) in August 2023, 81 countries have included Chinese in their national
+education systems.1 Faced with Chinese language learners from many language backgrounds, Chinese scholars have long begun language comparison
+and error analysis research, aiming to analyse the similarities and differences
+between Chinese and other languages, observe the common errors made by
+students while learning, summarise the rules, let ‘positive transfer’ play a positive role, and prevent the negative effects of ‘negative transfer’. Regarding
+these comparative studies, those related to intonation are few. Intonation
+teaching has always been a weak link in Chinese language teaching. ‘For a
+long time, there have been few research results on Chinese intonation, and
+it is difficult to rely on them for textbook compilation or teaching’.2 Fortunately, in recent decades, ‘Chinese intonation research has made great progress and breakthroughs, and many clear and empirical laws have been
+revealed. The core issues of Chinese intonation have basically been answered
+or solved’.3
+Hungary is located in the middle of the European continent and has a superior geographical location. Relatively cheap labour and the Hungarian government’s Eastern Opening strategy have attracted a large number of Chinese
+companies to invest and build factories in recent years. For example, CATL
+has invested more than 50 billion CNY to build a factory in Debrecen, Hungary, and BYD and other related industry chain companies have followed
+suit. These Chinese companies will provide a large number of jobs to the
+local people, and being able to speak Chinese has become a major advantage for local people in finding jobs. Chinese language teaching in Hungary
+———
+1
+
+2
+3
+
+https://baijiahao.baidu.com/s?id=1774363665005508580&wfr=spider&for=pc (last accessed:
+14.04.2025)
+Lin 2002: 5–6.
+Cao 2022: 13–25.
+
+46
+
+RESEARCH ARTICLES 研究文章
+
+can be said to have started early.Eötvös Loránd University began providing
+a Chinese major as early as 19244 and ‘began to recruit [Sinology] doctoral
+students in 2000’.5 In 2006, the first Confucius Institute in Hungary, the
+Eötvös Loránd University Confucius Institute, was established. At present,
+there are five Confucius Institutes in Hungary. In addition, the Hungarian–
+Chinese Bilingual Primary School has been providing Chinese language
+course for local Chinese children at the basic education stage since 2004.
+In 2010, Chinese was already taught as a second foreign language in Hungarian secondary schools. In the same year, Chinese became one of the eight
+foreign language subjects in the Hungarian college entrance examination.
+In 2013, the Confucius Institute at Eötvös Loránd University also established
+the Central and Eastern European Regional Chinese Teacher Training Centre,
+which provides regular teacher training for local Chinese teachers in 16 Central and Eastern European countries every year.6
+It can be said that Hungary has a solid foundation for learning Chinese.
+However, cultivating high-quality Hungarian Chinese language learners who
+can speak Chinese fluently without an accent is a difficult problem facing us.
+This article attempts to discuss the similarities and differences between Chinese and Hungarian intonation from the perspective of Chinese teaching, in
+order to contribute to the cause of Chinese teaching in Hungary.
+Definition of Intonation
+What is intonation? British linguist David Crystal defined intonation as ‘[a]
+term used in the study of suprasegmental phonology, referring to the distinctive use of patterns of pitch, or melody,’7 while R. L. Trask stated that intonation is
+[t]he use of pitch, and possibly of additional prosodic phenomena such as loudness, tempo and pauses, over a stretch of utterance generally longer than a single word for the purpose of
+conveying meaning.8
+———
+4
+5
+6
+7
+8
+
+Gong 2009: 89–92.
+Hamar 2014: 12–14.
+Ye 2021: 177–185.
+Crystal 2008: 252.
+Trask 1996: 184.
+
+SHANSHAN JIANG: A brief discussion on the similarities and differences
+
+47
+
+We can see that Crystal believes that intonation refers to changes in pitch,
+while Trask believes that intonation includes not only pitch, but also the use
+of prosodic elements such as loudness, speed of sound, and pause. In fact,
+these are also two main opinions widely recognised in academia today. The
+former is a narrow definition of intonation and the latter is a broad one. The
+intonation discussed in this article is intonation in a broad sense.
+
+Chinese Intonation
+Zhao Yuanren was the first scholar to study Chinese intonation, and he is
+considered the pioneer and founder of Chinese intonation research. When
+Zhao defined Chinese intonation, firstly he recognised the difference between
+Chinese tones and intonation and distinguished them. Zhao believed that
+in speech phenomena, all the functional relations between pitch
+and time can be called Intonation or Inflection. For example,
+when foreigners ask a question, they often raise the tone at the
+end of the sentence, which is an ascending emphasis. This kind
+of tone is called sentence tone (intonation; jùdiào 句调). However, in several languages in China, Thailand, and Central Africa,
+not only is there sentence tone (intonation), but also each character (morpheme) has an inherent tone […] The inherent tone
+of each character (morpheme) is different from the sentence tone
+(intonation). As the two tones are considered different phenomena in linguistics, we give the former a special name: character tone (tonal morpheme; zìdiào 字调).9
+After understanding zìdiào and jùdiào, the next question is what the relation
+is between the two. Zhao used several vivid descriptions to illustrate the relationship, including the famous ‘rubber band’, ‘algebraic sum’ and ‘big wave
+and small wave’ metaphors.
+After Zhao, the research on Chinese intonation went mainly in two directions. One started from ‘small waves’ (zìdiào), represented by Wu Zongji,
+and the other, started from ‘big waves’ (jùdiào), represented by Shen Jiong.
+
+———
+9
+
+Zhao 1922: 9.
+
+48
+
+RESEARCH ARTICLES 研究文章
+
+Wu studied under Zhao and believed that Chinese is different from the
+non-tonal languages of the West. To understand the characteristics of Chinese
+intonation, first we must clarify the tonal changes in sentences. Wu started
+with ‘small waves’ and gradually investigated the tone sandhi of two-character,
+three-character, and four-character phrases in Mandarin, and proposed the ‘basic unit of tone group’ on this basis. When Wu conducted in-depth and detailed experimental analysis on the two-character, three-character, and fourcharacter tone sandhi of Mandarin, he found that the tonal changes in sentences are intricate. Specifically, he observed that while some are ‘inevitable’,
+which is determined by factors such as pronunciation physiology, grammatical structure and phonology, others are ‘probable’, which is determined
+by factors such as mood and text. The ‘inevitable’ tone sandhi, which is commonly referred to as the continuous tone sandhi model, is the ‘basic unit’ in
+the intonation. It is the ‘bottom intonation form’ that constitutes the intonation of the sentence, while the ‘sentence tone’, commonly referred to as the
+intonation, is the ‘surface intonation form’, which is a combination of these
+basic units through ‘probable tone sandhi’. Having absorbed and inherited
+Zhao’s ‘big wave and small wave’ and ‘algebraic sum’ intonation concepts,
+Wu further confirmed through experimental analysis that ‘inevitable tone
+sandhi’ is mainly a change in tone shape, and ‘probable tone sandhi’, related to mood and intonation, is mainly a shift of the pitch scale. The ‘small
+waves’ of the character or word tones in the sentence are ‘superimposed’
+onto the surface intonation through their tones being lifted or lowered by the
+‘big waves’ of the intonation. This is the famous ‘key change rule’.
+Shen took a completely different path. Starting with the ‘big wave’ concept, he studied Chinese intonation from the perspective of Chinese intonation
+structure, and on this basis he proposed the theory of two-line adjustment.
+Shen adopted the more general method proposed by Western linguists, known
+as the prehead-head-nucleus-tail method. Regarding this classification method,
+Shen explained that
+when using these concepts, we do not have to introduce Western
+tonal arguments, let alone treat our views as an extension of a
+certain Western school […] we just need a way of saying it temporarily. We do not think that the intonation of various languages
+in the world will be the same, so we just use the head and tail as
+
+SHANSHAN JIANG: A brief discussion on the similarities and differences
+
+49
+
+general terms, and then use the specialities of Chinese intonation
+to enrich their meanings.10
+Shen further proposed that Chinese intonation is mainly manifested in the systematic adjustment of the treble line and the bass line of the whole sentence
+tonal range. Shen stated that the main adjustment of the treble line is the tone
+stress. A sudden change in the treble line will cause a pitch difference between
+both sides of the treble areas, causing a ‘treble fault’ phenomenon. This pitch
+change has nothing to do with the tone but is related to the tone accent, while
+the bass line is mainly adjusted rhythmic stress, and rhythmic stress can form
+a rhythm unit.
+Lin Maocan’s thoughts on intonation partly originated from Zhao’s concepts, and partly from the autosegmental-metrical theory on intonational phonology (AM theory) proposed by American linguist Pierrehumbert. Lin combined Zhao’s ‘algebraic sum’ and ‘rubber band’ ideas with the AM theory. He
+believed that ‘Chinese intonation has two independent variables: pitch accent
+and boundary tones’,11 which are the two important variables of Chinese intonation. This is because the key information of people’s speech is conveyed
+by the focus accompanied by pitch accent, and speech attitude is conveyed
+by emotional intonation/functional intonation. Focus stress and functional intonation act on tones and neutral intonations, and under the restriction of
+prosodic structure, the pitch (and time length) of speech is regularly changed.
+The listeners divide the utterance into intonation phrases based on the change
+of pitch range and the boundary signal of the boundary tones and obtain the
+key information and emotional information from the stress (prominent pitch)
+and boundary tones.12 It can be said that if you grasp these two variables, then
+you grasp the main contradiction. Lin also actively applied his research results
+in the study of international Chinese language teaching. Lin13 and Lin and Li
+Aijun14 compared the similarities and differences between Chinese and English
+intonation through phonetic experiments, and they further proposed strategies for teaching foreign learners’ Chinese intonation in order to avoid ‘foreign accents’. Regarding the similarities and differences between Chinese and
+———
+10
+11
+12
+13
+14
+
+Shen 1994: 221–228.
+Lin 2006: 46–51.
+Lin 2012: 109–114.
+Lin 2015: 39–46.
+Lin–Li 2016: 1–8.
+
+50
+
+RESEARCH ARTICLES 研究文章
+
+English intonation, Lin and Li mainly compared two aspects: pitch accent and
+boundary tone. In terms of boundary tone, the boundary pitches of interrogative sentences in Chinese and English are rising, and the boundary pitches
+of declarative sentences in both languages are mostly declining. This is the
+similarity. The rise and fall of boundary tones in English interrogative and
+declarative sentences are the rise and fall of pitch, while the rise and fall of
+boundary tones in Chinese interrogative and declarative sentences are the rise
+and fall of the scale of the boundary syllable, and the tone of the boundary
+syllable remains unchanged. This is the difference. The similarities and differences of pitch accents are explained from two aspects: narrow focus stress
+and broad focus stress. The pitch of narrow focus stress in English and Chinese are like a peak and valley. The pitches of the peaks and valleys are determined by the fundamental frequency (f0). This is the similarity. The peak
+and valley of English pitch accent are directly caused by pitch accents, while
+the peak and valley of Chinese pitch accent are caused by raising and lowering the pitch when the narrow focus stress function on high tones (yīnpíng
+阴平, yángpíng 阳平, qùshēng 去声) and a low tone (shǎngshēng 上声). This
+is one difference. Another difference is that in English the starting and ending points of the uphill and downhill of peaks and the downhill and uphill
+of valleys are determined by pitch, while in Chinese the starting and ending
+points of the uphill and downhill of peaks and the downhill and uphill of valleys are determined by the scale. The broad focus stress in English and Chinese is the gradual decrease in pitch. This is the similarity. The broad focus
+stress in English is the gradual decrease of its fundamental frequency (f0),
+while in Chinese it is the gradual decrease of the scale. This is the difference.
+In addition to the linguists mentioned above, there are many Chinese linguists who have studied Chinese intonation and achieved certain results, such
+as Shi Feng’s‘intonation pattern’15. We are glad to see that views on the characteristics of Chinese intonation have reached a consensus: the changes in
+Chinese intonation are changes of scale, not simply changing pitch, and the
+tone is basically unchanged; and the core element of Chinese tones is the focus
+accent and boundary tone.
+
+———
+15
+
+Shi 2019: 36–40.
+
+SHANSHAN JIANG: A brief discussion on the similarities and differences
+
+51
+
+Hungarian Intonation
+The Hungarian language belongs to the Uralic language family’s Finno-Ugric
+language branch. It has about 14 million speakers, more than 9 million of
+whom are in Hungary, with the rest mainly scattered in neighbouring countries (i.e., Slovakia, Ukraine, Romania, Serbia, Croatia, Slovenia, and Austria).
+It is an agglutinative language, using a large number of affixes to express corresponding grammatical meanings, that strictly adheres to the harmony of high
+and low vowels. The Hungarian language has no tones such as the Chinese
+language does.Thus, it is a non-tonal language. So, what are the characteristics of intonation for a language that is so different from Chinese?
+When talking about Hungarian intonation, we must first clarify a pronunciation feature of Hungarian language. In general, the word stress in Hungarian is always on the first syllable of the word. Varga (1983): ‘In Hungarian, non-contrastive word-stress falls on the first syllable of the word…’.16
+For example, the word ‘köszönöm’ (thank you) has three syllables, ‘kö’, ‘szö’,
+and ‘nöm’. When the word is read, the word stress is on its first syllable,
+‘kö’, and then gradually decreases, with an overall falling tone. Hungarian
+declarative sentences are the same as Chinese declarative sentences, with a
+falling tone. For example, in the Chinese sentence ‘我去商店’ (I go to the
+store), without considering the focus stress, the entire sentence has a falling
+tone, which is also consistent with the downward inclination of pitch. In the
+Hungarian equivalent, ‘Megyek a boltba’ (I go to the store), the sentence does
+not emphasise anything, and the focus naturally falls on the verb. Here, word
+stress and sentence stress coincide, resulting in a stress at the beginning. Because Hungarian word stress is always on the first syllable of the word, in
+this case, the pitch at the beginning of a Hungarian declarative sentence is
+higher than the pitch at the beginning of a Chinese sentence.
+If word stress and sentence stress do not coincide, how is sentence stress
+expressed?
+Turning to sentence stress, the lexical primary stress referred to
+above is but a potential locus for stress: whether or not the syllable concerned is actually assigned primary stress in the sentence
+depends on syntactic structure.17
+———
+16
+17
+
+Varga 1983: 117–152.
+Siptár 2000: 22.
+
+52
+
+RESEARCH ARTICLES 研究文章
+
+A notable feature of Hungarian grammar is that the position of the focus in
+Hungarian is mandatory and always before the verb. In 1838, Hungarian linguist János Fogarasi proposed that ‘the emphasized word is followed by the
+verb, in finite from; the rest of the words may stand before or after, and may
+18
+follow in any order.’ This is also called ‘Fogarasi’s Law’. Let us take the
+sentence ‘Megyek a boltba’ (I go to the store) as an example again. If we want
+to emphasise‘where to go’, we should say ‘A boltba megyek’. In this case,
+the word ‘boltba’ (store-ba) before the verb ‘megyek’ (I go) is the focus, so the
+pitch of ‘boltba’ is the highest. Moreover, because word stress is always at
+the beginning of the word, the highest pitch is the syllable ‘bolt’. If we want
+to ask a question, we could ask ‘Hova mész?’ (Where are you going?). The interrogative ‘hova’ (where) as the focus should also be placed before the verb
+‘mész’ (you go). Therefore, interrogative sentences in Hungarian also have
+a falling tone, and the highest pitch is the first syllable of the interrogative
+word. Specifically, in the case of ‘hova’, the syllable ‘ho’ is the highest pitch
+of the entire sentence. The pitch change of interrogative sentences in Hungarian is higher than that of declarative sentences, because the interrogative
+sentences always need to attract other people’s attention.
+Since in the Hungarian language there is not an interrogative particle
+like ma 吗 in Chinese, a rising interrogative intonation is needed to express
+questions in yes–no interrogative sentences. For example, ‘Beszélsz angolul?’
+(Do you speak English?) has an overall rising intonation, but it should be
+noted that in yes–no interrogative sentences in Hungarian, the highest pitch
+is the penultimate syllable, which is ‘go’ in ‘angolul’ and not the last syllable
+‘lul’. Thus, there is a downward trend at the end of the rising intonation of the
+yes–no interrogative sentence. In contrast, in yes–no interrogative sentences
+in Chinese, which do not use the interrogative particle ma, the overall intonation is a rising intonation, such as in ‘你会说英语？’ (Do you speak English?). The entire sentence is a continuously rising tone.
+It is worth noting that the intonations of Chinese and Hungarian are completely different when it comes to rhetorical questions that express surprise.
+In order to express surprise, Chinese rhetorical questions feature a steep rising
+tone, such as in ‘你（真的）要来？’ (You [really] want to come?). However,
+Hungarian uses a steep falling tone to express the same grammatical meaning,
+such as in ‘Jössz?’ (Are you coming?).
+———
+18
+
+Varga 2002: 14.
+
+SHANSHAN JIANG: A brief discussion on the similarities and differences
+
+53
+
+The following table briefly explains the similarities and differences between
+Chinese and Hungarian intonation from the perspective of sentence types. It
+should be noted that the comparison of Chinese and Hungarian intonation here
+only considers the most general and common situations of intonation in declarative sentences, interrogative sentences, imperative sentences, and exclamatory sentences in the two languages and does not include special cases.
+
+Table 1. Comparison of Chinese and Hungarian Intonation from the
+perspective of sentence types
+
+54
+
+RESEARCH ARTICLES 研究文章
+
+Conclusion
+Based on the above comparison of Chinese and Hungarian intonation, we
+propose the following implications for Chinese teaching in Hungary:
+Firstly, we need to popularise our existing achievements in Chinese intonation from three aspects: teachers, teaching materials, and teaching methods.
+We need to make our Chinese teachers pay more attention to intonation teaching and improve their theoretical knowledge of intonation; we need to display
+the results of intonation research in localised teaching materials and open up
+special sections for training; and we need to summarise the methods of intonation teaching and not always limit ourselves to ‘read after me’.
+Secondly, specifically in terms of teaching methods, we need to let students
+learn how to split a sentence and find the correct rhythm; we need to let
+students know the characteristics of focal stress in Chinese; and we need to
+let students know that boundary tones are not simply changes in pitch but
+changes in scale, while the tone pattern remains basically unchanged.
+Finally, practice should be focused on sentence types, paying attention
+to the similarities and differences between Chinese and Hungarian intonations,
+especially focusing on the intonation of the boundaries of interrogative sentences and rhetorical questions that express surprise.
+With the advancement of science and technology, especially the strong
+development of AI, we, as practitioners of international Chinese language
+education, should keep up with the times and constantly try to apply new
+technology to our research and teaching activities, especially the learning and
+use of visualisation tools, such as speech recognition software, so that students can clearly see the problems that exist with their intonation. At the
+same time, in the near future, we also hope to see more experimental research
+results on the intonation perception and intonation production of Hungarian
+Chinese learners.We should never forget the feedback from front-line Chinese
+teachers in Hungary and strengthen exchanges and cooperation with them
+in order to combine theory with practiceand provide targeted solutions.
+Bibliography
+Cao Wen 2022. ‘On the Content of International Chinese Intonation Teaching’, International Chinese Language Education 7(03):13–25. [曹文 2022.国际中文语调教
+学当有内容之我见.国际中文教育(中英文),7(03):13–25.]
+
+SHANSHAN JIANG: A brief discussion on the similarities and differences
+
+55
+
+Crystal, David 2008. A Dictionary of Linguistics and Phonetics (6th ed). Oxford: Blackwell
+Publishers Ltd.
+https://doi.org/10.1002/9781444302776
+Gong Kunyu 2009. ‘The Development of Chinese Language Teaching in Eötvös Loránd
+University in Hungary’, International Chinese Language Education (04):89–92.
+[龚坤余 2009.匈牙利罗兰大学及其汉语教学发展历程.国际汉语教育,(04):89–92.]
+Hamar Imre 2014. ‘The change in Chinese teaching: Popularization of Chinese teaching
+in Confucius Institutes’, Chinese Teaching In The World 2014(03): 12–14 [郝清新
+2014. 汉语教学的范式转换——孔子学院的汉语教学普及.世界汉语教学学会
+通讯2014年第3、总第24期.2014(03):12–14]
+Lin Maocan 2006. ‘Chinese Intonation model of Yuanren Zhao and Boundary Tone’,
+Essays on the Modernization of Chinese Language, 2006b, 46–51. [林茂灿 2006.赵元
+任汉语语调思想与边界调.语文现代化论丛，2006b(第七辑):46–51.]
+Lin Maocan 2012. ‘Chinese Intonation and Sentence Rhythm: Starting from the Figure
+of Yuanren ZHAO’s Intonation Theory’, PCC 2012: 109–114. [林茂灿 2012.汉语语调
+和句子节奏——从赵元任语调学说的示意图谈起第十届中国语音学学术会议
+(PCC2012)论文集，2012:109–114.]
+Lin Maocan 2015. ‘Similarities and Differences Between Chinese and English Intonation
+and the Teaching of Chinese Intonation to CFL Learners: My View on How to Avoid
+a Foreign Accent’, International Chinese Teaching 2015(03): 39–46. [林茂灿2015.汉英
+语调的异同和对外汉语语调教学——避免“洋腔洋调”之我见.国际汉语教学
+研究, 2015(03):39–46.]
+Lin Maocan – Li Aijun 2016. ‘The Similarity Between English and Chinese Intonations
+and Its Implication to Teach Chinese as Foreign Language’, Chinese Journal of Phonetics, 2016(02): 1–8. [林茂灿，李爱军 2016.英汉语调的相似性与对外汉语语调
+教学.中国语音学报(02):1–8.]
+Lin Tao 2002. ‘Preface’, In: Cao Wen. Hanyu Yuyin Jiaocheng. Peking: Beijing Language
+and Culture University Press: 5–6. [林焘，2002. 序, 曹文. 汉语语音教程. 北京：
+北京语言大学出版社：5–6.]
+Shen Jiong 1994.‘Chinese Intonation Structure and Intonation Types’, Dialect 1994,
+(3):221–228. [沈炯 1994.汉语语调构造和语调类型.方言, 1994(03):221–228.]
+Shi Feng 2019. ‘High hopes for intonation pattern – forever remembering Zongji Wu’,
+Chinese Journal of Phonetics, 2019(12):36–40.[石锋 2019.语调格局寄厚望——
+永远怀念吴宗济先生. 中国语音学报第12辑:36–40.]
+Siptár Péter – Törkenczy Mikós 2000. ‘The phonology of Hungarian’, OUP Oxford: 22.
+https://doi.org/10.1093/oso/9780198238416.001.0001
+Trask, R. L. 1996. A Dictionary of Phonetics and Phonology. London: Taylor & Francis
+Routledge.
+https://doi.org/10.4324/9780203695111
+Varga László 1983. ‘Hungarian sentence prosody: an outline’, Folia Linguistica, 1983(17):
+117–152.
+https://doi.org/10.1515/flin.1983.17.1-4.117
+
+56
+
+RESEARCH ARTICLES 研究文章
+
+Varga, László 2002. Intonation and stress: evidence from Hungarian. Berlin: Springer: 14.
+https://doi.org/10.1057/9780230505827
+Ye Qiuyue 2021. ‘The History and Current Situation of Chinese Teaching in Hungary:
+The Examples of the Chinese Department and the Confucius Institute at Eötvös
+Loránd University’, Chinese Language Globalization Studies, 2021(01):177–185. [叶秋月
+2021.匈牙利汉语教学的历史与现状——以罗兰大学中文系和罗兰大学孔子学
+院为例.汉语国际传播研究, 2021(01): 177–185.]
+Zhao Yuanren 1922. ‘Experimental Research Method on Chinese Language Tone’, Science
+1922, (9). See also Yuanren Zhao’s collection of linguistic papers (2002:27–36)
+[赵元任 1922.中国言语字调底实验研究法,科学1922第7卷第9期。另见赵元任
+语言学论文集2002:27–36]
+‘National Language and Characters Policy Research Center: 81 countries have included
+Chinese in their national education system.’
+https://baijiahao.baidu.com/s?id=1774- 3636 65005508580&wfr=spider&for=pc
+(last accessed: 03.03.2025) [国家语言文字政策研究中心：81个国家将中文纳入
+国民教育体系]
+
+

@@ -1,0 +1,1 @@
+(parameterize ([optimize-level 3] [compile-file-message #f]) (compile-program "/Users/joco/opencode/szima_ter/modul/piroska_teljes_demo_app/piroska_teljes_demo.ss"))

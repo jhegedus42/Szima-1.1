@@ -1,0 +1,1329 @@
+>
+
+MEO
+Magyar Egységes Ontológia
+MEO-modellek és -elméletek
+
+Szakadát István,Szőts Miklós,Gyepesi György
+letölthető: http://ontologia.hu/meo/meotheo
+NKFP-2/042/04. – 2006. december 18. – v.1.0.
+
+1
+
+MEO-modellek és -elméletek
+1.0 verzió – MEO-projekt
+
+A MEO-projekt megvalósítása során mindvégig igyekeztünk messzemenően figyelembe venni az ontológiaépítésel foglalkozó szakmai közösség eredményeit. Két területen
+találtuk úgy, hogy a problémakör alaposabb kidolgozására lenne szükség ahhoz, hogy a
+projekt által kitűzött célokat elérhessük (másként: két probléma megoldásával kapcsolatban voltunk elégedetlenek a nemzetközi eredményekkel). Megítélésünk szerint sem a
+különböző ontológiamodellek, sem az azok alapján megvalósított ontológiák nem kezelik
+kielégítően a természetes nyelvek konstrukciói és az ontológiai egységek közötti kapcsolatrendszert, ezért a projekt során a MEO ontológiamodelljét úgy dolgoztuk ki, hogy a
+nyelvi és a fogalmi réteget gondosan elválasszuk egymástól (hogy aztán egyértelműen és
+könnyedén tudjuk illeszteni egymáshoz azokat). A nyelvi és fogalmi rétegek megkülönböztetésén túl annak is szükségét éreztük, hogy pontosan elválasszuk az ontológia tárgyés metaaszintjeit egymástól. Mindkét szempont azt kívánta meg, hogy az ontológiamodellünket modulárisan építsük fel. Az alábbiakban ezt a réteges megközelítést, illetve a
+MEO-modell egyes moduljait mutatjuk be.
+
+1. Nyelvi réteg
+Az ontológiaépítés során törekedni kell arra, hogy tudatosan és explicit módon, illetve
+a lehető legegyértelműbben kezeljük az ontológia és a nyelv kapcsolatát. Ez a viszony
+kétféle értelemben is fontos. Egyrészt mind az ontológiaépítkezés, mind az ontológiahasználat során meghatározó jelentőségű az a tény, hogy milyen formális nyelvet használunk. A kiválasztott formális nyelv döntően meghatározza azt, hogy az ontológia milyen
+kifejezőerővel rendelkezik, illetve a választott nyelv bonyolultságából fakadó számítási
+igények mentén milyen következtetési képességek várhatók el az ontológiától. Másrészt
+viszont mindvégig tudatosan kell elválasztani egymástól az ontológia fogalomkészletét,
+amely nyelvfüggetlen, illetve az ontológia használatához, emberi értelmezéséhez, interpretálásához szükséges nyelvi szótár egységeinek halmazát, amelyet – értelemszerűen –
+nyelvfüggő erőforrásnak minősíthetünk. Azt persze rögzítenünk kell itt, hogy a fogalmi
+réteg nyelvfüggetlensége a természetes nyelvektől való függetlenséget jelenti, de természetesen a fogalmi réteg egységeit is egy kiválasztott formális nyelven fejezhetjük ki.
+A fenti kettősségnek megfelelően a MEO-modellben elkülönítettük a fogalmi és a
+nyelvi réteget egymástól. Természetesen amíg a fogalmi réteg valóban egyetlen rétegnek
+tekinthető (a nyelvfüggetlensége miatt), addig a modell nyelvi rétege annyi részből, alrétegből áll, ahány nyelven hozzá szeretnénk rendelni nyelvi elemeket a fogalmi réteg
+egységeihez. (A nyelvi réteg legfontosabb fogalmait, a köztük definiált kapcsolatokat a
+projekt harmadik szakaszában mutattuk be [13].)
+
+2
+
+2. Fogalmi réteg
+Az ontológiaépítés lényege a fogalmi réteg elemeinek, illetve a köztük levő kapcsolatok
+meghatározása, és ezt a feladatot is lehet, érdemes szintekre, modulokra tagolva végezni.
+A fogalmi réteg kibontásához szükségünk van egy meta-metaszintre, ahol a reláció fogalmának matematikai értelmezését adhatjuk meg. A meta-metaszint elkülönítése – megítélésünk szerint – minden ontológiaépítés számára elengedhetetlen feladat. Erre a szintre
+hivatkozhatnak a tárgyszinten felvett fogalmak, melyeket az ontológiaépítés során lehet
+szabadon felvenni, illetve az ontológiatervezés során rögzített, a tárgyszinten használható,
+de nem változtatható fogalmakat tartalmazó metaszint. A tárgyszintet fel kell még osztani
+– a metaszint fogalmi distinkcióinak megfelelően – az univerzáléfogalmak és a partikuláréfogalmak szintjére, melyek modelljét az előbbi esetben a generikus modell, utóbbiban
+az esetmodell segítségével rögzíthetjük.
+A különböző rétegek természetesen sok szálon összekapcsolódnak egymással. A tárgyszint, a metaszint és a metametaszint egymásra épülő rendszerkomponensei egymásra hivatkozó, egymást feltételező fogalmakat tartalmaznak. A rétegek közötti kapcsolatokat,
+metarelációkat mindig a „magasabb szint” ismertetésekor mutatjuk be. Az egyes szinteken, rétegekben különböző kiterjedtségű és erősségű elméleteket fogalmazhatunk meg,
+melyek „elhelyezkedését” a fogalmi réteg szintjeivel, alrétegeivel együtt az 1. ábrán mutatjuk be.
+matematikai
+modell
+
+tárgyszint
+
+általános extenzionális
+relációelmélet
+
+relációs mikroelméletek
+generikus
+modell
+
+meta
+modell
+
+meta-metaszint
+metaszint
+
+kategóriatan
+
+generikus szint
+
+keresztrelációk elmélete
+
+metaszint
+
+eset
+modell
+
+tárgyszint
+
+instanciaszint
+
+1. ábra. a MEO-modell rétegei
+A meta-meta szinten a reláció matematikai fogalmát lehet kibontani egy extenzionális
+relációelméletet (Extensional Relation Theory – ERT) segítségével. A metaszinten kell
+definiálnunk azokat a metafogalmakat, amelyek az ontológiatervezés során kerülhetnek
+be az ontológiamodellbe. Ezek a metafogalmak a tárgyszinten már nem változtathatók.
+3
+
+Három részelméletet különíthetünk el a metamodellre támaszkodva: a meta- és tárgyszintű fogalmak között érvényes relációkat leíró keresztrelációk elméletét, az ontológia
+csúcsfogalmait rögzítő kategóriatant és a tárgy-, meta- és matematikai szintre is „belógó” relációs mikroelméletek rendszerét.
+
+2.1. Meta-metaszint: matematikai modell
+Az ontológiaépítéshez mindig valamilyen predikátumlogikai nyelvet kell választanunk.
+Ebből következően akármelyik szintjén, akármelyik rétegében legyünk is az ontológiánknak, mindig szükségünk van a formális nyelv egyik szabad elemét jelentő predikátum
+(vagy másként reláció mint nem-logikai konstans), illetve a másik szabad formális nyelvi komponens, az individuumkonstans (illetve individuumváltozó) metafogalmára [6]. A
+meta-metaszinten a reláció fogalmát, illetve annak matematikai tulajdonságait kell leírnunk egy relációelmélet keretében [18]. Ha a reláció fogalmát matematikai szinten elemezzük, akkor az ontológia alapfogalmai és alaprelációi közül egyelőre csak a gyűjtemény (vagy halmaz, esetleg osztály), az individuum és a köztük levő eleme (∈) reláció
+felvételére van szükség [2]. Ezen a szinten még elégséges, hogy a relációt extenzionálisan értelmezzük.
+2.1.1. Extenzionális relációelmélet
+A matematikai (meta-metaszinten) felépíthető relációelméletnek egyrészt rögzítenie kell,
+hogy a relációnak szerkezeti és tartományi kötöttségei lehetnek, vagyis foglalkoznia kell
+az aritás, az értelmezési tartomány (domain) és az értékkészlet (range) kérdéseivel, másrészt le kell írnia a relációk algebrai tulajdonságait, az ezek között érvényes kényszereket,
+tételeket, a relációtulajdonságok segítségével meg kell adnia az alapvető – matematikai
+szinten értelmezhető – relációtípusokat, végül a függvény, majd a művelet mint speciális
+reláció fogalmaira támaszkodva hasznosítania kell a relációalgebra axiómáit, tételeit. Az
+extenzionális relációelmélet formuláit külön dokumentum tartalmazza: [18].
+Mivel a Szemantikus Web Kezdeményezés környékén saját ontológialeíró nyelvet teremtettek (az OWL-t), ezért arra törekedtünk, hogy megteremtsük és megmutassuk a kapcsolatot az extenzionális relációelméletünk és az OWL elemei között.1
+
+2.2. Metaszint: metamodell
+A formális ontológiákban a világ dolgaira vonatkozó fogalmainkat próbáljuk meg leírni, rendszerezni, formalizálni. Mielőtt az ontológiaépítési munkákba kezdenénk, meg
+kell tudnunk mondani, milyen típusú fogalmakat fogunk használni. Ezt az ontológiamodell metaszintjén kell megtennünk. Ugyancsak a modell metaszintjén kell definiálnunk
+a legfontosabb ontológiai metafogalmakat. Az ontológiaépítéshez kiindulásként a három
+alapfogalomra van szükségünk: az individuum, az univerzálé és a gyűjtemény fogalmaira [2], és természetesen meg kell határoznunk a köztük értelmezhető relációfogalmakat
+is. Ezeket a relációkat tartalmazza (más egyebek mellett) a keresztrelációk elmélete. Azért
+nevezzük ezeket keresztrelációknak, mert a különböző ontológiai szinteket „jellemző” en1 Az OWL, az alapját jelentő leíró logia (DL) és a Szemantikus Web program áttekintését adja : [23]
+
+4
+
+titások között értelmezhetjük őket, vagyis eltérő rétegeken, szinteken keresztül „átnyúlva”
+léteznek.
+2.2.1. Keresztrelációk elmélete
+A filozófiai, ontológiai szakirodalomban régóta használt, széles körben elterjedt a partikuláré-univerzálé fogalomkettős, bár a két terminus helyett – különösen a filozófián túli
+tudásterületeken – gyakran használnak más kifejezéseket. Amíg partikuláré, illetve az individuum, az instancia, az előfordulás, az elem, a példány terminusaival mindig a világ
+valamilyen egyedi, minden mástól elkülöníthető dolgára hivatkozunk, addig a univerzálé,
+illetve a concept, a property, az osztály, a típus terminusaival mindig valamely jellemző
+mentén közös dolgok csoportját, gyűjteményét jelöljük. Nem szokás azonban használni a
+gyűjtemény vagy a halmaz terminusát az univerzálé helyett, és ez a mozzanat felveti annak szükségességét, hogy a partikuláré-univerzálé kettős mellé felvegyük a gyűjtemény
+fogalmát is, és persze tisztázzuk a három ontológiai alapfogalom egymáshoz való viszonyát [2].
+Bár az elem és az individuum halmazelmélethez közelebb álló terminusok, a MEOmodellen belül nem teszünk különbséget a partikuláré szinonímái között (bár azért leggyakrabban a partikuláré és az individuum terminusokat fogjuk használni). Helytelennek
+tartjuk viszont a concept, az osztály vagy a property terminusok használatát az univerzálé
+fogalma helyett, ezért az univerzálé szinonimájaként csak a típus terminusát tartjuk elfogadhatónak. A kérdés tehát az, hogy mi a különbség az individuum, az univerzálé és a
+gyűjtemény fogalmai között?
+Mivel a világban létező dolgok leírására alkalmas fogalmainkat akarjuk valahogyan
+tipizálni, ezért legelőször a partikuláré (individuum) és univerzálé fogalmait kell meghatároznunk. Ezt egy speciális metarelációval, az instanciálás (példányosítás) relációval
+tehetjük meg. Ezt a definíciót használják a jelenkori filozófusok [12], de ezt az értelmezést veszi át a Dolce is [7]. Az instanciálás metarelációval azt fejezhetjük ki, hogy egy
+fogalmommal leírt „dolognak” mennyi példánya lehetséges a világban. Ha a fogalommal leírt dolog csak „egymagában” létezik, tehát nincsenek példányai, legfeljebb csak
+annyit mondhatunk, hogy „önmaga példánya”, akkor beszélünk a partikuláré fogalmáról.
+Ezzel szemben az univerzálé fogalmával olyan dolgot illetünk, amelynek lehetséges több
+példánya is. Mondhatjuk azt is, hogy a partikuláré az instanciálás metareláció jobbról egyértelmű szűkítése, míg az univerzálé e szűkítés komplementere. A három eddig tárgyalt
+fogalmat [7] alapján a következő formulákkal írhatjuk le.2 Először az instanciálás relációt
+definiálhatjuk:
+
+A
+(1)
+
+asymmetric ∧ aneuclidean
+
+instanciája reláció (HUN) – előfordulása reláció (HUN) – példánya reláció (HUN) – occurence of
+relation (ENG) – instance of relation (ENG)
+2 Az instancia reláció definiálásához Gangemi és társai az antitranzitív relációtulajdonságot használják
+
+fel, amit a MEO Extenzionális Relációelméletében – a tartalmának változatlanul hagyásával – átneveztünk
+aneuklideszi tulajdonságnak.
+
+5
+
+Az instanciálás reláció segítségével már meghatározhatjuk a partikuláré és az univerzálé
+fogalmait is:
+
+PARTICULAR
+
+(2)
+
+∀x(particular(x) ↔ ¬∃y(y A x))
+
+partikuláré (HUN) – individuum (HUN) – particular (ENG) – individual (ENG)
+
+UNIVERSAL
+
+(3)
+
+∀x(universal(x) ↔ ¬particular(x))
+
+univerzálé (HUN) – universal (ENG)
+
+Van tehát három alapvető metafogalmunk, köztük az instanciálás realáció, de amikor továbblépünk, figyelni kell arra, hogy nem szabad azonban összekevernünk az instanciálás
+metarelációt azzal a relációval, amit a partikuláré és az univerzálé fogalmai között értelmezhetünk és aminek az instanciája nevet adhatjuk.3 Bár az instanciája reláció nagyon
+hasonlít az eleme relációhoz, mégsem lehet azonos vele, mivel másfajta fogalmak között értelmezzük. Amíg az eleme reláció egy individuum (partikuláré) és egy gyűjtemény
+(halmaz) közötti reláció, addig az instanciája reláció egy partikuláré és egy univerzálé
+között áll fent [2, 7]. A meglevő különbségek miatt tehát egymástól különböző relációnak kell tartanunk őket, de a meglevő hasonlóságok miatt az eleme reláció jeléhez (∈)
+hasonló szimbólummal jelöljük az instanciája metarelációt (A). Az instanciája relációban
+van valamilyen intenzionális kapcsolat, ami teljesen hiányzik a halmaz és elemei között
+fenntartott eleme relációból. Ezért van szükség az univerzálé fogalma mellé felvenni a
+gyűjtemény kategóriáját, hogy az individuumok és a gyűjtemények közti extenzionális
+kapcsolatot kifejezhessük az eleme reláció alkalmazásával.
+A három fogalomtípus eltérő minőségét szemléltethetjük az időbeli „viselkedésükkel”. Az individuumok elveszthetik részeiket vagy épp új részeket „szerezhetnek” (az ember sejtjei folyamatosan elhalnak, illetve megszületnek). Az univerzálék is hasonlóképpen
+viselkednek, csak nem a részeiket, hanem a példányaikat veszíthetik el vagy nyerhetnek
+újakat belőlük. A gyűjtemény (a halmaz) viszont mindig az elemei, összetevői (vagyis
+az individuumok) által azonosítható, ezért nem lehetséges, hogy különböző időpontokban
+különböző elemei legyenek.
+Van tehát három ontológiai metaegységünk, melyek között különböző relációkat értelmezhetünk. Párat már korábban említettünk, de most érdemes egybegyűjteni az összes
+lehetséges (lényeges) kapcsolatot. A következő táblázatban először felsoroljuk azokat a
+kapcsolatokat (1-8. sor), amelyek a három entitástípus között léteznek a partitivitás atommentes (részhalmaza-szerű) és atomos (eleme-szerű) relációtípusa, illetve a genericitás
+szerint [2]. Ezt kiegészítjük a feltüntetett relációk fontosabb inverzeivel (1-10, 4-9, 7-11,
+5-12).
+3 A két alapfogalomhoz hasonlóan szinonimitás (vagyis többszörös terminushasználat) jellemzi az alap-
+
+fogalmak közötti relációkra vonatkozó terminológiát is. Az instanciája reláció helyett használható lenne
+még az előfordulása vagy a példánya reláció megnevezés is.
+
+6
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+
+reláció
+individuumrésze
+eleme
+instanciája
+faja
+univerzálérésze
+extenziója
+gyűjteményrésze
+partíciója
+neme
+individuumegésze
+gyűjteményegésze
+univerzáléegésze
+
+jele
+≤
+∈
+A
+v
+E
+F
+⊆
+3
+w
+≥
+⊇
+D
+
+bal-argumentum
+individuum
+individuum
+individuum
+univerzálé
+univerzálé
+gyűjtemény
+gyűjtemény
+gyűjtemény
+univerzálé
+individuum
+gyűjtemény
+univerzálé
+
+jobb-argumentum
+individuum
+gyűjtemény
+univerzálé
+univerzálé
+univerzálé
+univerzálé
+gyűjtemény
+individuum
+univerzálé
+individuum
+gyűjtemény
+univerzálé
+
+A metaszintű keresztrelációkat önálló szimbólumokkkal jelöljük, és a relációk argumentumait
+infix-módban adjuk meg (tehát a két argumentum közé tesszük a relációjelet). A fenti relációk –
+legalább az időhöz való viszonyukban – különböznek egymástól, és különböző erősségű formulákkal írhatók le (ezeket itt nem mutatjuk be, részletesen kibontva lásd : [2]).
+A táblázat az ontológiák nagyon fontos metareláció-típusait mutatja be, de jeleznünk kell azt
+is, hogy egy nagyon fontos reláció hiányzik a felsorolásból. Az intenzió kategóriája – az extenzió
+mellett – a fogalmak nélkülözhetetlen „tartozéka”, amit – ennek ellenére – a kortárs ontológiák
+és ontológiaelméletek egyike sem tud (vagy akar) megragadni. Ez persze nem véletlen, hiszen
+az intenzió, vagyis a fogalmak jelentését, tartalmát kifejező bármilyen állítás, tehát „tetszőleges”
+logikai formula lehet, amit eddig még nem sikerült egyetlen metafogalomtípushoz rendelni. Mi
+sem tudjuk formalizálni és a modellbe építeni ezt a fogalmat, de fontosnak tartjuk, hogy egyrészt
+azért jelezzük a hiányát, másrészt rögzítsük a lehetséges argumentumait : az ‘intenziója’ reláció
+(jele: ]) egy formula és egy univerzálé között teremt kapcsolatot.
+Az univerzálé és a partikuláré (illetve a gyűjtemény) kategóriái mellett – még mindig a metaszinten maradva – szükségünk van egy másik fontos fogalmi megkülönböztetésre is. A matematikai szinten definiált legáltalánosabb metafogalmunk, a reláció fogalmához a meta-metaszinten
+hozzákapcsoltuk az extenzionális relációelméletet, melyből két relációtípust „lehozhatunk” a metaszintre és deklarálhatjuk az unáris reláció és a bináris reláció metafogalmait (meg kell jegyezzük, hogy ez a dichotómia még mindig szintaktikai meghatározáson alapul, tehát ezek miatt sem
+kell semmiféle plussz ontológiai elkötelezettséget vállalnunk).
+Az unáris és a bináris reláció két fogalomtípusát messzemenően hasznosíthatjuk a tárgyszintű
+építkezésben, hiszen a bináris reláció metafogalma adja a tárgyszint relációfogalmának típusát, az
+unáris reláció metafogalmat pedig a tárgyszinten az egyedfogalomnak feleltethetjük meg (mint a
+tárgyontológia két legfelső kategóriáját).
+Ha az eddig bemutatott dimenziókat egymásra vetítjük, akkor meghatározhatjuk az ontológia
+tárgyszintjének legfontosabb metafogalmait. Az univerzálé-partikuláré kettősség mentén választhatjuk el egymástól a modell generikus, illetve instanciális szintjét, míg az egyed- és relációfogalmak (vagyis az unáris és a bináris reláció metafogalmak) segítségével megadhatjuk a tárgyszint
+generikus és instanciális hierarchiájának két-két csúcselemét. A generikus szinten tehát lehetnek
+egyedfogalmaink és relációfogalmaink, az instanciszinten pedig előfordulhatnak egyedpéldányok
+és relációpéldányok, és természetesen a gyűjtemények mindkét szinten összefoghatnak univerzálékat és partikulárékat egyaránt. A négy ontológiai réteg, a metafogalmak és a köztük levő metarelációk, valamint a tárgyszint legfontosabb összetevőit mutatjuk be a 2. ábrán.
+
+7
+
+reláció
+
+meta-metaszint
+egyedfogalom
+(E1)
+E2
+
+relációfogalom
+(R1)
+
+E3
+
+R2
+
+univerzálé
+partikuláré
+gyűjtemény
+
+R3
+
+unáris reláció
+E4
+
+E5
+
+E6
+
+R7
+
+R4
+
+R5
+
+bináris reláció
+
+R6
+
+gyűjtemény3
+individuumrésze
+
+univerzálé
+
+eleme
+
+partikuláré
+
+e2
+
+e3
+
+e8
+
+e5
+
+e6
+
+gyűjtemény1
+
+r2
+
+e7
+
+faja
+univerzálérésze
+
+r3
+
+r4
+
+r5
+
+gyűjtemény2
+
+extenziója
+metaszint
+
+e4
+
+relációpéldány
+(r1)
+
+tárgyszint
+
+egyedpéldány
+(e1)
+
+instanciája
+
+gyűjteményrésze
+partíciója
+
+2. ábra. a MEO-modell alapfogalmai
+2.2.2. Egyéb formális relációk
+Az előző részfejezetben tárgyalt metafogalmak minden ontológiához nélkülözhetetlenek. Úgy is
+mondhatjuk, hogy ezek a metafogalmak jelentik az ontológiai elkötelezettségek minimális szintjét.
+Vannak azonban olyan metafogalmak is, amelyek szintén metaszinten értelmezhetők, de a státusuk már – valamilyen szempontoból – már jelentős mértékben eltér az előzőekétől. Vagy már nem
+mindenki által vállalható ontológiai elkötelezettséget kívánnak meg, vagy még nem (vagy kevéssé) szervezhetők – legalábbis egyelőre – formális elméletbe. A következőkben rövid utalásokat
+teszünk a legfontosabb effajta metarelációkra.
+A része-egésze, partitív relációpár minden ontológia nélkülözhetetlen tartozéka, amelyre léteznek magasan formalizált elméletek (különböző erősségű mereológiák, mereotopológiák), de
+eltérő intuíciók, ontológiai elkötelezettségek mentén más és más axiómakészletet lehet választani, vagyis már sokféle viszonyt lehet kialakítani vele kapcsolatban. Fontossága miatt a partitív
+alárendeltje (a része) relációtípus értelmezését, a fogalom axiómáit külön kezeljük és a relációs
+mikroelméletekkel foglalkozó projektdokumentumban mutatjuk be [19].
+Ha le akarjuk írni egy belső szerveződéssel rendelkező entitás struktúráját, erre nem elégséges
+csak a partitív reláció, szükség van még a összekapcsolódás (connection) relációjára is. Ezt a
+következőképpen definiálhatjuk.
+
+CONNECTION
+
+(4)
+∀x∀y∀z(connection(x, y)→symmetric(x, y)∧(P(x, y)→(connection(z, x)→connection(z, y))))
+
+8
+
+összekapcsolódás reláció (HUN) – konnekció (HUN) – connection relation (ENG)
+
+Ugyancsak fontosnak kell minősítenünk a lokáció (location), illetve a függőség vagy dependencia (dependence) relációkat is, melyek formalizálását lásd : [7]. Utóbbit kiemelt jelentőségünek
+tartjuk az ontológiák kezelésével kapcsolatos folyamatokban, noha a gyakorlatban még sok megoldandó feladat van a fogalommal kapcsolatban.
+Az ontológiaépítés egyik, még nem megoldott, kérdése az, hogy miként tudjuk a genericitás mentén egymás terjedelmébe sorolt fogalmak és a fogalmak intenzióját, tartalmát adó ismérvek, tulajdonságok közötti viszonyt megragadni, formalizálni. Már a MEO-projekt indulásakor
+célul tűztük ki, hogy meg kell próbálnunk azt az arisztotelészi duális megközelítést megvalósítani,
+amely nemcsak a fogalmak egymáshoz való viszonyát fejezi ki a fogalmi struktúrák építése során, de mindeközben folyamatosan rögzíti a fogalmakhoz rendelhető ismertetőjegyeket is (ebben
+a „folyamatban” kulcsszerepe van az arisztotelészi differentia specifica fogalmának).
+A MEO-projekt egyik munkacsoportjában éppen ezért belekezdtünk a szokásos építkezési módszerekkel „ellentétes” gondolkozási és fogalomstrukturálási metódusba. A filozófiában a
+troposz-, illetve dependenciaelméletek megközelítésére és fogalomkészleteire támaszkodva elkezdtünk egy ilyen irányú formalizálást [27, 28]. Ebben a megközelítésben a legfontosabb reláció
+a dependenciareláció, melyet az instanciája metareláció segítségével definiálhatunk.
+Legyen A, B az ontológia két tetszőleges fogalma (pl. a felületelőfordulások, illetve a színelőfordulások fogalmai). Ekkor az C dependenciareláció fogalmát (A és B között) az alábbi módon
+definiálhatjuk :
+
+C
+(5)
+
+∀x(x A A → ∃! y(y A B ∧ C(x, y)))
+
+dependencia (HUN) – dependenciareláció (HUN) – függőségi reláció (HUN) – dependence
+relation (ENG)
+
+Szabad szöveggel kifejezve : szükségszerű, hogy A bármely x instanciájához található B egy (és
+csak egy) olyan y instanciája, hogy x C-viszonyban áll y-nal.
+A dependencia’ metafogalom intenzionális karakterét a  szükségszerűségoperátor jelenléte
+biztosítja, így a szükségszerűség különböző fokozatainak figyelembe vételével különböző erősségű dependenciaviszonyokhoz jutunk. A fentiekben a szín–felület kapcsolat esetében az ún. metafizikai szükségszerűség egy példáját láttuk. Ez a szükségszerűség rendkívül erős, már-már logikai
+erejű. Tekintsünk most egy gyengébb szükségszerűségtípust és egy rá alapozott dependenciaviszonyt: ha például -t mint „a biológia törvényszerűségei szerint szükségszerű, hogy” jeleként
+értelmezzük, valamint A-t a férfiak, B-t a nők típusával azonosítjuk, akkor az alábbi állítás igaz
+lesz:
+∀x(x A FÉRFI → ∃! y(y A N Ő ∧ ANYJA(x, y)))
+ám a következő állítás hamis :
+∀x(x A FÉRFI → ∃! y(y A N Ő ∧ TESTVÉRE(x, y)))
+azaz az ANYJA reláció dependenciareláció lesz a FÉRFI és N Ő típusok között — mert biológiailag szükségszerűen minden férfinak (általában pedig : minden embernek) van anyja —, de a
+TESTVÉRE nem, hiszen biológiailag nem szükségszerű, hogy egy férfinak legyen nővére vagy
+húga. A példa tanulsága az, hogy a  erősség szerinti indexelésével a dependencia különböző
+
+9
+
+fokozataihoz juthatunk, ami lehetővé teszi a zökkenőmentes átmenetet a legáltalánosabb fogalmi
+struktúrák leírásától a szaktudományok sajátos domainjeinek leírásáig.
+Megjegyezzük, hogy ha R-et az azonosságnak választjuk, akkor a kapott
+∀x(x A A → ∃! y(y A B ∧ x = y)) ⇐⇒
+
+∀x(x A A → ∃! y(x A B)) ⇐⇒
+
+∀x(x A A → x A B)
+
+formula a jól ismert generikus alárendeltje (v) relációt adja A és B között. Valóban, az azonosságot
+felfoghatjuk a dependencia triviális formájának, hiszen bármely entitás tautologikusan dependál
+saját létezésén.
+A dependeciareláció segítségével aztán – más és más erősséggel és általánossági fokozattal
+rendelkező – tulajdonságfogalmakat definiálhatunk, amelyekkel különböző szinteken jellemezhetjük az ontológiánkba felvett fogalmakat (erről bővebben lásd a projekt két dokumentumát :
+[28, 27]).
+
+2.2.3. Kategóriatan
+A meta-metaszint és a metaszint metafogalmai és a tárgyszint fogalmai abban térnek el jelentősen
+egymástól – persze mindig csak egy adott rendszeren belül –, hogy az ontológiaépítők számára a tárgyszint fogalmai szabadon szerkeszthetők, addig a metaszintek fogalmai rögzítettek, nem
+szerkeszthetők. Az ontológiatervezés során a metaszint fogalmait a tervezők ontológiai elkötelezettségeinek megfelelően – tudatosan vagy nem tudatosan – rögzülnek a felállított, működtetett
+ontológiai modellben. Az ontológiatervezés folyamatában azonban szükség van egy olyan fázisra
+is, amikor az ontológiaszerkesztők eldöntik, hogy az ontológiájukban milyen legfelső szintű fogalmakat, vagy másként kategóriákat használnak. Természetesen ez is mélyen ontológiai elkötelezettségek függvénye, csak ezt a munkát már a tárgyszinten kell elvégezni. Bizonyos értelemben
+a kategóriák is rögzítve vannak egy adott rendszeren belül (meglehet ugyan változtani őket, de
+ebben az esetben már pontosabb lehet másik ontológiáról beszélni), ezért érdemes őket „átmeneti,
+köztes” fogalmakként kezelni.
+Kategóriatanból sok van mind a filozófiatörténetben, mind a jelen informatikai praxisában, hiszen a szigorú értelemben vett csúcsontológiák mindegyike egy-egy kategóriatannak felel meg. A
+legelső kategóriarendszer Arisztotelész nevéhez kötődik, melyet a 3. ábrán látható fával rekonstuáltak.
+Being
+
+Substance
+
+Accident
+
+Property
+
+Inherence
+
+Directedness
+
+Movement
+
+Quality
+
+Quantity
+
+Relation
+
+Passivity
+
+Containment
+
+Intermediacy
+
+Acivity
+
+Having
+
+Situated
+
+Spatial
+
+Temporal
+
+3. ábra. Arisztotelész kategóriái (Porphüriosz fája)
+10
+
+A MEO-projekt kezdetén összegyűjtöttük a legfontosabbak csúcsontológiákat (SUMO [16],
+Dolce [4], OpenCyc [3] WordNet [29], EuroWordNet [5], Sowa [15], Basic Formal Ontology/BFO
+[1]). A kortárs ontológiák közül – megítélésünk szerint – legjelentősebbnek a DOLCE minősíthető,
+amelynek csúcselemeit a 4. ábrán mutatjuk be.
+Entity
+
+Endurant
+
+Physical
+Endurant
+
+Non-physical
+Endurant
+
+Perdurant
+
+Arbitrary
+Sum
+
+Event
+
+Stative
+
+Achievement
+...
+Amount
+of
+Feature
+Matter
+Physical
+
+Quality
+
+Temporal
+Quality
+
+Physical
+Quality
+
+Abstract
+
+Abstract
+Quality
+
+...
+Fact
+Set
+
+State Process
+
+Region
+
+Nonphysical
+Object
+
+...Temporal
+Location
+
+Accomplishment
+
+... ...
+
+...
+
+...
+
+... ...
+
+... ...
+
+... Spatial ... ...
+Location
+Temporal Physical Abstract
+Region
+Region Region
+
+Agentive Non-agentive Mental Social
+Object Object
+Physical
+Physical
+Object
+Object
+...
+Agentive Non-agentive
+Social Social Object
+
+Social Agent
+
+Time ... Space ... ...
+Interval
+Region
+
+Society
+
+4. ábra. a DOLCE kategóriái
+Nem célunk sem a DOLCE, sem más ontológiák csúcskategória-rendszereinek elemzése, ezért
+itt csak – egyetlen szempontra koncentrálva – annyit említünk meg, hogy számunkra nem látszik
+teljesen konzisztensnek a DOLCE tervezőinek megoldása. A DOLCE-ben a gyökérelem (az ‘Entity’) alatt ugyanis az alábbi csúcselemek találhatók :
+– absztrakt (Abstract)
+– minőség (Quality)
+– endurant (Endurant)
+– perdurant (Perdurant)
+A probléma az, hogy bár látszólag két – a filozófiatörténetben elfogadott és széleskörben alkalmazott – dichotómiához igazodnak, de ezt nem teszik meg teljeskörűen, mert amíg az endurantperdurant (continuant-occurent) fogalompárt átveszik, addig az absztrakt-konkrét kettősségből
+csak az előbbi kategória kerül be a DOLCE legfelső szintjére. Továbbá ugyan érthető az is (a
+gärdenforsi elméletre való hivatkozás miatt), miért kerül fel a DOLCE legfelső szintjére még a
+minőség (Quality) kategóriája, de nem lehet tudni, milyen dimenzió mentén s milyen társkategóriák közül (s főként, hogy miért csak ez az egy fogalom) lett kiválasztva. A DOLCE tervezői
+láthatólag nem vették figyelembe azt a módszertani ajánlást, miszerint olyan csúcskatagóriákat
+érdemes felvenni, amelyek – valamely dimenzióban – biztosítják azt, hogy a tárgyalási univerzum
+teljes le legyen fedve az azonos szinten egymás mellé rendelt kategóriákkal [25].
+
+11
+
+A MEO legfelső kategóriái – megítélésünk szerint – megfelelnek a jelzett módszertani elvárásnak, ráadásul tartalmukat tekintve nagyon közel vannak a DOLCE megfelelő alapkategóriáinak tartalmához [26]. A MEO kategóriatana két dimenzióban osztja fel a csúcsfogalmakat, és a
+konkrétság dimenziója mentén az absztrakt-elvont értékeket, illetve a fizikai világképünk három
+alapkategóriáját teszi fel a fogalmi struktúra tetejére, vagyis az alábbi kategóriákat különíti el :
+– anyagszerű
+– energiaszerű
+– információszerű
+– elvont
+– konkrét
+Akárhogy is oldottuk meg a MEO fogalmi struktúrájának legfelső rétegét, az ontológiaépítési
+munkák számára nem ezt tartjuk – a jelen pillanatban – igazán fontos mintának. Inkább annak
+tudatosítását tartjuk most lényegesnek, hogy a kategóriatan elemeinek és ezek egymáshoz való
+viszonyának megállapítása mindig az ontológiatervezők ontológiai elkötelezettségeitől, elfogultságaitól függ, amelyek természetesen ontológiáról ontológiára, személyről személyre, időről időre
+változhatnak.
+Minden kategóriatanon belül fel kell venni valamilyen gyökérfogalmat. Erre még annyira sincs
+egységes terminológia az ontológiaépítő közösségen belül, mint a többi (ennek alárendelt) kategória esetében. A MEO-ban a ‘valami’ csúcskategóriáját vettük fel (az ellentétének számító semmi’
+metafogalmával együtt).
+
+2.2.4. A klasszifikáció módszertana
+A kategóriatan szerveződési elveivel kapcsolatos szabályokra, elvárásokra az előző fejezetben már
+tettünk egy utalást, s itt újra jeleznünk kell, hogy mind a kategóriatan kiformálása, mind a tárgyszintű ontológia építése során megfelelő módszertani elvekhez, kényszerekhez kell igazodnunk.
+Az ontológiaépítés módszertanának egyik legfontosabb eredménye az OntoClean módszertan [8],
+amelyet a MEO-projekt során mindvégig kiemelt figyelemmel kezeltünk [24]. Ezt a módszertant
+továbbra is minden ontológiaépítő projekt figyelmébe ajánljuk.
+Vannak azonban más módszertani ajánlások, szempontok is. A konzisztens klasszifikáció, taxonómiaépítés például – elméletileg – megkívánja azt, hogy új fogalmak képzésekor mindig igazodjunk a JPED-elvekhez [2]. A generikus struktúra konzisztenciájához – papíron – nélkülözhetetlen, hogy az azonos fogalmi szinten egymás mellett levő, egy közös fölérendelt kategóriához
+tartozó fogalmak tartalma kölcsönösen kizáró és együttesen kimerítő legyen (jointly exhaustive
+and pairwise disjoint – JEPD), hogy ezáltal mindig kielégítsük azt az elvárást, hogy egy adott fogalom alá kidolgozott fogalmak együttesen a fogalom terjedelmébe tartozó minden előfordulást
+egyértelműen lefedjenek.
+A JPED-elv kielégítésének egy újonnan javasolt megoldása lehet az [25], ha mindig egy ‘bináris elv’ szerint hozunk létre új fogalmakat úgy, hogy egy új fogalom mellé mindig felvesszük
+annak tagadását (és csak a tagadását), amivel természetesen biztosítani tudjuk a teljes lefedést és
+a diszjunktságot egyaránt. A javaslat kétségkívül garantálni képes a JPED-elvárások érvényesülését, de sok esetben kontraintuitív megoldásokat tud csak produkálni (arról nem beszélve, hogy
+ezt a módszert nem igazán lehet alkalmazni a leíró ontológiák esetében, s így e megoldást csak a
+revizionista ontológiák szerkesztéséhez használhatjuk). Arra azonban mindenképpen jó ez a bináris elv, ha nem kötelező előírásként, hanem csak ajánlásként fogalmazzuk meg, hogy létezésében
+is mindig arra figyelmeztesse az ontológiaépítőket, hogy minden pillanatban figyeljenek a JPEDelvárások teljesülésére.
+
+12
+
+2.2.5. Relációs mikroelméletek
+A MEO-projektben is többször előfordult, és feltételezhetjük, hogy bármely más ontológiaépítő
+projekt is kerülhet olyan helyzetbe, amikor néhány kiemelkedően fontos fogalomra vagy fogalmak
+egy csoportjára önmagában is érdemes (vagy kell) egy mikroelméletet készíteni. Ilyen esetekben
+egyértelműen a tárgyszinten adunk meghatározásokat a szóbanforgó fogalmakra, tehát a tárgyszinthez kell sorolnunk őket, de sok esetben elképzelhető, hogy az effajta fogalmak formulái a
+metaszintek metatulajdonságaihoz, metarelációihoz is erősen kötődnek. Minél inkább ez a helyzet,
+annál inkább meg kell próbálni kihasználni ezt a metaszintű kötődést, ezért az ilyen fogalmakra,
+fogalomcsoportokra – fontosságuk és/vagy magas formalizáltságuk miatt érdemes „önálló” mikroelméleteket elkülöníteni. Ezen mikroelméletek közös jellemzője lehet, hogy átmenetet képeznek
+a tárgy- és metaszintek között.
+A MEO-projekt második szakaszában kidolgoztuk néhány ilyen mikroelméletet, melyeknek
+kettős szerepet tulajdonítunk : a mikroelméletek egyrészt magukban is alkalmasak valamely problématerület formalizálására, és így önállóan is „használhatók”, másrészt mintát mutatnak arra,
+hogy milyen módon, milyen formában lehet mikroelméleteket építeni.
+Az alábbi témaköröket dolgoztuk ki :
+– preferenciareláció [17, 19]
+– partitív reláció [21, 14]
+– kommunikációs igék [9, 11]
+– mozgásigék [10, 11]
+– kognitív (propozicionális) attitűdök [11]
+– érzelmi fogalmak [11]
+A mikroelméletek természetesen tetszőleges módon bővíthetők. A cél az kell, hogy legyen,
+hogy minél inkább be lehessen húzni a mikroelméleteket a tárgyszintre, s ezáltal minél teljesebbé
+lehessen tenni a tárgyszinten folyó ontológiaépítési munka szkópját.
+
+2.3. Tárgyszint: generikus modell
+A metaszinteken definiált ontológiai metafogalmak, illetve az ontológiatervezés során létrehozott (és rögzített) kategóriatan elemei adottak, megváltoztathatatlanok az ontológiaépítési munka
+során. A metafogalmakon túl azonban minden más fogalom tartalma és terjedelme csak az ontológiaszerkesztők döntésétől függ, ezeket szabadon lehet szerkeszteni, változtatni. Az egyetlen
+kényszert a klasszifikáció módszertanában lefektetett szabályok, kényszerek és elvárások jelentik.
+Az ontológiaépítő munka tehát annyit jelent, hogy az ontológia szerkesztői – saját ontológiai
+elfogultságaik, elkötelezettségeik alapján – új és új fogalmakat vesznek fel, melyeket ismertetőjegyekkel jellemeznek, illetve meghatározzák az új fogalom helyét a fogalmi struktúrában. A
+tárgyszinten a generikus modellnek megfelelően vehetjük fel az univerzálékat, melyekre a metaszinteken előzetesen meghatározott metafogalmak (metatulajdonságok, relációs tulajdonságok,
+műveletek, generikus alárendeltje reláció stb.), kategóriák (absztrakt, konkrét, egyedfogalom, relációfogalom stb.).
+Elsősorban a tárgyszintű ontológiaépítés lehetőségeit szem előtt tartva az 5. ábrán mutatjuk be
+a generikus modell legfontosabb fogalmait, illetve az alapfogalmak kapcsolatait (a modell részletesebb tárgyalását lásd : [20, 22]).
+
+13
+
+relációtulajdonság
+
+reláció
+tulajdonsága
+
+operáció
+generikus
+
+generikus
+
+elsőrendű
+reláció
+
+generikus
+
+matematikai
+entitások
+
+magasabb
+rendű reláció
+
+generikus
+
+generikus
+függvény
+
+generikus
+generikus
+előállítja
+
+fogalom
+
+metareláció
+
+értelmezve
+generikus
+
+generikus
+
+reláció
+fogalom
+
+unáris
+
+egyed
+fogalom
+
+bináris
+
+unáris
+
+értelmezési
+tartomány
+
+deklarálva
+
+attribútum
+(fogalom)
+
+fennáll
+bináris
+
+metatulajdonság
+
+tulajdonsága
+
+generikus
+
+metaszintű
+entitások
+generikus
+
+bináris
+bináris
+
+szabad másodrendű reláció
+
+értékkészlet
+unáris
+
+ontológiai
+entitások
+
+primitív
+típus
+
+tárgyszintű 'deklarálva'
+OR 'fennáll' reláció
+'értelmezési tartomány'
+OR 'értékkészlet' reláció
+matematikai szintű 'generikus' reláció
+
+tárgyszintű 'generikus' reláció
+metaszintű 'értelmezési tartomány
+AND értékkészlet' reláció
+metaszintű 'értelmezési tartomány'
+OR 'értékkészlet' reláció
+
+5. ábra. MEO modell
+
+2.4. Tárgyszint: esetmodell
+Az ontológiákban tárolt fogalmi tudás hasznosításának módja mindig attól függ, hogy milyen célokra akarjuk igénybe venni a világról szóló, ontológiákba töltött ismereteinket. A legtöbb esetben
+a generikus modell alapján rendezett fogalmi tudás mellé az előfordulásokra vonatkozó konkrét
+adatokat rögzítünk a világ valamely konkrét tartományáról. Ezt a tárgyszinthez tartozó esetmodell
+segítségével tehetjük meg (amit hívhatunk instanciamodellnek is). Ezen a szinten az előfordulások (példányok, individuumok, partikulárék) tulajdonságait, kapcsolatait építhetjük különböző
+adatbázisokba.
+Az instanciamodellnek szerkezetét tekintve teljesen meg kell felelnie a fölötte levő generikus
+modell struktúrájának, hiszen az előfordulások ismertetőjegyeit, kapcsolatait csak azoknak a fogalmaknak a segítségével tudjuk kifejezni, amelyeknek maguk az előfordulások a példányai. Az
+előfordulásokkal kapcsolatos adatok rendszerét általában tudásbázisnak szokás nevezni, bár ezen
+a téren sem egységes a terminológia.
+A MEO-projektben a csúcsontológia, illetve általában az ontológiaépítés, az ontológia-infrastruktúra szabályszerűségeinek megállapítására, összegyűjtásáre, rögzítésére törekedtünk. Nem
+
+14
+
+tűztük ki célul azt, hogy a tárgyszinten is feltöltsük az instanciamodell által lefedett tartományt,
+így a MEO tudásbázis – egyelőre – üres.
+
+2.5. Adatséma
+Annak ellenére, hogy semmiféle MEO-tudásbázist nem defináltunk (s így természetesen nem is
+töltöttük fel adatokkal), elkészítettünk egy adatsémát, amellyel megpróbáltuk modellezni azt, miként lehetne az eddig tárgyalt metafogalmakat, illetve a tárgyszintű fogalmakat és adatokat rögzíteni. A séma vázlatos szerkezete a következő :
+típus létezése
+fogalomtípus
+
+generikus alárendeltje fennáll.
+fogalomfogalomtípus
+típus
+
+metatulajdonsága fennállása
+fogalommetatípus
+tulajdonság
+
+metafogalom
+
+...
+22
+23
+24
+121
+377
+378
+379
+465
+466
+...
+471
+475
+476
+477
+478
+495
+...
+634
+672
+673
+700
+701
+702
+...
+
+24 VIZSLA 23
+KUTYA
+24 VIZSLA 22
+ÁLLAT
+121 MACSKA 22
+ÁLLAT
+23
+KUTYA
+22
+ÁLLAT
+378 FÉRFI 377 EMBER
+673 OKKER 672 SÁRGA
+476
+APJA
+475 ROKONA
+...
+...
+...
+
+377
+...
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+99
+10
+30
+31
+32
+...
+
+2. rendű reláció fennállása
+egyedegyedtípus
+típus
+HIDEG
+...
+
+466
+...
+
+FÉRFI
+EMBER
+EMBER
+EMBER
+...
+
+379
+378
+377
+378
+...
+
+MELEG 471 ELLENTÉTE
+...
+...
+...
+
+NŐ
+FÉRFI
+EMBER
+FÉRFI
+...
+
+relációtípus
+478
+476
+475
+477
+...
+
+FELESÉGE
+APJA
+ROKONA
+NAGYAPJA
+...
+
+...
+1114
+1115
+2052
+3429
+3430
+3431
+3432
+3433
+3434
+3435
+
+...
+Blöki [vizsla]
+Rozi [kutya]
+Cili [macska]
+Béla [férfi]
+Kata [nő]
+Juli [nő]
+János [férfi]
+Mária [nő]
+János [férfi]
+Mária [nő]
+
+1.rendű reláció fennállása
+egyedegyedrelációelőford.
+előford.
+előfordulás
+
+előfordulása
+egyedtulajd.előford.
+előford.
+
+...
+3429
+3432
+3431
+1114
+3429
+...
+
+...
+3429
+3431
+1114
+1114
+4761
+...
+
+...
+Béla
+Jani
+Juli
+Blöki
+Béla
+...
+
+...
+...
+...
+...
+3430 Kata 4781 felesége
+3433 Mari 4782 felesége
+3429 Béla 4761
+apja
+3431 Juli 4951 gazdája
+3431 Juli 4751 rokona
+...
+...
+...
+...
+
+...
+Béla
+Juli
+Blöki
+Blöki
+apja
+...
+
+...
+7001
+7002
+7003
+7004
+7014
+...
+
+6. ábra. MEO adatséma
+
+15
+
+valami
+semmi
+egyed
+reláció
+tulajdonság
+generikus alárendeltje
+tulajdonsága
+előfordulása
+metatulajdonság
+metatulajdonsága
+művelet
+relációművelet
+egyedművelet
+egyed-reláció művelet
+...
+
+metafogalom generikus alárend.
+fogalomfogalomtípus
+típus
+3
+egyed
+1
+valami
+4
+reláció
+1
+valami
+5 tulajdonság 1
+valami
+11
+rigid
+9
+metatu
+12 esszenciális 9
+metatu
+13 reflexív r.
+4
+reláció
+14
+szimm.r.
+4
+reláció
+15 kompozíció 30 rel.művelet
+16
+inverz
+30 rel.művelet
+17
+unió
+31 egyedműv.
+18
+metszet
+31 egyedműv.
+19 reifikálás 32 egy.rel.műv.
+...
+...
+...
+...
+
+hím
+...
+
+702
+...
+
+...
+NŐ
+NŐ
+FÉRFI
+NŐ
+KUTYA
+KUTYA
+...
+FELESÉGE
+FELESÉGE
+APJA
+GAZDÁJA
+ROKONA
+...
+ÖREG
+FIATAL
+FIATAL
+.
+HÍM
+...
+7004
+...
+
+egyedelőfor. létezése
+egyedelőfordulás
+
+előfordulásfogalom
+
+univerzálé
+
+...
+...
+3430 Zsuzsa
+3433 Mária
+3429 István
+3431
+Sára
+1114
+Blöki
+1114 vizsla
+...
+...
+4781 felesége
+4782 felesége
+4761
+apja
+4951 gazdája
+4751 rokona
+...
+...
+7001
+öreg
+7002
+fiatal
+7003
+fiatal
+
+...
+379
+379
+378
+379
+23
+23
+...
+478
+478
+476
+495
+475
+...
+700
+701
+701
+
+típusfogalom
+
+előfordulása
+
+partikuláré
+
+metafogalom
+
+RIGID
+...
+
+relációtípus
+
+1. rendű reláció deklarációja
+egyedegyedtípus
+típus
+378
+377
+377
+377
+...
+
+11
+...
+
+metaszint
+
+465
+...
+
+EMBER
+...
+
+tárgyszint
+
+...
+ÁLLAT
+KUTYA
+VIZSLA
+MACSKA
+EMBER
+FÉRFI
+NŐ
+HIDEG
+MELEG
+...
+ELLENTÉTE
+ROKONA
+APJA
+NAGYAPJA
+FELESÉGE
+GAZDÁJA
+...
+SZÍNES
+SÁRGA
+OKKER
+ÖREG
+FIATAL
+HÍM
+...
+
+...
+öreg
+fiatal
+fiatal
+hím
+irref.
+...
+
+metafogalom tulajdonsága
+fogalomfogalomtípus
+típus
+13 reflexív rel. 18 reflexív
+14 szimm.rel. 17 szimmet.
+6 gen.alárend. 16 tranzitív
+6 gen.alárend. 19 irreflexív
+...
+...
+...
+...
+
+fogalom kényszer
+fogalomtípus
+...
+
+fogalomtípus
+...
+
+Hivatkozások
+[1] BFO : Basic formal ontology home page.
+URL http://www.ifomis.uni−saarland.de/bfo/home.php.
+[2] Thomas Bittner – Maureen Donnelly – Barry Smith : Individuals, universals, collections : On
+the foundational relations of ontology. In Achille C. Varzi – Laure Vieu (szerk.) : Formal
+Ontology in Information Systems. Proceedings of the Third International Conference (FOIS
+2004) (konferenciaanyag). Amsterdam, Berlin, Oxford, Tokyo, Washington DC, 2004, IOS
+Press, 37–48. p.
+[3] CyCorp : Opencyc – formalized common knowledge.
+URL http://www.opencyc.org/.
+[4] DOLCE : Dolce home page. URL http://www.loa−cnr.it/DOLCE.html.
+[5] EuroWordNet : Eurowordnet home page.
+URL http://www.illc.uva.nl/EuroWordNet/.
+[6] Ferenczi Miklós : Matematikai logika. Budapest, 2002, Műszaki Könyvkiadó.
+[7] Aldo Gangemi – Nicola Guarino – Claudio Masolo – Alessandro Oltramari : Understanding
+top-level ontological distinctions. In Proc. of IJCAI 2001 workshop on Ontologies and Information Sharing (konferenciaanyag). 2001.
+[8] Nicola Guarino – Christopher Welty : Evaluating ontological decisions with ontoclean. 45.
+évf. (2002) 2. sz., Communications of the ACM, 61–65. p.
+URL http://www.loa−cnr.it/Papers/CACM2002.pdf.
+[9] Gyarmathy Zsófia – Szeredi Dániel : A kommunikációs fogalmak jelentésreprezentációjának
+egy modellje. In Alexin Zoltán – Csendes Dóra (szerk.) : IV. Magyar Számítógépes Nyelvészeti Konferencia (konferenciaanyag). Szeged, 2006, SZTE, 354–356. p.
+[10] Gyarmathy Zsófia – Szeredi Dániel : A mozgás domain. Jelentés, 2006, MEO. URL http:
+://ontologia.hu/meo/docs/microtheo/mozgas.
+[11] Gyarmathy Zsófia – Héja Enikő – Mittelholz Iván – Simonyi András – Szeredi Dániel – Varasdi Károly : A magyar nyelv lexikai sajátosságaira épülő formális általános ontológia. Jelentés, 2006, MEO. URL http://ontologia.hu/Members/varasdi/MEO_
+jelrep00601.pdf/download.
+[12] E. J. Lowe : The possibility of metaphysics. Oxford, 1998, Clarendon Press.
+[13] MEO : Meo, 3. munkaszakasz összefoglaló jelentése. Jelentés, 2006, MEO-projekt.
+URL http://ontologia.hu/meo/docs/meo_report_2006_3.
+[14] Simonyi András : Mereológia. Jelentés, 2006, MEO.
+URL http://ontologia.hu/meo/docs/microtheo/simonyi_part.
+[15] J.F. Sowa : Knowledge Representation : Logical, Philosophical, and Computational Foundations. 2000, Brooks Cole Publishing Co.
+[16] SUMO : Sumo ontology home page. URL http://ontology.teknowledge.com/.
+[17] Szakadát István : Egyben az egész. Egytől egyig. Budapest, 2006, Typotex.
+
+16
+
+[18] Szakadát István – Szőts Miklós – Gyepesi György : Extenzionális relációelmélet. Jelentés,
+2006, MEO. URL http://ontologia.hu/meo/docs/therelthe.
+[19] Szakadát István – Szőts Miklós – Gyepesi György : Relációs mikroelméletek. Jelentés, 2006,
+MEO. URL http://ontologia.hu/meo/docs/microtheo.
+[20] Szakadát István – Szőts Miklós – Gyepesi György – Varasdi Károly – Ungváry Rudolf – Simonyi András – Gyarmathy Zsófia – Szaszkó Sándor – Dániel Szeredi : Meo
+ontológiamodell. In Alexin Zoltán – Csendes Dóra (szerk.) : IV. Magyar Számítógépes
+Nyelvészeti Konferencia (konferenciaanyag). Szeged, 2006, SZTE, 377–383. p.
+[21] Szakadát István : Réteges struktúra, alaprelációk. In III. Számítógépes nyelvészeti konferencia
+(konferenciaanyag). Szeged, 2005, SZTE.
+[22] István Szakadát – Miklós Szőts – György Gyepesi : MEO - Ontology Infrastructure. In
+Gabor Magyar – Gabor Knapp – Wita Wojtkowski – Gregory Wojtkowski – Joze Zupancic – Stanislaw Wrycza (szerk.) : Advances in Information Systems Development : New Methods and Practice for the Networked Society, Proceedings Information Systems Development (konferenciaanyag). 2006, Springer.
+[23] Szeredi Péter – Lukácsy Gergely – Benkő Tamás : A szemantikus világháló emlélete és gyakorlata. Budapest, 2005, Typotex.
+[24] Szőts Miklós : Az OntoClean metodológia ismertetése. Jelentés, 2006, MEO. URL http:
+://ontologia.hu/meo/method/OntoCleanGuide.pdf.
+[25] A.L. Thomasson : Methods of categorization. In Achille C. Varzi – Laure Vieu (szerk.) : Formal Ontology in Information Systems. Proceedings of the Third International Conference
+(FOIS 2004) (konferenciaanyag). Amsterdam, Berlin, Oxford, Tokyo, Washington DC, 2004,
+IOS Press, 3–16. p.
+[26] Ungváry Rudolf : Az ontológiák legfelső generikus szintje. a csúcsfogalmak természetes
+rendszere és a dolce kritikája. In Alexin Zoltán – Csendes Dóra (szerk.) : IV. Magyar Számítógépes Nyelvészeti Konferencia (konferenciaanyag). Szeged, 2006, SZTE, 85–96. p.
+[27] Varasdi Károly – Gyarmathy Zsófia – Simonyi András – Szeredi Dániel : Az általános ontológia egy új modellje. In Alexin Zoltán – Csendes Dóra (szerk.) : IV. Magyar Számítógépes
+Nyelvészeti Konferencia (konferenciaanyag). Szeged, 2006, SZTE, 73–84. p.
+[28] Varasdi Károly : Proprium és fázis. Jelentés, 2006, MEO.
+URL http://ontologia.hu/meo/docs/method/proprium.
+[29] WordNet : Wordnet home page. URL http://wordnet.princeton.edu/.
+
+17
+
+

@@ -1,0 +1,51 @@
+session-*.md
+trail_index/build/
+build/
+osveny_index/build/
+*.ttc
+*.ttm
+*.DS_Store
+# PDF-ek nem mennek a gitbe, csak a txt/md konverzio
+source/*.pdf
+Category Theory*.pdf
+Mac Lane*.pdf
+*.aux
+*.log
+*.out
+*.toc
+
+# scala-cli caches
+.trail_index/.scala-build/
+.trail_index/.bsp/
+
+# scala-cli caches (fixed patterns)
+trail_index/.scala-build/
+trail_index/.bsp/
+seed.hex
+*.seed
+seed*
+
+# Szima-ter: a forditasi artefaktumok nem mennek a gitbe
+szima_ter/modul/build/
+szima_ter/modul/szima_ter_teszt
+szima_ter/modul/szima_ter_teszt_app/
+# a felhasznalo kutatasi dumpja (5.6 GB) — nem megy a gitbe, nem torlendo
+source/ai/
+
+# titok — SOHA nem commitoljuk (push protection)
+source/obsidian-web-clipper-settings.json
+
+# Sziámi hangfájlok — NEM mennek a gitbe (a repó nehezedne; §20: nem törlendők,
+# csak kívül maradnak; az elemzés-eredmények PNG/doc viszont commitolhatók)
+zene_es_zaj/sziami_audio/
+
+# Szima-1.1: a teljes source/ könyvtár NEM megy a gitbe (7.9 GB nyers anyag:
+# PDF-ek, könyvek, zip-ek, PS fájlok, webarchive-ok). Ezek a lemezen maradnak,
+# nem törölődnek. A kutatási kód (osveny_index, trail_index, szima_ter, stb.)
+# továbbra is commitolható.
+source/
+
+# A régi Szima git history (átnevezve .git_régi-re) NEM megy az új repo-ba.
+# A .git_régi a lemezen marad — nem törölve.
+.git_régi/
+.git_régi2/

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Szima — Ellenőrzési dashboard: minden szám, minden bizonyítás</title>
+<style>
+  :root { --festek:#1a1a2e; --papir:#fafaf7; --kiemel:#2563eb; --siker:#059669; --arany:#b45309; --keret:#d8d4cc; }
+  * { box-sizing: border-box; }
+  body { font-family: Georgia, serif; background:#f0eee9; color:var(--festek); max-width:1000px; margin:0 auto; padding:2rem 1rem 4rem; line-height:1.6; }
+  header { border-bottom:3px double var(--festek); padding-bottom:1.2rem; margin-bottom:2rem; }
+  h1 { font-size:1.8rem; margin:0 0 .4rem; }
+  h2 { font-size:1.3rem; border-bottom:1px solid var(--keret); padding-bottom:.3rem; margin-top:2.4rem; }
+  table { border-collapse:collapse; width:100%; margin:1rem 0; font-size:.9rem; }
+  th,td { border:1px solid var(--keret); padding:.45rem .6rem; text-align:left; vertical-align:top; }
+  th { background:var(--papir); font-family:Menlo,monospace; font-size:.82rem; }
+  .pipa { color:var(--siker); font-weight:bold; }
+  .villam { color:var(--arany); font-weight:bold; }
+  .monoszam { font-family:Menlo,monospace; white-space:nowrap; }
+  .forras { font-size:.8rem; color:#6b7280; font-family:Menlo,monospace; }
+  .doboz { background:var(--papir); border:1px solid var(--keret); border-radius:6px; padding:1rem 1.2rem; margin:1rem 0; }
+  pre { background:var(--festek); color:#e5e7eb; padding:1rem 1.2rem; border-radius:6px; overflow-x:auto; font-size:.84rem; }
+  a { color:var(--kiemel); }
+  footer { margin-top:3rem; border-top:3px double var(--festek); padding-top:1rem; font-size:.88rem; color:#555; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Ellenőrzési dashboard</h1>
+  <p>Minden szám, amit a projekt állít — <b>hol bizonyított (Idris, Refl)</b>, <b>hol numerikusan verifikálva (Idris-generált Python)</b>. Ha bármelyik sor gyanús: javítsd, vagy nyiss issue-t a <a href="https://github.com/jhegedus42/Szima">repóban</a>.</p>
+  <p class="forras">Állapot: <b>145/145 Show-teszt + 41 Refl-bizonyítás ✓</b> (Teszt.idr) · Frissítve: 2026-08-17</p>
+</header>
+
+<h2>1. A Cayley–Dickson-torony egységei <span class="forras">E8Gyokrendszer.idr</span></h2>
+<p>A kérdés, amiből született: „ha a körön 8 természetes pont van, mennyi van a gömbön?" A válasz a torony:</p>
+<table>
+<tr><th>Szint</th><th>Egységek / pontok</th><th>Szám</th><th>Bináris kapacitás</th><th>Idris</th><th>Python</th></tr>
+<tr><td>ℝ egészek (±1)</td><td class="monoszam">2</td><td class="monoszam">2</td><td class="monoszam">1 bit</td><td class="pipa">Refl</td><td class="pipa">—</td></tr>
+<tr><td>ℂ Gauss (±1, ±i)</td><td class="monoszam">4</td><td class="monoszam">4</td><td class="monoszam">2 bit</td><td class="pipa">Refl</td><td class="pipa">—</td></tr>
+<tr><td><b>kör S¹ (8-adik gyökök — a fázis lépései)</b></td><td class="monoszam">8 = 2³</td><td class="monoszam">8</td><td class="monoszam">3 bit</td><td class="pipa">Refl</td><td class="pipa">—</td></tr>
+<tr><td><b>gömb S³ (Hurwitz: 8 csúcs + 16 fél)</b></td><td class="monoszam">8+16 = 24</td><td class="monoszam">24</td><td class="monoszam">5 bit (24+8=32)</td><td class="pipa">Refl</td><td class="pipa">✓</td></tr>
+<tr><td><b>oktonion S⁷ (16 + 224) = AZ E8 GYÖKÖK</b></td><td class="monoszam">16+224 = 240</td><td class="monoszam">240</td><td class="monoszam">8 bit (240+16=256) — EGY BÁJT</td><td class="pipa">Refl</td><td class="pipa">✓</td></tr>
+</table>
+
+<h2>2. Az E8 gyökrendszer felbontása <span class="forras">E8Gyokrendszer.idr + e8_gyok_ellenorzes.py</span></h2>
+<table>
+<tr><th>Állítás</th><th>Érték</th><th>Idris</th><th>Numerika (numpy)</th></tr>
+<tr><td>D8-rész: (±1,±1,0⁶), 4·C(8,2) = 4·28</td><td class="monoszam">112</td><td class="pipa">Refl</td><td class="pipa">112 ✓</td></tr>
+<tr><td><b>Félegész rész: (±½)⁸ páros mínusszal = páros paritású bájt</b></td><td class="monoszam">128 = 2⁷</td><td class="pipa">Refl</td><td class="pipa">128 ✓</td></tr>
+<tr><td>E8 gyökök összege</td><td class="monoszam">240</td><td class="pipa">Refl</td><td class="pipa">240 ✓</td></tr>
+<tr><td>dim E8 = gyökök + Cartan</td><td class="monoszam">248</td><td class="pipa">Refl</td><td class="pipa">248 ✓</td></tr>
+<tr><td>minden gyök normája² (simply-laced)</td><td class="monoszam">2</td><td>—</td><td class="pipa">allclose ✓</td></tr>
+<tr><td>különböző gyökök skalárszorzatai</td><td class="monoszam">{−2,−1,0,1}</td><td>—</td><td class="pipa">✓</td></tr>
+<tr><td>⚡ rezonancia: [8,4,4] Hamming 16 szava + 240 gyök = 1 bájt</td><td class="monoszam">256</td><td class="pipa">Refl (összeadás)</td><td class="villam">értelmezés ⚡</td></tr>
+</table>
+
+<h2>3. Konstans-ellenőrzések <span class="forras">HanMagyarKodolas.idr, KorOsztas.idr, Komplex.idr + Python</span></h2>
+<table>
+<tr><th>Állítás</th><th>Érték</th><th>Idris</th><th>Numerika</th></tr>
+<tr><td>137 = 11² + 4² = (11+4i)(11−4i) Gauss-prím norma</td><td class="monoszam">137</td><td class="pipa">Refl</td><td class="pipa">✓</td></tr>
+<tr><td>mₚ/mₑ ≈ 6π⁵ (Lenz 1951)</td><td class="monoszam">hiba 0,0019%</td><td>—</td><td class="pipa">✓</td></tr>
+<tr><td>log₂(α_G⁻¹) ≈ 127 (Mersenne)</td><td class="monoszam">126,993</td><td>—</td><td class="pipa">✓</td></tr>
+<tr><td>Püthagoraszi komma = 3¹²/2¹⁹</td><td class="monoszam">23,46 cent</td><td class="pipa">KorOsztas.idr</td><td class="pipa">kor_ujraolvasa_check.py</td></tr>
+<tr><td>440 = 2³·5·11 (a prím 439 eldobva — gauge)</td><td class="monoszam">440</td><td>—</td><td class="pipa">✓</td></tr>
+<tr><td>φ-kontrakció pontossága</td><td class="monoszam">|Y−φ| ≤ 10⁻¹⁰</td><td class="pipa">Komplex.idr</td><td class="pipa">ro_fixpont_plot.py</td></tr>
+<tr><td>Lyapunov-exponens (expanzió)</td><td class="monoszam">λ = ln(2φ) ≈ 1,1755</td><td class="pipa">Adjunkcio.idr</td><td class="pipa">✓</td></tr>
+<tr><td>λ-kiegyensúlyozás + Jacobian (Liouville)</td><td class="monoszam">0 és 1 pontosan</td><td class="pipa">Refl</td><td class="pipa">✓</td></tr>
+<tr><td>γ⁵-kompakció padlója (n* = log(δ)/log(57/64))</td><td class="monoszam">121 = 11²</td><td>—</td><td class="pipa">✓ (carnot §6 grafikon)</td></tr>
+<tr><td>δ = 1 − Re(ϱ)·π (Bickford Thm 9)</td><td class="monoszam">5,604×10⁻⁴</td><td>—</td><td class="pipa">delta_analizis.py</td></tr>
+<tr><td>Horgony: α⁻¹ = 137 + 9/250</td><td class="monoszam">137,036</td><td class="villam">⚡ 6,5σ nyitott</td><td class="pipa">✓ (a 250 ≠ 240!)</td></tr>
+</table>
+
+<h2>4. Nyelvi struktúrák <span class="forras">FanoParitás, Kerdoszo, HanMagyarKodolas, ErtelmezoSzotar</span></h2>
+<table>
+<tr><th>Állítás</th><th>Idris</th></tr>
+<tr><td>hangrend = paritásbit; ház+ban jó, *ház+ben PARITÁSHIBA</td><td class="pipa">Refl + teszt</td></tr>
+<tr><td>Fanó-sík 7 egyenes XOR-nulla; Pauli X·Z=Y; involúciók</td><td class="pipa">7+2+2 Refl</td></tr>
+<tr><td>„mikor?"-ra nincs esetrag (T ≠ C,P — a CPT-mappa)</td><td class="pipa">Refl</td></tr>
+<tr><td>GAUGE: minden kézzel írt szótípus == független parser</td><td class="pipa">8 teszt</td></tr>
+<tr><td>HanMagyar: 1 szóelem = 8 bit = E8Pont; hangrend a 8. bit</td><td class="pipa">5 Refl</td></tr>
+<tr><td>Steane-Hamiltonián: tiszta = −6 alapállapot; szindróma = hibapozíció</td><td class="pipa">9 Refl</td></tr>
+</table>
+
+<h2>4a. Idris-számítás → böngésző-rajzolás</h2>
+<p>A float-számítás is Idrisben fut; a weboldal csak <b>megjelenít</b>.
+Élő példa: <a href="zitterbewegung.html">Zitterbewegung — a Dirac-nyelv időfejlődése</a>
+(adat: <code>adatok/zitterbewegung.json</code>, az <code>idris2 --exec jsonKiiras DiracIdoFejlodes.idr</code> generálta).</p>
+
+<h2>5. Hogyan futtasd le te is</h2>
+<pre>git clone https://github.com/jhegedus42/Szima && cd Szima/osveny_index
+idris2 -c Teszt.idr && idris2 --exec main Teszt.idr        # 164/164 + 50 Refl
+idris2 --exec jsonKiiras DiracIdoFejlodes.idr &gt; ../docs/adatok/zitterbewegung.json
+# (a Python-alapú e8_gyok_ellenorzes.py legacy — átírás alatt Idrisbe)</pre>
+
+<div class="doboz"><b>Kalibráció:</b> <span class="pipa">✓</span> formálisan (Refl) vagy numerikusan bizonyítva ·
+<span class="villam">⚡</span> nyitott hipotézis (semmi halu — a nyitottság jelölve) · a „rezonanciák"
+(n* = 11², 16+240 = 256) számértékben igazak, de <b>értelmezésük</b> hipotézis.</div>
+
+<footer>Szima · a kód maga a kutatás. Ez a dashboard a docs/index.html és carnot_entropia.html mellé való — minden szám egy kattintásnyira a bizonyításától.</footer>
+</body>
+</html>

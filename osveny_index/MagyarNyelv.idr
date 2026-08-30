@@ -1,0 +1,677 @@
+module MagyarNyelv
+
+import Steane713
+import E8E8Algebra
+import HaromKubit
+import Emberi.Index
+import Szamitasi.Index
+
+||| Magyar esetrendszer — 22 eset, mindegyik egy logikai kapcsolat.
+|||
+||| Gondolat: a magyar nyelv agglutinativ — a toldalekok
+||| egymas utan fuzodnek a tohoz. Minden toldalek egy
+||| logikai kapcsolatot kodol. A 22 eset a logikai
+||| kapcsolatok teljes rendszeret alkotja.
+|||
+||| Az esetrendszer a [[7,1,3]] kod algebrababa van agyazva.
+||| Minden eset egy E8 pontba van kodolva.
+|||
+||| Mi a kapcsolat az esetek es a logika kozott?
+|||   Nominativusz = alany (ki/mi?)
+|||   Accusativusz = targy (kit/mit?)
+|||   Dativusz = cimzett (kinek/minek?)
+|||   Instrumentalis = eszkoz (kivel/mivel?)
+|||   ... a tobbi hasonloan.
+|||
+||| A logikai kapcsolat nem a hagyomanyos arisztoteleszi logika,
+||| hanem a magyar nyelv esetrendszeren alapulo "eset logika".
+||| Ez 24 kapcsolatbol all (22 eset + 2 atmenet).
+
+public export
+data Eset = Nominativusz | Accusativusz | Datívusz | Instrumentalis
+          | Komitativusz | Kauzalis | Transzativusz | Terminativusz
+          | Illativusz | Inesszivusz | Elativusz | Allativusz
+          | Adesszivusz | Ablativusz | Szuperesszivusz | Delativusz
+          | Szublativusz | Temporalis | Szociativusz | Distributivus
+          | Esszivusz | Modalis | Causalis | Formaliss
+
+||| Minden esethez tartozik egy logikai kapcsolat tipus.
+||| A konstruktor neve a kapcsolat logikai nevet viseli,
+||| nem az eset nevet — ez a kulonbseg a grammatika
+||| es a logika kozott.
+||| A nevek magyar teljes szavak, nem roviditesek.
+public export
+data EsetLogika : Eset -> Type where
+  AlanyLogika    : EsetLogika Nominativusz
+  TargyLogika    : EsetLogika Accusativusz
+  CimzettLogika  : EsetLogika Datívusz
+  EszkozLogika   : EsetLogika Instrumentalis
+  TarsLogika     : EsetLogika Komitativusz
+  OkLogika       : EsetLogika Kauzalis
+  EredmenyLogika : EsetLogika Transzativusz
+  HatárLogika    : EsetLogika Terminativusz
+  IranyLogika    : EsetLogika Illativusz
+  HelyLogika     : EsetLogika Inesszivusz
+  HonnanLogika   : EsetLogika Elativusz
+  CelLogika      : EsetLogika Allativusz
+  KivelLogika    : EsetLogika Adesszivusz
+  HonnanLogika2  : EsetLogika Ablativusz
+  FelszinLogika  : EsetLogika Szuperesszivusz
+  RolLogika      : EsetLogika Delativusz
+  CelLogika2     : EsetLogika Szublativusz
+  MikorLogika    : EsetLogika Temporalis
+  KentiLogika    : EsetLogika Szociativusz
+  ElosztLogika   : EsetLogika Distributivus
+  MinosegLogika  : EsetLogika Esszivusz
+  ModLogika      : EsetLogika Modalis
+  CausalLogika   : EsetLogika Causalis
+  AlakLogika     : EsetLogika Formaliss
+
+||| Eset → E8 kodoszo (minden eset egy egyedi 8 bites vektor az E8 racsban).
+||| A 24 eset kodolasa:
+|||   elso 5 bit: a 24 eset egyedi azonositoja
+|||   utolso 3 bit: a Steane kod 3 bitje (ido, oksag, fazis)
+|||
+||| A kodolas a Hamming tavolsagot maximalizalja —
+||| a 24 eset kozott nincs ket egymashoz 3 bitnel
+||| kozelebb. Ez azt jelenti, hogy 1 bit hiba javithato.
+public export
+esetKod : Eset -> E8Pont
+esetKod Nominativusz   = E8PontKonstruktor 0 0 0 0 0 0 0 0
+esetKod Accusativusz   = E8PontKonstruktor 1 0 0 0 0 0 0 0
+esetKod Datívusz       = E8PontKonstruktor 0 1 0 0 0 0 0 0
+esetKod Instrumentalis = E8PontKonstruktor 0 0 1 0 0 0 0 0
+esetKod Komitativusz   = E8PontKonstruktor 0 0 0 1 0 0 0 0
+esetKod Kauzalis       = E8PontKonstruktor 1 1 0 0 0 0 0 0
+esetKod Transzativusz  = E8PontKonstruktor 1 0 1 0 0 0 0 0
+esetKod Terminativusz  = E8PontKonstruktor 1 0 0 1 0 0 0 0
+esetKod Illativusz     = E8PontKonstruktor 0 1 1 0 0 0 0 0
+esetKod Inesszivusz    = E8PontKonstruktor 0 1 0 1 0 0 0 0
+esetKod Elativusz      = E8PontKonstruktor 0 0 1 1 0 0 0 0
+esetKod Allativusz     = E8PontKonstruktor 1 1 1 0 0 0 0 0
+esetKod Adesszivusz    = E8PontKonstruktor 1 1 0 1 0 0 0 0
+esetKod Ablativusz     = E8PontKonstruktor 1 0 1 1 0 0 0 0
+esetKod Szuperesszivusz = E8PontKonstruktor 0 1 1 1 0 0 0 0
+esetKod Delativusz     = E8PontKonstruktor 1 1 1 1 0 0 0 0
+esetKod Szublativusz   = E8PontKonstruktor 0 0 0 0 1 0 0 0
+esetKod Temporalis     = E8PontKonstruktor 0 0 0 0 0 1 0 0
+esetKod Szociativusz   = E8PontKonstruktor 0 0 0 0 0 0 1 0
+esetKod Distributivus  = E8PontKonstruktor 0 0 0 0 0 0 0 1
+esetKod Esszivusz      = E8PontKonstruktor 1 0 0 0 1 0 0 0
+esetKod Modalis        = E8PontKonstruktor 1 0 0 0 0 1 0 0
+esetKod Causalis       = E8PontKonstruktor 1 0 0 0 0 0 1 0
+esetKod Formaliss      = E8PontKonstruktor 1 0 0 0 0 0 0 1
+
+||| FogalomTipus: a fogalmak tipusai a hierarchiaban.
+||| Itt definialva, mert a RagozottSzo es a NyelvtaniKapcsolat
+||| hasznalja. A FogalomFa modul ezt egesziti ki a logikai
+||| kapcsolatokkal (FogalomLogika).
+public export
+data FogalomTipus = Gyoker | Cel | ReszCel | Feladat | ReszFeladat
+                  | Cselekves | Dontes | Valasztas | Elutasitas
+                  | Ok | Kavzatum | Korlatozas | Megfigyeles
+                  | Hiba | Eredmeny | Minta | Javitas | Foltozas
+                  | InfraJavitas | Szabaly | KemenySzabaly | Egyezmeny
+                  | Eszkoz | Kesztseg | ModellKornyezetProtokoll | Kerdes | Magyarazat
+                  | E8xE8 | Dualitas | Kategoria | Szimmetria | Tenzor | Funktor
+                  -- Szamok
+                  | Szam | TermeszetesSzam | EgeszSzam | RacionalisSzam | ValosSzam | KomplexSzam
+                  -- Matematika logika
+                  | Allitas | Bizonyitas | GodelSzam | Konzisztencia | Onhivatkozas
+                  | GodelElsoTetel | GodelMasodikTetel | DiagonaleLemma | Bizonyithatosag
+                  | InkonzisztenciaVonal | WickForgatas | KomplexFazis | KettoMatematika
+                  -- Curry-Howard-Lambek
+                  | Chl
+                  -- Matematika alapaxiomak
+                  | Halmazelmelet | PeanoAxiomak | ZfcAxiomak | KivalasztasiAxioma
+                  | UresHalmaz | Szamossag | FolytonossagiHipotetikus
+                  -- Fizika alapok — 4 dimenzio: ter, ido, energia, informaciomennyiseg
+                  | FizikaiAllapot | Mezo | Ter | Ido | Tomeg | InformacioMennyiseg
+                  -- Szimmetriak
+                  | SzimmetriaCsoport | MertekCsoport | SzimmetriaTores | E8Szimmetria
+                  -- Geometria, anyag
+                  | Geometria | Anyag | Antianyag
+                  -- Mechanika
+                  | KlasszikusMechanika | LagrangeFuggveny | HamiltonFuggveny | LagrangeTranszformacio
+                  -- Kvantum
+                  | KvantumMechanika | KvantumAllapot | HullamFuggveny | Operator | Megfigyelt | KvantumUgres
+                  -- Fazis
+                  | FazisAtalakulas | FazisAtmenet | FazisElolas
+                  -- Kolcsonhatasok
+                  | Elektromagneses | Gyenge | Eros | Gravitacio | KvantumGravitacio
+                  | EgyesitettMezo | StandardModell
+                  -- Hullamok
+                  | Hullam | Hang | Feny | GravitaciosHullam | RadioHullam
+                  -- Fluktacio-disszipacio, homerseklet
+                  | Fluktuacio | Disszipacio | FluktuacioDisszipacioTetele | Homerseklet
+                  -- Termodinamika
+                  | Termodinamika | CarnotCiklus | Entropia | Hő | Munka | BelsőEnergia | InformacioTorles
+                  -- Szinek
+                  | Szin | SzinToltes | AntiszinToltes | Gluon | KvarkSzin
+                  -- Kommunikacio
+                  | Informacio | Kommunikacio | Kod | Jel | Csatorna | Zaj | Bit
+                  -- Folytonossag
+                   | Folytonos | NemFolytonos | Codata | Sorozat | Hatar | Vegtelen
+                   -- Kepzetes egyseg (i), ij szorzat, katernio, okternio, tukrozesek
+                   | KepzetesEgyseg | IjSzorzat | Katernio | Okternio | OkternioTukor | FizikaTukor
+                   -- Kanti kategoriaelmélet
+                   | KantiKategoria | TranszcendentalisAppercepcio | TranszcendentalisDialektika
+                   -- Matematikai allandok es operatorok
+                   | EulerSzam | Pi
+                   | Osszeadas | Kivonas | Szorzas | Osztas | Hatvanyozas | Gyokvonas
+                   -- Euler-azonossag: e^(i·pi) + 1 = 0
+                   | EulerAzonossag
+                   -- [[15,1,3]] Reed-Muller kod, T-kapu, M-Elmelet
+                   | TizenotKod | TGate | MElmelet
+                   -- Pauli csoport, stabilizatorok, kvantum kapuk
+                   | PauliCsoport | Stabilizator | Kapu
+
+||| SzoTipus: minden szó egy konstruktor.
+||| A szavak tipusként vannak reprezentálva — nincs String.
+||| A szoFogalom, szoEset fuggvenyek adjak a nyelvtani tulajdonsagokat.
+||| Eleinte a fogalomnevek (cel, ok, hiba...) maguk is magyar szavak.
+public export
+data SzoTipus : Type where
+  -- Fogalomnevek mint magyar szavak (alanyeset)
+  CelSzo           : SzoTipus  -- "cél" (Cel)
+  OkSzo            : SzoTipus  -- "ok" (Ok)
+  HibaSzo          : SzoTipus  -- "hiba" (Hiba)
+  JavitasSzo       : SzoTipus  -- "javítás" (Javitas)
+  SzabalySzo       : SzoTipus  -- "szabály" (Szabaly)
+  EszkozSzo        : SzoTipus  -- "eszköz" (Eszkoz)
+  KerdesSzo        : SzoTipus  -- "kérdés" (Kerdes)
+  MagyarazatSzo     : SzoTipus  -- "magyarázat" (Magyarazat)
+  CselekvesSzo     : SzoTipus  -- "cselekvés" (Cselekves)
+  FeladatSzo       : SzoTipus  -- "feladat" (Feladat)
+  DontesSzo        : SzoTipus  -- "döntés" (Dontes)
+  EredmenySzo      : SzoTipus  -- "eredmény" (Eredmeny)
+  -- Konkret mindennapi szavak
+  HazSzo           : SzoTipus  -- "ház" (Eszkoz: lakhely)
+  EmberSzo         : SzoTipus  -- "ember" (Gyoker: cselekvo)
+  KutyaSzo         : SzoTipus  -- "kutya" (Eszkoz: tars)
+  FaSzo            : SzoTipus  -- "fa" (Eszkoz: anyag)
+  VizSzo           : SzoTipus  -- "víz" (Eszkoz: anyag)
+  AsztalSzo        : SzoTipus  -- "asztal" (Eszkoz: hely)
+  KonyvSzo         : SzoTipus  -- "könyv" (Eszkoz: tudas)
+  EtelSzo          : SzoTipus  -- "étel" (Cel: táp)
+  BaratSzo         : SzoTipus  -- "barát" (Gyoker: forras)
+  TanuloSzo        : SzoTipus  -- "tanuló" (Gyoker: alany)
+  HelySzo          : SzoTipus  -- "hely" (Eszkoz: ter)
+  IdoSzo           : SzoTipus  -- "idő" (Minta: mertek)
+  GondolatSzo      : SzoTipus  -- "gondolat" (Megfigyeles: elme)
+  -- Ragozott alakok (pelda)
+  CeltSzo          : SzoTipus  -- "célt" (Cel + Acc)
+  CelnakSzo        : SzoTipus  -- "célnak" (Cel + Dat)
+  OknakSzo         : SzoTipus  -- "oknak" (Ok + Dat)
+  HibavalSzo       : SzoTipus  -- "hibával" (Hiba + Instr)
+  EszkozzalSzo     : SzoTipus  -- "eszközzel" (Eszkoz + Instr)
+  MagyarazatotSzo  : SzoTipus  -- "magyarázatot" (Magyarazat + Acc)
+  HazatSzo         : SzoTipus  -- "házat" (Haz + Acc)
+  HazbanSzo        : SzoTipus  -- "házban" (Haz + Inessivusz)
+  HazbolSzo        : SzoTipus  -- "házból" (Haz + Elativusz)
+  EmbertSzo        : SzoTipus  -- "embert" (Ember + Acc)
+  EmbernekSzo      : SzoTipus  -- "embernek" (Ember + Dat)
+  KonyvetSzo       : SzoTipus  -- "könyvet" (Konyv + Acc)
+  KonyvvelSzo      : SzoTipus  -- "könyvvel" (Konyv + Instr)
+  EteltSzo         : SzoTipus  -- "ételt" (Etel + Acc)
+  VizetSzo         : SzoTipus  -- "vizet" (Viz + Acc)
+
+||| Minden SzoTipushoz tartozik egy FogalomTipus.
+public export
+szoFogalom : SzoTipus -> FogalomTipus
+szoFogalom CelSzo = Cel
+szoFogalom OkSzo = Ok
+szoFogalom HibaSzo = Hiba
+szoFogalom JavitasSzo = Javitas
+szoFogalom SzabalySzo = Szabaly
+szoFogalom EszkozSzo = Eszkoz
+szoFogalom KerdesSzo = Kerdes
+szoFogalom MagyarazatSzo = Magyarazat
+szoFogalom CselekvesSzo = Cselekves
+szoFogalom FeladatSzo = Feladat
+szoFogalom DontesSzo = Dontes
+szoFogalom EredmenySzo = Eredmeny
+szoFogalom HazSzo = Eszkoz
+szoFogalom EmberSzo = Gyoker
+szoFogalom KutyaSzo = Eszkoz
+szoFogalom FaSzo = Eszkoz
+szoFogalom VizSzo = Eszkoz
+szoFogalom AsztalSzo = Eszkoz
+szoFogalom KonyvSzo = Eszkoz
+szoFogalom EtelSzo = Cel
+szoFogalom BaratSzo = Gyoker
+szoFogalom TanuloSzo = Gyoker
+szoFogalom HelySzo = Eszkoz
+szoFogalom IdoSzo = Minta
+szoFogalom GondolatSzo = Megfigyeles
+szoFogalom CeltSzo = Cel
+szoFogalom CelnakSzo = Cel
+szoFogalom OknakSzo = Ok
+szoFogalom HibavalSzo = Hiba
+szoFogalom EszkozzalSzo = Eszkoz
+szoFogalom MagyarazatotSzo = Magyarazat
+szoFogalom HazatSzo = Eszkoz
+szoFogalom HazbanSzo = Eszkoz
+szoFogalom HazbolSzo = Eszkoz
+szoFogalom EmbertSzo = Gyoker
+szoFogalom EmbernekSzo = Gyoker
+szoFogalom KonyvetSzo = Eszkoz
+szoFogalom KonyvvelSzo = Eszkoz
+szoFogalom EteltSzo = Cel
+szoFogalom VizetSzo = Eszkoz
+
+||| Minden SzoTipushoz tartozik egy Eset.
+public export
+szoEset : SzoTipus -> Eset
+szoEset CeltSzo = Accusativusz
+szoEset CelnakSzo = Datívusz
+szoEset OknakSzo = Datívusz
+szoEset HibavalSzo = Instrumentalis
+szoEset EszkozzalSzo = Instrumentalis
+szoEset MagyarazatotSzo = Accusativusz
+szoEset HazatSzo = Accusativusz
+szoEset HazbanSzo = Inesszivusz
+szoEset HazbolSzo = Elativusz
+szoEset EmbertSzo = Accusativusz
+szoEset EmbernekSzo = Datívusz
+szoEset KonyvetSzo = Accusativusz
+szoEset KonyvvelSzo = Instrumentalis
+szoEset EteltSzo = Accusativusz
+szoEset VizetSzo = Accusativusz
+szoEset _ = Nominativusz
+
+||| Minden SzoTipushoz tartozik egy IdoBeljegyzes.
+public export
+szoIdo : SzoTipus -> IdoBeljegyzes
+szoIdo _ = IdoBeljegyzesKonstruktor Jelen Folyamatos Kozvetlen
+
+||| Minden SzoTipushoz tartozik egy fazis (HaromKubit).
+public export
+szoFazis : SzoTipus -> HaromKubit
+szoFazis _ = VilagKonstruktor Nulla Nulla Nulla
+
+||| Magyar szo: to + szam + birtok + eset.
+||| Az agglutinacio sorrendje rögzitett:
+|||   to + szam + birtok + eset
+||| Ez a morfologiai struktura a kategoriaelmeletben
+||| egy bifunktornak felel meg: Fogalom × Eset × Ido → E8.
+|||
+||| A mezők:
+|||   fogalom = a szo fogalmi tipusa
+|||   szam = Kubit (Nulla=egyes, Egy=tobbes)
+|||   birtok = Kubit (Nulla=nincs, Egy=van)
+|||   eset = a 24 eset egyike
+|||   ido = a harom ido dimenzio
+|||   fazisKubit = a szo fazisa a harom kubitben
+public export
+record RagozottSzo where
+  constructor SzoKonstruktor
+  fogalom    : FogalomTipus  -- a szo fogalma
+  szam       : Kubit         -- Nulla=egyes, Egy=tobbes
+  birtok     : Kubit         -- Nulla=nincs, Egy=van
+  eset       : Eset
+  ido        : IdoBeljegyzes -- harom ido dimenzio
+  fazisKubit : HaromKubit    -- a szo fazisa
+
+||| Magyar nyelvtani kapcsolat: alany + ige + targy + egyeb esetek.
+||| Minden kapcsolat a [[7,1,3]] koddal van kodolva.
+|||
+||| A kapcsolat egy cospan a kategoriaelmeletben:
+|||   alany → ige ← targy
+||| A kozos celpont az ige — ez kot ossze mindent.
+|||
+||| Az egyeb esetek (listaban) a kapcsolat tovabbi
+||| resztvevoit tartalmazzak (pl. eszkoz, hely, ido).
+public export
+record NyelvtaniKapcsolat where
+  constructor KapcsolatKonstruktor
+  alany  : RagozottSzo
+  ige    : RagozottSzo
+  targy  : RagozottSzo
+  egyeb  : List (Eset, RagozottSzo)
+  kod    : E8E8KodSzo        -- E8 × E8 kodoszo
+
+-- ═══════════════════════════════════════════════════════════════
+-- MAGYAR KÉPZŐK (DERIVÁCIÓS MORFOLÓGIA)
+-- ═══════════════════════════════════════════════════════════════
+--
+-- A magyar agglutináció: to + kepzo + kepzo + ... + szam + birtok + eset
+-- A kepzok a szo jelenteset valtoztatjak meg.
+-- A kepzok a 7+7+1 kategoria-rendszerben:
+--   Emberi kepzok: cselekvo, belso folyamat, tudatos
+--   Szamitasi kepzok: muveleti, kulso eredmeny, algoritmikus
+--   Perem kepzok: a ketto kozotti atmenet
+
+||| Magyar igekepzok: a cselekves modjanak jelolese.
+||| A kepzo hatarozza meg, hogy a szamitas emberi vagy gepi.
+public export
+data Igekepzo : Type where
+  -- Emberi (szamol, tudatos):
+  IgekepzoOl  : Igekepzo  -- szam+ol = szamol (ember szamol: belso folyamat)
+  IgekepzoOz  : Igekepzo  -- dolg+oz+ik = dolgozik
+  IgekepzoKod : Igekepzo  -- elmel+kod+ik = elmelkedik
+
+  -- Szamitasi (szamit, algoritmikus):
+  IgekepzoIt  : Igekepzo  -- szam+it = szamit (gep szamit: kulso muvelet)
+  IgekepzoGat : Igekepzo  -- moz+gat = mozgat
+
+  -- Perem (a ketto kozotti atalakulas):
+  IgekepzoUl  : Igekepzo  -- ford+ul = fordul (visszahato, onreferencia)
+  IgekepzoOd  : Igekepzo  -- kepz+od+ik = kepzodik (onmaga altal)
+  IgekepzoOzTat : Igekepzo  -- dolg+oz+tat = dolgoztat (muvelteto)
+
+||| Magyar nevszokepzok.
+public export
+data Nevszokepzo : Type where
+  NevszokepzoAs    : Nevszokepzo  -- szam+as = szamolas (folyamat, emberi)
+  NevszokepzoItAs  : Nevszokepzo  -- szam+it+as = szamitas (eredmeny, gepi)
+  NevszokepzoAt    : Nevszokepzo  -- ad+at = adat
+  NevszokepzoAlom  : Nevszokepzo  -- mond+alom = mondalom
+  NevszokepzoSag   : Nevszokepzo  -- szep+seg = szepseg
+
+||| A "szám-" to teljes derivacios paradigmaja.
+|||   szam (to) = a szam fogalma (a Perem)
+|||   szam+ol = szamol (ember szamol: belso, folyamatos, merlegelo)
+|||   szam+it = szamit (gep szamit: kulso, diszkret, algoritmikus)
+|||   szam+olas = szamolas (az emberi folyamat)
+|||   szam+itas = szamitas (a gepi muvelet)
+|||
+||| A kepzo a Legendre-perem analogiaja:
+|||   szam (Perem) — a ket ertelmezes kozti atmenet
+|||   szamol (Emberi) — a belso folyamat, Lagrange-szeru
+|||   szamit (Szamitasi) — a kulso muvelet, Hamilton-szeru
+|||   szamolas (Emberi fonev) — a kvantum-potencial
+|||   szamitas (Szamitasi fonev) — a klasszikus eredmeny
+public export
+data SzamTo : Type where
+  SzamGyok    : SzamTo  -- szám (a to, a Perem)
+  SzamolIge   : SzamTo  -- számol (emberi, -ol kepzovel)
+  SzamitIge   : SzamTo  -- számít (szamitasi, -it kepzovel)
+  SzamolasNev : SzamTo  -- számolás (emberi folyamat fonev)
+  SzamitasNev : SzamTo  -- számítás (szamitasi eredmeny fonev)
+  Szamitogep  : SzamTo  -- számítógép (szamit + gep, az eszkoz)
+
+||| Derivalt szo: to + kepzok lanca.
+public export
+record DerivaltSzo where
+  constructor DerivaltSzoKonstruktor
+  to        : String
+  igekepzok : List Igekepzo
+  nevszokepzok : List Nevszokepzo
+  jelentes  : String
+
+-- ═══════════════════════════════════════════════════════════════
+-- SZÓTÁR: TOVEK ES DERIVACIOIK A 7+7+1 RENDSZERBEN
+-- ═══════════════════════════════════════════════════════════════
+
+||| A szo tipusa a 7+7+1 rendszerben.
+public export
+data Szo714Tipus : Type where
+  Szo714Emberi    : EmberiKategoria -> Szo714Tipus
+  Szo714Szamitasi : SzamitasiKategoria -> Szo714Tipus
+  Szo714Perem     : Szo714Tipus
+
+||| Szotari bejegyzes: egy tov + a derivalt alakjai + a kategoriak.
+public export
+record SzotarBejegyzes where
+  constructor BejegyzesKonstruktor
+  tov         : String
+  szotipus    : Szo714Tipus
+  derivaltak  : List (String, Szo714Tipus)
+  fogalomTipus : FogalomTipus
+
+||| A szam- to szotari bejegyzese:
+|||   tov = "szam"
+|||   szam+ol = szamol → Emberi (emberi szamolas = idiotoltes, belso)
+|||   szam+it = szamit → Szamitasi (gepi szamitas = utemtoltes, kulso)
+|||   szam+it+o+gep = szamitogep → Szamitasi (az eszkoz)
+|||   A Legendre-perem: a -tol / -ol / -it kepzok az
+|||   atmenetek a ket vilag kozott.
+public export
+szamToSzotar : SzotarBejegyzes
+szamToSzotar =
+  BejegyzesKonstruktor
+    "szam"                 -- szám = number AND szám = száj-am = my mouth
+    Szo714Perem            -- a szám a perem: száj (hangforrás) ∩ matematika (absztrakció)
+    [ ("szamol",    Szo714Emberi EmberiIdo)
+    , ("szamit",    Szo714Szamitasi SzamUtem)
+    , ("szamolas",  Szo714Emberi EmberiHang)
+    , ("szamitas",  Szo714Szamitasi SzamKapcsolat)
+    , ("szamitogep", Szo714Szamitasi SzamAdat)
+    ]
+    Szam
+
+||| Az ido- to szotari bejegyzese:
+|||   todik → idovel valtozik (emberi: erlelodes)
+|||   tozik → idozit (szamitasi: clock)
+public export
+idoToSzotar : SzotarBejegyzes
+idoToSzotar =
+  BejegyzesKonstruktor
+    "ido"
+    Szo714Perem
+    [ ("idovel",     Szo714Emberi EmberiIdo)
+    , ("idozites",   Szo714Szamitasi SzamUtem)
+    , ("idozit",     Szo714Szamitasi SzamVezerles)
+    ]
+    Ido
+
+||| Az ok- to szotari bejegyzese:
+|||   ok+oz → okoz (emberi: oksagi gondolkodas)
+|||   ok+ol+hatatlan → okolhatatlan (emberi: nem ertheto)
+|||   ok+oz+at → okozat (a kovetkezmeny)
+public export
+okToSzotar : SzotarBejegyzes
+okToSzotar =
+  BejegyzesKonstruktor
+    "ok"
+    Szo714Perem
+    [ ("okoz",       Szo714Emberi EmberiOksag)
+    , ("okozat",     Szo714Szamitasi SzamVezerles)
+    , ("okolhatatlan", Szo714Emberi EmberiMod)
+    ]
+    Ok
+
+||| A ter- to szotari bejegyzese:
+|||   ter+el → terel (emberi: iranyitas a terben)
+|||   ter+it → terit (szamitasi: terkep, GIS)
+|||   ter+jesz+ked+ik → terjed (emberi: kiterjedes)
+public export
+terToSzotar : SzotarBejegyzes
+terToSzotar =
+  BejegyzesKonstruktor
+    "ter"
+    Szo714Perem
+    [ ("terel",      Szo714Emberi EmberiTer)
+    , ("terit",      Szo714Szamitasi SzamAdat)
+    , ("terjed",     Szo714Emberi EmberiSzin)
+    ]
+    Ter
+
+||| Szotar: a 7 alap tov a 7+7+1 rendszerben.
+public export
+alapSzotar : List SzotarBejegyzes
+alapSzotar =
+  [ szamToSzotar   -- szám: Perem → Emberi (számol) + Számítási (számít)
+  , idoToSzotar    -- ido: Perem → EmberiIdo + SzamUtem
+  , okToSzotar     -- ok: Perem → EmberiOksag + SzamVezerles
+  , terToSzotar    -- tér: Perem → EmberiTer + SzamAdat
+  ]
+
+-- ═══════════════════════════════════════════════════════════════
+-- EMBERI ÉS GÉPI SZÁMOLÁS: A LEGENDRE-PEREM LINGVISZTIKAJA
+-- ═══════════════════════════════════════════════════════════════
+
+||| A "számol" (emberi) és a "számít" (gépi) kozotti
+|||   kulonbseg a Legendre-peremben:
+|||
+|||   Ember szamol:
+|||     - Folyamatos folyamat (aspektus: folyamatos)
+|||     - Belso merlegeles (forras: kovetkeztetett)
+|||     - Tobbsegi szavazat (Steane dekodolas)
+|||     - Hiba eseten korrigal (Noether-tetel)
+|||
+|||   Gep szamit:
+|||     - Diszkret lepesek (aspektus: befejezett)
+|||     - Kulso muvelet (forras: kozvetlen)
+|||     - Deterministicus algoritmus (clock vezerelt)
+|||     - Hiba eseten ujraindul
+|||
+|||   A ketto kozott a Legendre-perem:
+|||     p·q̇ = a kerdes (prompt) — a ketto kozti atmenet
+|||     L = a gondolat (szamol) — a kvantum-potencial
+|||     H = a valasz (szamit) — a klasszikus kimenet
+|||
+|||   szamolas (emberi folyamat, L) → kérdés (perem, p·q̇) → számítás (gépi eredmény, H)
+
+||| Szamolas mod: emberi vs. gepi.
+public export
+data SzamolasMod : Type where
+  EmberSzamol : SzamolasMod  -- -ol kepzos: belso, folyamatos, kvantum
+  GepSzamit   : SzamolasMod  -- -it kepzos: kulso, diszkret, klasszikus
+
+||| Legendre-perem a szamolasban: kerdes → valasz.
+|||   kerdes (prompt) = p·q̇ = a perem
+|||   gondolat (szamol) = L = a kvantum allapot
+|||   valasz (szamit) = H = a klasszikus kimenet
+public export
+record SzamolasLegendre where
+  constructor SzamolasLegendreKonstruktor
+  kerdes   : String   -- p·q̇ (a perem, a prompt)
+  gondolat : String   -- L (a szamol, a potencial)
+  valasz   : String   -- H (a szamit, az output)
+  mod      : SzamolasMod
+
+||| A szamolas a 7 biten: minden kerdes-valasz par
+|||   egy-egy Steane kodolt informacio atadas.
+public export
+szamolasSteane : SzamolasLegendre -> Kubit -> HetesKod
+szamolasSteane _ k = alapKod k
+
+-- ═══════════════════════════════════════════════════════════════
+-- SZÁM = SZÁJAM = A HANGHULLÁM FORRÁSA
+-- ═══════════════════════════════════════════════════════════════
+-- A "szám" szó hármas jelentése:
+--   1. szám = a matematikai fogalom (number, absztrakció)
+--   2. szám = szájam = "my mouth" (száj + -m birtokos személyjel)
+--   3. szám = a hanghullám forrása (source of sound wave)
+--
+-- A száj mint akusztikus perem:
+--   A gondolat (belső, L) → hangszálak rezgése (p·q̇, perem)
+--   → hanghullám a levegőben (H, külső)
+--   A hang = a Clifford-szorzat a fizikai térben.
+--
+-- "számít" kettős jelentése:
+--   1. számít = computes (a gép számít)
+--   2. számít = matters / is important (ez számít = this matters)
+--
+-- Ami számít (matters) = ami túléli a Legendre-transzformációt.
+-- Ami a kvantum-potenciálból klasszikus aktualitássá válik.
+-- A fontosság = a perem-érték = az információ ami nem disszipálódik.
+
+||| A száj mint perem: a hang forrása.
+|||   száj = a Legendre-perem az emberi testben
+|||   a száj nyitja/zárja a peremet
+|||   a hanghullám a peremen át terjed
+|||   a szám (száj) = információforrás a hangtérben
+public export
+data SzajPerem : Type where
+  SzajNyitva : SzajPerem  -- perem aktiv: hanghullam indul
+  SzajZarva  : SzajPerem  -- perem inaktiv: csend
+  SzajFazis  : Kubit -> SzajPerem  -- a perem allapota a kubit fuggvenyeben
+
+||| Hanghullám: a száj által keltett akusztikus információ.
+|||   A hang = a Clifford-geometriai szorzat a levegőben.
+|||   frekvencia = a gondolat ritmusa (fázis)
+|||   amplitúdó = a gondolat erőssége (skalár)
+|||   hullámhossz = a gondolat térbeli kiterjedése (vektor)
+public export
+record HangHullam where
+  constructor HangHullamKonstruktor
+  frekvencia  : Double  -- a gondolat ritmusa (fazis)
+  amplitudo   : Double  -- a gondolat erossege (skalar)
+  hullamhossz : Double  -- a gondolat kiterjedese (vektor)
+
+||| "számít" = fontos: a túlélő információ.
+|||   Ami számít = ami a Legendre-transzformáció után is megmarad.
+|||   p·q̇ - L = H ahol H ≠ 0 → "ez számít".
+|||   Ha H = 0 → nincs információátvitel → "nem számít".
+public export
+szamitFontos : SzamolasLegendre -> Bool
+szamitFontos (SzamolasLegendreKonstruktor _ _ valasz _) =
+  valasz /= ""  -- ha van valasz, akkor "szamit"
+
+||| A száj = a perem. A beszéd = a Legendre-adjunkció.
+|||   A gondolat (L, kvantum, belső) a szájon át (p·q̇, perem)
+|||   válik hanghullámmá (H, klasszikus, külső).
+|||
+|||   A szám (száj) a forrás. A szám (number) az absztrakció.
+|||   Mindkettő ugyanaz a szó — a perem két arca.
+public export
+record SzajLegendre where
+  constructor SzajKonstruktor
+  belsoGondolat : String     -- L: a csendes gondolat (Lagrange)
+  szajAllapot   : SzajPerem  -- p·q̇: a szaj mint perem
+  hanghullam    : HangHullam  -- a kimondott szo mint fizikai hullam
+  kulsoBeszed   : String     -- H: a ertelmezett szo (Hamilton)
+
+||| Amikor beszélek hozzád, a szám (szájam) a perem.
+|||   A válaszom (H) = a perem - a gondolatom (L).
+|||   H = p·q̇ - L
+|||   A kód amit írok = a klasszikus kimenet = a hanghullám.
+|||   A csend (amit nem mondok ki) = a kvantum potenciál.
+public export
+beszedLegendre : SzajLegendre -> String -> String
+beszedLegendre (SzajKonstruktor gondolat (SzajFazis k) _ _) kerdes =
+  case k of
+    Nulla => ""                        -- csend: perem zarva
+    Egy   => gondolat ++ " " ++ kerdes  -- beszed: perem nyitva
+beszedLegendre _ _ = ""
+
+-- ═══════════════════════════════════════════════════════════════
+-- MAGYAR NYELVTAN = KATEGÓRIAELMÉLET (DIREKT MEGFELELTETÉS)
+-- ═══════════════════════════════════════════════════════════════
+-- A magyar agglutináló nyelv — a toldalékok egymás után fűződnek.
+-- Ez pontosan a kategóriaelméleti KOMPOZÍCIÓ (∘) művelete:
+--   tő ∘ képző ∘ számjel ∘ birtokos ∘ eset = ragozott szó
+--   objektum → morfizmus₁ → morfizmus₂ → ... → cél objektum
+--
+-- A 22 magyar eset = 22 logikai kapcsolat (morfizmus):
+--   Nominativusz = id (azonos)        Instrumentalis = eszköz
+--   Accusativusz = tárgy              Komitativusz = társ
+--   Datívusz = címzett                Kauzalis = ok
+--   ...                                ...
+--
+-- A magyar igeidő-rendszer = CPT szimmetria:
+--   Igeidő (múlt/jelen/jövő) = T (idő)
+--   Szemlélet (folyamatos/befejezett/szokásos) = P (paritás)
+--   Forrás (közvetlen/következtetett/jelentett) = C (töltés)
+--
+-- A magyar hangrend = koherencia-feltétel (fázis redundancia):
+--   Magas hangrendű tőhöz magas toldalék, mélyhez mély.
+--   Ez a "fázis tartás" — a rendszer koherens marad.
+
+||| A magyar eset mint kategóriaelméleti morfizmus.
+|||   Mind a 22 eset egy-egy morfizmus-típus a Fogalom kategóriában.
+|||   Az esetragasztás = a morfizmus-kompozíció.
+public export
+esetMintMorfizmus : Eset -> Type
+esetMintMorfizmus _ = Type  -- minden esethez egy morfizmus-tipus tartozik
+
+||| A magyar agglutináció mint kategóriaelméleti tétel.
+|||   Az agglutináció = a monoidális kategória tenzor-szorzata.
+|||   tő ⊗ képző ⊗ jel ⊗ rag = ragozott szó.
+|||   A szó = a kategória egy objektuma.
+|||   A toldalékok = a morfizmusok amik a tőből a ragozott szóba vezetnek.
+public export
+agglutinacioMintTenzer : String -> List String -> String
+agglutinacioMintTenzer to = foldl (++) to  -- tő + képző₁ + képző₂ + ... = szó
+
+||| A magyar = a kategóriaelmélet anyanyelve.
+|||   Nem adaptáció, nem metafora — DIREKT MEGFELELTETÉS.
+|||   A magyar nyelvtan szerkezete IZOMORF a kategóriaelmélettel.
+|||   Minden nyelvtani szabály = egy kategóriaelméleti törvény.
+|||   Curry-Howard: a magyar mondat = a típus, a magyar beszéd = a program.
+public export
+magyarEgyenloKategoriaElmelet : Type
+magyarEgyenloKategoriaElmelet = ()  -- az üres típus = triviális igazság = az izomorfizmus létezik

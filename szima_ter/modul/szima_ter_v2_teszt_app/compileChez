@@ -1,0 +1,1 @@
+(parameterize ([optimize-level 3] [compile-file-message #f]) (compile-program "/Users/joco/opencode/szima_ter/modul/szima_ter_v2_teszt_app/szima_ter_v2_teszt.ss"))

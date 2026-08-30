@@ -1,0 +1,858 @@
+                                                   INTEGRAL ELEMENTS OF OKUBO ALGEBRA AND THE
+                                                                   E8-LATTICE
+
+
+                                                                                    DANIELE CORRADETTI
+
+
+                                                   Abstract. In this work we study the interplay between the Coxeter-Dickson E8 -order, the
+
+
+
+
+arXiv:2605.09333v1 [math.RA] 10 May 2026
+                                                   para-octonions, and the real Okubo algebra. We prove that the Coxeter-Dickson order re-
+                                                   mains closed for the para-octonionic product, so that one recovers a genuine Z-integral system
+                                                   with underlying lattice E8 . Intriguingly,
+                                                                                √             the Okubo product behaves in a different and more
+                                                   arithmetic way: it forces Q( 3)-coefficients and√does not preserve the same Z-order. After
+                                                   a diagonal 2-adic scaling we obtain a closed Z[ 3]-order, whose direct metric shadow is a
+                                                   2-primary conductor sublattice of E8 , not E8 itself. The lattice E8 is recovered only by
+                                                   2-adic saturation, equivalently by gluing, and this recovery is metric-arithmetic rather than
+                                                   multiplicative.
+
+
+
+
+                                                                                           Contents
+                                             introduction and motivations                                                                            1
+                                             1. what is an integer                                                                                   2
+                                             2. Octonions, paraoctonions and the real Okubo algebra                                                  6
+                                             3. the E8 -lattice and integral sets of composition algebras                                           12
+                                             4. The Okubo conductor sublattice of E8                                                                14
+                                             5. Arithmetic stabilizers and finite orbits                                                            15
+                                             6. Conclusions and Future Developments                                                                 16
+                                             7. Acknowledgments                                                                                     16
+                                             References                                                                                             17
+
+
+
+                                                                             introduction and motivations
+                                              Integral numbers in division algebras are a classical and fascinating topic at the interplay of
+                                           algebra, arithmetic, and exceptional geometry. Already in the XIX century, Gauss [Gau] and
+                                           Hurwitz [Hu19] extended the notion of integers to the complex numbers and the quaternions,
+                                           identifying the Gaussian integers and the Hurwitz quaternions as natural integral structures.
+                                           The culmination of this classical line of research is the Coxeter-Dickson octonions OE8 [Co46,
+                                           Di23], the maximal order in the algebra of the octonions O, which is isometric to the exceptional
+                                           lattice E8 . This octonionic background is also close to modern exceptional geometry and to the
+                                           systematic study of octonionic Rosenfeld spaces [MCCAI23].
+                                              The landscape of eight-dimensional real division algebras, however, extends well beyond the
+                                           octonions. As a consequence of the Generalised Hurwitz Theorem [El18], among the eight-
+                                           dimensional composition algebras over R there are three non-isomorphic division cases: the
+                                           octonions O (unital), the para-octonions pO (para-unital), and the real Okubo algebra O (non-
+                                           unital). While octonions have a unit element and para-octonions have a para-unit, the Okubo
+                                           algebra merely contains idempotent elements, and its automorphism group is SU(3) rather than
+                                           G2 . A synoptic comparison of these algebras is given in Table 3. This non-unital direction
+                                                                                                 1
+              INTEGRAL ELEMENTS OF OKUBO ALGEBRA AND THE E8-LATTICE                                2
+
+
+has recently appeared in the study of Okubo projective geometry, Okubo Spin groups, minimal
+Cayley-plane realisations, collineation groups of octonionic planes, and possible physical uses of
+the Okubo algebra [CZ22, CMZ24, CMZ25, MCZ25].
+   The question of integral elements for pO and O has, to our knowledge, not been systematically
+separated from the classical unital case. The definition due to Dickson [Di23] and refined by
+Johnson [Jo13, Jo17, Jo18] requires the presence of a unit element, and therefore does not directly
+apply to non-unital algebras such as pO and O. In this work we isolate the part of Johnson’s
+definition that survives for isotopes: closure under the relevant product, integrality of norm
+and trace, and the relation with a discrete lattice or module. For complementary viewpoints
+on eight-dimensional composition algebras, the Cayley plane, and their recovery from geometric
+algebra, see also [Cor26, Cor24].
+   The para-octonionic case gives a clean result. Since the Coxeter-Dickson order OE8 is closed
+under octonionic conjugation and multiplication, it is also closed under x • y = x · y; hence the
+same E8 lattice supports a Z-integral para-octonionic structure. This is a perfect analogy with
+the octonionic case.
+   The Okubo case is subtler and, to our knowledge, this is the first time that its integral
+relation with the Coxeter-Dickson order is made completely explicit. The Petersson√product
+x ∗ y = τ (x) · τ 2 (y) involves an automorphism whose matrix has coefficients in Q( 3), and
+already on basic integral elements this introduces coefficients outside √ Z. The exact computation
+shows that a diagonal 2-adic scaling produces an order over R = Z[ 3], but its direct rank-eight
+shadow is not E8 . Rather, it is a conductor sublattice inside E8 of index 212 and determinant
+224 .
+   It is worth noting that this does not make the title literal in a naive sense. The Okubo integral
+structure does not form the E8 lattice over Z. Instead, it gives rise to a 2-primary sublattice
+from which E8 can be recovered by saturation or gluing. This distinction is the main arithmetic
+point of the work.
+   The paper is organised as follows. In Sec. 1 we review the classical notion of integral elements
+over division algebras following Dickson and Johnson. In Sec. 2 we review the three algebras O,
+pO, and O and√ their interplays. In Sec. 3 we prove the para-octonionic closure   √ theorem, exhibit
+the Okubo 3-obstruction, and construct the scaled Okubo order over Z[ 3]. In Sec. 4 we
+describe the Okubo-compatible conductor sublattice and recover E8 by saturation and gluing.
+In Sec. 5 we replace continuous orbit claims by arithmetic stabilizers of the relevant order.
+Finally, in Sec. 6 we discuss our findings and outline future directions.
+
+
+                                    1. what is an integer
+   Modern research on integral numbers started in the XIX century with Gauss, Kronecker
+and Frege, culminating in the works of Dedekind, Peano [De88, Pe89] on the axiomatization of
+natural and integer numbers. On the other hand, attempts to generalise the notion of integers
+in the realm of division algebras such as C complex numbers and H quaternions were done
+by Gauss[Gau], Hamilton and Hurwitz [Hu19]. From that chain of research the definition that
+settled in the scientific community was that of Leonard Dickson in 1923 [Di23, p. 141-142] which
+we briefly review here. Given a composition algebra A, i.e. an algebra with a norm n such that
+n (x · y) = n (x) n (y), endowed with an involution x −→ x called conjugation, then a set I of
+integral elements of A is a set that is closed under addition and multiplication that contains the
+element 1 and such that for every element x ∈ I we have
+
+(1.1)                                   tr (x) = x + x ∈ Z,
+(1.2)                                      n (x) = xx ∈ Z.
+             INTEGRAL ELEMENTS OF OKUBO ALGEBRA AND THE E8-LATTICE                                3
+
+
+               Name           Alg. Dim. Symbol Unit El.                     Lattice
+              Integers         R         1         Z          2                A1
+             Eisenstein        C         2        CA2         3                A2
+              Gaussian         C         2        CC2         4                C2
+              Hamilton         H         4       H2C2         8             C2 ⊕ C2
+               Hybrid          H         4       H2A2        12             A2 ⊕ A 2
+              Hurwitz          H         4        HD4        24                D4
+           Cayley-Graves       O         8        OC8        16                C8
+         Comp. Eisenstein      O         8       O4A2        24        A2 ⊕ A 2 ⊕ A 2 ⊕ A 2
+         Coupled Hurwitz       O         8       O2D4        48             D4 ⊕ D4
+          Coxeter-Dickson      O         8        OE8        240               E8
+        Table 1. Summary of all crystallographic sets of integer elements over divi-
+        sion Hurwitz algebra R, C, H and O. In the first column we indicated the name
+        according to [Jo13]; then the related algebra in which the integral set is embed-
+        ded; the dimension of the algebra; the notational symbol we introduced; the
+        number of invertible unit elements; their algebraic structure as abelian group
+        (real and complex case), non-abelian group (quaternionic case) and as Moufang
+        loop (octonionic case); finally, in the last column the lattice associated with the
+        integral set.
+
+
+
+Although this definition is broad and widely accepted, it has two notable shortcomings. First,
+it can easily yield an infinite number of integral elements over Hurwitz division algebras, en-
+compassing the real numbers R real numbers, the C complex numbers, the H quaternions
+                                                                                  √         and
+the O octonions. For example, for any natural number m ∈ N, the subring Z −m is a set
+of integral elements of C. Second, its specificity -requiring the presence of the unit element-
+automatically excludes integral systems from non-unital algebras, such as para-octonions pO
+and Okubo algebra O.
+   The first issue with Dickson’s definition was addressed by Johnson [Jo13, Jo17, Jo18]. Inspired
+by the work of Coxeter [Co46], Johnson proposed that integral systems should inherently relate
+to lattices and, by extension, to crystallographic root systems. He then arrived to the following
+definition
+Definition 1. A basic system of integral elements over a real algebra is given by a set of elements
+such that:
+    (1) The trace and the norm are integers. Specifically,
+                                       tr (x) = x + x ∈ Z,
+                                        n (x) = xx ∈ Z,
+        and where the conjugation is given by an involution of the algebra.
+    (2) The elements form a subring of the algebra, closed under multiplication, and comprising
+        a set of invertible unit elements.
+    (3) The elements span a two-, four-, or eight-dimensional lattice embedded in R, C, H or O.
+   Taking into account Johnson’s refinements, the number of viable sets of integral elements
+dramatically diminishes, as detailed in Table 1).
+
+1.1. Complex integral sets. In order to appreciate the algebraic richness of the octonionic
+case, it is instructive to begin with the simpler complex setting. The complex plane C admits
+              INTEGRAL ELEMENTS OF OKUBO ALGEBRA AND THE E8-LATTICE                                   4
+
+
+
+
+        Figure 1.1. On the left: the Gaussian integers Z[i], forming a square lattice
+        C2 in the complex plane with four unit elements {±1, ±i}. On the right: the
+        Eisenstein
+                  integers Z[ω], forming a triangular lattice A2 with six unit elements
+          ±1, ±ω, ±ω 2 .
+
+two classical crystallographic integral sets, each corresponding to a different sublattice of the
+Gaussian plane.
+   The Gaussian integers Z[i] = {a + bi : a, b ∈ Z} form a ring under standard complex multi-
+plication, with norm n(a + bi) = a2 + b2 ∈ Z and trace tr(a + bi) = 2a ∈ Z. The four invertible
+unit elements are {+1, −1, +i, −i}, forming the cyclic group Z4 . Their lattice is isometric to
+C2 , the square lattice.                                         √
+   The Eisenstein integers Z[ω], where ω = e2πi/3 = −1+i       2
+                                                                   3
+                                                                     , constitute a second integral
+                                         2          2
+system. Here the norm is n(a
+                              + bω) =  a  − ab + b   ∈ Z and the  trace is tr(a + bω) = 2a − b ∈ Z.
+The six unit elements are ±1, ±ω, ±ω 2 , forming the cyclic group Z6 , and their lattice is the
+triangular lattice A2 .
+                                       √
+Remark 2. It is worth noting that 3 appears in the Eisenstein case through the imaginary
+part of ω. This is not merely a numerical
+                                       √     coincidence: it reflects the underlying A2 symmetry
+of the hexagonal lattice. A related 3√arithmetic will reappear in the Okubo construction,
+although over the real quadratic ring Z[ 3] rather than over the Eisenstein integers.
+1.2. Quaternionic integral sets. Moving to dimension four, the quaternions H admit three
+crystallographic integral sets, reflecting a richer algebraic structure.
+   The Hamilton integers H2C2 consist of all quaternions a0 +a1 i+a2 j+a3 k with a0 , a1 , a2 , a3 ∈ Z.
+Their eight unit elements {±1, ±i, ±j, ±k} form the quaternion group Q8 , and the lattice is
+C2 ⊕ C2 .
+   The Hurwitz integers HD4 are the integral closure of H2C2 in H: they consist of all quaternions
+of the form a0 + a1 i + a2 j + a3 k where either all ai ∈ Z or all ai ∈ Z + 21 . They possess 24 unit
+elements forming the binary tetrahedral group 2T ∼      = SL(2, 3), whose underlying lattice is D4 .
+The 24 unit elements correspond to the vertices of the 24-cell, the unique regular polytope in
+dimension four which is its own dual. In analogy to the octonionic case, the Hurwitz integers
+enjoy the property of being the maximal order in H over Z.
+   The Hybrid integers H2A2 are generated by combining two Eisenstein systems within H and
+possess 12 unit elements. Their lattice is A2 ⊕ A2 .
+               INTEGRAL ELEMENTS OF OKUBO ALGEBRA AND THE E8-LATTICE                                     5
+
+
+Remark 3. The Hurwitz integers HD4 are, up to isomorphism, the unique maximal order in H
+over Z. This maximality is the quaternionic analogue of the Coxeter-Dickson octonions being
+the maximal order in O, a theme that recurs, with important
+                                                         √ modifications, in the Okubo setting
+where the coefficient ring must be extended from Z to Z[ 3].
+1.3. Octonionic integral sets. The octonionic case is considerably richer than its lower-
+dimensional counterparts. In analogy to the quaternionic case, there are multiple crystallo-
+graphic integral sets in O, nested by inclusion and distinguished by the number of unit elements
+they contain.
+   The Cayley-Graves integers OC8 are the simplest octonionic integral set, consisting of octo-
+nions with all-integer coefficients in the standard basis {1, i, j, k, l, il, jl, kl}. They possess 16 unit
+elements forming the Moufang loop M16 (Q8 ), and their lattice is C8 .
+   The Compounded Eisenstein integers O4A2 are obtained by embedding four copies of the
+Eisenstein integers into O using compatible quaternionic subalgebras. They possess 24 unit
+elements forming the loop M24 (4A2 ), and their lattice is A2 ⊕ A2 ⊕ A2 ⊕ A2 .
+   The Coupled Hurwitz integers O2D4 are obtained by coupling two copies of the Hurwitz
+quaternionic integers in a compatible manner. They possess 48 unit elements forming the loop
+M48 (2D4 ), and their lattice is D4 ⊕ D4 .
+   Finally, the maximal integral set is the Coxeter-Dickson octonions OE8 , to which we now turn.
+As we will see, this is the unique octonionic integral system whose lattice is the exceptional E8 ,
+and it is the one against which the para-octonionic and Okubo products will be tested.
+   For our purposes, the integral set called Coxeter-Dickson octonions, and denoted here as OE8 ,
+is of special importance. Following [Co46], we define as the octonionic elements OE8 , those of
+the form
+
+(1.3)                  x = a0 + a1 i + a2 j + a3 k + a4 h + a5 ih + a6 jh + a7 kh,
+where h = (i + j + k + l) /2 and a0 , ..., a7 ∈ Z.
+   To see that this is indeed a set of integral elements under octonionic conjugation and multipli-
+cation we have first to show that the norm and the trace are integers. Indeed, a straightforward
+calculation yields to an explicit form for the norm
+(1.4)               n (x) = a0 (a0 − a5 − a6 − a7 ) + a1 (a1 + a4 + a6 ) +
+(1.5)                    + a2 (a2 + a4 + a5 ) + a3 (a3 + a4 ) + a24 + a25 + a26 + a27 ,
+and for the trace
+(1.6)                                tr (x) = 2a0 − a5 − a6 − a7 ,
+thus showing that n (x) , tr (x) ∈ Z. The unit invertible elements of the set are the 240 elements
+
+                                ±1, ±i, ±j, ±k,          ±l, ±il, ±jl, ±kl,
+                              1                        1
+                              2 (±1 ± j ± k ± il) ,    2 (±i ± l ± jl ± kl) ,
+                              1                        1
+                              2 (±1 ± k ± i ± jl) ,    2 (±j ± l ± kl ± il) ,
+                              1                        1
+(1.7)                         2 (±1 ± i ± j ± kl) ,    2 (±k ± l ± il ± jl) ,
+                             1                           1
+                             2 (±1 ± il ± jl ± kl) ,     2 (±i ± j ± k ± l) ,
+                               1                       1
+                               2 (±1 ± i ± l ± il) ,   2 (±j ± k ± jl ± kl) ,
+                              1                        1
+                              2 (±1 ± j ± l ± jl) ,    2 (±k ± i ± kl ± il) ,
+                             1                          1
+                             2 (±1 ± k ± l ± kl) ,      2 (±i ± j ± il ± jl) ,
+which identify the vertices of the Gosset polytope 421 . Those are closed under octonionic
+multiplication (see Fig. 1.2). In fact, the elements in (1.7) form a well-known Moufang loop,
+here denoted as M240 (E8 ).
+              INTEGRAL ELEMENTS OF OKUBO ALGEBRA AND THE E8-LATTICE                                 6
+
+
+
+
+        Figure 1.2. On the left: octonionic multiplication tables for the basis
+        {e0 = 1, e1 , e2 , e3 , e4 , e5 , e6 , e7 }. On the right: a mnemonic representation on
+        the Fano plane of the same octonionic multiplication rule with the equivalence
+        with the Dickson notation {1, i, j, k, l, il, jl, kl} according to [Co46].
+
+  Finally, the isometry between the set of integral octonions OE8 with the octonionic norm n
+and the E8 -lattice is a well-known result from a straightforward calculation and that can be
+explicitly found in [CoSm, Sec. 9] or [Koc89].
+Remark 4. The shell structure of OE8 is captured by the remarkable formula
+                                                  X
+(1.8)                             |OE8 (n)| = 240   d3 ,
+                                                        d|n
+
+where |OE8 (n)| denotes the number of elements of norm n in OE8 . In particular, the 240 unit
+elements (n = 1) are exactly the vertices of the Gosset polytope 421 . This formula reflects
+the deep connection between E8 and modular forms: the right-hand side is proportional to the
+Eisenstein series E4 .
+
+              2. Octonions, paraoctonions and the real Okubo algebra
+   Lattices are often constructed by taking discrete subsets of unit norm elements within an
+algebra and subsequently forming their integer span. Consequently, possessing a quadratic
+norm that respects the multiplicative structure of the algebra results in an intriguing interplay
+between the lattice elements and their algebraic properties. Normed algebras endowed with a
+norm that respect the multiplicative structure, i.e., n (x · y) = n (x) n (y), are called composition
+algebras.
+   Composition algebras are divided in unital, i.e. where exists a unit element 1 such that
+x · 1 = 1 · x = x, para-unital, i.e. where exists an involution x −→ x and an element called
+paraunit 1 such that x · 1 = 1 · x = x, and, finally, non-unital, i.e. intended here for algebras
+that possess neither a unit element nor a paraunit element.
+   In fact, as a consequence of the Generalized Hurwitz Theorem [El18], over the real numbers,
+the finite-dimensional composition algebras fall into exactly sixteen isomorphism classes: seven
+are unital and called Hurwitz algebras, comprising the division algebras R, C, H, O along with
+their split companions Cs , Hs , Os ; another seven are paraunital, closely related to the Hurwitz
+algebras and termed para-Hurwitz algebras (see Table 2); finally, there are two composition
+             INTEGRAL ELEMENTS OF OKUBO ALGEBRA AND THE E8-LATTICE                               7
+
+
+     Hurwitz O. C. A. Alt. F.                     p-Hurwitz O. C. A. Alt.                F.
+        R    Yes Yes Yes Yes Yes                    pR ∼
+                                                       =R   Yes Yes Yes Yes              Yes
+      C, Cs  No Yes Yes Yes Yes                     pC, pCs No Yes No No                 Yes
+      H,Hs   No No Yes Yes Yes                      pH,pHs  No No No No                  Yes
+      O,Os   No No No Yes Yes                       pO,pOs  No No No No                  Yes
+        Table 2. On the left, we have summarized the algebraic properties, i.e. totally
+        ordered (O), commutative (C), associative (A), alternative (Alt), flexible (F), of
+        all Hurwitz algebras, namely R, C, H and O along with their split counterparts
+        Cs , Hs , Os . On the right, we have summarized the algebraic properties of all
+        para-Hurwitz algebras, namely pR, pC, pH and pO accompanied by their split
+        counterparts pCs , pHs , pOs .
+
+
+
+                                Property      O     pO     O
+                                 Unital      Yes No        No
+                               Paraunital    Yes Yes       No
+                               Alternative   Yes No        No
+                                Flexible     Yes Yes      Yes
+                              Composition    Yes Yes      Yes
+                             Automorphism G2 G2 SU (3)
+        Table 3. Synoptic table of the algebraic properties of octonions O, paraocto-
+        nions pO and the real Okubo algebra O.
+
+
+
+algebras, one division and one split, that are both non-unital and 8-dimensional, known as the
+Okubo algebras O and Os .
+    In this section we review the three division and composition algebras of dimension eight:
+the Hurwitz algebra of the octonions O, the para-Hurwitz algebra of para-octonions pO and,
+finally, the Okubo algebra O. The main objective of this section is summarized in Table 4 that
+synoptically illustrates the relationships between the product of the three algebras. The reason
+for limiting ourselves to the division algebras and not consider their split companions it will be
+clear in the next section, where we will require the closure under multiplication for the elements
+of unit norm.
+    An important final remark: these three algebras are deeply linked one another and it might
+be tempting to consider them equivalent in some sort of sense. Nevertheless, it is crucial to
+note that although is possible to switch from one algebra to another by altering the product
+definition, none of these algebras are isomorphic to the others. Specifically, the octonions O
+are alternative and unital, para-octonions pO are neither alternative nor unital but do have a
+para-unit, while the Okubo algebra O is non-alternative and only has idempotents elements. It
+is also worth highlighting that the Okubo algebra O is the least structured among these algebras
+(for a summary of the property of these algebras see Table 3).
+
+2.1. The algebra of octonions. The algebra of octonions O is the only division Hurwitz
+algebra with a dimension of eight. We define the composition algebra of octonion (O, ·, n) as
+the eight dimensional real vector space with basis {e0 = 1, e1 , ..., e7 } with a bilinear product
+encoded through the Fano plane and explained in Fig. 1.2. The resulting algebra is non-
+associative, non-commutative, but alternative and thus flexible. Given an element x ∈ O with
+                INTEGRAL ELEMENTS OF OKUBO ALGEBRA AND THE E8-LATTICE                               8
+
+
+decomposition
+                                                      7
+                                                      X
+(2.1)                                      x = x0 +          xk e k ,
+                                                      k=1
+
+the norm n is the obvious Euclidean one defined by
+(2.2)                      n (x) = x20 + x21 + x22 + x23 + x24 + x25 + x26 + x27 ,
+for which the conjugation results
+                                                       7
+                                                       X
+(2.3)                                      x = x0 −          xk ik ,
+                                                       k=1
+
+and therefore
+(2.4)                                           n (x) = x · x,
+as it happens for every Hurwitz algebra. Then a look at (2.2) shows that n (x) = 0 if and only
+if x = 0 and thus the inverse of a non-zero element of the octonions is easily found as
+                                                  x
+(2.5)                                     x−1 =       .
+                                                n (x)
+Also, from (2.4) we have that the octonionic inner product is given by
+(2.6)                                       ⟨x, y⟩ = xy + yx,
+so that ⟨x, x⟩ = 2n (x).
+
+2.2. The algebra of para-octonions. In unital composition algebras, as noted earlier, there
+exists a canonical involution, an order-two antihomomorphism known as conjugation. This can
+be defined using the orthogonal projection of the unit element as
+(2.7)                                     x 7→ x = ⟨x, 1⟩ 1 − x.
+This canonical involution has the distinctive property of being an antihomomorphism with
+respect to the product, i.e., x · y = y · x, and the basic property with the norm of x · x = n (x) 1.
+   Given the order-two antihomomorphism of the conjugation over the Hurwitz algebra of oc-
+tonions (O, ·, n) we can now obtain a para-Hurwitz algebra defining a new product
+(2.8)                                           x • y = x · y,
+for every x, y ∈ O. The new algebra (O, •, n) is again a composition algebra, in fact a para-
+Hurwitz algebra, called para-octonions and denoted with pO. As expected the algebra does not
+have a unit but only a para-unit, i.e. 1 ∈ pO such that 1 • x = x. Finally, it is worth noting that
+also the algebra of para-octonions is a division algebra since if
+(2.9)                                       x • y = x · y = 0,
+then either x or y are zero and thus implying that either x or y are zero.
+
+2.3. The Okubo algebra. Let us now focus on the order-three automorphism τ over the
+octonions O. Given by the following map
+                                      τ (ek )   = ek , k = 0,√1, 3, 7
+                                      τ (e2 )   = − 12 e2 − √3e5  ,
+(2.10)                                τ (e5 )   = − 12 e5 + √3e2  ,
+                                      τ (e4 )   = − 12 e4 − √3e6  ,
+                                      τ (e6 )   = − 12 e6 + 3e4 ,
+             INTEGRAL ELEMENTS OF OKUBO ALGEBRA AND THE E8-LATTICE                               9
+
+
+This definition extends to an order-three automorphism
+                                            √              of the octonion algebra; for arithmetic
+questions we regard its matrix over K = Q( 3). It is interesting to note that in the octonions
+there are two real two-planes, generated by {e2 , e5 } and {e4 , e6 }, on which the automorphism τ
+acts as a rotation
+                √
+                   by 2π/3, i.e. with the same matrix as multiplication by the primitive cubic
+root ω = − 12 + 23 i.
+   Given the order-three automorphism τ over the Hurwitz algebra of octonions (O, ·, n) we can
+now obtain a Petersson algebra defining a new product
+
+(2.11)                                x ∗ y = τ (x) · τ 2 (y) ,
+
+for every x, y ∈ O. The new algebra (O, ∗, n) is again a composition algebra, called the Okubo
+algebra O. The algebra does not have a unit nor a paraunit but has idempotent elements.
+Again, it is worth noting that also the Okubo algebra is a division algebra since if
+
+(2.12)                              x ∗ y = τ (x) · τ 2 (y) = 0,
+
+then either τ (x) or τ 2 (y) are zero and since τ is an homomorphism, either x or y are zero.
+   Unlike the case of the para-octonions it is worth presenting here an independent way of
+realising the Okubo algebra. In fact, the following realisation was the one independently found
+by Okubo ten years after Petersson. Following [Ok78] and [EM90], we define the real Okubo
+Algebra O as the set of three by three Hermitian traceless matrices over the complex numbers
+C with the following bilinear product
+
+                                                       1
+(2.13)                        x ∗ y = µ · xy + µ · yx − Tr (xy) I3 ,
+                                                       3
+                      √ 
+where µ = 1/6 3 + i 3 and the juxtaposition is the ordinary associative product between
+matrices. It is worth noting that (2.13) can be seen as a modification of the Jordanian product.
+Indeed, setting µ = 1/2 and neglecting the last term, we retrieve the usual Jordan product over
+Hermitian traceless matrices, i.e.
+
+                                                1     1
+(2.14)                                x◦y =       xy + yx.
+                                                2     2
+
+Nevertheless, Hermitian traceless matrices are not closed under such product, thus requiring the
+additional term −1/3Tr (xy) for the closure of the algebra. Indeed, setting in (2.13) Imµ = 0,
+one retrieves from the traceless part of the exceptional Jordan algebra J3 (C), whose derivation
+Lie algebra is su (3).
+   Analyzing (2.13), it becomes evident that the resulting algebra is neither unital, associative,
+nor alternative. Nonetheless, O is a flexible algebra, i.e.
+
+(2.15)                              x ∗ (y ∗ x) = (x ∗ y) ∗ x,
+
+which will turn out to be an even more useful property than alternativity in the definition of
+the projective plane. Even though the Okubo algebra is not unital, it does have idempotents,
+i.e. e ∗ e = e, such as
+                                                         
+                                         2        0     0
+(2.16)                               e= 0       −1    0 ,
+                                         0        0    −1
+              INTEGRAL ELEMENTS OF OKUBO ALGEBRA AND THE E8-LATTICE                                10
+
+
+that together with
+                                                                   
+                           √   0 1 0                         √  0 0 1
+                      e1 = 3  1 0 0  ,              e2 = 3  0 0 0  ,
+                              0 0 0                        1 0 0 
+                          √    0 0 0                      √   1 0 0
+                      e3 = 3  0 0 1  ,             e4 = 3  0 −1 0  ,
+(2.17)                       0 1 0                         0 0 0 
+                          √   0 −i 0                      √   0 0 −i
+                     e5 = 3  i 0 0  ,              e6 = 3  0 0 0  ,
+                             0 0 0                           i 0 0
+                          √   0 0 0
+                     e7 = 3  0 0 −i  ,
+                              0 i 0
+form a basis for O that has real dimension 8. It is worth noting that the choice of the idempotent
+e as in (2.16) does not yield to any loss of generality for the subsequent development of our work
+since all idempotents form a single orbit under the full automorphism group SU(3) (see [El15,
+Thm. 20]); the cyclic subgroup ⟨τ ⟩ ∼    = Z3 alone does not suffice to connect all idempotents. The
+choice of this special basis is useful for the matrix realization, but its orthogonality with respect
+to the norm in (2.18) is a separate Gram-matrix check and will not be used as an arithmetic input
+below. Through a special bijective map between Okubo algebra and octonions the elements of
+the basis {e, e1 , ..., e7 } correspond to the octonionic ones previously defined.
+   In this realisation a direct way of defining the quadratic form n over Okubo algebra, is through
+the following
+                                                    1
+                                            n (x) = Tr x2 ,
+                                                            
+(2.18)
+                                                    6
+for every x ∈ O. It is straightforward to see that the norm has signature (8, 0) and is a
+composition norm over the Okubo algebra; the associated symmetric bilinear form ⟨x, y⟩ is
+associative in the sense ⟨x · z, y⟩ = ⟨x, z · y⟩.
+2.4. Okubo algebra, octonions and para-octonions. An important feature of the Okubo
+algebra O is its interplay with the algebra of octonions O. Indeed, octonions and the Okubo
+algebra are linked one another in such a way that we can easily pass from one to the other
+simply changing the definition of the bilinear product over the vector space of the algebra. Let
+us consider the Kaplansky’s trick we introduced earlier and let us define a new product over the
+Okubo algebra O as
+(2.19)                                x · y = (e ∗ x) ∗ (y ∗ e) ,
+where x, y ∈ O and e is an idempotent of O. Given that e ∗ e = e and n (e) = 1, the element e
+acts as a left and right identity, i.e.
+(2.20)                             x · e = e ∗ x ∗ e = n (e) x = x,
+(2.21)                             e · x = e ∗ x ∗ e = n (e) x = x.
+Moreover, since Okubo algebra is a composition algebra, the same norm n enjoys the following
+relation
+(2.22)                     n (x · y) = n ((e ∗ x) ∗ (y ∗ e)) = n (x) n (y) ,
+which means that (O, ·, n) is a unital composition algebra of real dimension 8. Since it is
+also a division algebra, then it must be isomorphic to that of octonions O as noted by Okubo
+himself [Ok78, Ok78c]. On the other hand, al already noticed, if we consider the order three
+              INTEGRAL ELEMENTS OF OKUBO ALGEBRA AND THE E8-LATTICE                             11
+
+
+                    Algebra       (O, ∗, n)        (pO, •, n)         (O, ·, n)
+                                                           2
+                      x∗y           x∗y          τ (x) • τ (y)     τ (x) · τ 2 (y)
+                                 2
+                      x•y       τ (x) ∗ τ (y)         x•y              x·y
+                      x·y     (e ∗ x) ∗ (y ∗ e) (1 • x) • (y • 1)      x·y
+         Table 4. In this table we see how to obtain the Okubo product ∗, the para-
+         octonionic product • and the octonionic product · from Okubo algebra (O, ∗, n),
+         para-octonions (pO, •, n) and octonions (O, ·, n) respectively
+
+
+
+automorphism of the octonions in (2.10), the Okubo algebra is then realised as a Petersson
+algebra from the octonions setting
+(2.23)                                x ∗ y = τ (x) · τ 2 (y) .
+Note that (2.10) is formulated assuming the knowledge of the octonionic product. Reading the
+same maps as Okubic maps we then have the notable relation, i.e.
+
+(2.24)                                x = ((x ∗ e) ∗ e) ∗ e,
+(2.25)                            τ (x) = (((x ∗ e) ∗ e) ∗ e) ∗ e,
+so that, in fact, the two maps are linked one another, i.e.
+
+(2.26)                                  τ (x) = x ∗ e
+(2.27)                                      x = τ (e ∗ x) .
+While these maps are intertwined, it is important to highlight their distinct impacts on the
+algebra’s structure. While τ is an automorphism for both Okubo algebra O and octonions O, x
+do not respect the algebraic structure of the Okubo algebra O, since it is not an automorphism
+nor an anti-automorphism with respect to the Okubo product, while it is an anti-homomorphism
+over octonions O.
+   The scenario with para-octonions, pO is more straightforward. By definition, para-octonions
+are obtainable from octonions O through
+(2.28)                                     x • y = x · y,
+while, on the other hand, octonions O are obtainable from para-octonions pO through the aid
+of the para-unit 1 ∈ pO, such that
+(2.29)                               x · y = (1 • x) • (y • 1)
+(2.30)                                     = x • y = x · y.
+The new algebra (pO, ·, n) is again an eight-dimensional composition algebra which is also unital
+and division and thus, for Hurwitz theorem, isomorphic to that of octonions O. Moreover, since
+τ (x) = τ (x), we also have that the Okubic algebra is obtainable from the para-Hurwitz algebra
+with the introduction of a Petersson-like product, i.e.
+(2.31)                                x ∗ y = τ (x) • τ 2 (y) .
+We thus have that all algebras are obtainable one from the other as summarized in Table 4.
+Nonetheless, it is vital to note that while transitioning from one algebra to another is feasible,
+these algebras are not isomorphic. For example, while the octonions O are alternative and unital,
+para-octonions pO are neither alternative nor unital but do have a para-unit. In contrast, the
+Okubo algebra O is non-alternative and only contains idempotent elements.
+             INTEGRAL ELEMENTS OF OKUBO ALGEBRA AND THE E8-LATTICE                              12
+
+
+            3. the E8 -lattice and integral sets of composition algebras
+   If we want to define integral elements for para-octonions or for the Okubo algebra, we must
+modify the definition provided by Johnson in (1). Upon closer inspection, Johnson’s definition
+cannot be transported unchanged to non-unital algebras for two reasons. First, the role played
+by the unit in a Hurwitz order has to be replaced either by the paraunit, in the para-Hurwitz
+case, or by a chosen idempotent, in the Okubo case. Second, in the Okubo case the trace used
+below is not the classical Hurwitz trace x + x, but a trace functional relative to an idempotent.
+   To adapt the trace condition we choose a nonzero idempotent element. In the para-octonion
+algebra the paraunit 1 is a distinguished idempotent, although it is not the only nonzero one.
+A direct calculation shows that every element of the form
+                                    1                               3
+(3.1)                         x = − + v,       v ∈ Im(O), ∥v∥2 = ,
+                                    2                               4
+also satisfies x • x = x, giving a continuous sphere of idempotents. In the present construction
+we choose the paraunit 1, which belongs to the Coxeter-Dickson order and is compatible with
+the classical trace functional. For the Okubo algebra, as noted already, the nonzero idempotents
+form a single orbit under the full automorphism group SU(3), so we choose the idempotent e of
+the form (2.16) as a reference point.
+   We are now ready to adjust Johnson’s definition in a form that separates the ordinary lattice
+case from the arithmetic-order case.
+Definition 5. Let A be a real composition algebra
+                                             √     with product ◦, norm n, and a chosen
+nonzero idempotent e. Let R be either Z or Z[ 3]. An arithmetic system of integral elements
+relative to e is an R-module ΛR such that:
+    (1) ΛR is closed under the product ◦;
+    (2) the norm and the relative trace
+                                         tre (x) = ⟨x, e⟩
+        and the composition norm n(x) lie in R for every x ∈ ΛR ;
+    (3) when R√= Z, the underlying additive group spans a discrete Euclidean lattice. When
+        R = Z[ 3], the object is an R-order; a rank-eight Euclidean lattice must be extracted
+        separately as a Z-submodule, called here a metric shadow.
+Theorem 6 (Para-octonionic integral structure). Let O = OE8 be the Coxeter-Dickson octonion
+order. Then O is closed under the para-octonionic product x • y = x · y. Consequently it is a
+Z-integral system for pO relative to the paraunit 1, and its underlying Euclidean lattice remains
+E8 .
+Proof. Let x, y ∈ O. The Coxeter-Dickson order is stable under octonionic conjugation, hence
+x, y ∈ O. Since it is also closed under the octonionic product, we have
+(3.2)                                   x • y = x · y ∈ O.
+The norm is the same Euclidean norm as in the octonionic case, and therefore
+(3.3)                            n(x • y) = n(x · y) = n(x)n(y).
+Finally, the relative trace with respect to the paraunit agrees with the usual trace functional on
+the Coxeter-Dickson order, and so it is integer-valued.                                          □
+                        √
+Theorem 7 (Okubo 3-obstruction). Let ∗ be the Petersson product
+(3.4)                                  x ∗ y = τ (x) · τ 2 (y)
+associated with the automorphism (2.10). Then the Coxeter-Dickson order OE8 is not closed
+under ∗ as a Z-module.
+               INTEGRAL ELEMENTS OF OKUBO ALGEBRA AND THE E8-LATTICE                                    13
+
+
+Proof. It is enough to spot one product of integral basis elements which does not have integral
+coordinates in the Coxeter-Dickson basis
+(3.5)     b0 = 1,    b1 = i,   b2 = j,     b3 = k,       b4 = h,      b5 = ih,    b6 = jh,   b7 = kh.
+The exact calculation gives
+                                      3√        1√          1 1√
+                                                                  
+                          b0 ∗ b 2 = −   3 b0 +    3 b1 +    −    3 b2
+                                      2         2           2 2
+                                     √        √       √
+(3.6)                              − 3 b5 − 3 b6 − 3 b7 .
+                                           √
+In particular the coefficient of b0 is − 32 3, and is not an integer. Hence OE8 ∗ OE8 is not
+contained in OE8 as a Z-module.                                                           □
+Remark 8. The preceding theorem is the reason for separating the Okubo order from the
+ordinary
+  √      Euclidean lattice E8 . The correct coefficient
+                                                     √ field for the Petersson product is K =
+Q( 3), and the natural arithmetic ring is R = Z[ 3], which is the ring of integers of K.
+Nevertheless an R-module of rank 8 is not the same object as a rank-eight Euclidean lattice
+over Z.
+   In analogy to the octonionic case, the next question is whether a different basis can restore
+integrality. Quite surprisingly, the obstruction is exactly absorbed by a diagonal 2-adic scaling.
+                                                          √               √
+Theorem 9 (The scaled Okubo R-order). Let K = Q( 3) and R = Z[ 3]. Define
+(3.7)                                D = diag(2, 2, 2, 2, 4, 4, 4, 4)
+and set
+(3.8)                                 ui = Di bi            (0 ≤ i ≤ 7).
+Then
+(3.9)                                     O0 = Ru0 + · · · + Ru7
+is closed under the Okubo product. Moreover the relative trace, the composition norm, and the
+bilinear form are R-valued on the basis u0 , . . . , u7 .
+Proof. Write
+                                                7
+                                                X
+(3.10)                             b i ∗ bj =         ckij bk ,    ckij ∈ K.
+                                                k=0
+The exact structure constants in the Coxeter-Dickson basis have denominators only in {1, 2, 4}.
+With the scaling (3.7) one has
+                                                      7
+                                                      X Di Dj
+(3.11)                                   ui ∗ uj =                 ckij uk .
+                                                              Dk
+                                                      k=0
+The coefficients
+                                                    Di Dj k
+(3.12)                                       mkij =        c
+                                                     Dk ij
+were computed exactly and all belong to R. Therefore O0 is closed by R-bilinearity. The same
+exact verification gives tre (ui ) ∈ R, n(ui ) ∈ R, ⟨ui , uj ⟩ ∈ R, and tre (ui ∗ uj ) ∈ R for all i, j. □
+Remark 10. The scaling (3.7) is not an arbitrary normalization. Among all diagonal rescalings
+ui = 2ai bi with ai ∈ {0, 1, 2}, the vector
+(3.13)                            (a0 , . . . , a7 ) = (1, 1, 1, 1, 2, 2, 2, 2)
+is the unique componentwise minimal solution for R-integrality of the Okubo structure constants.
+              INTEGRAL ELEMENTS OF OKUBO ALGEBRA AND THE E8-LATTICE                              14
+
+
+                        4. The Okubo conductor sublattice of E8
+                                                    √
+  Theorem 9 gives an arithmetic order over R = Z[ 3]. In order to compare it with the classical
+E8 lattice, however, we must pass from the R-module to a genuine Z-lattice. The most direct
+choice is the Z-span of the same scaled basis. This gives rise not to E8 itself, but to a conductor
+sublattice inside it.
+Definition 11. The direct Okubo metric shadow is the rank-eight Z-module
+(4.1)                                LOk = Zu0 + · · · + Zu7 .
+Equivalently, in the Coxeter-Dickson coordinates,
+(4.2)                                       LOk = DΛ,
+where Λ = OE8 and D is the diagonal matrix (3.7).
+Theorem 12 (The Okubo conductor sublattice). The lattice LOk is an even positive definite
+sublattice of Λ ∼
+                = E8 with
+(4.3)                                     [Λ : LOk ] = 212
+and
+(4.4)                                    det(LOk ) = 224 .
+Moreover
+(4.5)                                     min(LOk ) = 8,
+so LOk has no roots of norm 2.
+Proof. Since ui = Di bi , the change-of-basis matrix from Λ to LOk is D. Hence
+(4.6)                           [Λ : LOk ] = | det D| = 24 44 = 212 .
+The lattice Λ is unimodular, therefore
+(4.7)                         det(LOk ) = [Λ : LOk ]2 det(Λ) = 224 .
+Furthermore
+(4.8)                                 4Λ ⊂ LOk ⊂ 2Λ ⊂ Λ.
+Thus every nonzero x ∈ LOk can be written as x = 2y with y ∈ Λ, and since the minimum of
+E8 is 2, one has
+(4.9)                                  ⟨x, x⟩ = 4⟨y, y⟩ ≥ 8.
+The vector 2b0 ∈ LOk has norm 8, and so (4.5) follows.                                           □
+Remark 13. It is of paramount importance to notice the following point. The direct Okubo
+shadow is compatible with the Okubo R-order, but it is not E8 . Indeed it has determinant 224
+and no roots, whereas E8 is unimodular and has 240 roots of norm 2.
+  The previous theorem explains in which sense the title of this work has to be read. The
+Okubo product does not give the same integral E8 order. Rather, it gives a 2-primary conductor
+sublattice from which E8 can be retrieved by saturation or by gluing.
+Theorem 14 (Recovering E8 by saturation and gluing). The 2-adic saturation of LOk inside
+Λ ⊗ Q is
+(4.10)                          Sat2 (LOk ) = Λ ∼
+                                                = E8 .
+               INTEGRAL ELEMENTS OF OKUBO ALGEBRA AND THE E8-LATTICE                              15
+
+
+Equivalently, Λ is the even unimodular overlattice obtained from LOk by gluing along the maximal
+isotropic subgroup
+(4.11)                          H = Λ/LOk ⊂ ALOk = L∗Ok /LOk .
+This recovered lattice is not closed under the Okubo product.
+Proof. The Smith invariants of the inclusion LOk ⊂ Λ are
+(4.12)                                  (2, 2, 2, 2, 4, 4, 4, 4).
+Removing the 2-primary part gives
+(4.13)                                  (1, 1, 1, 1, 1, 1, 1, 1),
+and hence the 2-saturation is exactly Λ.
+  For the gluing description, the discriminant group of LOk has order
+(4.14)                              |ALOk | = det(LOk ) = 224 .
+The quotient
+(4.15)                          H = Λ/LOk ≃ (Z/2Z)4 ⊕ (Z/4Z)4
+has order 212 . The exact check of the discriminant quadratic form gives q(h) = 0 for all h ∈ H,
+so H is isotropic. Since |H|2 = |ALOk |, it is maximal isotropic, and the corresponding overlattice
+is even and unimodular. It is generated by LOk and the classes of b0 , . . . , b7 , hence it is Λ.
+   Finally, the last statement follows from the same√obstruction as in (3.6): the saturated lattice
+contains b0 and b2 , but b0 ∗ b2 has coefficient − 23 3 on b0 . Thus the saturation recovers E8
+metrically, not as an Okubo integral order.                                                        □
+                                                                                                 √
+Remark 15. The natural restriction of scalars of O0 has rank 16 over Z, with basis ui , 3ui .
+The trace form TrK/Q ⟨x, y⟩ is positive definite and even in the exact computation, but its
+minimum is 16 and it does not give an immediate E8 ⊕ E8 decomposition. This indicates that
+the rank-eight shadow and the rank-sixteen trace lattice encode different arithmetic aspects of
+the Okubo order.
+
+                       5. Arithmetic stabilizers and finite orbits
+   In analogy with the octonionic case, it is natural to study the orbit structure of integral
+elements. However, one must distinguish continuous automorphism groups from the finite arith-
+metic groups that preserve a chosen order. The compact Lie group G2 acts on the real octonion
+algebra, but it does not preserve the Coxeter-Dickson order in general. Likewise, the compact
+group SU(3) acts on the real Okubo algebra, but it does not automatically preserve the scaled
+order O0 or the conductor lattice LOk .
+
+5.1. The octonionic and para-octonionic stabilizer. For the octonionic and para-octonionic
+orders the relevant finite group is not the whole of G2 , but the arithmetic stabilizer
+(5.1)                       Aut(O, OE8 ) = {g ∈ G2 : g(OE8 ) = OE8 }.
+This is the group that can act on the 240 norm-one elements of the Coxeter-Dickson order. The
+same stabilizer is relevant for the para-octonionic product, because the para product is defined
+from octonionic conjugation and multiplication, both of which preserve the Coxeter-Dickson
+order.
+              INTEGRAL ELEMENTS OF OKUBO ALGEBRA AND THE E8-LATTICE                                    16
+
+
+5.2. The Okubo arithmetic stabilizer. For the Okubo algebra, the corresponding object is
+(5.2)                         Aut(O, O0 ) = {g ∈ SU(3) : g(O0 ) = O0 },
+where O0 is the scaled R-order of Theorem 9. If the direct shadow is selected, one may further
+restrict to
+(5.3)                       Aut(O, LOk ) = {g ∈ SU(3) : g(LOk ) = LOk }.
+Only these arithmetic stabilizers act on finite sets of integral elements. Consequently, any
+statement about orbits of roots or integral elements must be formulated with respect to such a
+discrete stabilizer, not with respect to the full compact continuous group SU(3).
+Remark 16. The automorphism τ in (2.10) gives a natural candidate for a generator of a
+discrete subgroup, but it fails the arithmetic test     √for the scaled order. √
+                                                                               In coordinates relative to
+u0 , . . . , u7 , the image of u2 has a coefficient − 23 3 on u0 for τ , and 32 3 for τ 2 . Thus τ and τ 2
+are Okubo automorphisms over K, but not stabilizers of O0 .
+Remark 17. A first exact search among signed permutations preserving the two conductor
+blocks {0, 1, 2, 3} and {4, 5, 6, 7} tests 147456 candidates. Only four of them preserve the metric,
+and only the identity preserves also the Okubo product in this search class. This does not
+determine the full arithmetic automorphism group, but it confirms that nontrivial finite orbits
+should not be inferred from SU(3) alone.
+
+                         6. Conclusions and Future Developments
+   In this work we separated three layers that must not be conflated: the classical Euclidean
+lattice E8 , the Coxeter-Dickson
+                    √                octonionic order over Z, and the Okubo arithmetic order natu-
+rally forced into Z[ 3]. The para-octonionic result is unconditional and mirrors the octonionic
+case: the Coxeter-Dickson order is stable under x • y = x · y, and therefore gives a Z-integral
+system for pO with underlying lattice E8 .
+   For the Okubo algebra the situation is more mesmerizing and surprising. The        √ Petersson
+product defined by the order-three automorphism τ introduces coefficients in Q( 3), and the
+Coxeter-Dickson order is not closed as a Z-module.√ Nevertheless, after the diagonal scaling
+D = diag(2, 2, 2, 2, 4, 4, 4, 4), one obtains a closed Z[ 3]-order O0 . Its direct metric shadow is
+not E8 , but the conductor sublattice LOk of index 212 and determinant 224 inside E8 .
+   The lattice E8 is then recovered in a precise but weaker sense: it is the 2-adic saturation of
+LOk , equivalently the even unimodular overlattice obtained by gluing along H = E8 /LOk . This
+recovery is metric-arithmetic rather than multiplicative, because the saturated lattice is again
+not closed under the Okubo product. This is the exact sense in which the Okubo construction
+is related to the E8 lattice.
+   It would be definitely interesting to analyze whether larger multi-generator overorders of O0
+give rise to finer conductor lattices, and whether the full arithmetic stabilizer of the Okubo
+order contains nontrivial elements outside the signed block-permutation class tested here. In a
+forthcoming work, it would also be natural to relate these conductor lattices to the polytope
+structure of the Gosset polytope and to the arithmetic of the Okubo idempotent orbit.
+
+                                       7. Acknowledgments
+   The author thanks Alessio Marrani and Francesco Zucconi for discussions and for the stim-
+ulating questions on Okubo algebras. He also thanks Raymond Aschheim for discussions on
+integral numbers, and Richard Clawson, David Chester, and Klee Irwin for discussions on lat-
+tices and root systems.
+               INTEGRAL ELEMENTS OF OKUBO ALGEBRA AND THE E8-LATTICE                                        17
+
+
+                                               References
+[MCCAI23] Marrani A., Corradetti D., Chester D., Aschheim R., Irwin K., A “magic” approach to octonionic
+          Rosenfeld spaces, Rev. Math. Phys. 35 (2023), 2350032.
+[MCZ25]   Marrani A., Corradetti D., Zucconi F., Physics with non-unital algebras? An invitation to the Okubo
+          algebra, J. Phys. A: Math. Theor. 58 (2025), 075202.
+[CMZ24]   Corradetti D., Marrani A., Zucconi F., A minimal and non-alternative realisation of the Cayley
+          plane, Ann. Univ. Ferrara 70 (2024), 681–730.
+[CZ22]    Corradetti D., Zucconi F., A geometrical interpretation of Okubo Spin group, J. Geom. Phys. 182
+          (2022), 104641.
+[CMZ25]   Corradetti D., Marrani A., Zucconi F., Collineation groups of octonionic and split-octonionic planes,
+          Rev. Math. Phys. 37 (2025), 2450027.
+[Cor26]   Corradetti D., 8-Dimensional Composition Algebras and the Cayley Plane, in Generalizations of
+          Complex Analysis and Applications, 9th European Congress of Mathematics minisymposium, Trends
+          in Mathematics, Springer, 2026, 61–71.
+[Cor24]   Corradetti D., Recovering Composition Algebras from 3D Geometric Algebras, in Hypercomplex
+          Analysis and its Applications, International Conference on Hypercomplex Analysis and its Applica-
+          tions, 2024, 27–33; arXiv:2403.12569.
+[El15]    Elduque A., Okubo Algebras: Automorphisms, Derivations and Idempotent, Contemporary Mathe-
+          matics, vol. 652, Amer. Math. Soc. Providence, RI, 2015, pp. 61-73.
+[El18]    Elduque A., Composition algebras; in Algebra and Applications I: Non-associative Algebras and
+          Categories, Chapter 2, pp. 27-57, edited by Abdenacer Makhlouf, Sciences-Mathematics, ISTE-
+          Wiley, London 2021.
+[EM90]    A. Elduque, and H.C. Myung, On Okubo algebras, in From symmetries to strings: forty years of
+          Rochester Conferences, World Sci. Publ., River Edge, NJ 1990, 299- 310.
+[Koc89]   Koca M., Icosians versus octonions as descriptions of the E8 lattice, J. Phys. A: Math. Gen. 22
+          (1989) 1949
+[Ok78]    Okubo S., Deformation of Pseudo-quaternion and Pseudo-octonion Algebras, Hadronic J. 1 (1978)
+          1383.
+[Ok78c]   Okubo S., octonions as traceless 3 x 3 matrices via a flexible Lie-admissible algebra, Hadronic J. 1
+          (1978), 1432-1465.
+[CoSm]    Conway, J.H. & Smith D.A. On Quaternions and Octonions New York: A K Peters/CRC Press,
+          2003
+[Co46]    Coxeter, H. S. M., Integral Cayley numbers, Duke Math. J., 13 (4) (1946), 561–578
+[De88]    R. Dedekind, Was sind und was sollen die Zahlen? F. Vieweg Braunschweig, 1888
+[Di23]    Dickson L. Algebras and their arithmetics, Chicago, Ill.: The University of Chicago Press 1923
+[Gau]     Gauss, C. F. Theoria residuorum biquadraticorum. Commentatio secunda. Comm. Soc. Reg. Sci.
+          Göttingen, 7 (1831) 89–148
+[Hu19]    Hurwitz, A. Vorlesungen über die Zahlentheorie der Quaternionen. Springer-Verlag, 1919.
+[Jo13]    Johnson N.W., Integers, The Mathematical Intelligencer, 35, 2 (2013) 52-60.
+[Jo17]    Johnson N.W. , Geometries and Transformations, Press, Cambridge-New York, Cambridge Univ,
+          2017.
+[Jo18]    Johnson, N.W. Integers, Modular Groups, and Hyperbolic Space. In: Conder, M., Deza, A., Weiss,
+          A. (eds) Discrete Geometry and Symmetry. GSC 2015. Springer Proceedings in Mathematics &
+          Statistics, vol 234 (2018) Springer, Cham.
+[Pe89]    Peano, Giuseppe Arithmetices principia, nova methodo exposita. Fratres Bocca. 1889.
+
+  Grupo de Física Matemática, Instituto Superior Técnico, Av. Rovisco Pais, 1049-001 Lisboa,
+Portugal
+  Email address: danielecorradetti@tecnico.ulisboa.pt
+

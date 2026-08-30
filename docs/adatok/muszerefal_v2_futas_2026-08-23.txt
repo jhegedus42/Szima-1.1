@@ -1,0 +1,154 @@
+════════════════════════════════════════════════════════
+  SZIMA MŰSZERFAL v2 — a TELJES műszerfal (v1 + α-találatok)
+  SZIMA COMPLETE INSTRUMENT PANEL · 西玛完整仪表盘
+  VOLLSTÄNDIGE INSTRUMENTENTAFEL · לוח המחוונים המלא של סימה
+════════════════════════════════════════════════════════
+
+── 1. E8 GEOMETRIA (forrás: E8Iranymutato_v1) ──
+  gyök száma                    : 240
+  egész gyökök (112-es osztály) : 112
+  fél-egész gyökök (128-as)     : 128
+  W(E8) rendje                  : 696729600
+  E8 dimenzió                   : 248
+  E8×E8 dimenzió                : 496
+  240 gyök + 16 penge hídja     : 256
+  minden gyök normája² = 8?     : True
+
+── 2. A [[7,1,3]] HÍD ÉS A POZITÍV ÁBÉCÉ (forrás: E8FazisKapcsolat_v2) ──
+  pozitív ábécé (a 240 fele)    : 120
+  Steane 7 bit                  : [idő okság tér szín hang fázis mód]
+  a fázis-bit indexe (0-alapú)  : 5
+
+── 3. A NYELV (forrás: GyokSzo_v1, Fogalom_v1, Mondat_v1) ──
+  alapszókincs                  : 240
+  egész szavak (állandó)        : 112
+  fél-egész szavak (kapcsolati) : 128
+  fogalomtár (szó+pálya+kateg.) : 240
+  távolság-eloszlás (+1,+½,0,−½,−1): (1, (56, (126, (56, 1))))
+  bélyegek (3×3×3)              : 27
+  példabélyeg fázistényezője    : 1.0
+
+── 4. FIZIKA (forrás: E8Iranymutato_v1, E8Univerzalitas_v1, CarnotCiklus_v1) ──
+  2D Ising α, β, γ, ν           : 0.0, 0.125, 1.75, 1.0
+  univerzalitási osztály        : 2D Ising (Z2 szimmetria-torés)
+  ising-egyezés (tört ⟷ Double) : True
+  3D skálacímkék teljesülnek?   : True   (tűrés: 1e-6)
+    Rushbrooke-maradék |α+2β+γ−2|  : 9.99999993922529e-9
+    Hiperskála-maradék  |2−α−3ν|   : 9.99999993922529e-9
+    Fisher-maradék      |γ−ν(2−η)| : 1.1840323610456949e-8
+  Carnot η(Th=500 K, Tc=300 K)  : 0.4
+  Carnot η(Th=600 K, Tc=300 K)  : 0.5
+  Carnot η(Th=800 K, Tc=300 K)  : 0.625
+  Carnot η(Th=373 K, Tc=273 K)  : 0.26809651474530827
+  Boltzmann kB (SI-exakt)       : 1.380649e-23 J/K
+  Landauer-küszöb T = 300 K     : 2.870978885078724e-21 J
+  Landauer-küszöb T = 1 K       : 9.569929616929079e-24 J
+
+── 5. KIMERÍTŐ FUTÁSIDEJŰ ÁLLAPOTOK (GAUGE-elv; mindegyik várt: 0) ──
+  szó-osztályhibák (240 szó)    : 0
+  távolság-skála hibái          : 0   (a 57600 párból)
+  kategória-hibák (240 fogalom) : 0
+  zártságsértések (komponálás)  : 0
+  involúció-sértések (σ∘σ=id)   : 0
+  ellenpont pályaváltásai (240) : 0
+  bélyeg-különbözőségek (nub)   : 27   (várható: 27)
+
+── 6. HÍD-BIZONYÍTÁSOK (kernel-Refl, §18 — két út, egy híd) ──
+  length AlapszókincsKonst = length FogalomTárKonst   [bizMűszerfalEmeletekHídja — IMPORTÁLT]
+    — a nyelv két emelete (szavak ⟷ fogalmak) ugyanannyi jelet fog át;
+      a híd: trans bizKétÚtHíd (sym bizKétPályaHídFogalmon) — két importált, független út
+  128 + 112 = 240   [bizSzindrómaHíd — ÚJ: SteaneHilbertTerKonst + SzindromaTerKonst = E8GyokokKonst]
+    — a Steane-tér és a szindróma-tér összege találkozik a gyök-enumerációval
+  importált támaszok: TipusOsszegBizonyit, WeylRendPrimtenyezosBizonyit (E8Iranymutato_v1);
+    bizKétÚtHíd (GyokSzo_v1); bizKétPályaHídFogalmon (Fogalom_v1); bizBélyegHíd (Mondat_v1);
+    bizKodSzoTer, bizTisztaTer, bizEgyesResz, bizTortreszNevezo, bizLobaszasExponensEgesz (AlphaSteane);
+    bizE8Gyokok, bizSzindromaTer112, bizE9Egyutthato, bizMagyarSzimmetriaMeret48, bizPiroskaReszhalmaz (CarnotE9)
+
+── 7. FIZIKAI ÁLLANDÓK (§17-négysoros formátum — minden Δ és Δ/σ futásból) ──
+  ▸ α⁻¹ dressed — a Steane [[7,1,3]] kódból (137.036 − δ)
+      érték_levezetett = 137.03599917700356
+      érték_mért       = 137.035999177  (σ = 2.1e-8, forrás: CODATA 2022)
+      Δ                = 3.552713678800501e-12   [futás]
+      Δ/σ              = 1.6917684184764291e-4   [futás]   → BELÜL
+      megjegyzés: α⁻¹_bare − δ(lobásás) — a hibajavítás levenedi a zajt
+
+  ▸ α⁻¹ bare (csupasz) — σ a „(11)”-ből
+      érték_levezetett = 137.036
+      érték_mért       = 137.035999177  (σ = 1.1e-8, forrás: CODATA 2022 „(11)”)
+      Δ                = 8.229999934883381e-7   [futás]
+      Δ/σ              = 74.81818122621256   [futás]   → KÍVÜL
+      megjegyzés: NYITOTT KÉRDÉS: a σ választása tisztázandó
+
+  ▸ α⁻¹ bare (csupasz) — σ a „(21)”-ből
+      érték_levezetett = 137.036
+      érték_mért       = 137.035999177  (σ = 2.1e-8, forrás: CODATA 2022 „(21)”)
+      Δ                = 8.229999934883381e-7   [futás]
+      Δ/σ              = 39.19047588039705   [futás]   → KÍVÜL
+      megjegyzés: a σ-ellentmondás második ága
+
+  ▸ G gravitációs állandó — (7·11)/(2³·5²)·√3·(1+9/250)^(1/40)·10⁻¹⁰
+      érték_levezetett = 6.674294269157169e-11
+      érték_mért       = 6.6743e-11  (σ = 1.5e-15, forrás: CODATA 2022)
+      Δ                = -5.73084283023544e-17   [futás]
+      Δ/σ              = 0.038205618868236264   [futás]   → BELÜL
+      megjegyzés: a (1+9/250)^(1/40) — ugyanaz a korrekció, mint az α törtrésze
+
+
+  ▸ ŐSZINTE MEGJEGYZÉS a σ-ellentmondásról (nyitott kérdés-kártya):
+      a bare értékre Δ = 8.229999934883381e-7 — ez a δ-két-útja a dressed hídnak;
+      σ = 1.1×10⁻⁸ (a „(11)”-ből) → Δ/σ ≈ 74.81818122621256   [futás]
+      σ = 2.1×10⁻⁸ (a „(21)”-ből) → Δ/σ ≈ 39.19047588039705   [futás]
+      a σ választása tisztázandó — a dressed-sor viszont mindkét σ-val BELÜL van
+
+  ▸ a δ KÉT ÚTJA (két importált konstrukció, egy hídnak — §18):
+      δ₁ = (121/128)^(249+ln(9/8))   = 8.229964521572508e-7   [AlphaSteane — lobásás]
+      δ₂ = Horgony − CODATA           = 8.229999934883381e-7   [MagyarKinaiTorvenyek_v3 — különbség]
+      |δ₁ − δ₂|                      = 3.5413310873190927e-12   [futás — a közelítés maradéka]
+
+  ▸ (d) α_G — a gravitációs csatolás Mersenne-tornya:
+      α_G = 2⁻¹²⁷                   = 5.877471754111438e-39   [futás — nincs publikus kifutás, az építő: pow 2.0 (−127.0)]
+      log₂(α_G)                     = -127.0   [futás — várható: −127]
+      a mért log₂(α_G⁻¹) = 126.993 ≈ 127 — Mersenne-prím kitevő (forrás: HanMagyarKodolas.idr §8)
+
+── 8. E8-RÁCS ÉS SZIMMETRIÁK (forrás: MagyarCarnotE9_v3_CodatAlpha) ──
+  e8Redundancia (240/128)        : 1.875
+  E9-együttható (1+4+6+4+1)      : 16
+  magyar szimmetria (2·2·6·2)    : 48
+  Piroska-részhalamaz (22×7 bit) : 154   (128 < 154 < 240? True)
+  szindróma-tér (240 − 128)      : 112
+  Carnot-buborék (960 − 16)      : 944
+
+── 9. A 17 LÉPÉS (számok: AlphaSteane; címek: AlphaSteaneDashboard) ──
+   1. a Steane [[7,1,3]] paraméterei: n = 7.0, k = 1.0, d = 3.0
+   2. s = n−k = 6.0, N = 2ⁿ = 128.0, M = 2ⁿ⁺¹ = 256.0
+   3. az egész rész: 2ⁿ + 2ᵈ + 1 = 137.0
+   4. a törtrész számlálója: s + d = 9.0
+   5. a törtrész nevezője: M − s = 250.0
+   6. α⁻¹_bare = 137 + 9/250 = 137.036
+   7. a tiszta tér: N − n = 121.0
+   8. a lobásás egész exponense: M − n = 249.0
+   9. a püthagoraszi egész hang: (s+d)/2ᵈ = 1.125
+  10. δ = (121/128)^(249+ln(9/8)) = 8.229964521572508e-7
+  11. α⁻¹_dressed = bare − δ = 137.03599917700356
+  12. Δ/σ = |dressed − CODATA|/σ → l. a §17-csoportot
+  13. G = (7·11)/(2³·5²)·√3·(1+9/250)^(1/40)·10⁻¹⁰ = 6.674294269157169e-11
+  14. 137 base 10-ben: [k, d, n] = [1, 3, 7] (csak base 10-ben)
+  15. a base 10 = 2 × 5 = oktáv × tükör (az emberi test 2×5 ujja)
+  16. a test szimmetriái = a fizika prímjei: 2 (szimmetria), 4 (végtag), 5 (ujj)
+  17. Hox-gének fixálják az 5 ujjat: Shh → Hoxa11 → Hoxa13 → pentadactylia
+
+
+── 10. KRONOLÓGIA — AZ ELMÚLT 2 HÉT CSÚCSPONTJAI (a kutatási naplókból) ──
+  ● 2026-08-18 — Cayley–Dickson-torony (49 pár × 3 törvény egy Refl-lel) + KisAI; a let-lánc-csapda mérése
+  ● 2026-08-19 — a repó átnevezve Szimára; a δ-lobásás felfedezése; az őszinte review (20 tautológia jelölve)
+  ● 2026-08-20 — α_G = 2⁻¹²⁷ Mersenne-torony + G-levezetés (Δ/σ = 0.038); a 17 lépéses AlphaSteaneDashboard
+  ● 2026-08-21 — E8Gyokok_v2: a 240 gyök INTEGER-kernellel; W(E8) = 696 729 600 két független úttal; a 240+16 = 256 Hamming-híd
+  ● 2026-08-22 — E8FazisKapcsolat_v2 (a fázis-bit) + a 3-pillér program: E8-rács, Steane-[[7,1,3]], magyar nyelv
+  ● 2026-08-23 — W4–W9: univerzalitás, holografikus kód, Carnot, a 3D-nyelv 4 rétege, műszerfal + weboldal
+
+
+════════════════════════════════════════════════════════
+  A futtatás: cd szima_ter/modul && idris2 --exec main Muszerefal_v2.idr
+  A weboldal: docs/muszerefal_v2.html (ugyanaz a stílus, új csoportok)
+  GAUGE-elv: minden szám ebből a futásból van (AGENTS §18/5).
+Kész / 完成 / Fertig / גמר

@@ -1,0 +1,22 @@
+- generic [active] [ref=e1]:
+  - heading "Zitterbewegung — a Dirac-nyelv időfejlődése" [level=1] [ref=e2]
+  - paragraph [ref=e3]:
+    - text: A jelentés oszcillál a térbeli (中文, ψ_L) és az időbeli (magyar, ψ_R) nézet között. A görbék minden pontját az Idris számolta (
+    - code [ref=e4]: DiracIdoFejlodes.idr
+    - text: ", Double-aritmetika); ez az oldal csak rajzol."
+  - generic [ref=e5]: ━ mátrix-út (spinor-fejlődés γ⁰-ával) ┄ zárt képlet sin²(t) ━ szerveri (hibás) γ⁰ — örök 0
+  - paragraph [ref=e7]: "Vízszintes tengely: t (0 → π). Függőleges: P(magyar) = |ψ_R|². A kék és a piros görbe 10⁻¹²-en belül egyezik (164 teszt egyike); a szürke vízszintes vonal a szerveri bogár: a 中文↔magyar átjárú sosem nyílik ki."
+  - generic [ref=e8]:
+    - text: "Kétféle bizonyítás, egy đồgramon:"
+    - list [ref=e9]:
+      - listitem [ref=e10]:
+        - text: "Exakt (Refl, Integer): a γ-mátrixok Clifford-relációi, γ⁵=diag(−1,−1,+1,+1), és hogy a Weyl-γ⁰ keveri a szektorokat míg a szerveri sosem —"
+        - code [ref=e11]: DiracGammaMatricak.idr
+        - text: (48 Refl a gyűjteményben).
+      - listitem [ref=e12]:
+        - text: "Numerikus (Idris Double): a két számítási út (mátrix-exponenciál vs sin²-zárt képlet) egyezése ≤10⁻¹² —"
+        - code [ref=e13]: DiracIdoFejlodes.idr
+        - text: + Teszt.idr.
+  - heading "Az adat útja" [level=2] [ref=e14]
+  - generic [ref=e15]: "osveny_index/DiracIdoFejlodes.idr (számítás: Idris Double) → idris2 --exec jsonKiiras … > docs/adatok/zitterbewegung.json → beágyazva ebbe az oldalba (canvas-rajzolás — a böngésző nem számít, csak jelenít; nincs fetch, file://-ról is működik)"
+  - contentinfo [ref=e16]: "Szima · a számítás Idrisben, a megjelenítés böngészőben · adat: docs/adatok/zitterbewegung.json (51 pont, Idris-generált)"

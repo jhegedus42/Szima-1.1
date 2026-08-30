@@ -1,0 +1,2121 @@
+                                        Preprint typeset in JHEP style - HYPER VERSION
+
+
+
+
+                                        An Exceptionally Simple Theory of Everything
+
+
+
+
+arXiv:0711.0770v1 [hep-th] 6 Nov 2007
+                                        A. Garrett Lisi
+                                           SLRI, 722 Tyner Way, Incline Village, NV 89451
+                                           E-mail: alisi@hawaii.edu
+
+
+
+                                        Abstract: All fields of the standard model and gravity are unified as an E8 principal bundle
+                                        connection. A non-compact real form of the E8 Lie algebra has G2 and F4 subalgebras which
+                                        break down to strong su(3), electroweak su(2) x u(1), gravitational so(3,1), the frame-Higgs,
+                                        and three generations of fermions related by triality. The interactions and dynamics of these
+                                        1-form and Grassmann valued parts of an E8 superconnection are described by the curvature
+                                        and action over a four dimensional base manifold.
+
+                                        Keywords: ToE.
+Contents
+
+1. Introduction                                                                              1
+   1.1 A connection with everything                                                          2
+
+2. The Standard Model Polytope                                                               4
+   2.1 Strong G2                                                                             5
+   2.2 Graviweak F 4                                                                         8
+       2.2.1 Gravitational D2                                                                8
+       2.2.2 Electroweak D2                                                                 10
+       2.2.3 Graviweak D4                                                                   11
+       2.2.4 F 4                                                                            13
+   2.3 F 4 and G2 together                                                                  14
+   2.4 E8                                                                                   16
+       2.4.1 New particles                                                                  21
+       2.4.2 E8 triality                                                                    22
+
+3. Dynamics                                                                                 23
+   3.1 Curvature                                                                            23
+   3.2 Action                                                                               25
+       3.2.1 Gravity                                                                        25
+       3.2.2 Other bosons                                                                   26
+       3.2.3 Fermions                                                                       27
+
+4. Summary                                                                                  28
+
+5. Discussion and Conclusion                                                                28
+
+
+
+
+1. Introduction
+
+We exist in a universe described by mathematics. But which math? Although it is inter-
+esting to consider that the universe may be the physical instantiation of all mathematics,[1]
+there is a classic principle for restricting the possibilities: The mathematics of the universe
+should be beautiful. A successful description of nature should be a concise, elegant, unified
+mathematical structure consistent with experience.
+     Hundreds of years of theoretical and experimental work have produced an extremely
+successful pair of mathematical theories describing our world. The standard model of parti-
+cles and interactions described by quantum field theory is a paragon of predictive excellence.
+
+
+
+
+                                            –1–
+General relativity, a theory of gravity built from pure geometry, is exceedingly elegant and
+effective in its domain of applicability. Any attempt to describe nature at the foundational
+level must reproduce these successful theories, and the most sensible course towards unifica-
+tion is to extend them with as little new mathematical machinery as necessary. The further
+we drift from these experimentally verified foundations, the less likely our mathematics is
+to correspond with reality. In the absence of new experimental data, we should be very
+careful, accepting sophisticated mathematical constructions only when they provide a clear
+simplification. And we should pare and unite existing structures whenever possible.
+     The standard model and general relativity are the best mathematical descriptions we
+have of our universe. By considering these two theories and following our guiding principles,
+we will be led to a beautiful unification.
+
+1.1 A connection with everything
+The building blocks of the standard
+model and gravity are fields over a
+four dimensional base manifold. The
+electroweak and strong gauge fields
+are described by Lie algebra valued
+connection 1-forms,
+
+ W ∈ su(2) B ∈ u(1)         g ∈ su(3)
+
+while the gravitational fields are de-
+scribed by the spin connection,
+
+       ω ∈ so(3, 1) = Cl2 (3, 1)
+
+a Clifford bivector valued 1-form, and
+the frame, e ∈ Cl1 (3, 1), a Clifford
+                                                     Figure 1: A periodic table of the standard model.
+vector valued 1-form. The frame may
+be combined with a multiplet of Higgs scalar fields, φ, to interact with the electroweak
+gauge fields and fermions to give them masses. The fermions are represented as Grass-
+mann valued spinor fields, { .ν e , .e, .u, . . .}, with the spin connection and gauge fields acting
+on them in fundamental representations. The electroweak W acts on doublets of left chi-
+ral fermions, {[ .ν eL , .eL ], . . .}; the strong g acts on triplets of red, green, and blue colored
+quarks, {[ .ur , .ug , .ub ], . . .}; and the electroweak B acts on all with an interesting pattern of
+hypercharges. The left and right chiral parts of the gravitational spin connection, ω, act on
+the frame and on the left and right chiral fermions. This structure, depicted in Figure 1, is
+repeated over three generations of fermions with different masses.
+     This diverse collection of fields in various algebras and representations is, inarguably, a
+mess. It is difficult at first to believe they can be unified as aspects of a unique mathematical
+structure — but they can. The gauge fields are known to combine naturally as the connection
+
+
+
+
+                                                –2–
+of a grand unified theory with a larger Lie group, and we continue with unification in this
+spirit. The spin connection, frame, and Higgs may be viewed as Lie algebra elements and
+included as parts of a “graviweak” connection. Relying on the algebraic structure of the
+exceptional Lie groups, the fermions may also be recast as Lie algebra elements and included
+naturally as parts of a BRST extended connection.[2, 3] The result of this program is a single
+principal bundle connection with everything,
+
+
+                 A. = 12 ω + 14 eφ + B + W + g +
+                                                                                                    (1.1)
+                       + ( .ν e + .e + .u + .d) + ( .ν µ + µ. + .c + .s) + ( .ν τ + .τ + .t + .b)
+
+
+In this connection the bosonic fields, such as the strong g = dxi gi A TA , are Lie algebra valued 1-
+forms, and the fermionic fields, such as u. = u. A TA , are Lie algebra valued Grassmann numbers.
+(These Grassmann fields may be considered ghosts of former gauge fields, or accepted a priori
+as parts of this superconnection.)
+    The dynamics are described by the curvature,
+
+
+                                            F = dA. + 12 [A,
+                                            =·             . A]
+                                                              .                                     (1.2)
+
+
+with interactions between particles given by their Lie bracket. For example, the interaction
+
+
+
+
+                                                                           
+between two quarks and a gluon is specified by the Lie bracket between their generators, with
+a corresponding Feynman vertex,
+
+                                                                   g rḡ
+
+                             [Vgrḡ , Vug ] = Vur        ⇔
+                                                                                   ur
+                                                                     ug
+
+It is a remarkable property of the exceptional Lie groups that some of their Lie brackets are
+equivalent to the action of a subgroup on vectors in fundamental representation spaces, just
+as they occur in the standard model.[4] For example, the bracket between the gluons and a
+set of colored quarks in A. can give the su(3) action on the defining 3,
+
+                                                               
+                                      h                  i      u. r
+                                       g, .ur + .ug + .ub = g  .ug 
+                                                                    
+                                                                ub
+                                                                 .
+
+
+
+
+When all standard model particles and interactions are identified this way, the entire ensemble
+corresponds to a uniquely beautiful Lie group — the largest simple exceptional group, E8.
+
+
+
+
+                                                     –3–
+2. The Standard Model Polytope
+
+The structure of a simple Lie algebra is described by its root system. An N dimensional
+Lie algebra, considered as a vector space, contains an R dimensional subspace, a Cartan
+subalgebra, spanned by a maximal set of R inter-commuting generators, Ta ,
+
+                         [Ta , Tb ] = Ta Tb − Tb Ta = 0       ∀ 1 ≤ a, b ≤ R
+
+(R is the rank of the Lie algebra) Every element of the Cartan subalgebra, C = C a Ta , acts
+linearly on the rest of the Lie algebra via the Lie bracket (the adjoint action). The Lie algebra
+is spanned by the eigenvectors of this action, the root vectors, Vβ , with each corresponding
+to an eigenvalue,
+                                                     X
+                                  [C, Vβ ] = αβ Vβ =    iC a αaβ Vβ
+                                                          a
+
+Each of the (N −R) non-zero eigenvalues, αβ , (imaginary for real compact groups) is linearly
+dependent on the coefficients of C and corresponds to a point, a root, αaβ , in the space dual
+to the Cartan subalgebra. The pattern of roots in R dimensions uniquely characterizes the
+algebra and is independent of the choice of Cartan subalgebra and rotations of the constituent
+generators.
+    Since the root vectors, Vβ , and Cartan subalgebra generators, Ta , span the Lie algebra,
+they may be used as convenient generators — the Cartan-Weyl basis of the Lie algebra,
+
+                                    A = AB TB = Aa Ta + Aβ Vβ
+
+
+
+
+                                                                           
+The Lie bracket between root vectors corresponds to vector addition between their roots, and
+to interactions between particles,
+
+                                                                          β
+
+               [Vβ , Vγ ] = Vδ     ⇔        αβ + αγ = αδ          ⇔                         (2.1)
+                                                                                   δ
+                                                                          γ
+
+Elements of the Lie algebra and Cartan subalgebra can also act on vectors in the various
+representation spaces of the group. In these cases the eigenvectors of the Cartan subalge-
+bra (called weight vectors) have eigenvalues corresponding to the generalized roots (called
+weights) describing the representation. From this more general point of view, the roots are
+the weights of the Lie algebra elements in the adjoint representation space.
+     Each weight vector, Vβ , corresponds to a type of elementary particle. The R coordinates
+of each weight are the quantum numbers of the relevant particle with respect to the chosen
+Cartan subalgebra generators.
+
+
+
+
+                                                –4–
+         G2           Vβ      g3    g8                                          g8
+        ◦
+        • g rḡ  (T2 − iT1 ) 1       0
+        •
+        ◦   r̄g
+          g (−T2 − iT1 ) −1
+                                   √
+                                     0
+        •
+        ◦ g r b̄ (T5 − iT4 ) /2
+                              1
+                                    √
+                                     3/2
+
+        ◦
+        • g r̄b (−T5 − iT4 ) −1/2 − 3/2
+                                    √
+        ◦
+        • g ḡb (−T7 − iT6 ) 1/2 − 3/2
+                                   √
+        ◦
+        • g gb̄ (T7 − iT6 ) −1/2 3/2
+                                      √                                                          g3
+        M qr
+        N          [1, 0, 0]  1/2 1/2 3
+                                       √
+        O q̄ r
+        H          [1, 0, 0] −1/2 −1/2 3
+                                      √
+        M qg
+        N          [0, 1, 0] −1/2 1/2 3
+                                       √
+        O q̄ g
+        H          [0, 1, 0]  1/2 −1/2 3
+                                      √
+        M qb
+        N          [0, 0, 1]   0 −1/ 3
+                                     √
+        O q̄ b
+        H          [0, 0, 1]   0 1/ 3
+
+
+Table 1: The su(3) weight vectors and weight coordinates of the gluon, quark, and anti-quark weights
+form the G2 root system.
+
+2.1 Strong G2
+The gluons, g ∈ su(3), in the special unitary group of degree three may be represented using
+the eight Gell-Mann matrices as generators,
+      g = g A TA = g A 2i λA = C + g β Vβ =
+              3 1 8                               i 3         i
+               g + √3 g g 1 −ig 2 g 4 −ig 5                        8      g rḡ      g rb̄
+                                                                                             
+                                                        2g + 2 3g
+                                                                √
+                                                                     −i 3
+                                                                                                      (2.2)
+        = 2i  g 1 +ig 2 −g 3 + √13 g 8 g 6 −ig 7  =     g r̄g     2 g + 2 3g
+                                                                               √i 8 g g b̄ 
+                                                  
+                                                                                             
+                 4     5     6     7      −2 8               r̄b            ḡb     −i     8
+                g +ig       g +ig         √
+                                            3
+                                              g            g              g         √ g
+                                                                                      3
+
+The Cartan subalgebra, C = g 3 T3 + g 8 T8 , is identified with the diagonal. This gives root
+vectors — particle types — corresponding to the six non-zero roots, such as
+                                                            √
+                          [C, Vggb̄ ] = i g 3 (−1/2) + g 8 ( 3/2) Vggb̄
+                                                                 
+
+
+                           0     0   0                                          0           0 0
+                                                                                                 
+                                               g b̄ g b̄    i 6      7
+    Vggb̄ = (T7 − iT6 ) = 0
+                                0   1       g = g Vggb̄ = 2 (g − ig )Vggb̄ = 0
+                                                                                           0 g gb̄ 
+                           0     0   0                                          0           0 0
+for the green anti-blue gluon. (By an abuse of notation, the coefficient, such as g gb̄ , has the
+same label as the particle eigenvector containing the coefficient, and as the root — the usage
+is clear from context.)
+     Since the Cartan subalgebra matrix in the standard representation acting on 3, and its
+dual acting on 3̄, are diagonal, the weight vectors, Vβ and V̄ β , satisfying
+                      X                                               X
+              CVβ =       ig a αaβ Vβ   and     C̄ V̄ β = −C T V̄ β =     ig a αaβ V̄ β
+                        a                                                   a
+
+
+
+
+                                                 –5–
+are the canonical unit vectors of the 3 and 3̄. The weights for these — the su(3) quantum
+numbers of the quarks and anti-quarks — can be read off the diagonals of C and C̄ = −C T =
+−C.
+    The set of weights for su(3), the defining 3, and its dual 3̄, are shown in Table 1. These
+weights are precisely the 12 roots of the rank two simple exceptional Lie group, G2. The
+weight vectors and weights of the 3 and 3̄ are identified as root vectors and roots of G2. The
+G2 Lie algebra breaks up as
+                                     g2 = su(3) + 3 + 3̄
+
+
+
+
+                                                                                                  
+allowing a connection to be separated into the su(3) gluons, g, and the 3 and 3̄ quarks and
+anti-quarks, q. and q̄,
+                    .
+                        related by Lie algebra duality. All interactions (2.1) between gluons and
+quarks correspond to vector addition of the roots of G2, such as
+                                                                                          g rḡ
+
+[Vgrḡ , Vqg ] = Vqr    ⇔ g rḡ + q g = q r       ⇔ (1, 0) + ( −1   1      1 √ 1
+                                                               2 , 2 3) = (2, 2 3)
+                                                                    √                 ⇔
+                                                                                                        qr
+                                                                                             qg
+We are including these quarks in a simple exceptional Lie algebra, g2, and not merely acting
+on them with su(3) in some representation. The necessity of specifying a representation for
+the quarks has been removed — a significant simplification of mathematical structure. And
+we will see that this simplification does not occur only for the quarks in g2, but for all fermions
+of the standard model.
+     Just as we represented the gluons in the (3 × 3) matrix representation (2.2) of su(3), we
+may choose to represent the gluons and quarks using the smallest irreducible, (7 × 7), matrix
+representation of g2,[6]
+                                                                                                    
+                         −1 b √ −1 b       −1 r           −1 r                 −1 g          −1 g
+                     0 √     q̄    q       √   q          √    q̄             √     q        √   q̄
+                 1 b i2 8 2                 2              2                    2
+                                                                               −1 r
+                                                                                               2
+                                           √1 q̄ g           r̄b                             −g  ḡb 
+                √ q √ g          0                        g                  √     q̄               
+                 2       3                  2                                   2                   
+                 √1 q̄ b 0 √   −i 8          rb̄         √1 q g                    g b̄     −1 r
+                 2              3
+                                   g        g               2
+                                                                              −g             √
+                                                                                               2
+                                                                                                 q   
+                                                                                                     
+                 1 r −1 g          r̄b i 3       i 8                             r̄g         1 b
+                                                                                                     
+   g + q + q̄ =  2 q̄
+                  √     √
+                           2
+                             q −g 2 g + 2 3 g    √          0                   g            √
+                                                                                               2
+                                                                                                 q    (2.3)
+                                                                                                     
+                 √1 r          −1 g                  −i 3         i           √1 q̄ b
+                 2 q −g rb̄ √     q̄        0          g  −      √  g 8                     g rḡ   
+                 1 g 1 r 2ḡb                        2        2 3               2
+                                                                                                     
+                                                          −1             −i            i
+                                               rḡ                b           3            8
+                                                                                                     
+                 √ q̄ √ q g
+                 2        2
+                                           −g             √ q
+                                                            2            2  g   +   2 3
+                                                                                       √ g     0     
+                                                                                                     
+                       √1 q g           √1 q̄ r   −1 b                               i 3   i
+                         2
+                                g gb̄     2
+                                                  √
+                                                    2
+                                                      q̄         −g r̄g    0         2g − 2 3g
+                                                                                           √   8
+
+
+Squaring this matrix gives all interactions between gluons and quarks, equivalent to su(3)
+acting on quarks and anti-quarks in the fundamental representation spaces.
+    The G2 root system may also be described in three dimensions as the 12 midpoints of
+the edges of a cube — the vertices of a cuboctahedron. These roots are labeled g and qIII in
+Table 2, with their (x, y, z) coordinates shown. These points may be rotated and scaled,
+                                                           
+                                              −1 √
+                                                √   −1 √
+                                                       −1
+                                  B2              3  3   3 x
+                                 3       1 √ −1 √1
+                                g = √               0                               (2.4)
+                                               2 2 √ y 
+                                                            
+                                    8       2   −1  −1   2
+                                  g             √ √ √        z
+                                                            6     6   3
+
+
+
+
+                                                           –6–
+                                       √
+  G2 + U (1) x             y      z    √2 B 2   g3     g8
+                                         3
+   •◦        g rḡ   −1 1   0            0        1    0
+                                                                  G2 + U (1) x     y   z
+                                                                                           √
+                                                                                           √2 B 2 g 3   g8
+    •◦       g r̄g    1 −1 0             0      −1
+                                                     √
+                                                       0
+                                                                  M
+                                                                  N    qII r    −1 0 0
+                                                                                             3
+                                                                                            1/3   1/2
+                                                                                                           √
+                                                                                                        1/2 3
+     •◦      g rb̄   −1 0   1            0       1/2
+                                                      √
+                                                       3/2
+                                                                  M
+                                                                  N    qII g
+                                                                                 0 −1 0     1/3
+                                                                                                           √
+                                                                                                  −1/2 1/2 3
+      •◦     g r̄b    1  0 −1            0      −1/2 − 3/2
+                                                      √           M
+                                                                  N    qII b     0 0 −1     1/3     0 −1/ 3
+                                                                                                           √
+       •◦    g ḡb    0  1 −1            0       1/2 − 3/2
+                                                     √            H
+                                                                  O    q̄ rII    1 0 0     −1/3
+                                                                                                           √
+                                                                                                  −1/2 −1/2 3
+        •◦   g gb̄    0 −1 1             0      −1/2   3/2
+                                                                  O
+                                                                  H    q̄ gII    0 1 0     −1/3
+                                                                                                           √
+                                                                                                   1/2 −1/2 3
+                                                         √
+   M
+   N         qIr     −1/2 1/2    1/2   −1/6     1/2   1/2 3
+                                                                  H
+                                                                  O    q̄ bII    0 0 1     −1/3     0 1/ 3
+                                                                                                          √
+                                                    √
+   N
+   M         qIg     1/2 −1/2 1/2      −1/6 −1/2 1/2 3
+                                                                  
+                                                                     qIIIr      0 1 1     −2/3
+                                                                                                           √
+                                                                                                   1/2 1/2 3
+                                                         √
+   N
+   M         qIb     1/2   1/2 −1/2    −1/6      0    −1/ 3
+                                                                  
+                                                                     qIIIg
+                                                                                 1 0 1     −2/3
+                                                                                                           √
+                                                                                                  −1/2 1/2 3
+                                                         √                                                 √
+   O
+   H         q̄ rI   1/2 −1/2 −1/2      1/6     −1/2 −1/2 3       
+                                                                     qIIIb      1 1 0     −2/3     0 −1/ 3
+                                                        √                                                  √
+   H
+   O         q̄ gI   −1/2 1/2 −1/2      1/6     1/2 −1/2 3        
+                                                                  ♦   q̄ rIII    0 −1 −1    2/3   −1/2 −1/2 3
+                                                                                                           √
+   O
+   H         q̄ bI   −1/2 −1/2 1/2      1/6      0 1/ 3
+                                                       √          
+                                                                  ♦   q̄ gIII   −1 0 −1     2/3    1/2 −1/2 3
+                                                                                                          √
+                                                                  ♦
+                                                                     q̄ bIII   −1 −1 0     2/3     0 1/ 3
+   N
+   M           l     −1/2 −1/2 −1/2     1/2      0     0
+   H
+   O          ¯l     1/2   1/2   1/2   −1/2      0     0
+
+Table 2: Weights of gluons, three series of quarks and anti-quarks, and leptons, in three dimensions,
+projecting down to the G2 root system in the last two coordinates.
+
+
+so that dropping the first, B2 , coordinate gives the projection to the roots in two dimensions.
+     In general, we can find subalgebras by starting with the root system of a Lie algebra,
+rotating it until multiple roots match up on parallel lines, and collapsing the root system along
+these lines to an embedded space of lower dimension — a projection. Since the cuboctahedron
+is the root system of so(6), we have obtained g2 by projecting along a u(1) in the Cartan
+subalgebra of so(6),
+
+                               so(6) = su(4) = u(1) + su(3) + 3 + 3̄ → u(1) + g2                             (2.5)
+
+This particular rotation and projection (2.4) generalizes to give the su(n) subalgebra of any
+so(2n). We can also obtain g2 as a projected subalgebra of so(7) — the root system is the
+so(6) root system plus 6 shorter roots, labeled qII , at the centers of the faces of the cube in
+the figure of Table 1. The eight weights at the corners of a half-cube, labeled qI and l, also
+project down to the roots of G2 and the origin, giving leptons and anti-leptons in addition
+to quarks,
+                                   su(3) + 3 + 3̄ + 1 + 1̄                                 (2.6)
+These three series of weights in three dimensions, and their rotations into su(3) coordinates,
+are shown in Table 2. The action of su(3) on quarks and leptons corresponds to its action
+on these sets of weights, while the u(1)B−L quantum number, B2 , is the baryon minus lepton
+number, related to their hypercharge. The su(3) action does not move fermions between the
+nine B2 grades in the table — each remains in its series, I, II, or III. Since this su(3) and
+
+
+
+
+                                                            –7–
+u(1)B−L are commuting subalgebras, our grand unification of gauge fields follows the same
+path as the Pati-Salam SU (2)L × SU (2)R × SU (4) GUT.[5]
+
+2.2 Graviweak F 4
+
+The interactions between other gauge fields are more involved and separate from the strong
+gluons. Most importantly, the weak W acts only on left-chiral fermions, as determined by
+their gravitational so(3, 1) quantum numbers. Also, the Higgs, φ, needs to be combined with
+the gravitational frame, e, to make a 1-form interacting correctly with the electroweak gauge
+fields and the fermions. These interactions imply that the spin connection, which acts on
+the frame, and the electroweak gauge fields, which act on the Higgs, must be combined in a
+graviweak gauge group. The best candidate for this unification is so(7, 1), which breaks up
+as
+
+   so(7, 1) = so(3, 1) + so(4) + (4 × 4) = so(3, 1) + (su(2)L + su(2)R ) + (4 × (2 + 2̄))                          (2.7)
+
+and has the desired balance of gravity and left-right symmetric electroweak gauge fields acting
+on the frame-Higgs.
+
+2.2.1 Gravitational D2
+For its action on spinors, gravity is best described using the spacetime Clifford algebra,
+Cl(3, 1) — a Lie algebra with a symmetric product. The four orthonormal Clifford vector
+generators,
+
+               γ1 = σ2 ⊗ σ1            γ2 = σ2 ⊗ σ2            γ3 = σ2 ⊗ σ3                γ4 = iσ1 ⊗ 1
+
+are written here as (4 × 4) Dirac matrices in a chiral representation, built using the Kronecker
+product of Pauli matrices,
+                                                                                          
+                            0          1              0 −i                        1 0
+                       σ1 =                      σ2 =                        σ3 =
+                            1          0              i 0                         0 −1
+
+These may be used to write the gravitational frame as
+
+                                                                                         0       0     e∨   e∧
+                                                                                                              
+                                                                                                        T    S
+                                               e4 −eε σε                                               e∨   e∧
+                                                                              
+                                     0                                  0   eR         0        0
+      e = dxi (ei )µ γµ = i                                                                             S    T 
+                                                                                                               
+                                                               =                     =
+                                                                                       e∧
+                                  e +eε σε
+                                   4               0                   eL    0           T      −e∧S    0    0 
+                                                                                        −e∨S    e∨
+                                                                                                 T      0    0
+
+with left and right chiral parts, eL/R = i(e4 ±eε σε ), and the coefficients,
+
+                              e∧     4
+                               T = ie +ie
+                                          3                e∧      1
+                                                            S = −ie −e
+                                                                      2
+
+                              e∨     4
+                               T = ie −ie
+                                          3                e∨      1  2    ∧∗
+                                                            S = −ie +e = −eS
+
+
+
+
+                                                      –8–
+The d2 = so(3, 1) = Cl2 (3, 1) valued gravitational spin connection is written using the six
+Clifford bivector generators, γµν = 12 [γµ , γν ], as
+                                 "                                                         #
+                    1 µν           ( 21 ω επ επτ −iω τ 4 )iστ               0
+               ω = 2 ω γµν =                                                                 =
+                                                 0             ( 12 ω επ επτ +iω τ 4 )iστ
+                    "                                      # "              #                  (2.8)
+                         τ     τ
+                      (ω S −iω T )iστ           0                  ωL 0
+                 =                                           =
+                             0          (ω τS +iω τT )iστ           0 ωR
+
+with six real coefficients redefined into the spatial rotation                   1 3 1 3 1 3 1 3
+                                                                           D2G 2i ωT 2 ωS 2 ωL 2 ωR
+and temporal boost parts,
+                                                                           •
+                                                                           ◦   ∧
+                                                                             ωL 1      1    1    0
+                ω τS = 12 ω επ επτ   ω τT = ω τ 4                         •
+                                                                           ◦   ∨
+                                                                             ωL −1 −1 −1 0
+                                                                           ◦
+                                                                           • ωR∧ −1    1    0    1
+These relate to the left and right-chiral (selfdual and anti-              ◦
+                                                                           •   ∨
+                                                                             ωR 1 −1 0 −1
+selfdual) parts of the spin connection,                                     e∧
+                                                                                 0    1 1/2 1/2
+                                                                              S
+                                                                              ∨
+                                                                            eS 0 −1 −1/2 −1/2
+                                                                           
+                ω L/R = (ω τL/R )iστ = ω S ∓ iω T
+                                                                            e∧
+                                                                             T   1    0 −1/2 1/2
+                                                                              ∨
+                                                                            eT −1 0 1/2 −1/2
+                                                                           
+which are sl(2, C) valued but not independent, ω τR = ω τL∗ .
+    The Cartan subalgebra of gravity, in several different                 M fL∧ 1/2 1/2 1/2 0
+                                                                           N
+coordinates, is                                                            M fL∨ −1/2 −1/2 −1/2 0
+                                                                           N
+                                                                           M fR∧ −1/2 1/2 0 1/2
+                                                                           N
+  C = ω 12 γ12 + ω 34 γ34 = ωS3 γ12 + ωT3 γ34 =                            M fR∨ 1/2 −1/2 0 −1/2
+                                                                           N
+      "                                     # "                #
+        (ω 3S −iω 3T )iσ3         0             ωL3 iσ3 0                Table 3:      Gravitational D2
+    =                                        =
+                0         (ω 3S +iω 3T )iσ3        0 ωR 3 iσ
+                                                             3           weights for the spin connection,
+                                                                         frame, and fermions, in two coor-
+Taking the Lie bracket with C gives root vectors and roots               dinate systems.
+for the spin connection, such as
+
+        C, 4 (−γ13 + γ14 − iγ23 + iγ24 ) = i ωS3 (2) + 1i ωT3 (2) 41 (−γ13 +γ14 −iγ23 +iγ24 )
+        1                                                      
+
+
+for ωL∧ , and weight vectors and weights for the frame, such as
+                                                     1 3
+                               i                              i
+                               C, 2 (γ3 − γ4 ) = i   i ωT (2)    2 (γ3 − γ4 )
+
+for e∧
+     T . The fermions, such as the left-chiral spin-up up quark, u
+                                                                     ∧
+                                                                   . L , are in the 4 of the spinor
+
+representation space (2.8) with weight vectors, such as [1, 0, 0, 0], equal to the canonical unit
+vectors, and weights read off the diagonal of C. The collection of fields and their weights are
+shown in Table 3. The two coordinate systems in the table are related by a π4 rotation and
+scaling,            "      #      " 1 1 #"           # "                      #
+                                                1 3         1 1 3
+                       ωL3          √ √          ω           ( ω    +   ω 3)
+                        3    = √12 −12 12       i T
+                                                   3  = 12 i 1 T3        S
+                                                                           3                  (2.9)
+                       ωR           √ √
+                                      2   2
+                                                 ωS       2 (−  ω
+                                                               i T   +   ω S)
+
+
+
+
+                                                 –9–
+    Unlike other standard model roots, the roots of so(3, 1) are not all imaginary — the
+coordinates along the ωT3 axis are real. The Spin+ (3, 1) Lie group of gravity, with Lie algebra
+so(3, 1), is neither simple nor compact — it is isomorphic to SL(2, C) = SL(2, R) × SL(2, R).
+According to the ADE classification of Lie groups it is still labeled D2 — the same as
+Spin(4) = SU (2) × SU (2) — since it has the same root system, albeit with one real axis.
+
+2.2.2 Electroweak D2
+The electroweak gauge field, W ∈ su(2)L , acts on left-chiral doublets, such as [ .uL , .dL ]. The
+Pati-Salam GUT introduces a partner to this field, B 1 ∈ su(2)R , acting on all right-chiral
+fermion doublets. Part of this field, B 31 2i σ3 ∈ u(1)R , joins with the u(1)B−L complement, B 2 ,
+of the strong su(3) to give the electroweak B ∈ u(1)Y . The left-right electroweak partner
+fields may be joined in a d2 partner to gravity,
+                                    so(4) = su(2)L + su(2)R
+Since both W and B1 act on the Higgs doublet, [φ+ , φ0 ], it is sensible to consider the 4 real
+fields of this Higgs doublet to be components of a vector acted on by the so(4). This suggests
+we proceed as we did for gravity, using a complementary chiral matrix representation for the
+four orthonormal basis vectors of Cl(4),
+               γ10 = σ1 ⊗ σ1      γ20 = σ1 ⊗ σ2     γ30 = σ1 ⊗ σ3       γ40 = σ2 ⊗ 1
+These allow the Higgs vector field to be written as
+                                                                   
+                     "                        #      0   0 −φ 1 φ +
+
+               µ 0          0     −iφ4 +φε σε      0 0     φ− φ0 
+          φ = φ γµ =                            =                    ∈ Cl1 (4)
+                                                                   
+                       iφ4 +φε σε                  −φ0 φ+ 0 0 
+                                                  
+                                       0
+                                                     φ− φ1 0 0
+with coefficients equal to those of the Higgs doublet,
+                            φ+ = φ1 − iφ2              φ− = φ1 + iφ2
+                            φ0 = −φ3 − iφ4             φ1 = −φ3 + iφ4
+The d2 = so(4) = Cl2 (4) valued electroweak connection breaks up into two su(2) parts,
+                             "                                   # "                    #
+                               (V τ +U τ ) i σ       0               W τ iσ      0
+                   µν 0
+         wew = 12 wew γµν =                2 τ                    =      2 τ
+                                     0         (V τ −U τ ) 2i στ        0    B τ1 2i στ
+
+The U and V fields are analogous to the 1i ω T and ω S of gravity, and are related to the
+electroweak W and B 1 , analogous to the ω L and ω R , by the same π4 rotation and scaling
+(2.9). The Cartan subalgebra,
+                                                                           
+                                                            W3 0    0 0
+                                                           0 −W 3 0 0 
+                                                         i                 
+                                0                    0
+            C = 14 (W 3 + B13 )γ12 + 14 (W 3 − B13 )γ34 = 
+                                                         2 0   0 B13 0 
+                                                                            
+
+                                                            0   0   0 −B13
+
+
+
+
+                                              – 10 –
+gives root vectors and roots for the electroweak fields,                                  √
+                                                                      D2ew W 3 B13        √2 B2   1
+such as W ± , and weight vectors and weights for the                                        3     2Y    Q
+Higgs, such as                                                       •
+                                                                     ◦  W+ 1 0              0      0    1
+                                                                     •
+                                                                     ◦ W+ −1 0
+                                                                         −                  0      0 −1
+
+    C, 21 (−γ30 +iγ40 ) = i W 3 (−1/2)+B13 (1/2) 12 (−γ30 +iγ40 )
+                                               
+                                                                     •
+                                                                     ◦ B1− 0 1              0      1    1
+                                                                     ◦ B1 0 −1
+                                                                     •                      0     −1 −1
+for φ0 . The fermions are acted on in the standard                    φ+
+                                                                             1/2   1/2     0     1/2   1
+4, equivalent to the independent su(2)L and su(2)R                   ♦ φ−
+                                                                            −1/2 −1/2      0     −1/2 −1
+
+action on left and right-chiral Weyl doublets, such as                 φ0
+                                                                            −1/2 1/2       0     1/2   0
+[uL , dL ] and [uR , dR ]. The electroweak D2 weights for            ♦ φ1
+                                                                             1/2 −1/2      0     −1/2 0
+
+various fields are shown in Table 4.                                 N
+                                                                     M νL     1/2 0        1/2    −1/2 0
+
+      The two right-chiral gauge fields, B ±
+                                           1 , are not part          N
+                                                                     M eL    −1/2 0        1/2    −1/2 −1
+
+of the standard model. They are a necessary part                     M νR
+                                                                     N         0 1/2       1/2     0    0
+of the Pati-Salam GUT, and presumably have large                     M eR
+                                                                     N         0 −1/2      1/2    −1 −1
+masses or some other mechanism breaking left-right                   N
+                                                                     MM
+                                                                      N
+                                                                      M uL
+                                                                      N       1/2 0       −1/6    1/6 2/3
+symmetry and impeding their detection. As in the                      N
+                                                                      M
+                                                                      M dL
+                                                                     MN
+                                                                     N       −1/2 0       −1/6    1/6 −1/3
+Pati-Salam GUT, the B2 weights from Table 2 and                      M
+                                                                     NM uR
+                                                                     MN
+                                                                     N         0 1/2      −1/6    2/3 2/3
+the B13 weights may be scaled and rotated ((2.4) and                 N
+                                                                     M
+                                                                     N
+                                                                     MM dR
+                                                                      N        0 −1/2     −1/6    −1/3 −1/3
+(2.9)) into two new coordinates, including the weak
+                                                                    Table 4: Weights for electroweak D2,
+hypercharge,
+                                  √                                 for B2 from Table 2, and electroweak
+                        1      3  √2
+                        2 Y = B1 − 3 B2                             hypercharge and charge.
+                                                                   p
+This scaling implies a weak hypercharge coupling constant of g1 = 3/5 and Weinberg angle
+satisfying sin2 θW = 3/8, typical of almost all grand unified theories. There is also a new
+quantum number partner to the hypercharge, X, corresponding to the positive combination
+of quantum numbers B13 and B2 . The hypercharge may be scaled and rotated with W 3 to
+give the electric charge,
+                                                Q = W 3 + 21 Y
+
+These weights, shown in Table 4, are in agreement with the known standard model quantum
+numbers, and justify our use of the corresponding particle labels.
+
+2.2.3 Graviweak D4
+The electroweak d2 = so(4) and gravitational d2 = so(3, 1) combine as commuting parts of
+a graviweak d4 = so(7, 1). The 4 Higgs fields, φ, a vector of the electroweak so(4), combine
+with the 4 gravitational so(3, 1) vectors of the frame, e, into 16 bivector valued fields, eφ, of
+the graviweak D4 gauge group. This combination is achieved by adding the weights of Table
+3 with those of Table 4 to obtain the weights of D4 in four dimensions, as shown in Table 5.
+The weights of the fermions also add to give their D4 weights.
+    The fermion weights correspond to the fundamental positive-chiral spinor representation
+space, 8S+ , of D4. To construct this explicitly, we use Trayling’s model,[7] and combine
+
+
+
+
+                                                    – 11 –
+our Cl(3, 1) and Cl(4) basis generators into eight Clifford basis vector elements of Cl(7, 1),
+represented as (16 × 16) matrices,
+                        Γ1 = σ2 ⊗ σ3 ⊗ 1 ⊗ σ1               Γ01 = σ2 ⊗ σ1 ⊗ σ1 ⊗ 1
+                        Γ2 = σ2 ⊗ σ3 ⊗ 1 ⊗ σ2               Γ02 = σ2 ⊗ σ1 ⊗ σ2 ⊗ 1
+                        Γ3 = σ2 ⊗ σ3 ⊗ 1 ⊗ σ3               Γ03 = σ2 ⊗ σ1 ⊗ σ3 ⊗ 1
+                        Γ4 = iσ1 ⊗ 1 ⊗ 1 ⊗ 1                Γ04 = σ2 ⊗ σ2 ⊗ 1 ⊗ 1
+These allow us to build the spin connection, ω = 12 ω µν Γµν ,                        1 3 1 3     3
+                                                                           D4         2 ωL 2 ωR W          B13
+the electroweak connection, wew = 12 ω µν     0
+                                          ew Γµν , the frame,
+e = eµ Γµ , and the Higgs, φ = φµ Γ0µ , as Cl(7, 1) valued             •
+                                                                       ◦ ωL∧/∨ ±1 0 0  0
+fields, with the same coefficients as before. The frame and            •
+                                                                       ◦ ωR 0 ±1 0 0
+                                                                           ∧/∨
+
+
+Higgs multiply to give the frame-Higgs, eφ = eµ φν Γµ Γ0ν ,            •
+                                                                       ◦ W±± 0 0 ±1 0
+a Clifford bivector valued 1-form. Together, these fields              ◦ ∧/∨
+                                                                       •  B1    0 0 0 ±1
+                                                                        eT
+                                                                                φ+   ∓1/2 ±1/2 1/2        1/2
+may be written as parts of a Cl2 (7, 1) = so(7, 1) gravi-
+                                                                             ∧/∨      ∓1/2 ±1/2 −1/2 −1/2
+weak connection,                                                       
+                                                                       ♦   e T φ−
+                                                                             ∧/∨      ∓1/2 ±1/2 −1/2 1/2
+                                                                       
+                                                                          e T φ0
+                    H 1 = 12 ω + 14 eφ + wew                 (2.10)          ∧/∨
+                                                                       
+                                                                       ♦   e T φ1     ∓1/2 ±1/2 1/2 −1/2
+Since our chosen Cl(7, 1) representation is chiral, H 1 may            
+                                                                       
+                                                                             ∧/∨
+                                                                           e S φ+     ±1/2 ±1/2 1/2        1/2
+be represented by its positive-chiral part, the (8 × 8) first                ∧/∨      ±1/2 ±1/2 −1/2 −1/2
+                                                                       
+                                                                       ♦   e S φ−
+quadrant of the (16 × 16) rep, shown here acting on a                        ∧/∨
+                                                                       
+                                                                          e S φ0     ±1/2 ±1/2 −1/2 1/2
+positive-chiral spinor, 8S+ :                                                ∧/∨
+ 1                                                                 
+                                                                       ♦   e S φ1     ±1/2 ±1/2 1/2 −1/2
+           i
+   2 ωL + 2 W
+               3      W+         −41 eR φ1     1
+                                               4 e R φ+       νeL             ∧/∨
+                                                                       N
+                                                                       M     νeL      ±1/2    0     1/2    0
+      W−        1        i
+                 2 ωL − 2 W
+                             3    1
+                                  4 eR φ−
+                                               1
+                                               4 eR φ0 
+                                                           e 
+                                                             L              ∧/∨
+ 
+       1
+  − 4 e L φ0
+                   1          1        i 3         +               M
+                                                                       N     eL       ±1/2    0     −1/2   0
+                    4 e L φ+   2 ωR + 2 B1       B1         νeR            ∧/∨
+      1
+      4 e L φ−
+                    1
+                    4 e L φ1        B1−     1         i 3
+                                            2 ωR − 2 B 1      eR       N
+                                                                       M     νeR       0     ±1/2    0     1/2
+                                                                              ∧/∨
+                                                                       M
+                                                                       N     0 ±1/2 0 −1/2
+                                                                             eR
+The fractions, 12 and 14 , multiplying fields in H 1 are nec-
+essary for fitting gravity and the electroweak connection Table 5: Graviweak D4 roots for 24
+together in D4, and for obtaining the correct dynamics bosons and weights for 8S+ fermions.
+from curvature.
+    The first 24 weights in Table 5 are the roots of D4. This particular root system has a
+uniquely beautiful set of symmetries called triality,[8] rotations of the root system by 2π   3
+that leave it invariant. A triality rotation matrix, T , can permute the coordinates of the root
+system,                    1 3                  1              
+                                 0        0001            3       B13
+                             2ω L                      2 ωL
+                            1 ω03   1 0 0 0   1 ω3   1 ω3 
+                           2 R                  2 R   2 L 
+                            03  =                        =
+                            W   0 0 1 0  W3   W3 
+                                                                    
+
+                              B 0 31      0100         B13       1 3
+                                                                 2 ωR
+taking each root to its first triality partner, then to its second, and back — satisfying T 3 = 1.
+As an example, the above triality rotation gives
+                                           ∧
+                                    T T T ωR = T T B1+ = T ωL∧ = ωR
+                                                                  ∧
+
+
+
+
+                                                   – 12 –
+showing the equivalence of these roots under this triality rotation. Six of the roots,
+
+                            {W + , W − , e∧        ∧        ∨        ∨
+                                          S φ+ , e S φ0 , e S φ− , e S φ1 }
+
+
+are their own triality partners — they lie in the plane orthogonal to this triality rotation.
+    The last 8 weights of Table 5, representing one generation of leptons as 8S+ , are rotated
+by triality into the other fundamental representation spaces of D4: the negative-chiral spinor
+and the vector,
+                         T 8S+ = 8S−      T 8S− = 8V      T 8V = 8S+
+
+These two new sets of weights are equivalent to the 8S+ under this triality rotation — they
+carry the same quantum numbers and have the same interactions with the triality rotated
+roots of D4. Given this relationship, we tentatively consider these three triality partners of
+8S+ as the three generations of fermions, such as
+
+                           T e∧    ∧
+                              L = µL         T µ∧    ∧
+                                                L = τL         T τL∧ = e∧
+                                                                        L
+
+
+The complete set of weights, D4 + (8S+ + 8S− + 8V ), including these new triality partners, is
+the root system of the rank four simple exceptional group, F 4.
+
+2.2.4 F 4
+The 48 roots of F 4 are shown in Tables 5 and 6. These roots, in four dimensions, are the
+vertices of the 24-cell polytope and its dual. Using the breakdown of F 4 into D4 and the
+three triality-equivalent fundamental representation spaces,
+
+                     f 4 = d4 + (8S+ + 8S− + 8V ) = so(7, 1) + (8+8+8)                   (2.11)
+
+the graviweak bosons (2.10) and three generations of leptons (or quarks) may be written as
+parts of a F 4 connection,
+
+                             H 1 + (ν. e + e)
+                                           . + (ν
+                                                . µ + µ)
+                                                      .
+                                                         + (ν. τ + τ. )
+
+Although we are labeling triality partners as fermions of different generations, the exact
+relationship between triality and generations is more complicated and not yet clear to the
+author. One clue is that the triality partners of F 4 (connected in the figure by pale blue and
+thin gray lines) may be collapsed to their midpoints to get a g2 subalgebra,
+
+                                  1           2
+                                  3 (1 + T + T )f 4 = g2 ⊂ f 4
+
+This triality collapse might relate to a description of graviweak interactions with a group
+smaller than F 4.[9, 10] It also suggests physical fermions may be linear combinations of
+triality parners, such as
+                                µ∧       ∧        ∧          ∧
+                                  L = a fL + b T fL + c T T fL
+
+
+
+
+                                               – 13 –
+        1 3 1 3     3 B3
+   8S−  2 ωL 2 ωR W     1
+           3 1  3   3 1 3
+    tri B1 2 ωL W 2 ωR
+    ∧/∨
+ M νµL 0 ±1/2 1/2 0
+ N
+ M µ∧/∨
+ N  L     0 ±1/2 −1/2 0
+    ∧/∨ 1
+ M νµR
+ N        /2 0     0 ±1/2
+    ∧/∨ −1
+ M µR
+ N         /2 0    0 ±1/2
+
+
+
+
+        1 3 1 3        3 B3
+    8V  2 ωL 2 ωR W         1
+        1 3      3     3 1 ω3
+    tri   ω
+        2 R   B  1 W     2 L
+    ∧/∨                  ±1
+ M ντ L
+ N        0    0    1/2 /2
+    ∧/∨            −1
+ M τL
+ N        0    0      /2 ±1/2
+    ∧/∨ ±1
+ M ντ R
+ N         /2 1/2 0        0
+    ∧/∨ ±1    −1
+ M τR
+ N         /2 /2 0         0
+
+
+
+
+Table 6: The 8S− and 8V weights complete the D4 and 8S+ weight system of Table 5 to form the F 4
+root system. The 48 roots are projected from four dimensions to two and plotted, with lines shown
+between triality partners.
+
+
+Guided by this triality symmetry, we will continue to label the triality partners with generation
+labels — though this should be understood as an idealization of a more complex and as yet
+unclear relationship between physical particles and triality partners.
+     If we wished, we could write the constituent particles of F 4 as matrix elements of its
+smallest irreducible, 26 dimensional representation,[11] as we did for the gluons and quarks
+(2.3) in G2. We can also compute particle interactions by adding the roots in Tables 5 and
+6, such as
+                                      e∧     ∧
+                                       L + eT φ+ = νeR
+                                                       ∧
+
+
+between an electron, a frame-Higgs, and an electron neutrino. These graviweak interactions,
+described by the structure of F 4, do not involve anti-fermions or color; to include all standard
+model interactions we will have to combine F 4 and G2.
+
+2.3 F 4 and G2 together
+The coordinate axes chosen in Tables 5 and 6 are a good choice for expressing the quan-
+tum numbers for gravity and the electroweak fields, but they are not the standard axes for
+
+
+
+
+                                             – 14 –
+describing the F 4 root system. We can rotate to our other coordinate system,
+
+
+                                       1 3 1 3
+                                     { 2i ωT , 2 ωS , U 3 , V 3 }
+
+
+using a pair of π4 rotations (2.9) and thereby express the 48 roots of F 4 in standard coordi-
+nates, shown in Table 7. These coordinate values are described by various permutations of
+±1, ±1/2, and 0; and a similar description of the G2 and U (1) weights from Table 2 is also
+presented.
+
+
+                                                             G2 + U (1) x       y     z perms #
+                                                             •
+                                                             ◦   su(3)        1 −1      all     6
+                1 3 1 3      3 V 3 perms                      M
+                                                              N
+                                                              M qI
+                                                             MN
+                                                             N           ±1   ±1     ±1
+                                                                           /2 /2 /2 two > 0 3
+        F4      2i ωT 2 ωS U                      #
+                                                              H
+                                                              O     q̄   ±1/2 ±1/2 ±1/2 one > 0 3̄
+  •◦   so(7, 1)        ±1 ±1       all            24         H
+                                                             OH
+                                                             M
+                                                             N
+                                                              O
+                                                                      l
+                                                                       I
+                                                                         −1/2 −1/2 −1/2 one     1
+  M 8S+
+  N            ±1/2 ±1/2 ±1/2 ±1/2 even# > 08
+                                                             H
+                                                             O        ¯
+                                                                      l  1/2 /2 /2 one
+                                                                               1     1          1̄
+  M 8S−
+  N            ±1/2 ±1/2 ±1/2 ±1/2 odd# > 0 8
+                                                              M
+                                                              N
+                                                              M qII
+                                                             MN
+                                                             N                  −1      all     3
+   N
+   M     8V            ±1          all      8                 H
+                                                              O
+                                                             HO q̄II
+                                                             OH                  1      all     3̄
+                                                             
+                                                              
+                                                             
+                                                                 q  III      1    1    all     3
+                                                             
+                                                             ♦
+                                                             
+                                                             ♦   q̄
+                                                              ♦ III          −1 −1      all     3̄
+
+Table 7: Roots of F 4 and weights of Table 2 described with allowed permutations of coordinate
+values.
+
+
+     To completely describe every field in the standard model and gravity we need to combine
+these two sets of quantum numbers. The graviweak F 4 root system includes the two quantum
+numbers of so(3, 1) gravity and the two of the su(2)L and su(2)R electroweak fields, with
+three generations of fermions related through so(7, 1) triality (2.11). The G2 weight system
+includes the three quantum numbers of the su(3) strong fields and a u(1)B−L contributing
+to hypercharge, with fermions and anti-fermions related through duality (2.6). To match the
+quantum numbers of all known standard model and gravitational fields, the so(7, 1) of F 4
+and su(3) and u(1)B−L of G2 + U (1) must act on three generations of 8 fermions for each of
+the 3 colors of quark, 1 uncolored lepton, and their anti-particles,
+
+
+                   so(7, 1) + (su(3) + u(1)) + (8 + 8 + 8) × (3 + 3̄ + 1 + 1̄)                (2.12)
+
+
+as depicted in the periodic table, Figure 1. The weights of these 222 elements — corresponding
+to the quantum numbers of all gravitational and standard model fields — exactly match 222
+roots out of the 240 of the largest simple exceptional Lie group, E8.
+
+
+
+
+                                              – 15 –
+2.4 E8
+
+                                                              E8 x1 x2 x3 x4 x5 x6 x7 x8 #
+“E8 is perhaps the most beautiful structure
+                                                            so(16)  ±1 ±1 all perms      112
+in all of mathematics, but it’s very complex.”
+                                                             16S+   ±1/2 ... even# > 0 128
+— Hermann Nicolai
+                                                                  Table 8: The 240 roots of E8.
+
+Just as we joined the weights of D2G and D2ew to form the F 4 graviweak root system, the
+weights of F 4 and G2 may be joined to form the roots of E8 — the vertices of the E8 polytope
+— shown in Table 8. Combining these weights in eight dimensions requires the introduction
+of a new quantum number, w, with values determined by the F 4 and G2 numbers. These
+quantum numbers uniquely identify each root of E8 as an elementary particle — Table 9.
+
+
+                                          1 3 1 3
+                  E8                      2i ωT 2 ωS   U3 V 3   w     x     y     z     F4    G2 #
+       •
+       ◦•◦              ∧/∨
+                       ωL
+                             ∧/∨
+                            ωR             ±1 ±1        0       0           0           D2G 1 4
+       ◦•
+       • ◦              W ± B1±              0         ±1 ±1    0           0           D2ew 1 4
+    
+     ♦
+       ♦        eφ+ eφ− eφ1 eφ0            ±1         ±1      0           0           4 × 4 1 16
+   MN
+   N MNMNM          νeL eL νeR eR         ±1/2 ... even#> 0 −1/2 −1/2 −1/2 −1/2         8S+    l   8
+   OH
+   H OHOHO          ν̄eL ēL ν̄eR ēR     ±1/2 ... even#> 0     1/2   1/2   1/2   1/2   8S+   ¯l   8
+  N
+  M
+  M
+  N
+  MN
+  N M
+    N
+    MMN
+     N N
+       M
+       M
+       N
+       MNMN
+          M
+          N
+          M         uL dL uR dR           ±1/2 ... even#> 0 −1/2      ±1/2 ... two> 0   8S+   qI 24
+  H
+  O
+  H
+  OH
+  H
+  O O
+    H
+    OH
+     OHH
+       O
+       O
+       H
+       OHOH
+          O
+          H
+          O         ūL d¯L ūR d¯R       ±1/2 ... even#> 0     1/2   ±1/2 ... one> 0
+                                                                                 8S+ q̄I 24
+    N
+    MNMNMNM        νµL µL νµR µR           ±1/2 ... odd#> 0 −1/2      1/2   1/2   1/2
+                                                                                 8S− l 8
+    H
+    OHOHOHO        ν̄µL µ̄L ν̄µR µ̄R       ±1/2 ... odd#> 0 1/2 −1/2 −1/2 −1/2 8S−    ¯l 8
+   M
+   N
+   M
+   N
+   N
+   MNM
+     N
+     MN
+      MNM
+        N
+        M
+        N
+        MNMM
+           N
+           N
+           M          cL sL cR sR          ±1/2 ... odd#> 0 1/2 ±1/2 ... two> 0 8S− qI 24
+   H
+   O
+   H
+   O
+   H
+   OHH
+     O
+     OOH
+      H H
+        O
+        O
+        H
+        OHOH
+           O
+           O
+           H          c̄L s̄L c̄R s̄R      ±1/2 ... odd#> 0 −1/2 ±1/2 ... one> 0 8S− q̄I 24
+
+     MN
+     N MNMNM        ντ L τL ντ R τR                ±1        1          0        8V   1 8
+     OH
+     H OHOHO        ν̄τ L τ̄L ν̄τ R τ̄R            ±1       −1          0        8V   1 8
+   NM
+    N
+   MN
+    MN N
+       M
+      MN
+       MN N
+          M
+         MN
+          MNM
+            N
+            MN
+             M         tL bL tR bR                 ±1        0         −1        8V qII 24
+    H
+    O
+   OH
+   HOH H
+       O
+      OH
+       OH H
+          O
+         OH
+          OHO
+            H
+            OH
+             O         t̄L b̄L t̄R b̄R             ±1        0          1        8V q̄II 24
+         •
+         ◦                    g                     0        0       1 −1         1 A2 6
+      
+      
+      
+      
+      
+       
+        ♦
+        ♦
+        ♦
+                            x1 Φ                   0       −1         ±1         1 qII 6
+      
+      
+      
+      
+        ♦
+         
+         ♦
+         
+         ♦                   x2 Φ                   0        1         ±1         1 qII 6
+      
+      
+      
+        
+         ♦
+        
+        ♦
+         ♦
+                            x3 Φ                   0        0      ±(1 1)        1 qIII 6
+Table 9: The 240 roots of E8 assigned elementary particle labels according to F 4 and G2 subgroups.
+
+The E8 root system was first described as a polytope by Thorold Gosset in 1900,[12] and
+the triacontagonal projection plotted by hand in 1964. This plot,[13] now with elementary
+particle symbols assigned to their associated roots according to Table 9, is shown in Figure
+2, with lines drawn between triality partners.
+
+
+
+
+                                                – 16 –
+Figure 2: The E8 root system, with each root assigned to an elementary particle field.
+
+
+
+
+                                       – 17 –
+    The interactions between all standard model and gravitational fields correspond to the
+Lie brackets between elements of the E8 Lie algebra, and thus to the addition of E8 roots.
+The Lie algebra breaks into the standard model (2.12) as
+
+        e8 = f 4 + g2 + 26 × 7
+           = (so(7, 1) + (8 + 8 + 8)) + (su(3) + 3 + 3̄) + (8 + 8 + 8 + 1 + 1) × (3 + 3̄ + 1)
+           = so(7, 1) + (su(3) + u(1)) + (8 + 8 + 8) × (3 + 3̄ + 1 + 1̄) + u(1) + 3 × (3 + 3̄)
+
+The 26 is the the traceless exceptional Jordan algebra — the smallest irreducible representa-
+tion space of F 4 — and the 7 is the smallest irreducible representation space of G2. Each 8
+is the 8S+ , 8S− , or 8V of so(7, 1) = d4. And the 3 and 3̄ are in the defining representation
+space of su(3) = a2. The last two terms in the last line above represent new particle fields
+not in the standard model,
+
+                                    w ∈ u(1)         xΦ ∈ 3 × (3 + 3̄)
+
+The new xΦ field carries weak hypercharge and color, has three generations, and couples
+leptons to quarks.
+    This breakdown of E8 is possible because F 4 is the centralizer of G2 in E8,
+
+                                               F 4 = CE8 (G2)
+
+To display this subalgebra structure, the E8 root system may be rotated in eight dimen-
+sions, projected to two, and plotted, as shown in Figures 3 and 4.1 In these plots, the root
+coordinates have been transformed by a rotation,
+                                 1 1                         
+                     1 3        √ √                            1 3
+                       2 ωL                                       2i ωT
+                                   2   2
+                      1 ω 3   −12 √12
+                                √                            
+                                                                1 ω3 
+                     2 R                                    2 S 
+                      3                √1 √1                3 
+                     W                   2  2               U 
+                      3  
+                      B1               −1 √1
+                                          √
+                                                               3 
+                                                               V 
+                                            2  2
+                      w =
+                                                                   
+                                                 1             w 
+                                                                   
+                                                   −1 √−1 √
+                                                          −1  
+                      B2                        √                x 
+                                                                     
+                                                     3  3   3 
+                                                               
+                      3                         −1 √1
+                                                                        
+                      g                         √      0    y 
+                                                     2  2 √
+                        g8
+                                                             
+                                                   −1 √
+                                                   √   −1 √2        z
+                                                              6    6   3
+
+equivalent to the redefinition of the Cartan subalgebra generators according to (2.4) and (2.9).
+Since the spaces containing the F 4 and G2 root systems are orthogonal in E8, these plots of
+E8 showing a rotation between the two are especially pretty and convenient for identifying
+interactions between particles. Also, the central cluster of 72 roots in Figure 4 is the E6 root
+system, which acts on each of the three colored and anti-colored 27 element clusters of the
+exceptional Jordan algebra.
+  1
+      An animation of this rotation is available at http://deferentialgeometry.org/anim/e8rotation.mov
+
+
+
+
+                                                    – 18 –
+Figure 3: The E8 root system, rotated a little from F 4 towards G2.
+
+
+
+
+                              – 19 –
+Figure 4: The E8 root system, rotated a little from G2 towards F 4, showing E6.
+
+
+
+
+                                    – 20 –
+   Inspecting the e6 subalgebra of e8 reveals how the fermions and anti-fermions — up to
+now described as living in real representations — are combined in complex representations.[14]
+The e6 decomposes to graviweak so(7, 1) acting on three complex generations of fermions as
+
+                      e6 = f 4 + (8 + 8 + 8) × 1̄ + u(1) + u(1)
+                         = so(7, 1) + (8 + 8 + 8) × (1 + 1̄) + u(1) + u(1)
+                         = so(9, 1) + u(1) + 16SC
+
+in which the final u(1) is the complex structure, i, related to the w quantum number, and
+the 16SC is a complex spinor acted on by the so(9, 1).
+    Although considering its e6, f 4, and g2 subalgebras is useful, the E8 Lie algebra may be
+broken down to the standard model via a more direct route,[8]
+
+     e8 = so(7, 1) + so(8) + (8S + × 8S + ) + (8S − × 8S − ) + (8V × 8V )
+         = so(7, 1) + (su(3) + u(1) + u(1) + 3 × (3 + 3̄)) + (8 + 8 + 8) × (3 + 3̄ + 1 + 1̄)
+
+This decomposition is directly visible
+in Table 9, in which the first four co-
+ordinate axes are of so(7, 1) and the
+last four are of so(8). The so(7, 1)
+decomposes into the graviweak fields,
+and the so(8) decomposes into strong
+su(3), u(1)B−L , and new fields via
+the embedding of su(4) in so(8). A
+matched triality rotation of so(7, 1)
+and so(8) relates the three genera-
+tions of fermions.
+     The Lie algebra structure of E8,
+and its relation to the structure of
+the standard model, is depicted in
+Figure 5 — a periodic table of E8.
+A comparison of this structure with
+Figure 1 shows the extremely close
+fit to the standard model, with only                   Figure 5: A periodic table of E8.
+a handful of new particles suggested
+by the structure of E8.
+
+2.4.1 New particles
+After all algebraic elements of the standard model have been fit to the E8 Lie algebra there
+are a few e8 elements remaining, representing new, non-standard particles. There are two
+new quantum numbers, X and w, representing the Pati-Salam partner to weak hypercharge
+
+
+
+
+                                              – 21 –
+and a new quantum number related to generations. Each of these corresponds to new u(1)
+valued fields, X and w, which presumably have large masses impeding their measurement.
+The use of the Pati-Salam model also implies a non-standard pair of fields, B ±      1 , interacting
+with right-chiral fermions. In addition, there is a new field, xΦ, interacting with leptons and
+quarks. This field factors into three generations, x1/2/3 , corresponding to different w quantum
+numbers, and a new Higgs scalar, Φ, for each color and anti-color. The new field, xΦ, is a
+joining of x and Φ in the same way eφ is a joining of the gravitational frame, e, and the Higgs,
+φ.
+     Since the frame-Higgs is a composite field — a simple bivector — its degrees of freedom
+do not exhaust the algebraic sector it inhabits. Specifically, eφ = eµ φν Γµ Γ0ν uses 16 algebraic
+elements but, because it is simple, has only 4 (for e = eµ Γµ ) plus 4 (for φ = φν Γ0ν ) equals 8
+algebraic field degrees of freedom. How or why these 16 algebraic elements are restricted is
+not understood — but this restriction is necessary to recover the standard model and gravity.
+Because the 18 algebraic degrees of freedom inhabited by xΦ appear amenable to the same
+sort of factorization as eφ (see Table 9), it is natural to factor it into three x fields and three
+colored and three anti-colored Higgs fields, Φ. It could be possible that this new xΦ gives
+different masses to the different generations of quarks and leptons, producing the CKM and
+PMNS matrices. Also, since it mixes leptons and quarks, the existence of this field predicts
+proton decay, as does any grand unified theory.
+     The interactions between the new fields, w and xΦ, are analogous to the interactions
+between the gravitational spin connection and the frame-Higgs, ω and eφ. This suggests that
+a better understanding of the triality relationship between generations will involve how these
+two sets of fields may be more intimately related.
+
+2.4.2 E8 triality
+The specific triality matrix chosen to rotate between the fermion generations, in the coordi-
+nates { 12 ωL3 , 12 ωR
+                     3 , W 3 , B 3 , w, B , g 3 , g 8 }, is
+                                1        2
+                                                      0 0 0 1 
+                                      1 0 0 0                   
+                                      0 0 1 0                   
+                                      0 1 0 0                   
+                                                   √
+                                   T =
+                                                                
+                                               −1 − 3
+                                               √                 
+                                              √2   2            
+                                                3 −1            
+                                               2   2            
+                                                           1 0
+                                                           0 1
+
+This is a somewhat arbitrary choice, selected for leaving W 3 and color invariant. Once the first
+generation of fermions, with correct charges and spins, are assigned to elements of e8, this T
+rotates them to the second and third generations. The second and third generations only have
+the correct spins and charges when considered as equivalent under this T . When considered
+as independent fields with E8 quantum numbers, irrespective of this triality relationship, the
+second and third generation of fields do not have correct charges and spins. The W 3 and color
+charges are invariant under our choice of T but the spins and hypercharges are only correct
+
+
+
+
+                                              – 22 –
+through triality equivalence. This relationship between fermion generations and triality is the
+least understood aspect of this theory.
+     It is conceivable that there is a more complicated way of assigning three generations of
+fermions to the E8 roots to get standard model quantum numbers for all three generations
+without triality equivalence. There is such an assignment known to the author that gives the
+correct hypercharges for all three generations, but it is not a triality rotation and it produces
+unusual spins. A correct description of the relationship between triality and generations, if it
+exists, awaits a better understanding.
+
+3. Dynamics
+
+                                                                      A]. Classically, extrem-
+The dynamics of a connection is specified by the action functional, S[ .
+izing this action, constrained by boundary data, determines the value of the connection, A(x),
+                                                                                          .
+
+over a region of the base manifold. The value of the connection may also be used to infer
+topological properties of the base manifold. Quantum mechanically, the action of a connection
+over the base manifold determines the probability of experiencing that connection.[15] Since
+quantum mechanics is fundamental to our universe, it may be more direct to describe a set
+of quantum connections as a spin foam, with states described as a spin network. Under more
+conventional circumstances, the extensive methods of quantum field theory for a non-abelian
+gauge field may be employed, with propagators and interactions determined by the action.
+In any case, the dynamics depends on the action, and the action depends on the curvature of
+the connection.
+
+3.1 Curvature
+The connection with everything, an e8 valued collection of 1-forms and Grassmann fields,
+
+                             A. = H 1 + H 2 + Ψ
+                                              . I + Ψ
+                                                    . II + Ψ
+                                                           . III ∈ e8.                      (3.1)
+
+may be broken up into parts matching the standard model,
+
+            H 1 = 12 ω + 14 eφ + wew                         ∈ so(7, 1)
+                  ω                                             ∈ so(3, 1)
+                  eφ = (e1 + e2 + e3 + e4 ) × (φ+/0 + φ−/1 )    ∈ 4 × (2 + 2̄)
+                  wew = W + B 1                                 ∈ su(2)L + su(2)R
+            H 2 = w + B 2 + xΦ + g                              ∈ so(8)
+                  w + B2                                           ∈ u(1) + u(1)B−L
+                  xΦ = (x1 + x2 + x3 ) × (Φ r/g/b +Φ r̄/ḡ/b̄ )    ∈ 3 × (3 + 3̄)
+                  g                                                ∈ su(3)
+              ΨI = .ν e + .e + .u + .d
+               .                                               ∈ 8S+ × 8S+
+            Ψ. II = ν
+                    . µ + µ .
+                              + c. + s.                        ∈ 8S− × 8S−
+           ΨIII = .ν τ + .τ + .t + .b
+           .                                                   ∈ 8V × 8V
+
+
+
+
+                                              – 23 –
+The curvature of this connection, an e8 valued collection of 2-forms and Grassmann 1-forms,
+                            F = dA. + 12 [A,
+                            =·             . A]
+                                              .
+
+                              = dA. + A. A.                                              (3.2)
+                              =F  1 + F 2 + DΨ + DΨ + DΨ
+                                =     =         . I . II . III
+
+
+may be computed and broken up into standard model parts. The so(7, 1) part of the curvature,
+                                        1    G    gw    ew
+                                      F
+                                      =
+                                          =F
+                                           =
+                                               +F
+                                                =
+                                                     +F
+                                                      =
+
+
+includes the gravitational so(3, 1) part, the mixed graviweak 4 × (2 + 2̄) part, and the elec-
+troweak su(2)L + su(2)R part. The gravitational so(3, 1) part of the curvature is
+
+                        F
+                        =
+                          G
+                            = 12 ((dω + 12 ωω) + 81 eφeφ) = 12 (R
+                                                                =
+                                                                  − 18 eeφ2 )            (3.3)
+
+in which R
+         =
+           is the Riemann curvature 2-form, ee is the spacetime area bivector, and φ2 is the
+amplitude of the Higgs squared. The mixed graviweak 4 × (2 + 2̄) part is
+                    gw
+                  F
+                  =
+                       = (de + 12 [ω, e])φ − e(dφ + [W + B 1 , φ]) = =
+                                                                     T φ − eDφ           (3.4)
+
+in which =
+         T is the gravitational torsion and D is the covariant derivative. And the electroweak
+su(2)L + su(2)R part of the curvature is
+                       ew                                       W    B1
+                     F
+                     =
+                          = (dW + W W ) + (dB 1 + B 1 B 1 ) = F
+                                                              =
+                                                                  +F
+                                                                   =
+                                                                                         (3.5)
+
+The so(8) part of the curvature,
+                                   2    w    B2    x    g
+                                 F
+                                 =
+                                     =F
+                                      =
+                                          +F
+                                           =
+                                                +F
+                                                 =
+                                                     +F
+                                                      =
+                                                          + xΦxΦ                         (3.6)
+
+includes the u(1) and u(1)B−L parts, the mixed 3 × (3 + 3̄) part, and the strong su(3) part.
+The last term does not easily separate — xΦxΦ contributes to all three parts of F    2 . The
+                                                                                   =
+u(1) and u(1)B−L parts are
+                                   w            B2
+                                 F
+                                 =
+                                     = dw     F
+                                              =
+                                                   = dB 2
+The mixed 3 × (3 + 3̄) part is
+                    x
+                  F
+                  =
+                      = (dx+[w+B 2 , x])Φ − x(dΦ+[g, Φ]) = (Dx)Φ−xDΦ
+
+And the strong su(3) part is
+                                               g
+                                             F
+                                             =
+                                                 = dg + gg
+Due to the exceptional structure of e8, the fermionic part of the curvature for the first
+generation is
+
+            D .Ψ = d .Ψ + [H 1 + H 2 , .Ψ]
+
+                 = (d + 21 ω + 14 eφ) .Ψ + W .ΨL + B 1 .ΨR − .Ψ(w + B 2 + xΦ) − .Ψq g
+
+with D the covariant massive Dirac derivative in curved spacetime. The second and third
+fermionic generation parts of this curvature are similar.
+
+
+
+
+                                                – 24 –
+3.2 Action
+The most conservative approach to specifying the dynamics is to write down an action agree-
+ing with the known standard model and gravitational action while satisfying our desire for
+minimalism. With these two motivations in mind, an action for everything can be economi-
+cally expressed as a modified BF theory action over a four dimensional base manifold,
+                                Z
+                                     ·
+                                                          0
+                             S = hB    F + πG
+                                    = =·    4 B
+                                              =
+                                                G G
+                                                 B
+                                                 =
+                                                    γ−B  = =
+                                                            ∗B 0 i                    (3.7)
+
+                                        ·          ·
+in which =·
+          F is the curvature (3.2), B    =
+                                            =B =
+                                                  +B ≡
+                                                       is an e8 valued collection of 2-form and anti-
+Grassmann 3-form Lagrange multiplier fields, B            G is the so(3, 1) part of B, B 0 is the rest of
+                                                       =                               =   =
+B,
+=
+   γ =  Γ 1 Γ2 Γ 3 Γ4 is the Clifford  algebra  volume    element,   ∗ is the    Hodge star, and <> takes
+the scalar part (the trace).
+    After varying B   =
+                         and plugging it back in (3.7), this action — up to a boundary term — is
+                                 Z
+                                      ·
+                            S = hBD  ≡
+                                                   1
+                                          Ψ + ∼e 16πG
+                                          .           φ2 (R − 32 φ2 ) − 41 F= 0 ∗F
+                                                                                 =
+                                                                                   0
+                                                                                     i              (3.8)
+
+in which ∼e is the spacetime volume 4-form, R is the gravitational scalar curvature, and F= 0 is
+the non-so(3, 1) part of F=1
+                             and F
+                                 =2
+                                    . This is recognizable as the action for the standard model
+and gravity, with a cosmological constant related to the Higgs vacuum expectation value,
+
+                                               Λ = 34 φ2
+
+The details of the action, and its agreement with the standard model and general relativity,
+can be worked out for each sector of the E8 Lie algebra.
+
+3.2.1 Gravity
+The modified BF action for gravity was discovered by MacDowell and Mansouri in 1977,
+[16] and revived by Smolin, Starodubtsev, and Freidel during their work on loop quantum
+gravity.[17, 18] The remarkable and surprising fact that gravity, described by the spin con-
+nection, ω, and frame, e, can be described purely in terms of a unified connection, ω + e, was
+the seed idea that led to the unification of all fields in a single connection.[2]
+     The gravitational part of the action (3.7) is
+                                      Z
+                                            G G            G G
+                                SG = hB   =
+                                              F
+                                              =
+                                                   + πG
+                                                      4 B=
+                                                            B
+                                                            =
+                                                                γi
+
+in which the gravitational part of the curvature (3.3) is
+                                    G
+                                  F
+                                  =
+                                      = 12 (R
+                                            =
+                                              − 18 eeφ2 ) ∈ so(3,
+                                                            =
+                                                                  1)
+
+Extremizing the action under variation of the gravitational part of the Lagrange multiplier,
+δB G , requires
+ =
+                              G         G
+                            B
+                            =
+                                = πG2
+                                      F
+                                      =
+                                               1
+                                          γ = πG (R
+                                                  =
+                                                    − 18 eeφ2 )γ
+
+
+
+
+                                                 – 25 –
+and plugging this back into the action gives
+                          Z                   Z
+                SG = πG1
+                             hF
+                              =
+                                G G
+                                 F
+                                 =
+                                    γi =   1
+                                          4πG   h(R
+                                                  =
+                                                    − 18 eeφ2 )(R
+                                                                =
+                                                                  − 81 eeφ2 )γi
+
+Multiplying this out gives three terms. The term quadratic in the Riemann curvature is the
+Chern-Simons boundary term,
+
+                                 hR Rγi = dh(ωdω + 13 ωωω)γi
+                                  = =
+
+
+Dropping this, the other two terms give the Palatini action for gravity,
+                                    Z n                             o
+                                 1        1          4            2
+                         SG = 16πG       12 heeeeγiφ   − h Reeγiφ
+                                                           =
+                                    Z
+                                 1
+                                       e φ2 R − 23 φ2
+                                                       
+                             = 16πG    ∼
+
+
+
+equal to the Einstein-Hilbert
+               p                action with cosmological constant, Λ = 34 φ2 . The magnitude
+of the Higgs, φ2 , is a conformal factor that can be absorbed into the magnitude of the
+frame. The vacuum solution to Einstein’s equation with positive cosmological constant is de
+Sitter spacetime (R=
+                     = Λ6 ee and R = 4Λ), which should be considered the background vacuum
+spacetime for particle interactions in this theory. Since the symmetry of this spacetime is
+so(4, 1) and not the Poincaré group, the Coleman-Mandula theorem does not apply to restrict
+the unification of gravity within the larger group.
+     It should be emphasized that the connection (3.1) comprises all fields over the four
+dimensional base manifold. There are no other fields required to match the fields of the
+standard model and gravity. The gravitational metric and connection have been supplanted
+by the frame and spin connection parts of A. . The Riemannian geometry of general relativity
+has been subsumed by principal bundle geometry — a significant mathematical unification.
+Devotees of geometry should not despair at this development, as principal bundle geometry
+is even more natural than Riemannian geometry. A principal bundle with connection can be
+described purely in terms of a mapping between tangent vector fields (diffeomorphisms) on a
+manifold, without the ab initio introduction of a metric.
+
+3.2.2 Other bosons
+The part of the action (3.8) for the bosonic, non-so(3, 1) parts of the connection is
+                                    Z
+                            S = − 41 hF= 0 ∗F
+                              0
+                                            =
+                                              0
+                                                i = Sgw + Sew + S2
+
+in which the relevant parts of the curvature (3.2) are the mixed graviweak part (3.4), the
+electroweak part (3.5), and the so(8) part (3.6). The mixed graviweak part of the action is
+                           Z
+                                  gw    gw
+                 Sgw = − 14 hF  =
+                                     ∗F
+                                      =
+                                           i
+
+
+
+
+                                             – 26 –
+                              Z
+                         = − 14 h(= T φ − eDφ) ∗ (=T φ − eDφ)i
+                           Z n                                                 o
+                               1           2                    3
+                         =       h
+                               4 =T ∗ T
+                                      =
+                                        iφ   + hφ(Dφ)e  ∗ T
+                                                          =
+                                                            i + 4 h(Dφ) ∗ (Dφ)i
+
+
+which includes the kinetic Higgs term and gravitational torsion. The electroweak part of the
+action is               Z                    Z                Z
+                           1   ew    ew        1   W    W           B1    B1
+               Sew = − 4 hF  =
+                                  ∗F
+                                   =
+                                        i = − 4 hF
+                                                 =
+                                                     ∗F
+                                                      =
+                                                          i − 41 hF
+                                                                  =
+                                                                       ∗F
+                                                                        =
+                                                                             i
+
+And the so(8) part of the action is
+                Z
+                        2     2
+         S2 = − 14 hF =
+                          ∗F
+                           =
+                                i
+                Z                     Z                   Z                  Z
+                        w     w         1    B2    B2       1     x    x             1    g    g
+            = − 14 hF =
+                          ∗F=
+                                 i −      h
+                                        4 =F    ∗F
+                                                 =
+                                                      i −     h F
+                                                            4 = =   ∗F   i −         4 hF
+                                                                                        =
+                                                                                            ∗F
+                                                                                             =
+                                                                                                 i−
+                Z
+                          w        B2     x      g
+               − 21 h(F=
+                             +F =
+                                      +F=
+                                            +F=
+                                                   + xΦxΦ) ∗ xΦxΦi
+
+which includes the action for the gluons and a first guess at the action for the new fields. This
+action for the new fields is speculative at this stage and likely to change as our understanding
+of their role improves.
+     The use of the Hodge dual in this part of the action is required for general covariance but
+seems somewhat awkward from the viewpoint of this E8 theory. The Hodge star operator
+requires the frame part, e, to be extracted from the E8 connection, inverted to obtain the
+           *
+coframe, e, and contracted with the curvature. It would be better if there was a natural
+justification for this procedure, beyond the necessity to agree with known theory. An improved
+understanding will likely lead to a modification of this part of the action.
+
+3.2.3 Fermions
+                                                                                ·          · *
+Choosing the anti-Grassmann Lagrange multiplier 3-form to be B            ≡
+                                                                             = ∼eΨe in the fermionic
+part of the action (3.8) gives the massive Dirac action in curved spacetime,
+                   Z
+                         ·
+             Sf =     hBD
+                        ≡
+                              Ψi
+                               .
+                   Z
+                           · *
+                 =    h∼eΨe(dΨ   . + H 1Ψ . − ΨH .  2 )i
+                   Z
+                           · *
+                 =    h∼eΨe((d + 12 ω + 14 eφ + W + B 1 )Ψ    . − Ψ(w
+                                                                  .    + B 2 + xΦ + g))i
+                   Z
+                                  ·
+                                                      1 µν
+                 =    d∼4 x |e| hΨγ µ (eµ )i (∂i Ψ
+                                                 . + 4 ωi  γµν Ψ
+                                                               . + Wi Ψ
+                                                                      . + B1i Ψ
+                                                                              . +
+
+                                                                                       ·
+                                             + .Ψwi + .ΨB2i + .Ψxi Φ + .Ψgi ) + Ψ φ .Ψi
+               *
+The coframe, e, in this action contracts with the frame part of the graviweak connection,
+                                    *
+                     ee = γ µ (eµ )i ∂i dxj (ej )ν γν = γ µ (eµ )i (ei )ν γν = γ µ γµ = 4
+                     *
+
+
+
+
+                                                   – 27 –
+                                                ·                                    ·
+to give the standard Higgs coupling term, Ψ φ Ψ. .   The new, non-standard Ψγ µ Ψw .  µ and
+ ·
+   µ
+Ψγ .Ψxµ Φ terms are not yet well understood but seem promising for recovering the CKM
+matrix.
+     This action works very well for one generation of fermions. The action for the other
+two generations should be similar, but is related by triality in a way that is not presently
+understood well enough to write down.
+
+4. Summary
+
+The “E8 theory” proposed in this work is an exceptionally simple unification of the standard
+model and gravity. All known fields are parts of an E8 principal bundle connection,
+
+                A. = ( 12 ω + 14 eφ + W + B 1 ) + (B 2 + w + xΦ + g) +
+                     + (ν. e + e. + u. + d)
+                                         . + (ν
+                                              . µ + µ
+                                                    .
+                                                      + c. + s)
+                                                             . + (ν
+                                                                  . τ + τ
+                                                                        . + t
+                                                                            . + b)
+                                                                                .
+
+
+in agreement with the Pati-Salam SU (2)L × SU (2)R × SU (4) grand unified theory, with a
+handfull of new fields suggested by the structure of E8. The interactions are described by
+the curvature of this connection,
+                                     F = dA. + 12 [A,
+                                     =·             . A]
+                                                       .
+
+
+with particle quantum numbers corresponding to the vertices of the E8 polytope in eight
+dimensions. This structure suggests three fermionic generations related by triality,
+
+                               Te=µ         Tµ=τ          Tτ =e
+
+The action for everything, chosen by hand to be in agreement with the standard model, is
+concisely expressed as a modified BF theory action,
+                                  Z
+                                      ·
+                                                         0
+                             S = h= B=· F + π4 = BGγ − B
+                                               BG =    = =
+                                                           ∗B 0 i
+
+with gravity included via the MacDowell-Mansouri technique. The theory has no free param-
+eters. The coupling constants are unified at high energy, and the cosmological constant and
+masses arise from the vacuum expectation values of the various Higgs fields,
+                   p
+              g1 = 3/5      g2 = 1    g3 = 1     Λ = 34 φ2    M ∼ φ0 , φ1 , Φ . . .
+
+In sum, everything is described by the pure geometry of an E8 principal bundle, perhaps the
+most beautiful structure in mathematics.
+
+5. Discussion and Conclusion
+
+There are a remarkable number of “coincidences” that work exactly right to allow all known
+fields to be unified as parts of one connection. The factors of 21 and 14 multiplying the spin
+connection and frame-Higgs result in the correct expressions for the gravitational Riemann
+
+
+
+
+                                             – 28 –
+curvature and the covariant Dirac derivative in curved spacetime. The fermions fit together
+perfectly in chiral representations under graviweak so(7, 1), and the frame-Higgs has all the
+correct interactions. This frame-Higgs naturally gets a φ4 potential and produces a positive
+cosmological constant. Finally, and most impressively, the fit of all fields of the standard
+model and gravity to E8 is very tight. The structure of E8 determines exactly the spinor
+multiplet structure of the known fermions.
+     There are also aspects of this theory that are poorly understood. The relationship be-
+tween fermion generations and triality is suggested by the structure of E8 but is not perfectly
+clear — a better description may follow from an improved understanding of the new w + xΦ
+fields and their relation to ω + eφ. This relationship may also shed light on how and why
+nature has chosen a non-compact form, E IX, of E8. Currently, the symmetry breaking
+and action for the theory are chosen by hand to match the standard model — this needs a
+mathematical justification.
+     Quantum E8 theory follows the methods of quantum field theory and loop quantum
+gravity — though the details await future work. One enticing possibility is that the grav-
+itational and cosmological constants run from large values at an ultraviolet fixed point to
+the tiny values we encounter at low energies.[19, 20] At the foundational level, a quantum
+description of the standard model in E8 may be compatible with a spin foam description in
+terms of braided ribbon networks[21] through the identification of the corresponding finite
+groups. And there is a more speculative possibility: if the universe is described by an excep-
+tional mathematical structure, this suggests quantum E8 theory may relate to an exceptional
+Kac-Moody algebra.[22]
+     The theory proposed in this paper represents a comprehensive unification program, de-
+scribing all fields of the standard model and gravity as parts of a uniquely beautiful math-
+ematical structure. The principal bundle connection and its curvature describe how the E8
+manifold twists and turns over spacetime, reproducing all known fields and dynamics through
+pure geometry. Some aspects of this theory are not yet completely understood, and until they
+are it should be treated with appropriate skepticism. However, the current match to the stan-
+dard model and gravity is very good. Future work will either strengthen the correlation to
+known physics and produce successful predictions for the LHC, or the theory will encounter
+a fatal contradiction with nature. The lack of extraneous structures and free parameters
+ensures testable predictions, so it will either succeed or fail spectacularly. If E8 theory is fully
+successful as a theory of everything, our universe is an exceptionally beautiful shape.
+
+
+Acknowledgments
+
+The author wishes to thank Peter Woit, Sergei Winitzki, Lee Smolin, Tony Smith, David
+Richter, Fabrizio Nesti, Sabine Hossenfelder, Laurent Freidel, David Finkelstein, Michael
+Edwards, James Bjorken, Sundance Bilson-Thompson, John Baez, and Stephon Alexander
+for valuable discussions and encouragement. Some of the work was carried out under the
+
+
+
+
+                                              – 29 –
+wonderful hospitality of the Perimeter Institute for Theoretical Physics. This research was
+supported by grant RFP1-06-07 from The Foundational Questions Institute (fqxi.org).
+
+References
+ [1] M. Tegmark, “Is ‘the theory of everything’ merely the ultimate ensemble theory?”
+     gr-qc/9704009.
+ [2] A.G. Lisi, “Clifford bundle formulation of BF gravity generalized to the standard model,”
+     gr-qc/0511120.
+ [3] J.W. van Holten, “Aspects of BRST Quantization,” hep-th/0201124.
+ [4] J.F. Adams, Lectures On Exceptional Lie Groups, University of Chicago (1996).
+ [5] J.C. Pati and A. Salam, “Lepton number as the fourth color,” Phys. Rev. D 10 (1974) 275.
+ [6] S. Cacciatori et al., “Euler angles for G2,” hep-th/0503106.
+ [7] G. Trayling, “A Geometric Approach to the Standard Model,” hep-th/9912231.
+ [8] J. Baez, “The Octonions,” math.RA/0105155.
+ [9] F. Nesti and R. Percacci, “Graviweak Unification,” arXiv:0706.3307.
+[10] S. Alexander, “Isogravity: Toward an Electroweak and Gravitational Unification,”
+     arXiv:0706.4481.
+[11] F. Bernardoni et al., “Mapping the geometry of the F4 group,” arXiv:0705.3978.
+[12] T. Gosset, “On the regular and semi-regular figures in space of n dimensions,” Messenger of
+     Mathematics 29 (1900) 43.
+[13] D. Richter, “Triacontagonal coordinates for the E(8) root system,” arXiv:0704.3091.
+[14] F. Gürsey, “Symmetry Breaking Patterns In E6,” Invited talk given at First Workshop on
+     Grand Unified Theories, Durham, N.H., Apr 10-12 (1980).
+[15] A.G. Lisi, “Quantum mechanics from a universal action reservoir,” physics/0605068.
+[16] S.W. MacDowell and F. Mansouri, “Unified Geometric Theory of Gravity and Supergravity,”
+     Phys. Rev. Lett. 38 (1977) 739.
+[17] L. Smolin and A. Starodubtsev, “General relativity with a topological phase: An Action
+     principle,” hep-th/0311163.
+[18] L. Freidel and A. Starodubtsev, “Quantum gravity in terms of topological observables,”
+     hep-th/0501191.
+[19] M. Reuter, “Functional Renormalization Group Equations, Asymptotic Safety, and Quantum
+     Einstein Gravity,” arXiv:0708.1317.
+[20] R. Percacci, “Asymptotic Safety,” arXiv:0709.3851.
+[21] S. O. Bilson-Thompson et al., “Quantum gravity and the standard model,” hep-th/0603022.
+[22] V.G. Kac, Infinite dimensional Lie algebras, Cambridge University Press (1990).
+
+
+
+
+                                              – 30 –
+

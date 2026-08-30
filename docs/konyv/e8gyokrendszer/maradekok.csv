@@ -1,0 +1,28 @@
+név;szimuláció;kernel;Δ
+típus-1 gyökök száma;112;112;0
+típus-2 gyökök száma;128;128;0
+E8 gyökök száma;240;240;0
+pozíciópárok C(8,2);28;28;0
+előjel-kombinációk 2^8;256;256;0
+rossz norma² (nem 8);0;0;0
+rossz belsőszorzat-érték;0;0;0
+rossz eloszlású gyök;0;0;0
+Weyl-zárási hiba;0;0;0
+8! rekurzió;40320;40320;0
+8! prím-út;40320;40320;0
+W(D8) = 2^7·8!;5160960;5160960;0
+trialitás 135;135;135;0
+W(E8) struktúra-út;696729600;696729600;0
+W(E8) prím-út;696729600;696729600;0
+E8 dimenzió 240+8;248;248;0
+E8×E8 dimenzió 248·2;496;496;0
+híd 240+16;256;256;0
+penge-fokszámösszeg;16;16;0
+Hodge-példa duál(3);12;12;0
+Hodge-involúció duál(duál(5));5;5;0
+Hodge-involúció hibák (16 penge);0;0;0
+fok-tükrözés hibák (k+4−k=4);0;0;0
+kódszavak száma;16;16;0
+egyedi kódszavak;16;16;0
+súly-összeg 1+7+7+1;16;16;0
+minden pártávolság ≥ 3 (d = 3);True;True;0

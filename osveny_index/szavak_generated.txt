@@ -1,0 +1,129 @@
+public export szHangvilla : Fonetika
+szHangvilla = [MS Mh, MH Va, MS Mng, MS Mv, MH Vi, MS Ml, MS Ml, MH Va]
+
+public export szEntropia : Fonetika
+szEntropia = [MH Ve, MS Mn, MS Mt, MS Mr, MH Voo, MS Mp, MH Vi, MH Va]
+
+public export szKategoria : Fonetika
+szKategoria = [MS Mk, MH Va, MS Mt, MH Ve, MS Mg, MH Voo, MS Mr, MH Vi, MH Va]
+
+public export szFunktor : Fonetika
+szFunktor = [MS Mf, MH Vu, MS Mn, MS Mk, MS Mt, MH Vo, MS Mr]
+
+public export szKomma : Fonetika
+szKomma = [MS Mk, MH Vo, MS Mm, MS Mm, MH Va]
+
+public export szKereses : Fonetika
+szKereses = [MS Mk, MH Ve, MS Mr, MH Ve, MS Ms, MH Vee, MS Ms]
+
+public export szEnergia : Fonetika
+szEnergia = [MH Ve, MS Mn, MH Ve, MS Mr, MS Mg, MH Vi, MH Va]
+
+public export szSzotar : Fonetika
+szSzotar = [DG Dsz, MH Voo, MS Mt, MH Vaa, MS Mr]
+
+public export szEszkoz : Fonetika
+szEszkoz = [MH Ve, DG Dsz, MS Mk, MH Voe, MS Mz]
+
+public export szMeroszam : Fonetika
+szMeroszam = [MS Mm, MH Vee, MS Mr, MH Voee, DG Dsz, MH Vaa, MS Mm]
+
+public export szStruktura : Fonetika
+szStruktura = [MS Ms, MS Mt, MS Mr, MH Vu, MS Mk, MS Mt, MH Vuu, MS Mr, MH Va]
+
+public export szLekipezes : Fonetika
+szLekipezes = [MS Ml, MH Ve, MS Mk, MH Vee, MS Mp, MH Ve, MS Mz, MH Vee, MS Ms]
+
+public export szKapcsolat : Fonetika
+szKapcsolat = [MS Mk, MH Va, MS Mp, DG Dcs, MH Vo, MS Ml, MH Va, MS Mt]
+
+public export szMaradek : Fonetika
+szMaradek = [MS Mm, MH Va, MS Mr, MH Va, MS Md, MH Vee, MS Mk]
+
+public export szFolyamat : Fonetika
+szFolyamat = [MS Mf, MH Vo, DG Dly, MH Va, MS Mm, MH Va, MS Mt]
+
+public export szMennyiseg : Fonetika
+szMennyiseg = [MS Mm, MH Ve, DG Dny, DG Dny, MH Vi, MS Ms, MH Vee, MS Mg]
+
+public export szGyujtemeny : Fonetika
+szGyujtemeny = [DG Dgy, MH Vuee, MS Mj, MS Mt, MH Ve, MS Mm, MH Vee, DG Dny]
+
+public export szHangot : Fonetika
+szHangot = [MS Mh, MH Va, MS Mng, MH Vo, MS Mt]
+
+public export szJelet : Fonetika
+szJelet = [MS Mj, MH Ve, MS Ml, MH Ve, MS Mt]
+
+public export szSzotAcc : Fonetika
+szSzotAcc = [DG Dsz, MH Voo, MS Mt]
+
+public export szKerdest : Fonetika
+szKerdest = [MS Mk, MH Vee, MS Mr, MS Md, MH Vee, MS Ms, MS Mt]
+
+public export szHomerot : Fonetika
+szHomerot = [MS Mh, MH Voee, MS Mm, MH Vee, MS Mr, MH Voee, MS Mt]
+
+public export szHaz : Fonetika
+szHaz = [MS Mh, MH Vaa, MS Mz]
+
+public export szSzo : Fonetika
+szSzo = [DG Dsz, MH Voo]
+
+public export szTo : Fonetika
+szTo = [MS Mt, MH Voee]
+
+public export szHang : Fonetika
+szHang = [MS Mh, MH Va, MS Mng]
+
+public export szKor : Fonetika
+szKor = [MS Mk, MH Voe, MS Mr]
+
+public export szSziV : Fonetika
+szSziV = [DG Dsz, MH Vii, MS Mv]
+
+public export szEl : Fonetika
+szEl = [MH Vee, MS Ml]
+
+public export szViz : Fonetika
+szViz = [MS Mv, MH Vii, MS Mz]
+
+public export szFeny : Fonetika
+szFeny = [MS Mf, MH Vee, DG Dny]
+
+public export szKut : Fonetika
+szKut = [MS Mk, MH Vuu, MS Mt]
+
+public export szUt : Fonetika
+szUt = [MH Vuu, MS Mt]
+
+public export szLet : Fonetika
+szLet = [MS Ml, MH Vee, MS Mt]
+
+public export szLe : Fonetika
+szLe = [MS Ml, MH Vee]
+
+public export szFog : Fonetika
+szFog = [MS Mf, MH Vo, MS Mg]
+
+public export szNyelv : Fonetika
+szNyelv = [DG Dny, MH Ve, MS Ml, MS Mv]
+
+public export szHal : Fonetika
+szHal = [MS Mh, MH Vaa, MS Ml]
+
+public export szKep : Fonetika
+szKep = [MS Mk, MH Vee, MS Mp]
+
+public export szKot : Fonetika
+szKot = [MS Mk, MH Voe, MS Mt]
+
+public export szNov : Fonetika
+szNov = [MS Mn, MH Voee]
+
+public export szAd : Fonetika
+szAd = [MH Va, MS Md]
+
+public export szIszik : Fonetika
+szIszik = [MH Vi, DG Dsz, MH Vi, MS Mk]
+

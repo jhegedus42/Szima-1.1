@@ -1,0 +1,1311 @@
+                                                DECOHERENCE, EINSELECTION, AND THE
+                                                   EXISTENTIAL INTERPRETATION
+                                                         (The Rough Guide)
+                                                                            Wojciech H. Zurek
+                                                                         Theoretical Astrophysics
+
+
+
+
+arXiv:quant-ph/9805065v1 21 May 1998
+                                                                          T-6, MS B288, LANL
+                                                                      Los Alamos, New Mexico 87545
+                                                                              November 26, 2024
+
+
+                                       The roles of decoherence and environment-induced superselection in the emergence of the classical from
+                                   the quantum substrate are described. The stability of correlations between the einselected quantum pointer
+                                   states and the environment allows them to exist almost as objectively as classical states were once thought
+                                   to exist: There are ways of finding out what is the pointer state of the system which utilize redundancy of
+                                   their correlations with the environment, and which leave einselected states essentially unperturbed. This
+                                   relatively objective existence of certain quantum states facilitates operational definition of probabilities in
+                                   the quantum setting. Moreover, once there are states that ‘exist’ and can be ‘found out’, a ‘collapse’ in the
+                                   traditional sense is no longer necessary — in effect, it has already happened. The records of the observer
+                                   will contain evidence of an effective collapse. The role of the preferred states in the processing and storage
+                                   of information is emphasized. The existential interpretation based on the relatively objective existence
+                                   of stable correlations between the einselected states of observers memory and in the outside Universe is
+                                   formulated and discussed.
+
+
+                                   1    INTRODUCTION
+                                   The aim of the program of decoherence and einselection (environment-induced superselection) is to describe
+                                   consequences of the “openness” of quantum systems to their environments and to study emergence of the
+                                   effective classicality of some of the quantum states and of the associated observables. The purpose of this
+                                   paper is to assess the degree to which this program has been successful in facilitating the interpretation of
+                                   quantum theory and to point out open issues and problems.
+                                       Much work in recent years has been devoted to the clarification and extension of the elements of
+                                   the physics of decoherence and especially to the connections between measurements and environment-
+                                   induced superselection.1−10 This has included studies of emergence of preferred states in various settings
+                                   through the implementation of predictability sieve,11−14 refinements of master equations and analysis of
+                                   their solutions,15−17 and study of related ideas (such as consistent histories,18−20 quantum trajectories,
+                                   and quantum state diffusion21−23 ). A useful counterpoint to these advances was provided by various
+
+
+                                                                                         1
+applications, including quantum chaos,24−26 einselection in the context of field theories and in Bose-
+Einstein condensates,27,16 and, especially, by the interplay of the original information-theoretic aspects1,2,28
+of the environment-induced superselection approach with the recent explosion of research on quantum
+computation30−35 and related subjects34−38 . Last not least, first controlled experiment aimed at investi-
+gating decoherence is now in place, carried out by Brune, Haroche, Raimond and their collaborators39 and
+additional experiments may soon follow as a result of theoretical40−43 and experimental44 developments.
+    In nearly all of the recent advances the emphasis was on specific issues which could be addressed by
+detailed solutions of specific models. This attention to detail was necessary but may lead to impression
+that practitioners of decoherence and einselection have lost sight of their original motivation — the in-
+terpretation of quantum theory. My aim here is to sketch “the big picture”, to relate the recent progress
+on specific issues to the overall goals of the program. I shall therefore attempt to capture “the whole”
+(or at least large parts of it), but in broad brush strokes. Special attention will be paid to issues such
+as the implications of decoherence for the origin of quantum probabilities and to the role of information
+processing in the emergence of ‘objective existence’ which significantly reduces and perhaps even eliminates
+the role of the “collapse” of the state vector.
+    In short, we shall describe how decoherence converts quantum entanglement into classical correlations
+and how these correlations can be used by the observer for the purpose of prediction. What will matter is
+then encoded in the relations between states (such as a state of the observer’s memory and of the quantum
+systems). Stability of similar co-relations with the environment allows observers to find out unknown
+quantum states without disturbing them. Recognition of this relatively objective existence of einselected
+quantum states and investigation of the consequences of this phenomenon are the principal goals of this
+paper. Relatively objective existence allows for the existential interpretation of quantum theory. Reduction
+of the wavepacket as well as the “collapse” emerge as a consequence of the assumption that the effectively
+classical states, including the states of the observer’s memory must exist over periods long compared to
+decoherence time if they are to be useful as repositories of information.
+    It will be emphasized that while significant progress has been made since the environment-induced
+superselection program was first formulated1−4 , much more remains to be done on several fronts which
+all have implications for the overarching question of interpretation. We can mention two such open issues
+right away: Both the formulation of the measurement problem and its resolution through the appeal to
+decoherence require a Universe split into systems. Yet, it is far from clear how one can define systems
+given an overall Hilbert space “of everything” and the total Hamiltonian. Moreover, while the paramount
+role of information has been recognised, I do not belive that it has been, as yet, sufficiently thoroughly
+understood. Thus, while what follows is perhaps the most complete discussion of the interpretation implied
+by decoherence, it is still only a report of partial progress.
+
+
+2     OVERVIEW OF THE PROBLEM
+When special relativity was discovered some twenty years before quantum mechanics in its modern guise
+was formulated, it has in a sense provided a model of what a new theory should be. As a replacement
+of Newtonian kinematics and dynamics, it was a seamless extension. In the limit of the infinite speed of
+light, c → ∞, equations and concepts of the old theory were smoothly recovered.
+    When Bohr,45 Heisenberg,46 Born,47 and Schrödinger48 struggled to understand the implications of
+quantum theory,49 one can sense that they had initially expected a similar seamless extension of classical
+physics. Indeed, in specific cases — i.e., Bohr’s correspondence, Heisenberg’s uncertainty, Ehrenfest’s
+
+
+                                                       2
+theorem — such hopes were fulfilled in the appropriate limits (i. e., large quantum numbers, h̄ → 0, etc.).
+However, Schrödinger’s wave packets did not travel along classical trajectories (except in the special case
+of the harmonic oscillator). Instead, they developed into delocalized, nonclassical superpositions. And the
+tempting h̄ → 0 limit did not allow for the recovery of classical locality — it did not even exist, as the
+typical expression appearing in wavefunctions such as exp(ixp/h̄) is not even analytic as h̄ → 0.
+    The culprit which made it impossible to recover classicality as a limiting case of quantum theory was at
+the very foundation of the quantum edifice: It was the quantum principle of superposition. It guarantees
+that any superposition of states is a legal quantum state. This introduced a whole Hilbert space H of
+possibilities while only a small fraction of states in H can be associated with the classically allowed states,
+and superpositions of such states are typically flagrantly nonclassical. Moreover, the number of possible
+nonclassical states in the Hilbert space increases exponentially with its dimensionality, while the number
+of classical states increases only linearly. This divergence (which is perhaps the key of the ingredients
+responsible for the exponential speedup of quantum computations30−35 ) is a measure of the problem.
+Moreover, it can be argued that it is actually exacerbated in the h̄ → 0 limit, as the dimensionality of the
+Hilbert space (of say, a particle in a confined phase space) increases with 1/h̄ to some power.
+    The first resolution (championed by Bohr45 ) was to outlaw “by fiat” the use of quantum theory for
+the objects which were classical. This Copenhagen Interpretation (CI) had several flaws: It would have
+forced quantum theory to depend on classical physics for its very existence. It would have also meant that
+neither quantum nor classical theory were universal. Moreover, the boundary between them was never
+clearly delineated (and, according to Bohr, had to be “movable” depending on the whims of the observer).
+Last not least, with the collapse looming on the quantum-classical border, there was little chance for a
+seemless extension.
+    By contrast, Everett’s “Many Worlds” Interpretation50 (MWI) refused to draw a quantum-classical
+boundary. Superposition principle was the “law of the land” for the Universe as a whole. Branching wave
+functions described alternatives, all of which were realized in the deterministic evolution of the universal
+state vector.
+    The advantage of the original Everett’s vision was to reinstate quantum theory as a key tool in search
+for its own interpretation. The disadvantages (which were realized only some years later, after the original
+proposal became known more widely) include (i) the ambiguity of what constitutes the “branches” (i.e.,
+specification which of the states in the Hilbert spaces containing all of the conceivable superpositions
+are classically “legal”) and (ii) re-emergence of the questions about the origin of probabilities (i.e., the
+derivation of the Born’s formula). Moreover, (iii) it was never clear how to reconcile unique experiences of
+observers with the multitude of alternatives present in the MWI wave function.
+
+
+3    DECOHERENCE AND EINSELECTION
+Decoherence is a process of continuous measurement-like interaction between the system and an (external
+or internal) environment. Its effect is to invalidate the superposition principle in the Hilbert space of an
+open system. It leads to very different stability properties for various pure states. Interaction with the
+environment destroys the vast majority of the superpositions quickly, and — in the case of macroscopic
+objects — almost instantaneously. This leads of negative selection which in effect bars most of the states
+and results in singling out of a preferred stable subset of the einselected pointer states.
+    Correlations are both the cause of decoherence and the criterion used to evaluate the stability of the
+states. Environment correlates (or, rather, becomes entangled) with the observables of the system while
+
+
+                                                      3
+“monitoring” them. Moreover, stability of the correlations between the states of the system monitored by
+their environment and of some other “recording” system (i.e., an apparatus or a memory of an observer) is
+a criterion of the “reality” of these states. Hence, we shall often talk about relatively objective existence of
+states to emphasize that they are really defined only through their correlations with the state of the other
+systems, as well as to remind the reader that these states will never be quite as “rock solid” as classical
+states of a stone or a planet were (once) thought to be.
+    Transfer of a single bit of information is a single “unit of correlation,” whether in communication,
+decoherence, or in measurement.∗ It suffices to turn a unit of quantum correlation (i.e., entanglement,
+which can be established in course of the (pre–)measurement – like an interaction between two one-bit
+systems) into a classical correlation.
+    This process is illustrated in Fig. 1 with a “bit by bit” measurement1 — a quantum controlled-not (or a
+c-not). An identical c-not controlled by the previously passive “target” bit (which played the role of the
+apparatus pointer in course of the initial correlation, Fig. 1a) and a bit “somewhere in the environment”
+represents the process of decoherence. Now, however, the former apparatus (target) bit plays a role of the
+control. As a result, a pure state of the system
+
+                                                    |σi = α |0i + β |1i                                                  (1)
+
+is “communicated” by first influencing the state of the apparatus;
+
+                            |ΦSA (0)i = |σiS |0iA → α |00iSA + β |11iSA = |ΦSA (t1 )i ,                                  (2)
+
+and then by spreading that influence to the environment:
+
+                      |ΨSAE (t1 )i = (α |00i + β |11i) |0i → α |000i + β |111i = |ΨSAE (t2 )i .                          (3)
+
+Above, we have dropped the indices SAE for individual qubits (which would have appeared in the obvious
+order).
+   After the environment is traced out, only the correlation with the pointer basis of the apparatus (i.e.,
+the basis in which the apparatus acts as a control) will survive1−3,28 :
+
+                                        ρSA (t2 ) = |α|2 |00i h00| + |β|2 |11i h11|                                      (4)
+
+Thus, the apparatus plays the role of the communication channel (memory) (i) through its ability to
+retain correlations with the measured system, but also, (ii) by “broadcasting” of these correlations into the
+environment which is the source of decoherence (see Fig. 1b). Such broadcasting of quantum correlations
+makes them — and the observables involved in broadcasting — effectively classical.29
+    The ability to retain correlations is the defining characteristic of the preferred “pointer” basis of the
+apparatus. In simple models of measurement cum decoherence, the selection of the preferred basis of the
+apparatus can be directly tied to the form of the interaction with the environment. Thus, an observable
+Ô which commutes with the complete (i.e., self-, plus the interaction with the environment) Hamiltonian
+of the apparatus:                            h               i
+                                              ĤA + ĤAE , Ô = 0                                         (5)
+   ∗
+    It is no accident that the setups used in modern treatments of quantum communication channels34−36 bear an eerie
+resemblance to the by now “old hat” system-apparatus-environment “trio” used in the early discussions of environment-
+induced superselection1,2 . The apparatus A is a member of this trio which is supposed to preserve — in the preferred pointer
+basis — the correlation with the state of the system S with which it is initially entangled. Hence, A is a “communication
+channel.”
+
+                                                             4
+hwill be the
+          i pointer observable.         This criterion can be fulfilled only in the simplest cases: Typically,
+ ĤA , ĤAE 6= 0, hence Eq. (5) cannot be satisfied exactly.
+    In more realistic situations one must therefore rely on more general criteria to which we have alluded
+above. One can start by noting that the einselected pointer basis is best at retaining correlations with
+the external stable states (such as pointer states of other apparatus or record states of the observers).
+The predictability sieve11−14 is a convenient strategy to look for such states. It retains pure states which
+produce least entropy over a period of time long compared to the decoherence timescale. Such states avoid
+entanglement with the environment and, thus, can preserve correlations with the similarly selected states
+of other systems. In effect, predictability sieve can be regarded as a strategy to select stable correlations.
+    A defining characteristic of reality of a state is the possibility of finding out what it is and yet leaving
+it unperturbed. This criterion of objective existence is of course satisfied in classical physics. It can be
+formulated operationally by devising a strategy which would let an observer previously unaware of the state
+find out what it is and later verifying that the state was (i) correctly identified, and (ii) not perturbed. In
+quantum theory, this is not possible to accomplish with an isolated system. Unless the observer knows in
+advance what observables commute with the state of the system, he will in general end up re-preparing
+the system through a measurement employing “his” observables. This would violate condition (ii) above.
+So — it is said — quantum states do not exist objectively, since it is impossible to find out what they are
+without, at the same time, “remolding them” with the questions posed by the measurement.51
+    Einselection allows states of open quantum system to pass the “existence test” in several ways. The
+observer can, for example, measure properties of the Hamiltonian which generates evolution of the system
+and of the environment. Einselection determines that pointer states will appear on the diagonal of the
+density matrix of the system. Hence, the observer can know beforehand what (limited) set of observables
+can be measured with impunity. He will be able to select measurement observables that are already
+monitored by the environment. Using a set of observables co-diagonal in the Hilbert space of the system
+with the einselected states he can then perform a nondemolition measurement to find out what is the state
+without perturbing it.
+    A somewhat indirect strategy which also works involves monitoring the environment and using a fraction
+of its state to infer the state of the system. This may not be always feasible, but this strategy is worth noting
+since it is the one universally employed by us, the real observers. Photons are one of the most pervasive
+environments. We gather most of our information by intercepting a small fraction of that environment.
+Different observers agree about reality based on a consensus reached in this fashion.
+    That such a strategy is possible can be readily understood from the c-not “caricature” of decoherence
+in Fig. 1. The einselected control observables of the system or of the apparatus are redundantly recorded
+in the environment. One can then “read them off” many times (even if each read-off may entail erasure of
+a part of the information from the environment) without interacting directly with the system of interest.
+    It is important to emphasize that the relatively objective existence is attained at the price of par-
+tial ignorance. The observer should not attempt to intercept all of the environment state (which may
+be entangled with the system and, hence, could be used to redefine its state by sufficiently outrageous
+measurement52 ). Objective existence is objective only because part of the environment has “escaped”
+with the information about the state of the system and can continue to serve as a “witness” to what has
+happened. It is also important that the fraction of the environment which escapes should not matter,
+except in the two limits when the observer can intercept all of the relevant environment (the entanglement
+limit), and in the case when the observer simply does not intercept enough (the ignorance limit).
+    This robustness of the preferred (einselected) observables of the system can be quantified through
+redundancy28 , in a manner reminiscent of the recent discussions of the error correction strategies (see, e.
+
+                                                       5
+g., Ref. 38 and references therein). Consider, for example, a correlated state
+                                                                         √
+                                  |ΨSE i = (|0iS |000iE + |1iS |111iE ) / 2                                   (6)
+
+which could have arisen from a sequence of three system-environment c-nots. All errors afflicting individual
+qubits of the environment can be classified by associating them with Pauli matrices acting on individual
+qubits of the environment. We can now inquire about the number of errors which would destroy the
+correlation between various observables of the system and the state of the environment. It is quite obvious
+that the states {|0iS , |1iS } are in this sense more robustly correlated with the environment than the states
+{|+iS , |−iS } obtained by Hadamard transform:
+                                                        √                               √
+                     |ΨSE i = |+iS (|000iE + |111iE ) / 2 + |−iS (|000iE − |111iE ) / 2                    (7)
+
+For, a phase flip of any of the environment bits would destroy the ability of the observer to infer the state of
+the system in the {|+iS , |−iS } basis. By contrast, a majority vote in a {|0iE , |1iE } basis would still yield a
+correct answer concerning {|0iS , |1iS } if any single error afflicted the state of the environment. Moreover,
+when there are N bits in the environment, N2 − 1 errors can be in principle still tolerated in the {|0iS , |1iS }
+basis, but in the {|+iS , |−iS } basis a simple phase flip continues to have disastrous consequences.
+    When we assume (as seems reasonable) that the probability of errors increases with the size of the
+environment (N), so that the “specific error rate” (i.e., probability of an error per bit of environment
+per second) is fixed, it becomes clear that the stability of pointer states is purchased at the price of the
+instability of their Hadamard-Fourier conjugates. This stabilization of certain observables at the expense
+of their conjugates may be achieved either through the deliberate amplification or as a consequence of
+accidental environmental monitoring, but in any case it leads to redundancy as it was pointed out already
+some time ago28 .
+    This redundancy may be quantified by counting the number of “flips” applied to individual environment
+qubits which “exchange” the states of the environment corresponding to the two states of the system.
+Thus, we can compute the redundancy distance d between the record states of the environment in the case
+corresponding to the two system states φ, ψ given by {|0iS , |1iS } in the decomposition of Eq. (6):
+
+                                                d(φ, ψ) = N
+
+while in the case of the complementary observable with φ, ψ given by {|+iS , |−iS }:
+
+                                                d(φ, ψ) = 1 .
+
+Or, in general, redundancy distance
+
+                                         d(φ, ψ) = min(nx + ny + nz )                                         (8)
+
+is the least total number of “flips”, where nx , ny and nz are the numbers of σ̂x , σ̂y , and σ̂z operations
+required to convert the state of the environment correlated with |φi, which is given, up to normalization
+constant, by:
+                                             |Eφ i = hφ|ΨSE i                                            (9)
+with the similarly defined |Eψ i.
+   Redundancy defined in this manner is indeed a measure of distance, since it is nonnegative:
+
+                                                  d(φ, ψ) ≥ 0 ,                                              (10)
+
+                                                        6
+symmetric:
+                                             d(φ, ψ) = d(ψ, φ) ,                                          (11)
+and satisfies the triangle inequality:
+
+                                         d(φ, ψ) + d(ψ, γ) ≥ d(φ, γ)                                      (12)
+
+as the reader should be able to establish without difficulty.
+    In simplest models which satisfy the commutation condition, Eq. (5), the most predictable set of states
+will consist of the eigenstates of the pointer observable Ô. They will not evolve at all and, hence, will
+be perfect memory states as well as the most (trivially) predictable classical states. In the more general
+circumstances the states which commute with ĤSE at one instant will be rotated (into their superpositions)
+at a later instant with the evolution generated by the self-Hamiltonian ĤS . Thus, a near-zero entropy
+production at one instant may be “paid for” by an enormous entropy production rate a while later. An
+example of this situation is afforded by a harmonic oscillator, where the dynamical evolution periodically
+“swaps” the state vector between its position and momentum representation, and the two representations
+are related to each other by a Fourier transformation. In that case the states which are most immune
+to decoherence in the long run turn out to be the fixed points of the “map” defined by the Fourier
+transformation. Gaussians are the fixed points of the Fourier transformation (they remain Gaussian).
+Hence, coherent states which are unchanged by the Fourier transform are favored by decoherence.11−14
+    In more general circumstances entropy production may not be minimized by an equally simple set of
+states, but the lessons drawn from the two extreme examples discussed above are nevertheless relevant.
+In particular, in the case of systems dominated by the environmental interaction, the Hamiltonian ĤSE
+will have a major say in selecting the preferred basis, while in the underdamped case of near-reversible
+“Newtonian” limit approximately Gaussian wave packets localized in both position and momentum will
+be optimally predictable, leading to the idealization of classical trajectories. In either case, einselection
+will pinpoint the stable set of states in the Hilbert space. These pointer states will be stable, but their
+superpositions will deteriorate into pointer state mixtures rather quickly — on the decoherence timescale
+— which tends to happen very much faster than relaxation3 .
+    This eventual diagonality of the density matrix in the einselected basis is a byproduct, an important
+symptom, but not the essence of decoherence. I emphasize this because diagonality of ρS in some basis
+has been occasionally (mis-) interpreted as a key accomplishment of decoherence. This is misleading.
+Any density matrix is diagonal in some basis. This has little bearing on the interpretation. Well-known
+examples of such accidental diagonality are the unit density matrix (which is diagonal in every basis) and
+the situation where ρA∪B = pρA + (1 − p)ρB describes a union of two ensembles A and B with density
+matrices ρA and ρB which are not co-diagonal (i.e., [ρA , ρB ] 6= 0). In either of these two cases states which
+are on the diagonal of ρA∪B are in effect a mathematical accident and have nothing to do with the physical
+reality.
+    Einselection chooses preferred basis in the Hilbert space in recognition of its predictability. That basis
+will be determined by the dynamics of the open system in the presence of environmental monitoring. It
+will often turn out that it is overcomplete. Its states may not be orthogonal, and, hence, they would never
+follow from the diagonalization of the density matrix.
+    Einselection guarantees that only those ensembles which consist of a mixture of pointer states can truly
+“exist” in the quasi-classical sense. That is, individual members of such ensembles are already immune to
+the measurement of pointer observables. These remarks cannot be made about an arbitrary basis which
+
+
+                                                      7
+happens to diagonalize ρ but are absolutely essential if the quantum system is to be regarded as effectively
+classical.
+    It is useful to contrast decoherence with the more familiar consequence of interactions with the en-
+vironment — the noise. Idealized decoherence [e.g., the case of Eq. (5)] has absolutely no effect on the
+observable of interest. It is caused by the environment carrying out a continuous “nondemolition measure-
+ment” on the pointer observable Ô. Thus, decoherence is caused by the system observables effecting the
+environment and by the associated transfer of information. Decoherence is, in this sense, a purely quantum
+phenomenon; information transfers have no effect on classical states.
+    Noise, by contrast, is caused by the environment disturbing an observable. It is, of course, familiar in
+the classical context. The distinction between the two is illustrated in Fig. 1c, in the c-not language we
+have adopted previously.
+    Astute readers will point out that the distinction between noise and decoherence is a function of the
+observable in terms of which c-not is implemented. This is because a quantum c-not is, in contrast√with
+its classical counterpart, a “two-way street.” When the Hadamard transform, |±i = (|0i ± |1i)/ 2, is
+carried out, control and target swap their functions. Thus, loosely speaking, as the information about the
+states {|0i , |1i} travels in one direction, the information about the relative phase (which is encoded in their
+Hadamard transforms) travels the other way. Thus, in quantum gates the direction of the information flow
+depends on the states which are introduced at the input.
+    Typically, both noise and decoherence are present. One can reinterpret the predictability sieve11 we
+have mentioned before as a search for the set of states which maximizes the “control” role of the system,
+while simultaneously minimizing its “target” role. Eigenstates of the pointer observable are a solution.
+The phases between them are a “victim” of decoherence and are rapidly erased by the interaction with the
+environment.
+
+
+4       PROBABILITIES
+The classical textbook of Gnedenko53 distinguishes three ways of defining probability. These are:
+    (i) Definitions which introduce probability as a quantitative measure of the degree of certainty of the
+observer;
+    (ii) “Standard† definitions”, which originate from the more primitive concept of equal likelihood (and
+which can be traced to the original applications of probability in gambling);
+    (iii) Relative frequency definitions, which attempt to reduce probability to a frequency of occurrence of
+an event in a large number of trials.
+    In the context of the interpretation of quantum theory, the last of these three definitions has been
+invoked most often in attempts to derive probabilities from the universal quantum dynamics.54−57 The
+argument starts with an ensemble of identical systems (e. g., spin 21 system) in a pure state and a definition
+of a relative frequency operator for that ensemble. The intended role of the relative frequency operator
+was to act as quantum equivalent of a classical “counter,” but in effect it was always a meta-observable of
+the whole ensemble, and, thus, it could not have been associated with the outcomes of measurements of
+the individual members of the ensemble.
+    A useful insight into relative frequency observables is afforded by the physically transparent example of
+Fahri et al.56 They consider an ensemble of spin 12 “magnets,” all in an identical state, aligned with some
+    †
+    “Classical” is a more often used adjective. We shall replace it by “standard” to avoid confusion with the other kind of
+classicality discussed here.
+
+
+                                                            8
+axis ~a. Relative frequency observable along some other direction ~b would correspond to a measurement
+of a deflection of the object with a known mass and with a whole ensemble of spins attached to it by a
+(meta) Stern-Gerlach apparatus with a field gradient parallel to ~b. The angle of deflection would be then
+                                a·~b
+proportional to ~a · ~b, and 1+~
+                               2
+                                     would be an eigenvalue of the frequency operator. However, none of the
+spins individually would be required to choose its “answer.”
+    This approach is of interest, as it sheds light on the properties of collective observables in quantum
+physics, but it does not lend itself to the required role of supplying the probability interpretation in the
+MWI context. A true “frequency” with a classical interpretation cannot be defined at a level which does
+not allow “events” — quantum evolutions which lead to objectively existing states — to be associated with
+the individual members of that ensemble. This criticism was made already, in somewhat different guise,
+by several authors (see Kent57 and references therein). The problem is in part traceable to the fact that
+the relative frequency observables do not eliminate superpositions between the branches of the universal
+wave function and do not even define what these branches are.
+    Decoherence has obvious implications for the probability interpretation. The reduced density matrix ρ
+which emerges following the interaction with the environment and a partial trace will be always diagonal
+in the same basis of einselected pointer states {|ii}. These states help define elementary “events.” Prob-
+abilities of such events can be inferred from their coefficients in ρ, which have the desired “Born’s rule”
+form.
+    Reservations about this straightforward reasoning have been expressed. Zeh58 has noted that interpret-
+ing coefficients of the diagonal elements of density matrix as probabilities may be circular. Here we shall
+therefore examine this problem more closely and prove operational equivalence of two ensembles — the
+original one o associated with the set of identical decohering systems, and an artificial one a, constructed
+to have the same density matrix (ρo = ρa ), but for a much more classical reason, which allows for a
+straightforward interpretation in terms of relative frequencies. This will also shed a light on the sense in
+which the origin of quantum probabilities can be associated with the ignorance of observers.
+    The density matrix alone does not provide a prescription for constructing an ensemble. This is in
+contrast with the classical setting, where a probability distribution (i.e., in the phase space) suffices.
+However, a density matrix plus a guarantee that the ensemble is a mixture of the pointer states does give
+such a prescription. Let us consider ρo along with the einselected set of states {|ii} which emerge as a
+result of the interaction with the environment. We consider an artificially prepared ensemble a with a
+density matrix ρa which we make “classical by construction.” Ensemble a consists of systems identical to
+the one described by o. They are continuously monitored by an appropriate measuring apparatus which
+can interact with and keep records of each system in a.
+    Let us first focus on the case of pure decoherence. Then, in the einselected basis:
+                                               αi∗ αj |ii hj| →       |αi |2 |ii hi| = ρo (t ≫ tD ) ,
+                                         X                        X
+                          ρo (t = 0) =                                                                        (13)
+                                         i,j                      i
+
+where tD is the decoherence timescale. This very same evolution shall occur for both ρo and ρa . We can
+certainly arrange this by adjusting the interactions in the two cases. In particular, the (pointer) states
+{|ii} shall remain untouched by decoherence.
+    In the artificial case a, the interpretation is inescapable. Each number of a comes with a “certificate”
+of its state (which can be found in the memory of the recording device). Following the initial measurement
+(which establishes the correlation and the first record), the subsequent records will reveal a very boring
+“history” (i.e., |i = 17i@t1 , |i = 17i@t2 , . . . |i = 17i@tn , etc.). Moreover, the observer — any observer — can
+remeasure members of a in the basis {|ii} and count the numbers of outcomes corresponding to distinct
+
+                                                              9
+states of each of N members. There is no “collapse” or “branching” and no need to invoke Born’s rule. All
+of the outcomes are in principle pre-determined, as can be eventually verified by comparing the record of
+the observer with the on-going record of the monitoring carried out by the measuring devices permanently
+attached to the system. Individual systems in a have “certified” states, counting is possible, and, hence,
+probability can be arrived at through the frequency interpretation for the density matrix ρa . But, at
+the level of density matrices, ρa and ρo are indistinguishable by construction. Moreover, they have the
+same pointer states, {|ii}o = {|ii}a . Since all the physically relevant elements are identical for o and a,
+and since, in a, the frequency interpretation leads to the identification of the coefficients of |ii hi| with
+probabilities, the same must be true for the eigenvalues of ρo .
+     The “ignorance” interpretation of the probabilities in a is also obvious. The state of each and every
+system is known, but until the “certificate” for a specific system is consulted, its state shall remain unknown.
+Similarly, each system in o can be said to have a state recorded by the environment, waiting to be discovered
+by consulting the record dispersed between the environmental degrees of freedom. This statement should
+not be taken too far — the environment is only entangled with the system — but it is surprising how
+little difference there is between the statements one can make about o and a. In fact, there is surprisingly
+little difference between this situation and the case where the system is completely classical. Consider
+the familiar Szilard’s engine,59 where the observer (Szilard’s demon) makes a measurement of a location
+of a classical particle. The correlation between the particle and the records of the demon can be undone
+(until or when demon’s record is copied). Thus, “collapse” may not be as purely quantum as it is usually
+supposed. And information transfer is at the heart of the issue in both classical and quantum contexts.
+In any case, our goal here has been a frequentist justification of probabilities. And that goal we have
+accomplished using a very different approach than these based on the frequency operator attempts to
+derive Born’s formula put forward to date.54−57
+     To apply the strategy of the standard definition of probabilities in quantum physics, we must identify
+circumstances under which possibilities — mutually exclusive “events” — can be permuted without having
+any noticeable effect on their likelihoods. We shall start with the decoherent density matrix which has all
+of the diagonal coefficients equal:
+                                                         N
+                                             ρ = N −1
+                                                         X
+                                                              |ki hk| = 1                                  (14)
+                                                        k=1
+Exchanging any two k’s has obviously no effect on ρ and, therefore, on the possible measurement outcomes.
+Thus, when we assume that the total probability is normalized and equal to unity, a probability of any
+individual outcome |ki must be given by:
+                                                T rρ |ki hk| = N −1 .                                      (15)
+It also follows that a probability of a combination of several (n) such elementary events is
+                             T rρ (|k1 i hk1 | + |k2 i hk2 | + · · · + |kn i hkn |) = n/N .                (16)
+Moreover, when before the onset of decoherence the system was described by the state vector
+                                                              N
+                                            |ψi = N −1/2           eiφk |ki ,
+                                                              X
+                                                                                                           (17)
+                                                             k=1
+
+the probabilities of the alternatives after decoherence in the basis {|ki} will be
+                                             p|ki = |hk|ψi|2 = N −1 .                                      (18)
+
+                                                          10
+However, in order to be able to add or to permute different alternatives without any operational implica-
+tions, we must have assumed decoherence. For, as long as |ψi is a superposition, Eq. (17), one can easily
+invent permutations which will effect measurement outcomes. Consider, for example,
+                                                                √
+                                       |ψi = (|1i + |2i − |3i) / 3                                  (19)
+
+A measurement could involve alternatives {|1i , |2i + |3i , |2i − |3i} and would easily distinguish between
+the |ψi above and the permuted:                                   √
+                                      |ψ ′ i = (|3i + |2i − |1i) / 3                                    (20)
+The difference between |ψi and |ψ ′ i is the relative phase. Thus, decoherence and a preferred basis with
+identical coefficients are both required to implement the standard definition in the quantum context.
+   The case of unequal probabilities is dealt with by reducing it to (or at least approximating it with) the
+case of equal probabilities. Consider a density matrix of the system
+                                                           N
+                                                           X
+                                                 ρS =            pk |ki hk| .                           (21)
+                                                           k=1
+
+We note that it can be regarded as an average of an equal probability density matrix of a composite system
+consisting of S and R.
+                                                   N nk+1
+                                                       X−1
+                                        ρSR ∼
+                                                   X
+                                            =                        |k, ji hk, j| /M                   (22)
+                                                  k=1      j=nk
+
+Here M is the total number of states in HSR , and the degeneracies nk are selected so that pk ≃ nk /M, i.e.,
+                                               k                       N
+                                        nk ∼
+                                               X                       X
+                                           =            pk ′ · M ,           nk = M .                   (23)
+                                               k ′ =1                  k=1
+
+For sufficiently large M (typically M ≫ N) “coarse-grained” ρ̃S and ρS will become almost identical;
+                                         N nk+1
+                                         X   X−1
+                           ρ̃S = Mlim                    hj| ρSR |ji = Mlim T rR ρSR = ρS               (24)
+                                 N
+                                     →∞ k=1 j=n                              N
+                                                                                 →∞
+                                                k
+
+
+One can now use the “standard” argument to obtain, first, the probability interpretation for ρSR (based on
+the invariance of ρSR under the permutations (kj) ↔ (k ′ j ′ )), and then use it [and Eq. (16)] to deduce the
+probabilistic interpretation of ρS . Note that in the above sum, Eq. (24), we did not have to appeal to the
+actual numerical values of the eigenvalues of ρSR , but only to their equivalence under the permutations.
+Thus, we are not assuming a probabilistic interpretation of ρSR to derive it for ρS . (We also note that
+the sum over auxilliary states above is, strictly speaking, not a conventional trace since the dimensions
+of subspaces traced out for distinct k’s will in general differ. For those concerned with such matters we
+point out that one can deal with subspaces of equal dimensionality providing that the “dimension deficit”
+is made up by auxilliary states which have zero probability.)
+    This completes the second approach to the quantum probabilities. Again, we have reduced the problem
+to counting. This time, it was a count of equivalent alternatives (rather than of events). In both of these
+approaches decoherence played an important role. In the standard definition, decoherence got rid of the
+distinguishability of the permuted configurations and einselection defined what they were. In the frequency
+
+
+                                                               11
+interpretation einselection was essential — it singled out states which were stable enough to be counted
+and verified.
+    Our last approach starts from a point of departure which does not rely on counting. Gnedenko was least
+sympathetic to the definitions of probability as a measure of a “degree of certainty,” which he regarded
+as a “branch of psychology” rather than a foundation of a branch of mathematics. We shall also find our
+attempt in this direction least concrete of the three, but some of the steps are nevertheless worth sketching.
+    Gnedenko’s discomfort with the “degree of certainty” might have been alleviated if he had been familiar
+with the paper of Cox60 who has, in effect, derived basic formulae of the theory of probability starting
+from such a seemingly subjective foundation by insisting that the “measure” should be consistent with the
+laws of Boolean logic.
+    Intuitively, this is a very appealing demand. Probability emerges as an extension of the two-valued
+logic into a continuum of the “degrees of certainty.” The assumption that one should be able to carry
+classical reasoning concerning “events” and get consistent estimates of the conditional degree of certainty
+leads to algebraic rules which must be followed by the measure of the degree of certainty.
+    This implies that an information processing observer who employs classical logic states and classical
+memory states which do not interfere will be forced to adopt calculus of probabilities essentially identical
+to what we have grown accustomed to. In particular, likelihood of c and b (i.e., “proposition c · b”) will
+obey a multiplication theorem:
+                                        µ (c · b|a) = µ (c|b · a) µ (b|a) .                               (25)
+Above µ(b|a) designates a conditional likelihood of b given that a is certain. Moreover, µ should be
+normalized:
+                                       µ (a|b) + µ (∼ a|b) = 1 ,                                 (26)
+where ∼ a is the negation of the proposition a. Finally, likelihood of c or b (c ∪ b) is:
+
+                                  µ (c ∪ b|a) = µ(c|a) + µ(b|a) − µ(c · b|a) ,                              (27)
+
+which is the ordinary rule for the probability that at least one of two events will occur.
+    In short, if classical Boolean logic is valid, then the ordinary probability theory follows. We are
+halfway through our argument, as we have not yet established the connection between the µ’s and the
+state vectors. But it is important to point out that the assumption of the validity of Boolean logic in the
+derivation involving quantum theory is nontrivial. As was recognized by Birkhoff and von Neumann,61 the
+distributive law a · (b ∪ c) = (a · b) ∪ (a · c) is not valid for quantum systems. Without this law, the rule for
+the likelihood of the logical sum of alternatives, Eqs. (26), (27) would not have held. The physical culprit
+is quantum interference, which, indeed, invalidates probability sum rules (as is well appreciated in the
+examples such as the double slit experiment). Decoherence destroys interference between the einselected
+states. Thus, with decoherence, Boolean logic, and, consequently, classical probability calculus with its
+sum rules are recovered.
+    Once it is established that “likelihood” must be a measure (which, in practice, means that µ is non-
+negative, normalized, satisfies sum rules, and that it depends only on the state of the system and on the
+proposition) Gleason’s theorem62 implies that
+
+                                           µ(a|b) = T r (|ai ha| ρb ) ,                                     (28)
+
+where ρb is a density matrix of the system, and |ai ha| is a projection operator corresponding to the
+proposition a. Thus, starting from an assumption about the validity of classical logic (i.e., absence of
+
+                                                       12
+interference) we have arrived, first, at the sum rule for probabilities and, subsequently, at the Born’s
+formula.
+    Of the three approaches outlined in this section the two “traditional” are more direct and — at least
+to this author — more convincing. The last one is of interest more for its connection between logic and
+probability than as a physically compelling derivation of probabilities. We have described it in that spirit.
+These sorts of logical considerations have played an important part in the motivation and the subsequent
+development of the “consistent histories” approach.18−20
+
+
+5     RELATIVELY OBJECTIVE EXISTENCE: IN WHAT SENSE
+      IS THE MOON THERE WHEN NOBODY LOOKS?
+The subjective nature of quantum states is at the heart of the interpretational dilemmas of quantum
+theory. It seems difficult to comprehend how quantum fuzziness could lead to the hard classical reality
+of our everyday experience. A state of a classical system can be in principle measured without being
+perturbed by an observer who knew nothing about it beforehand. Hence, it is said that classical physics
+allows states to exist objectively. Operationally, when observer A prepares a classical ensemble ac and hides
+the list LcA with the records of the state of each system in ac from the observer B, it will be still possible
+for B to find out the states of each member of ac through a measurement, with no a priori knowledge.
+To verify this, B could supply his list LcB for inspection. Classical physics allows LcA and LcB to be always
+                                                                        ′
+identical. Moreover, both lists will be the same as the new list LcA with the states of ac remeasured by A
+to make sure that ac was not perturbed by B’s measurements. Indeed, it is impossible for A to find out,
+just by monitoring the systems in ensemble ac , whether some enterprising and curious B has discovered all
+that is to know about ac . Measurements carried out on a classical ac can be accomplished without leaving
+an imprint.
+    This gedankenexperiment shall be the criterion for the “objective existence.” When all of the relevant
+lists match, we shall take it as operational evidence for the “objective nature of measured states.” In the
+case of a quantum ensemble aq this experiment cannot succeed when it is carried out on a closed system.
+Observer A can of course prepare his list LqA — a list of Hilbert space states of all the systems in aq .
+B could attempt to discover what these states are, but in the absence of any prior knowledge about the
+observable selected by A in the preparation of aq he will fail — he will reprepare members of aq in the
+eigenstates of the observables he has selected. Hence, unless by sheer luck B has elected to measure the
+same observables as A for each member of aq , LqA and LqB will not match. Moreover, when A remeasures
+the quantum ensemble using his “old” observables (in the Heisenberg picture, if necessary) following the
+                                                                            ′
+measurement carried out by B, he will discover that his new list LqA and his old list LqA do not match
+either. This illustrates the sense in which states of quantum systems are subjective — they are inevitably
+shaped by measurements. In a closed quantum system it is impossible to just “find out” what the state
+is. Asking a question (choosing the to-be-measured observable) guarantees that the answer (its eigenstate)
+will be consistent with the question posed.51
+    Before proceeding, we note that in the above discussions we have used a “shorthand” to describe the
+course of events. What was really taking place should have been properly described in the language of cor-
+relations. Thus, especially in the quantum case, the objectivity criterion concerned the correlation between
+                                       ′
+a set of several lists (LqA , LqB , LqA ) which were presumably imprinted in effectively classical (i.e., einselected
+with the help of appropriate environment) sets of record states. The states of the systems in the ensemble
+
+
+                                                         13
+aq played a role similar to the communication channels. The operational definition of objective existence of
+the state of the system hinges on the ability of the state of the system to serve as a “template,” which can
+remain unperturbed while it is being imprinted onto the records of the initially ignorant observers. States
+of isolated quantum systems cannot serve this purpose — they are too malleable! (Energy eigenstates
+are somewhat of an exception, but that is a different story (Paz and Zurek, in preparation).) We shall
+see below that the einselected states of decohering quantum systems are less fragile and can be used as a
+“template”. Again, we shall use a shorthand, talking about states, while the real story is played out at
+the level of multipartite correlations. We assume the reader shall continue to translate the shorthand into
+the “full version.”
+    Consider ae , an ensemble of quantum systems subject to ideal einselection caused by the interaction
+with the environment. If the systems are to retain their states in spite of decoherence, the observer A has
+very little choice in the observables he can use for preparation. The menu of stable correlations between
+the states of systems in ae and his records is limited to these involving einselected pointer states. Only
+such states will be preserved by the environment for periods of time long enough to contemplate the
+gedankenexperiment described above.
+    The task of the observer B (who is trying to become correlated with the stable states of ae without
+destroying pre-existing stable correlations established by the observer A) is simplified. As soon as he finds
+out what are the pointer observables, he can measure at will. He can be sure that – in order to get sets
+of records with predictive power – A must have selected the same pointer observables to prepare ae . And
+as soon as the pointer observables are known, their eigenstates can be found without being perturbed.
+Moreover, B will be measuring observables which are already being monitored by the environment, so his
+measurements will have no discernible effect on the states of the systems in ae .
+                                                                                                ′
+    Hence, either A was smart enough to choose pointer states (in which case his lists LeA , LeA , . . . will all be
+identical) and B’s spying will not be detected, or A chooses to measure and prepare arbitrary states in the
+Hilbert space, guaranteeing their deterioration into mixtures of pointer states at a rapid decoherence rate.
+In this second case A’s lists will reflect a steady increase of entropy caused by the mismatch between the
+observable he has elected to measure and the pointer observables he should have measured. And B’s spying
+will most likely still be undetected (especially if he is smart enough to focus on the pointer observables).
+    Let us now compare the three variants of the gedankenexperiment above. In the classical case, anyone
+can find out states of the systems in ac without perturbing them. Prior information is unnecessary, but
+only classical (i.e., localized, etc.) states can be used. In the case of a quantum isolated system an
+enormous variety of quantum states — including all conceivable superpositions of the classical states —
+can be prepared by A in aq . Now B’s measurement will almost inevitably reprepare these states, unless
+somehow B knows beforehand what to measure (i.e., what observables has A measured). In the third case
+— quantum, but with decoherence and einselection — the choices of A are limited to the preferred pointer
+states. Only a very small subset of all the superpositions in the Hilbert space H is available. Moreover, the
+environment is already carrying out continuous monitoring of the observables it has elected to “measure.”
+B can use the correlations established between the system and the state of the environment to find out
+what are the preferred observables and to measure them. He will of course discover that his list matches
+A’s lists and that A could not have detected B’s “spying.”
+    When the states can be “revealed” without being reprepared in the process, they can be thought to
+exist objectively. Both the classical case and the quantum plus einselection case share this feature. The
+environment-induced superselection simultaneously decreases the number of states in H while allowing the
+einselected states to “exist objectively” — to be found out without the necessity of repreparing them in
+the process.
+
+                                                        14
+    In fact, the measurements we carry out as observers are taking an even more immediate advantage
+of the monitoring carried out by the environment. Our measurements are almost never direct — nearly
+without exception they rely on interception of the information already present in the environment. For
+instance, all of the visual information we acquire comes from a tiny fraction of the photon environment
+intercepted by the rod and cone cells in our eyes. Indeed, this is perhaps the best strategy observer B could
+have used in the third version of the gedankenexperiment above. Rather than directly interacting with the
+system in ae , he could have monitored the environment. An imprint left in a small fraction of its state
+is usually enough to determine the state of the system — the environment contains a vastly redundant
+record of the pointer observables.28 Thus, perception of classical reality seems inevitable for the observers
+who — like us — rely on the second-hand information, on the correlations acquired indirectly, from the
+environment.
+    In a sense the environment plays the role of a commonly accessible “internet–like” data base which
+allowes one to make copies of the records concerning the state of the system. There is no need to measure
+the system directly — it suffices to consult the relevant “web page”. And there is no danger of altering
+the state of the system: Nonseparability and other such manifestations of quantum theory could reappear
+only if, somehow, all of the widely disseminated copies of the information were captured and processed in
+the appropriate (quantum) manner. The difficulty of such an enterprise in the macroscopic domain (which
+we have quantified before by the redundancy distance, Eqs. (6)-(12)) is a measure of irreversibility of the
+decoherence–induced “reduction of the wavepacket”.
+    We have just established that states of quantum systems interacting with their environments exist
+much like the classical states were presumed to exist. They can be revealed by measurements of the pointer
+observables which can be ascertained without prior knowledge. In particular, indirect measurements —
+observes monitoring the environment in search of the imprints of the state of the system — seem to be
+the safest and at the same time most realistic way to reveal that state. Moreover, there are many fewer
+possible einselected states than there are states in the Hilbert space. Thus, the relative objectivity based
+on the system-environment correlations and, hence, on decoherence and einselection, comes at a price: The
+choice is severely limited.‡
+    In the above operational approach to the definition of existence, we have made several simplifying
+assumptions. We have (i) neglected the evolution; (ii) assumed perfect decoherence, and; (iii) focused on
+observers with “perfect knowledge,” i.e., used pure states rather than mixtures as initial conditions. All of
+these assumptions can be relaxed with relatively little pain. Hamiltonian evolution alone would not be a
+problem — the system could be described in Heisenberg’s picture. But the combination of evolution and
+decoherence will lead to complications, resulting in a preferred basis which is imperfect12−14,17 — even the
+optimal pointer states would eventually deteriorate into mixtures, albeit on a timescale long compared to
+   ‡
+     How limited? There are of course infinitely many superpositions in H of finite dimensionality, but that is already true of
+a spin 21 Hilbert space, and it does not capture the reason for the incredible proliferation of superpositions. In the Hilbert
+space of a decohering system, there will be N ∼ Dim(H) pointer states {|ki}. For a typical superposition state |ψi composed
+of all N states, with the possibilities “coarse grained” by assuming that all |ψi have a form:
+                                                          1 X
+                                                   |ψi = √    (−)ik |ki
+                                                          N k
+
+where ik is 0 or 1, there will be
+                                                           W ∼ 2N
+such superpositions. That is, even when we set all the coefficients to have the same absolute value, and coarse-grain phases
+to the least significant (binary) digit, we will have exponentially many possibilities.
+
+
+                                                              15
+the decoherence timescale for random superposition in H.
+    This difference between the einselected states and arbitrary superpositions could be quantified by
+defining the predictability horizon:
+                                         Z∞
+                                  tp =        (HEQ − H(t)) dt/ (HEQ − H(0))                               (29)
+                                         0
+
+This characterizes the timescale over which the initial information HEQ − H(0) is lost as the von Neumann
+entropy, H(ρ) = −T rρ log ρ, approaches the long-term (equilibrium) value HEQ . Easier to compute (and
+similarly motivated)
+                                                     Z∞                 
+                                             t′p =        T r ρ2t − ρ2 (∞) dt                             (30)
+                                                     0
+
+should supply equivalent information. Thus t′p would be short (and of the order of the decoherence
+time) for a typical initial state in the Hilbert space. By contrast, the predictability horizon may be long
+(and, perhaps, even infinite) for pointer states of integrable systems, while for chaotic systems one would
+anticipate predictability timescales determined by the Lyapunov exponents when decoherence dominates.24
+    The gedankenexperiment at the foundation of our “operational definition of existence” is based on the
+comparison of records of two observers A and B. It could now be repeated, provided that the duration of
+the experiment is brief compared to the predictability timescale, or that the natural rate of information
+loss is accounted for when evaluating the final results.
+    In fact, the predictability sieve could be implemented using this strategy. Einselected pure states will
+maximize tp . Moreover, such procedure based on the predictability timescale can be easily applied to
+compare pure and mixed states. That is, one can find out how much more durable are various correlations
+between the observer’s records of the coarse-grained measurements. The key difference from the original
+predictability sieve,11 which has been successfully used to demonstrate the special role of Gaussians,11−14
+is a somewhat different sieve criterion, which may even have certain advantages.
+    All these caveats and technicalities should not obscure the central point of our discussion. Environment-
+induced superselection allows observers to anticipate what states in the Hilbert space have a “relatively
+objective existence” and can be revealed by measurements without being simultaneously reprepared. Rel-
+atively objective existence is a deliberate double entendre, trying to point out both the relative manner in
+which existence is defined (i.e., through correlations, similar in spirit to the relative states of Everett50 )
+and a reminder that the existence is not absolutely stable but, rather, that it is purchased at the price of
+decoherence and based on the monitoring by the environment.
+    Concerns about the predictability timescale do not imply that, on timescales long compared to tp , the
+states of the systems in question do not “exist.” Rather, tp indicates the predictability horizon on which
+evolution and decoherence destroy the relevance of the “old” data (the record-state correlation). But even
+then the essence of our definition of reality — the ability of the observer to “reveal” the state — captures
+the essence of “existence.”
+
+
+6    THE EXISTENTIAL INTERPRETATION
+The interpretation based on the ideas of decoherence and einselection has not really been spelled out
+to date in any detail. I have made a few half-hearted attempts in this direction,11,63 but, frankly, I was
+
+
+                                                                 16
+hoping to postpone this task, since the ultimate questions tend to involve such “anthropic” attributes of the
+“observership” as “perception,” “awareness,” or “consciousness,” which, at present, cannot be modelled
+with a desirable degree of rigor.
+     It was my hope that one would be able to point to the fact that decoherence and einselection allow for
+existence (as defined operationally through relative states and correlations in the preceding section) and
+let those with more courage than I worry about more esoteric matters. I have been gradually changing
+my mind as a result of penetrating questions of my colleagues and the extrapolations (attempted by the
+others) of the consequences of decoherence and einselection which veered in the directions quite different
+from the one I have anticipated. (See references 64–67 for a sample of questions, criticisms, and attempts
+at an interpretation.) Moreover, while there are “deep” questions which may be too ambiguous to attack
+with the tools used by physicists, there are aspects of information processing which bear direct relevance for
+these deeper issues, and which can be profitably analysed in a reasonably concrete setting. Here I intend
+to amplify some of the points I have made before and to provide the “next iteration” by investigating
+consequences of environmental monitoring a step or two beyond the operational definition of “existence.”
+I shall proceed in the general direction indicated earlier,11,63 and focus on the stability of the einselected
+correlations.
+     We start by noting that the relatively objective existence of certain states “negotiated” with the envi-
+ronment has significant consequences for the observers and their information-processing abilities. In the
+gedankenexperiments involving observers A and B in the preceding section we could have equally well
+argued for the objective existence of the states of their memory cells. Again, superpositions of all the
+possibilities are ruled out by einselection, and the brain of an observer can preserve, for long periods of
+time, only the pointer states of its neurons. These states exist in the same relatively objective sense we
+have defined before — they can be revealed (correlated with) the states of other neurons without having to
+be simultaneously re-prepared. Indeed, real neurons are coupled very strongly to their environments and
+certainly cannot exist in superpositions. Their two stables states are characterized by different rates of
+firing, each a consequence of a nonequilibrium dissipation-dominated phenomena, which are bound to leave
+a very strong imprint on the environmental degrees of freedom not directly involved in the information
+processing. In an obviously overdamped system operating at a relatively high temperature, the inability
+to maintain superpositions is not a surprise.§
+     When we assume, as seems reasonable, that the states of neurons are the “seat” of memory and that
+their interactions lead to information processing (which eventually results in “awareness,” and other such
+“higher functions”), we have tangible hardware issues to analyze. Indeed, at this level of discussion there
+is little fundamental difference between a brain and a massively parallel, neural network–like, effectively
+classical computer.
+     The ability to process information concerning states of objects external to memory (for, say, the purpose
+of prediction) is then based on the stable existence of correlations between the record bits of memory and
+the state of the object. It is fairly easy to imagine how such a correlation can be initially established
+either by a direct measurement or, as we have noted previously, through an indirect process involving
+environment. For the reliability of memories, it is absolutely crucial that this correlation be immune to
+further correlations with the environment, i.e., to decoherence. Following a measurement (and the initial
+   §
+    Neurons work more like a diode or a transistor, relying on two stable steady states (characterized by different firing
+rates) for stability of the logical “0” and “1,” rather than the two-state spin 12 -like systems, which often end up playing the
+neuron’s roles in models of neuron networks invented by theoretical physicists. I believe, however, that for the purpose of
+the ensuing discussion this distinction is not essential and I will continue to invoke licentia physica theoretica and consider
+spin 21 -like neurons for the remainder of this paper.
+
+
+                                                              17
+bout of decoherence), the reduced joint density matrix of the system and the relevant part of memory and
+the environment will have the form:
+                                                       X
+                                             ρSM =          pi |si i hsi | |µi i hµi |                   (31)
+                                                        i
+
+The predictability horizon can be defined as before through
+                                             R∞
+                                                  (H(si, µi ; t) − H(si , µi ; ∞)) dt
+                                             p
+                                   tp(i) =                                                               (32)
+                                                   H(si, µi ; 0) − H(si , µi; ∞)
+
+for individual outcomes. Here H can stand for either Shannon-von Neumann, or linear (or still other) mea-
+sure of information content of the conditional (re-) normalized hµi |ρSM | µii. After a perfect measurement
+there is a one-to-one correlation between the outcome and the record (Eq. (31)). It will, however, deterio-
+rate with time as a result of dynamics and the openness of the system, even if the record–keeping memory
+states are perfectly reliable.68 The predictability timescale for memory-system joint density matrices has
+a more specific interpretation than the one defined by Eqs. (29) and (30). It is also safe to assume that
+memories use stable states to preserve records. In this “no amnesia” case, tp(i) will measure the timescale
+on which the acquired information is becoming a useless “old news” because of the unpredictable evolution
+of the open system. Predictability horizon can (and typically will) depend on the outcome.
+    We note that more often than not, both the states of memory and the states of the measured systems
+will be mixed, coarse-grained states inhabiting parts of large Hilbert spaces, rather than pure states. Thus
+the record µi will correspond to ρµi and T r(ρµi ρµj ) ∼ = δij . It is straightforward to generalize Eqs. (31)
+and (32) to cover this more realistic case. Indeed, it is likely that the memory states will be redundant, so
+that the likely perturbations to the “legal” memory states shall retain orthogonality. This would allow for
+classical error correction, such as is known to be implemented, for example, in neural circuits responsible
+for photodetection in mammalian eyes, where several (approximately seven) rods must fire more or less
+simultaneously to result in a record of detection of a light source.
+    Observers will be able to make accurate predictions for as long as a probabilistic equivalent of logical
+implication shall be valid, that is, as long as the conditional probability g(t) defined by:
+
+                                   p (σi (t)|µi ) = p (σi (t), µi ) /p(µi ) = g(t)                       (33)
+
+is close to unity. Here σi (t) is a “proposition” about the state of the system at a time t. One example
+of such a formal equivalent of a proposition would be a projection operator onto a subspace of a Hilbert
+space. When σi (t) is taken to be a pure state |si (t)i, and t ≪ t(i)                ∼
+                                                                     p so that g(t) = 1, Eq. (33) becomes
+in effect a formal statement of the “collapse” axiom of quantum measurement theory. For, memory will
+continue to rediscover the system in the same state upon repeated re-measurements.
+    Again — as in the preceding section — relatively objective existence of correlations (established in
+contact with the environment, with their stability purchased at the expense of the limitation of the possible
+states of memory and the measured system) is decisive for the predictive utility of the records. These
+records must be repeatedly and reliably accessible for the other parts of memory to allow for information
+processing. This is why the record states which exist (at least in the relatively objective operational sense
+employed before) are essential for the reliability of memories inscribed in open systems. They can be re-
+measured by the other memory cells spreading the useful correlation throughout the information processing
+network of logical gates but suffer no ill effects in the process.
+
+                                                               18
+    The record state |µi i must then obviously be decoherence resistant, but the same should be true for
+the measured states |si (0)i and (hopefully) for their near-future descendants |si (t)i. Only then will the
+correlation between memory and the state of the system be useful for the purpose of predictions. One can
+analyze this persistence of quasi-classical correlations from various points of view, including the algorithmic
+information content one. We shall mention this idea here only briefly as a more complete account is
+already available.68 In essence, when |si (t)i evolves predictably, a sequence of repeated measurements of
+                                                                   (1)   (2)      (n)
+the appropriate observables yields a composite record R = {µ@t1 , µ@t2 , ..., µ@tn }, which will be all derivable
+                  (0)
+from the initial µ@t0 and from the algorithm for the evolution of the monitored system. This predictability
+could be expressed from the viewpoint of the observer by comparing the algorithmic information content
+of R with its size in bits. When the whole R can be computed from the initial condition, the algorithmic
+information content K(R) (defined as the size of the shortest program for a universal computer with the
+output R69 ) is much less than the size of the “uncompressed” R in bits. An illustrative (if boring) example
+of this would be a sequence of records of a fixed state of an object such as a stone. Then R would simply
+be the same record, repeated over and over. This is of course trivially algorithmically compressible.
+    This immobility of objects such as stones is the basic property which, when reflected in the perfectly
+predictable sequence of records, provides a defining example of (the most basic type of) perception of exis-
+tence, of permanence which defines “classical reality”. In this case, the same set of observables “watched”
+by the environment is also being watched by the observer.
+    In general, the state of a system evolving in contact with the environment will become less and less
+closely correlated with its initial state. Therefore, entropy will increase, and the reliability of the implication
+measured by the conditional probability p(σi (t)|µi) will decrease. Alternatively, one may want to retain the
+safety of predictions (i.e., have p(σi (t)|µi) close to unity at the price of decreased accuracy). This could be
+accomplished by choosing a safer (but less precise) prediction σ̃i (t) which includes σi (t) with some “error
+margin” and thus supplies the requisite redundancy.
+    For a judiciously selected initial measurement the conditional probability p(σi (t)|µi ) will decrease rel-
+atively slowly (for example, on a dynamically determined Lyapunov timescale in the case of chaotic
+systems68 ), while for measurements which result in the preparation of a “wrong” initial condition — a state
+at odds with einselection — the conditional probability would diminish suddenly, on a near-instantaneous
+decoherence timescale.
+    Typically, the prediction σi will not be a pure state but a suitably macroscopic patch in the phase space
+(and a corresponding “chunk” of the Hilbert space). Increase in the size of the patch will help extend the
+relative longevity of the predictive power of the records at the expense of the accuracy. Nevertheless, even
+in this case predictive power of the old records shall eventually be lost with time.
+    The memory must be stored in robust record states, which will persist (ideally forever, or, at least,
+until they are deliberately erased). Deliberate erasure is an obvious strategy when the records outlive their
+usefulness.
+    In this picture of a network of effectively classical memory elements interconnected with logical gates,
+stability of the records is essential. It is purchased at the price of “censorship” of the vast majority of
+all of the superpositions which are in principle available in the Hilbert space. It is in an obvious contrast
+with quantum computers,30−35 where all of the superpositions are available for information processing. and
+where the states of memory are unstable and prone to the environment-induced decoherence and other
+errors.
+    Let us now consider how such a quasi-classical, environmentally stable memory “perceives” the Universe.
+To avoid generalities, we consider — from the point of view of this memory — the task of determining
+
+
+                                                        19
+what are the classical branches of the universal state vector. That is, we shall ask the observer to find out
+what are the pointer states in his branch of the Universe.
+     In effect, we have already presented all of the elements necessary for the definition of the branches in
+the course of the discussion of existence in the preceding section. A branch is defined by its predictability
+— by the fact that the correlations between its state and the records of the observer are stable. In other
+words, a branch is defined by the fact that it does not split into branches as rapidly as a randomly selected
+state.
+     The observer is “attached” to the branch by the correlations between its state and the einselected
+states which characterize the branch. Indeed, the observer is a part of his branch. In the case of perfect
+predictability (no entropy production; initial records of the observer completely determine the future
+development of the branch), there would be no further branching. An observer will then be able — on
+the basis of his perfect predictability — to develop a view that the evolution of the Universe is completely
+deterministic and that his measurements either confirm perfect predictability (when carried out on the
+system he has already measured in the past) or that they help reveal the pre-existing state of affairs within
+“his” branch.
+     This classically motivated and based on Newtonian intuitions “single branch” (single trajectory) limit
+of quantum physics is responsible for the illusion that we live in a completely classical Universe. It is
+an excellent approximation in the realm of the macroscopic, but it begins to fail as the resolution of the
+measurements increases. One example of failure is supplied by quantum measurements and, more generally,
+by the situations where the state of the macroscopic object is influenced by the state of a quantum object.
+Then the past initial condition is exhaustive — the observer knows a pure state, i.e., all that is possible to
+know — and yet this is demonstrably insufficient to let him determine the future development of his branch.
+For, when the past correlation is established in a basis incompatible either with the monitoring carried out
+by the environment, or when it prepares a state which is not an eigenstate of the new measurement, the
+new outcome cannot be inferred from the old initial condition.
+     Relatively objective existence is at the core of the definition of branches. Stability of the correlations
+between the state of the observer and the branch is responsible for the perception of classicality. Stability
+of the record states of the observer is an obvious precondition. The observer with a given set of records
+is firmly attached to the branch which has induced these records — he “hangs on” to the branch by the
+correlations. He may even be regarded as a part of that branch, since mutual correlations between systems
+define branches.
+     Observers described here are quite different from the aloof observers of classical physics, which sim-
+ply “note” outcomes of their measurements by adding to their abstract and immaterial repository of
+information. In a quantum universe information is physical70 — there is simply no information without
+representation.63 In our context this implies that an observer who has recorded one of the potential out-
+comes is physically distinct from an observer who has detected an alternative outcome. Moreover, these
+two states of the observer are objectively different — they can be “revealed” from the outside (i.e., by
+monitoring the environment in which record states are immersed) without disturbing the observer’s records.
+     The question “why don’t we perceive superpositions” (which has been repeated also by some of those
+who investigate and support ideas of decoherence71 ) has a straightforward answer. The very physical
+state of the observer and, thus, his identity is a reflection of the information he has acquired. Hence, the
+acquisition of information is not some abstract, physically insignificant act, but a cause of reshaping of the
+state of the observer. An exaggerated example is afforded by the famous case of Schrödinger’s cat.48 A cat
+that dies as the result of an amplified quantum event will certainly be easily distinguishable from the cat
+that lives on (and can continue observations). Similarly, an effectively classical computer playing the role
+
+                                                      20
+of an observer will be measurably distinct depending on what outcome was recorded in its data bank.
+    Coherent superpositions of two memory states will disappear on the decoherence timescale in the
+presence of the environment. Hence, a coherent superposition of two distinct identities of an observer
+does not exist in the relatively objective operational sense introduced previously. Even in the rare cases
+when a memory bit of an observer enters into a bona fide entanglement with an isolated quantum system,
+decoherence will intervene and turn that entanglement into an ordinary classical correlation in the basis
+defined by the einselected record states.
+    The interpretation which recognizes that decoherence and environment-induced superselection allow
+for the existence of states at the expense of the superposition principle is known as the existential
+interpretation.11,63 It accounts for the inability of the observers to “perceive” arbitrary superpositions.
+The (relatively) objective existence of the records is a precondition for their classical processing and,
+therefore, for perception.¶
+    It is easy to design logical states which would distinguish between objectively existing records and
+accidental states. Redundancy is the key. Thus, when an entanglement between a (two-state) system and
+a memory cell develops,
+                                        |φSµ i = α |↑i |1i + β |↓i |0i ,                               (34)
+and, under the influence of the environmental decoherence, rapidly deteriorates to a classical correlation
+                                    ρSµ = |α|2 |↑i h↑| |↑i h1| + |β|2 |↓i h↓| |0i h0| ,                               (35)
+the reliability of the record state in an arbitrary basis can be in principle tested by the other parts of the
+memory. Repeated measurements of the same memory cell in different bases and comparing longevity of
+the state in the {|0i , |1i} basis with the (lack of) longevity of the state in the {|+i , |−i} basis would do
+the trick. Thus, as a consequence of decoherence and einselection,
+                                  ρSM = |α|2 |↑i h↑| |1i h1| |1′ i h1′ | |1′′ i h1′′ | . . .
+                                      + |β|2 |↓i h↓| |0i h0| |0′ i h0′ | |0′′ i h0′′ | . . . ,                        (36)
+in the transparent notation, while in the case of measurements of {|+i , |−i} record states there would
+be no correlation between the consecutive measurements carried out at intervals exceeding decoherence
+timescale. Instead of two branches of Eq. (36), there would be 2N branches, where N is the number of two-
+state memory cells implicated. And a typical branch would be algorithmically random, easily betraying
+unreliability of the {|+i , |−i} record states.
+    This simplistic model has no pretense to realism. Rather, its aim is to demonstrate a strategy for
+testing what is reliably known by the observer. A slightly more realistic model would entail redundant
+records we have mentioned already, Eqs. (6)-(12). Thus, the initial correlations would involve several (n)
+memory cells:
+                                  ρSµn = |α|2 |↑i h↑| |1i h1|1 |1i h1|2 . . . |1i h1|n
+                                       + |β|2 |↓i h↓| |0i h0|1 |0i h0|2 . . . |0i h0|n ; .                            (37)
+Then the reliability of the records can be tested by looking for the basis in which all of the records are in
+accord. This can be accomplished without destruction of all of the original redundant correlation between
+some of the records and the system.
+  ¶
+    It is amusing to speculate that a truly quantum observer (i.e., an observer processing quantum information in a quantum
+computer-like fashion) might be able to perceive superpositions of branches which are inaccessible to us, beings limited in
+our information processing strategies to the record states “censored” by einselection.
+
+                                                              21
+   These toy models establish that, in the presence of decoherence, it is possible to record and that it is
+possible to find out what information is reliable (which correlations are immune to decoherence). Again, we
+emphasize that the above toy models have no pretense to even a remote kinship with real-world observers.k
+
+
+7       CONCLUSION
+What we have described above is a fairly complete sketch of the physics involved in the transition from quan-
+tum to classical. Whether one would now claim that the emerging picture fits better Bohr’s “Copenhagen”
+framework or Everett’s “Many Worlds” interpretation seems to be a semantic rather than a substantial
+issue. To begin with, decoherence was not a part of either of these interpretations. Thus, what we have
+presented here is clearly beyond either CI or MWI.
+    The existential interpretation owes Bohr the central question which was always implicit in the early
+discussions. This question — about the location of the quantum-classical border — is really very similar to
+questions about “existence.” We have posed and settled these questions operationally and, thus, provided
+a quantum justification for some of the original CI program.
+    On the other hand, we owe Everett the observation that quantum theory should be the key tool in
+the search for its interpretation. The question and concern may be traced to Bohr, but the language of
+branches and the absence of explicit collapses and ab initio classicality are very much in tune with MWI.
+    We believe that the point of view based on decoherence settles many of the questions which were left
+open by MWI and CI. This includes the origin of probabilities as well as the emergence of “objective
+existence”, although more needs to be done.
+    In particular, one issue which has been often taken for granted is looming big, as a foundation of the
+whole decoherence program. It is the question of what are the “systems” which play such a crucial role in
+all the discussions of the emergent classicality. This issue was raised earlier,2,28 but the progress to date has
+been slow at best. Moreover, replacing “systems” with, say, “coarse grainings” does not seem to help at all
+— we have at least tangible evidence of the objectivity of the existence of systems, while coarse-grainings
+are completely “in the eye of the observer.”
+    It should be emphasized that reliance on systems does not undermine the progress achieved to date
+in the study of the role of decoherence and einselection. As noted before,11 the problem of measurement
+cannot be even stated without a recognition of the existence of systems. Therefore, our appeal to the
+same assumption for its resolution is no sin. However, a compelling explanation of what are the systems
+— how to define them given, say, the overall Hamiltonian in some suitably large Hilbert space — would
+be undoubtedly most useful.
+    I would like to thank Chris Jarzynski, Michael Nielsen, and Chris Zalka for comments on the manuscript.
+
+
+References
+ [1] Zurek, W. H., 1981, Pointer basis of quantum apparatus: Into what mixture does the wave packet
+     collapse?, Phys. Rev. D24, 1516–1525.
+
+ [2] Zurek, W. H., 1982, Environment-induced superselection rules, Phys. Rev. D26, 1862–1880.
+    k
+    Indeed, one could argue that if some unhappy evolutionary mutation resulted in creatures which were bred to waste their
+time constantly questioning the reliability of their records, they would have become nourishment for other, more self-assured
+creatures which did not need to pose and settle such philosophical questions before making a useful prediction.
+
+
+                                                             22
+ [3] Zurek, W. H., 1984, Reduction of the wave packet: How long does it take?, LAUR 84-2750, pp.
+     145-149 in Frontiers in Nonequilibrium Statistical Physics, edited by G. T. Moore and M. O. Scully,
+     (Plenum, New York 1986).
+ [4] Joos, E., and Zeh, H. D., 1985, The emergence of classical properties through interaction with the
+     environment, Z. Phys. B59, 223–243.
+ [5] Walls, D. F., Collet, M. J., and Milburn, G. J., 1985, Analysis of a quantum measurement, Phys. Rev.
+     D32, 3208–3215.
+ [6] Caldeira, A. O., and Leggett, A. J., 1985, Influence of damping on quantum interference: An exactly
+     soluble model, Phys. Rev. A31, 1059–1066.
+ [7] Unruh, W. G., and Zurek, W. H., 1989, Reduction of a wave packet in quantum Brownian motion,
+     Phys. Rev. D40, 1071–1094.
+ [8] Zurek, W. H., 1991, Decoherence and the transition from quantum to classical, Physics Today 44
+     (Oct.), 36–44.
+ [9] Zeh, H. D., 1993, There are no quantum jumps, nor are there particles!, Phys. Lett. A172, 189–192.
+[10] Giulini, D., Joos, E., Kiefer, C., Kupsch, J., Stamatescu, I.-O., Zeh, M. D., 1996, Decoherence and
+     the appearance of classical world in quantum theory (Springer, Berlin)
+[11] Zurek, W. H., 1993, Preferred states, predictability, classicality and the environment-induced deco-
+     herence, Progr. Theor. Phys. 89, 281–312.
+[12] Zurek, W. H., Habib, S., and Paz, J. P., 1993, Coherent states via decoherence, Phys. Rev. Lett. 70,
+     1187–1190.
+[13] Tegmark, M., and Shapiro, H. S., 1994, Decoherence produces coherent states: An explicit proof for
+     harmonic chains, Phys. Rev. E50, 2538–2547.
+[14] Gallis, M. R., 1996, The emergence of classicality via decoherence described by Lindblad operators,
+     Phys. Rev. A53, 655–660.
+[15] Hu, B. L., Paz, J. P., and Zhang, Y., 1992, Quantum Brownian motion in a general environment:
+     Exact master equation with nonlocal dissipation and colored noise, Phys. Rev. D45, 2843–2861.
+[16] Paz, J. P., Habib, S., and Zurek, W. H., 1993, Reduction of the wave packet: Preferred observables
+     and decoherence time scale, Phys. Rev. D47, 488–501.
+[17] Anglin, J. R., and Zurek, W. H., 1996, Decoherence of quantum fields: Pointer states and predictabil-
+     ity, Phys. Rev. D53, 7327–7335. Anglin, J. R., Paz, J. P., and Zurek, W. H., 1997, Deconstructing
+     Decoherence, ibid., 55, 4041-4049.
+[18] Griffiths, R. B., 1984, J. Stat. Phys. 36, 219-272; Griffiths, R. B., 1996 Phys. Rev. A54 2759-2774.
+[19] Gell-Mann, M., and Hartle, J. B., 1990, Quantum mechanics in the light of quantum cosmology,
+     in Complexity Entropy, and the Physics of Information, edited by W. H. Zurek, Addison-Wesley,
+     Reading, pp. 425–458.
+
+                                                    23
+[20] Omnès, R., 1992, Consistent interpretation of quantum mechanics, Rev. Mod. Phys. 64, 339–382.
+
+[21] Gisin, N., and Percival, I. C., 1992, The quantum-state diffusion model applied to open systems,
+     J. Phys. A: Math. Gen. 25, 5677–5691.
+
+[22] Diósi, L., Gisin, N., Halliwell, J., and Percival, I. C., 1994, Decoherent histories and quantum state
+     diffusion, Phys. Rev. Lett. 74, 203–207.
+
+[23] Carmichael, H., 1993, An Open Systems Approach to Quantum Optics, Springer, Heidelberg.
+
+[24] Zurek, W. H., and Paz, J. P., 1994, Decoherence, chaos and the second law, Phys. Rev. Lett. 72,
+     2508–2511; 1995, Physica D83, 300-308.
+
+[25] Habib, S., Shizume, K., and Zurek, W. H., 1998, Decoherence, chaos, and the quantum-classical
+     correspondence, Phys. Rev. Lett., in press. quant-ph/9803042.
+
+[26] Dittrich, T., and Graham, R., 1990, Long Time Behavior in the Quantized Standard Map with
+     Dissipation, Ann. Phys. (N. Y.) 200, 363–421. [80]
+
+[27] Barnett, S. M., Burnett, K., and Vacarro, J. A., 1996, Why a condensate can be thought of as having
+     a definite phase, J. of Res. NIST 101, 593–600; Wright, E. M., Walls, D. F., and Garrison, J. C.,
+     1996, Collapses and revivals of Bose-Einstein condensates formed in small atomic samples, Phys. Rev.
+     Lett. 77, 2158-2161.
+
+[28] Zurek, W. H., 1983, Information transfer in quantum measurements: Irreversibility and amplification,
+     pp. 87–116 in Quantum Optics, Experimental Gravitation, and Measurement Theory, P. Meystre and
+     M. O. Scully, eds. (Plenum, New York).
+
+[29] Barnum, H., Caves, C. M., Fuchs, C. A., Jozsa, R., Schumacher, B., 1996, Noncommuting mixed
+     states cannot be broadcast, Phys. Rev. Lett. 76, 2818-2821.
+
+[30] Feynman, R. P., 1986, Quantum mechanical computers, Found. Phys. 16, 507–531.
+
+[31] Deutsch, D., 1985, Quantum theory: The Church-Turing principle and the universal quantum com-
+     puter, Proc. R. Soc. Lond. A400, 97–117.
+
+[32] Lloyd, S., 1993, A potentially realizable quantum computer, Science 261, 1569–1571.
+
+[33] DiVincenzo, D. P., 1995, Quantum computation, Science 270, 255–261.
+
+[34] Bennett, C. H., 1995, Quantum information and computation, Physics Today 48 (0ct.), 24–30.
+
+[35] Williams, C. P. and Clearwater, S. H., 1997, Explorations in Quantum Computing (Springer, New
+     York).
+
+[36] Schumacher, B., 1995, Quantum coding, Phys. Rev. A51, 2738–2747; Schumacher, B., Westmoreland,
+     M., and Wootters, W. K., 1996, Limitation of the amount of accessible information in a quantum
+     channel, Phys. Rev. Lett 76, 3452-3455; Schumacher, B., 1996, Sending entanglement through noisy
+     quantum channels, Phys. Rev. A54, 2614-2628.
+
+
+                                                    24
+[37] Ekert, A., and Jozsa, R, 1996, Quantum computation and Shor’s factoring algorithm, Rev. Mod. Phys.
+     68, 733.
+
+[38] DiVincenzo, D., Knill, E., LaFlamme, R., and Zurek, W. H., eds., 1998, Quantum coherence and
+     decoherence, Proc. Roy. Soc., 454.
+
+[39] Brune, M., et al., 1996 Phys. Rev. Lett. 77, 4887-4890.
+
+[40] Poyatos, J. F., Cirac, J. I., and Zoller, P., 1996 Phys. Rev. Lett. 77, 4728-4731.
+
+[41] Anglin, J. R., Paz, J. P., and Zurek, W. H., 1997, Phys. Rev. A55, 4041.
+
+[42] Bose, S., Jacobs, K., and Knight, P. L., 1997, quant-ph/9712017.
+
+[43] Cirac, J. I., Lewenstein, M., Molmer, K., and Zoller, P. 1998, Quantum superposition states of Bose-
+     Einstein condensates, Phys. Rev. A57, 548.
+
+[44] Monroe, C., Meekhof, D. M., King, B. E., and Wineland, D. J., 1996, Science 272, 1131-1136.
+
+[45] Bohr, N., 1928, Nature 121, 580-590.
+
+[46] Heisenberg, W., 1927 Z. Phys. 43, 172-198; English translation in Ref. 49.
+
+[47] Born, M., 1926, Z. Phys 37, 863-867; English translation in Ref. 49.
+
+[48] Schrödinger, E., 1935, Die gegenwärtige situation in der quantenmechanik, Nautrwiss 23, 807–812,
+     823–828, 844–849.
+
+[49] Wheeler, J. A., and Zurek, W. H., 1983, Quantum Theory and Measurement, Princeton University
+     Press.
+
+[50] Everett, H., III., 1957, ‘Relative State’ formulation of quantum mechanics, Rev. Mod. Phys. 29, 454–
+     462.
+
+[51] Wheeler, J. A., 1983, pp. 182-213 in Ref. 49.
+
+[52] Carmichael, H. J., Kochan, P., and Tian, L., Coherent states and open quantum systems: A comment
+     on the Stern-Gerlach experiment and Schrödinger’s cat, Proc. Int. Symp. on Coherent States, Past,
+     Present, and Future, Oak Ridge, 1993.
+
+[53] Gnedenko, 1962, Theory of Probability (Chelsea, New York).
+
+[54] Graham, N., 1970, The Everett Interpretation of Quantum Mechanics, University North Carolina,
+     Chapel Hill.
+
+[55] Hartle, J. B., 1968, Am. J. Phys. 36, 704.
+
+[56] Fahri, E., Goldstone, J., and Gutmann, S., 1989, Ann. Phys. 192, 368.
+
+[57] Kent A., 1990, Against many-worlds interpretation, Int. J. Mod. Phys. 5, 1745–1762.
+
+
+                                                     25
+[58] Zeh, H. D., 1997, What is achieved by decoherence?, in New Developments on Fundamental Problems
+     in Quantum Physics (Oviedo II), Ferrero, M., and van der Merwe, A., eds. (Kluwer, Dordrecht).
+
+[59] Szilard, L., 1925, On the decrease of entropy in a thermodynamic system by the intervention of
+     intelligent beings, Z. f. Physik 32, 753–788; English translation in Behav. Sci. 9, 301–310 (1964).
+
+[60] Cox, R. T., 1946, Am. J. Phys. 14 1-13.
+
+[61] Birkhoff, G., and von Neumann, J., 1936, Ann. Math. 37, 823-843.
+
+[62] Gleason, A. M., 1957, Measures on the closed subspaces of a Hilbert space, Jour. Math. Mech. 6,
+     885–893.
+
+[63] Zurek, W. H., 1993, Negotiating the tricky border between quantum and classical, Physics Today 46
+     (April), 13.
+
+[64] Elby, A., 1993, Decoherence and Zurek’s existential interpretation of quantum mechanics, in Sym-
+     posium on Foundations of Modern Physics, P. Busch, P. Lahti, and P. Mittelstaedt, eds. (World
+     Scientific, Singapore).
+
+[65] Healey, R., 1998, in Quantum Measurement, Decoherence, and Modal Interpretations, Hellman, G.,
+     and Healey, R, eds., (Minnesota Studies in the Philosophy of Science, Univ. of Minnesota).
+
+[66] Bub, J., 1997, Interpreting the Quantum World (Cambridge Univ. Press, Cambridge)
+
+[67] d’Espagnat, B., 1995, Veiled Reality, (Addison-Wesley, Reading).
+
+[68] Zurek, W. H., 1998 Decoherence, chaos, quantum-classical correspondence, and the algorithmic arrow
+     of time, in the proceedings of Nobel Symposium 104, Physica Scripta, in press (quant-ph/9802054).
+
+[69] Li, M., and Vitányi, P., 1993, An Introduction to Kolmogorov Complexity and Its Applications
+     (Springer, Berlin).
+
+[70] Landauer, 1991, Information is physical, Physics Today 44 (May), 23.
+
+[71] Omnès, R., 1994, The Interpretation of Quantum Mechanics, Princeton University Press.
+
+
+
+
+                                                   26
+                                                   Control (System)
+                                          |c>
+
+                                          |t>
+                                                   Target (Apparatus)
+
+
+                                System
+
+                                Apparatus
+
+
+
+                                                                        Environment
+
+
+
+
+                                       System
+
+                                       Apparatus
+
+
+
+                          Decoherence
+
+                                                                             Environment
+                               Noise
+
+
+
+
+Fig. 1. Information transfer in measurements and in decoherence.
+    a) Controlled not (c-not) as an elementary bit-by-bit measurement. Its action is described by the “truth
+table” according to which the state of the target bit (apparatus memory in the quantum measurement
+vocabulary) is “flipped” when the control bit (measured system) is |1 > and untouched when it is |0 >
+(Eq. (2)). This can be accomplished by the unitary Schrödinger evolution (see, Refs. 1, 28, or 31 for the
+information theoretic discussion).
+    b) Decoherence process “caricatured” by means of c-nots. Pointer state of the apparatus (and, formerly,
+target bit in the pre-measurement, Fig. 1a) now acts as a control in the continuous monitoring by the
+c-nots of the environment. This continuous monitoring process is symbolically “discretized” here into a
+sequence of c-nots, with the state of the environment assuming the role of the multi-bit target. Monitored
+observable of the apparatus – its pointer observable – is in the end no longer entangled with the system,
+but the classical correlation remains. Decoherence is associated with the transfer of information about the
+to-be-classical observables to the environment. Classically, such information transfer is of no consequence.
+In quantum physics it is, however, absolutely crucial, as it is responsible for the effective classicality of
+certain quantum observables, and for the relatively objective existence of preferred pointer states.
+    c) Noise is a process in which a pointer observable of the apparatus is perturbed by the environment.
+Noise differs from the purely quantum decoherence – now the environment acts as a control, and the
+c-nots which represent it carry information in the direction opposite to the decoherence c-nots. Usually,
+both decoherence and noise are present. Preferred pointer observables and the associated pointer states
+are selected so that the noise is minimized.
+
+                                                      27
+

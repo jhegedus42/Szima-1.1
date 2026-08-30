@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zitterbewegung — a Dirac-nyelv időfejlődése (Idris-számítás)</title>
+<style>
+  body { font-family: Georgia, serif; background:#f0eee9; color:#1a1a2e; max-width:920px; margin:0 auto; padding:2rem 1rem 4rem; line-height:1.6; }
+  h1 { font-size:1.6rem; }
+  h2 { font-size:1.2rem; border-bottom:1px solid #d8d4cc; padding-bottom:.3rem; margin-top:2rem; }
+  canvas { background:#fafaf7; border:1px solid #d8d4cc; border-radius:6px; width:100%; }
+  .jegyzet { font-size:.85rem; color:#6b7280; }
+  .doboz { background:#fafaf7; border:1px solid #d8d4cc; border-radius:6px; padding:1rem 1.2rem; margin:1rem 0; }
+  code { font-family:Menlo,monospace; background:#eef2f7; border-radius:3px; padding:.1rem .3rem; font-size:.9em; }
+  .legenda span { margin-right:1.2rem; white-space:nowrap; }
+  footer { margin-top:2.5rem; border-top:3px double #1a1a2e; padding-top:1rem; font-size:.85rem; color:#555; }
+</style>
+</head>
+<body>
+
+<h1>Zitterbewegung — a Dirac-nyelv időfejlődése</h1>
+<p>A jelentés oszcillál a <b>térbeli</b> (中文, ψ_L) és az <b>időbeli</b> (magyar, ψ_R)
+nézet között. A görbék minden pontját <b>az Idris számolta</b>
+(<code>DiracIdoFejlodes.idr</code>, Double-aritmetika); ez az oldal csak <b>rajzol</b>.</p>
+
+<div class="legenda jegyzet">
+  <span style="color:#2563eb">━ mátrix-út (spinor-fejlődés γ⁰-ával)</span>
+  <span style="color:#dc2626">┄ zárt képlet sin²(t)</span>
+  <span style="color:#9ca3af">━ szerveri (hibás) γ⁰ — örök 0</span>
+</div>
+<canvas id="abra" height="420"></canvas>
+<p class="jegyzet">Vízszintes tengely: t (0 → π). Függőleges: P(magyar) = |ψ_R|².
+A kék és a piros görbe <b>10⁻¹²-en belül egyezik</b> (164 teszt egyike);
+a szürke vízszintes vonal a szerveri bogár: a 中文↔magyar átjárú sosem nyílik ki.</p>
+
+<div class="doboz">
+<b>Kétféle bizonyítás, egy đồgramon:</b>
+<ul>
+  <li><b>Exakt (Refl, Integer):</b> a γ-mátrixok Clifford-relációi, γ⁵=diag(−1,−1,+1,+1),
+  és hogy a Weyl-γ⁰ <i>keveri</i> a szektorokat míg a szerveri <i>sosem</i> —
+  <code>DiracGammaMatricak.idr</code> (48 Refl a gyűjteményben).</li>
+  <li><b>Numerikus (Idris Double):</b> a két számítási út (mátrix-exponenciál vs
+  sin²-zárt képlet) egyezése ≤10⁻¹² — <code>DiracIdoFejlodes.idr</code> + Teszt.idr.</li>
+</ul>
+</div>
+
+<h2>Az adat útja</h2>
+<pre>osveny_index/DiracIdoFejlodes.idr   (számítás: Idris Double)
+  → idris2 --exec jsonKiiras … > docs/adatok/zitterbewegung.json
+  → beágyazva ebbe az oldalba (canvas-rajzolás — a böngésző nem számít, csak jelenít;
+     nincs fetch, file://-ról is működik)</pre>
+
+<footer>Szima · a számítás Idrisben, a megjelenítés böngészőben · adat: docs/adatok/zitterbewegung.json (51 pont, Idris-generált)</footer>
+
+<script>
+// AZ ADATOT AZ IDRIS SZÁMOLTA (DiracIdoFejlodes.idr, Double):
+//   idris2 --exec jsonKiiras DiracIdoFejlodes.idr > docs/adatok/zitterbewegung.json
+// Beágyazva, hogy file://-ról is működjön (nincs fetch, nincs CORS, nincs szerver).
+const IDRIS_ADAT = [{"t": 0.0, "pMagyarWeyl": 0.0, "pMagyarZart": 0.0, "pMagyarSzerveri": 0.0}, {"t": 0.06283185307179587, "pMagyarWeyl": 0.003942649342761085, "pMagyarZart": 0.003942649342761085, "pMagyarSzerveri": 0.0}, {"t": 0.12566370614359174, "pMagyarWeyl": 0.015708419435684445, "pMagyarZart": 0.015708419435684445, "pMagyarSzerveri": 0.0}, {"t": 0.1884955592153876, "pMagyarWeyl": 0.0351117570558743, "pMagyarZart": 0.0351117570558743, "pMagyarSzerveri": 0.0}, {"t": 0.25132741228718347, "pMagyarWeyl": 0.06184665997806821, "pMagyarZart": 0.06184665997806821, "pMagyarSzerveri": 0.0}, {"t": 0.3141592653589793, "pMagyarWeyl": 0.09549150281252627, "pMagyarZart": 0.09549150281252627, "pMagyarSzerveri": 0.0}, {"t": 0.3769911184307752, "pMagyarWeyl": 0.13551568628929425, "pMagyarZart": 0.13551568628929425, "pMagyarSzerveri": 0.0}, {"t": 0.4398229715025711, "pMagyarWeyl": 0.1812880051256552, "pMagyarZart": 0.1812880051256552, "pMagyarSzerveri": 0.0}, {"t": 0.5026548245743669, "pMagyarWeyl": 0.23208660251050173, "pMagyarZart": 0.23208660251050173, "pMagyarSzerveri": 0.0}, {"t": 0.5654866776461628, "pMagyarWeyl": 0.2871103542174637, "pMagyarZart": 0.2871103542174637, "pMagyarSzerveri": 0.0}, {"t": 0.6283185307179586, "pMagyarWeyl": 0.3454915028125263, "pMagyarZart": 0.3454915028125263, "pMagyarSzerveri": 0.0}, {"t": 0.6911503837897546, "pMagyarWeyl": 0.40630934270713776, "pMagyarZart": 0.40630934270713776, "pMagyarSzerveri": 0.0}, {"t": 0.7539822368615504, "pMagyarWeyl": 0.4686047402353434, "pMagyarZart": 0.4686047402353434, "pMagyarSzerveri": 0.0}, {"t": 0.8168140899333463, "pMagyarWeyl": 0.5313952597646567, "pMagyarZart": 0.5313952597646567, "pMagyarSzerveri": 0.0}, {"t": 0.8796459430051422, "pMagyarWeyl": 0.5936906572928623, "pMagyarZart": 0.5936906572928623, "pMagyarSzerveri": 0.0}, {"t": 0.942477796076938, "pMagyarWeyl": 0.6545084971874737, "pMagyarZart": 0.6545084971874737, "pMagyarSzerveri": 0.0}, {"t": 1.0053096491487339, "pMagyarWeyl": 0.7128896457825363, "pMagyarZart": 0.7128896457825363, "pMagyarSzerveri": 0.0}, {"t": 1.0681415022205298, "pMagyarWeyl": 0.7679133974894985, "pMagyarZart": 0.7679133974894985, "pMagyarSzerveri": 0.0}, {"t": 1.1309733552923256, "pMagyarWeyl": 0.818711994874345, "pMagyarZart": 0.818711994874345, "pMagyarSzerveri": 0.0}, {"t": 1.1938052083641215, "pMagyarWeyl": 0.8644843137107059, "pMagyarZart": 0.8644843137107059, "pMagyarSzerveri": 0.0}, {"t": 1.2566370614359172, "pMagyarWeyl": 0.9045084971874736, "pMagyarZart": 0.9045084971874736, "pMagyarSzerveri": 0.0}, {"t": 1.3194689145077132, "pMagyarWeyl": 0.9381533400219317, "pMagyarZart": 0.9381533400219317, "pMagyarSzerveri": 0.0}, {"t": 1.3823007675795091, "pMagyarWeyl": 0.9648882429441258, "pMagyarZart": 0.9648882429441258, "pMagyarSzerveri": 0.0}, {"t": 1.4451326206513049, "pMagyarWeyl": 0.9842915805643156, "pMagyarZart": 0.9842915805643156, "pMagyarSzerveri": 0.0}, {"t": 1.5079644737231008, "pMagyarWeyl": 0.9960573506572389, "pMagyarZart": 0.9960573506572389, "pMagyarSzerveri": 0.0}, {"t": 1.5707963267948968, "pMagyarWeyl": 1.0, "pMagyarZart": 1.0, "pMagyarSzerveri": 0.0}, {"t": 1.6336281798666925, "pMagyarWeyl": 0.9960573506572389, "pMagyarZart": 0.9960573506572389, "pMagyarSzerveri": 0.0}, {"t": 1.6964600329384885, "pMagyarWeyl": 0.9842915805643154, "pMagyarZart": 0.9842915805643154, "pMagyarSzerveri": 0.0}, {"t": 1.7592918860102844, "pMagyarWeyl": 0.9648882429441256, "pMagyarZart": 0.9648882429441256, "pMagyarSzerveri": 0.0}, {"t": 1.8221237390820801, "pMagyarWeyl": 0.9381533400219317, "pMagyarZart": 0.9381533400219317, "pMagyarSzerveri": 0.0}, {"t": 1.884955592153876, "pMagyarWeyl": 0.9045084971874736, "pMagyarZart": 0.9045084971874736, "pMagyarSzerveri": 0.0}, {"t": 1.9477874452256718, "pMagyarWeyl": 0.8644843137107057, "pMagyarZart": 0.8644843137107057, "pMagyarSzerveri": 0.0}, {"t": 2.0106192982974678, "pMagyarWeyl": 0.8187119948743448, "pMagyarZart": 0.8187119948743448, "pMagyarSzerveri": 0.0}, {"t": 2.0734511513692637, "pMagyarWeyl": 0.7679133974894982, "pMagyarZart": 0.7679133974894982, "pMagyarSzerveri": 0.0}, {"t": 2.1362830044410597, "pMagyarWeyl": 0.7128896457825361, "pMagyarZart": 0.7128896457825361, "pMagyarSzerveri": 0.0}, {"t": 2.199114857512855, "pMagyarWeyl": 0.6545084971874737, "pMagyarZart": 0.6545084971874737, "pMagyarSzerveri": 0.0}, {"t": 2.261946710584651, "pMagyarWeyl": 0.5936906572928623, "pMagyarZart": 0.5936906572928623, "pMagyarSzerveri": 0.0}, {"t": 2.324778563656447, "pMagyarWeyl": 0.5313952597646565, "pMagyarZart": 0.5313952597646565, "pMagyarSzerveri": 0.0}, {"t": 2.387610416728243, "pMagyarWeyl": 0.4686047402353431, "pMagyarZart": 0.4686047402353431, "pMagyarSzerveri": 0.0}, {"t": 2.450442269800039, "pMagyarWeyl": 0.4063093427071374, "pMagyarZart": 0.4063093427071374, "pMagyarSzerveri": 0.0}, {"t": 2.5132741228718345, "pMagyarWeyl": 0.34549150281252644, "pMagyarZart": 0.34549150281252644, "pMagyarSzerveri": 0.0}, {"t": 2.5761059759436304, "pMagyarWeyl": 0.2871103542174637, "pMagyarZart": 0.2871103542174637, "pMagyarSzerveri": 0.0}, {"t": 2.6389378290154264, "pMagyarWeyl": 0.23208660251050164, "pMagyarZart": 0.23208660251050164, "pMagyarSzerveri": 0.0}, {"t": 2.7017696820872223, "pMagyarWeyl": 0.18128800512565502, "pMagyarZart": 0.18128800512565502, "pMagyarSzerveri": 0.0}, {"t": 2.7646015351590183, "pMagyarWeyl": 0.13551568628929408, "pMagyarZart": 0.13551568628929408, "pMagyarSzerveri": 0.0}, {"t": 2.8274333882308142, "pMagyarWeyl": 0.0954915028125261, "pMagyarZart": 0.0954915028125261, "pMagyarSzerveri": 0.0}, {"t": 2.8902652413026098, "pMagyarWeyl": 0.06184665997806822, "pMagyarZart": 0.06184665997806822, "pMagyarSzerveri": 0.0}, {"t": 2.9530970943744057, "pMagyarWeyl": 0.03511175705587428, "pMagyarZart": 0.03511175705587428, "pMagyarSzerveri": 0.0}, {"t": 3.0159289474462017, "pMagyarWeyl": 0.015708419435684403, "pMagyarZart": 0.015708419435684403, "pMagyarSzerveri": 0.0}, {"t": 3.0787608005179976, "pMagyarWeyl": 0.003942649342761054, "pMagyarZart": 0.003942649342761054, "pMagyarSzerveri": 0.0}, {"t": 3.1415926535897936, "pMagyarWeyl": 1.0344233825612026e-31, "pMagyarZart": 1.0344233825612026e-31, "pMagyarSzerveri": 0.0}];
+
+const MARGO = 40;
+function rajzold() {
+  const vaszon = document.getElementById('abra');
+  const szel = vaszon.clientWidth || 800;
+  const magas = 420;
+  vaszon.width = szel; vaszon.height = magas;
+  const ctx = vaszon.getContext('2d');
+  const adat = IDRIS_ADAT;
+  const tMax = adat[adat.length - 1].t || 1;
+  const x = t => MARGO + (t / tMax) * (szel - 2 * MARGO);
+  const y = p => magas - MARGO - p * (magas - 2 * MARGO);
+
+  ctx.clearRect(0, 0, szel, magas);
+  ctx.strokeStyle = '#d8d4cc'; ctx.lineWidth = 1;
+  for (let p = 0; p <= 1.001; p += 0.25) {
+    ctx.beginPath(); ctx.moveTo(MARGO, y(p)); ctx.lineTo(szel - MARGO, y(p)); ctx.stroke();
+    ctx.fillStyle = '#6b7280'; ctx.font = '11px Menlo';
+    ctx.fillText(p.toFixed(2), 6, y(p) + 4);
+  }
+  ctx.fillText('P(magyar)', 6, MARGO - 8);
+  ctx.fillText('t \u2192 \u03c0', szel - MARGO - 30, magas - 10);
+
+  function vonal(kulcs, szin, szaggatott) {
+    ctx.strokeStyle = szin; ctx.lineWidth = 2.2;
+    ctx.setLineDash(szaggatott ? [7, 5] : []);
+    ctx.beginPath();
+    for (let i = 0; i < adat.length; i++) {
+      const d = adat[i];
+      if (i === 0) ctx.moveTo(x(d.t), y(d[kulcs]));
+      else ctx.lineTo(x(d.t), y(d[kulcs]));
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+  vonal('pMagyarSzerveri', '#9ca3af', false);
+  vonal('pMagyarZart',     '#dc2626', true);
+  vonal('pMagyarWeyl',     '#2563eb', false);
+}
+window.addEventListener('load', rajzold);
+window.addEventListener('resize', rajzold);
+</script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+ESETRAG_TABLAZAT
+================
+
+Forras: Kiefer Ferenc (szerk.): Uj magyar nyelvtan, 2.1.1. Az esetragok (135-137. oldal)
+A konyv szerint a magyarnak 18 esetragja van (a hagyomanyos 28-bol).
+Kizart esetragok (NEM esetragok, hanem kepzok vagy mas okbol):
+  - -n, -lAg (modalisi-essivusi toldalékok) → kepzok
+  - -szVr (multiplicativusi) → kepzo
+  - -kor (temporalisi) → nem társul névmással, melléknévvel, stb.
+  - -stUl (sociativusi) → nem társul névmással, melléknévvel, számnévvel
+  - -(V)ntA (distributiv-temporalisi) → kepzo
+  - -(V)nként (distributivusi) → kepzo
+  - -képpen (formalisi) → kepzo (NE KEVERJESSUK a formativussal!)
+  - -t (locativusi) → ma már nem termékeny, kepzo
+  - genitivus → azonos a dativus -nAk ragjával, nincs kulon esetrag
+
+A konyv nagybetűs jelölése a harmonizáló magánhangzókra:
+  A = a/e    Ø = ó/ő    Ú = ú/ű    V = a/o/ö/e
+
+| Sorszam | Eset neve (latin) | Magyar nev | Rag(alakok) | Kerdes | Funkcio | Peldak |
+|---------|-------------------|------------|-------------|--------|---------|--------|
+| 1 | Nominativus | Alany esete | ø (zérus) | (nincs) | Alany a mondatban; szintaktikai eset | A fiúk új könyveket olvasnak (az "fiúk" alany) |
+| 2 | Accusativus | Tárgy esete | -t (toldalékkezdő magánhangzóval: -ot/-et/-öt/-at) | (tárgy) | Tárgy a mondatban; szintaktikai eset | agyonlő vki vkit; veszek asztal+t; új házat |
+| 3 | Dativus | Részeshatározó | -nAk (-nak/-nek) | (részeshatározó) | Közvetett tárgy; szintaktikai eset | Péter+nek (adom); adózik vki vmiért vkinek |
+| 4 | Inessivus | Hol? (belül) | -bAn (-ban/-ben) | hol? | Helyhatározó: hely (belül) | a kertben játszanak; átbújik vmi vmin; akadályoz vki vkit vmiben |
+| 5 | Elativus | Honnan? (belül) | -bVl (-ból/-ből) | honnan? | Helyhatározó: irány (belülről) | alakul vmi vmiből vmivé |
+| 6 | Illativus | Hová? (belül) | -bA (-ba/-be) | hová? | Helyhatározó: irány (belülbe) | belelép vki vmibe |
+| 7 | Superessivus | Hol? (felületen) | -On (-on/-en/-ön) | hol? | Helyhatározó: hely (felületen) | bokr+on; (a konyv vonzatkeret-peldai kozott nem szerepel, de a 18 esetrag kozott felsorolva) |
+| 8 | Adessivus | Hol? (mellett) | -nAl (-nál/-nél) | hol? | Helyhatározó: hely (mellett) | bevágódik vki vkinél |
+| 9 | Delativus | Honnan? (felületről) | -rVl (-ról/-ről) | honnan? | Helyhatározó: irány (felületről) | átruház vki vmit vkiről vkire |
+| 10 | Ablativus | Honnan? (mellől) | -tVl (-tól/-től) | honnan? | Helyhatározó: irány (mellől) | borzad vki vkitől/vmitől |
+| 11 | Sublativus | Hová? (felületre) | -rA (-ra/-re) | hová? | Helyhatározó: irány (felületre) | céloz vki vkire vmivel; átruház vki vmit vkiről vkire |
+| 12 | Allativus | Hová? (mellé) | -hVz (-hoz/-hez/-höz) | hová? | Helyhatározó: irány (mellé) | alkalmazkodik vki vmihez/vkihez |
+| 13 | Terminativus | Meddig? | -ig | meddig? | Helyhatározó: irány (meddig) | tart vmi vmeddig |
+| 14 | Instrumentalis | Mivel? | -vAl (-val/-vel) | mivel? | Eszközhatározó | céloz vki vkire vmivel; rosszul bánik vki vkivel/vmivel |
+| 15 | Causalis-finalis | Miért? | -ért | miért? | Célhatározó | adózik vki vmiért vkinek |
+| 16 | Translativus-factivus | Mivé? | -vA (-vá/-vé) | mivé? | Eredményhatározó | alakul vmi vmiből vmivé; golyóvá formál valamit |
+| 17 | Formativus | Miképpen? | -képp | miképpen? | Állapothatározó | NEHEZEN ERTHETO — a konyv a -képpen toldalékot kizárja (képző, nem esetrag), de a "formativus" esetet felsorolja a 18 esetrag kozott. A formativus rag pontos alakja a szovegben nem egyertelmu. Lehet, hogy a -képp (rovid alak) a formativus rag, mig a -képpen (hosszu alak) a formalisi kepzo. |
+| 18 | Essivus-formalisi | Mint? | -ként | mint? | Állapothatározó | fogad vki vkit vmiül (de ez az essivus-modalisi -Ul, nem a -ként); a -ként vonzatkeretben torteno szereplese a konyvben nem peldalt explicit. Megjegyzes: a -ként rag társulási képessége korlatozott (nehéz: *Lajosként, *jóságként, *házéként) |
+
+MEGJEGYZESEK A KONYVBOL
+=======================
+
+1. A 18 ESETRAG BIZONYITASA
+A konyv harom kritériumot hasznal:
+  (26) Az esetrag olyan névszói toldalék, amely után nem állhat más toldalék. [formális kritérium]
+  (28) Az esetrag olyan toldalék, amely az (a)-(f) társulási tulajdonságokkal rendelkezik. [eloszlási kritérium]
+  (29) Az esetrag főnévhez járulva ismét főnevet ad eredményül. [szófajtartás]
+  (32) Egy toldalék akkor és csakis akkor esetrag, ha alkalmas esetviszony kifejezésére.
+  (33) Egy toldalék akkor és csakis akkor esetrag, ha előfordul valamely vonzatkeretben.
+  (34) Valamely toldalék akkor és csakis akkor esetrag, ha a vele toldalékolt főnév lekötheti az ige valamely, alakja szempontjából is meghatározott vonzatát. [végső definíció]
+
+2. SZINTAKIKAI VS. LEKIKAI ESETEK
+  - Szintaktikai esetek (a mondattani viszonyokbol kikövetkeztethetoek): nominativus, accusativus, dativus
+  - Lexikai esetek (az ige lexikai jellemzésében kell megadni): osszes tobbi esetrag
+
+3. HELY- VS. IRANY-JELOLO ESETEK
+  - Helyet jelolok: superessivus, inessivus, adessivus (3)
+  - Iranyt jelolok: sublativus, delativus, elativus, illativus, allativus, ablativus, terminativus (7)
+
+4. A 18 ESETRAG OSZTÁLYOZASA (a konyv szerint)
+  - Szintaktikai esetek (3): nominativus, accusativus, dativus
+  - Helyhatározók — hely (3): superessivus, inessivus, adessivus
+  - Helyhatározók — irány (7): sublativus, delativus, elativus, illativus, allativus, ablativus, terminativus
+  - Állapothatározók (2): formativus, essivus-formalisi
+  - Eszközhatározó (1): instrumentalis
+  - Célhatározó (1): causalis-finalis
+  - Eredményhatározó (1): translativus-factivus
+  Osszesen: 3 + 3 + 7 + 2 + 1 + 1 + 1 = 18
+
+5. KIVETELZETT ESETRAGOK (NEHEZEN ERTHETO)
+  - Az -Ul (essivus-modalisi) es a -ként (essivus-formalisi) társulási képessége korlatozott:
+    * Furcsa: .Lajosul, .Lajosként, ..Lajosokul, ..Lajosokként
+    * Nehezen ertelmezheto elvont fonnevek utan: ..jóságként, ..szépségként, ..jóságul, ??szépségül
+    * Nem társul az -é birtokjellel: *házéként, *autóéként, *házékul, *autóékul
+  - A formativus rag pontos alakja NEHEZEN ERTHETO (a -képpen kepzo kizarasa ellenere a formativus eset szerepel a 18 kozott)
+
+6. A RAGOZAS SORRENDJE
+A toldalékok sorrendje (a konyv 2.1.6. szerint, (45) ábra):
+  tő → képző → [többesjel (-k/-i) ↔ birtokviszonyjel (-A/-jA)] → birtokos személyrag → birtokjel (-é) → birtokjel többes száma (-i) → esetrag
+
+A grafikon (véges államú nyelvtan) szerint:
+  - A tő után bármilyen toldalék állhat
+  - Ha a többesjelet választjuk: utána birtokosjel, birtokosjel többes száma és esetrag következhet
+  - Ha birtokviszonyjelet választunk: ahhoz többes szám, birtokos személyrag, birtokjel, ennek többes száma és esetrag járulhat
+  - A Tsz (többes szám) és Bj (birtokjel) közötti nyíl kétirányú
+
+Jelek: Tsz=többes szám, Br=birtokos személyrag, Bj=birtokjel, Bv=birtokviszonyjel, Eset=esetrag
+
+Példa a maximális toldaléksorra: barát+a+i+m+é+i+t (6 inflexiós toldalék)
+
+A sorrend magyarázata: a tükörelv szerint a szón végrehajtott morfológiai műveletek közvetlenül tükrözik a szintaktikai levezetést. A birtokos személyragok (főnévi csoporton belüli kapcsolatok) megelőzik az esetragokat (főnévi csoport és mondat egyéb elemei közti kapcsolat).
+
+7. AZ ILLESZKEDES SZABALYA (magánhangzó-illeszkedés)
+A konyv nagybetűs jelölése a harmonizáló magánhangzókra:
+  A = a és e magánhangzókat jelöli
+  Ø = ó és ő magánhangzókat jelöli
+  Ú = ú és ű magánhangzókat jelöli
+  V = a, o, ö, e magánhangzókat jelöli
+
+A magánhangzó-illeszkedés (vowel harmony) szerint:
+  - Mély hangrendű tövek (a, o, u magánhangzókat tartalmaznak) → mély válfaj: a, o, ó, ú
+  - Magas hangrendű tövek (e, ö, ü magánhangzókat tartalmaznak) → magas válfaj: e, ö, ő, ű
+  - Vegyes hangrendű tövek → az utolsó szótag magánhangzója dönt
+
+Példák:
+  - -nAk: ház+nak (mély), kert+nek (magas)
+  - -bAn: ház+ban (mély), kert+ben (magas)
+  - -On: ház+on (mély), kert+en (magas), kürt+ön (magas, kerekített)
+  - -hVz: ló+hoz (mély), teher+hez (magas), fürt+höz (magas, kerekített)
+
+Kötőhangzó: mássalhangzóra végződő tövek esetén kötelező a kötőhangzó a többesjel és bizonyos toldalékok előtt:
+  ház+a+k, bolt+o+k, kert+e+k, fürt+ö+k
+
+8. TOLDALÉKTÍPUSOK (a konyv 2.1.5. szerint)
+  (a) Szabad toldalékok: önálló szótag, mássalhangzóval kezdődik (kivétel: -é birtokjel)
+      → -bAn, -nAl, -hVz. Nem igényel kötőhangzót, szabad tőalakhoz járul.
+      Példák: nyár+nak, bokor+tól, ló+hoz, teher+ben, fá+é
+  (b) Kötött toldalék megszabott magánhangzóval: nem mindig önálló szótag, magánhangzóval kezdődik
+      → -Unk, -Uk, -Ul, -O. Kötött tőalakhoz járul.
+      Példák: nyar+unk, nyar+uk, kutyá+ul, ugr+ó
+  (c) Kötött toldalék kötőhangzóval: nem önálló szótag, kötőhangzóval kezdődik (kiesik magánhangzó után)
+      → -Vk, -On, -Vm, -Vd, -VtVk
+      Példák: bokr+ok, bokr+on, bokr+om, bokr+od, bokr+otok

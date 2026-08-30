@@ -1,0 +1,91 @@
+═══ MARADÉKTÁBLA (Δ = szimuláció − kernel) ═══
+típus-1 gyökök száma                   szimuláció=         112 kernel=         112 Δ=0
+típus-2 gyökök száma                   szimuláció=         128 kernel=         128 Δ=0
+E8 gyökök száma                        szimuláció=         240 kernel=         240 Δ=0
+pozíciópárok C(8,2)                    szimuláció=          28 kernel=          28 Δ=0
+előjel-kombinációk 2^8                 szimuláció=         256 kernel=         256 Δ=0
+rossz norma² (nem 8)                   szimuláció=           0 kernel=           0 Δ=0
+rossz belsőszorzat-érték               szimuláció=           0 kernel=           0 Δ=0
+rossz eloszlású gyök                   szimuláció=           0 kernel=           0 Δ=0
+Weyl-zárási hiba                       szimuláció=           0 kernel=           0 Δ=0
+8! rekurzió                            szimuláció=       40320 kernel=       40320 Δ=0
+8! prím-út                             szimuláció=       40320 kernel=       40320 Δ=0
+W(D8) = 2^7·8!                         szimuláció=     5160960 kernel=     5160960 Δ=0
+trialitás 135                          szimuláció=         135 kernel=         135 Δ=0
+W(E8) struktúra-út                     szimuláció=   696729600 kernel=   696729600 Δ=0
+W(E8) prím-út                          szimuláció=   696729600 kernel=   696729600 Δ=0
+E8 dimenzió 240+8                      szimuláció=         248 kernel=         248 Δ=0
+E8×E8 dimenzió 248·2                   szimuláció=         496 kernel=         496 Δ=0
+híd 240+16                             szimuláció=         256 kernel=         256 Δ=0
+penge-fokszámösszeg                    szimuláció=          16 kernel=          16 Δ=0
+Hodge-példa duál(3)                    szimuláció=          12 kernel=          12 Δ=0
+Hodge-involúció duál(duál(5))          szimuláció=           5 kernel=           5 Δ=0
+Hodge-involúció hibák (16 penge)       szimuláció=           0 kernel=           0 Δ=0
+fok-tükrözés hibák (k+4−k=4)           szimuláció=           0 kernel=           0 Δ=0
+kódszavak száma                        szimuláció=          16 kernel=          16 Δ=0
+egyedi kódszavak                       szimuláció=          16 kernel=          16 Δ=0
+súly-összeg 1+7+7+1                    szimuláció=          16 kernel=          16 Δ=0
+minden pártávolság ≥ 3 (d = 3)         szimuláció=           1 kernel=           1 Δ=0
+max |Δ| = 0
+
+═══ GAUGE ═══
+megrajzolt PNG-ek száma: 180
+várt PNG-szám: 180
+max |Δ| a maradéktáblában: 0
+GAUGE: OK — minden maradék 0, minden PNG megvan.
+══════════════════════════════════════════════════════════
+  KÖNYV-ADAT F2 — E8 GYÖKRENDSZER ÉS W(E8)
+  A Kristálytiszta Könyv pilot-fejezete · 水晶之书试点章节
+══════════════════════════════════════════════════════════
+  CWD: Just "/Users/joco/opencode/szima_ter"  (a --find-ipkg az ipkg könyvtárába teszi)
+
+── A KERNEL ÉRTÉKEI (GAUGE — a futásból) ──
+  pozíciópárok C(8,2)      : 28
+  előjelpárok               : 4
+  előjel-kombinációk 2⁸     : 256
+  típus-1 gyökök            : 112
+  típus-2 gyökök            : 128
+  E8 gyökök összesen        : 240
+  gyokNorma (2,2,0⁶)        : 8
+  gyokNorma (1⁸)            : 8
+  Faktorialis 8             : 40320
+  128·9·5·7 (prím-út)       : 40320
+  W(D8)                     : 5160960
+  trialitás 135             : 135
+  W(E8) = W(D8)·135         : 696729600
+  2¹⁴·3⁵·5²·7 (prím-út)     : 696729600
+  E8 dimenzió 240+8         : 248
+  E8×E8 dimenzió            : 496
+  híd 240+16                : 256
+  (2,2,0⁶)·(1⁸)             : 4
+  (2,2,0⁶)·(−2,−2,0⁶)      : -8
+  (2,2,0⁶)·(2,−2,0⁶)       : 0
+  σ_α(α)                    : [-2,-2,0,0,0,0,0,0]
+  σ_α(β⊥)                   : [2,-2,0,0,0,0,0,0]
+  σ_α(β szomszéd)           : [0,-2,2,0,0,0,0,0]
+  példa-eloszlás (2,2,0⁶)   : (1, (56, (126, (56, 1))))
+  eloszlasHibakSzama        : 0 (várható: 0)
+  zarasHibakSzama           : 0 (várható: 0, 57 600 pár)
+  penge-fokszám-összeg      : 16
+  pengeDual 3               : 12
+  pengeDual (pengeDual 5)   : 5
+  kodszamitas [1,0,0,0]     : [1, 0, 0, 0, 0, 1, 1]
+  kodszamitas [1,1,1,1]     : [1, 1, 1, 1, 1, 1, 1]
+  kódszavak / egyedi        : 16 / 16
+  minden gyök normája 8?    : True
+  alapszókincs (GyokSzo_v1) : 240 (112 egész + 128 fél-egész)
+
+── A FÁJLOK ÍRÁSA ÉS VISSZAOLVASÁSA (AZ IDRIS ÍR MINDENT) ──
+  grafikon_gen.py: megírva és visszaolvasva (38420 karakter) → ../docs/konyv/e8gyokrendszer/grafikon_gen.py
+  adat.js        : megírva és visszaolvasva (88402 karakter) → ../docs/konyv/e8gyokrendszer/adat.js
+  kártyák száma   : 36  (várt PNG: 180)
+
+── A GENERÁLT PYTHON FUTTATÁSA (System.system) ──
+  kilépési kód: 0  (0 = GAUGE OK)
+
+── ÖSSZEFOGLALÓ ──
+  kártyák : 36
+  csoportok: 5 (E8Gyokok_v2, E8BelsoSzorzat, E8Iranymutato_v1, E8TizenhatPenge, GyokSzo_v1-híd)
+  PNG     : 180 (grafikonok/ mappába)
+  maradék : maradekok.csv (max |Δ| a Python kimenetén)
+Kész / 完成 / Fertig / גמר

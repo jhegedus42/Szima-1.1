@@ -1,0 +1,24 @@
+package Dirac3D
+
+modules = Kina2D
+        , Magyar
+        , Dirac3D
+        , Fazis
+        , Lagrangian
+        , Carnot
+        , Hadmeres
+        , HadMerger
+        , HadMerTeszt
+        , FazisOsszeado
+        , CarryHoatvitel
+        , HamiltonMegmaradas
+        , E8Diszkretizacio
+        , Steane153
+        , AktivTanulas
+        , KisAI
+        , MagasabbRendszer
+        , Main3D
+
+main = Main3D
+
+executable = Dirac3D

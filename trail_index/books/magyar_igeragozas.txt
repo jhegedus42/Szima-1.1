@@ -1,0 +1,536 @@
+MAGYAR IGERAGOZÁS — KIVONAT
+Forrás: "Új magyar nyelvtan" (Kiefer Ferenc), II. rész ALAKTAN, 2.2. Az igeragozás
+Kivonat készítése: 2026-08-14
+
+============================================================
+0. BEVEZETÉS — A KÖNYV SZERINTI KERET
+============================================================
+
+Idézet (6249–6255):
+"Az igét a magyarban az alábbi kategóriák szerint ragozzuk: jelen idő, múlt idő, kijelentő mód, feltételes mód, felszólító mód. A jövő idő a magyarban nem morfológiai kategória: a fog segédige, amely a segédigék egy sajátos osztályába tartozik (vele egy osztályba tartozik például az akar és a szokott). A fog szintaktikai viselkedése is egyértelműen igazolja, hogy a fog+V nem morfológiai szó: el fog utazni, elutazni ő sohasem fog, nem fog elutazni. A fog helyébe az akar vagy a szokott is állhatna! Ezzel szemben a mentem volna morfológiai szó: nem mentem volna, nem mentem volna el (vö. *nem mentem el volna), Péter elment volna (vö. *elment Péter volna). Tehát a mentem volna, ment volna egy egységként viselkedik."
+
+Idézet (6241–6242):
+"Az igetövek a magyarban általában mássalhangzóra végződnek. Néhány tő mutat magánhangzó-mássalhangzó váltakozást (lő, nő, sző, ró, rí, nyű)."
+
+============================================================
+1. AZ IGEIDŐK
+============================================================
+
+1.1. JELEN IDŐ
+-----------------
+Morfológiai kategória. A személyragok közvetlenül az igetőhöz járulnak.
+Nincs külön időjel a jelen időben.
+
+1.2. MÚLT IDŐ
+-----------------
+Morfológiai kategória. Időjele: -t.
+
+Idézet (6358–6362):
+"A múlt idejű alakok a jelen idejűeknél kevésbé változatos képet mutatnak. Itt csak az elöl és a hátul képzett magánhangzós változatokat kell megkülönböztetnünk.
+(57) a. vár+t+am, vár+t+ál, vár+t, vár+t+unk, vár+t+atok, vár+t+ak
+    b. ül+t+em, ül+t+él, ül+t, ül+t+ünk, ül+t+etek, ül+t+ek
+A t a múlt idő jele."
+
+A múlt idejű alakokban a t-vel végződő tövek különleges viselkedést mutatnak:
+
+Idézet (6409–6422):
+"Az egyes szám harmadik személyben a múlt idő jele azonban nem mindig t.
+(60) a. kíván+t, hány+t, öl+t, sír+t, fúj+t
+    b. nyom+ott, hív+ott, üt+ött, ég+ett, keres+ett, ad+ott, hoz+ott, fut+ott
+A (60a) igék tővégi mássalhangzója az n, l, r, ny, j mássalhangzók egyike, a (60b) igéké pedig m, v vagy zörejhang (obstruens)."
+
+További különleges esetek:
+- oszt+ott+am (a -ott végigvonul az egész paradigmán)
+- szeret+t+em, lát+t+am
+
+1.3. JÖVŐ IDŐ
+-----------------
+NEM MORFOLÓGIAI KATEGÓRIA.
+
+Idézet (6250–6252):
+"A jövő idő a magyarban nem morfológiai kategória: a fog segédige, amely a segédigék egy sajátos osztályába tartozik (vele egy osztályba tartozik például az akar és a szokott)."
+
+A jövő idő kifejezése: fog segédige + főige (pl. "el fog utazni").
+A fog helyébe az akar vagy a szokott is állhat.
+
+============================================================
+2. A MÓDOK
+============================================================
+
+2.1. KIJELENTŐ MÓD
+---------------------
+Alapértelmezett mód. Jelen és múlt időben is létezik.
+Nincs külön módjel.
+
+2.2. FELTÉTELES MÓD — JELEN IDŐ
+-----------------------------------
+Módjele: -n
+
+Idézet (6470–6478):
+"A feltételes mód jele -n, és nem a nyelvtanainkban említett -na/-ne, -ná/-né. Ezt a várna – várná, kérne – kérné alakok szembenállása mutatja. Ezek az alakpárok ugyanis mindenben megegyeznek, csak a tárgyasság tekintetében térnek el. S mivel a várna – várná, illetőleg a kérne – kérné pár az a – á, illetőleg az e – é elemekben tér el, őket kell a különbség hordozójának tekintenünk, és mint önálló szegmentumot leválasztanunk. [...] Az n a feltételes mód jele, s ami utána következik, az a személyrag."
+
+Példák:
+(65) a. várnék, várnál, várna, várnánk, várnátok, várnának
+    b. kérnék, kérnél, kérne, kérnénk, kérnétek, kérnének
+
+Szegmentálás:
+(66) a. vár+n+ék, vár+n+ál, vár+n+a, vár+n+ánk, vár+n+átok, vár+n+ának
+    b. kér+n+ék, kér+n+él, kér+n+e, kér+n+énk, kér+n+étek, kér+n+ének
+
+2.3. FELTÉTELES MÓD — MÚLT IDŐ
+-----------------------------------
+Idézet (6574–6580):
+"A feltételes mód múlt idejű alakjai is a morfológia körébe tartoznak: egyrészt az ige múlt idejű alakja és a volna feltételes elem együtt fejezi ki a feltételes mód múlt idejét. Az ige múlt idejű alakjai vagy az alanyi, vagy a tárgyas ragozás paradigmáját követik.
+(71) [condmúlt Vmúlt + [cond volna]]"
+
+Tehát: múlt idejű igealak + volna (pl. "olvastam volna", "vártam volna")
+
+2.4. FELSZÓLÍTÓ MÓD — JELEN IDŐ
+-----------------------------------
+Módjele: -j
+
+Idézet (6582–6586):
+"(74) a. vár+j+ak, vár+j(+ál), vár+j+on, vár+j+unk, vár+j+atok, vár+j+anak
+    b. kér+j+ek, kér+j(+él), kér+j+en, kér+j+ünk, kér+j+etek, kér+j+enek
+A felszólító mód jele j."
+
+2.5. FELTÉTELES MÓD vs FELTÉTEL
+----------------------------------
+A könyv csak FELTÉTELES MÓDot említ, külön "feltételes mód" és "feltételes mód" közötti különbséget nem tesz. Csak a feltételes mód jelen és múlt idejű változatai vannak.
+
+============================================================
+3. ALANYI vs TÁRGYAS RAGOZÁS
+============================================================
+
+Idézet (6256–6268):
+"A tárgyas igéknek van alanyi és tárgyas ragozása. Annak eldöntése, mikor kell alanyi, és mikor tárgyas ragozást használni, a mondattanba tartozik. Itt csak jelezzük, hogy a határozatlanság-határozottság nem mindig a meghatározó tényező. Például:
+(46) a. Látok öt embert.
+     b. Látom öt emberedet.
+(47) a. Látok valakit.
+     b. Látom valakidet.
+(48) a. Elégetek minden tőled kapott levelet.
+     b. Elégetem a tőled kapott minden levelet.
+(49) a. A rendőr lát engem/téged/bennünket/benneteket.
+     b. *A rendőr látja engem/téged/bennünket/benneteket.
+(50) a. *A rendőr lát őt/őket.
+     b. A rendőr látja őt/őket."
+
+Idézet (6269–6272):
+"A (46) és (47) azt sugallja, hogy a birtokos szerkezet határozottá, vagy legalábbis specifikussá teszi a főneves szerkezetet. A (48a,b)-ből az következik, hogy a ragozás a kvantor szórendi helyzetétől is függ. Végül a (49)(50) talán a legnagyobb rejtély: itt sem jelentéstanilag, sem mondattanilag nem magyarázható meg a harmadik személyű és a többi személyes névmás közötti különbség."
+
+KÖVETKEZETESSEN:
+
+A könyv szerint:
+- A határozatlanság-határozottság NEM mindig a meghatározó tényező.
+- Birtokos szerkezet → határozottá/specifikussá teszi → tárgyas ragozás.
+- A kvantor szórendi helyzete is befolyásolja.
+- 1./2. személyű névmás tárgya → alanyi ragozás (lát engem).
+- 3. személyű névmás tárgya → tárgyas ragozás (látja őt).
+- Ez a különbség "a legnagyobb rejtély" — sem jelentéstanilag, sem mondattanilag nem magyarázható.
+
+Mikor használjuk az ALANYI ragozást?
+- Határozatlan tárgy esetén (látok egy embert)
+- 1./2. személyű névmás tárgy esetén (lát engem/téged/bennünket/benneteket)
+- Csak tárgyatlan igéknek kizárólag alanyi ragozása van
+
+Mikor használjuk a TÁRGYAS ragozást?
+- Határozott tárgy esetén
+- Birtokos szerkezetű tárgy esetén
+- 3. személyű névmás tárgy esetén (látja őt/őket)
+- A -lAk toldalék második személyű tárgyra utal (várlak téged)
+
+Idézet (6313–6315):
+"Tárgyas ragozása csak azoknak az igéknek van, amelyeknek van tárgyas használata is. A csak tárgyatlan igéknek nincs tárgyas ragozásuk: boldogul, létezik, megy, ballag, kipirul, dörög. Ide tartoznak a visszaható és szenvedő igék is: mosakodik, edződik."
+
+PÉLDA A KÜLÖNBSÉGRE:
+- "látok" = alanyi ragozás, 1. személy egyes szám jelen idő → "én látok valami határozatlant"
+- "látom" = tárgyas ragozás, 1. személy egyes szám jelen idő → "én látok valami határozottat"
+
+============================================================
+4. SZEMÉLYRAGOK TÁBLÁZATAI
+============================================================
+
+A könyv az alábbi táblázatokat adja. Minden táblázat idézve a könyvből.
+A jelölések: V = magánhangzó-illeszkedés szerinti magánhangzó; A = a vagy e; U = u vagy ü; Ø = zéró.
+
+------------------------------------------------------------
+4.1. JELEN IDŐ — KIJELENTŐ MÓD — ALANYI RAGOZÁS
+------------------------------------------------------------
+
+Példasorok (51):
+a. olvas+ok, olvas+ol, olvas, olvas+unk, olvas+tok, olvas+nak
+b. tesz+ek, tesz+el, tesz, tesz+ünk, tesz+tek, tesz+nek
+c. űz+ök, űz+öl, űz, űz+ünk, űz+tök, űz+nek
+d. vár+ok, vár+sz, vár, vár+unk, vár+tok, vár+nak
+e. ül+ök, ül+sz, ül, ül+ünk, ül+tök, ül+nek
+f. ért+ek, ért+esz, ért, ért+ünk, ért+etek, ért+enek
+g. bont+ok, bont+asz, bont, bont+unk, bont+otok, bont+anak
+h. költ+ök, költ+esz, költ, költ+ünk, költ+ötök, költ+enek
+
+(52) TELJES ALAKok — Alanyi ragozás személyragjai (jelen idő):
+
+  EGYES SZÁM:
+    1. személy:  -ok, -ek, -ök
+    2. személy:  -(a)sz, -(e)sz, -ol, -el, -öl
+    3. személy:  -Ø (zéró)
+
+  TÖBBES SZÁM:
+    1. személy:  -unk, -nk
+    2. személy:  -(o)tok, -(e)tek, -(ö)tök
+    3. személy:  -(a)nak, -(e)nek
+
+(53) ÖSSZEVONT ALAKOK — Alanyi ragozás személyragjai (jelen idő):
+
+  EGYES SZÁM:
+    1. személy:  -Vk
+    2. személy:  -(A)sz, -Vl
+    3. személy:  -Ø
+
+  TÖBBES SZÁM:
+    1. személy:  -Unk
+    2. személy:  -(V)tVk
+    3. személy:  -(A)nAk
+
+------------------------------------------------------------
+4.2. JELEN IDŐ — KIJELENTŐ MÓD — TÁRGYAS RAGOZÁS
+------------------------------------------------------------
+
+Példasorok (54):
+a. olvas+om, olvas+od, olvas+sa, olvas+suk, olvas+sátok, olvas+sák
+b. tesz+em, tesz+ed, tesz+i, tesz+szük, tesz+itek, tesz+ik
+c. űz+öm, űz+öd, űz+i, űz+zük, űz+itek, űz+ik
+d. vár+om, vár+od, vár+ja, vár+juk, vár+játok, vár+ják
+e. ül+öm, ül+öd, ül+i, ül+jük, ül+itek, ül+i
+f. ért+em, ért+ed, ért+i, ért+jük, ért+itek, ért+ik
+g. bont+om, bont+od, bont+ja, bont+juk, bont+játok, bont+ják
+h. költ+öm, költ+öd, költ+i, költ+jük, költ+itek, költ+ik
+
+(55) TELJES ALAKOK — Tárgyas ragozás személyragjai (jelen idő):
+
+  EGYES SZÁM:
+    1. személy:  -om, -em, -öm
+    2. személy:  -od, -ed, -öd
+    3. személy:  -ja, -i
+
+  TÖBBES SZÁM:
+    1. személy:  -juk, -jük
+    2. személy:  -játok, -itek
+    3. személy:  -ják, -ik
+
+Megjegyzés (6340–6348): Az s, sz, z tővégű igéknél a j teljesen hasonul (olvas+sa = olvas+ja hangtani eredmény). A mély hangrendű igék: -ja, -játok, -ják; a magas hangrendű igék: -i, -itek, -ik.
+
+(56) ÖSSZEVONT ALAKOK — Tárgyas ragozás személyragjai (jelen idő):
+
+  EGYES SZÁM:
+    1. személy:  -Vm
+    2. személy:  -Vd
+    3. személy:  -ja, -i
+
+  TÖBBES SZÁM:
+    1. személy:  -jUk
+    2. személy:  -játok, -itek
+    3. személy:  -ják, -ik
+
+------------------------------------------------------------
+4.3. MÚLT IDŐ — KIJELENTŐ MÓD — ALANYI RAGOZÁS
+------------------------------------------------------------
+
+Példasorok (57):
+a. vár+t+am, vár+t+ál, vár+t, vár+t+unk, vár+t+atok, vár+t+ak
+b. ül+t+em, ül+t+él, ül+t, ül+t+ünk, ül+t+etek, ül+t+ek
+
+(58) TELJES ALAKOK — Alanyi ragozás személyragjai (múlt idő):
+
+  EGYES SZÁM:
+    1. személy:  -am, -em
+    2. személy:  -ál, -él
+    3. személy:  -Ø (zéró, de a -t időjel megmarad)
+
+  TÖBBES SZÁM:
+    1. személy:  -unk, -ünk
+    2. személy:  -atok, -etek
+    3. személy:  -ak, -ek
+
+(59) ÖSSZEVONT ALAKOK (2.1. táblázat) — Alanyi ragozás összevont személyragjai (múlt idő):
+
+  EGYES SZÁM:
+    1. személy:  -Am
+    2. személy:  -Al
+    3. személy:  -Ø
+
+  TÖBBES SZÁM:
+    1. személy:  -Unk
+    2. személy:  -AtVk
+    3. személy:  -Ak
+
+Megjegyzés (6380): "A múlt idő t-je nyitótövet hoz létre, ezért kötelező a toldalékoknál a toldalékkezdő magánhangzó."
+
+Megjegyzés (6462–6468): Az egyes szám első személy alanyi és tárgyas ragozása MÚLT IDŐBEN azonos (olvastam). Ez "szabálytalan" az alanyi ragozásban — a várt alak "olvastak" lenne, ami egybeesne a többes szám harmadik személlyel. "Az ilyen homonímiát viszont a nyelvek általában nem szeretik."
+
+------------------------------------------------------------
+4.4. MÚLT IDŐ — KIJELENTŐ MÓD — TÁRGYAS RAGOZÁS
+------------------------------------------------------------
+
+Példasorok (63):
+a. vár+t+am, vár+t+ad, vár+t+a, vár+t+uk, vár+t+átok, vár+t+ák
+b. kér+t+em, kér+t+ed, kér+t+e, kér+t+ük, kér+t+étek, kér+t+ék
+
+(64) (2.2. táblázat) ÖSSZEVONT ALAKOK — Tárgyas ragozás összevont személyragjai (múlt idő):
+
+  EGYES SZÁM:
+    1. személy:  -Am
+    2. személy:  -Ad
+    3. személy:  -A
+
+  TÖBBES SZÁM:
+    1. személy:  -Uk
+    2. személy:  -AtVk
+    3. személy:  -Ak
+
+------------------------------------------------------------
+4.5. FELTÉTELES MÓD — JELEN IDŐ — ALANYI RAGOZÁS
+------------------------------------------------------------
+
+Példasorok (65):
+a. várnék, várnál, várna, várnánk, várnátok, várnának
+b. kérnék, kérnél, kérne, kérnénk, kérnétek, kérnének
+
+Szegmentálás (66):
+a. vár+n+ék, vár+n+ál, vár+n+a, vár+n+ánk, vár+n+átok, vár+n+ának
+b. kér+n+ék, kér+n+él, kér+n+e, kér+n+énk, kér+n+étek, kér+n+enek
+
+(67) (2.3. táblázat) Alanyi ragozás személyragjai — feltételes mód, jelen idő:
+
+  EGYES SZÁM:
+    1. személy:  -ék
+    2. személy:  -Al
+    3. személy:  -A
+
+  TÖBBES SZÁM:
+    1. személy:  -Ank
+    2. személy:  -AtVk
+    3. személy:  -AnAk
+
+Megjegyzés (6517–6521): "Az első személy nem váltakozik, sőt tulajdonképpen 'szabálytalan', a szabályos alak várnák lenne, ami viszont egybeesne a feltételes mód, tárgyas ragozás, többes szám harmadik személyű alakjával. [...] az ilyen homonímiát a nyelv, ha teheti, többnyire elkerüli. Ez azonban nem szabály: a néznék alak annak ellenére nem változott meg, hogy az egybeesés szembetűnő."
+
+------------------------------------------------------------
+4.6. FELTÉTELES MÓD — JELEN IDŐ — TÁRGYAS RAGOZÁS
+------------------------------------------------------------
+
+Példasorok (68):
+a. vár+n+ám, vár+n+ád, vár+n+á, vár+n+ánk, vár+n+átok, vár+n+ák
+b. kér+n+ém, kér+n+éd, kér+n+é, kér+n+énk, kér+n+étek, kér+n+ék
+
+(69) (2.4. táblázat) Tárgyas ragozás személyragjai — feltételes mód, jelen idő:
+
+  EGYES SZÁM:
+    1. személy:  -Am
+    2. személy:  -Ad
+    3. személy:  -A
+
+  TÖBBES SZÁM:
+    1. személy:  -Ank
+    2. személy:  -AtVk
+    3. személy:  -Ak
+
+Megjegyzés (6556–6558): "A (67) és (69) összehasonlításából azonnal kitűnik, hogy a többes szám első és második személyű alakok az alanyi és tárgyas ragozásban megegyeznek."
+
+------------------------------------------------------------
+4.7. FELTÉTELES MÓD — TELJES SZEMÉLYRAG-RENDSZER
+            (toldalékkezdő magánhangzó nélkül)
+------------------------------------------------------------
+
+(70) A személyragok rendszere toldalékkezdő magánhangzó nélkül:
+  a. ALANYI:  -k, -l, -A, -nk, -tVk, -nAk
+  b. TÁRGYAS: -m, -d, -Á, -nk, -tVk, -k
+
+Ezek a "tiszta" személyragok, ha a módjel (-n) után a kötőhangzót (A) külön kezeljük.
+
+------------------------------------------------------------
+4.8. FELSZÓLÍTÓ MÓD — JELEN IDŐ — ALANYI RAGOZÁS
+------------------------------------------------------------
+
+Példasorok (74) [könyvben számozva]:
+a. vár+j+ak, vár+j(+ál), vár+j+on, vár+j+unk, vár+j+atok, vár+j+anak
+b. kér+j+ek, kér+j(+él), kér+j+en, kér+j+ünk, kér+j+etek, kér+j+enek
+
+(73) (2.5. táblázat) Alanyi ragozás személyragjai — felszólító mód, jelen idő:
+
+  EGYES SZÁM:
+    1. személy:  -Ak
+    2. személy:  -Ø / -Al
+    3. személy:  -On
+
+  TÖBBES SZÁM:
+    1. személy:  -Unk
+    2. személy:  -AtVk
+    3. személy:  -AnAk
+
+Megjegyzés (6615–6616): "Az egyes szám második személyű rag két változatban jelenik meg, újabban, úgy tűnik, a testesebb rag a gyakoribb."
+
+------------------------------------------------------------
+4.9. FELSZÓLÍTÓ MÓD — JELEN IDŐ — TÁRGYAS RAGOZÁS
+------------------------------------------------------------
+
+Példasorok (74) [könyvben második számozás]:
+a. vár+j+am, vár(+j)+(a)d, vár+j+a, vár+j+uk, vár+j+átok, vár+j+ák
+b. kér+j+em, kér(+j)+(e)d, kér+j+e, kér+j+ük, kér+j+étek, kér+j+ék
+
+(75) (2.6. táblázat) Tárgyas ragozás személyragjai — felszólító mód, jelen idő:
+
+  EGYES SZÁM:
+    1. személy:  -Am
+    2. személy:  -(A)d
+    3. személy:  -A
+
+  TÖBBES SZÁM:
+    1. személy:  -Uk
+    2. személy:  -AtVk
+    3. személy:  -Ak
+
+Megjegyzés (6622–6630): "A j-s alak világosan mutatja, hogy az A nem a tulajdonképpeni toldalék része, hanem kötőhangzó, ami a j-s alakok után mássalhangzóval kezdődő toldalék esetén mindig kötelező. Ennek az a magyarázata, hogy a felszólító mód j jele szintén nyitótövet hoz létre, a toldalékok tehát magánhangzóval kapcsolódnak a tőhöz."
+
+A felszólító módban különleges hangtani szabályok (6659–6670):
+a. A j módjel teljesen hasonul szibilánsok után: hoz+j+ak → hoz+z+ak
+b. -t-re végződő tövek három esete:
+   (i) -Vt végű tő (üt): t → s palatalizálódik, j hasonul → üs+s+ek
+   (ii) Zengőhang + t végű tő (márt): t → cs palatalizálódik → márcs+cs+ak → márcsak (degemináció)
+   (iii) Zörejhang + t végű tő (oszt): tővégi -t törlődik, j hasonul → osz+sz+ak
+
+------------------------------------------------------------
+4.10. A -lAk TOLDALÉK (második személyű tárgy)
+------------------------------------------------------------
+
+Idézet (6672–6678):
+"A tárgyas ragozást harmadik személyű tárgy esetén használjuk. A -lAk toldalék (egyes vagy többes számú) második személyű tárgyra utal: vár+lak, vár+t+alak, vár+n+álak, vár+j+alak; kér+lek, kér+t+elek, kér+n+élek, kér+j+elek. A vár+lak téged – téged vár párhuzam miatt a várlak az alanyi ragozáshoz tartozik, annak ellenére, hogy a téged nem határozatlan.
+Jelen időben a -lAk toldalék magánhangzó nélkül közvetlenül a tőhöz járul. A múlt idejű alakokban, a feltételes és felszólító módban toldalékkezdő magánhangzót találunk, a toldalék alakja tehát -AlAk."
+
+------------------------------------------------------------
+4.11. AZ IKES RAGOZÁS
+------------------------------------------------------------
+
+Idézet (6680–6698):
+"Az ikes igéknél a jelen idő egyes szám első személyű alak a tárgyas -Vm ragot, a harmadik személyű alak pedig az -ik toldalékot kapja. Az egyes szám második személyű -(V)l ragot ma már az -sz toldalék váltotta fel minden olyan esetben, ahol ezt a hangtani feltételek lehetővé tették: szök+sz és nem szök+öl, de isz+ol, es+el, éppúgy, mint az iktelen uz+öl, tesz+el. A beszélt köznyelv ma már nemigen tesz különbséget egyes szám első személyben az ikes igék és a szabályos (iktelen) igék között, tehát mászok/mászom, eszek/eszem. A szabálytalan paradigma ebben az esetben is kezd a szabályoshoz igazodni. A harmadik személyű -ik toldalék azonban mindenhol megmarad, sőt új keletű, főnévből a -z képzővel képzett igéinknél rendkívül gyakori (lézerez+ik, kompjuterez+ik, internetez+ik). Ezeknél a képzéseknél az egyes szám első személyben az -Vk toldalék szinte kizárólagos."
+
+"Az iktelen toldalék a feltételes módban még inkább kiszorította az egyes szám első személyű ikes toldalékot. Tehát innék, esnék, szöknék az innám, esném, szökném helyett. Ugyanez áll a harmadik személyű alakokra is: inna, esne, szökne, és nem innék, esnék, szöknék."
+
+============================================================
+5. TOLDALÉKOK SORRENDJE IGERAGOZÁSNÁL
+============================================================
+
+A könyv alapján az igeragozás toldalékstruktúrája:
+
+  IGETŐ → [IDŐJEL/MÓDJEL] → [KÖTŐHANGZÓ] → SZEMÉLYRAG
+
+Részletesen:
+
+a) JELEN IDŐ, KIJELENTŐ MÓD:
+   tő + [kötőhangzó] + személyrag
+   Pl: olvas+ok, vár+sz, ül+ünk
+   (Nincs időjel, nincs módjel.)
+
+b) MÚLT IDŐ, KIJELENTŐ MÓD:
+   tő + t (időjel) + [kötőhangzó] + személyrag
+   Pl: vár+t+am, ül+t+em, vár+t+unk
+   (A t nyitótövet hoz létre → kötelező a kötőhangzó.)
+
+c) FELTÉTELES MÓD, JELEN IDŐ:
+   tő + n (módjel) + [kötőhangzó] + személyrag
+   Pl: vár+n+ék, kér+n+él, vár+n+ánk
+   (A toldalékkezdő magánhangzó itt kötőhangzó.)
+
+d) FELSZÓLÍTÓ MÓD, JELEN IDŐ:
+   tő + j (módjel) + [kötőhangzó] + személyrag
+   Pl: vár+j+ak, kér+j+en, vár+j+unk
+   (A j szintén nyitótövet hoz létre → kötelező a kötőhangzó.)
+
+e) FELTÉTELES MÓD, MÚLT IDŐ:
+   [tő + t (időjel) + személyrag] + volna (külön szó)
+   Pl: olvastam volna, vártál volna
+   (Két morfológiai egység: az ige múlt idejű alakja + a volna.)
+
+f) JÖVŐ IDŐ (nem morfológiai):
+   fog (segédige) + főige
+   Pl: el fog utazni, nem fog elutazni
+
+ÖSSZEFOGLALVA A SORRENDET:
+  tő + módjel + időjel + személyrag
+  (A módjel és időjel nem egyszerre jelennek meg — a feltételes múlt a t + volna kombinációval működik.)
+
+A könyből közvetlenül nem olvasható ki egyetlen egységes "sorrend" formula, de a példákból ez a struktúra rekonstruálható:
+  IGETŐ → MÓDJEL (n vagy j) → IDŐJEL (t) → SZEMÉLYRAG
+A kötőhangzó a toldalékkezdő magánhangzó, amely nyitőtvek esetén kötelező.
+
+============================================================
+6. ASPEKTUS / SZEMLÉLET
+============================================================
+
+NEM TARGYALJA.
+
+A könyv 2.2-es "Az igeragozás" szakasza nem tárgyalja az aspektust/szemléletet (folyamatos/befejezett/szokásos). A könyv az igeragozást csak idő (jelen/múlt) és mód (kijelentő/feltételes/felszólító) szerint rendszerezi.
+
+Megjegyzés: A szokott segédige említésre kerül (6251), mint a fog segédige osztályába tartozó elem, de a szokásos aspektust mint morfológiai kategóriát nem tárgyalja.
+
+============================================================
+ÖSSZESÍTETT TÁBLÁZAT-JEGYZÉK
+============================================================
+
+A könyv az alábbi táblázatokat adja a 2.2-es szakaszban:
+
+1.  (52) Alanyi ragozás teljes személyragjai — jelen idő
+2.  (53) Alanyi ragozás összevont személyragjai — jelen idő
+3.  (55) Tárgyas ragozás teljes személyragjai — jelen idő
+4.  (56) Tárgyas ragozás összevont személyragjai — jelen idő
+5.  (58) Alanyi ragozás teljes személyragjai — múlt idő
+6.  (59) / 2.1. táblázat — Alanyi ragozás összevont személyragjai — múlt idő
+7.  (64) / 2.2. táblázat — Tárgyas ragozás összevont személyragjai — múlt idő
+8.  (67) / 2.3. táblázat — Alanyi ragozás személyragjai — feltételes mód, jelen idő
+9.  (69) / 2.4. táblázat — Tárgyas ragozás személyragjai — feltételes mód, jelen idő
+10. (70) Személyragok rendszere toldalékkezdő magánhangzó nélkül (alanyi + tárgyas)
+11. (73) / 2.5. táblázat — Alanyi ragozás személyragjai — felszólító mód, jelen idő
+12. (75) / 2.6. táblázat — Tárgyas ragozás személyragjai — felszólító mód, jelen idő
+
+Összesen: 12 táblázat.
+
+============================================================
+SZEMÉLYRAGOK ÖSSZESÍTÉSE
+============================================================
+
+Személyragok száma kategóriánként (6 személy × kategória):
+
+Alanyi ragozás:
+  - Jelen idő, kijelentő: 6 rag (teljes + összevont változatban)
+  - Múlt idő, kijelentő: 6 rag (teljes + összevont)
+  - Feltételes mód, jelen idő: 6 rag
+  - Felszólító mód, jelen idő: 6 rag
+  Összesen: 24 egyedi személyraghely (alanyi)
+
+Tárgyas ragozás:
+  - Jelen idő, kijelentő: 6 rag (teljes + összevont)
+  - Múlt idő, kijelentő: 6 rag (összevont)
+  - Feltételes mód, jelen idő: 6 rag
+  - Felszólító mód, jelen idő: 6 rag
+  Összesen: 24 egyedi személyraghely (tárgyas)
+
+Plusz:
+  - -lAk toldalék (második személyű tárgy): 1 toldalék × 4 mód/idő változat
+  - Ikes ragozás különleges ragjai
+
+ÖSSZES SZEMÉLYRAG: 48 (alanyi + tárgyas, 6 személy × 4 kategória × 2 ragozás)
++ -lAk toldalék + ikes változatok
+
+============================================================
+MÉGJEGYZÉSEK / NEHEZEN ÉRTHETŐ RÉSZEK
+============================================================
+
+1. A (49)-(50) példák "a legnagyobb rejtély" — a könyv szerint sem jelentéstanilag, sem mondattanilag nem magyarázható a 3. személyű vs. 1./2. személyű névmás tárgy ragozási különbsége. NEHEZEN ÉRTHETŐ.
+
+2. A múlt idő egyes szám harmadik személyében az időjel nem mindig -t (lehet -ott, -ett stb.), és a pontos szabály a tővégi mássalhangzótól függ. A könyv részletezi, de a szabályrendszer összetett.
+
+3. A feltételes mód egyes szám első személyű alakja "szabálytalan" (várnék a várnák helyett) — a homonímia elkerülésének elve miatt. A könyv szerint ez "nem szabály": a néznék alak nem változott meg annak ellenére, hogy az egybeesés szembetűnő.
+
+4. A (70)-es táblázat "toldalékkezdő magánhangzó nélküli" személyragrendszere NEHEZEN ÉRTHETŐ — ez a "tiszta" ragok rendszere, amely csak a kötőhangzó leválasztása után látható.
+
+============================================================
+VÉGE
+============================================================

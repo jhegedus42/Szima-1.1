@@ -1,0 +1,2961 @@
+================================================================================
+AWODEY — KATEGÓRIAELMÉLET — 1. FEJEZET
+1.1 Bevezetés  /  1.2 Halmazok függvényei
+Magyar fordítás — mondatonként, forrásmegjelöléssel
+================================================================================
+
+
+HU: 1.1 Bevezetés
+EN: 1.1 Introduction
+SRC: Awodey §1.1
+
+HU: Mi a kategóriaelmélet?
+EN: What is category theory?
+SRC: Awodey §1.1
+
+HU: Első közelítésben azt is mondhatnánk, hogy a kategóriaelmélet a (absztrakt) függvényalgebrák matematikai vizsgálata.
+EN: As a ﬁrst approximation, one could say that category theory is the mathematical study of (abstract) algebras of functions.
+SRC: Awodey §1.1
+
+HU: Ahogyan a csoportelmélet egy halmaz permutációinak rendszerére vagy egy geometriai objektum szimmetriáira vonatkozó ideának az absztrakciója, úgy a kategóriaelmélet bizonyos objektumok közötti függvények rendszerének ideájából születik.
+EN: Just as group theory is the abstraction of the idea of a system of permutations of a set or symmetries of a geometric object, category theory arises from the idea of a system of functions among some objects.
+SRC: Awodey §1.1
+
+HU: A g ◦ f kompozíciót a függvények f és g egyfajta „szorzatának" tekintjük, és absztrakt „algebrákat" vizsgálunk, olyanokat, amilyenek függvények gyűjteményeiből származnak.
+EN: We think of the composition g ◦ f as a sort of "product" of the functions f and g, and consider abstract "algebras" of the sort arising from collections of functions.
+SRC: Awodey §1.1
+
+HU: Egy kategória éppen egy ilyen „algebra," amely objektumokból A, B, C, . . . és nyilakból f : A → B, g : B → C, . . . áll, amelyek zártak a kompozícióra és kielégítik a függvénykompozícióra jellemző bizonyos feltételeket.
+EN: A category is just such an "algebra," consisting of objects A, B, C, . . . and arrows f : A → B, g : B → C, . . . , that are closed under composition and satisfy certain conditions typical of the composition of functions.
+SRC: Awodey §1.1
+
+HU: A pontos definíciót a fejezet későbbi részében adjuk meg.
+EN: A precise deﬁnition is given later in this chapter.
+SRC: Awodey §1.1
+
+HU: Az absztrakt algebra egyik ágaként a kategóriaelméletet Felix Klein Erlanger Programmjának hagyományában találták fel, mint a különféle matematikai struktúrák „megengedett transzformációik" alapján történő vizsgálatának és jellemzésének módszerét.
+EN: A branch of abstract algebra, category theory was invented in the tradition of Felix Klein's Erlanger Programm, as a way of studying and characterizing diﬀerent kinds of mathematical structures in terms of their "admissible transformations."
+SRC: Awodey §1.1
+
+HU: A kategória általános fogalma a „struktúrát megőrző transzformáció" fogalmának — és ezzel együtt az ilyen transzformációkat megengedő struktúrafajták — jellemzését adja meg.
+EN: The general notion of a category provides a characterization of the notion of a "structure-preserving transformation," and thereby of a species of structures admitting such transformations.
+SRC: Awodey §1.1
+
+HU: A tárgy történeti fejlődése — nagyon durva vázlatban — a következőképpen zajlott:
+EN: The historical development of the subject has been, very roughly, as follows:
+SRC: Awodey §1.1
+
+HU: 1945 — Eilenberg és Mac Lane „General theory of natural equivalences" című írása volt az eredeti közlemény, amelyben az elméletet először megfogalmazták.
+EN: 1945 Eilenberg and Mac Lane's "General theory of natural equivalences" was the original paper, in which the theory was first formulated.
+SRC: Awodey §1.1
+
+HU: 1940-es évek vége — A fő alkalmazások eredetileg az algebrai topológia, különösen a homológiaelmélet, valamint az absztrakt algebra területén jelentek meg.
+EN: late 1940s The main applications were originally in the ﬁelds of algebraic topology, particularly homology theory, and abstract algebra.
+SRC: Awodey §1.1
+
+HU: 1950-es évek — A. Grothendieck és társai nagy sikerrel kezdték alkalmazni a kategóriaelméletet az algebrai geometriában.
+EN: 1950s A. Grothendieck et al. began using category theory with great success in algebraic geometry.
+SRC: Awodey §1.1
+
+HU: 1960-as évek — F.W. Lawvere és mások elkezdték a kategóriákat a logikára alkalmazni, ami mély és meglepő kapcsolatokat tárt fel.
+EN: 1960s F.W. Lawvere and others began applying categories to logic, revealing some deep and surprising connections.
+SRC: Awodey §1.1
+
+HU: 1970-es évek — Az alkalmazások már megjelentek a számítástudományban, a nyelvészetben, a kognitív tudományban, a filozófiában és sok más területen.
+EN: 1970s Applications were already appearing in computer science, linguistics, cognitive science, philosophy, and many other areas.
+SRC: Awodey §1.1
+
+HU: Az egyik nagyon feltűnő dolog a területtel kapcsolatban, hogy ilyen távolható alkalmazásai vannak.
+EN: One very striking thing about the ﬁeld is that it has such wide-ranging applications.
+SRC: Awodey §1.1
+
+HU: Valójában kiderül, hogy egyfajta univerzális matematikai nyelv, mint a halmazelmélet.
+EN: In fact, it turns out to be a kind of universal mathematical language like set theory.
+SRC: Awodey §1.1
+
+HU: E különféle alkalmazások következtében a kategóriaelmélet hajlamos bizonyos kapcsolatokat is feltárni a különböző területek között — például a logika és a geometria között.
+EN: As a result of these various applications, category theory also tends to reveal certain connections between diﬀerent ﬁelds—like logic and geometry.
+SRC: Awodey §1.1
+
+HU: Például az adjungált funktor fontos fogalma a logikában az egzisztenciális kvantorként, a topológiában pedig egy folytonos függvény szerinti képképzési műveletként jelenik meg.
+EN: For example, the important notion of an adjoint functor occurs in logic as the existential quantiﬁer and in topology as the image operation along a continuous function.
+SRC: Awodey §1.1
+
+HU: Kategóriaelméleti nézőpontból ezek lényegében ugyanaz a műveletnek bizonyulnak.
+EN: From a categorical point of view these turn out to be essentially the same operation.
+SRC: Awodey §1.1
+
+HU: Az adjungált funktor fogalma valójában az egyik fő dolog, amit az olvasónak e könyyv tanulmányozásából magával kell vinnie.
+EN: The concept of adjoint functor is in fact one of the main things that the reader should take away from the study of this book.
+SRC: Awodey §1.1
+
+HU: Ez szigorúan kategóriaelméleti fogalom, amely elsőrendű fogalmi eszköznek bizonyult — egyenrangú a folytonos függvény ideájával.
+EN: It is a strictly category-theoretical notion that has turned out to be a conceptual tool of the ﬁrst magnitude—on par with the idea of a continuous function.
+SRC: Awodey §1.1
+
+HU: Valójában, ahogyan a topologikus tér fogalma a folytonos függvényekkel kapcsolatban született, úgy a kategória fogalma is azért született, hogy a funktor fogalmát meg lehessen definiálni — legalábbis az egyik feltaláló szerint.
+EN: In fact, just as the idea of a topological space arose in connection with continuous functions, so also the notion of a category arose in order to deﬁne that of a functor, at least according to one of the inventors.
+SRC: Awodey §1.1
+
+HU: A funktor fogalma azért született — így megy tovább a történet —, hogy a természetes transzformációkat meg lehessen definiálni.
+EN: The notion of a functor arose—so the story goes on—in order to deﬁne natural transformations.
+SRC: Awodey §1.1
+
+HU: Nyugodtan folytathatnánk azzal, hogy a természetes transzformációk az adjunkciók definiálását szolgálják:
+EN: One might as well continue that natural transformations serve to deﬁne adjoints:
+SRC: Awodey §1.1
+
+HU: Kategória → Funktor → Természetes transzformáció → Adjunkció
+EN: Category → Functor → Natural transformation → Adjunction
+SRC: Awodey §1.1
+
+HU: Ez valóban meglehetősen jó vázlát adja ennek a könyvnek.
+EN: Indeed, that gives a pretty good outline of this book.
+SRC: Awodey §1.1
+
+HU: Mielőtt hozzákezdenénk a dolgokhoz, kérdezzük meg, miért van az, hogy a kategóriaelméletnek ilyen távolható alkalmazásai vannak.
+EN: Before getting down to business, let us ask why it should be that category theory has such far-reaching applications.
+SRC: Awodey §1.1
+
+HU: Hát, mondtuk, hogy ez a függvények absztrakt elmélete, tehát a válasz egyszerűen ez:
+EN: Well, we said that it is the abstract theory of functions, so the answer is simply this:
+SRC: Awodey §1.1
+
+HU: A függvények mindenütt vannak!
+EN: Functions are everywhere!
+SRC: Awodey §1.1
+
+HU: És mindenütt, ahol függvények vannak, ott kategóriák is vannak.
+EN: And everywhere that functions are, there are categories.
+SRC: Awodey §1.1
+
+HU: Valójában a tárgy talán jobban is hívható absztrakt függvényelméletnek, vagy talán még jobban: íjászatnak.
+EN: Indeed, the subject might better have been called abstract function theory, or, perhaps even better: archery.
+SRC: Awodey §1.1
+
+
+HU: 1.2 Halmazok függvényei
+EN: 1.2 Functions of sets
+SRC: Awodey §1.2
+
+HU: Azzal kezdjük, hogy halmazok közötti függvényeket vizsgálunk.
+EN: We begin by considering functions between sets.
+SRC: Awodey §1.2
+
+HU: Nem fogom itt mondani, mi a függvény, éppúgy, mint ahogy nem mondom meg, mi a halmaz.
+EN: I am not going to say here what a function is, anymore than what a set is.
+SRC: Awodey §1.2
+
+HU: Ehelyett e kifejezések gyakorlati ismeretét feltételezzük.
+EN: Instead, we will assume a working knowledge of these terms.
+SRC: Awodey §1.2
+
+HU: Valójában kategóriaelmélettel is definiálhatók, de ez nem a célunk itt.
+EN: They can in fact be deﬁned using category theory, but that is not our purpose here.
+SRC: Awodey §1.2
+
+HU: Legyen f egy függvény az A halmazból egy másik B halmazba, így írjuk: f : A → B.
+EN: Let f be a function from a set A to another set B, we write f : A → B.
+SRC: Awodey §1.2
+
+HU: Pontosabban, ez azt jelenti, hogy f az A minden pontján értelmezett, és f minden értéke B-ben van.
+EN: To be explicit, this means that f is deﬁned on all of A and all the values of f are in B.
+SRC: Awodey §1.2
+
+HU: Halmazelméleti kifejezéssel: range(f) ⊆ B.
+EN: In set theoretic terms, range(f) ⊆ B.
+SRC: Awodey §1.2
+
+HU: Tegyük fel most, hogy van egy g : B → C függvényünk is,
+EN: Now suppose we also have a function g : B → C,
+SRC: Awodey §1.2
+
+HU: ekkor létezik egy g ◦ f : A → C kompozíciófüggvény, amelyet a következőképpen adunk meg: (g ◦ f)(a) = g(f(a)), a ∈ A. (1.1)
+EN: then there is a composite function g ◦ f : A → C, given by (g ◦ f)(a) = g(f(a)) a ∈ A. (1.1)
+SRC: Awodey §1.2
+
+HU: Nos, a függvények kompozíciójának ez a „◦" művelete asszociatív, a következőképpen.
+EN: Now this operation "◦" of composition of functions is associative, as follows.
+SRC: Awodey §1.2
+
+HU: Ha van egy további h : C → D függvényünk
+EN: If we have a further function h : C → D
+SRC: Awodey §1.2
+
+HU: és képezzük az h◦g és g◦f kompozíciókat, akkor összehasonlíthatjuk a (h◦g)◦f és h◦(g◦f) kompozíciókat, ahogy a fenti diagram jelzi.
+EN: and form h◦g and g ◦f then we can compare (h◦g)◦f and h◦(g ◦f ) as indicated in the above diagram.
+SRC: Awodey §1.2
+
+HU: Kiderül, hogy ez a két függvény mindig azonos: (h ◦ g) ◦ f = h ◦ (g ◦ f),
+EN: It turns out that these two functions are always identical, (h ◦ g) ◦ f = h ◦ (g ◦ f )
+SRC: Awodey §1.2
+
+HU: mivel bármely a ∈ A esetén fennáll ((h ◦ g) ◦ f)(a) = h(g(f(a))) = (h ◦ (g ◦ f))(a) az (1.1) felhasználásával.
+EN: since for any a ∈ A, we have ((h ◦ g) ◦ f)(a) = h(g(f(a))) = (h ◦ (g ◦ f))(a) using (1.1).
+SRC: Awodey §1.2
+
+HU: Egyébként ez természetesen éppen azt jelenti, hogy két függvény egyenlő: minden argumentumra ugyanazt az értéket veszik fel.
+EN: By the way, this is of course what it means for two functions to be equal: for every argument, they have the same value.
+SRC: Awodey §1.2
+
+HU: Végül, jegyezzük meg, hogy minden A halmaznak van egy identitásfüggvénye 1A : A → A, amelyet 1A(a) = a ad meg.
+EN: Finally, note that every set A has an identity function 1A : A → A given by 1A(a) = a.
+SRC: Awodey §1.2
+
+HU: Ezek az identitásfüggvények „egységelemként" viselkednek a ◦ kompozícióműveletre nézve, az absztrakt algebra értelemben.
+EN: These identity functions act as "units" for the operation ◦ of composition, in the sense of abstract algebra.
+SRC: Awodey §1.2
+
+HU: Azaz f ◦ 1A = f = 1B ◦ f bármely f : A → B esetén.
+EN: That is to say, f ◦ 1A = f = 1B ◦ f for any f : A → B.
+SRC: Awodey §1.2
+
+HU: Ezek mindazok a halmazfüggvény-tulajdonságok, amelyeket az absztrakt függvényfogalomhoz figyelembe akarunk venni — kompozíció és identitások.
+EN: These are all the properties of set functions that we want to consider for the abstract notion of function—composition and identities.
+SRC: Awodey §1.2
+
+HU: Így most „absztrakció útján el akarunk távolítani" mindent mást, úgy mondható.
+EN: Thus, we now want to "abstract away" everything else, so to speak.
+SRC: Awodey §1.2
+
+HU: Ezt valósítja meg a következő definíció.
+EN: That is what is accomplished by the following deﬁnition.
+SRC: Awodey §1.2================================================================================
+AWODEY: KATEGÓRIAELMÉLET — 1. FEJEZET
+§1.3 Egy kategória definíciója  &  §1.4 Kategóriák példái
+Magyar–angol párhuzamos fordítás
+Forrás: /tmp/awodey_ch1_s2.txt
+================================================================================
+
+
+================================================================================
+§1.3  EGY KATEGÓRIA DEFINÍCIÓJA
+================================================================================
+
+--------------------------------------------------------------------------------
+
+HU: 1.3 Egy kategória definíciója
+EN: 1.3 Deﬁnition of a category
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: 1.1. Definíció. Egy kategória a következő adatokból áll:
+EN: Deﬁnition 1.1. A category consists of the following data:
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: • Objektumok: A, B, C, . . .
+EN: • Objects: A, B, C, . . .
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: • Nyilak: f, g, h, . . .
+EN: • Arrows: f, g, h, . . .
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: • Minden f nyílhoz adva vannak objektumok:
+EN: • For each arrow f there are given objects:
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: dom(f),
+EN: dom(f ),
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: cod(f)
+EN: cod(f )
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: melyeket f forrásterének és célterének nevezzük. Írjuk:
+EN: called the domain and codomain of f . We write:
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: f : A → B
+EN: f :A→B
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: azt jelölve, hogy A = dom(f) és B = cod(f).
+EN: to indicate that A = dom(f ) and B = cod(f ).
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: Adott f : A → B és g : B → C nyilak, azaz ahol:
+EN: Given arrows f : A → B and g : B → C, that is, with:
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: • cod(f) = dom(g)
+EN: • cod(f ) = dom(g)
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: adva van egy nyíl:
+EN: there is given an arrow:
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: g ◦ f : A → C
+EN: g◦f :A→C
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: melyet f és g kompozíciójának nevezünk.
+EN: called the composite of f and g.
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: • Minden A objektumhoz adva van egy nyíl:
+EN: • For each object A there is given an arrow:
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: 1A : A → A
+EN: 1A : A → A
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: melyet A identitás-nyilának nevezzük.
+EN: called the identity arrow of A.
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: Ezekre az adatokra a következő törvények teljesülését követeljük meg:
+EN: These data are required to satisfy the following laws:
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: • Asszociativitás:
+EN: • Associativity:
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: h ◦ (g ◦ f) = (h ◦ g) ◦ f
+EN: h ◦ (g ◦ f ) = (h ◦ g) ◦ f
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: minden f : A → B, g : B → C, h : C → D esetén.
+EN: for all f : A → B, g : B → C, h : C → D.
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: • Egységelem:
+EN: • Unit:
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: f ◦ 1A = f = 1B ◦ f
+EN: f ◦ 1A = f = 1B ◦ f
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: minden f : A → B esetén.
+EN: for all f : A → B.
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: A kategória minden, ami kielégíti ezt a definíciót — és nagyon hamar lesz még bőven példánk.
+EN: A category is anything that satisﬁes this deﬁnition—and we will have plenty of examples very soon.
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: Egyelőre hangsúlyozni szeretném, hogy az előző szakasszal ellentétben, az objektumok nem kell halmazok legyenek, és a nyilak nem kell függvények legyenek.
+EN: For now I want to emphasize that, unlike in the previous section, the objects do not have to be sets and the arrows need not be functions.
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: Ebben az értelemben a kategória a függvények, vagy "nyilak" (egyben "morfizmusok") absztrakt algebrája, a "◦" kompozíciós művelettel mint primitív.
+EN: In this sense, a category is an abstract algebra of functions, or "arrows" (sometimes also called "morphisms"), with the composition operation "◦" as primitive.
+SRC: Awodey §1.3
+
+--------------------------------------------------------------------------------
+
+HU: Ha ismered a csoportokat, a kategóriát felfoghatod egyfajta általánosított csoportnak.
+EN: If you are familiar with groups, you may think of a category as a sort of generalized group.
+SRC: Awodey §1.3
+
+
+================================================================================
+§1.4  KATEGÓRIÁK PÉLDAI
+================================================================================
+
+--------------------------------------------------------------------------------
+
+HU: 1.4 Kategóriák példái
+EN: 1.4 Examples of categories
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: 1. Már találkoztunk a Sets kategóriával, a halmazok és függvények kategóriájával.
+EN: 1. We have already encountered the category Sets of sets and functions.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Van továbbá a Setsfin kategória, az összes véges halmaz és a köztük lévő függvények kategóriája.
+EN: There is also the category Setsﬁn of all ﬁnite sets and functions between them.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Valóban, sok hasonló kategória van, amelyeket úgy adunk meg, hogy korlátozzuk azokat a halmazokat, amelyek objektumok lesznek, és azokat a függvényeket, amelyek nyilak lesznek.
+EN: Indeed, there are many categories like this, given by restricting the sets that are to be the objects and the functions that are to be the arrows.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Például véges halmazokat veszünk objektumokként és injektív (azaz "egy-az-egyhez") függvényeket nyilakként.
+EN: For example, take ﬁnite sets as objects and injective (i.e., "1 to 1") functions as arrows.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Mivel az injektív függvények kompozíciója injektív függvényt ad, és mivel az identitás-függvények injektívek, ez is egy kategóriát ad.
+EN: Since injective functions compose to give an injective function, and since the identity functions are injective, this also gives a category.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Mi történik, ha halmazokat veszünk objektumokként és nyilakként azokat az f : A → B függvényeket, amelyekre minden b ∈ B esetén a f −1(b) ⊆ A részhalmaz legfeljebb két elemű (egy helyett)?
+EN: What if we take sets as objects and as arrows, those f : A → B such that for all b ∈ B, the subset f −1 (b) ⊆ A has at most two elements (rather than one)?
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Ez még mindig kategória?
+EN: Is this still a category?
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Mi történik, ha olyan függvényeket veszünk, amelyekre f −1(b) véges?
+EN: What if we take the functions such that f −1 (b) is ﬁnite?
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: végtelen?
+EN: inﬁnite?
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Sok ilyen korlátozott halmaz- és függvény-kategória van.
+EN: There are lots of such restricted categories of sets and functions.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: 2. Egy másik fajta példa, amit gyakran látunk a matematikában, a strukturált halmazok kategóriái, azaz olyan halmazok, amelyek további "struktúrával" rendelkeznek, és olyan függvények, amelyek "megőrzik" azt, ahol ezeket a fogalmakat valamilyen független módon határozzák meg.
+EN: 2. Another kind of example one often sees in mathematics is categories of structured sets, that is, sets with some further "structure" and functions which "preserve it," where these notions are determined in some independent way.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Példák, amelyekkel talán már találkoztál:
+EN: Examples of this kind you may be familiar with are:
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: • csoportok és csoport-homomorfizmusok,
+EN: • groups and group homomorphisms,
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: • vektorterek és lineáris leképezések,
+EN: • vector spaces and linear mappings,
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: • gráfok és gráf-homomorfizmusok,
+EN: • graphs and graph homomorphisms,
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: • a valós számok R és a folytonos függvények R → R,
+EN: • the real numbers R and continuous functions R → R,
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: • nyíott részhalmazok U ⊆ R és a rajtuk értelmezett folytonos függvények f : U → V ⊆ R,
+EN: • open subsets U ⊆ R and continuous functions f : U → V ⊆ R deﬁned on them,
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: • topológiai terek és folytonos leképezések,
+EN: • topological spaces and continuous mappings,
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: • differenciálható sokaságok és sima leképezések,
+EN: • diﬀerentiable manifolds and smooth mappings,
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: • a természetes számok N és az összes rekurzív függvény N → N, vagy ahol, a folytonos függvények példájához hasonlóan, rész-rekurzív függvényeket is vehetünk, amelyeket U ⊆ N részhalmazokon értelmezünk.
+EN: • the natural numbers N and all recursive functions N → N, or as in the example of continuous functions, one can take partial recursive functions deﬁned on subsets U ⊆ N.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: • posetek és monoton függvények.
+EN: • posets and monotone functions.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Ne aggódj, ha néhány példa ismeretlen.
+EN: Do not worry if some of these examples are unfamiliar to you.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Később részletesebben megvizsgálunk néhányat közülük.
+EN: Later on, we will take a closer look at some of them.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Egyelőre csak a fenti példák közül az utolsót tekintsük részletesebben.
+EN: For now, let us just consider the last of the above examples in more detail.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: 3. Egy parciálisan rendezett halmaz vagy poset egy A halmaz, amely fel van szerelve egy a ≤A b bináris relációval, amelyre a következő feltételek teljesülnek minden a, b, c ∈ A esetén:
+EN: 3. A partially ordered set or poset is a set A equipped with a binary relation a ≤A b such that the following conditions hold for all a, b, c ∈ A:
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: reflexivitás: a ≤A a,
+EN: reﬂexivity: a ≤A a,
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: tranzitivitás: ha a ≤A b és b ≤A c, akkor a ≤A c,
+EN: transitivity: if a ≤A b and b ≤A c, then a ≤A c,
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: antiszimmetria: ha a ≤A b és b ≤A a, akkor a = b.
+EN: antisymmetry: if a ≤A b and b ≤A a, then a = b.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Például a valós számok R a szokásos x ≤ y rendezéssel egy posetet alkotnak, amely lineárisan is rendezett: bármely x, y esetén vagy x ≤ y, vagy y ≤ x.
+EN: For example, the real numbers R with their usual ordering x ≤ y form a poset that is also linearly ordered: either x ≤ y or y ≤ x for any x, y.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Egy A posetből egy B posetbe vezető nyíl egy m : A → B függvény, amely monoton, abban az értelemben, hogy minden a, a' ∈ A esetén:
+EN: An arrow from a poset A to a poset B is a function m:A→B that is monotone, in the sense that, for all a, a' ∈ A,
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: a ≤A a' azt vonja maga után, hogy m(a) ≤B m(a').
+EN: a ≤A a' implies m(a) ≤B m(a').
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Mire van szükség ahhoz, hogy ez egy kategória legyen?
+EN: What does it take for this to be a category?
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Tudnunk kell, hogy az 1A : A → A monoton, de ez nyilvánvaló, mivel a ≤A a' azt vonja maga után, hogy a ≤A a'.
+EN: We need to know that 1A : A → A is monotone, but that is clear since a ≤A a' implies a ≤A a'.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Azt is tudnunk kell, hogy ha f : A → B és g : B → C monotonok, akkor g ◦ f : A → C is monoton.
+EN: We also need to know that if f : A → B and g : B → C are monotone, then g ◦ f : A → C is monotone.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Ez is teljesül, mivel a ≤ a' azt vonja maga után, hogy f(a) ≤ f(a'), ami azt vonja maga után, hogy g(f(a)) ≤ g(f(a')), ami azt vonja maga után, hogy (g ◦ f)(a) ≤ (g ◦ f)(a').
+EN: This also holds, since a ≤ a' implies f (a) ≤ f (a') implies g(f (a)) ≤ g(f (a')) implies (g ◦ f )(a) ≤ (g ◦ f )(a').
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Tehát megkapjuk a Pos kategóriát, a posetek és monoton függvények kategóriáját.
+EN: So we have the category Pos of posets and monotone functions.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: 4. Az eddig vizsgált kategóriák példái annak, amit egykor konkrét kategóriáknak neveznek.
+EN: 4. The categories that we have been considering so far are examples of what are sometimes called concrete categories.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Informálisan ezek olyan kategóriák, amelyekben az objektumok halmazok, esetleg valamilyen struktúrával felszerelve, és a nyilak bizonyos, esetleg szerkezetmegőrző, függvények (később látjuk, hogy ez a fogalom nem teljesen koherens; lásd 1.7. megjegyzés).
+EN: Informally, these are categories in which the objects are sets, possibly equipped with some structure, and the arrows are certain, possibly structure-preserving, functions (we shall see later on that this notion is not entirely coherent; see Remark 1.7).
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Most nézzünk néhány olyan példát, amelyek nem ilyenek.
+EN: Let's now take a look at a few examples that are not of this sort.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Legyen Rel a következő kategória: halmazokat veszünk objektumokként és bináris relációkat nyilakként.
+EN: Let Rel be the following category: take sets as objects and take binary relations as arrows.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Azaz egy f : A → B nyíl egy f ⊆ A × B részhalmaz.
+EN: That is, an arrow f : A → B is a subset f ⊆ A × B.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Egy A halmazon az identitás-nyíl az identitás-reláció.
+EN: The identity arrow on a set A is the identity relation.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: 1A = {(a, a) ∈ A × A | a ∈ A} ⊆ A × A.
+EN: 1A = {(a, a) ∈ A × A | a ∈ A} ⊆ A × A.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Adott R ⊆ A × B és S ⊆ B × C esetén a kompozíciót S ◦ R úgy definiáljuk, hogy (a, c) ∈ S ◦ R akkor és csak akkor, ha ∃b. (a, b) ∈ R & (b, c) ∈ S, azaz S és R "relatív szorzata".
+EN: Given R ⊆ A × B and S ⊆ B × C, deﬁne composition S ◦ R by (a, c) ∈ S ◦ R iﬀ ∃b. (a, b) ∈ R & (b, c) ∈ S that is, the "relative product" of S and R.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Gyakorlatként ráhagyjuk, hogy bizonyítsd: Rel valóban egy kategória.
+EN: We leave it as an exercise to show that Rel is in fact a category.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: (Mit kell tenni?)
+EN: (What needs to be done?)
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Egy másik példa egy olyan kategóriára, amelyben a nyilak nem "függvények": legyenek az objektumok véges halmazok A, B, C, és egy F : A → B nyíl egy nij természetes számokból álló téglalap matrix F = (nij)i<a,j<b, ahol a = |A| és b = |B|, ahol |C| egy C halmaz elemszáma.
+EN: For another example of a category in which the arrows are not "functions," let the objects be ﬁnite sets A, B, C and an arrow F : A → B is a rectangular matrix F = (nij )i<a,j<b of natural numbers with a = |A| and b = |B|, where |C| is the number of elements in a set C.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: A nyilak kompozíciója a szokásos mátrix-szorzás, és az identitás-nyilak a szokásos egységmátrixok.
+EN: The composition of arrows is by the usual matrix multiplication, and the identity arrows are the usual unit matrices.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: 5. Véges kategóriák
+EN: 5. Finite categories
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Természetesen a kategória objektumai sem kell halmazok legyenek.
+EN: Of course, the objects of a category do not have to be sets, either.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Íme néhány nagyon egyszerű példa:
+EN: Here are some very simple examples:
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: • Az 1 kategória így néz ki:
+EN: • The category 1 looks like this:
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU:     ∗
+EN:     ∗
+SRC: Awodey §1.4  [diagram]
+
+--------------------------------------------------------------------------------
+
+HU: Egy objektuma van, és az identitás-nyila, amit nem rajzolunk.
+EN: It has one object and its identity arrow, which we do not draw.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: • A 2 kategória így néz ki:
+EN: • The category 2 looks like this:
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU:     ∗ → ∗
+EN:     ∗ - ∗
+SRC: Awodey §1.4  [diagram]
+
+--------------------------------------------------------------------------------
+
+HU: Két objektuma van, a szükséges identitás-nyilai, és pontosan egy nyíl az objektumok között.
+EN: It has two objects, their required identity arrows, and exactly one arrow between the objects.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: • A 3 kategória így néz ki:
+EN: • The category 3 looks like this:
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU:     ∗ → ∗ → ∗
+EN:     [diagram: három objektum nyilakkal]
+SRC: Awodey §1.4  [diagram]
+
+--------------------------------------------------------------------------------
+
+HU: Három objektuma van, a szükséges identitás-nyilai, pontosan egy nyíl az elsőtől a második objektumig, pontosan egy nyíl a másodiktól a harmadik objektumig, és pontosan egy nyíl az elsőtől a harmadik objektumig (ami tehát a másik kettő kompozíciója).
+EN: It has three objects, their required identity arrows, exactly one arrow from the ﬁrst to the second object, exactly one arrow from the second to the third object, and exactly one arrow from the ﬁrst to the third object (which is therefore the composite of the other two).
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: • A 0 kategória így néz ki:
+EN: • The category 0 looks like this:
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: [üres — nincsenek objektumok vagy nyilak]
+EN: [empty — no objects or arrows]
+SRC: Awodey §1.4  [diagram]
+
+--------------------------------------------------------------------------------
+
+HU: Nincsenek objektumai vagy nyilai.
+EN: It has no objects or arrows.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Mint fent, a jövőben elhagyjuk az identitás-nyilakat a kategóriák rajzain.
+EN: As above, we will omit the identity arrows in drawing categories from now on.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Elég egyszerű meghatározni véges kategóriákat — csak vegyél néhány objektumot, és kezdj nyilakat tenni közéjük, de figyelj rá, hogy betedd a szükséges identitásokat és kompozitumokat, ahogy a kategória axiomái megkívánják.
+EN: It is fairly easy to specify ﬁnite categories—just take some objects and start putting arrows between them, but make sure to put in the necessary identities and composites, as required by the axioms for a category.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Továbbá, ha vannak hurkok, akkor egyenletekkel le kell őket vágni, hogy a kategória véges maradjon.
+EN: Also, if there are any loops, then they need to be cut oﬀ by equations to keep the category ﬁnite.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Például tekintsük a következő meghatározást:
+EN: For example, consider the following speciﬁcation:
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU:     A --f--> B --g--> A   [diagram: hurok]
+EN:     A f→ B g→ A  [diagram]
+SRC: Awodey §1.4  [diagram]
+
+--------------------------------------------------------------------------------
+
+HU: Hacsak nem követelünk ki egy olyan egyenletet, mint gf = 1A, végtelen sok nyilat kapunk: gf, gf gf, gf gf gf, . . .
+EN: Unless we stipulate an equation like gf = 1A , we will end up with inﬁnitely many arrows gf, gf gf, gf gf gf, . . .
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Ez még mindig kategória persze, de nem véges kategória.
+EN: This is still a category, of course, but it is not a ﬁnite category.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Visszatérünk erre a helyzetre, amikor a szabad kategóriákat tárgyaljuk a fejezet későbbi részében.
+EN: We will come back to this situation when we discuss free categories later in this chapter.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: 6. Egy fontos jelmondat a kategóriaelméletben:
+EN: 6. One important slogan of category theory is,
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: A nyilak a fontosak!
+EN: It's the arrows that really matter!
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Tehát a kategóriák közötti nyilakat vagy "leképezéseket" is meg kell vizsgálnunk.
+EN: So we should also look at the arrows or "mappings" between categories.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Egy "kategória-homomorfizmust" funktornak nevezünk.
+EN: A "homomorphism of categories" is called a functor.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: 1.2. Definíció. Egy F : C → D funktor a C és D kategóriák között objektumokból objektumokba és nyilakból nyilakba történő leképezés, úgy, hogy:
+EN: Deﬁnition 1.2. A functor F :C→D between categories C and D is a mapping of objects to objects and arrows to arrows, in such a way that:
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: (a) F(f : A → B) = F(f) : F(A) → F(B),
+EN: (a) F (f : A → B) = F (f ) : F (A) → F (B),
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: (b) F(g ◦ f) = F(g) ◦ F(f),
+EN: (b) F (g ◦ f ) = F (g) ◦ F (f ),
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: (c) F(1A) = 1F(A).
+EN: (c) F (1A ) = 1F (A) .
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Most ellenőrizhetjük, hogy a funktorok a várható módon komponálódnak, és hogy minden C kategóriának van egy 1C : C → C identitás-funktora.
+EN: Now, one can check that functors compose in the expected way, and that every category C has an identity functor 1C : C → C.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Tehát megvan egy újabb példa kategóriára, nevezetesen Cat, az összes kategória és funktor kategóriája.
+EN: So we have another example of a category, namely Cat, the category of all categories and functors.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: 7. Egy preord egy P halmaz, amely fel van szerelve egy p ≤ q bináris relációval, amely mind reflexív, mind tranzitív: a ≤ a, és ha a ≤ b és b ≤ c, akkor a ≤ c.
+EN: 7. A preorder is a set P equipped with a binary relation p ≤ q that is both reﬂexive and transitive: a ≤ a, and if a ≤ b and b ≤ c, then a ≤ c.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Bármely P preord felfogható kategóriaként, ha az objektumokat P elemeinek vesszük, és egy egyértelmű a → b nyilat veszünk akkor és csak akkor, ha a ≤ b.
+EN: Any preorder P can be regarded as a category by taking the objects to be the elements of P and taking a unique arrow, a→b if and only if a ≤ b.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: (1.2)
+EN: (1.2)
+SRC: Awodey §1.4  [hivatkozás]
+
+--------------------------------------------------------------------------------
+
+HU: A ≤ reláció reflexív és tranzitív feltételei biztosítják, hogy ez egy kategória.
+EN: The reﬂexive and transitive conditions on ≤ ensure that this is a category.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: A másik irányba menve, bármely kategória, amelyben legfeljebb egy nyíl van bármely két objektum között, meghatároz egy preordot, egyszerűen úgy, hogy egy ≤ bináris relációt definiálunk az objektumokon (1.2) szerint.
+EN: Going in the other direction, any category with at most one arrow between any two objects determines a preorder, simply by deﬁning a binary relation ≤ on the objects by (1.2).
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: 8. Egy poset nyilvánvalóan egy preord, amely kiegészül az antiszimmetria további feltételével: ha a ≤ b és b ≤ a, akkor a = b.
+EN: 8. A poset is evidently a preorder satisfying the additional condition of antisymmetry: if a ≤ b and b ≤ a, then a = b.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Tehát különösen egy poset is kategória.
+EN: So, in particular, a poset is also a category.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Ilyen poset-kategóriák nagyon gyakoriak; például bármely X halmaz esetén a hatványhalmaz P(X) egy poset a szokásos U ⊆ V inklúziós reláció alatt, X U, V részhalmazai között.
+EN: Such poset categories are very common; for example, for any set X, the powerset P (X) is a poset under the usual inclusion relation U ⊆ V between the subsets U, V of X.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Mi egy F : P → Q funktor P és Q poset-kategóriák között?
+EN: What is a functor F : P → Q between poset categories P and Q?
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Ki kell elégítenie az identitás és kompozíció törvényeit . . . .
+EN: It must satisfy the identity and composition laws . . . .
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Nyilvánvalóan ezek a fent már vizsgált monoton függvények.
+EN: Clearly, these are just the monotone functions already considered above.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Gyakran hasznos a kategóriát egyfajta általánosított posetnek tekinteni, olyannak, amely "több struktúrával" rendelkezik, mint p ≤ q.
+EN: It is often useful to think of a category as a kind of generalized poset, one with "more structure" than just p ≤ q.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Így a funktort is általánosított monoton leképezésnek lehet felfogni.
+EN: Thus, one can also think of a functor as a generalized monotone map.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: 9. Egy példa a logikából: Adott egy logikai deduktív rendszer, ahhoz tartozik egy kategória, amelyben az objektumok formulák:
+EN: 9. An example from logic: Given a deductive system of logic, there's an associated category, where the objects are formulas:
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: ϕ, ψ, . . .
+EN: ϕ, ψ, . . .
+SRC: Awodey §1.4  [formula]
+
+--------------------------------------------------------------------------------
+
+HU: Egy ϕ-ból ψ-be vezető nyíl egy ψ levezetése a ϕ feltevésből.
+EN: An arrow from ϕ to ψ is a deduction of ψ from the assumption ϕ.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: A nyilak kompozícióját a levezetések nyilvánvaló módon történő összekapcsolásával kapjuk, ami nyilvánvalóan asszociatív.
+EN: Composition of arrows is given by putting together deductions in the obvious way, which is clearly associative.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: (Mik az 1ϕ identitás-nyilak?)
+EN: (What are the identity arrows 1ϕ ?)
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Figyeljük meg, hogy sok különböző p : ϕ → ψ nyíl lehet, mivel sok különböző bizonyítás lehetséges.
+EN: Observe that there can be many diﬀerent arrows p:ϕ→ψ since there may be many diﬀerent proofs.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Ez a kategória nagyon gazdag struktúrának bizonyul, amelyet később a lambda-kalkulus kapcsán vizsgálunk.
+EN: This category turns out to have a very rich structure, which we will consider later in connection with the lambda-calculus.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: 10. Egy példa a számítástudományból: Adott egy L funkcionális programozási nyelv, ahhoz tartozik egy kategória, amelyben az objektumok az L adattípusai, és a nyilak az L számítható függvényei ("folyamatok," "eljárások," "programok").
+EN: 10. An example from computer science: Given a functional programming language L, there is an associated category, where the objects are the data types of L, and the arrows are the computable functions of L ("processes," "procedures," "programs").
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Két ilyen f : X → Y és g : Y → Z program kompozícióját g f kimenetére alkalmazásával kapjuk, amit egyébként g ◦ f = f ; g-ként is írnak.
+EN: The composition of two such programs f g X → Y → Z is given by applying g to the output of f , sometimes also written g ◦ f = f ; g.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Az identitás a "ne csinálj semmit" program.
+EN: The identity is the "do nothing" program.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Az ilyen kategóriák a programozási nyelvek denotációs szemantikájának alapját képezik.
+EN: Categories such as this are basic to the idea of denotational semantics of programming languages.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Például, ha C(L) a most definiált kategória, akkor az L nyelv denotációs szemantikája egy D kategóriában, mondjuk Scott-domainek kategóriájában, egyszerűen egy S : C(L) → D funktor.
+EN: For example, if C(L) is the category just deﬁned, then the denotational semantics of the language L in a category D of, say, Scott domains is simply a functor S : C(L) → D
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: mivel S domaineket rendel az L típusaihoz és folytonos függvényeket a programokhoz.
+EN: since S assigns domains to the types of L and continuous functions to the programs.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Mind ez a példa, mind az előző kapcsolódik a "kartéziánus zárt kategória" fogalmához, amelyet később vizsgálunk.
+EN: Both this example and the previous one are related to the notion of "cartesian closed category" that is considered later.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: 11. Legyen X egy halmaz.
+EN: 11. Let X be a set.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: X-et felfoghatjuk egy Dis(X) kategóriaként, ha az objektumokat X elemeinek vesszük, és a nyilakat csak az identitás-nyilaknak, egyet-egyet minden x ∈ X esetén.
+EN: We can regard X as a category Dis(X) by taking the objects to be the elements of X and taking the arrows to be just the identity arrows, one for each x ∈ X.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Az ilyen kategóriákat diszkrétnek nevezzük.
+EN: Such categories are called discrete.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Figyeljük meg, hogy a diszkrét kategóriák csak nagyon különleges posetek.
+EN: Note that discrete categories are just very special posets.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: 12. Egy monoid (egyesek szerint egységelemes félcsoport) egy M halmaz, amely fel van szerelve egy · : M × M → M bináris művelettel és egy kiemelt "egység" u ∈ M elemmel, amelyre minden x, y, z ∈ M esetén x · (y · z) = (x · y) · z és u · x = x = x · u.
+EN: 12. A monoid (sometimes called a semigroup with unit) is a set M equipped with a binary operation · : M × M → M and a distinguished "unit" element u ∈ M such that for all x, y, z ∈ M , x · (y · z) = (x · y) · z and u · x = x = x · u.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Ekvivalens módon, egy monoid egy kategória pontosan egy objektummal.
+EN: Equivalently, a monoid is a category with just one object.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: A kategória nyilai a monoid elemei.
+EN: The arrows of the category are the elements of the monoid.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Különösen az identitás-nyíl az u egységelem.
+EN: In particular, the identity arrow is the unit element u.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: A nyilak kompozíciója a monoid m · n bináris művelete.
+EN: Composition of arrows is the binary operation m · n of the monoid.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: A monoidok nagyon gyakoriak: vannak a számok monoidjai, mint N, Q vagy R összeadással és 0-val, vagy szorzással és 1-gyel.
+EN: Monoids are very common: there are the monoids of numbers like N, Q or R with addition and 0, or multiplication and 1.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: De bármely X halmaz esetén az X-ből X-be történő függvények halmaza, HomSets(X, X) jelöléssel, egy monoid a kompozíció művelete alatt.
+EN: But also for any set X, the set of functions from X to X, written HomSets (X, X) is a monoid under the operation of composition.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Általánosabban, bármely C objektum esetén bármely C kategóriában, a C-ből C-be mutató nyilak halmaza, HomC(C, C) jelöléssel, egy monoid a C kompozíciós művelete alatt.
+EN: More generally, for any object C in any category C, the set of arrows from C to C, written as HomC (C, C), is a monoid under the composition operation of C.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Mivel a monoidok strukturált halmazok, van egy Mon kategória, amelynek objektumai monoidok, és nyilai a monoid-struktúrát megőrző függvények.
+EN: Since monoids are structured sets, there is a category Mon whose objects are monoids and whose arrows are functions that preserve the monoid structure.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Részletesen, egy M monoidból egy N monoidba történő homomorfizmus egy h : M → N függvény, amelyre minden m, n ∈ M esetén h(m ·M n) = h(m) ·N h(n) és h(uM) = uN.
+EN: In detail, a homomorphism from a monoid M to a monoid N is a function h : M → N such that for all m, n ∈ M , h(m ·M n) = h(m) ·N h(n) and h(uM ) = uN .
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Az olvasó ellenőrizze, hogy egy M-ből N-be történő monoid-homomorfizmus ugyanaz, mint egy funktor M-ből (ként felfogva) N-be (ként felfogva).
+EN: The reader should check that a monoid homomorphism from M to N is the same thing as a functor from M regarded as a category to N regarded as a category.
+SRC: Awodey §1.4
+
+--------------------------------------------------------------------------------
+
+HU: Ebben az értelemben a kategóriák általánosított monoidok is, és a funktorok általánosított homomorfizmusok.
+EN: In this sense, categories are also generalized monoids, and functors are generalized homomorphisms.
+SRC: Awodey §1.4
+
+
+================================================================================
+VÉGE — ÖSSZEGZÉS
+================================================================================
+
+Fordított mondatok/elemek száma: 153
+  - §1.3: 29 tétel (19 mondat + 10 képlet/jelölés)
+  - §1.4: 124 tétel (104 mondat + 20 képlet/diagram/jelölés)
+  - Összesen: 153 tétel, ebből 123 tényleges mondat és 30 képlet/diagram/jelölés
+
+Megjegyzések:
+  - Matematikai képletek és diagramok eredeti formában megőrizve
+  - Az a' (a-prime) jelölést következetesen használjuk az eredeti a' helyett
+  - Oldalfejlécek (pl. "E X A M P L E S O F C AT E G O R I E S") és oldalszámok kihagyva
+  - A szótárban megadott magyar terminológia alkalmazva================================================================================
+AWODEY: KATEGÓRIAELMÉLET — 1. FEJEZET
+§1.5 Izomorfizmusok  &  §1.6 Kategóriák konstruktálása
+Magyar–angol párhuzamos fordítás
+Forrás: /tmp/awodey_ch1_s3.txt
+================================================================================
+
+
+================================================================================
+§1.5  IZOMORFIZMUSOK
+================================================================================
+
+--------------------------------------------------------------------------------
+
+HU: 1.5 Izomorfizmusok
+EN: 1.5 Isomorphisms
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: 1.3. Definíció. Bármely C kategóriában az f : A → B nyilat izomorfizmusnak nevezzük, ha létezik egy g : B → A nyíl C-ben, amelyre
+EN: Deﬁnition 1.3. In any category C, an arrow f : A → B is called an isomorphism if there is an arrow g : B → A in C such that
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: g ◦ f = 1A
+EN: g ◦ f = 1A
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: és f ◦ g = 1B .
+EN: and f ◦ g = 1B .
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Mivel az inverzek egyértelműek (bizonyítás!), írjuk g = f −1 .
+EN: Since inverses are unique (proof!), we write g = f −1 .
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Azt mondjuk, hogy A izomorf B-vel, jelölve A ∼= B, ha létezik köztük izomorfizmus.
+EN: We say that A is isomorphic to B, written A ∼= B, if there exists an isomorphism between them.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Az izomorfizmus definíciója az első példánk egy elvont, kategóriaelméleti definícióra egy fontos fogalomra.
+EN: The deﬁnition of isomorphism is our ﬁrst example of an abstract, category theoretic deﬁnition of an important notion.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Elvont abban az értelemben, hogy csak a kategóriaelméleti fogalmakat használja, semmint valamilyen további információt az objektumokról és nyilakról.
+EN: It is abstract in the sense that it makes use only of the category theoretic notions, rather than some additional information about the objects and arrows.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Annak előnye a többi lehetséges definícióval szemben, hogy bármely kategóriában alkalmazható.
+EN: It has the advantage over other possible deﬁnitions that it applies in any category.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Például, néha a halmazok (csoportok stb.) izomorfizmusát bijektív függvényként (illetve homomorfizmusaként) definiálják, azaz olyanként, amely "1-1 és rávetítő".
+EN: For example, one sometimes deﬁnes an isomorphism of sets (groups, etc.) as a bijective function (resp. homomorphism), that is, one that is "1-1 and onto."
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Ez bizonyos esetekben egyenértékű a mi definíciónkkel.
+EN: This is equivalent to our deﬁnition in some cases.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: De jegyezzük meg, hogy például a Pos kategóriában a kategóriaelméleti definíció a helyes fogalmat adja, miközben léteznek "bijektív homomorfizmusok" nem izomorf posetek között.
+EN: But note that, for example in Pos, the category theoretic deﬁnition gives the right notion, while there are "bijective homomorphisms" between nonisomorphic posets.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Továbbá sok esetben csak az elvont definíciónak van értelme, például egy monoid esetében.
+EN: Moreover, in many cases only the abstract deﬁnition makes sense, for example, in the case of a monoid.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: 1.4. Definíció. Egy G csoport egy monoid, amelyben minden g elemhez tartozik egy g −1 inverz.
+EN: Deﬁnition 1.4. A group G is a monoid with an inverse g −1 for every element g.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Így G egy egy objektumú kategória, amelyben minden nyíl izomorfizmus.
+EN: Thus G is a category with one object, in which every arrow is an isomorphism.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: A természetes számok N nem alkotnak csoportot sem az összeadás, sem a szorzás alatt, de az egészek Z és a pozitív racionális számok Q+ rendre igen.
+EN: The natural numbers N do not form a group under either addition or multiplication, but the integers Z and the positive rationals Q+ , respectively, do.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Bármely X halmazra rendelkezünk az X automorfizmusainak (vagy "permutációinak") Aut(X) csoportjával, azaz az f : X → X izomorfizmusokkal. (Kérdés: miért zárt a "◦" alatt?)
+EN: For any set X, we have the group Aut(X) of automorphisms (or "permutations") of X, that is, isomorphisms f : X → X. (Question: why is this closed under "◦"?)
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Egy permutációs csoport egy Aut(X) részcsoportja G ⊆ Aut(X) valamely X halmazhoz, azaz X automorfizmusainak egy csoportja.
+EN: A group of permutations is a subgroup G ⊆ Aut(X) for some set X, that is, a group of automorphisms of X.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Így G-nek a következőket kell kielégítenie:
+EN: Thus G must satisfy the following:
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: 1. 1X ∈ G.
+EN: 1. 1X ∈ G.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: 2. Ha g, g' ∈ G, akkor g ◦ g' ∈ G.
+EN: 2. If g, g  ∈ G, then g ◦ g  ∈ G.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: 3. Ha g ∈ G, akkor g −1 ∈ G.
+EN: 3. If g ∈ G, then g −1 ∈ G.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Csoportok homomorfizmusa h : G → H egyszerűen monoidok homomorfizmusa, amely ekkor szükségképpen az inverzeket is megőrzi (bizonyítás!).
+EN: A homomorphism of groups h : G → H is just a homomorphism of monoids, which then necessarily also preserves the inverses (proof!).
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Tétel (Cayley). Minden G csoport izomorf egy permutációs csoporttal.
+EN: Theorem (Cayley). Every group G is isomorphic to a group of permutations.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Bizonyítás. (vázlat)
+EN: Proof. (sketch)
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: 1. Először definiáljuk a G Cayley reprezentációját Ḡ -ként a következő permutációs csoportként: Ḡ alul-fekvő halmaza egyszerűen G, és minden g ∈ G-hez tartozik a ḡ permutáció, amely minden h ∈ G-re így van definiálva:
+EN: 1. First, deﬁne the Cayley representation Ḡ of G to be the following group of permutations: the underlying set of Ḡ is just G, and for each g ∈ G, we have the permutation ḡ, deﬁned for all h ∈ G by:
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: ḡ(h) = g · h.
+EN: ḡ(h) = g · h.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Most ellenőrizzük, hogy ḡ = h̄-ból következik g = h.
+EN: Now check that ḡ = h̄ implies g = h.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: 2. Ezután definiáljunk i : G → Ḡ homomorfizmusokat i(g) = ḡ módon, és j : Ḡ → G-t j(ḡ) = g módon.
+EN: 2. Next deﬁne homomorphisms i : G → Ḡ by i(g) = ḡ, and j : Ḡ → G by j(ḡ) = g.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: 3. Végül mutassuk meg, hogy i ◦ j = 1Ḡ és j ◦ i = 1G .
+EN: 3. Finally show that i ◦ j = 1Ḡ and j ◦ i = 1G .
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: 1.5. Figyelmeztetés. Jegyezzük meg a kétféle szintű izomorfizmust, amelyek a Cayley-tétel bizonyításában szerepelnek.
+EN: Warning 1.5. Note the two diﬀerent levels of isomorphisms that occur in the proof of Cayley's theorem.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Vannak a G elemeinek halmazán értelmezett permutációk, amelyek izomorfizmusok a Sets kategóriában, és van az izomorfizmus G és Ḡ között, amely a Groups kategóriában van, a csoportok és csoport-homomorfizmusok kategóriájában.
+EN: There are permutations of the set of elements of G, which are isomorphisms in Sets, and there is the isomorphism between G and Ḡ, which is in the category Groups of groups and group homomorphisms.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: A Cayley-tétel kimondja, hogy bármely elvont csoport ábrázolható "konkrétként", azaz egy halmaz permutációinak csoportjaként.
+EN: Cayley's theorem says that any abstract group can be represented as a "concrete" one, that is, a group of permutations of a set.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: A tétel valójában általánosítható annak megmutatására, hogy bármely kategória, amely nem "túl nagy", ábrázolható "konkrétként", azaz halmazok és függvények kategóriájaként. (Van egy technikai érteleme annak, hogy nem "túl nagy", amelyet az 1.8. szakaszban vezetünk be.)
+EN: The theorem can in fact be generalized to show that any category that is not "too big" can be represented as one that is "concrete," that is, a category of sets and functions. (There is a technical sense of not being "too big" that will be introduced in Section 1.8.)
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: 1.6. Tétel. Minden olyan C kategória, amelynek a nyilai halmazt alkotnak, izomorf egy olyannal, amelyben az objektumok halmazok és a nyilak függvények.
+EN: Theorem 1.6. Every category C with a set of arrows is isomorphic to one in which the objects are sets and the arrows are functions.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Bizonyítás. (vázlat) Definiáljuk a C Cayley reprezentációját C̄ -ként a következő konkrét kategóriaként:
+EN: Proof. (sketch) Deﬁne the Cayley representation C̄ of C to be the following concrete category:
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: • az objektumok a következő alakú halmazok:
+EN: • objects are sets of the form
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: C̄ = {f ∈ C | cod(f ) = C}
+EN: C̄ = {f ∈ C | cod(f ) = C}
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: minden C ∈ C-re,
+EN: for all C ∈ C,
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: • a nyilak függvények:
+EN: • arrows are functions
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: ḡ : C̄ → D̄
+EN: ḡ : C̄ → D̄
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: minden C-beli g : C → D-re, ḡ(f ) = g ◦ f módon definiálva.
+EN: for g : C → D in C, deﬁned by ḡ(f ) = g ◦ f .
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: 1.7. Megjegyzés. Ez megmutatja, mi a baj a "konkrét" halmazok és függvények kategóriájának naiv fogalmával: bár nem minden kategóriának vannak különleges halmazok és függvények objektumként és nyílként, minden kategória izomorf egy ilyennel.
+EN: Remark 1.7. This shows us what is wrong with the naive notion of a "concrete" category of sets and functions: while not every category has special sets and functions as its objects and arrows, every category is isomorphic to such a one.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Így az egyetlen különleges tulajdonság, amellyel az ilyen kategóriák rendelkezhetnek, olyanok, amelyek kategóriailag irrelevánsak, például az objektumok olyan jellemzői, amelyek semmilyen módon nem érintik a nyilakat (mint a valós számok Dedekind-vágásként vagy Cauchy-sorozatokként való konstrukciója közötti különbség).
+EN: Thus, the only special properties such categories can possess are ones that are categorically irrelevant, such as features of the objects that do not aﬀect the arrows in any way (like the diﬀerence between the real numbers constructed as Dedekind cuts or as Cauchy sequences).
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Egy jobb kísérlet a "konkrét" kategória eléggé homályos eszméjének megragadására az, hogy tetszőleges f : C → D nyilak teljesen meghatározottak a T "tesztobjektum" felől érkező x : T → C nyilakkal való kompozitumaik által, abban az értelemben, hogy f x = gx minden ilyen x-ra azt jelenti, hogy f = g.
+EN: A better attempt to capture what is intended by the rather vague idea of a "concrete" category is that arbitrary arrows f : C → D are completely determined by their composites with arrows x : T → C from some "test object" T , in the sense that f x = gx for all such x implies f = g.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Ez egyenlő a kategória egy adott reprezentációjának vizsgálatával, amelyet T határoz meg.
+EN: This amounts to considering a particular representation of the category, determined by T .
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Aztán egy kategóriát "konkrétnek" mondunk, ha ez a feltétel teljesül, amikor T egy "terminális objektum", a 2.2. szakasz értelmében; de vannak jó okok más T objektumok vizsgálatára is, ahogy a következő fejezetben látjuk.
+EN: A category is then said to be "concrete" when this condition holds for T a "terminal object," in the sense of Section 2.2; but there are also good reasons for considering other objects T , as we see in the next chapter.
+SRC: Awodey §1.5
+
+--------------------------------------------------------------------------------
+
+HU: Jegyezzük meg, hogy a C nyilainak halmazt alkotása feltétel szükséges annak biztosítására, hogy a {f ∈ C | cod(f ) = C} gyűjtemények valóban halmazok legyenek — erre a pontra az 1.8. szakaszban térünk vissza.
+EN: Note that the condition that C have a set of arrows is needed to ensure that the collections {f ∈ C | cod(f ) = C} really are sets—we return to this point in Section 1.8.
+SRC: Awodey §1.5
+
+
+================================================================================
+§1.6  KATEGÓRIÁK KONSTRUKTÁLÁSA
+================================================================================
+
+--------------------------------------------------------------------------------
+
+HU: 1.6 Kategóriák konstruktálása
+EN: 1.6 Constructions on categories
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Most, hogy van egy készletnyi kategóriánk, amellyel dolgozhatunk, tekintünk néhány konstrukciót, amelyek régi kategóriákból újakat állítanak elő.
+EN: Now that we have a stock of categories to work with, we consider some constructions that produce new categories from old.
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: 1. Két kategória, C és D produktuma, jelölve:
+EN: 1. The product of two categories C and D, written
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: C×D
+EN: C×D
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: (C, D) alakú objektumokkal, minden C ∈ C és D ∈ D-re, és
+EN: has objects of the form (C, D), for C ∈ C and D ∈ D, and arrows of the form
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: (f, g) : (C, D) → (C', D')
+EN: (f, g) : (C, D) → (C , D )
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: alakú nyilakkal minden f : C → C' ∈ C és g : D → D' ∈ D-re.
+EN: for f : C → C ∈ C and g : D → D ∈ D.
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: A kompozíció és az egységek komponensenként vannak definiálva; azaz:
+EN: Composition and units are deﬁned componentwise; that is,
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: (f', g') ◦ (f, g) = (f' ◦ f, g' ◦ g)
+EN: (f , g ) ◦ (f, g) = (f  ◦ f, g  ◦ g)
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: 1(C,D) = (1C , 1D ).
+EN: 1(C,D) = (1C , 1D ).
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Vannak két nyilvánvaló projekciós funktor:
+EN: There are two obvious projection functors
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: C  π1  C×D  π2  D
+EN: C  π1  C×D  π2  D
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: π1 (C, D) = C és π1 (f, g) = f módon definiálva, és hasonlóan π2-re.
+EN: deﬁned by π1 (C, D) = C and π1 (f, g) = f , and similarly for π2 .
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: A csoportokkal ismerős olvasó felismeri, hogy G és H csoportok esetén a G × H produktkategória a csoportok szokásos (direkt) produktuma.
+EN: The reader familiar with groups will recognize that for groups G and H, the product category G × H is the usual (direct) product of groups.
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: 2. Egy C kategória ellenkező (vagy "duális") kategóriája Cop ugyanazokat az objektumokat tartalmazza, mint C, és egy f : C → D nyíl Cop-ban egy f : D → C nyíl C-ben.
+EN: 2. The opposite (or "dual") category Cop of a category C has the same objects as C, and an arrow f : C → D in Cop is an arrow f : D → C in C.
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Azaz Cop egyszerűen C, az összes nyíl formálisan megfordítva.
+EN: That is Cop is just C with all of the arrows formally turned around.
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Célszerű rendelkezni egy jelöléssel, amely megkülönböztet egy objektumot (illetve nyilat) C-ben ugyanettől Cop-ban.
+EN: It is convenient to have a notation to distinguish an object (resp. arrow) in C from the same one in Cop .
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Így írjuk:
+EN: Thus, let us write
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: f¯ : D̄ → C̄
+EN: f¯ : D̄ → C̄
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: jelölést Cop-ban az C-beli f : C → D nyílhoz.
+EN: in Cop for f : C → D in C.
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Ezzel a jelöléssel a kompozíciót és az egységeket Cop-ban a C-beli megfelelő műveletek segítségével definiálhatjuk, méghozzá:
+EN: With this notation we can deﬁne composition and units in Cop in terms of the corresponding operations in C, namely,
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: 1C̄ = 1¯C
+EN: 1C̄ = 1¯C
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: f¯ ◦ ḡ = g ◦¯ f .
+EN: f¯ ◦ ḡ = g ◦¯ f .
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Így egy C-beli diagram:
+EN: Thus, a diagram in C
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: [diagram: f : A → B, g : A → C, g◦f : B → C]
+EN: f  A  - B  @ @ @ g  g◦f@ @ ? @ R  C
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: a Cop-ban így néz ki:
+EN: looks like this in Cop
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: [diagram: f¯ : Ā ← B̄, ḡ : Ā → C̄, f¯ ◦ ḡ : B̄ → C̄]
+EN: f¯  Ā  B̄  @ I 6 @ @ ḡ  f¯ ◦ ḡ @ @ @ C̄
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: A matematika sok "dualitási" tétele azt fejezi ki, hogy egy kategória (egy részkategóriája) egy másik ellenkezőjének.
+EN: Many "duality" theorems of mathematics express the fact that one category is (a subcategory of) the opposite of another.
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Ennek egy példája, amelyet később bizonyítunk, az, hogy a Sets duális a teljes, atomos Boole-algebrák kategóriájával.
+EN: An example of this sort which we will prove later is that Sets is dual to the category of complete, atomic Boolean algebras.
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: 3. Egy C kategória C→ nyílkategóriája a C nyilait objektumként tartalmazza, és egy g nyíl az f : A → B-től az f' : A' → B'-hez C→-ban egy "kommutatív négyzet":
+EN: 3. The arrow category C→ of a category C has the arrows of C as objects, and an arrow g from f : A → B to f  : A → B  in C→ is a "commutative square"
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: [kommutatív négyzet: g1 : A → A', g2 : B → B', f : A → B, f' : A' → B']
+EN: g1 -  A  A  f  f  ? B  g2  ?  - B
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: ahol g1 és g2 nyilak C-ben.
+EN: where g1 and g2 are arrows in C.
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Azaz egy ilyen nyíl egy g = (g1, g2) nyílpár C-ben, amelyre:
+EN: That is, such an arrow is a pair of arrows g = (g1 , g2 ) in C such that
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: g2 ◦ f = f' ◦ g1 .
+EN: g2 ◦ f = f  ◦ g1 .
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Az 1f identitásnyíl az f : A → B objektumon a (1A , 1B ) pár.
+EN: The identity arrow 1f on an object f : A → B is the pair (1A , 1B ).
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: A nyilak kompozíciója komponensenként történik:
+EN: Composition of arrows is done componentwise:
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: (h1 , h2) ◦ (g1 , g2) = (h1 ◦ g1 , h2 ◦ g2)
+EN: (h1 , h2 ) ◦ (g1 , g2 ) = (h1 ◦ g1 , h2 ◦ g2 )
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Az olvasó ellenőrizze, hogy ez helyes, a megfelelő kommutatív diagram megrajzolásával.
+EN: The reader should verify that this works out by drawing the appropriate commutative diagram.
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Figyeljük meg, hogy vannak két funktor:
+EN: Observe that there are two functors:
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: dom, cod : C→ → C
+EN: dom  cod C→  C  C
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: 4. Egy C kategória C/C szeletkategóriája egy C ∈ C objektum felett a következőkkel rendelkezik:
+EN: 4. The slice category C/C of a category C over an object C ∈ C has:
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: • objektumok: minden f ∈ C nyíl, amelyre cod(f ) = C,
+EN: • objects: all arrows f ∈ C such that cod(f ) = C,
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: • nyilak: egy g nyíl az f : X → C-től az f' : X' → C-hez egy g : X → X' nyíl C-ben, amelyre:
+EN: • arrows: g from f : X → C to f  : X → C is an arrow g : X → X  in C
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: f' ◦ g = f , amint az alább látható:
+EN: such that f  ◦ g = f , as indicated in
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: [diagram: g : X → X', f : X → C, f' : X' → C]
+EN: g  X  @ @ @ f@ @ R @  - X  f  C
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Az identitásnyilak és a kompozitumok kidolgozását az olvasóra bízzuk.
+EN: We leave it to the reader to work out the identity arrows and composites.
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Ha C = P egy poset kategória és p ∈ P, akkor:
+EN: If C = P is a poset category and p ∈ P, then
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: P/p ∼= ↓ (p)
+EN: P/p ∼= ↓ (p)
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: a P/p szeletkategória egyszerűen a ↓ (p) "főideál", azaz a q ∈ P elemeké, amelyekre q ≤ p.
+EN: the slice category P/p is just the "principal ideal" ↓ (p) of elements q ∈ P with q ≤ p.
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Hamarosan lesznek további példáink szeletkategóriákra.
+EN: We will have more examples of slice categories soon.
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Van egy nyilvánvaló U : C/C → C funktor, amely "elfelejti a bázis C objektumot".
+EN: There is an obvious functor U : C/C → C that "forgets about the base object C."
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Tudsz találni egy F : C/C → C→ funktort úgy, hogy dom ◦ F = U ?
+EN: Can you ﬁnd a functor F : C/C → C→ such that dom ◦ F = U ?
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Egy C kategória C/C koszeletkategóriája egy C objektum alatt objektumként C minden olyan f nyilát tartalmazza, amelyre dom(f ) = C, és egy nyíl az f : C → X-től az f' : C → X'-hez egy h : X → X' nyíl, amelyre h ◦ f = f' .
+EN: The coslice category C/C of a category C under an object C of C has as objects all arrows f of C such that dom(f ) = C, and an arrow from f : C → X to f  : C → X  is an arrow h : X → X  such that h ◦ f = f  .
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Az olvasó most végezze el a koszeletkategória definíciójának hátralévő részét analógiával a szeletkategória definíciója alapján.
+EN: The reader should now carry out the rest of the deﬁnition of the coslice category by analogy with the deﬁnition of the slice category.
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Hogyan definiálható a koszeletkategória a szeletkategória és az ellenkező konstrukció segítségével?
+EN: How can the coslice category be deﬁned in terms of the slice category and the opposite construction?
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: 1.8. Példa. A Sets∗ célzott halmazok kategóriája olyan A halmazokból áll, amelyek kiemelt a ∈ A elemmel rendelkeznek, és az f : (A, a) → (B, b) nyilak olyan f : A → B függvények, amelyek megőrzik a "pontokat", azaz f (a) = b.
+EN: Example 1.8. The category Sets∗ of pointed sets consists of sets A with a distinguished element a ∈ A, and arrows f : (A, a) → (B, b) are functions f : A → B that preserves the "points," f (a) = b.
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Ez izomorf a koszeletkategóriával:
+EN: This is isomorphic to the coslice category,
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Sets∗ ∼= 1\Sets
+EN: Sets∗ ∼= 1\Sets
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: a Sets kategóriának bármely 1 = {∗} singleton "alatt".
+EN: of Sets "under" any singleton 1 = {∗}.
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: Valóban, az a : 1 → A függvények egyértelműen megfelelnek az elemeknek, a(∗) = a ∈ A, és az f : (A, a) → (B, b) nyilak pontosan kommutatív háromszögeknek felelnek meg:
+EN: Indeed, functions a : 1 → A correspond uniquely to elements, a(∗) = a ∈ A, and arrows f : (A, a) → (B, b) correspond exactly to commutative triangles:
+SRC: Awodey §1.6
+
+--------------------------------------------------------------------------------
+
+HU: [kommutatív háromszög: a : 1 → A, f : A → B, b : 1 → B]
+EN: 1  a  - A  @ @ @ f  b@ @ ? R @ B
+SRC: Awodey §1.6
+
+
+================================================================================
+VÉGE — ÖSSZEGZÉS
+================================================================================
+
+Fordított mondatok/elemek száma: 82
+  - §1.5 Izomorfizmusok: 43 tétel (32 mondat + 11 képlet/jelölés)
+  - §1.6 Kategóriák konstruktálása: 39 tétel (27 mondat + 12 képlet/diagram/jelölés)
+  - Összesen: 82 tétel, ebből 59 tényleges mondat és 23 képlet/diagram/jelölés
+
+Megjegyzések:
+  - Matematikai képletek és diagramok eredeti formában megőrizve
+  - Az a' (a-prime) jelölést következetesen a' módon használjuk (az eredetiben a' a függőleges vagy hiányos prime)
+  - Oldalfejlécek (pl. "C AT E G O R I E S", "C O N S T RU C T I O N S O N C AT E G O R I E S") és oldalszámok kihagyva
+  - A szótárban megadott magyar terminológia alkalmazva:
+    category → kategória, object → objektum, morphism → morfizmus, arrow → nyíl
+    functor → funktor, isomorphism → izomorfizmus, set → halmaz, function → függvény
+    identity → identitás, composition → kompozíció, domain → forráster, codomain → céltér
+    inverse → inverz, commutative → kommutatív, hom-set → hom-halmaz
+    product category → produktkategória, coproduct → koprodukt
+    slice category → szeletkategória, dual category → duális kategória
+    opposite category → ellenkező kategória, arrow category → nyílkategória
+    subcategory → részkategória, full subcategory → teljes részkategória1.7 Szabad kategoriak
+HU: Szabad monoid.
+EN: Free monoid.
+SRC: Awodey §1.7
+
+HU: Induljunk ki egy "abcede"-bol A, amely "betuket" tartalmaz (egy halmaz)
+EN: Start with an "alphabet" A of "letters" (a set)
+SRC: Awodey §1.7
+
+HU: A = {a, b, c, . . .}.
+EN: A = {a, b, c, . . .}.
+SRC: Awodey §1.7
+
+HU: Egy A feletti szo egy veges betusorozat:
+EN: A word over A is a finite sequence of letters:
+SRC: Awodey §1.7
+
+HU: ezszo,
+EN: thisword,
+SRC: Awodey §1.7
+
+HU: kategoriakelvezetesek,
+EN: categoriesaref un,
+SRC: Awodey §1.7
+
+HU: asddjbnzzf j, . . .
+EN: asddjbnzzf j, . . .
+SRC: Awodey §1.7
+
+HU: Jeloljuk a "-" jellel az ures szot.
+EN: We write "-" for the empty word.
+SRC: Awodey §1.7
+
+HU: Az A "Kleene-lezarasa" a kovetkezo halmazkent van ertelmezve:
+EN: The "Kleene closure" of A is defined to be the set
+SRC: Awodey §1.7
+
+HU: A* = {A feletti szavak}.
+EN: A* = {words over A}.
+SRC: Awodey §1.7
+
+HU: Definialjunk egy binaris muveletet "*" az A*-on, amely w, w' ∈ A* eseten w * w' = ww' -el van ertelmezve.
+EN: Define a binary operation "*" on A* defined for w, w' ∈ A* by w * w' = ww'.
+SRC: Awodey §1.7
+
+HU: Igy a "*" egyszeruen osszekapcsolas (konkatenacio).
+EN: Thus, "*" is just concatenation.
+SRC: Awodey §1.7
+
+HU: A "*" muvelet asszociativ, es az ures szo "-" egysegelem.
+EN: The operation "*" is associative, and the empty word "-" is a unit.
+SRC: Awodey §1.7
+
+HU: Igy A* egy monoid—amelyet az A halmazon vett szabad monoidnak nevezunk.
+EN: Thus, A* is a monoid—called the free monoid on the set A.
+SRC: Awodey §1.7
+
+HU: Az a ∈ A elemek felfoghatoak egy hosszusagu szavakkent, tehat van egy
+EN: The elements a ∈ A can be regarded as words of length one, so we have a function
+SRC: Awodey §1.7
+
+HU: i : A → A*
+EN: i : A → A*
+SRC: Awodey §1.7
+
+HU: fuggvenyunk, amelyet i(a) = a -val definialunk, es a "generatorok betevese"-nek nevezunk.
+EN: defined by i(a) = a, and called the "insertion of generators."
+SRC: Awodey §1.7
+
+HU: Az A elemei "generaljak" a szabad monoidot, abban az ertelemben, hogy minden w ∈ A* az a-k egy *-szorzata, azaz w = a1 * a2 * · · · * an valamilyen a1, a2, ..., an ∈ A elemekkel.
+EN: The elements of A "generate" the free monoid, in the sense that every w ∈ A* is a *-product of a's, that is, w = a1 * a2 * · · · * an for some a1, a2, ..., an in A.
+SRC: Awodey §1.7
+
+HU: Mit jelent itt a "szabad"?
+EN: Now what does "free" mean here?
+SRC: Awodey §1.7
+
+HU: Barmilyen otletek?
+EN: Any guesses?
+SRC: Awodey §1.7
+
+HU: Nha "csecsemo algebra" konyvekben a kovetkezo tipusu definiciokat lehet talalni:
+EN: One sometimes sees definitions in "baby algebra" books along the following lines:
+SRC: Awodey §1.7
+
+HU: Egy M monoidot szabadan general egy A ⊆ M reszhalmaz, ha a kovetkezo feltetelek teljesulnek.
+EN: A monoid M is freely generated by a subset A of M, if the following conditions hold.
+SRC: Awodey §1.7
+
+HU: 1. Minden m ∈ M elem irhato az A elemeinek szorzatakent
+EN: 1. Every element m ∈ M can be written as a product of elements of A
+SRC: Awodey §1.7
+
+HU: m = a1 ·M . . . ·M an,
+EN: m = a1 ·M . . . ·M an,
+SRC: Awodey §1.7
+
+HU: ai ∈ A.
+EN: ai ∈ A.
+SRC: Awodey §1.7
+
+HU: 2. Nem allnak fenn "nemtrivialis" relaciok M-ben, azaz ha a1 . . . aj = a'1 . . . a'k, akkor ezt a monoid axiomak kovetelik.
+EN: 2. No "nontrivial" relations hold in M, that is, if a1 . . . aj = a'1 . . . a'k, then this is required by the axioms for monoids.
+SRC: Awodey §1.7
+
+HU: Az elso feltetelt nhha "nincs szemet"-nek nevezik, a masodik feltetelt pedig nhha "nincs zaj"-nak.
+EN: The first condition is sometimes called "no junk," while the second condition is sometimes called "no noise."
+SRC: Awodey §1.7
+
+HU: Igy az A-n vett szabad monoid egy olyan monoid, amely tartalmazza A-t, es nincs benne se szemet, se zaj.
+EN: Thus, the free monoid on A is a monoid containing A and having no junk and no noise.
+SRC: Awodey §1.7
+
+HU: Mit gondoltok errl a szabad monoid definiciojarol?
+EN: What do you think of this definition of a free monoid?
+SRC: Awodey §1.7
+
+HU: En kifogasolnam a masodik feltetelben levo hivatkozast a "bizithatosagra", vagy valami ilyesmire.
+EN: I would object to the reference in the second condition to "provability," or something.
+SRC: Awodey §1.7
+
+HU: Ezt pontosabban kell fogalmazni ahhoz, hogy definiciokent mukodjon.
+EN: This must be made more precise for this to succeed as a definition.
+SRC: Awodey §1.7
+
+HU: A kategoriaelmeletben egy pontos "szabad" definiciot adunk—which megragadja a fenti ertelmet—which elkeruli az ilyen pontosaglansagot.
+EN: In category theory, we give a precise definition of "free"—capturing what is meant in the above—which avoids such vagueness.
+SRC: Awodey §1.7
+
+HU: Eloszor minden N monoidnak van egy |N| alaphalmaza, es minden f : N → M monoid homomorfizmusnak van egy |f| : |N| → |M| alapfuggvenye.
+EN: First, every monoid N has an underlying set |N|, and every monoid homomorphism f : N → M has an underlying function |f| : |N| → |M|.
+SRC: Awodey §1.7
+
+HU: Konnyu latni, hogy ez egy funktor, amelyet "felejt funktor"-nak nevezunk.
+EN: It is easy to see that this is a functor, called the "forgetful functor."
+SRC: Awodey §1.7
+
+HU: Az A halmazon vett szabad monoid M(A) definicio szerint "a" monoid a kovetkezo úgynevezett univerzalis lekepezes tulajdonsaggal, vagy UMP-pal!
+EN: The free monoid M(A) on a set A is by definition "the" monoid with the following so called universal mapping property, or UMP!
+SRC: Awodey §1.7
+
+HU: Az M(A) univerzalis lekepezes tulajdonsaga
+EN: Universal Mapping Property of M(A)
+SRC: Awodey §1.7
+
+HU: Van egy i : A → |M(A)| fuggveny, es adva van barmely N monoid es barmely f : A → |N| fuggveny, akkor van egy egyertelmu f¯ : M(A) → N monoid homomorfizmus, amelyre |f¯| ◦ i = f, mindez a kovetkezo diagramban abrazolva:
+EN: There is a function i : A → |M(A)|, and given any monoid N and any function f : A → |N|, there is a unique monoid homomorphism f¯ : M(A) → N such that |f¯| ◦ i = f, all as indicated in the following diagram:
+SRC: Awodey §1.7
+
+HU: Mon-ban:
+EN: in Mon:
+SRC: Awodey §1.7
+
+HU: f¯
+EN: f¯
+SRC: Awodey §1.7
+
+HU: - N
+EN: - N
+SRC: Awodey §1.7
+
+HU: M(A) ...............
+EN: M(A) ...............
+SRC: Awodey §1.7
+
+HU: Sets-ben:
+EN: in Sets:
+SRC: Awodey §1.7
+
+HU: |M(A)|
+EN: |M(A)|
+SRC: Awodey §1.7
+
+HU: |f¯|- |N|
+EN: |f¯|- |N|
+SRC: Awodey §1.7
+
+HU: 6
+EN: 6
+SRC: Awodey §1.7
+
+HU: i
+EN: i
+SRC: Awodey §1.7
+
+HU: f
+EN: f
+SRC: Awodey §1.7
+
+HU: A
+EN: A
+SRC: Awodey §1.7
+
+HU: *
+EN: *
+SRC: Awodey §1.7
+
+HU: 1.9. Allitas. A* rendelkezik az A-n vett szabad monoid UMP-javal.
+EN: Proposition 1.9. A* has the UMP of the free monoid on A.
+SRC: Awodey §1.7
+
+HU: Bizonyitas. Adott f : A → |N| eseten definialjuk f¯ : M(A) → N -t a kovetkezo keppen:
+EN: Proof. Given f : A → |N|, define f¯ : M(A) → N by
+SRC: Awodey §1.7
+
+HU: f¯(−) = uN,
+EN: f¯(−) = uN,
+SRC: Awodey §1.7
+
+HU: az N egysegeleme
+EN: the unit of N
+SRC: Awodey §1.7
+
+HU: f¯(a1 . . . ai) = f(a1) ·N . . . ·N f(ai).
+EN: f¯(a1 . . . ai) = f(a1) ·N . . . ·N f(ai).
+SRC: Awodey §1.7
+
+HU: Ekkor f¯ nyilvanvaloan egy homomorfizmus, amelyre
+EN: Then f¯ is clearly a homomorphism with
+SRC: Awodey §1.7
+
+HU: f¯(a) = f(a)
+EN: f¯(a) = f(a)
+SRC: Awodey §1.7
+
+HU: minden a ∈ A eseten.
+EN: for all a ∈ A.
+SRC: Awodey §1.7
+
+HU: Ha g : M(A) → N is kieligeti a g(a) = f(a) feltetelt minden a ∈ A eseten, akkor minden a1 . . . ai ∈ A* eseten:
+EN: If g : M(A) → N also satisfies g(a) = f(a) for all a ∈ A, then for all a1 . . . ai ∈ A*:
+SRC: Awodey §1.7
+
+HU: g(a1 . . . ai) = g(a1) ·N . . . ·N g(ai)
+EN: g(a1 . . . ai) = g(a1) ·N . . . ·N g(ai)
+SRC: Awodey §1.7
+
+HU: = f(a1) ·N . . . ·N f(ai)
+EN: = f(a1) ·N . . . ·N f(ai)
+SRC: Awodey §1.7
+
+HU: = f¯(a1) ·N . . . ·N f¯(ai)
+EN: = f¯(a1) ·N . . . ·N f¯(ai)
+SRC: Awodey §1.7
+
+HU: = f¯(a1 . . . ai).
+EN: = f¯(a1 . . . ai).
+SRC: Awodey §1.7
+
+HU: Tehat g = f¯, ahogy kellett.
+EN: So, g = f¯, as required.
+SRC: Awodey §1.7
+
+HU: Gondolj at, hogy a fenti UMP miert ragadja meg pontosan a "nincs szemet" es "nincs zaj" ertelmet.
+EN: Think about why the above UMP captures precisely what is meant by "no junk" and "no noise."
+SRC: Awodey §1.7
+
+HU: Konkretan az UMP letesz resze ragadja meg a "nincs zaj" kuszon ertelmet, mialatt az egyertelmuseg resze teszi pontosse a "nincs szemet" otletet.
+EN: Specifically, the existence part of the UMP captures the vague notion of "no noise," while the uniqueness part makes precise the "no junk" idea.
+SRC: Awodey §1.7
+
+HU: Az UMP hasznalataval konnyu megmutatni, hogy az M(A) szabad monoid izomorfizmusig egyertelmuen meghatarozott, a kovetkezo ertelemben.
+EN: Using the UMP, it is easy to show that the free monoid M(A) is determined uniquely up to isomorphism, in the following sense.
+SRC: Awodey §1.7
+
+HU: 1.10. Allitas. Adott M es N monoidok i : A → |M| es j : A → |N| fuggvenyekkel, amelyek mindegyike rendelkezik az A-n vett szabad monoid UMP-javal, van egy (egyertelmu) h : M ≅ N monoid izomorfizmus, amelyre |h|i = j es |h^{-1}|j = i.
+EN: Proposition 1.10. Given monoids M and N with functions i : A → |M| and j : A → |N|, each with the UMP of the free monoid on A, there is a (unique) monoid isomorphism h : M ≅ N such that |h|i = j and |h^{-1}|j = i.
+SRC: Awodey §1.7
+
+HU: Bizonyitas. j-bol es az M UMP-jabol kapjuk j¯ : M → N -t, amelyre |j¯|i = j, es i-bol es az N UMP-jabol kapjuk i¯ : N → M -t, amelyre |i¯|j = i.
+EN: Proof. From j and the UMP of M, we have j̄ : M → N with |j̄|i = j and from i and the UMP of N, we have ī : N → M with |ī|j = i.
+SRC: Awodey §1.7
+
+HU: Kompozicioval kapjuk az i¯ ◦ j¯ : M → M homomorfizmust, amelyre |i¯ ◦ j¯|i = i.
+EN: Composing gives a homomorphism ī ◦ j̄ : M → M such that |ī ◦ j̄|i = i.
+SRC: Awodey §1.7
+
+HU: Mivel 1M : M → M is rendelkezik ezzel a tulajdonsaggal, az M UMP-janak egyertelmusegi resze szerint i¯ ◦ j¯ = 1M.
+EN: Since 1M : M → M also has this property, by the uniqueness part of the UMP of M, we have ī ◦ j̄ = 1M.
+SRC: Awodey §1.7
+
+HU: M es N szerepcsereje mutatja, hogy j¯ ◦ i¯ = 1N;
+EN: Exchanging the roles of M and N shows j̄ ◦ ī = 1N;
+SRC: Awodey §1.7
+
+HU: Mon-ban:
+EN: in Mon:
+SRC: Awodey §1.7
+
+HU: j¯
+EN: j̄
+SRC: Awodey §1.7
+
+HU: i¯
+EN: ī
+SRC: Awodey §1.7
+
+HU: - N ...................
+EN: - N ...................
+SRC: Awodey §1.7
+
+HU: - M
+EN: - M
+SRC: Awodey §1.7
+
+HU: M ...................
+EN: M ...................
+SRC: Awodey §1.7
+
+HU: Sets-ben:
+EN: in Sets:
+SRC: Awodey §1.7
+
+HU: |j¯| |M|
+EN: |j̄| |M|
+SRC: Awodey §1.7
+
+HU: |N|
+EN: |N|
+SRC: Awodey §1.7
+
+HU: @
+EN: @
+SRC: Awodey §1.7
+
+HU: I
+EN: I
+SRC: Awodey §1.7
+
+HU: 6
+EN: 6
+SRC: Awodey §1.7
+
+HU: @
+EN: @
+SRC: Awodey §1.7
+
+HU: @
+EN: @
+SRC: Awodey §1.7
+
+HU: j
+EN: j
+SRC: Awodey §1.7
+
+HU: i@
+EN: i@
+SRC: Awodey §1.7
+
+HU: @
+EN: @
+SRC: Awodey §1.7
+
+HU: @
+EN: @
+SRC: Awodey §1.7
+
+HU: A
+EN: A
+SRC: Awodey §1.7
+
+HU: |i¯| - |M|
+EN: |ī| - |M|
+SRC: Awodey §1.7
+
+HU: i
+EN: i
+SRC: Awodey §1.7
+
+HU: Peldaul az egyetlen elemet tartalmazo halmazon vett szabad monoid izomorf a termeszetes szamok N monoidjaval osszeadas alatt (a "generator" az 1).
+EN: For example, the free monoid on a set with a single element is isomorphic to the monoid of natural numbers N under addition (the "generator" is 1).
+SRC: Awodey §1.7
+
+HU: Igy monoidkent N izomorfizmusig egyertelmuen meghatarozott a szabad monoidok UMP-ja altal.
+EN: Thus, as a monoid, N is uniquely determined up to isomorphism by the UMP of free monoids.
+SRC: Awodey §1.7
+
+HU: Szabad kategoria. Most ugyanezt akarjuk megtenni az altalanos kategoriak eseten (nem csak monoidok).
+EN: Free category. Now, we want to do the same thing for categories in general (not just monoids).
+SRC: Awodey §1.7
+
+HU: Az alaphalmazok helyett a kategoriaknak alapgrafjaik vannak, tehat elsonek tekintsuk at ezeket.
+EN: Instead of underlying sets, categories have underlying graphs, so let us review these first.
+SRC: Awodey §1.7
+
+HU: Egy iranyitott graf csucsokbol es elekbol all, amelyek mindegyike iranyitott, azaz minden elnek van egy "forras" es egy "cel" csucsa.
+EN: A directed graph consists of vertices and edges, each of which is directed, that is, each edge has a "source" and a "target" vertex.
+SRC: Awodey §1.7
+
+HU: z B
+EN: z B
+SRC: Awodey §1.7
+
+HU: A
+EN: A
+SRC: Awodey §1.7
+
+HU: @
+EN: @
+SRC: Awodey §1.7
+
+HU: 6
+EN: 6
+SRC: Awodey §1.7
+
+HU: 6
+EN: 6
+SRC: Awodey §1.7
+
+HU: @
+EN: @
+SRC: Awodey §1.7
+
+HU: @
+EN: @
+SRC: Awodey §1.7
+
+HU: x
+EN: x
+SRC: Awodey §1.7
+
+HU: y
+EN: y
+SRC: Awodey §1.7
+
+HU: u@
+EN: u@
+SRC: Awodey §1.7
+
+HU: @
+EN: @
+SRC: Awodey §1.7
+
+HU: R
+EN: R
+SRC: Awodey §1.7
+
+HU: @
+EN: @
+SRC: Awodey §1.7
+
+HU: C
+EN: C
+SRC: Awodey §1.7
+
+HU: D
+EN: D
+SRC: Awodey §1.7
+
+HU: A grafokat ugyanugy rajzoljuk, mint a kategoriakat, de nincs elek kompozicioja, es nincsenek identitasok.
+EN: We draw graphs just like categories, but there is no composition of edges, and there are no identities.
+SRC: Awodey §1.7
+
+HU: Egy graf igy ket halmazbol all, E (elek) es V (csucsok), es ket fuggvenybol, s : E → V (forras) es t : E → V (cel).
+EN: A graph thus consists of two sets, E (edges) and V (vertices), and two functions, s: E → V (source) and t: E → V (target).
+SRC: Awodey §1.7
+
+HU: Most minden G graf "general" egy C(G) kategoriat, a G-n vett szabad kategoriat.
+EN: Now, every graph G "generates" a category C(G), the free category on G.
+SRC: Awodey §1.7
+
+HU: Ez ugy van ertelmezve, hogy a G csucsait objektumokkent, a G-ben levo utakat pedig nyilakkent vesszuk,
+EN: It is defined by taking the vertices of G as objects, and the paths in G as arrows,
+SRC: Awodey §1.7
+
+HU: ahol egy ut egy veges el-sorozat e1, . . . , en, amelyre t(ei) = s(ei+1) minden i = 1 . . . n eseten.
+EN: where a path is a finite sequence of edges e1, . . . , en such that t(ei) = s(ei+1), for all i = 1 . . . n.
+SRC: Awodey §1.7
+
+HU: A C(G) nyilait az en en−1 . . . e1 formaban irjuk.
+EN: We'll write the arrows of C(G) in the form en en−1 . . . e1.
+SRC: Awodey §1.7
+
+HU: Tegyuk
+EN: Put
+SRC: Awodey §1.7
+
+HU: dom(en . . . e1) = s(e1)
+EN: dom(en . . . e1) = s(e1)
+SRC: Awodey §1.7
+
+HU: cod(en . . . e1) = t(en)
+EN: cod(en . . . e1) = t(en)
+SRC: Awodey §1.7
+
+HU: es definialjuk a kompoziciot osszekapcsolassal (konkatenacioval):
+EN: and define composition by concatenation:
+SRC: Awodey §1.7
+
+HU: en . . . e1 ◦ e'm . . . e'1 = en . . . e1 e'm . . . e'1.
+EN: en . . . e1 ◦ e'm . . . e'1 = en . . . e1 e'm . . . e'1.
+SRC: Awodey §1.7
+
+HU: Minden v csucshoz tartozik egy "ures ut", amelyet 1v-vel jelolunk, es ez az identitas nyil a v-nel.
+EN: For each vertex v, we have an "empty path" denoted 1v, which is to be the identity arrow at v.
+SRC: Awodey §1.7
+
+HU: Vegye eszre, hogy ha G-nak csak egy csucsa van, akkor C(G) egyszeruen a G elek halmazan vett szabad monoid.
+EN: Note that if G has only one vertex, then C(G) is just the free monoid on the set of edges of G.
+SRC: Awodey §1.7
+
+HU: Megjegyezzuk azt is, hogy ha G-nak csak csucsai vannak (nincsenek elai), akkor C(G) a G csucsok halmazan vett diszkret kategoria.
+EN: Also note that if G has only vertices (no edges), then C(G) is the discrete category on the set of vertices of G.
+SRC: Awodey §1.7
+
+HU: Kesobb majd lesz egy altalanos "szabad" definicionk.
+EN: Later on, we will have a general definition of "free."
+SRC: Awodey §1.7
+
+HU: Egyelore tegyuk be, hogy a C(G) is rendelkezik UMP-pal.
+EN: For now, let us see that C(G) also has a UMP.
+SRC: Awodey §1.7
+
+HU: Elsosorban definialjunk egy "felejt funktort"
+EN: First, define a "forgetful functor"
+SRC: Awodey §1.7
+
+HU: U : Cat → Graphs
+EN: U : Cat → Graphs
+SRC: Awodey §1.7
+
+HU: a nyilvanvalo modon: egy C kategoria alapgrafjanak elei a C nyilai, csucsai pedig az objektumai, ahol s = dom es t = cod.
+EN: in the obvious way: the underlying graph of a category C has as edges the arrows of C, and as vertices the objects, with s = dom and t = cod.
+SRC: Awodey §1.7
+
+HU: Az U funktorokon vett hatasa egyertelmuen vilagos, vagy legalabbis az lesz, amint definialtuk a Graphs nyilait.
+EN: The action of U on functors is equally clear, or at least it will be, once we have defined the arrows in Graphs.
+SRC: Awodey §1.7
+
+HU: Egy graf homomorfizmus termeszetesen egy "funktor az identitasok es kompozicio feltetelek nelkul", azaz egy olyan lekepezes, amely eleket elekre es csucsokat csucsokra kepez, es megorzi a forrasokat es celokat.
+EN: A homomorphism of graphs is of course a "functor without the conditions on identities and composition," that is, a mapping of edges to edges and vertices to vertices that preserves sources and targets.
+SRC: Awodey §1.7
+
+HU: Ezt egy kisse mas szempontbol fogjuk leirni, amely kesobb hasznos lesz.
+EN: We will describe this from a slightly different point of view, that will be useful later on.
+SRC: Awodey §1.7
+
+HU: Elsoor vegye eszre, hogy egy C kategoriat a kovetkezo diagramhoz hasonlo keppen tudunk leirni:
+EN: First, observe that we can describe a category C with a diagram like this:
+SRC: Awodey §1.7
+
+HU: C2
+EN: C2
+SRC: Awodey §1.7
+
+HU: cod ◦
+EN: cod ◦
+SRC: Awodey §1.7
+
+HU: C1
+EN: C1
+SRC: Awodey §1.7
+
+HU: i - C0
+EN: i - C0
+SRC: Awodey §1.7
+
+HU: dom
+EN: dom
+SRC: Awodey §1.7
+
+HU: ahol C0 a C objektumainak gyujtemenye, C1 a nyilak gyujtemenye, es C2 a kovetkezo gyujtemeny:
+EN: where C0 is the collection of objects of C, C1 the arrows, and C2 is the collection
+SRC: Awodey §1.7
+
+HU: {(f, g) ∈ C1 × C1 : cod(f) = dom(g)}.
+EN: {(f, g) ∈ C1 × C1 : cod(f) = dom(g)}.
+SRC: Awodey §1.7
+
+HU: Ekkor egy F : C → D funktor a C-bol egy masik D kategoriaba egy par fuggveny:
+EN: Then a functor F : C → D from C to another category D is a pair of functions
+SRC: Awodey §1.7
+
+HU: F0 : C0 → D0
+EN: F0 : C0 → D0
+SRC: Awodey §1.7
+
+HU: F1 : C1 → D1
+EN: F1 : C1 → D1
+SRC: Awodey §1.7
+
+HU: amelyekkel a kovetkezo diagram minden hasonloan cimkezett negyzete kommutativ:
+EN: such that each similarly labeled square in the following diagram commutes:
+SRC: Awodey §1.7
+
+HU: cod ◦
+EN: cod ◦
+SRC: Awodey §1.7
+
+HU: C1
+EN: C1
+SRC: Awodey §1.7
+
+HU: i - C0
+EN: i - C0
+SRC: Awodey §1.7
+
+HU: dom
+EN: dom
+SRC: Awodey §1.7
+
+HU: C2
+EN: C2
+SRC: Awodey §1.7
+
+HU: F2
+EN: F2
+SRC: Awodey §1.7
+
+HU: F1
+EN: F1
+SRC: Awodey §1.7
+
+HU: F0
+EN: F0
+SRC: Awodey §1.7
+
+HU: ? cod - ?
+EN: ? cod - ?
+SRC: Awodey §1.7
+
+HU: - D1 i
+EN: - D1 i
+SRC: Awodey §1.7
+
+HU: - D0
+EN: - D0
+SRC: Awodey §1.7
+
+HU: ◦
+EN: ◦
+SRC: Awodey §1.7
+
+HU: dom
+EN: dom
+SRC: Awodey §1.7
+
+HU: ?
+EN: ?
+SRC: Awodey §1.7
+
+HU: D2
+EN: D2
+SRC: Awodey §1.7
+
+HU: ahol F2(f, g) = (F1(f), F1(g)).
+EN: where F2 (f, g) = (F1 (f), F1 (g)).
+SRC: Awodey §1.7
+
+HU: Most irjuk le egy grafok kozotti homomorfizmust,
+EN: Now let us describe a homomorphism of graphs,
+SRC: Awodey §1.7
+
+HU: h : G → H.
+EN: h : G → H.
+SRC: Awodey §1.7
+
+HU: Szuksegunk van egy par fuggvenyre h0 : G0 → H0, h1 : G1 → H1, amelyek a kovetkezo diagram ket negyzetet (egyszer a t'-kkel, egyszer az s'-kkel) kommutativva teszik:
+EN: We need a pair of functions h0 : G0 → H0, h1 : G1 → H1 making the two squares (once with t's, once with s's) in the following diagram commute:
+SRC: Awodey §1.7
+
+HU: G1
+EN: G1
+SRC: Awodey §1.7
+
+HU: h1
+EN: h1
+SRC: Awodey §1.7
+
+HU: t - G0
+EN: t - G0
+SRC: Awodey §1.7
+
+HU: s
+EN: s
+SRC: Awodey §1.7
+
+HU: h0
+EN: h0
+SRC: Awodey §1.7
+
+HU: ?
+EN: ?
+SRC: Awodey §1.7
+
+HU: H1
+EN: H1
+SRC: Awodey §1.7
+
+HU: t - ?
+EN: t - ?
+SRC: Awodey §1.7
+
+HU: - H0
+EN: - H0
+SRC: Awodey §1.7
+
+HU: s
+EN: s
+SRC: Awodey §1.7
+
+HU: Ezekkel a kifejezesekkel konnyen le tudjuk irni a felejt funktort,
+EN: In these terms, we can easily describe the forgetful functor,
+SRC: Awodey §1.7
+
+HU: U : Cat → Graphs
+EN: U : Cat → Graphs
+SRC: Awodey §1.7
+
+HU: amely a kategoriat
+EN: as sending the category
+SRC: Awodey §1.7
+
+HU: C2
+EN: C2
+SRC: Awodey §1.7
+
+HU: cod ◦ C1 i - C0
+EN: cod ◦ C1 i - C0
+SRC: Awodey §1.7
+
+HU: dom
+EN: dom
+SRC: Awodey §1.7
+
+HU: az alapgrafra kepezi:
+EN: to the underlying graph:
+SRC: Awodey §1.7
+
+HU: C1
+EN: C1
+SRC: Awodey §1.7
+
+HU: cod - C0
+EN: cod - C0
+SRC: Awodey §1.7
+
+HU: dom
+EN: dom
+SRC: Awodey §1.7
+
+HU: Es ugyanugy a funktorok eseten, az U hatasa a diagramok nhany reszenek torlesvel irhato le (amelyet kredaval konnyebb bemutatni!).
+EN: And similarly for functors, the effect of U is described by erasing some parts of the diagrams (which is easier to demonstrate with chalk!).
+SRC: Awodey §1.7
+
+HU: Egy graf szabad kategoriaja a kovetkezo UMP-pal rendelkezik:
+EN: The free category on a graph has the following UMP:
+SRC: Awodey §1.7
+
+HU: A C(G) univerzalis lekepezes tulajdonsaga
+EN: Universal Mapping Property of C(G)
+SRC: Awodey §1.7
+
+HU: Van egy i : G → |C(G)| graf homomorfizmus, es adva van barmely D kategoria es barmely h : G → |D| graf homomorfizmus, akkor van egy egyertelmu h¯ : C(G) → D funktor, amelyre |h¯| ◦ i = h.
+EN: There is a graph homomorphism i : G → |C(G)|, and given any category D and any graph homomorphism h : G → |D|, there is a unique functor h̄ : C(G) → D with |h̄| ◦ i = h.
+SRC: Awodey §1.7
+
+HU: Cat-ben:
+EN: in Cat:
+SRC: Awodey §1.7
+
+HU: h¯
+EN: h̄
+SRC: Awodey §1.7
+
+HU: - D
+EN: - D
+SRC: Awodey §1.7
+
+HU: C(G) ................
+EN: C(G) ................
+SRC: Awodey §1.7
+
+HU: Grafban:
+EN: in Graph:
+SRC: Awodey §1.7
+
+HU: |C(G)|
+EN: |C(G)|
+SRC: Awodey §1.7
+
+HU: |h¯|-
+EN: |h̄|-
+SRC: Awodey §1.7
+
+HU: |D|
+EN: |D|
+SRC: Awodey §1.7
+
+HU: 6
+EN: 6
+SRC: Awodey §1.7
+
+HU: i
+EN: i
+SRC: Awodey §1.7
+
+HU: h
+EN: h
+SRC: Awodey §1.7
+
+HU: G
+EN: G
+SRC: Awodey §1.7
+
+HU: Az egyetlen csucsbol allo graf szabad kategoriaja egyszeruen az elek halmazan vett szabad monoid.
+EN: The free category on a graph with just one vertex is just a free monoid on the set of edges.
+SRC: Awodey §1.7
+
+HU: A ket csucsbal es egy kozottuk levo elebol allo graf szabad kategoriaja a 2 veges kategoria.
+EN: The free category on a graph with two vertices and one edge between them is the finite category 2.
+SRC: Awodey §1.7
+
+HU: A kovetkezo formaju graf szabad kategoriaja:
+EN: The free category on a graph of the form:
+SRC: Awodey §1.7
+
+HU: A
+EN: A
+SRC: Awodey §1.7
+
+HU: e B
+EN: e B
+SRC: Awodey §1.7
+
+HU: f
+EN: f
+SRC: Awodey §1.7
+
+HU: (az identitas nyilakon felul) a kovetkezo vegtelenul sok nyilal tartalmaz:
+EN: has (in addition to the identity arrows) the infinitely many arrows:
+SRC: Awodey §1.7
+
+HU: e, f, ef, f e, ef e, f ef, ef ef, ...
+EN: e, f, ef, f e, ef e, f ef, ef ef, ...
+SRC: Awodey §1.7
+
+1.8 Alapozas: nagy, kis, es lokalisan kicsi
+HU: Kezdjuk a kovetkezo dolgok kozotti kulonbsegtelessel:
+EN: Let us begin by distinguishing between the following things:
+SRC: Awodey §1.8
+
+HU: a matematika kategoriaelmeleti alapozasa,
+EN: categorical foundations for mathematics,
+SRC: Awodey §1.8
+
+HU: a kategoriaelmelet matematikai alapozasa.
+EN: mathematical foundations for category theory.
+SRC: Awodey §1.8
+
+HU: Ami az elsot illeti: nhha lehet hallani, hogy a kategoriaelmelet hasznalhato a "matematika alapozasara", a halmazelmelet alternativajakent.
+EN: As for the first: one sometimes hears it said that category theory can be used to provide "foundations for mathematics," as an alternative to set theory.
+SRC: Awodey §1.8
+
+HU: Ez tenyleg igy van, de nem ez az, amit itt csinalunk.
+EN: That is in fact the case, but it is not what we are doing here.
+SRC: Awodey §1.8
+
+HU: A halmazelmeletben nhha egzisztencia axiomakkal kezdunk, mint peldaul "minden halmaznak van hatvanyhalmaza", es tovabbi halmazokat vezetunk le, felvepitve egy matematikai objektumokbol (ugynevesen halmazokbol) allo univerzumot, amely elvileg elegendo "az egesz matematika" szamara.
+EN: In set theory, one often begins with existential axioms such as "every set has a powerset" and derives further sets, building up a universe of mathematical objects (namely sets), which in principle suffice for "all of mathematics."
+SRC: Awodey §1.8
+
+HU: A mi axiomank, hogy minden nyilnak van forraster es celtere, nem ugy ertendo, mint a halmazelmelet axioma, hogy minden halmaznak van hatvanyhalmaza!
+EN: Our axiom that every arrow has a domain and a codomain is not to be understood in the same way as set theory's axiom that every set has a powerset!
+SRC: Awodey §1.8
+
+HU: A kulonbseg az, hogy a halmazelmeletben—legalabbis a szokasos ertelemben—az axiomak egyetlen halmazuniverzumra vonatkoznak (vagy azt hatarozzak meg).
+EN: The difference is that in set theory—at least as usually conceived—the axioms are to be regarded as referring to (or determining) a single universe of sets.
+SRC: Awodey §1.8
+
+HU: Ezzel szemben a kategoriaelmeletben az axiomak valami definicioi, nevezisen a kategoriak definicioi.
+EN: In category theory, by contrast, the axioms are a definition of something, namely of categories.
+SRC: Awodey §1.8
+
+HU: Ez pont olyan, mint a csoportelmeletben vagy a topologiaban, ahol az axiomak a vizsgalt objektumok definialsat szolgaljak.
+EN: This is just like in group theory or topology, where the axioms serve to define the objects under investigation.
+SRC: Awodey §1.8
+
+HU: Ezek viszont feltelelezik, hogy leteznek valamilyen "hatter"- vagy "alapozas"-rendszerben, mint peldaul a halmazelmeletben.
+EN: These, in turn, are assumed to exist in some "background" or "foundational" system, like set theory.
+SRC: Awodey §1.8
+
+HU: Ez a halmazelmelet maga is kategoriaelmelettel, vagy maskeppen hatarozhato meg.
+EN: That theory of sets could itself, in turn, be determined using category theory, or in some other way.
+SRC: Awodey §1.8
+
+HU: Ez elvez bennunket a masodik ponthoz: feltetelezzuk, hogy a kategoriaink halmazokbol es fuggvenyekbol allnak ossze, egyik vagy masik modon, mint a legtobb matematikai objektum, figyelembe veve az iment tett megjegyzeseket a kategoriaelmeleti alapozas lehetsegeserol.
+EN: This brings us to the second point: we assume that our categories are comprised of sets and functions, in one way or another, like most mathematical objects, and taking into account the remarks just made about the possibility of categorical foundations.
+SRC: Awodey §1.8
+
+HU: De a kategoriaelmeletben nhha nehezsegbe utkozunk a halmazelmelettel, ahogy azt gyakoroljak.
+EN: But in category theory, we sometimes run into difficulties with set theory as usually practiced.
+SRC: Awodey §1.8
+
+HU: Foleg ezek meret (nagysag) kerdesek; nhany kategoria "túl nagy" ahhoz, hogy a konvencionalis halmazelmelet kenyelmesen kezelje.
+EN: Mostly these are questions of size; some categories are "too big" to be handled comfortably in conventional set theory.
+SRC: Awodey §1.8
+
+HU: Mar talalkoztunk ezzel a problemaval, amikor az 1.5. szakaszban a Cayley-reprezentaciot vizsgaltuk.
+EN: We already encountered this issue when we considered the Cayley representation in Section 1.5.
+SRC: Awodey §1.8
+
+HU: Ott meg kellet kovetelnunk, hogy a szoba jovo kategoriának (legfeljebb) egy halmaznyi nyilja legyen.
+EN: There we had to require that the category under consideration had (no more than) a set of arrows.
+SRC: Awodey §1.8
+
+HU: Biztosan nem akarnank ezt a korlatozast altalabanosban felvenni (amint az rendszerint tesszuk peldaul csoportok eseten); mert akkor meg a Sets "kategoria" sem lenne egy megfelelo kategoria, ahogy sok mas kategoria sem, amelyeket biztosan tanulmanyozni akarunk.
+EN: We would certainly not want to impose this restriction in general, however (as one usually does for, say, groups); for then even the "category" Sets would fail to be a proper category, as would many other categories that we definitely want to study.
+SRC: Awodey §1.8
+
+HU: Különfele formalis eszkozek leteznek ezeknek a problemaknak a kezelesere, es ezekrol a Mac Lane konyveben van szo.
+EN: There are various formal devices for addressing these issues, and they are discussed in the book by Mac Lane.
+SRC: Awodey §1.8
+
+HU: A kozvetlen celjaink szamara a kovetkezo kulonbsegteles hasznos lesz:
+EN: For our immediate purposes, the following distinction will be useful:
+SRC: Awodey §1.8
+
+HU: 1.11. Definíció. Egy C kategoria akkor kis, ha a C objektumainak C0 gyujtemenye es a C nyiljanak C1 gyujtemenye is halmaz.
+EN: Definition 1.11. A category C is called small if both the collection C0 of objects of C and the collection C1 of arrows of C are sets.
+SRC: Awodey §1.8
+
+HU: Kulonben C-t nagynak nevezzuk.
+EN: Otherwise, C is called large.
+SRC: Awodey §1.8
+
+HU: Peldaul az osszes veges kategoria nyilvanvaloan kis, ahogy a veges halmazok es fuggvenyek Sets_fin kategoriaja is.
+EN: For example, all finite categories are clearly small, as is the category Sets_fin of finite sets and functions.
+SRC: Awodey §1.8
+
+HU: Masreszt a Pos rendezesi relacioval ellatott halmazok kategoriaja, a Groups csoportok kategoriaja, es a Sets halmazok kategoriaja mind nagy.
+EN: On the other hand, the category Pos of posets, the category Groups of groups, and the category Sets of sets are all large.
+SRC: Awodey §1.8
+
+HU: Jelolje Cat az osszes kis kategoria kategoriajat, amely maga is egy nagy kategoria.
+EN: We let Cat be the category of all small categories, which itself is a large category.
+SRC: Awodey §1.8
+
+HU: Külonesen akkor Cat nem objektuma onmaganak, ami nhany olvaso szamara megkonnyebbules lehet.
+EN: In particular, then, Cat is not an object of itself, which may come as a relief to some readers.
+SRC: Awodey §1.8
+
+HU: Ez nem oldja meg igazan az osszes nehezsegunket.
+EN: This does not really solve all of our difficulties.
+SRC: Awodey §1.8
+
+HU: Meg a Groups es Setshez hasonlo nagy kategoriak eseten is szeretnunk majd tekinteni olyan konstrukciokat, mint az egyikbol a masikba mutato osszes funktor kategoriajat (ezt a "funktor kategoria"-t kesobb definialjuk).
+EN: Even for large categories like Groups and Sets we will want to also consider constructions like the category of all functors from one to the other (we will define this "functor category" later).
+SRC: Awodey §1.8
+
+HU: De ha ezek nem kis kategoriak, akkor a konvencionalis halmazelmelet nem biztositja a szukseges eszkozoeket ennek kozvetlen elvegere (ezek a kategoriak "túl nagyok" lennenek).
+EN: But if these are not small, conventional set theory does not provide the means to do this directly (these categories would be "too large").
+SRC: Awodey §1.8
+
+HU: Tehat egy elabortabb "osztalyok"-elmelet szukseges az ilyen konstrukciok kezelesehez.
+EN: So, one needs a more elaborate theory of "classes" to handle such constructions.
+SRC: Awodey §1.8
+
+HU: Nem fogunk ezzel torodni, amikor csak technikai alapozasi kerdesrol van szo (Mac Lane I.6. fejezet ezt a problemat kezeli).
+EN: We will not worry about this when it is just a matter of technical foundations (Mac Lane I.6 addresses this issue).
+SRC: Awodey §1.8
+
+HU: Azonban egy nagyon hasznos fogalom ezzel kapcsolatban a kovetkezo:
+EN: However, one very useful notion in this connection is the following:
+SRC: Awodey §1.8
+
+HU: 1.12. Definíció. Egy C kategoria akkor lokalisan kicsi, ha minden X, Y objektum eseten a C-ben a HomC(X, Y) = {f ∈ C1 | f : X → Y} gyujtemeny halmaz (amelyet hom-halmaznak nevezunk).
+EN: Definition 1.12. A category C is called locally small if for all objects X, Y in C, the collection HomC (X, Y) = {f ∈ C1 | f : X → Y} is a set (called a hom-set).
+SRC: Awodey §1.8
+
+HU: Azon nagy kategoriak, amelyeket vizsgalni akarunk, sok valojaban lokalisan kicsik.
+EN: Many of the large categories we want to consider are in fact locally small.
+SRC: Awodey §1.8
+
+HU: A Sets lokalisan kicsi, mivel HomSets(X, Y) = Y^X, az osszes X-bol Y-ba meno fuggveny halmaza.
+EN: Sets is locally small since HomSets (X, Y) = Y^X, the set of all functions from X to Y.
+SRC: Awodey §1.8
+
+HU: Hasonloan a Pos, a Top es a Group mind lokalisan kicsik (vajon a Cat is az?), es termeszetesen barmely kis kategoria lokalisan kicsi.
+EN: Similarly, Pos, Top, and Group are all locally small (is Cat?), and, of course, any small category is locally small.
+SRC: Awodey §1.8HU: 1.9 Feladatok
+EN: 1.9 Exercises
+SRC: Awodey §1.9
+
+HU: A Rel kategoria objektumai halmazok, es egy f : A → B nyil egy relacio A-bol B-be, azaz f ⊆ A × B.
+EN: The objects of Rel are sets, and an arrow f : A → B is a relation from A to B, that is, f ⊆ A × B.
+SRC: Awodey §1.9
+
+HU: Az identitas relacio { (a, a) ∈ A × A | a ∈ A } az identitas nyil egy A halmazon.
+EN: The identity relation { (a, a) ∈ A × A | a ∈ A } is the identity arrow on a set A.
+SRC: Awodey §1.9
+
+HU: A Rel kategoriaban a kompozicio a kovetkezokeppen van megadva: g ◦ f = { (a, c) ∈ A × C | ∃b ( (a, b) ∈ f & (b, c) ∈ g ) } f ⊆ A × B es g ⊆ B × C eseten.
+EN: Composition in Rel is to be given by g ◦ f = { (a, c) ∈ A × C | ∃b ( (a, b) ∈ f & (b, c) ∈ g ) } for f ⊆ A × B and g ⊆ B × C.
+SRC: Awodey §1.9
+
+HU: Mutasd meg, hogy a Rel egy kategoria.
+EN: Show that Rel is a category.
+SRC: Awodey §1.9
+
+HU: Vizsgald meg a kovetkezo kategoria-izomorfizmusokat, es dontsd el, melyik all fenn.
+EN: Consider the following isomorphisms of categories and determine which hold.
+SRC: Awodey §1.9
+
+HU: (a) Rel ≅ Rel^op
+EN: (a) Rel ≅ Relop
+SRC: Awodey §1.9
+
+HU: (b) Sets ≅ Sets^op
+EN: (b) Sets ≅ Setsop
+SRC: Awodey §1.9
+
+HU: (c) Egy fix X halmaz eseten a hatvanyhalmazzal P(X), rendezett halmaz kategoriakkent P(X) ≅ P(X)^op (a P(X) nyiljai reszhalmaz-tartalmazasok A ⊆ B, ahol A, B ⊆ X).
+EN: (c) For a fixed set X with powerset P(X), as poset categories P(X) ≅ P(X)op (the arrows in P(X) are subset inclusions A ⊆ B for A, B ⊆ X).
+SRC: Awodey §1.9
+
+HU: (a) Mutasd meg, hogy a Sets kategoriaban az izomorfizmusok pontosan a bijekciok.
+EN: (a) Show that in Sets, the isomorphisms are exactly the bijections.
+SRC: Awodey §1.9
+
+HU: (b) Mutasd meg, hogy a Monoids kategoriaban az izomorfizmusok pontosan a bijektiv homomorfizmusok.
+EN: (b) Show that in Monoids, the isomorphisms are exactly the bijective homomorphisms.
+SRC: Awodey §1.9
+
+HU: (c) Mutasd meg, hogy a Posets kategoriaban az izomorfizmusok nem egyeznek meg a bijektiv homomorfizmusokkal.
+EN: (c) Show that in Posets, the isomorphisms are not the same as the bijective homomorphisms.
+SRC: Awodey §1.9
+
+HU: Epitsd fel egy C kategoria C objektum alatti "koszeletkategoriat" C/C a C/C szeletkategoria es a "dualkategoria" muvelet −op segitsegevel.
+EN: Construct the "coslice category" C/C of a category C under an object C from the slice category C/C and the "dual category" operation −op.
+SRC: Awodey §1.9
+
+HU: Hany olyan szabad kategoria van grafokon, amelyek pontosan hat nyiljal rendelkeznek?
+EN: How many free categories on graphs are there which have exactly six arrows?
+SRC: Awodey §1.9
+
+HU: Rajzold fel azokat a grafokat, amelyek ezeket a kategoriakat eloallitjak.
+EN: Draw the graphs that generate these categories.
+SRC: Awodey §1.9
+
+HU: Bizonyitsd be a grafokon vett szabad kategoriakra vonatkozo UMP-t (univerzalis lekepezesi tulajdonsag):
+EN: Prove the UMP for free categories on graphs:
+SRC: Awodey §1.9
+
+HU: Legyen C(G) a G graf szabad kategorianja, es i : G → U(C(G)) a grafhomomorfizmus, amely a csucsokat es eleket onmagukhoz viszi, objektumokkent es nyilakkent C(G)-ben ertelmezve.
+EN: Let C(G) be the free category on the graph G and i : G → U(C(G)) the graph homomorphism taking vertices and edges to themselves, regarded as objects and arrows in C(G).
+SRC: Awodey §1.9
+
+HU: Barmely D kategoria es f : G → U(D) grafhomomorfizmus eseten van egy egyetlen funktor h̄ : C(G) → D, amelyre U(h̄) ◦ i = h, ahol U : Cat → Graph az alulvezetett graf funktor.
+EN: For any category D and graph homomorphism f : G → U(D), there is a unique functor h̄ : C(G) → D with U(h̄) ◦ i = h, where U : Cat → Graph is the underlying graph functor.
+SRC: Awodey §1.9
+
+HU: Ez az oldal szandekosan ures.
+EN: This page intentionally left blank
+SRC: Awodey §1.9
+
+HU: 2
+EN: 2
+SRC: Awodey §1.9
+
+HU: ABSZTRAKT STRUKTURAK
+EN: ABSTRACT STRUCTURES
+SRC: Awodey §1.9
+
+HU: Hagy, hogy megprobaljak megprobaljak elkezdni megjegyzesekkel a kategoriaelmeleti definiciokkal kapcsolatban.
+EN: Let me begin with some remarks about category-theoretical definitions.
+SRC: Awodey §1.9
+
+HU: Ezen azt ertem, hogy egy kategoria objektumainak es nyilainak tulajdonsagainak jellemzeset kizetolagosan mas objektumok es nyilak segitsegevel, azaz a kategoriaelmelet nyelven.
+EN: By this I mean characterizations of properties of objects and arrows in a category in terms of other objects and arrows only, that is, in the language of category theory.
+SRC: Awodey §1.9
+
+HU: Az ilyen definiciokat absztraktnak, strukturatisnak, operacionalisnak, relacionalisnak vagy kulsonek (a belsovel szemben) lehet nevezni.
+EN: Such definitions may be said to be abstract, structural, operational, relational, or external (as opposed to internal).
+SRC: Awodey §1.9
+
+HU: A lenyeg az, hogy az objektumokat es nyilakat az a szerep hatarozza meg, amelyet a kategoriaban jatszanak, mas objektumokhoz es nyilakhoz valo viszonyukon keresztul, azaz a strukturaban elfoglalt poziciojuk, es nem az, hogy "mik" vagy "mibol vannak" valamilyen abszolut ertelemben.
+EN: The idea is that objects and arrows are determined by the role they play in the category via their relations to other objects and arrows, that is, by their position in a structure and not by what they "are" or "are made of" in some absolute sense.
+SRC: Awodey §1.9
+
+HU: Sok tovabbi peldat fogunk latni ehhez hasonlo dolgokra kesobb; egyelore a nagyon egyszeruekkel kezdjuk.
+EN: We will see many more examples of this kind of thing later; for now we start with some very simple ones.
+SRC: Awodey §1.9
+
+HU: Hivjuk oket absztrakt jellemzeseknek.
+EN: Let me call them abstract characterizations.
+SRC: Awodey §1.9
+
+HU: Latni fogjuk, hogy az ilyen absztrakt jellemzesek megadasanak egy alapveto modja az univerzalis lekepezesi tulajdonsagon (UMP) keresztul tortenik.
+EN: We will see that one of the basic ways of giving such an abstract characterization is via a Universal Mapping Property or UMP.
+SRC: Awodey §1.9

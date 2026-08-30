@@ -1,0 +1,467 @@
+module FogalomFa
+
+import MagyarNyelv
+import HaromKubit
+import E8E8Algebra
+import Emberi.Index
+import Szamitasi.Index
+import Steane713
+
+||| Fogalom hierarchia: mely tipusok lehetnek egy masik gyerekei.
+||| Egesziti ki a FogalomTipus-t a logikai kapcsolatokkal.
+|||
+||| Gondolat: nem minden fogalom lehet barmelyik masik gyereke.
+||| Peldaul egy Kerdes soha nem lehet gyereke egy Cselekves-nek.
+||| A 35 ervenyes kapcsolat a teljes hierarchiat irja le.
+|||
+||| A konstruktorok neve a ket fogalom osszefuzese:
+|||   GyokerCel = "a Gyoker gyereke lehet Cel"
+||| Ez a kategoriaelmeletben morfizmusnak felel meg.
+public export
+data FogalomLogika : FogalomTipus -> FogalomTipus -> Type where
+  Azonos          : FogalomLogika a a
+  GyokerCel       : FogalomLogika Gyoker Cel
+  GyokerDontes    : FogalomLogika Gyoker Dontes
+  GyokerSzabaly   : FogalomLogika Gyoker Szabaly
+  GyokerMegfigyeles : FogalomLogika Gyoker Megfigyeles
+  GyokerKerdes    : FogalomLogika Gyoker Kerdes
+  CelReszCel      : FogalomLogika Cel ReszCel
+  CelFeladat      : FogalomLogika Cel Feladat
+  ReszCelFeladat  : FogalomLogika ReszCel Feladat
+  FeladatReszFeladat : FogalomLogika Feladat ReszFeladat
+  FeladatCselekves   : FogalomLogika Feladat Cselekves
+  FeladatEredmeny    : FogalomLogika Feladat Eredmeny
+  ReszFeladatCselekves : FogalomLogika ReszFeladat Cselekves
+  CselekvesEredmeny    : FogalomLogika Cselekves Eredmeny
+  CselekvesMegfigyeles  : FogalomLogika Cselekves Megfigyeles
+  DontesOk             : FogalomLogika Dontes Ok
+  DontesValasztas      : FogalomLogika Dontes Valasztas
+  DontesElutasitas     : FogalomLogika Dontes Elutasitas
+  ValasztasOk          : FogalomLogika Valasztas Ok
+  ElutasitasOk         : FogalomLogika Elutasitas Ok
+  OkKavzatum           : FogalomLogika Ok Kavzatum
+  OkKorlatozas         : FogalomLogika Ok Korlatozas
+  MegfigyelesHiba      : FogalomLogika Megfigyeles Hiba
+  MegfigyelesEredmeny  : FogalomLogika Megfigyeles Eredmeny
+  MegfigyelesMinta     : FogalomLogika Megfigyeles Minta
+  MegfigyelesJavitas   : FogalomLogika Megfigyeles Javitas
+  MegfigyelesDontes    : FogalomLogika Megfigyeles Dontes
+  HibaOk              : FogalomLogika Hiba Ok
+  HibaJavitas         : FogalomLogika Hiba Javitas
+  JavitasFoltozas     : FogalomLogika Javitas Foltozas
+  JavitasInfra        : FogalomLogika Javitas InfraJavitas
+  SzabalyKemeny       : FogalomLogika Szabaly KemenySzabaly
+  SzabalyEgyezmeny    : FogalomLogika Szabaly Egyezmeny
+  EszkozKeszseg      : FogalomLogika Eszkoz Kesztseg
+  EszkozModellKornyezetProtokoll : FogalomLogika Eszkoz ModellKornyezetProtokoll
+  KerdesMagyarazat    : FogalomLogika Kerdes Magyarazat
+  GyokerReszCel       : FogalomLogika Gyoker ReszCel
+  GyokerFeladat       : FogalomLogika Gyoker Feladat
+  CelReszFeladat      : FogalomLogika Cel ReszFeladat
+  CelCselekves        : FogalomLogika Cel Cselekves
+  GyokerOk            : FogalomLogika Gyoker Ok
+  GyokerValasztas     : FogalomLogika Gyoker Valasztas
+  GyokerElutasitas    : FogalomLogika Gyoker Elutasitas
+  GyokerHiba          : FogalomLogika Gyoker Hiba
+  GyokerEredmeny      : FogalomLogika Gyoker Eredmeny
+  GyokerMagyarazat    : FogalomLogika Gyoker Magyarazat
+  GyokerKemenySzabaly : FogalomLogika Gyoker KemenySzabaly
+  GyokerEgyezmeny     : FogalomLogika Gyoker Egyezmeny
+  GyokerJavitas       : FogalomLogika Gyoker Javitas
+  MegfigyelesOk       : FogalomLogika Megfigyeles Ok
+  HibaKavzatum        : FogalomLogika Hiba Kavzatum
+  HibaKorlatozas      : FogalomLogika Hiba Korlatozas
+  HibaFoltozas        : FogalomLogika Hiba Foltozas
+  HibaInfra           : FogalomLogika Hiba InfraJavitas
+  ReszFeladatEredmeny : FogalomLogika ReszFeladat Eredmeny
+  -- E8xE8, dualitas, kategoria
+  E8xE8Dualitas      : FogalomLogika E8xE8 Dualitas
+  E8xE8Kategoria     : FogalomLogika E8xE8 Kategoria
+  DualitasCel        : FogalomLogika Dualitas Cel
+  DualitasOk         : FogalomLogika Dualitas Ok
+  DualitasKavzatum   : FogalomLogika Dualitas Kavzatum
+  KategoriaSzimmetria : FogalomLogika Kategoria Szimmetria
+  KategoriaTenzor     : FogalomLogika Kategoria Tenzor
+  SzimmetriaFunktor   : FogalomLogika Szimmetria Funktor
+  TenzorFunktor       : FogalomLogika Tenzor Funktor
+  -- Kozvetlen kompoziciok a gyokerbol az uj fogalmakhoz
+  GyokerE8xE8        : FogalomLogika Gyoker E8xE8
+  GyokerDualitas     : FogalomLogika Gyoker Dualitas
+  GyokerKategoria    : FogalomLogika Gyoker Kategoria
+  -- Szamok
+  GyokerTermeszetesSzam  : FogalomLogika Gyoker TermeszetesSzam
+  GyokerEgeszSzam        : FogalomLogika Gyoker EgeszSzam
+  GyokerValosSzam        : FogalomLogika Gyoker ValosSzam
+  GyokerKomplexSzam      : FogalomLogika Gyoker KomplexSzam
+  TermeszetesSzamEgesz   : FogalomLogika TermeszetesSzam EgeszSzam
+  EgeszSzamRacionalis    : FogalomLogika EgeszSzam RacionalisSzam
+  -- Matematika logika
+  GyokerAllitas          : FogalomLogika Gyoker Allitas
+  AllitasBizonyitas      : FogalomLogika Allitas Bizonyitas
+  BizonyitasGodel        : FogalomLogika Bizonyitas GodelSzam
+  AllitasKonzisztencia   : FogalomLogika Allitas Konzisztencia
+  AllitasOnhivatkozas    : FogalomLogika Allitas Onhivatkozas
+  OnhivatkozasDiagonale  : FogalomLogika Onhivatkozas DiagonaleLemma
+  DiagonaleGodelElso     : FogalomLogika DiagonaleLemma GodelElsoTetel
+  KonzisztenciaGodelMasodik : FogalomLogika Konzisztencia GodelMasodikTetel
+  AllitasBizonyithatosag : FogalomLogika Allitas Bizonyithatosag
+  GyokerKonzisztencia    : FogalomLogika Gyoker Konzisztencia
+  GyokerOnhivatkozas     : FogalomLogika Gyoker Onhivatkozas
+  -- Inkonzisztencia: egy vonal, ket oldalan 2 matematika, i-vel forgatva
+  GodelElsoInkonzisztencia : FogalomLogika GodelElsoTetel InkonzisztenciaVonal
+  GodelMasodikKonzisztencia : FogalomLogika GodelMasodikTetel InkonzisztenciaVonal
+  InkonzisztenciaVonalKetto : FogalomLogika InkonzisztenciaVonal KettoMatematika
+  InkonzisztenciaVonalWick  : FogalomLogika InkonzisztenciaVonal WickForgatas
+  WickForgatasKomplex       : FogalomLogika WickForgatas KomplexFazis
+  WickForgatasIdo           : FogalomLogika WickForgatas Ido
+  KettoMatematikaAllitas    : FogalomLogika KettoMatematika Allitas
+  GyokerInkonzisztencia     : FogalomLogika Gyoker InkonzisztenciaVonal
+  GyokerWick                : FogalomLogika Gyoker WickForgatas
+  -- Matematika alapaxiomak
+  GyokerHalmazelmelet       : FogalomLogika Gyoker Halmazelmelet
+  HalmazelmeletUres         : FogalomLogika Halmazelmelet UresHalmaz
+  HalmazelmeletPeano        : FogalomLogika Halmazelmelet PeanoAxiomak
+  HalmazelmeletZfc          : FogalomLogika Halmazelmelet ZfcAxiomak
+  ZfcKivalasztas            : FogalomLogika ZfcAxiomak KivalasztasiAxioma
+  PeanoTermeszetes          : FogalomLogika PeanoAxiomak TermeszetesSzam
+  HalmazelmeletSzamossag    : FogalomLogika Halmazelmelet Szamossag
+  SzamossagFolytonossag     : FogalomLogika Szamossag FolytonossagiHipotetikus
+  UresHalmazVegtelen        : FogalomLogika UresHalmaz Vegtelen
+  GyokerPeano               : FogalomLogika Gyoker PeanoAxiomak
+  GyokerZfc                 : FogalomLogika Gyoker ZfcAxiomak
+  -- Curry-Howard-Lambek
+  GyokerChl                 : FogalomLogika Gyoker Chl
+  ChlAllitas                : FogalomLogika Chl Allitas
+  ChlKategoria              : FogalomLogika Chl Kategoria
+  ChlSzimmetria             : FogalomLogika Chl Szimmetria
+  -- 4 dimenzio
+  GyokerTer              : FogalomLogika Gyoker Ter
+  GyokerIdo              : FogalomLogika Gyoker Ido
+  GyokerTomeg            : FogalomLogika Gyoker Tomeg
+  GyokerInformacio       : FogalomLogika Gyoker InformacioMennyiseg
+  TerGeometria           : FogalomLogika Ter Geometria
+  IdoFazisAtalakulas     : FogalomLogika Ido FazisAtalakulas
+  TomegHomerseklet       : FogalomLogika Tomeg Homerseklet
+  InformacioEntropia     : FogalomLogika InformacioMennyiseg Entropia
+  -- Fizikai allapot, mechanika
+  GyokerFizikaiAllapot   : FogalomLogika Gyoker FizikaiAllapot
+  FizikaiAllapotMezo     : FogalomLogika FizikaiAllapot Mezo
+  FizikaiAllapotKlasszikus : FogalomLogika FizikaiAllapot KlasszikusMechanika
+  KlasszikusLagrange     : FogalomLogika KlasszikusMechanika LagrangeFuggveny
+  LagrangeHamilton       : FogalomLogika LagrangeFuggveny HamiltonFuggveny
+  LagrangeTranszform     : FogalomLogika LagrangeFuggveny LagrangeTranszformacio
+  -- Szimmetriak
+  GyokerSzimmetriaCsoport : FogalomLogika Gyoker SzimmetriaCsoport
+  GyokerGeometria        : FogalomLogika Gyoker Geometria
+  SzimmetriaE8           : FogalomLogika SzimmetriaCsoport E8Szimmetria
+  SzimmetriaMertek       : FogalomLogika SzimmetriaCsoport MertekCsoport
+  MertekElektromagneses  : FogalomLogika MertekCsoport Elektromagneses
+  MertekGyenge           : FogalomLogika MertekCsoport Gyenge
+  MertekEros             : FogalomLogika MertekCsoport Eros
+  ErosGluon              : FogalomLogika Eros Gluon
+  E8Gravitacio           : FogalomLogika E8Szimmetria Gravitacio
+  GravitacioKvantum      : FogalomLogika Gravitacio KvantumGravitacio
+  KvantumEgyesitett      : FogalomLogika KvantumGravitacio EgyesitettMezo
+  EgyesitettStandard     : FogalomLogika EgyesitettMezo StandardModell
+  -- Anyag
+  GyokerAnyag            : FogalomLogika Gyoker Anyag
+  AnyagAntianyag         : FogalomLogika Anyag Antianyag
+  AnyagKvark             : FogalomLogika Anyag KvarkSzin
+  KvarkSzinSzin          : FogalomLogika KvarkSzin Szin
+  SzinToltesAntiszin     : FogalomLogika SzinToltes AntiszinToltes
+  -- Kvantum
+  GyokerKvantumMechanika : FogalomLogika Gyoker KvantumMechanika
+  KvantumMechanikaAllapot : FogalomLogika KvantumMechanika KvantumAllapot
+  KvantumAllapotHullam   : FogalomLogika KvantumAllapot HullamFuggveny
+  KvantumAllapotOperator  : FogalomLogika KvantumAllapot Operator
+  OperatorMegfigyelt     : FogalomLogika Operator Megfigyelt
+  KvantumAllapotUgres    : FogalomLogika KvantumAllapot KvantumUgres
+  HullamFolytonos        : FogalomLogika HullamFuggveny Folytonos
+  UgresNemFolytonos      : FogalomLogika KvantumUgres NemFolytonos
+  -- Hullamok
+  GyokerHullam           : FogalomLogika Gyoker Hullam
+  HullamHang             : FogalomLogika Hullam Hang
+  HullamFeny             : FogalomLogika Hullam Feny
+  HullamGravitacios      : FogalomLogika Hullam GravitaciosHullam
+  HullamRadio            : FogalomLogika Hullam RadioHullam
+  FenyElektromagneses    : FogalomLogika Feny Elektromagneses
+  GravitaciosGravitacio  : FogalomLogika GravitaciosHullam Gravitacio
+  RadioInformacio        : FogalomLogika RadioHullam Informacio
+  -- Termodinamika
+  GyokerTermodinamika    : FogalomLogika Gyoker Termodinamika
+  TermodinamikaCarnot    : FogalomLogika Termodinamika CarnotCiklus
+  FluktuacioDisszipacioTetel : FogalomLogika FluktuacioDisszipacioTetele Termodinamika
+  FluktuacioDisszip       : FogalomLogika Fluktuacio Disszipacio
+  HőTomeg                : FogalomLogika Hő Tomeg
+  MunkaTomeg             : FogalomLogika Munka Tomeg
+  BelsőHő                : FogalomLogika BelsőEnergia Hő
+  InformacioTorlesHő     : FogalomLogika InformacioTorles Hő
+  -- Fazis
+  FazisAtalakulasAtmenet  : FogalomLogika FazisAtalakulas FazisAtmenet
+  FazisAtmenetFluktuacio  : FogalomLogika FazisAtmenet Fluktuacio
+  FazisElolasDisszipacio  : FogalomLogika FazisElolas Disszipacio
+  -- Kommunikacio
+  GyokerKommunikacio     : FogalomLogika Gyoker Kommunikacio
+  InformacioKommunikacio  : FogalomLogika Informacio Kommunikacio
+  KommunikacioCsatorna   : FogalomLogika Kommunikacio Csatorna
+  KommunikacioKod        : FogalomLogika Kommunikacio Kod
+  KommunikacioJel        : FogalomLogika Kommunikacio Jel
+  CsatornaZaj            : FogalomLogika Csatorna Zaj
+  -- Bit = Landauer
+  BitInformacio          : FogalomLogika Bit Informacio
+  BitHo                  : FogalomLogika Bit Hő
+  BitDisszipacio         : FogalomLogika Bit Disszipacio
+  GyokerBit              : FogalomLogika Gyoker Bit
+  -- Folytonossag
+  GyokerFolytonos        : FogalomLogika Gyoker Folytonos
+  FolytonosCodata        : FogalomLogika Folytonos Codata
+  NemFolytonosSorozat    : FogalomLogika NemFolytonos Sorozat
+  SorozatHatar           : FogalomLogika Sorozat Hatar
+  HatarVegtelen          : FogalomLogika Hatar Vegtelen
+  -- Standard Modell
+  StandardElektromagneses : FogalomLogika StandardModell Elektromagneses
+  StandardGyenge          : FogalomLogika StandardModell Gyenge
+  StandardEros            : FogalomLogika StandardModell Eros
+  StandardAnyag           : FogalomLogika StandardModell Anyag
+  StandardKvantum         : FogalomLogika StandardModell KvantumMechanika
+  -- Kepzetes egyseg, ij szorzat, katernio, okternio, tukrozesek
+  GyokerKepzetesEgyseg    : FogalomLogika Gyoker KepzetesEgyseg
+  KomplexKepzetes         : FogalomLogika KomplexSzam KepzetesEgyseg
+  WickKepzetes            : FogalomLogika WickForgatas KepzetesEgyseg
+  KepzetesIj              : FogalomLogika KepzetesEgyseg IjSzorzat
+  IjKaternio              : FogalomLogika IjSzorzat Katernio
+  KepzetesKaternio        : FogalomLogika KepzetesEgyseg Katernio
+  KaternioOkternio        : FogalomLogika Katernio Okternio
+  E8Okternio              : FogalomLogika E8Szimmetria Okternio
+  OkternioTukor           : FogalomLogika Okternio OkternioTukor
+  OkternioTukorFizika     : FogalomLogika OkternioTukor FizikaTukor
+  GyokerFizikaTukor       : FogalomLogika Gyoker FizikaTukor
+  FizikaTukorSzimmetria   : FogalomLogika FizikaTukor Szimmetria
+  FizikaTukorDualitas     : FogalomLogika FizikaTukor Dualitas
+  -- Kanti kategoriaelmelet
+  GyokerKantiKategoria    : FogalomLogika Gyoker KantiKategoria
+  KantiAppercepcio        : FogalomLogika KantiKategoria TranszcendentalisAppercepcio
+  KantiDialektika         : FogalomLogika KantiKategoria TranszcendentalisDialektika
+  AppercepcioKategoria    : FogalomLogika TranszcendentalisAppercepcio Kategoria
+  DialektikaInkonzisztencia : FogalomLogika TranszcendentalisDialektika InkonzisztenciaVonal
+  DialektikaDualitas      : FogalomLogika TranszcendentalisDialektika Dualitas
+  -- Matematikai allandok es operatorok
+  GyokerEuler             : FogalomLogika Gyoker EulerSzam
+  GyokerPi                : FogalomLogika Gyoker Pi
+  GyokerOsszeadas         : FogalomLogika Gyoker Osszeadas
+  OsszeadasKivonas        : FogalomLogika Osszeadas Kivonas
+  OsszeadasSzorzas        : FogalomLogika Osszeadas Szorzas
+  SzorzasOsztas           : FogalomLogika Szorzas Osztas
+  SzorzasHatvanyozas      : FogalomLogika Szorzas Hatvanyozas
+  HatvanyozasGyokvonas    : FogalomLogika Hatvanyozas Gyokvonas
+  PiEuler                 : FogalomLogika Pi EulerSzam
+  -- Euler-azonossag: e^(i·pi) + 1 = 0
+  -- A bizonyítás lánca:
+  --   KepzetesEgyseg → Szorzas × Pi → Hatvanyozas(EulerSzam, _) → Osszeadas → EulerAzonossag
+  EulerKepzetesSzorzas    : FogalomLogika KepzetesEgyseg Szorzas
+  PiSzorzas               : FogalomLogika Pi Szorzas
+  EulerHatvanyozas        : FogalomLogika EulerSzam Hatvanyozas
+  SzorzasHatvany          : FogalomLogika Szorzas Hatvanyozas
+  HatvanyozasOsszeadas    : FogalomLogika Hatvanyozas Osszeadas
+  OsszeadasAzonossag      : FogalomLogika Osszeadas EulerAzonossag
+  -- [[15,1,3]] kod, T-kapu, M-Elmelet
+  GyokerTizenotKod        : FogalomLogika Gyoker TizenotKod
+  TizenotTGate            : FogalomLogika TizenotKod TGate
+  TGateMElmelet           : FogalomLogika TGate MElmelet
+  MElmeletE8              : FogalomLogika MElmelet E8Szimmetria
+  -- Pauli csoport, stabilizatorok, kapuk
+  GyokerPauli             : FogalomLogika Gyoker PauliCsoport
+  PauliStabilizator       : FogalomLogika PauliCsoport Stabilizator
+  StabilizatorKapu        : FogalomLogika Stabilizator Kapu
+  TGateKapu               : FogalomLogika TGate Kapu
+
+||| Fa csomopont adatai.
+||| Minden csomopontnak van:
+|||   cimke = a csomopont neve (String, mert ez megjeleniteshez kell)
+|||   leiras = reszletes leiras (String, mert ez emberi olvasasra)
+|||   hivatkozasok = kapcsolodo referencia lista
+|||   bizalom = a csomopont megbizhatosaga 0 es 1 kozott
+|||
+||| A String itt kivétel — a megjeleniteshez es emberi olvasashoz
+||| van, nem a logikai mag resze. A mag tipusok (FogalomTipus, eset)
+||| nem hasznalnak String-et.
+public export
+record FogalomAdat where
+  constructor AdatKonstruktor
+  cimke : String
+  leiras : String
+  hivatkozasok : List String
+  bizalom : Double
+
+||| Fogalom fa: egy csomopont, amely a FogalomTipus alapjan
+||| tartalmazza a hierarchiaban elfoglalt helyet.
+|||
+||| A fa ketfele lehet:
+|||   Level = levél (nincs gyereke)
+|||   Ag = ag (van gyereke, es megadja a kapcsolat tipusat is)
+|||
+||| Az Ag a dependens tipussal biztosítja, hogy minden gyerek
+||| kapcsolata ervenyes FogalomLogika legyen.
+public export
+data FogalomFa : FogalomTipus -> Type where
+  Level  : FogalomAdat -> FogalomFa t
+  Ag     : FogalomAdat
+         -> List (s : FogalomTipus ** (FogalomFa s, FogalomLogika t s))
+         -> FogalomFa t
+
+||| A harom kubit kapcsolata a fa szerkezeteben.
+||| A VilagFa egyesiti a harom nezoPontot:
+|||   sajat = a rendszer sajat fogalomfaja (C = toltes)
+|||   masik = a masik fel fogalomfaja  (P = paritas)
+|||   fazis = a kapcsolat fazisa (T = ido)
+|||
+||| Ez a harom egyutt adja a teljes CPT szimmetriat.
+public export
+record VilagFa where
+  constructor VilagFaKonstruktor
+  sajat : FogalomFa Gyoker     -- a rendszer sajat nezoPontja (C)
+  masik : FogalomFa Gyoker     -- a masik fel nezoPontja (P)
+  fazis : FogalomAdat          -- a kapcsolat fazisa (T)
+
+||| Fa merete: a csomopontok szama a faban.
+||| Ez egy rekurziv szamlalas: minden level 1, minden ag
+||| 1 plusz a gyerekek meretenek osszege.
+|||
+||| Kategoriaelmeleti ertelemben ez egy funktor a
+||| FogalomFa kategoriaabol a Nat monoidba.
+public export
+meret : FogalomFa t -> Nat
+meret (Level _) = 1
+meret (Ag _ gyerekek) = 1 + sum (map (\(s ** (fa, _)) => meret fa) gyerekek)
+
+||| Bizalom atlag: a fa osszes csomopontjanak bizalom atlaga.
+||| Ez a koherencia egy merteke — ha alacsony, a fa reszben
+||| megbizhatatlan (tobbszoros hiba).
+public export
+bizalomAtlag : FogalomFa t -> Double
+bizalomAtlag (Level adat) = adat.bizalom
+bizalomAtlag (Ag adat gyerekek) =
+  let sajat = adat.bizalom
+      gyerekBizalom = map (\(s ** (fa, _)) => bizalomAtlag fa) gyerekek
+  in (sajat + sum gyerekBizalom) / cast (1 + length gyerekek)
+
+||| Gyerekek szama egy csomopontban.
+public export
+gyerekekSzama : FogalomFa t -> Nat
+gyerekekSzama (Level _) = 0
+gyerekekSzama (Ag _ gyerekek) = length gyerekek
+
+-- ═══════════════════════════════════════════════════════════════
+-- 7+7+1 KATEGORIA RENDSZER
+-- ═══════════════════════════════════════════════════════════════
+
+||| 7+7+1 kategoria tipus: Emberi (7 kvantum), Szamitasi (7 klasszikus), Perem (1 Legendre).
+public export
+data KategoriaTipus : Type where
+  KategoriaEmberi   : EmberiKategoria -> KategoriaTipus
+  KategoriaSzamitasi : SzamitasiKategoria -> KategoriaTipus
+  KategoriaPerem    : KategoriaTipus
+
+||| Logikai kapcsolatok a 7+7+1 kategoriak kozott.
+|||   Emberi belso: Ido → Oksag → Ter → Szin → Hang → Fazis → Mod
+|||   Szamitasi belso: Utem → Vezerles → Adat → Tipus → Kapcsolat → Allapot → Utasitas
+|||   Perem: Fazis (emberi) ↔ Allapot (szamitasi) — Legendre adjunkcio
+public export
+data FogalomLogika714 : KategoriaTipus -> KategoriaTipus -> Type where
+  -- Emberi kategoriak kore: Ido → Oksag → Ter → Szin → Hang → Fazis → Mod
+  EmberiIdoOksag     : FogalomLogika714 (KategoriaEmberi EmberiIdo) (KategoriaEmberi EmberiOksag)
+  EmberiOksagTer     : FogalomLogika714 (KategoriaEmberi EmberiOksag) (KategoriaEmberi EmberiTer)
+  EmberiTerSzin      : FogalomLogika714 (KategoriaEmberi EmberiTer) (KategoriaEmberi EmberiSzin)
+  EmberiSzinHang     : FogalomLogika714 (KategoriaEmberi EmberiSzin) (KategoriaEmberi EmberiHang)
+  EmberiHangFazis    : FogalomLogika714 (KategoriaEmberi EmberiHang) (KategoriaEmberi EmberiFazis)
+  EmberiFazisMod     : FogalomLogika714 (KategoriaEmberi EmberiFazis) (KategoriaEmberi EmberiMod)
+
+  -- Szamitasi kategoriak kore: Utem → Vezerles → Adat → Tipus → Kapcsolat → Allapot → Utasitas
+  SzamUtemVezerles   : FogalomLogika714 (KategoriaSzamitasi SzamUtem) (KategoriaSzamitasi SzamVezerles)
+  SzamVezerlesAdat   : FogalomLogika714 (KategoriaSzamitasi SzamVezerles) (KategoriaSzamitasi SzamAdat)
+  SzamAdatTipus      : FogalomLogika714 (KategoriaSzamitasi SzamAdat) (KategoriaSzamitasi SzamTipus)
+  SzamTipusKapcsolat : FogalomLogika714 (KategoriaSzamitasi SzamTipus) (KategoriaSzamitasi SzamKapcsolat)
+  SzamKapcsolatAllapot : FogalomLogika714 (KategoriaSzamitasi SzamKapcsolat) (KategoriaSzamitasi SzamAllapot)
+  SzamAllapotUtasitas : FogalomLogika714 (KategoriaSzamitasi SzamAllapot) (KategoriaSzamitasi SzamUtasitas)
+
+  -- Perem: Legendre adjunkcio — Emberi.Fazis ↔ Perem ↔ Szamitasi.Allapot
+  FazisPerem         : FogalomLogika714 (KategoriaEmberi EmberiFazis) KategoriaPerem
+  PeremAllapot       : FogalomLogika714 KategoriaPerem (KategoriaSzamitasi SzamAllapot)
+
+  -- Kozvetlen Legendre parok: minden emberi kategoriaban van egy szamitasi parja
+  EmberiSzamitasiPar : (emberi : EmberiKategoria) -> (szamitasi : SzamitasiKategoria)
+                    -> FogalomLogika714 (KategoriaEmberi emberi) (KategoriaSzamitasi szamitasi)
+
+||| FogalomTipus → KategoriaTipus lekepezes.
+||| Minden FogalomTipus besorolhato a 7+7+1 rendszerbe.
+public export
+fogalomTipusToKategoria : FogalomTipus -> KategoriaTipus
+fogalomTipusToKategoria Gyoker = KategoriaEmberi EmberiIdo
+fogalomTipusToKategoria Cel = KategoriaEmberi EmberiOksag
+fogalomTipusToKategoria ReszCel = KategoriaEmberi EmberiTer
+fogalomTipusToKategoria Feladat = KategoriaEmberi EmberiTer
+fogalomTipusToKategoria ReszFeladat = KategoriaEmberi EmberiTer
+fogalomTipusToKategoria Cselekves = KategoriaEmberi EmberiSzin
+fogalomTipusToKategoria Eredmeny = KategoriaEmberi EmberiHang
+fogalomTipusToKategoria Megfigyeles = KategoriaEmberi EmberiFazis
+fogalomTipusToKategoria Hiba = KategoriaEmberi EmberiFazis
+fogalomTipusToKategoria Javitas = KategoriaEmberi EmberiMod
+fogalomTipusToKategoria Minta = KategoriaEmberi EmberiSzin
+fogalomTipusToKategoria Foltozas = KategoriaEmberi EmberiMod
+fogalomTipusToKategoria InfraJavitas = KategoriaEmberi EmberiMod
+fogalomTipusToKategoria Dontes = KategoriaSzamitasi SzamVezerles
+fogalomTipusToKategoria Valasztas = KategoriaSzamitasi SzamUtasitas
+fogalomTipusToKategoria Elutasitas = KategoriaSzamitasi SzamUtasitas
+fogalomTipusToKategoria Ok = KategoriaSzamitasi SzamAllapot
+fogalomTipusToKategoria Kavzatum = KategoriaSzamitasi SzamAllapot
+fogalomTipusToKategoria Korlatozas = KategoriaSzamitasi SzamVezerles
+fogalomTipusToKategoria Szabaly = KategoriaSzamitasi SzamUtasitas
+fogalomTipusToKategoria KemenySzabaly = KategoriaSzamitasi SzamUtasitas
+fogalomTipusToKategoria Egyezmeny = KategoriaSzamitasi SzamKapcsolat
+fogalomTipusToKategoria Eszkoz = KategoriaSzamitasi SzamAdat
+fogalomTipusToKategoria Kesztseg = KategoriaSzamitasi SzamAdat
+fogalomTipusToKategoria ModellKornyezetProtokoll = KategoriaSzamitasi SzamTipus
+fogalomTipusToKategoria Kerdes = KategoriaSzamitasi SzamKapcsolat
+fogalomTipusToKategoria Magyarazat = KategoriaSzamitasi SzamTipus
+fogalomTipusToKategoria E8xE8 = KategoriaEmberi EmberiSzin
+fogalomTipusToKategoria Dualitas = KategoriaEmberi EmberiFazis
+fogalomTipusToKategoria Kategoria = KategoriaSzamitasi SzamTipus
+fogalomTipusToKategoria Szimmetria = KategoriaEmberi EmberiHang
+fogalomTipusToKategoria Tenzor = KategoriaSzamitasi SzamAdat
+fogalomTipusToKategoria Funktor = KategoriaSzamitasi SzamVezerles
+-- Szamok
+fogalomTipusToKategoria Szam = KategoriaPerem
+fogalomTipusToKategoria TermeszetesSzam = KategoriaSzamitasi SzamAdat
+fogalomTipusToKategoria EgeszSzam = KategoriaSzamitasi SzamAdat
+fogalomTipusToKategoria RacionalisSzam = KategoriaSzamitasi SzamAdat
+fogalomTipusToKategoria ValosSzam = KategoriaSzamitasi SzamAdat
+fogalomTipusToKategoria KomplexSzam = KategoriaSzamitasi SzamAdat
+-- Minden mas
+fogalomTipusToKategoria _ = KategoriaEmberi EmberiMod
+
+||| [[15,1,3]] teljes allapot: 7 emberi + 7 szamitasi + 1 perem = 15+1 bit.
+||| A perem a Legendre transzformacio: p·q̇ = Yoneda parositas.
+public export
+data TizenotEgyAllapot : Type where
+  TizenotEgyKonstruktor : (emberi : HetesKod) -> (szamitasi : HetesKod) -> (perem : Kubit) -> TizenotEgyAllapot
+
+||| [[15,1,3]] kodolas: |0> → (|0_e>, |0_s>, 0), |1> → (|1_e>, |1_s>, 1)
+public export
+tizenotEgyKodol : Kubit -> TizenotEgyAllapot
+tizenotEgyKodol k = TizenotEgyKonstruktor (alapKod k) (alapKod k) k
+
+||| [[15,1,3]] dekodolas: tobbseg szavazat.
+|||   Ha az emberi es szamitasi oldal egyetert, azt adjuk.
+|||   Ha nem, a perem dont (Legendre adjunkcio).
+public export
+tizenotEgyDekodol : TizenotEgyAllapot -> Kubit
+tizenotEgyDekodol (TizenotEgyKonstruktor e s p) =
+  let ke = steaneDekodol e
+      ks = steaneDekodol s
+  in if ke == ks then ke else p
+
+||| [[15,1,3]] kod torveny: kodolas majd dekodolas = azonossag.
+public export
+tizenotEgyTorveny : (k : Kubit) -> tizenotEgyDekodol (tizenotEgyKodol k) = k
+tizenotEgyTorveny Nulla = Refl
+tizenotEgyTorveny Egy   = Refl

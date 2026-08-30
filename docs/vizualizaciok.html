@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Szima — Vizualizációk (Idris-generált adatok)</title>
+<style>
+  body { font-family:Georgia,serif; background:#f0eee9; color:#1a1a2e; max-width:1000px; margin:0 auto; padding:2rem 1rem 4rem; line-height:1.6; }
+  h1 { font-size:1.6rem; } h2 { font-size:1.2rem; margin-top:2rem; border-bottom:1px solid #d8d4cc; padding-bottom:.3rem; }
+  .abra { background:#fafaf7; border:1px solid #d8d4cc; border-radius:6px; padding:1rem; margin:1rem 0; }
+  canvas { display:block; margin:0 auto; }
+  .kicsi { font-size:.85rem; color:#6b7280; }
+  table { border-collapse:collapse; margin:1rem auto; font-size:.85rem; }
+  td,th { border:1px solid #d8d4cc; padding:.3rem .5rem; text-align:center; }
+  th { background:#eef2f7; }
+  .poz { color:#059669; } .neg { color:#dc2626; } .zero { color:#9ca3af; }
+  a { color:#2563eb; text-decoration:none; } a:hover { text-decoration:underline; }
+  footer { margin-top:3rem; border-top:3px double #1a1a2e; padding-top:1rem; font-size:.85rem; color:#555; }
+</style>
+</head>
+<body>
+<h1>Vizualizációk — az Idris számolta, a böngésző rajzolta</h1>
+<p class="kicsi">Minden adat az Idrisből jön (<code>idris2 --exec jsonKiiras Vizualizaciok.idr</code>).
+<a href="attekintes.html">← vissza az áttekintéshez</a></p>
+
+<h2>1. Fano-sík (7 pont, 7 egyenes — a Steane [[7,1,3]] alapja)</h2>
+<div class="abra"><canvas id="fano" width="200" height="200"></canvas></div>
+<p class="kicsi">A 7 pont = a 7 qubit; a 7 egyenes = a stabilizátor-ellenőrzések.
+Minden egyenes 3 ponton át megy; minden pont 3 egyenesen.</p>
+<p class="kicsi"><b>MIÉRT az AI-hez:</b> a hangrend (mély/magas) = paritásbit — minden toldalékolt magyar szó <b>önellenőrző</b>. A rossz toldalék (*ház+ben) a típus szintjén elutasítva, nem futásidőben. Ez a hibajavítás legegyszerűbb formája: a nyelv maga javítja a saját hibáit.</p>
+<p class="kicsi"><a href="https://github.com/jhegedus42/Szima/blob/master/osveny_index/FanoParitás.idr">FanoParitás.idr →</a></p>
+
+<h2>2. Cayley–Dickson-torony (2→4→8→24→240)</h2>
+<div class="abra"><canvas id="torony" width="600" height="240"></canvas></div>
+<p class="kicsi">A kör 8 pontja → a gömb 24 → az oktonion-gömb 240 = az E8 gyökök.</p>
+<p class="kicsi"><b>MIÉRT az AI-hez:</b> egy <b>gondolat = egy bájt</b> (240+16=256). A kínai gyökér (5 bit, objektum) + magyar toldalék (3 bit, morfizmus) = 8 bit = E8Pont. A hangrend = a bájt 8. bitje = paritás-önellenőrzés. Az AI szavai nem véletlen sztringek, hanem rács-pontok.</p>
+<p class="kicsi"><a href="https://github.com/jhegedus42/Szima/blob/master/osveny_index/E8Gyokrendszer.idr">E8Gyokrendszer.idr →</a></p>
+
+<h2>3. Oktonion szorzattábla (7×7, a Fano-síkból)</h2>
+<div class="abra" id="oktonionTabla"></div>
+<p class="kicsi">A 49 pár × 3 alternativitási törvény egyetlen Refl-lel bizonyítva.
+Nem asszociatív: (e₁e₂)e₃ = −e₆ ≠ e₁(e₂e₃) = +e₆.</p>
+<p class="kicsi"><b>MIÉRT az AI-hez:</b> a <b>mondat = nem asszociatív szorzat</b>. A csoportosítás változtatja a jelentést: „új ház festése" = (új ház) festése ≠ új (ház festése). A szórend nem dekoráció — a jelentés hordozója. Az oktonion-algebra a nyelv szerkezetének matematikai modellje.</p>
+<p class="kicsi"><a href="https://github.com/jhegedus42/Szima/blob/master/osveny_index/OktonionAlgebra.idr">OktonionAlgebra.idr →</a></p>
+
+<h2>4. Steane-Hamiltonián spektrum</h2>
+<div class="abra"><canvas id="steane" width="500" height="200"></canvas></div>
+<p class="kicsi">A tiszta állapot a legalacsonyabb (H=−6); a hibák magasabb energiára visznek.
+A szindróma binárisan megmondja a hiba pozícióját.
+<a href="https://github.com/jhegedus42/Szima/blob/master/osveny_index/SteaneHamiltonian.idr">SteaneHamiltonian.idr →</a></p>
+
+<h2>5. Zitterbewegung (a Dirac-nyelv időfejlődése)</h2>
+<div class="abra"><canvas id="zitter" width="600" height="200"></canvas></div>
+<p class="kicsi">A jelentés oszcillál a térbeli (中文) és időbeli (magyar) nézet között.</p>
+<p class="kicsi"><b>MIÉRT az AI-hez:</b> a <b>kétnyelvű gondolkodás</b> mechanizmusa: γ⁰ (az idő = magyar toldalék!) forgatja a jelentést a térbeli (kínai, sűrű) és időbeli (magyar, dinamikus) nézet között. Ez nem fordítás egymás után — <b>egyidejű reprezentáció</b>, mint a hullám-részecske dualitás. A szerveri bugarról (blokk-diagonális γ⁰): a két nyelv sosem találkozik — a „gondolkodás" lehetetlen.</p>
+<p class="kicsi"><a href="zitterbewegung.html">Részletes oldal →</a> ·
+<a href="https://github.com/jhegedus42/Szima/blob/master/osveny_index/DiracIdoFejlodes.idr">DiracIdoFejlodes.idr →</a></p>
+
+<footer>
+Szima · az adatokat az Idris számolta, a böngésző csak rajzol ·
+<a href="https://github.com/jhegedus42/Szima">github.com/jhegedus42/Szima</a>
+</footer>
+
+<script>
+const ADAT = {"fano":{"pontok":[{"id":1,"x":100,"y":20},{"id":2,"x":169,"y":70},{"id":3,"x":143,"y":150},{"id":4,"x":57,"y":150},{"id":5,"x":31,"y":70},{"id":6,"x":100,"y":85},{"id":7,"x":100,"y":130}],"egyenesek":[[4,2,6],[4,1,5],[2,1,3],[4,7,3],[2,7,5],[1,7,6],[6,5,3]]},"torony":[{"nev":"R","egys":2,"bit":1},{"nev":"C","egys":4,"bit":2},{"nev":"kor","egys":8,"bit":3},{"nev":"H","egys":24,"bit":5},{"nev":"O","egys":240,"bit":8}],"oktonion":[["-1","+e4","+e7","-e2","+e6","-e5","-e3"],["-e4","-1","+e5","+e1","-e3","+e7","-e6"],["-e7","-e5","-1","+e6","+e2","-e4","+e1"],["+e2","-e1","-e6","-1","+e7","+e3","-e5"],["-e6","+e3","-e2","-e7","-1","+e1","+e4"],["+e5","-e7","+e4","-e3","-e1","-1","+e2"],["+e3","+e6","-e1","+e5","-e4","-e2","-1"]],"steane":[{"t":"tiszta","szint":0,"H":-6},{"t":"X1","szint":3,"H":0},{"t":"X4","szint":1,"H":-4},{"t":"Z5","szint":2,"H":-2}]};
+
+// ─── 1. FANO-SÍK ───
+function rajzolFano() {
+  const c = document.getElementById('fano'); const x = c.getContext('2d');
+  const p = ADAT.fano.pontok, e = ADAT.fano.egyenesek;
+  e.forEach(lin => {
+    x.strokeStyle = '#2563eb'; x.lineWidth = 1.5; x.beginPath();
+    const q = id => p.find(pt => pt.id === id);
+    x.moveTo(q(lin[0]).x, q(lin[0]).y); x.lineTo(q(lin[1]).x, q(lin[1]).y);
+    x.lineTo(q(lin[2]).x, q(lin[2]).y); x.stroke();
+  });
+  p.forEach(pt => {
+    x.fillStyle = '#1a1a2e'; x.beginPath(); x.arc(pt.x, pt.y, 5, 0, 7); x.fill();
+    x.fillStyle = '#555'; x.font = '10px Menlo'; x.fillText(pt.id, pt.x+7, pt.y-7);
+  });
+}
+
+// ─── 2. E8-TORONY ───
+function rajzolTorony() {
+  const c = document.getElementById('torony'); const x = c.getContext('2d');
+  const t = ADAT.torony; const maxE = 240;
+  const w = 600 / t.length;
+  t.forEach((d, i) => {
+    const h = (d.egys / maxE) * 180;
+    x.fillStyle = ['#2563eb','#059669','#dc2626','#7c3aed','#b45309'][i];
+    x.fillRect(i * w + 20, 210 - h, w - 30, h);
+    x.fillStyle = '#1a1a2e'; x.font = '11px Menlo';
+    x.fillText(d.nev, i * w + 25, 225);
+    x.fillText(d.egys, i * w + 25, 210 - h - 5);
+  });
+}
+
+// ─── 3. OKTONION TÁBLA ───
+function rajzolOktonion() {
+  const div = document.getElementById('oktonionTabla');
+  const t = ADAT.oktonion;
+  let html = '<table><tr><th></th>';
+  for (let j = 0; j < 7; j++) html += '<th>e' + (j+1) + '</th>';
+  html += '</tr>';
+  for (let i = 0; i < 7; i++) {
+    html += '<tr><th>e' + (i+1) + '</th>';
+    for (let j = 0; j < 7; j++) {
+      const v = t[i][j];
+      const cls = v.startsWith('+') ? 'poz' : v.startsWith('-') ? 'neg' : 'zero';
+      html += '<td class="' + cls + '">' + v + '</td>';
+    }
+    html += '</tr>';
+  }
+  html += '</table>';
+  div.innerHTML = html;
+}
+
+// ─── 4. STEANE SPEKTRUM ───
+function rajzolSteane() {
+  const c = document.getElementById('steane'); const x = c.getContext('2d');
+  const s = ADAT.steane; const minH = -6, maxH = 1;
+  const w = 500 / s.length;
+  x.strokeStyle = '#d8d4cc'; x.beginPath(); x.moveTo(40, 100); x.lineTo(480, 100); x.stroke();
+  s.forEach((d, i) => {
+    const y = 100 - (d.H / maxH) * 70;
+    x.fillStyle = d.H < 0 ? '#059669' : '#dc2626';
+    x.fillRect(i * w + 50, Math.min(100, y), w - 20, Math.abs(100 - y));
+    x.fillStyle = '#1a1a2e'; x.font = '11px Menlo';
+    x.fillText(d.t, i * w + 55, 190);
+    x.fillText(d.H, i * w + 55, Math.min(95, y - 5));
+  });
+}
+
+// ─── 5. ZITTERBEWEGUNG ───
+function rajzolZitter() {
+  const c = document.getElementById('zitter'); const x = c.getContext('2d');
+  const M = 30;
+  x.strokeStyle = '#d8d4cc'; x.lineWidth = 1;
+  for (let p = 0; p <= 1.01; p += 0.25) {
+    x.beginPath(); x.moveTo(M, 200-M-p*140); x.lineTo(600-M, 200-M-p*140); x.stroke();
+  }
+  x.strokeStyle = '#2563eb'; x.lineWidth = 2; x.beginPath();
+  for (let i = 0; i <= 100; i++) {
+    const t = i / 100 * Math.PI;
+    const pm = Math.sin(t) * Math.sin(t);
+    const px = M + (t / Math.PI) * (600 - 2*M);
+    const py = 200 - M - pm * 140;
+    if (i === 0) x.moveTo(px, py); else x.lineTo(px, py);
+  }
+  x.stroke();
+  x.strokeStyle = '#9ca3af'; x.lineWidth = 1; x.beginPath();
+  x.moveTo(M, 200-M); x.lineTo(600-M, 200-M); x.stroke();
+  x.fillStyle = '#6b7280'; x.font = '10px Menlo';
+  x.fillText('P(magyar)', 5, M); x.fillText('t→π', 580, 195);
+}
+
+window.addEventListener('load', () => {
+  rajzolFano(); rajzolTorony(); rajzolOktonion(); rajzolSteane(); rajzolZitter();
+});
+</script>
+</body>
+</html>

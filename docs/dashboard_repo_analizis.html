@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Szima — 17 Repo Analízis Dashboard (2026-08-26)</title>
+<style>
+  :root {
+    --festek:#1a1a2e; --papir:#fafaf7; --kiemel:#2563eb; --siker:#059669;
+    --arany:#b45309; --keret:#d8d4cc; --danger:#dc2626; --lila:#7c3aed;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: Georgia, serif; background:#f0eee9; color:var(--festek); max-width:1200px; margin:0 auto; padding:2rem 1rem 4rem; line-height:1.6; }
+  header { border-bottom:3px double var(--festek); padding-bottom:1.2rem; margin-bottom:2rem; }
+  h1 { font-size:1.8rem; margin:0 0 .4rem; }
+  h2 { font-size:1.3rem; border-bottom:1px solid var(--keret); padding-bottom:.3rem; margin-top:2.4rem; }
+  h3 { font-size:1.05rem; color:var(--lila); margin-top:1.5rem; }
+  table { border-collapse:collapse; width:100%; margin:1rem 0; font-size:.88rem; }
+  th,td { border:1px solid var(--keret); padding:.4rem .55rem; text-align:left; vertical-align:top; }
+  th { background:var(--papir); font-family:Menlo,monospace; font-size:.8rem; }
+  .pipa { color:var(--siker); font-weight:bold; }
+  .villam { color:var(--arany); font-weight:bold; }
+  .veszely { color:var(--danger); font-weight:bold; }
+  .monoszam { font-family:Menlo,monospace; white-space:nowrap; }
+  .forras { font-size:.78rem; color:#6b7280; font-family:Menlo,monospace; }
+  .doboz { background:var(--papir); border:1px solid var(--keret); border-radius:6px; padding:1rem 1.2rem; margin:1rem 0; }
+  .sulyos { background:#fef3c7; border-color:#fbbf24; }
+  .kritikus { background:#fee2e2; border-color:#dc2626; }
+  pre { background:var(--festek); color:#e5e7eb; padding:1rem 1.2rem; border-radius:6px; overflow-x:auto; font-size:.82rem; }
+  a { color:var(--kiemel); }
+  .meter { display:inline-block; width:60px; height:8px; background:#e5e7eb; border-radius:4px; vertical-align:middle; margin-right:.3rem; }
+  .meter > span { display:block; height:100%; border-radius:4px; }
+  footer { margin-top:3rem; border-top:3px double var(--festek); padding-top:1rem; font-size:.85rem; color:#555; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin:1rem 0; }
+  .kartya { background:var(--papir); border:1px solid var(--keret); border-radius:8px; padding:1.2rem; }
+  .kartya h3 { margin-top:0; }
+  .szam-nagy { font-size:2.5rem; font-weight:bold; line-height:1; }
+  .szam-kis { font-size:.85rem; color:#6b7280; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>17 Repo Analízis Dashboard</h1>
+  <p>A felhasználó kérdése (szó szerint): <i>"melyek relevansak e8 alapu emberi intelligenciat ado szimmetriakat felhasznalva, 1000x energia hatekonyabb ai-t kesziteni, aminek a 10-20%-nal jarhatunk most, kb 5x-10x tobbe kutatast, szamolast kell szisztematikusan egy kb 10-20 ezer oldalas konyvbe es determinisztikuasn vegig tesztelni, melyik szabaly az, ami az intelligenciat, tudatossagot adja"</i></p>
+  <p class="forras">Eljárás: 4 párhuzamos L1 előolvasó sub-agent → L2 GAN-ellenőr → L3 tudásstruktúra · Dátum: 2026-08-26 · Commit: 4604c0a</p>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>1. Összesítés — a számok</h2>
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<div class="grid2">
+  <div class="kartya">
+    <h3>Repók</h3>
+    <div class="szam-nagy">17</div>
+    <div class="szam-kis">elemzett releváns repo (a 94-ből)</div>
+    <p>4 L1 sub-agent párhuzamosan olvasta el az összes .idr, .scala, .py, .md fájlt.</p>
+  </div>
+  <div class="kartya">
+    <h3>Fogalmak</h3>
+    <div class="szam-nagy">~9 916</div>
+    <div class="szam-kis">grep-tel mért fogalom (konzervatív, NEM hallucinált)</div>
+    <p>Szima 6 694 + kcode 1 172 + Szima01 475 + idris-mag 47 + Scala/AI 1 308 + .md 42 = ~9 916. Bővebb értelmezéssel (.md fejlécekkel) ~31 000+.</p>
+  </div>
+  <div class="kartya">
+    <h3>Valódi bizonyítások</h3>
+    <div class="szam-nagy" style="color:var(--siker)">~30</div>
+    <div class="szam-kis">Refl-bizonyítás (két különböző konstrukció, egy híd)</div>
+    <p>Legjobbak: W(E8)=696729600 (struktúra vs prímfelbontás), bővítés-projekció retrakció ∀, Zai NEM túlélő (cáfolat)</p>
+  </div>
+  <div class="kartya">
+    <h3>Tautológiák</h3>
+    <div class="szam-nagy" style="color:var(--arany)">1</div>
+    <div class="szam-kis">X=X (alias = literál)</div>
+    <p><code>bizE8Rang : 8.0 = 8.0</code> — a projekt §18 szerint azonosítva és jelölve.</p>
+  </div>
+  <div class="kartya">
+    <h3>Hipotézisek</h3>
+    <div class="szam-nagy" style="color:var(--danger)">~17</div>
+    <div class="szam-kis">nincs kernel-bizonyítás (futásidejű Double vagy komment)</div>
+    <p><b class="veszely">KRITIKUS:</b> α⁻¹ = 137.036 és G = 6.67430e-11 <b>NEM</b> Refl-bizonyítottak — futásidejű Double-aritmetika számolja.</p>
+  </div>
+  <div class="kartya">
+    <h3>Projekt állapot</h3>
+    <div class="szam-nagy">10-20%</div>
+    <div class="szam-kis">a matematikai alap kész, a fizika ↔ komplex-GPT híd hiányzik</div>
+    <p>FazisT.idr és YCombinatorFazisT.idr még nincsenek megírva (a NOBEL_CEL_TERKEP szerint a következő lépés).</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>2. A 17 repó relevancia-matrix</h2>
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<table>
+<tr><th>Repo</th><th>Réteg</th><th>E8</th><th>Steane</th><th>CPT</th><th>Kat.elm.</th><th>Magyar</th><th>Komplex</th><th>Energia</th><th>Tudat</th></tr>
+<tr><td><b>Szima</b></td><td>MAG</td><td class="pipa">240 gyök</td><td class="pipa">[[7,1,3]]</td><td class="pipa">3 réteg</td><td class="pipa">Cat³</td><td class="pipa">22 eset</td><td class="pipa">ℂ⁸</td><td class="pipa">Landauer</td><td class="pipa">Y-fixpont</td></tr>
+<tr><td><b>idris-mag</b></td><td>MAG</td><td>—</td><td>—</td><td class="pipa">pszichofizikai</td><td class="pipa">funktor</td><td class="pipa">szórend</td><td>—</td><td>—</td><td class="pipa">Novelty-GAN</td></tr>
+<tr><td><b>kcode</b></td><td>MAG</td><td class="pipa">fixpont</td><td class="pipa">Fano-sík</td><td class="pipa">maszk=37</td><td class="pipa">Awodey</td><td class="pipa">3460 szó</td><td class="pipa">Cayley-Dickson</td><td>—</td><td class="pipa">γ=7/64</td></tr>
+<tr><td><b>Szima01</b></td><td>MAG</td><td class="pipa">240</td><td class="pipa">[[7,1,3]]</td><td class="pipa">maszk=37</td><td class="pipa">34 duál</td><td class="pipa">64 noun</td><td class="pipa">3⁷=2187</td><td class="pipa">Landauer</td><td class="pipa">49=tudat</td></tr>
+<tr><td><b>agi_jul25_scala</b></td><td>INFRA</td><td>—</td><td class="pipa">(AgentTrait)</td><td class="pipa">maszk=37</td><td class="pipa">28 fogalom</td><td class="pipa">LangMathKB</td><td class="pipa">Cint</td><td>—</td><td class="pipa">137 fixpont</td></tr>
+<tr><td><b>complex-gpt</b></td><td>KÖZVETLEN</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="pipa">GPT-2c</td><td class="pipa">fázis-hatékony</td><td class="pipa">drift-detekció</td></tr>
+<tr><td><b>gpt-2-ai-joco</b></td><td>KÖZVETLEN</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="pipa">U=exp(-iHΔt)</td><td class="pipa">least-action</td><td class="pipa">temporális</td></tr>
+<tr><td><b>phys</b></td><td>KÖZVETLEN</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="pipa">Hamilton</td><td>—</td></tr>
+<tr><td><b>chatgpt-causal</b></td><td>KÖZVETLEN</td><td>—</td><td>—</td><td class="pipa">okozati</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="pipa">task-sensitive</td></tr>
+<tr><td><b>test2025aug</b></td><td>KÖZVETLEN</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="pipa">self-repair</td></tr>
+<tr><td><b>joco-code-agent</b></td><td>KÖZVETLEN</td><td class="pipa">C6⊂E8</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td><b>frp-neural-net</b></td><td>ELŐZMÉNY</td><td>—</td><td>—</td><td>—</td><td class="pipa">monoid</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td><b>dev-root</b></td><td>INFRA</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td><b>ai2604</b></td><td>KÖZVETLEN</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="pipa">self-repair</td></tr>
+<tr><td><b>bayesnose</b></td><td>ELŐZMÉNY</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td><b>agi_jul25_idris</b></td><td>MAG</td><td colspan="8" style="text-align:center;color:#9ca3af">ÜRES (csak egy üres kcode/ mappa)</td></tr>
+<tr><td><b>home-joco-god</b></td><td>INFRA</td><td colspan="8" style="text-align:center;color:#9ca3af">biztonsági mentés (ma pusholva)</td></tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>3. L2 GAN Audit — a bizonyítások osztályozása</h2>
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<div class="doboz kritikus">
+  <h3 style="color:var(--danger)">⚠️ A legkritikusabb megállapítás</h3>
+  <p><b>A projekt központi fizikai állítása — hogy α⁻¹ és G a Steane [[7,1,3]] kódból levezethetőek és a CODATA mérési hibán belül vannak — NEM a kernel által bizonyított.</b> A Refl-bizonyítások CSAK a köztes aritmetikát fedik (128+8+1=137, 256-6=250, 7-2=5, stb.). A fizikai állítást (α⁻¹ = 137.036 - δ, ahol δ = (121/128)^(249+ln(9/8))) a futásidejű Double-aritmetika számolja ki a <code>main</code>-ben.</p>
+  <p class="forras">Forrás: VALTO_PROPOSAL_RISK_PACKET.md (a projekt saját red-team audit-ja) + AGENTS §17-18 (mérési hiba-kötelezettség + őszinte verifikáció)</p>
+</div>
+
+<h3>Valódi bizonyítások (~30) — két különböző konstrukció, egy híd</h3>
+<table>
+<tr><th>Állítás</th><th>Hely</th><th>Típus</th></tr>
+<tr><td>W(E8) = 696 729 600 (struktúra vs prímfelbontás)</td><td class="forras">E8Gyokok_v2.idr:253,262</td><td class="pipa">két út, egy híd</td></tr>
+<tr><td>240 + 16 = 256 = 2⁸ (gyökök+pengék vs bájt)</td><td class="forras">E8TizenhatPenge.idr:214</td><td class="pipa">két út</td></tr>
+<tr><td>σ² = id (Weyl involúció)</td><td class="forras">E8FazisKapcsolat_v2.idr:149</td><td class="pipa">két út</td></tr>
+<tr><td>64 kodon = 4·4·4 (enumeráció vs képlet)</td><td class="forras">MagyarKinaiTorvenyek_v3.idr:181</td><td class="pipa">két út</td></tr>
+<tr><td>Bővítés-projekció retrakció ∀ m</td><td class="forras">MagyarKinaiTorvenyek_v3.idr:69</td><td class="pipa">dependent tétel</td></tr>
+<tr><td>Aspektus megmarad körúton (F∘G = id)</td><td class="forras">MagyarKinaiTorvenyek_v3.idr:99</td><td class="pipa">dependent</td></tr>
+<tr><td>Zai NEM túlélő (cáfolat)</td><td class="forras">MagyarKinaiTorvenyek_v3.idr:159</td><td class="pipa">Refl impossible</td></tr>
+<tr><td>Múlt NEM marad meg (cáfolat)</td><td class="forras">MagyarKinaiTorvenyek_v3.idr:167</td><td class="pipa">Refl impossible</td></tr>
+<tr><td>Carnot η(500,300) = 2/5 (keresztszorzás)</td><td class="forras">CarnotCiklus_v1.idr:98</td><td class="pipa">két út</td></tr>
+<tr><td>Rushbrooke α+2β+γ=2</td><td class="forras">E8Univerzalitas_v1.idr:190</td><td class="pipa">két út</td></tr>
+<tr><td>Fisher γ=ν(2-η)</td><td class="forras">E8Univerzalitas_v1.idr:210</td><td class="pipa">két út</td></tr>
+<tr><td>Hiperskálázás 2-α=d·ν</td><td class="forras">E8Univerzalitas_v1.idr:200</td><td class="pipa">két út</td></tr>
+<tr><td>Weyl-reflexió σ(α)=-α</td><td class="forras">E8BelsőSzorzat.idr:124</td><td class="pipa">kernel számol</td></tr>
+<tr><td>i² = -1, i⁴ = +1</td><td class="forras">FazisKubit.idr:109,115</td><td class="pipa">kernel számol</td></tr>
+<tr><td>Carnot-ciklus záródik (4 lépés → Első)</td><td class="forras">CarnotCiklus_v1.idr:214</td><td class="pipa">nem X=X</td></tr>
+<tr><td>Üres perem → üres belső (perfectTensor49)</td><td class="forras">HolografikusKod49.idr:207</td><td class="pipa">kernel számol</td></tr>
+<tr><td>Üres belső entrópia = 0 (Ryu-Takayanagi)</td><td class="forras">HolografikusKod49.idr:214</td><td class="pipa">kernel számol</td></tr>
+</table>
+
+<h3>Tautológiák (1)</h3>
+<table>
+<tr><th>Állítás</th><th>Hely</th><th>Megjegyzés</th></tr>
+<tr><td class="villam">bizE8Rang : 8.0 = 8.0</td><td class="forras">E8Gyokok_v2.idr:226</td><td>alias = literál — a kernelnek nulla munka</td></tr>
+</table>
+
+<h3>Hipotézisek (~17) — nincs kernel-bizonyítás</h3>
+<table>
+<tr><th>Hipotézis</th><th>Hely</th><th>Miért hipotézis?</th></tr>
+<tr><td class="veszely">α⁻¹ = 137.035999177</td><td class="forras">AlphaSteane.idr:142</td><td>futásidejű Double, nem Refl</td></tr>
+<tr><td class="veszely">Δ/σ(α) = 0.00017</td><td class="forras">AlphaSteane.idr:147</td><td>futásidejű Double</td></tr>
+<tr><td class="veszely">G = 6.67430e-11</td><td class="forras">AlphaSteane.idr:157</td><td>futásidejű Double</td></tr>
+<tr><td class="veszely">Δ/σ(G) = 0.038</td><td class="forras">AlphaSteane.idr:165</td><td>futásidejű Double</td></tr>
+<tr><td>112 gyök lista hossza = 112</td><td class="forras">—</td><td>csak a képlet (28·4=112), nem a lista hossza</td></tr>
+<tr><td>128 gyök lista hossza = 128</td><td class="forras">—</td><td>csak a képlet (256/2=128)</td></tr>
+<tr><td>Weyl-zártság (57 600 pár)</td><td class="forras">—</td><td>csak futásidejű main</td></tr>
+<tr><td>E8 eloszlás (1,56,126,56,1)</td><td class="forras">—</td><td>csak futásidejű</td></tr>
+<tr><td>Rács ön-duálisitása</td><td class="forras">E8Gyokok_v2.idr komment</td><td>állítás, nincs bizonyítás</td></tr>
+<tr><td>Kategóriaelméleti törvények (Scala)</td><td class="forras">CTReasoner.scala:96-173</td><td>dokumentációs stringek</td></tr>
+<tr><td>7 bit 16 állapota lefedi 22 esetet</td><td class="forras">Steane713.idr komment</td><td>komment-állítás</td></tr>
+<tr><td class="veszely">1000× energiahatékonyság</td><td class="forras">sehol</td><td>nincs kvantifikálva</td></tr>
+<tr><td class="veszely">Tudatosság definíciója</td><td class="forras">FazisAlgebra_v2.idr</td><td>futásidejű Double</td></tr>
+<tr><td>λ=0 invariáns (GPT-time-2)</td><td class="forras">notes.md:18</td><td>komplex ág nem implementálva</td></tr>
+<tr><td>GR-analógia (complex-gpt)</td><td class="forras">reference.md:97</td><td>analógia, nem bizonyítás</td></tr>
+<tr><td>137 = 64+37+36 (Scala)</td><td class="forras">Fixpoint.scala:49</td><td>runtime Boolean, nem fordítói</td></tr>
+<tr><td>F₁₂-7 = 137 (Scala)</td><td class="forras">Fixpoint.scala:41</td><td>runtime Boolean</td></tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>4. A 15 legfontosabb összefüggés</h2>
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<table>
+<tr><th>#</th><th>Összefüggés</th><th>Hogyan?</th><th>Státusz</th></tr>
+<tr><td>1</td><td>E8 gyökök ↔ Steane kód</td><td>240 + 16 = 256 = 2⁸ (gyökök=tartalom, pengék=keret)</td><td class="pipa">Refl bizonyított</td></tr>
+<tr><td>2</td><td>Steane ↔ α⁻¹</td><td>n=7, k=1, d=3 → 137.036</td><td class="veszely">HIPOTÉZIS (delta nem Refl)</td></tr>
+<tr><td>3</td><td>CPT ↔ Magyar nyelv</td><td>C=Forrás, P=Szemlélet, T=Igeidő (3×3×3=27)</td><td class="pipa">Részben bizonyított</td></tr>
+<tr><td>4</td><td>CPT ↔ Pszichofizika</td><td>C=Én, P=Te, T=Kapcsolat</td><td class="villam">Definíció, nem tétel</td></tr>
+<tr><td>5</td><td>64 noun ↔ Steane stabilizátor</td><td>2⁶ = [[7,1,3]] kód stabilizátor-csoportja</td><td class="pipa">Refl</td></tr>
+<tr><td>6</td><td>279 verb ↔ 7³-64</td><td>dinamikus tér = teljes - stabilizátor</td><td class="pipa">Refl</td></tr>
+<tr><td>7</td><td>PSL(2,7)=168 ↔ Fano-sík ↔ Szintaxis</td><td>7 pont szintaktikai permutációja</td><td class="pipa">Refl</td></tr>
+<tr><td>8</td><td>49 = 7×7 ↔ Szabad kategória ↔ Tudat</td><td>21 incident + 28 non-incident</td><td class="villam">Hipotézis</td></tr>
+<tr><td>9</td><td>137 = 64+37+36 ↔ Fixpont ↔ α⁻¹</td><td>állapot + megfigyelő + jelölő</td><td class="villam">Hipotézis</td></tr>
+<tr><td>10</td><td>γ=7/64 ↔ Tudatosság ↔ Goldilocks</td><td>7=Fano(kényszer), 64=állapottér(szabadság)</td><td class="villam">Hipotézis</td></tr>
+<tr><td>11</td><td>Megértés ↔ Hibajavítás</td><td>szindróma = meg-nem-értés dimenziója</td><td class="pipa">Részben bizonyított</td></tr>
+<tr><td>12</td><td>Hasonlat ↔ Funktor ↔ Anti-hallucináció</td><td>hallucináció = típushiba</td><td class="pipa">Definíció</td></tr>
+<tr><td>13</td><td>Komplex fázis ↔ GR-analógia</td><td>ρ → metrika → görbület (K_φ)</td><td class="villam">Analógia</td></tr>
+<tr><td>14</td><td>Least-action ↔ Hamiltonian ↔ AI</td><td>H_θ least-action latens trajektóriákból</td><td class="villam">Terv, nem implementálva</td></tr>
+<tr><td>15</td><td>Carnot ↔ Hibajavítás ↔ Bach-fuga</td><td>mind "perpetuum mobile" = δ stabilizátor</td><td class="villam">Metafora</td></tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>5. A 7 rétegű jelentéselmélet (szemantika = optimális döntés célfüggvény szempontjából)</h2>
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<div class="doboz">
+<ol>
+<li><b>DisCoCat</b> (idris-mag): jelentés = posterior-hisztogram, szó-tömeg = gravitáció, összefonódás = ER=EPR</li>
+<li><b>Funktor</b> (idris-mag): hasonlat = funktor, hallucináció = típushiba (deklarálatlan lekérdezés)</li>
+<li><b>Stabilizátor</b> (Szima01): nyelvtan = kvantumhibajavító kód, jelentés = logikai kubit (1 a 64-ből)</li>
+<li><b>Szabad kategória</b> (Szima01): tudat = 49 ítélet a Fano-síkon (21 tényleges + 28 lehetséges)</li>
+<li><b>Entrópia/Goldstone</b> (Szima01): jelentés-dinamika = entrópia, Goldstone = ige→főnév SSB</li>
+<li><b>Permutációs</b> (idris-mag): jelentés = permutáció-invariáns (multiset)</li>
+<li><b>Solomonoff</b> (kcode): jelentés = minimális programhossz (MDL), γ=7/64 = tudatosság coupling</li>
+</ol>
+<p><b>A "szemantika definíciója"</b> (felhasználó): <i>optimális döntés valamilyen célfüggvény szempontjából</i> = a <b>Legkisebb Művelet Elve a jelentés-gráfon</b>: Lagrangian minimalizálása, ahol a célfüggvény az információmegőrzés (Kodol ∘ Dekodol = id = Noether-tétel).</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>6. Algebrák és célfüggvények</h2>
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<div class="grid2">
+<div class="kartya">
+<h3>Algebrák (14)</h3>
+<ol>
+<li>E8 gyökrendszer (ℝ⁸, 240 gyök, norma²=2)</li>
+<li>Clifford Cl(4) (16 penge, Hodge-duál)</li>
+<li>Cl(0,14) (2¹⁴ = 16384 dim)</li>
+<li>E8×E8 Clifford (bal=tér, jobb=szín, szorzat=hang)</li>
+<li>Komplex ℂ (re + im, Euler)</li>
+<li>Pauli su(2) (X, Y, Z, Bloch-gömb)</li>
+<li>GF(2) (mod 2, Hamming kód)</li>
+<li>Weyl-csoport W(E8) (696 729 600)</li>
+<li>Carnot-ciklus (4 lépés)</li>
+<li>FazisAlgebra (ToltesParitasIdo)</li>
+<li>Cayley-Dickson (ℂ→ℍ→𝕆→𝕊)</li>
+<li>Cint / Gauss-egészek (a+bi)</li>
+<li>RGFlow (64→101→137→137)</li>
+<li>CPTMask (bitmaszk, involúció: 37⊕37=0)</li>
+</ol>
+</div>
+<div class="kartya">
+<h3>Célfüggvények (10)</h3>
+<ol>
+<li><b>Lagrangian</b>: L = T - V a gráf-on (Legkisebb Művelet)</li>
+<li><b>Hamiltonian</b>: H = p·q̇ - L; kvantum út-integrál</li>
+<li><b>BayesLens</b>: elore + vissza; információmegőrzés</li>
+<li><b>Y-kombinátor fixpont</b>: Consciousness = Fix(Observation)</li>
+<li><b>Renormálás fixpont</b>: β(g) = 0</li>
+<li><b>GPT-2c tweak loss</b>: L = CE + λ·KL + μ·v_θ² + ν·|D(w)|</li>
+<li><b>GPT-time-2 long-term</b>: min Σ S_θ[q] + β·L_task</li>
+<li><b>RG-flow → 137</b>: relaxáció a fixpont felé</li>
+<li><b>SAT megoldás</b>: CDCL konfliktus-minimalizálás</li>
+<li><b>MDL (Solomonoff)</b>: minimális programhossz</li>
+</ol>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>7. "Melyik szabály adja az intelligenciát/tudatosságot?" — hipotézisek</h2>
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<table>
+<tr><th>Hipotézis</th><th>Forrás</th><th>Státusz</th></tr>
+<tr><td><b>A tudat = Y-kombinátor fixpont</b>: Y_ℂ(f) = e^{iφ}·f(Y_ℂ(f)) — a 49. struktúra</td><td class="forras">NOBEL_CEL_TERKEP.md:43-61</td><td class="villam">HIPOTÉZIS — YCombinatorFazisT.idr még nincs megírva</td></tr>
+<tr><td><b>A megértés = hibajavítás</b>: szindróma = meg-nem-értés dimenziója; javítás = modell frissítés</td><td class="forras">otletek_megertes_hibajavitas.md</td><td class="pipa">RÉSZBEN BIZONYÍTOTT (dependent tételek)</td></tr>
+<tr><td><b>A fázis az, ami a 2-esből 3-ast csinál</b>: bit(2) + fázis(1) = 3D (Bloch-gömb)</td><td class="forras">FazisKubit.idr:216-249</td><td class="pipa">RÉSZBEN (i²=-1 bizonyított, "tudatot ad" hipotézis)</td></tr>
+<tr><td><b>γ⁵ = ön-megfigyelés határa</b>: 15 belső + 16. fázis</td><td class="forras">NOBEL_CEL_TERKEP.md:86-96</td><td class="villam">HIPOTÉZIS</td></tr>
+<tr><td><b>Magyar = kategóriaelmélet anyanyelve</b>: agglutináció=kompozíció, 22 eset=22 logikai kapcsolat</td><td class="forras">AGENTS.md:§0, LangMathKB</td><td class="pipa">RÉSZBEN (17 leképezés + dependent tételek)</td></tr>
+<tr><td><b>γ=7/64 = tudatosság Goldilocks</b>: 7=Fano, 64=állapottér</td><td class="forras">Solomonoff.idr:110-120</td><td class="villam">HIPOTÉZIS</td></tr>
+<tr><td><b>1000× energiahatékonyság = coend-kompaktálás</b>: nem eldob, hanem összevon</td><td class="forras">terv_donteshozo_rendszer.md</td><td class="villam">HIPOTÉZIS (nincs kvantifikálva)</td></tr>
+<tr><td><b>Komplex fázis-struktúra = 1000× kulcs</b>: K_φ korai szignál, least-action H</td><td class="forras">complex-gpt, gpt-2-ai-joco</td><td class="pipa">KÍSÉRLETI (kód megvan, eredmény még nincs)</td></tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>8. AMI KÉSZ vs AMI HIÁNYZIK</h2>
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<div class="grid2">
+<div class="kartya">
+<h3 style="color:var(--siker)">✓ KÉSZ (bizonyított)</h3>
+<ul>
+<li>E8 gyökrendszer (240 gyök, Weyl-csoport, belső szorzat, reflexiók)</li>
+<li>Steane [[7,1,3]] kód paraméterei (n=7, k=1, d=3, N=128, M=256)</li>
+<li>Kategóriaelméleti typeclass-ok (49 struktúra)</li>
+<li>Magyar↔Kínai fordítás dependent tételei</li>
+<li>Carnot-ciklus záródása</li>
+<li>Skálacímkék (Rushbrooke, Fisher, Hiperskálázás)</li>
+<li>Holografikus kód (HaPPY)</li>
+<li>Komplex algebra (i²=-1, Bloch-gömb)</li>
+<li>Weyl-tükrözés involúció</li>
+<li>Hodge-duál involúció</li>
+</ul>
+</div>
+<div class="kartya">
+<h3 style="color:var(--danger)">✗ HIÁNYZIK (hipotézis → bizonyítás)</h3>
+<ul>
+<li><b>FazisT.idr</b> — fázis-algebra typeclass-okkal</li>
+<li><b>YCombinatorFazisT.idr</b> — 49. struktúra bizonyítása</li>
+<li><b>α⁻¹ Refl-bizonyítása</b> — delta = pow... futásidejű</li>
+<li><b>G Refl-bizonyítása</b> — ugyanez</li>
+<li><b>240 gyök lista hossz Refl</b> — jelenleg csak képlet</li>
+<li><b>Weyl-zártság Refl</b> — 57 600 pár</li>
+<li><b>Rács ön-duálisitás</b> — csak komment</li>
+<li><b>1000× energiahatékonyság</b> — nincs kvantifikálva</li>
+<li><b>Komplex-GPT ↔ E8 híd</b> — a híd hiányzik</li>
+<li><b>λ=0 invariáns</b> — komplex ág nincs implementálva</li>
+<li><b>10-20 ezer oldalas könyv</b> — konyv_v2.tex (5 oldal) pilot</li>
+</ul>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>9. A következő lépések (5×-10× kutatás/számolás)</h2>
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<ol>
+<li><b>FazisT.idr megírása</b> — a fázis-algebra typeclass-okkal</li>
+<li><b>YCombinatorFazisT.idr megírása</b> — a 49. struktúra bizonyítása</li>
+<li><b>α⁻¹ Refl-bizonyítása</b> — a pow és log kiterjesztése Refl-szintre</li>
+<li><b>240 gyök lista hossz bizonyítása</b> — List.length e8Gyökök = 240</li>
+<li><b>Weyl-zártság bizonyítása</b> — 57 600 pár Refl-lel</li>
+<li><b>Komplex-GPT ↔ E8 híd</b> — K_φ és Weyl-reflexió kapcsolata</li>
+<li><b>10-20 ezer oldalas könyv</b> — KonyvTerv_v1.md kiterjesztése</li>
+<li><b>Determinisztikus tesztelés</b> — minden törvény Refl + numerika + irodalom</li>
+</ol>
+
+<div class="doboz sulyos">
+  <h3>Jelmagyarázat</h3>
+  <p>
+    <span class="pipa">✓</span> = formálisan (Refl) vagy numerikusan bizonyítva ·
+    <span class="villam">⚡</span> = nyitott hipotézis (semmi halu — a nyitottság jelölve) ·
+    <span class="veszely">⚠</span> = KRITIKUS hiányosság (a §17-18 szerint jelölve)
+  </p>
+  <p class="forras">A projekt §18 szerint: "Minden 'bizonyított' állítást a FORDÍTÓNak kell ellenőriznie; a kommentben állított törvény és a típusban lévő állítás különbsége = NEM bizonyított."</p>
+</div>
+
+<footer>
+  Szima · 17 Repo Analízis Dashboard · 2026-08-26 · Commit 4604c0a ·
+  Forrás: <a href="https://github.com/jhegedus42/Szima">github.com/jhegedus42/Szima</a> ·
+  Teljes jelentés: <code>docs/RepoAnalizis_Tudasstruktura_v1.md</code> ·
+  L2 GAN audit: a fenti táblázatok ·
+  Eljárás: 4 L1 sub-agent + 1 L2 GAN-ellenőr + L3 tudásstruktúra
+</footer>
+
+</body>
+</html>

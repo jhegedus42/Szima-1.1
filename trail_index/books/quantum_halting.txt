@@ -1,0 +1,442 @@
+Unsolvability of the Halting Problem in Quantum Dynamics
+Daegene Song
+National Institute of Standards and Technology, Gaithersburg, Maryland 20899
+(Dated: October 2, 2018)
+It is shown that the halting problem cannot be solved consistently in both the Schrödinger and
+Heisenberg pictures of quantum dynamics. The existence of the halting machine, which is assumed
+from quantum theory, leads into a contradiction when we consider the case when the observer’s
+reference frame is the system that is to be evolved in both pictures. We then show that in order
+to include the evolution of observer’s reference frame in a physically sensible way, the Heisenberg
+picture with time going backwards yields a correct description.
+
+arXiv:quant-ph/0610047v1 7 Oct 2006
+
+PACS numbers:
+
+With the construction of universal quantum Turing
+machine, Deutsch proposed [1] a quantum version of the
+halting problem first proved by Alan Turing in 1936 [2].
+In recent years, a lot of interest has been focused on
+quantum computation [3], and the discussion of the halting problem using a quantum computer has also received
+attention. Myers argued [4] that due to entanglement
+between a halt qubit and a system, it may be difficult
+to measure the halt qubit, which may spoil the computation. Subsequent discussions on the halting problem with
+a quantum computer have mainly focused on the superposition and entanglement of the halt qubit [5, 6, 7].
+In this paper, we approach the halting scheme differently and use two pictures of quantum dynamics, i.e.,
+the Schrödinger and Heisenberg pictures. Schrödinger’s
+wave mechanics and Heisenberg’s matrix mechanics were
+formulated in the early twentieth century and have been
+considered to be equivalent, i.e., two different ways of describing the same physical phenomenon that we observe.
+Therefore, in order to consider a halting scheme for a
+quantum system, we need to examine whether the procedure is consistent in both the Schrödinger and Heisenberg
+pictures. We will give an example in quantum dynamics
+that shows this cannot be achieved. We will then argue
+that it is the Heisenberg picture, rather than both pictures, that yields the correct description that not only
+does not run into the inconsistency shown through the
+halting scheme but also is physically sensible.
+In order to discuss the halting problem, we first wish to
+define notations to be used. In particular we will follow
+a similar notation used in [8, 9] such that it is convenient
+in both Schrödinger and Heisenberg pictures. A qubit, a
+basic unit of quantum information, is a two-level quantum system written as |ψi = a|0i + b|1i. Using a Bloch
+sphere notation, i.e., with a = exp(−iφ/2) cos(θ/2) and
+b = exp(iφ/2) sin(θ/2), a qubit in a density matrix form
+can be written as |ψihψ| = 12 (1 + v̂ ·~σ ) where (vx , vy , vz )
+= (sin θ cos φ, sin θ sin φ, cos θ) and ~σ = (σx , σy , σz ) with
+σx = |0ih1| + |1ih0|, σy = −i|0ih1| + i|1ih0|, and σz =
+|0ih0| − |1ih1|. Therefore a qubit, |ψihψ|, can be represented as a unit vector v̂ = (vx , vy , vz ) pointing in (θ, φ)
+of a sphere with 0 ≤ θ ≤ π, 0 ≤ φ ≤ 2π. A unitary transformation of a qubit in the unit vector notation v̂ can be
+obtained by applying U to σi for the corresponding ith
+
+component of the vector v̂, i.e., vi , where i = x, y, z (also
+see [10] for a general transformation of a single qubit in
+a Bloch sphere). We will write the transformation of v̂
+under the unitary operation U as v̂′ = U v̂U † , implying
+the unitary transformation is applied to the corresponding σi . For example, let us consider the case when U
+is a rotation about y-axis by α in a Bloch sphere, i.e.,
+U = cos α2 |0ih0| − sin α2 |0ih1| + sin α2 |1ih0| + cos α2 |1ih1|.
+Then it yields that v̂ = (vx , vy , vz ) is transformed into v̂′
+≡ U v̂U † = (cos αvx + sin αvz , vy , − sin αvx + cos αvz ).
+In quantum theory, there is another important variable
+called an observable. For a single qubit, an observable
+can also be written as a unit vector [9], ê = (ex , ey , ez )
+where (ex , ey , ez ) = (sin ϑ cos ϕ, sin ϑ sin ϕ, cos ϑ), pointing (ϑ, ϕ) direction in a sphere. Therefore if one is to
+make a measurement in (ϑ, ϕ) direction, the observable
+would be ê · ~σ . In the Heisenberg picture of quantum
+theory, it is the unit basis vector ê that is transformed
+(p243, [11]). Using a similar transformation rule as in v̂,
+a unitary transformation of the observable in the basis
+vector notation can be obtained by applying U † to the
+σj by U † σj U for ej which we represent as ê′ = U † êU .
+As an example, we again consider the case when U is
+a rotation about y-axis by α as follows ê′ ≡ U † êU =
+(cos αex − sin αez , ey , sin αex + cos αez ). As shown in
+Fig. 1, the directions of transformation for two vectors are different for Schrödinger and Heisenberg pictures. Therefore the expectation value ê′ ·v̂ in the Heisenberg picture remains the same as in the case with the
+Schrödinger picture, i.e., e · v̂′ . For the remainder of this
+paper, we will treat the two vectors v̂ and ê on an equal
+footing. The only specialty about ê is that it serves as a
+coordinate or a basis vector such that when a measurement is made on the vector v̂, the expectation value is
+with respect to ê.
+With a quantum system and a halt qubit, Deutsch
+introduced [1] a quantum version of the halting problem
+wherein the completion of every valid quantum algorithm
+through a unitary process applied to the quantum system is accompanied by the change in a halt qubit to 1
+that remains 0 otherwise. We will assume such a halting
+machine exists and will argue that this assumption leads
+into a contradiction. With the introduced notations, we
+will consider one particular case of the halting machine,
+
+2
+e
+
+e
+
+v
+
+e
+v
+
+v
+
+(a) Schrodinger picture
+
+(b) Heisenberg picture
+
+FIG. 1: For the Schrödinger picture (a), the unit vector v̂
+evolves while the unit basis vector ê is intact. In the Heisenberg picture (b), the basis vector ê is rotated into opposite
+direction by the same amount while the unit vector v̂ remains,
+thereby keeping the angle between the two vectors, therefore
+the expectation values, the same in both pictures.
+
+that is, when the halting machine consists of a unit vector v̂s ≡ (vx , vy , vz ) and a halt qubit v̂h ≡ (0, 0, 1).
+We do not include an ancilla state because it will not
+be needed for our discussion. The time evolution of the
+halting machine is defined through a unitary process, and
+the machine halts when the unit vector v̂s is rotated by δ
+about an arbitrary n̂ = (nx , ny , nz )-axis. This time evolution of the halting machine can be achieved with the
+unit vector v̂s evolving as follows
+v̂s → Uδ v̂s Uδ†
+
+(1)
+
+where Uδ ≡ cos(δ/2)1−i sin(δ/2)(n̂·~σ ) and the halt qubit
+v̂h is transformed into −v̂h with a unitary operation σx .
+In the following, we will show this halting machine runs
+into a contradiction.
+Before we proceed with our discussion of the halting
+problem, we wish to discuss the concept of observables in
+quantum theory. When we want to check a moving vehicle’s speed, we may use a speed gun and could read, for
+example, 80km/hr. Or we could use a thermometer to
+measure a room temperature which may yield, for example, 25 degrees Celsius. While the measurement tools,
+such as the speed gun and the thermometer, yield the
+output with not only numbers but also units such as
+km/hr and degrees Celsius, what the actual measurement
+yields is rather different. For example, a laser speed gun
+checks the distances from the gun at two different times
+and is designed to calculate and to yield an output of
+the moving vehicle’s speed. A mercury-thermometer is
+designed to show the temperature in relation to the increase of the volume of mercury in the thermometer. The
+numbers obtained from the measurement represent the
+perception experienced by an observer and the meaning
+of those numbers, such as speed or temperature represented with units, a concept, is imposed by an observer.
+In quantum theory, concepts such as position and momentum are called observables and the numbers that result from the measurements are represented as eigenvalues (p63, [11]).
+
+Let us take an example of a one-dimensional line as
+shown in Fig. 2. In order to claim a dot, which is lying
+on the line, is either on the right or on the left, there
+should be a reference point. For example, with respect
+to the origin or with respect to +3, one may say the
+dot is on the left or on the right. Instead of looking at
+the line from outside, suppose there is an observer being
+confined to the one-dimensional line facing into the paper as shown in (C) of Fig. 2. The observer measures or
+perceives whether the dot is on the right or on the left.
+Depending on where the observer is sitting, the outcome
+of the measurement, i.e., either on the right or on the
+left, will change. In this case, we note that the observer
+him or herself is serving the role of the reference point.
+Therefore when the observer makes a measurement and
+gets a result that the dot is on the right or on the left, this
+implies that with respect to his or her reference frame of
+the position on the line, the dot is on the right or on the
+left. Let us apply the same logic to the case of a single qubit in a Bloch sphere. When an observer measures
+a qubit in a certain direction, say in n̂, the outcome of
+the measurement is either +1 or −1. The eigenvalue obtained is with respect to the measurement direction n̂. It
+is noted that n̂ is playing a similar role as the reference
+point in the case of the one-dimensional line example.
+We also note that the measurement outcome of +1 or
+−1 is the perception experienced by the observer. That
+is, it is the observer who obtains the outcome +1 or −1.
+Therefore, the outcome should be meaningful with respect to the observer’s certain reference frame. Because
+we already know that the eigenvalue outcome +1 or −1
+is meaningful with respect to the measurement direction
+n̂, it leads us to consider the observer’s reference frame
+as n̂ for our single qubit measurement case. Using the
+unit vector notations we previously defined, we propose
+the following:
+Postulate I: Given a unit vector v̂, an observer’s reference frame is identified with a basis unit vector ê.
+With this postulate, two pictures of quantum theory can
+have a natural physical realization between an observer
+and a system. Fig. 1 shows that, in the Schrödinger picture, the observer’s reference frame, represented by the
+unit basis vector ê, stays still while the state vector is rotated clockwise by α, and the Heisenberg picture shows
+the unit vector stays still and the observer’s coordinate
+is rotated counterclockwise by α. In both cases, the observer would observe exactly the same phenomenon.
+It should be noted that we are not using a notion of
+detector or apparatus in the place of an observer. According to our postulate, for a given unit vector, the observer’s reference frame is represented with a unit basis
+vector in a Bloch sphere. However, it was shown that
+[12] a finite dimensional detector cannot encode an arbitrary unitary transformation whereas, according to our
+postulate, the observer’s identified coordinate unit basis
+vector represents an arbitrary measurement basis for a
+given qubit. Therefore, we do not use the term detector
+or an apparatus to replace an observer. If one wants to
+
+3
+
+-3
+
+-2
+
+-1
+
+0
+
++1
+
+-2
+
+-1
+
+0
+
+-2
+
+-1
+
+0
+
+e
+
+y
+
++1
+
+(a) Schrodinger picture
+
++1
+
+e
+x
+
+y
+
+x
+
++2 +3
+
+(B)
+
+-3
+
+z
+
+e
+
++2 +3
+
+(A)
+
+-3
+
+z
+
+e
+
++2 +3
+
+(C)
+
+FIG. 2: For (A), it is not possible to claim the black dot is on
+the right or on the left. In (B), we may say, with respect to
+the flag in +3, the dot is on the left. If we assume there is an
+observer living and sitting at +3 while facing into the paper
+(i.e., the same direction as the reader of this paper) as in (C)
+and if the observer measures and obtains the result that the
+dot is on the left, then it is the observer who is serving the
+role of the flag in (B), i.e., as a reference point.
+
+include an apparatus or detector, we may consider the
+state, i.e., v̂, to be a larger system that includes a qubit
+and an apparatus and the coordinate vector for an observer would also be represented by the same larger basis
+vector. However, in this paper, we only consider the simplest possible case of a single qubit.
+Let us now consider a system with an observer and
+the halting machine defined with the evolution in (1).
+That is, we are considering a closed system consisted of
+a quantum state, represented by the unit vector v̂s =
+(vx , vy , vz ), an observer, whom we call Alice, represented
+by the reference frame ês = (ex , ey , ez ) introduced above,
+and a halt qubit v̂h along with Alice’s reference frame for
+the halt qubit defined as êh ≡ (0, 0, 1). Alice is to transform the unit vector v̂s by δ about an arbitrary n̂ =
+(nx , ny , nz )-axis with Uδ = cos(δ/2)1 − i sin(δ/2)(n̂ · ~σ )
+and also applies σx on a halt qubit such that v̂h → −v̂h .
+If Alice were to measure the evolved vector state, the expectation value would be ês · (Uδ v̂s Uδ† ). Next, we wish
+to consider the same procedure in the Heisenberg picture. In the Schrödinger picture we discussed above, the
+unitary evolution was performed on v̂s . Therefore, in the
+Heisenberg picture, the Uδ† transforms the basis vector ês
+into Uδ† ês Uδ where Uδ† = cos(δ/2)1 + i sin(δ/2)(n̂ · ~σ ) and
+the observable for the halt qubit, i.e., êh , is transformed
+into −êh . It yields the expectation value of (Uδ† ês Uδ ) · v̂s
+which is equal to the expectation value in the Schrödinger
+picture, ês · (Uδ v̂s Uδ† ).
+
+(b) Heisenberg picture
+
+FIG. 3: Unitary evolution of ê is considered. The vector ê is
+initially pointing z-direction and is rotated about y-axis by χ
+after time t. In the Schrödinger picture as in (a), the vector
+is rotated clockwise and in (b) the vector is rotated by −χ.
+
+We now consider the halting machine in (1) with one
+particular input. That is, when the input state to be
+transformed is the Alice’s unit basis vector, i.e., v̂s = ês .
+Note that we are treating v̂ and ê on a equal footing. In the Schrödinger picture, the evolution is, ês →
+Uδ ês Uδ† ≡ ê′′s , and Alice also transforms v̂h → −v̂h .
+We now consider the same procedure in the Heisenberg picture. In this case, the unit basis vector ês , is
+transformed as ês → Uδ† ês Uδ ≡ ê′′′
+s and êh → −êh .
+Note that ê′′s 6= ê′′′
+unless
+ê
+=
+±n̂
+or δ = kπ where
+s
+s
+k = 0, 1, 2.... For the example of a system with an observer and the halting machine studied in the previous
+paragraph, the vector v̂s has evolved, with respect to ês ,
+into the same output in both Schrödinger and Heisenberg
+pictures. Similarly, with respect to êh , the halt qubit,
+v̂h , halted in both pictures. However, in the case with ês
+as an input we just considered, while the halt qubit v̂h
+halted on both occasions with respect to êh , the vector
+that is being evolved, i.e., ês , turned out as two generally different outputs in two pictures. This contradicts
+our assumption about the halting machine in (1) because
+the machine should yield an output that is a rotation of
+the input by δ about a n̂-axis and is unique.
+Therefore, we have shown that the existence of the
+halting machine that is assumed from quantum theory
+leads into a contradiction when we consider the input of
+the unit basis vector ês (for simplicity, we will omit the
+subscript s from now on), which is transformed into two
+generally different outputs in Schrödinger and Heisenberg
+pictures. However, not only can the halting problem not
+be solved consistently in both pictures, but also the evolution of the unit basis vector ê is physically sensible in
+neither of the two pictures in quantum dynamics. With
+our first postulate, we were able to impose a physical
+meaning on the Schrödinger and Heisenberg pictures of
+quantum theory. That is, in case of the Schrödinger picture, the system is evolving while an observer’s reference
+frame is intact and, for the Heisenberg’s picture, an ob-
+
+4
+server’s coordinate is evolving and the system is staying
+still. The equivalence of these two pictures comes from
+the fact that the observer would observe the same phenomenon and would not be able to tell the difference between them. For example, an observer applying a unitary
+operation to a qubit is experiencing a unitary evolution
+being applied to the qubit and this experience is the same
+in both pictures. But when it is the observer’s reference
+frame that is evolving, it is difficult to imagine how an
+observer could observe or experience it. As shown in (a)
+of Fig. 3, let us assume that initially vector ê is pointing
+z-direction and with the unitary operation of rotation
+about y-axis, ê evolves under
+
+must be time forwarding.
+Note that we are only postulating that the observer’s experience is time forwarding and not necessarily the whole
+system, i.e., including the physical system and the observer, is time forwarding.
+Let us re-consider the evolution of ê under the Heisenberg picture. Note that for the unitary operation in (3),
+it is possible to change the signs of t and σy while keeping
+the whole unitary operator the same, that is
+U † = e−iσy (−t)/2
+
+(4)
+
+As shown in Fig. 3, the vector is being rotated counterclockwise and is in −χ(t). In this case, for the observer
+in the reference frame of −χ(t), there needs to be additional vector in χ′ (t) in order for Alice to experience the
+evolution of ê. Again, this is not possible because −χ(t)
+is not only Alice’s reference frame but also the system
+vector. Therefore, in order to have a satisfactory picture
+of Alice observing her own reference frame’s evolution,
+Alice needs another reference frame or another vector.
+Therefore, it is not possible for either picture to be the
+correct way to describe the observer’s experience of the
+evolution of ê. Because ê is serving the role of both what
+the observer experiences and the observer’s own reference
+frame, we need a picture such that the evolution of ê is
+neither of them yet yields the observer’s experience of
+ê’s evolution. In order to resolve the dilemma discussed
+above and to determine the correct description for the
+observer’s experience, we introduce our second postulate
+as follows:
+Postulate II: What an observer observes or experiences
+
+This corresponds to the vector evolving to χ while t is
+going to the minus direction compared to the previous
+Heisenberg case wherein the vector evolved to −χ with
+time going forward. In this case, we note that the observer cannot be in the reference frame χ(−t) because
+from the second postulate, we assumed what the observer
+observes or experiences is only time forwarding. If Alice
+is in the reference frame that is moving backward in time,
+she would observe everything going backward in time.
+However, from the assumption we made with the second postulate, this is not possible. We may consider the
+same trick with Schrödinger picture evolution, that is,
+by putting minus signs for both time and σy . But in this
+case, it still requires an additional observer’s reference
+frame because the observer who is in the reference frame
+with time forwarding would simply observe χ in +t. This
+is similar to the way an electron in the negative energy
+would appear as a positron in the positive energy to an
+observer who is also in the positive energy. Therefore, in
+the Schrödinger picture, this new view still requires an
+additional reference frame and is not satisfactory.
+Therefore, with two postulates, in order to have a satisfactory description of experiencing the evolution of ê
+as well as of v̂, we are forced to conclude that the quantum evolution follows according to the Heisenberg picture, not the Schrödinger picture, with time going backwards as shown in (4). Moreover, it leads us to abandon
+the general picture having the observer being in a certain reference frame evolving in time and observing the
+other vector. In other words, the more familiar picture of
+the observer being in the reference frame that is evolving
+forward in time should be abandoned, and the observer
+should be identified as what is being observed, i.e., χ,
+and its association with time, t.
+
+[1] D. Deutsch, Proc. R. Soc. London A 400, 97 (1985).
+[2] A.M. Turing, Proc. London Math. Soc. (2) 442, 230
+(1936).
+[3] M.A. Nielsen and I.L. Chuang, Quantum Computation
+and Quantum Informatin, Cambridge University Press
+(2000).
+[4] J.M. Myers, Phys. Rev. Lett. 78, 1823 (1997).
+[5] M. Ozawa, Phys. Rev. Lett. 80, 631 (1998).
+[6] N. Linden and S. Popescu, quant-ph/9806054.
+
+[7] Y. Shi, Phys. Lett. A 293, 277 (2002).
+[8] D. Gottesman, quant-ph/9807006.
+[9] D. Deutsch and P. Hayden, Proc. R. Soc. Lond. A 456,
+1759 (2000).
+[10] L. Hardy and D. Song, Phys. Rev. A 63, 032304 (2001).
+[11] A. Peres, Quantum Theory, Kluwer Academic Publishers, (1991).
+[12] M.A. Nielsen and I.L. Chuang, Phys. Rev. Lett. 79, 321
+(1997).
+
+U = e−iσy t/2
+
+(2)
+
+in the Schrödinger picture. And the final state of ê would
+be rotated by χ after time t, which we write as χ(t). The
+difficulty with this evolution is that in order to experience the unitary evolution, Alice needs to be in another
+reference frame, say χ′ (t). However, ê itself is Alice’s
+reference frame and there cannot be another reference
+frame. Similarly, in the Heisenberg picture, ê evolves
+under
+U † = eiσy t/2
+
+(3)
+
+

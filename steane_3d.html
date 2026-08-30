@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<title>Steane [[7,1,3]] — Hamiltonian 3D</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#0d1117; color:#c9d1d9; font-family:monospace; overflow:hidden; }
+  #cim { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:10; text-align:center; pointer-events:none; }
+  #cim h1 { font-size:16px; color:#58a6ff; }
+  #cim p { font-size:11px; color:#8b949e; margin-top:3px; }
+  #panel {
+    position:fixed; top:55px; right:12px; z-index:10;
+    background:#161b22; border:1px solid #30363d; border-radius:8px;
+    padding:10px 14px; font-size:11px; line-height:1.6; min-width:260px;
+  }
+  #panel h3 { color:#58a6ff; font-size:11px; border-bottom:1px solid #30363d; padding-bottom:3px; margin-bottom:5px; }
+  #panel table { border-collapse:collapse; width:100%; }
+  #panel td { padding:1px 4px; text-align:right; }
+  #panel td:first-child { text-align:left; color:#8b949e; }
+  #panel .e { color:#56d364; font-weight:bold; }
+  #panel .s { color:#f0883e; }
+  #panel .b { color:#bc8cff; }
+  #vezerlo {
+    position:fixed; bottom:12px; left:50%; transform:translateX(-50%); z-index:10;
+    display:flex; gap:8px; align-items:center; background:#161b22;
+    padding:7px 14px; border-radius:8px; border:1px solid #30363d; font-size:11px;
+  }
+  #vezerlo label { color:#8b949e; }
+  #vezerlo input[type=range] { width:100px; accent-color:#58a6ff; }
+  #vezerlo button { background:#21262d; color:#c9d1d9; border:1px solid #30363d; padding:4px 10px; border-radius:6px; cursor:pointer; }
+  #vezerlo button:hover { background:#30363d; }
+  #vezerlo button.aktiv { background:#238636; border-color:#2ea043; color:#fff; }
+</style>
+</head>
+<body>
+<div id="cim">
+  <h1>Steane [[7,1,3]] — |&psi;(t)&rang; = e<sup>-iHt</sup>|&psi;(0)&rang;</h1>
+  <p>H = -&Sigma; S<sub>i</sub> | U(dt) = &Pi;[cos(dt)I + i&middot;sin(dt)S<sub>i</sub>] | pontos, [S<sub>i</sub>,S<sub>j</sub>]=0</p>
+</div>
+<div id="panel"><h3>Kvantumallapot</h3><div id="ptart"></div></div>
+<div id="vezerlo">
+  <label>Ido: <input type="range" id="cs1" min="0" max="200" value="40"></label>
+  <label>Forgas: <input type="range" id="cs2" min="0" max="100" value="20"></label>
+  <button id="b1" class="aktiv">F&eacute;le v&aacute;g&aacute;s</button>
+  <button id="b2" class="aktiv">Sz&aacute;lak</button>
+  <button id="b3" class="aktiv">Bloch</button>
+  <button id="b4">Reset</button>
+</div>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+}}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// === Kvantum motor ===
+const N = 7, DIM = 1 << N, NS = 6;
+
+const STAB = [
+  'XXXIIII','XXIIXXI','XIXIXIX',
+  'ZZZIIII','ZZIIZZI','ZIZIZIZ',
+];
+
+function pauliStr(i, ch) {
+  let s = '';
+  for (let k = 0; k < N; k++) s += (k === i ? ch : 'I');
+  return s;
+}
+
+// Pauli-string alkalmazasa: (P psi)
+// X: bit csere, Z: fazis (-1), I: semmi
+function applyP(str, re, im) {
+  const ro = new Float64Array(DIM), io = new Float64Array(DIM);
+  let xm = 0, zm = 0;
+  for (let i = 0; i < N; i++) {
+    if (str[i] === 'X') xm |= (1 << i);
+    if (str[i] === 'Z') zm |= (1 << i);
+  }
+  for (let b = 0; b < DIM; b++) {
+    const nb = b ^ xm;
+    let ph = 1, bits = b & zm;
+    while (bits) { ph = -ph; bits &= bits - 1; }
+    ro[nb] = ph * re[b];
+    io[nb] = ph * im[b];
+  }
+  return [ro, io];
+}
+
+// Y = iXZ kulon, mert komplex fazis
+function applyYsingle(i, re, im) {
+  const ro = new Float64Array(DIM), io = new Float64Array(DIM);
+  const ym = 1 << i;
+  for (let b = 0; b < DIM; b++) {
+    const nb = b ^ ym;
+    // Y|0>=i|1>, Y|1>=-i|0>
+    // (Y psi)_nb = i * psi_b ha b-ben a bit 0 (nb-ben 1)
+    // (Y psi)_nb = -i * psi_b ha b-ben a bit 1 (nb-ben 0)
+    const bitSet = (b & ym) !== 0;
+    const fRe = 0, fIm = bitSet ? -1 : 1; // -i vagy +i
+    ro[nb] = fRe * re[b] - fIm * im[b];
+    io[nb] = fRe * im[b] + fIm * re[b];
+  }
+  return [ro, io];
+}
+
+// <P> = Re[ sum_b psi_b* (P psi)_b ]
+function expect(str, re, im) {
+  if (str.includes('Y')) {
+    // egyetlen Y van benne
+    let yi = -1, rest = '';
+    for (let k = 0; k < N; k++) {
+      if (str[k] === 'Y') { yi = k; rest += 'I'; }
+      else rest += str[k];
+    }
+    // (P psi) = (Y_i)(rest psi)
+    const [r1, i1] = applyP(rest, re, im);
+    const [r2, i2] = applyYsingle(yi, r1, i1);
+    let v = 0;
+    for (let b = 0; b < DIM; b++) v += re[b] * r2[b] + im[b] * i2[b];
+    return v;
+  }
+  const [ro, io] = applyP(str, re, im);
+  let v = 0;
+  for (let b = 0; b < DIM; b++) v += re[b] * ro[b] + im[b] * io[b];
+  return v;
+}
+
+// Idofejlesztes: U(dt) = Pi_i [cos(dt) I + i sin(dt) S_i]
+// (cos I + i sin S)(re + i im) = (cos*re - sin*S_im) + i(cos*im + sin*S_re)
+function evolve(re, im, dt) {
+  let r = re, m = im;
+  const c = Math.cos(dt), s = Math.sin(dt);
+  for (let i = 0; i < NS; i++) {
+    const [sr, si] = applyP(STAB[i], r, m);
+    const nr = new Float64Array(DIM), ni = new Float64Array(DIM);
+    for (let b = 0; b < DIM; b++) {
+      nr[b] = c * r[b] - s * si[b];
+      ni[b] = c * m[b] + s * sr[b];
+    }
+    r = nr; m = ni;
+  }
+  return [r, m];
+}
+
+function norm(re, im) {
+  let n = 0;
+  for (let b = 0; b < DIM; b++) n += re[b]*re[b] + im[b]*im[b];
+  return Math.sqrt(n);
+}
+
+// Kezdoallapot: |1000000>
+function initState() {
+  const re = new Float64Array(DIM), im = new Float64Array(DIM);
+  re[1] = 1.0;
+  return [re, im];
+}
+
+let [psiR, psiI] = initState();
+let qTime = 0;
+let H0 = 0;
+{
+  let s = 0;
+  for (let i = 0; i < NS; i++) s += expect(STAB[i], psiR, psiI);
+  H0 = -s;
+}
+
+// === Three.js ===
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0d1117);
+scene.fog = new THREE.Fog(0x0d1117, 8, 20);
+
+const cam = new THREE.PerspectiveCamera(55, innerWidth/innerHeight, 0.1, 100);
+cam.position.set(4, 3, 5);
+
+const rend = new THREE.WebGLRenderer({ antialias: true });
+rend.setSize(innerWidth, innerHeight);
+rend.setPixelRatio(Math.min(devicePixelRatio, 2));
+document.body.appendChild(rend.domElement);
+
+const oc = new OrbitControls(cam, rend.domElement);
+oc.enableDamping = true;
+oc.autoRotate = true;
+oc.autoRotateSpeed = 1.2;
+
+scene.add(new THREE.AmbientLight(0x404060, 0.5));
+const L1 = new THREE.PointLight(0x58a6ff, 1.0, 25); L1.position.set(6,6,6); scene.add(L1);
+const L2 = new THREE.PointLight(0xe74c3c, 0.5, 20); L2.position.set(-5,-3,4); scene.add(L2);
+
+// Fano-sik 7 pont
+const G = (1 + Math.sqrt(5)) / 2;
+let base = [[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1],[0,G,-1/G],[G,-1/G,0],[-1/G,0,G]];
+base = base.map(p => { const n = Math.hypot(...p); return [p[0]/n*1.2, p[1]/n*1.2, p[2]/n*1.2]; });
+
+const szinek = [0x58a6ff,0xf0883e,0x56d364,0xe74c3c,0xbc8cff,0xf778ba,0x79c0ff];
+const kubitek = [], blochNyilak = [];
+
+for (let i = 0; i < N; i++) {
+  const g = new THREE.Mesh(
+    new THREE.IcosahedronGeometry(0.14, 1),
+    new THREE.MeshPhongMaterial({ color: szinek[i], emissive: szinek[i], emissiveIntensity: 0.3, shininess: 60 })
+  );
+  g.position.fromArray(base[i]);
+  scene.add(g);
+  kubitek.push(g);
+
+  const cv = document.createElement('canvas'); cv.width = 128; cv.height = 64;
+  const cx = cv.getContext('2d');
+  cx.font = 'bold 36px monospace'; cx.fillStyle = '#c9d1d9'; cx.textAlign = 'center';
+  cx.fillText(`τ${i+1}`, 64, 42);
+  const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(cv), transparent: true }));
+  sp.scale.set(0.5, 0.25, 1); g.add(sp);
+
+  const nyil = new THREE.ArrowHelper(new THREE.Vector3(0,1,0), g.position.clone(), 0.01, 0xffffff, 0.1, 0.05);
+  scene.add(nyil);
+  blochNyilak.push(nyil);
+}
+
+// Stabilizator lapok
+const stabMeshek = [];
+STAB.forEach((str, idx) => {
+  const idxek = [];
+  for (let i = 0; i < N; i++) if (str[i] !== 'I') idxek.push(i);
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(18), 3));
+  const szin = idx < 3 ? 0xe74c3c : 0x3498db;
+  const mat = new THREE.MeshBasicMaterial({ color: szin, transparent: true, opacity: 0.1, side: THREE.DoubleSide, depthWrite: false });
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.userData = { idxek };
+  scene.add(mesh);
+  stabMeshek.push(mesh);
+
+  const elGeo = new THREE.BufferGeometry();
+  elGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(24), 3));
+  const elMat = new THREE.LineBasicMaterial({ color: szin, transparent: true, opacity: 0.4 });
+  mesh.add(new THREE.LineSegments(elGeo, elMat));
+});
+
+// Fonalak
+const FANO = [[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[1,2],[1,3],[1,5],[1,6],[2,3],[2,4],[2,6],[3,4],[3,5],[4,5],[4,6],[5,6]];
+const fonalak = [];
+FANO.forEach(([a,b]) => {
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(6), 3));
+  const f = new THREE.Line(geo, new THREE.LineBasicMaterial({ color: 0x6e7681, transparent: true, opacity: 0.2 }));
+  f.userData = { a, b };
+  scene.add(f);
+  fonalak.push(f);
+});
+
+// Gyuruk
+const gyuruk = [];
+for (let i = 0; i < N; i++) {
+  const gy = new THREE.Mesh(
+    new THREE.TorusGeometry(0.2, 0.008, 6, 32),
+    new THREE.MeshBasicMaterial({ color: 0x56d364, transparent: true, opacity: 0.3 })
+  );
+  scene.add(gy);
+  gyuruk.push(gy);
+}
+
+// Vagasi sik
+const vsik = new THREE.Mesh(
+  new THREE.PlaneGeometry(5, 5),
+  new THREE.MeshBasicMaterial({ color: 0x2ecc71, transparent: true, opacity: 0.05, side: THREE.DoubleSide, depthWrite: false })
+);
+vsik.visible = false; scene.add(vsik);
+const vsikEl = new THREE.LineSegments(
+  new THREE.EdgesGeometry(new THREE.PlaneGeometry(5, 5)),
+  new THREE.LineBasicMaterial({ color: 0x2ecc71, transparent: true, opacity: 0.2 })
+);
+vsikEl.visible = false; scene.add(vsikEl);
+
+// === Vezerlok ===
+let vagasBe = true, szalakBe = true, blochBe = true;
+let dtSpeed = 0.04;
+
+document.getElementById('cs1').oninput = function() { dtSpeed = (this.value / 100) * 0.1; };
+document.getElementById('cs2').oninput = function() { oc.autoRotateSpeed = (this.value / 100) * 4; };
+document.getElementById('b1').onclick = function() { vagasBe = !vagasBe; this.classList.toggle('aktiv', vagasBe); };
+document.getElementById('b2').onclick = function() { szalakBe = !szalakBe; this.classList.toggle('aktiv', szalakBe); };
+document.getElementById('b3').onclick = function() { blochBe = !blochBe; this.classList.toggle('aktiv', blochBe); };
+document.getElementById('b4').onclick = function() { [psiR, psiI] = initState(); qTime = 0; };
+
+// === Info panel ===
+const ptart = document.getElementById('ptart');
+let frameCnt = 0;
+
+function frissInfo() {
+  frameCnt++;
+  if (frameCnt % 8 !== 0) return;
+
+  let stabV = [];
+  for (let i = 0; i < NS; i++) stabV.push(expect(STAB[i], psiR, psiI));
+  let H = -stabV.reduce((a,b) => a+b, 0);
+  let nn = norm(psiR, psiI);
+
+  let h = '<table>';
+  h += `<tr><td>t</td><td>${qTime.toFixed(2)}</td></tr>`;
+  h += `<tr><td>&langle;H&rangle;</td><td class="e">${H.toFixed(4)}</td></tr>`;
+  h += `<tr><td>H(0)</td><td class="e">${H0.toFixed(4)}</td></tr>`;
+  h += `<tr><td>|&psi;|&sup2;</td><td>${nn.toFixed(6)}</td></tr>`;
+  h += `<tr><td colspan="2" style="border-top:1px solid #30363d;padding-top:3px;color:#f0883e">Stabilizatorok</td></tr>`;
+  for (let i = 0; i < NS; i++) {
+    h += `<tr><td class="s">S${i+1}(${i<3?'X':'Z'})</td><td class="s">${stabV[i].toFixed(4)}</td></tr>`;
+  }
+  h += `<tr><td colspan="2" style="border-top:1px solid #30363d;padding-top:3px;color:#bc8cff">Bloch |&sigma;|</td></tr>`;
+  for (let i = 0; i < N; i++) {
+    const x = expect(pauliStr(i,'X'), psiR, psiI);
+    const y = expect(pauliStr(i,'Y'), psiR, psiI);
+    const z = expect(pauliStr(i,'Z'), psiR, psiI);
+    const m = Math.sqrt(x*x + y*y + z*z);
+    h += `<tr><td class="b">τ${i+1}</td><td class="b">${m.toFixed(3)}</td></tr>`;
+  }
+  h += '</table>';
+  ptart.innerHTML = h;
+}
+
+// === Animacio ===
+function animate() {
+  requestAnimationFrame(animate);
+
+  // Schrodinger idofejlesztes
+  qTime += dtSpeed;
+  [psiR, psiI] = evolve(psiR, psiI, dtSpeed);
+
+  // Bloch vektorok
+  const bv = [];
+  for (let i = 0; i < N; i++) {
+    bv.push({
+      x: expect(pauliStr(i,'X'), psiR, psiI),
+      y: expect(pauliStr(i,'Y'), psiR, psiI),
+      z: expect(pauliStr(i,'Z'), psiR, psiI),
+    });
+  }
+  const stabV = [];
+  for (let i = 0; i < NS; i++) stabV.push(expect(STAB[i], psiR, psiI));
+
+  // Kubitok pozicioja: alappozicio + Bloch * amplitudo
+  const AMP = 0.5;
+  kubitek.forEach((g, i) => {
+    const b = bv[i], a = base[i];
+    g.position.set(a[0] + b.x*AMP, a[1] + b.y*AMP, a[2] + b.z*AMP);
+    const m = Math.sqrt(b.x*b.x + b.y*b.y + b.z*b.z);
+    g.scale.setScalar(0.6 + 0.7 * m);
+    g.material.emissiveIntensity = 0.2 + 0.5 * m;
+    g.rotation.y = qTime * (0.8 + i * 0.1);
+  });
+
+  // Bloch nyilak
+  blochNyilak.forEach((nyil, i) => {
+    const b = bv[i];
+    const m = Math.sqrt(b.x*b.x + b.y*b.y + b.z*b.z);
+    nyil.visible = blochBe && m > 0.01;
+    if (nyil.visible) {
+      nyil.position.copy(kubitek[i].position);
+      nyil.setDirection(new THREE.Vector3(b.x, b.y, b.z).normalize());
+      nyil.setLength(m * AMP * 1.3, 0.08, 0.04);
+      nyil.setColor(szinek[i]);
+    }
+  });
+
+  // Stabilizator lapok
+  stabMeshek.forEach((mesh, idx) => {
+    const idxek = mesh.userData.idxek;
+    const pts = idxek.map(k => kubitek[k].position);
+    const [a,b,c,d] = pts;
+    const p = mesh.geometry.attributes.position.array;
+    p[0]=a.x;p[1]=a.y;p[2]=a.z; p[3]=b.x;p[4]=b.y;p[5]=b.z; p[6]=c.x;p[7]=c.y;p[8]=c.z;
+    p[9]=a.x;p[10]=a.y;p[11]=a.z; p[12]=c.x;p[13]=c.y;p[14]=c.z; p[15]=d.x;p[16]=d.y;p[17]=d.z;
+    mesh.geometry.attributes.position.needsUpdate = true;
+    const sv = stabV[idx];
+    mesh.material.opacity = 0.05 + 0.15 * sv * sv;
+
+    const el = mesh.children[0];
+    if (el) {
+      const ep = el.geometry.attributes.position.array;
+      const ek = [[a,b],[b,c],[c,d],[d,a]];
+      ek.forEach(([p1,p2], j) => {
+        ep[j*6]=p1.x; ep[j*6+1]=p1.y; ep[j*6+2]=p1.z; ep[j*6+3]=p2.x; ep[j*6+4]=p2.y; ep[j*6+5]=p2.z;
+      });
+      el.geometry.attributes.position.needsUpdate = true;
+      el.material.opacity = 0.2 + 0.3 * Math.abs(sv);
+    }
+  });
+
+  // Fonalak
+  fonalak.forEach(f => {
+    const { a, b } = f.userData;
+    const pa = kubitek[a].position, pb = kubitek[b].position;
+    const p = f.geometry.attributes.position.array;
+    p[0]=pa.x;p[1]=pa.y;p[2]=pa.z; p[3]=pb.x;p[4]=pb.y;p[5]=pb.z;
+    f.geometry.attributes.position.needsUpdate = true;
+    const ba = bv[a], bb = bv[b];
+    const corr = Math.abs(ba.x*bb.x + ba.y*bb.y + ba.z*bb.z);
+    f.material.opacity = 0.1 + 0.2 * corr;
+  });
+
+  // Gyuruk
+  gyuruk.forEach((gy, i) => {
+    gy.position.copy(kubitek[i].position);
+    gy.rotation.x = qTime * 0.5 + i;
+    gy.rotation.y = qTime * 0.7 + i * 0.3;
+    const m = Math.sqrt(bv[i].x**2 + bv[i].y**2 + bv[i].z**2);
+    gy.scale.setScalar(0.7 + 0.5 * (1 - m));
+    gy.material.opacity = 0.2 + 0.2 * (1 - m);
+  });
+
+  // Vagas
+  if (vagasBe) {
+    vsik.visible = true; vsikEl.visible = true;
+    vsik.position.z = 0; vsikEl.position.z = 0;
+    kubitek.forEach(g => g.visible = g.position.z >= -0.02);
+    gyuruk.forEach(g => g.visible = g.position.z >= -0.02);
+    stabMeshek.forEach(m => {
+      m.visible = m.userData.idxek.every(k => kubitek[k].position.z >= -0.02);
+    });
+    fonalak.forEach(f => {
+      const { a, b } = f.userData;
+      f.visible = szalakBe && kubitek[a].position.z >= -0.02 && kubitek[b].position.z >= -0.02;
+    });
+    blochNyilak.forEach(n => { if (n.visible) n.visible = n.position.z >= -0.02; });
+  } else {
+    vsik.visible = false; vsikEl.visible = false;
+    kubitek.forEach(g => g.visible = true);
+    gyuruk.forEach(g => g.visible = true);
+    stabMeshek.forEach(m => m.visible = true);
+    fonalak.forEach(f => f.visible = szalakBe);
+  }
+
+  L1.intensity = 0.8 + 0.3 * Math.sin(qTime * 0.5);
+  L2.intensity = 0.4 + 0.2 * Math.cos(qTime * 0.3);
+
+  frissInfo();
+  oc.update();
+  rend.render(scene, cam);
+}
+animate();
+
+addEventListener('resize', () => {
+  cam.aspect = innerWidth / innerHeight;
+  cam.updateProjectionMatrix();
+  rend.setSize(innerWidth, innerHeight);
+});
+</script>
+</body>
+</html>

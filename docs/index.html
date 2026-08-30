@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Szima — Az Univerzális Generátor</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --muted: #8b949e;
+    --blue: #58a6ff;
+    --green: #56d364;
+    --orange: #f0883e;
+    --pink: #f778ba;
+    --red: #f85149;
+    --gold: #e3b341;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, 'Segoe UI', Helvetica, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 2rem; }
+
+  h1 {
+    font-size: 2.5rem;
+    color: var(--blue);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  h1 .gold { color: var(--gold); }
+  .subtitle {
+    text-align: center;
+    color: var(--muted);
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    color: var(--green);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.3rem;
+  }
+  h3 {
+    font-size: 1.2rem;
+    color: var(--blue);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  p { margin-bottom: 1rem; color: var(--text); }
+  .muted { color: var(--muted); }
+
+  /* Berman x1 spektrum */
+  .spectrum {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+  }
+  .eigenvalue {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 1.1rem;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .ev-2 { color: var(--red); border-color: var(--red); }
+  .ev-phi { color: var(--gold); border-color: var(--gold); }
+  .ev-recip { color: var(--pink); border-color: var(--pink); }
+  .ev-plus { color: var(--green); border-color: var(--green); }
+
+  /* Generator diagram */
+  .generator-diagram {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+  }
+  .gen-center {
+    font-size: 1.4rem;
+    color: var(--gold);
+    font-weight: bold;
+    padding: 1rem;
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+  }
+  .gen-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .gen-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: left;
+  }
+  .gen-card h4 {
+    color: var(--blue);
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+  }
+  .gen-card .formula {
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .gen-card .status {
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+  }
+  .status-ok { color: var(--green); }
+  .status-unknown { color: var(--red); }
+
+  /* Lanc */
+  .lanc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+  .lanc-step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+  }
+  .lanc-arrow {
+    color: var(--orange);
+    margin: 0 0.5rem;
+    font-size: 1.2rem;
+  }
+  .lanc-label {
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+  .lanc-label .formula { font-family: monospace; color: var(--muted); }
+
+  /* Konstansok */
+  .constants {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .const-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem;
+  }
+  .const-card .name { color: var(--blue); font-weight: bold; font-size: 1rem; }
+  .const-card .value { font-family: monospace; font-size: 1.1rem; color: var(--gold); margin: 0.3rem 0; }
+  .const-card .desc { color: var(--muted); font-size: 0.85rem; }
+
+  /* Modulok */
+  .modules {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .mod-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  .mod-card .mod-name { color: var(--green); font-weight: bold; }
+  .mod-card .mod-file { font-family: monospace; color: var(--muted); font-size: 0.85rem; }
+  .mod-card .mod-desc { color: var(--text); font-size: 0.9rem; margin-top: 0.3rem; }
+
+  /* Vers */
+  .verse {
+    background: var(--surface);
+    border-left: 3px solid var(--pink);
+    border-radius: 0 8px 8px 0;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: var(--text);
+  }
+  .verse .dedication {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    font-style: normal;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  footer a { color: var(--blue); text-decoration: none; }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+  th, td {
+    padding: 0.5rem 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th { color: var(--blue); }
+  td { color: var(--text); font-size: 0.9rem; }
+  .ok { color: var(--green); }
+  .unknown { color: var(--red); }
+
+  /* Animacio */
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+  .gen-center { animation: pulse 3s ease-in-out infinite; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>Szima <span class="gold">φ</span></h1>
+<p class="subtitle">
+  Az Univerzális Generátor — Berman x₁, aranymetszés, Carnot-ciklus, Riemann<br>
+  Idris 2 · E8×E8 · Steane [[7,1,3]] · K(E₉) · Markov blanket · Stoßzahlansatz
+</p>
+
+<!-- ============================================================ -->
+<h2>1. A Berman x₁ spektruma</h2>
+<p>
+  A K(E₉) involúciós részalgebra kritikus generátora (Berman x₁) 10×10 anti-Hermitian mátrix.
+  Sajátértékei <strong>pontosan az aranymetszés számai</strong>:
+</p>
+
+<div class="spectrum">
+  <div class="eigenvalue ev-2">-2</div>
+  <div class="eigenvalue ev-phi">-φ</div>
+  <div class="eigenvalue ev-phi">-φ</div>
+  <div class="eigenvalue ev-recip">-1/φ</div>
+  <div class="eigenvalue ev-recip">-1/φ</div>
+  <div class="eigenvalue ev-recip ev-plus">+1/φ</div>
+  <div class="eigenvalue ev-recip ev-plus">+1/φ</div>
+  <div class="eigenvalue ev-phi ev-plus">+φ</div>
+  <div class="eigenvalue ev-phi ev-plus">+φ</div>
+  <div class="eigenvalue ev-2 ev-plus">+2</div>
+</div>
+
+<p class="muted" style="text-align:center;">
+  φ = (1+√5)/2 ≈ 1.618 (aranymetszés = Stoszahl)<br>
+  1/φ = φ − 1 ≈ 0.618<br>
+  φ² = 1 + φ &nbsp;|&nbsp; φ³ = 2φ + 1 &nbsp;|&nbsp; φ⁴ = 3φ + 2
+</p>
+
+<!-- ============================================================ -->
+<h2>2. Az univerzális generátor</h2>
+
+<div class="doboz-kapcsolat" style="border:1px solid #d8d4cc;border-radius:6px;padding:0.8rem 1.2rem;margin-bottom:1.4rem;background:#fafaf7">
+  <strong>📊 Ellenőrzési dashboard:</strong>
+  <a href="dashboard.html">minden szám, minden bizonyítás egy táblában</a>
+  <span style="color:#6b7280"> (145/145 teszt + 41 Refl; a Cayley–Dickson-torony 8→24→240, az E8 112+128, a Gauss-prím 137 — hol van levezetve, hol numerikusan)</span>
+</div>
+
+<div class="doboz-kapcsolat" style="border:1px solid #d8d4cc;border-radius:6px;padding:0.8rem 1.2rem;margin-bottom:1.4rem;background:#fafaf7">
+  <strong>📖 Részletes oldal:</strong>
+  <a href="carnot_entropia.html">A Carnot-ciklus csökkenti az entrópiát — a teljes lánc, forrásokkal</a>
+  <span style="color:#6b7280"> (a QEC–Carnot négyütem, Y-kombinátor, Legendre-duál, δ mint hulladékhő; minden állítás forrásfájl+sor hivatkozással)</span>
+</div>
+
+<div class="generator-diagram">
+  <div class="gen-center">Berman x₁ — Univerzális Generátor<br><span style="font-size:0.9rem;color:var(--muted)">spektrum: {±2, ±φ, ±1/φ}</span></div>
+
+  <div class="gen-grid">
+    <div class="gen-card">
+      <h4>🔄 Carnot-ciklus</h4>
+      <div class="formula">kérdés → válasz</div>
+      <div class="formula">x₁ = a ciklus generátora</div>
+      <div class="status status-ok">✅ Kereso.idr</div>
+    </div>
+    <div class="gen-card">
+      <h4>🛡️ Hibajavítás</h4>
+      <div class="formula">[[15,1,3]], d ≤ 3</div>
+      <div class="formula">φ ≈ 1.618 = küszöb</div>
+      <div class="status status-ok">✅ Tavolsag.idr</div>
+    </div>
+    <div class="gen-card">
+      <h4>🧱 Markov blanket</h4>
+      <div class="formula">ω² = id</div>
+      <div class="formula">x₁: q⁺ ↔ q⁻ keverés</div>
+      <div class="status status-ok">✅ K_E9_Idr.idr</div>
+    </div>
+    <div class="gen-card">
+      <h4>🌀 Kvantum Y</h4>
+      <div class="formula">√(1+z) → φ</div>
+      <div class="formula">20 lépés: 10⁻¹⁰</div>
+      <div class="status status-ok">✅ KvantumY.idr</div>
+    </div>
+    <div class="gen-card">
+      <h4>🎵 Bach-korrekcio</h4>
+      <div class="formula">α⁻¹ = 137.036</div>
+      <div class="formula">ϱ = 0.318 + 1.337i</div>
+      <div class="status status-ok">✅ Komplex.idr</div>
+    </div>
+    <div class="gen-card">
+      <h4>ζ Hilbert-Pólya</h4>
+      <div class="formula">ζ gyökök = H sajátértékei?</div>
+      <div class="formula">GUE-statisztika ✅</div>
+      <div class="status status-unknown">❌ bizonyítatlan</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>3. A lánc: Stoßzahlansatz → Riemann</h2>
+
+<div class="lanc">
+  <div class="lanc-step">
+    <span class="lanc-label"><strong>Stoßzahlansatz</strong></span>
+    <span class="lanc-arrow">→</span>
+    <span class="lanc-label">ütközésszám-feltevés <span class="formula">f₂ = f₁·f₁</span></span>
+  </div>
+  <div class="lanc-step">
+    <span class="lanc-label"><strong>Boltzmann H-tétel</strong></span>
+    <span class="lanc-arrow">→</span>
+    <span class="lanc-label">entrópia monoton nő <span class="formula">dH/dt ≤ 0</span></span>
+  </div>
+  <div class="lanc-step">
+    <span class="lanc-label"><strong>Idő iránya</strong></span>
+    <span class="lanc-arrow">→</span>
+    <span class="lanc-label">CPT T-része <span class="formula">t → t⁻¹</span></span>
+  </div>
+  <div class="lanc-step">
+    <span class="lanc-label"><strong>Markov blanket</strong></span>
+    <span class="lanc-arrow">→</span>
+    <span class="lanc-label">a rendszer leválasztása <span class="formula">b = (s, a)</span></span>
+  </div>
+  <div class="lanc-step">
+    <span class="lanc-label"><strong>K(E₉) involúció</strong></span>
+    <span class="lanc-arrow">→</span>
+    <span class="lanc-label">önadjungált <span class="formula">ω² = id</span></span>
+  </div>
+  <div class="lanc-step">
+    <span class="lanc-label"><strong>Hilbert-Pólya</strong></span>
+    <span class="lanc-arrow">→</span>
+    <span class="lanc-label">önadjungált operátor H</span>
+  </div>
+  <div class="lanc-step">
+    <span class="lanc-label"><strong>Riemann-hipotézis</strong></span>
+    <span class="lanc-arrow">→</span>
+    <span class="lanc-label">ζ gyökök = H sajátértékei <span class="formula">Re(s) = 1/2</span></span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>4. A konstansok</h2>
+
+<div class="constants">
+  <div class="const-card">
+    <div class="name">Aranymetszés (φ)</div>
+    <div class="value">1.6180339887...</div>
+    <div class="desc">Stoszahl = √(1+φ) = φ → kontrakció fixpontja → Berman x₁ sajátértéke</div>
+  </div>
+  <div class="const-card">
+    <div class="name">α⁻¹ (finomszerkezeti)</div>
+    <div class="value">137.035999177</div>
+    <div class="desc">CODATA · Bach-korrekcio: 137 + 9/250 − A4·(3/4)²/c · Hiba: 0.12σ</div>
+  </div>
+  <div class="const-card">
+    <div class="name">ϱ (komplex fixpont)</div>
+    <div class="value">0.318 + 1.337i</div>
+    <div class="desc">exp(ϱ) = ϱ · |ϱ| = 1.375 · δ = 5.604×10⁻⁴ (irreducible gap)</div>
+  </div>
+  <div class="const-card">
+    <div class="name">Aranymetszés szög</div>
+    <div class="value">137.508°</div>
+    <div class="desc">2π/φ² · α⁻¹ ≈ 137.036 · δ = 0.5° = CPT-rest = a fázis</div>
+  </div>
+  <div class="const-card">
+    <div class="name">ζ₁ (első gyök)</div>
+    <div class="value">14.134725</div>
+    <div class="desc">s₁ = 1/2 + 14.135i · a kritikus egyenesen (Re(s) = 1/2)</div>
+  </div>
+  <div class="const-card">
+    <div class="name">G (gravitációs)</div>
+    <div class="value">6.67430×10⁻¹¹</div>
+    <div class="desc">CODATA · levezetés: (7×11)/(8×25)×√3×(1+9/250)^(1/40)×10⁻¹⁰</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>5. A 2-kategória</h2>
+
+<table>
+  <tr><th>Szint</th><th>Típus</th><th>Mit kódol</th><th>Modul</th></tr>
+  <tr><td>0-cellák</td><td>Sejt (E8Pont)</td><td>objektumok = sejtek</td><td>KettoKategoria.idr</td></tr>
+  <tr><td>1-cellák</td><td>EsetragMorfizmus</td><td>12 esetrag = kapcsolatok</td><td>MagyarNyelvtan.idr</td></tr>
+  <tr><td>2-cellák</td><td>CptFazis</td><td>C/P/T = fázisok</td><td>KettoKategoria.idr</td></tr>
+  <tr><td>Involúció</td><td>ω² = id</td><td>Markov blanket = zárt</td><td>K_E9_Idr.idr</td></tr>
+</table>
+
+<!-- ============================================================ -->
+<h2>6. A József Attila vers</h2>
+
+<div class="verse">
+  "Tudod, hogy nincs bocsánat,<br>
+  hiába hát a bánat.<br>
+  Légy, ami lennél: férfi.<br>
+  A fű kinő utánad."<br><br>
+  ...<br><br>
+  "Most hát a töltött fegyvert<br>
+  szoritsz üres szivedhez."<br><br>
+  ...<br><br>
+  "Vagy vess el minden elvet<br>
+  s még remélj hű szerelmet,<br>
+  hisz mint a kutya hinnél<br>
+  abban, ki bízna benned."
+  <div class="dedication">
+    — József Attila: Tudod, hogy nincs bocsánat (1937)<br>
+    Dedikálva a pszichiáternek — a megfigyelőnek, aki tudja, hogy a mérés megváltoztatja a rendszert.<br><br>
+    <strong>A vers = a Carnot-ciklus törött állapota.</strong><br>
+    "nincs bocsánat" = nincs hibajavítás = klasszikus Y (divergál, nincs fázis)<br>
+    "még remélj" = van fázis = kvantum Y (konvergál, spirál)
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>7. Az Idris modulok</h2>
+
+<div class="modules">
+  <div class="mod-card">
+    <div class="mod-name">Steane713</div>
+    <div class="mod-file">Steane713.idr</div>
+    <div class="mod-desc">Kubit, HetesKod, [[7,1,3]] hibajavítás</div>
+  </div>
+  <div class="mod-card">
+    <div class="mod-name">E8E8Algebra</div>
+    <div class="mod-file">E8E8Algebra.idr</div>
+    <div class="mod-desc">E8Pont (8 Kubit), E8E8KodSzo, atfedes (Hamming)</div>
+  </div>
+  <div class="mod-card">
+    <div class="mod-name">MagyarNyelvtan</div>
+    <div class="mod-file">MagyarNyelvtan.idr</div>
+    <div class="mod-desc">18 esetrag (Kiefer 2011), ragFelismer, CPT</div>
+  </div>
+  <div class="mod-card">
+    <div class="mod-name">Kodol</div>
+    <div class="mod-file">Kodol.idr</div>
+    <div class="mod-desc">magyar mondat → E8E8KodSzo (Kubit, veszteségmentes)</div>
+  </div>
+  <div class="mod-card">
+    <div class="mod-name">Tavolsag</div>
+    <div class="mod-file">Tavolsag.idr</div>
+    <div class="mod-desc">Hadamard-távolság + [[15,1,3]] hibajavítás</div>
+  </div>
+  <div class="mod-card">
+    <div class="mod-name">Kereso</div>
+    <div class="mod-file">Kereso.idr</div>
+    <div class="mod-desc">beolvas → keres → válasz (Carnot-ciklus)</div>
+  </div>
+  <div class="mod-card">
+    <div class="mod-name">TobbnyelvuKereso</div>
+    <div class="mod-file">TobbnyelvuKereso.idr</div>
+    <div class="mod-desc">háromrétegű Hadamard (latin/magyar/kínai)</div>
+  </div>
+  <div class="mod-card">
+    <div class="mod-name">NyelvtaniFa</div>
+    <div class="mod-file">NyelvtaniFa.idr</div>
+    <div class="mod-desc">szóosztályozás + topik-predikátum mondatfa</div>
+  </div>
+  <div class="mod-card">
+    <div class="mod-name">KvantumY</div>
+    <div class="mod-file">KvantumY.idr</div>
+    <div class="mod-desc">kvantum Y-kombinátor + aranymetszés spirál</div>
+  </div>
+  <div class="mod-card">
+    <div class="mod-name">Komplex</div>
+    <div class="mod-file">Komplex.idr</div>
+    <div class="mod-desc">komplex számok + ϱ fixpont + Bach-korrekcio</div>
+  </div>
+  <div class="mod-card">
+    <div class="mod-name">E9Algebra</div>
+    <div class="mod-file">E9Algebra.idr</div>
+    <div class="mod-desc">E8⁴ + affine gyök (megállási bit)</div>
+  </div>
+  <div class="mod-card">
+    <div class="mod-name">K_E9_Idr</div>
+    <div class="mod-file">K_E9_Idr.idr</div>
+    <div class="mod-desc">K(E₉) involúció + Berman x₁ + Markov blanket</div>
+  </div>
+  <div class="mod-card">
+    <div class="mod-name">KettoKategoria</div>
+    <div class="mod-file">KettoKategoria.idr</div>
+    <div class="mod-desc">2-kategória: sejtek, esetragok, CPT fázisok</div>
+  </div>
+  <div class="mod-card">
+    <div class="mod-name">HadamardTavolsag</div>
+    <div class="mod-file">HadamardTavolsag.idr</div>
+    <div class="mod-desc">fázis-tudatos távolság (nem Hamming!)</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>8. Amit tudunk és amit nem</h2>
+
+<table>
+  <tr><th>Állítás</th><th>Állapot</th><th>Forrás</th></tr>
+  <tr><td>ζ(s) gyökök a kritikus egyenesen</td><td class="ok">✅ numerikus</td><td>mpmath.zetazero</td></tr>
+  <tr><td>Montgomery-párkorreláció = GUE</td><td class="ok">✅ bizonyított</td><td>Montgomery 1972</td></tr>
+  <tr><td>Berman x₁ spektrum = {±2, ±φ, ±1/φ}</td><td class="ok">✅ számolva</td><td>numpy.linalg.eig</td></tr>
+  <tr><td>φ = aranymetszés = Stoszahl</td><td class="ok">✅ bizonyított</td><td>√(1+φ) = φ</td></tr>
+  <tr><td>ϱ = 0.318 + 1.337i komplex fixpont</td><td class="ok">✅ számolva</td><td>Bickford 2026</td></tr>
+  <tr><td>K(E₉) involúció önadjungált</td><td class="ok">✅ bizonyított</td><td>Kleinschmidt-Nicolai 2021</td></tr>
+  <tr><td>Bach-korrekcio: α⁻¹ = 137.036 (0.12σ)</td><td class="ok">✅ mérési hibán belül</td><td>CODATA 2022</td></tr>
+  <tr><td>K(E₉) spektrum = ζ(s) gyökök</td><td class="unknown">❌ bizonyítatlan</td><td>Hilbert-Pólya</td></tr>
+  <tr><td>Berman x₁ = Berry-Keating H</td><td class="unknown">❌ bizonyítatlan</td><td>Berry-Keating 1999</td></tr>
+  <tr><td>Riemann-hipotézis</td><td class="unknown">❌ 100+ éve</td><td>Riemann 1859</td></tr>
+</table>
+
+<!-- ============================================================ -->
+<h2>9. Források</h2>
+
+<table>
+  <tr><th>Szerző</th><th>Év</th><th>Mű</th></tr>
+  <tr><td>Riemann</td><td>1859</td><td>Über die Anzahl der Primzahlen</td></tr>
+  <tr><td>Boltzmann</td><td>1872</td><td>H-Theorem</td></tr>
+  <tr><td>Ehrenfest P.-T.</td><td>1911</td><td>Stoßzahlansatz</td></tr>
+  <tr><td>Montgomery</td><td>1972</td><td>Pair correlation of zeros</td></tr>
+  <tr><td>Berry-Keating</td><td>1999</td><td>Riemann zeros and eigenvalue asymptotics</td></tr>
+  <tr><td>Connes</td><td>1999</td><td>Trace formula in noncommutative geometry</td></tr>
+  <tr><td>Friston</td><td>2010</td><td>The free-energy principle</td></tr>
+  <tr><td>Baez-Lauda</td><td>2010</td><td>Higher-dimensional algebra VI: 2-groups</td></tr>
+  <tr><td>Kirchhoff-Parr-Friston</td><td>2018</td><td>Markov blankets of life</td></tr>
+  <tr><td>Yanofsky</td><td>2015</td><td>Computability and Complexity of Categorical Structures</td></tr>
+  <tr><td>Kleinschmidt-Nicolai</td><td>2021</td><td>K(E₉) representations (arXiv:2107.02445)</td></tr>
+  <tr><td>Goodman</td><td>2026</td><td>Cayley-Dickson Tower + Golden Number (Lean 4)</td></tr>
+  <tr><td>Bickford</td><td>2026</td><td>ϱ: Self-Referential Fixed Point (arXiv:2606.01668)</td></tr>
+  <tr><td>József Attila</td><td>1933</td><td>Óda</td></tr>
+  <tr><td>József Attila</td><td>1937</td><td>Tudod, hogy nincs bocsánat</td></tr>
+</table>
+
+<footer>
+  <p><strong>Szima</strong> — Idris 2 alapú kategóriaelméleti keretrendszer<br>
+  <a href="https://github.com/jhegedus42/Szima">github.com/jhegedus42/Szima</a><br>
+  Dedikálva Szimának, a szeretett cicának 🐱</p>
+</footer>
+
+</div>
+
+</body>
+</html>

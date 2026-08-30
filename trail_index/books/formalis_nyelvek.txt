@@ -1,0 +1,4670 @@
+1
+
+Automaták és formális
+nyelvek
+
+Jegyzet programtervező matematikus és informatika tanári
+szakos hallgatók számára
+
+Készı́tette:
+Dr. Hunyadvári László
+Manhertz Tamás
+
+2
+
+Jelen dokumentáció a Hunyadvári László egyetemi docens által a programtervező matematikus és informatika tanári szakos hallgatók számára tartott bevezető formális nyelvek kurzus előadássorozata alapján
+készült. Az anyag terjesztése, másolása engedélyezett, de a forrásállomány bárminemű változtatásának joga
+kizárólagosan a szerzőket illeti meg.
+
+Második kiadás, utolsó javı́tás dátuma: 2004. december 10.
+Készült Donald E. Knuth TEX szövegszedő rendszerével.
+Budapest, Eötvös Loránd Tudományegyetem, Informatikai Kar, 2004.
+
+Tartalomjegyzék
+1 Alapfogalmak
+1.1. Ábécé, szavak, nyelv. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.2. Műveletek szavakkal . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.2.1. Konkatenáció. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.2.2. Megfordı́tás. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.2.3. Szó hossza. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.2.4. Homomorfizmus (átkódolás). . . . . . . . . . . . . . . . . . . . . . . .
+1.3. Műveletek nyelvekkel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.3.1. Halmazműveletek. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.3.2. Konkatenáció. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.3.3. Helyettesı́tés (nemdeterminisztikus átkódolás). . . . . . . . . . . . . .
+1.3.4. Lezárás, iteráció. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.4. Nyelvek definiálásának módszerei . . . . . . . . . . . . . . . . . . . . . . . . .
+1.5. Nyelvek megadása produkciós rendszerrel . . . . . . . . . . . . . . . . . . . .
+1.5.1. A Π által leı́rt nyelv . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.5.2. Generatı́v nyelvtanok . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.6. Nyelvtanok osztályozása . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.7. Nyelvtanok további tipusai . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.7.1. Kiterjesztett nyelvtanok . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.8. Normálformák . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.8.1. Kuroda normálforma . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.8.2. Chomsky normálforma . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.8.3. Greibach normálforma . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.8.4. 3-as normálforma . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.9. Zártsági tételek . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+5
+5
+5
+5
+6
+6
+6
+6
+6
+7
+7
+7
+7
+9
+10
+10
+12
+14
+14
+20
+20
+22
+22
+27
+27
+
+2 A Chomsky-osztályok és az algoritmussal definiált nyelvek kapcsolata
+
+31
+
+3 Veremautomatákkal jellemezhető nyelvek
+3.1. 0-vermek . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+3.1.1. Determinisztikus 0-vermek (LD0V ) . . . . . . . . . . . . . . . . . . . .
+3.1.2. A 3. tipusú nyelvek néhány tulajdonsága . . . . . . . . . . . . . . . . .
+3.1.3. Minimális automata előállı́tása . . . . . . . . . . . . . . . . . . . . . .
+3.1.4. Állapotok ekvivalenciájának algoritmikus eldöntése . . . . . . . . . . .
+3.1.5. Reguláris nyelvek . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+3.1.6. A 3-as tipusú nyelvek néhány további zártsági tulajdonsága . . . . . .
+
+33
+35
+37
+38
+41
+44
+45
+47
+
+3
+
+4
+
+TARTALOMJEGYZÉK
+
+4 Algoritmikusan eldönthető problémák 3-as tı́pusú nyelveken
+
+49
+
+5 2-es tipusú nyelvek
+5.0.7. A nagy Bar-Hillel-lemma alkalmazása . . . . . . . . . . . . . . . . . .
+5.1. Algoritmikusan eldönthető problémák 2-es tipusú nyelvekre . . . . . . . . . .
+5.2. A veremautomaták és 2-es tipusú nyelvek kapcsolata . . . . . . . . . . . . . .
+5.3. Determinisztikus 1-vermek . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+5.3.1. Veremautomaták normálformái . . . . . . . . . . . . . . . . . . . . . .
+
+51
+57
+57
+58
+63
+64
+
+6 Elemzési módszerek
+6.1. Az elemzési módszerek célja . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+6.2. A szintaxis elemzési módszerek osztályozásai . . . . . . . . . . . . . . . . . .
+6.3. Felülről-lefelé elemzések . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+6.4. LL(k) nyelvtanok . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+6.5. Alulról-fölfelé módszerek . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+6.6. LR(k) nyelvtanok . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+6.7. Kapcsolat LDIt1V és az LR(k) nyelvek között . . . . . . . . . . . . . . . . . .
+
+69
+69
+69
+70
+73
+74
+75
+76
+
+1. Alapfogalmak
+1.1.
+
+Ábécé, szavak, nyelv.
+
+1.1. definı́ció. Ábécének nevezünk egy tetszőleges véges szimbólumhalmazt. Az ábécé elemeit betűknek hı́vjuk.
+Konvenció: az ábécék jelölésére az X, Y jeleket fogjuk használni, mı́g T az úgynevezett
+terminális ábécét fogja jelenteni. Egy tetszőleges ábécé betűit az a, b, c szimbólumok jelölik.
+1.2. definı́ció. Az X ábécé elemeinek egy tetszőleges véges sorozatát az X ábécé feletti
+szónak nevezzük. Ha X nem lényeges vagy egyértelmű, akkor szóról beszélünk.
+Konvenció: szavak jelölésére az u, v, w szimbólumokat, illetve ezek megjelölt változatait
+fogjuk használni (u1 , v 0 , w).
+Egy tetszőleges u szó ábécéjét X(u)-val azonosı́tjuk, azaz formálisan:
+X(u) := {u szó különböző szimbólumai}.
+Az X ábécé feletti összes szavak halmazát jelölje X ∗ . Az ε jelentse az üres szót és legyen
+X := X ∗ \ {ε}.
++
+
+1.3. definı́ció. Az X ∗ valamely részhalmazát az X ábécé feletti nyelvnek nevezzük (2X
+eleme).
+
+∗
+
+Konvenció: nyelvek jelölésére az L betűt, illetve ennek megjelölt változatait fogjuk
+használni. Ha X nem lényeges vagy egyértelmű, akkor nyelvről beszélünk. X(L) jelöli
+az L nyelv ábécéjét és megegyezés szerint az u szót azonosı́tjuk az {u} nyelvvel.
+1.4. definı́ció. Nyelvek valamely összességét nyelvosztálynak, nyelvcsaládnak hı́vjuk.
+Konvenció: nyelvosztályok jelölésére az Lbetűt, illetve ennek megjelölt változatait fogjuk
+használni.
+
+1.2.
+
+Műveletek szavakkal
+
+1.2.1.
+
+Konkatenáció.
+
+Legyenek u, v szavak egy adott L nyelvből. Ekkor a két szó konkatenációja uv. (A két szó
+egymás utáni leı́rásával kapott szó.) Ez egy asszociatı́v művelet, melynek ε az egységeleme,
+ı́gy
+X ∗ , konkatenáció, ε
+egységelemes félcsoportot képez.
+5
+
+6
+
+1. Alapfogalmak
+
+1.2.2.
+
+Megfordı́tás.
+
+Legyen u egy szó, ekkor a megfordı́tására az uR , illetve u−1 jelöléseket használjuk.
+
+1.2.3.
+
+Szó hossza.
+
+Egy adott u szó hossza a benne lévő, ábécébeli jelek száma. Jelölése: l(u). Egy adott
+y ∈ X jel száma egy adott u szóban: ly (u). Legyen H ⊆ X. Jelölje u szóban lévő H-beli
+szimbólumok számát lH (u). Például l{a,b} (abcac) = 3.
+
+1.2.4.
+
+Homomorfizmus (átkódolás).
+
+1.5. definı́ció. Legyenek X, Y tetszőleges ábécék. Egy h : X ∗ 7−→ Y ∗ leképezést konkatenációtartónak hı́vunk, ha tetszőleges u, v ∈ X ∗ szavak esetén h(uv) = h(u)h(v).
+Világos, hogy egy h konkatenációtartó leképezés esetén h(ε) = ε és elég h-t megadni az X
+elemein. A h : X ∗ 7−→ Y ∗ konkatenációtartó leképezéseket homomorfizmusoknak nevezzük.
+Nyelvekre vonatkozó kiterjesztése:
+[
+h(L) :=
+h(u).
+u∈L
+
+1.3.
+
+Műveletek nyelvekkel
+
+1.3.1.
+
+Halmazműveletek.
+
+Mivel a nyelvek halmazok, ezért a halmazműveletek alkalmazhatóak a nyelvekre is. Véges
+sok, nyelveken végzett halmazelméleti művelet eredményéhez mindig megadható egy ábécé,
+mely fölötti nyelv az eredmény. Legyenek L1 , L2 , . . . , Lk nyelvek. Az ezekkel végzett művelet
+eredményének megfelelő ábécé:
+k
+[
+X(Li ).
+i=1
+
+Végtelen sok művelet esetén ez nem feltétlenül teljesül, mint ezt az alábbi, gyakorlati
+szempontból is érdekes példa mutatja:
+Legyen
+∆n := {(1 , (2 , . . . , (n , )1 , )2 , . . . , )n } egy ábécé, és
+Dn := HE(∆n ),
+azaz a ∆n feletti helyes zárójelezések halmaza. Ekkor
+D=
+
+∞
+[
+
+Di ,
+
+i=1
+
+a helyes zárójelezések összessége már nem lesz nyelv, mert nincsen véges ábécéje.
+Végtelen sok művelet esetén tehát ügyelni kell arra, hogy az eredményül kapott halmaz
+nyelv legyen, vagyis létezzen hozzá ábécé.
+
+1.4. Nyelvek definiálásának módszerei
+
+1.3.2.
+
+7
+
+Konkatenáció.
+
+Legyenek L1 , L2 nyelvek. Ekkor az L1 és L2 nyelvek konkatenációján az L1 L2 := {uv u ∈
+L1 ∧ v ∈ L2 } nyelvet értjük. (Ez tulajdonképpen komplexusszorzás.)
+A konkatenáció rendelkezik az asszociativitás tulajdonságával. Erre vonatkozó egységeleme {ε}. Az unió és a konkatenáció között mindemellett kétoldalú disztributivitás áll fenn,
+azaz
+L(L1 ∪ L2 ) = LL1 ∪ LL2 , valamint
+(L1 ∪ L2 )L = L1 L ∪ L2 L.
+Ezekkel a tulajdonságokkal a
+∗
+
+2X , {∪, konkatenáció, ∅, {ε}}
+struktúra egységelemes félgyűrű.
+
+1.3.3.
+
+Helyettesı́tés (nemdeterminisztikus átkódolás).
+∗
+
+∗
+
+Legyenek X, Y ábécék, és Φ : 2X 7−→ 2Y .A Φ leképezést helyettesı́tésnek nevezzük, ha
+unió- és konkatenációtartó és megtartja a zérus elemet, valamint az egységelemet (Φ(∅) =
+∗
+∗
+∅, Φ({ε}) = {ε}). (Φ tehát a 2X és a 2Y félgyűrűk közötti algebrai homomorfizmus.)
+Megjegyzés: A művelettartás miatt Φ-t elegendő X elemein megadni. Tetszőleges nyelvekre kiterjesztett homomorfizmus tekinthető helyettesı́tésnek.
+
+1.3.4.
+
+Lezárás, iteráció.
+
+Legyen L egy nyelv. Ekkor L iteráltján vagy lezártján a következő nyelvet értjük:
+L∗ :=
+
+∞
+[
+
+Li ,
+
+i=0
+
+ahol Li := LL . . . L (pontosan i darab L nyelv konkatencációja), és L0 := {ε}. Példa:
+{ab, ba}∗ = {ε, ab, ba, abab, abba, baab, baba, ababab, . . .}.
+Pozitı́v lezárás (ε nélkül):
+L+ :=
+
+∞
+[
+
+Li .
+
+i=1
+
+1.4.
+
+Nyelvek definiálásának módszerei
+
+Nyelvek definiálására többféle módszer létezik, de mindegyik esetében követelmény, hogy
+véges leı́rást adjunk. A következőkben néhány alapvető módszert vázolunk fel:
+(1) Véges nyelvek esetén felsorolhatjuk a nyelv elemeit.
+
+8
+
+1. Alapfogalmak
+(2) Logikai formulával.
+Például legyen X := {a, b} és L := {u u = an bn ∧ n ∈ N}.
+(3) Struktúrális rekurzió. A módszer lényege, hogy adott egy — legfeljebb megszámlálhatóan végtelen — leı́rással már rendelkező nyelvekből álló nyelvkészlet (az elemi nyelvek)
+és adott egy véges műveletkészlet. Úgy adjuk meg a nyelvet, hogy megmondjuk, mely
+elemi nyelvekből és milyen megengedett műveletekkel áll elő (véges sok nyelvből véges
+sok művelettel).
+Legyen U egy megszámlálhatóan végtelen szimbólumhalmaz. A továbbiakban feltesszük, hogy minden ábécé ennek részhalmaza (minden nyelv átkódolható ilyenné
+betűk átkódolásával).
+Példa struktúrális rekurzióra:
+1.6. definı́ció. Reguláris nyelveknek nevezzük azokat a L nyelveket, melyek megfelelnek az alábbi két feltételnek:
+(a) L reguláris nyelv, ha az {a}, {ε}, ∅ ún. elemi nyelvek valamelyike, ahol a ∈ U ,
+(b) vagy elemi nyelvekből az unió, konkatenáció, vagy a lezárás műveletek véges számú
+alkalmazásával hozzuk létre.
+Az X := {a, b} ⊆ U ábécé mellett például {{a}{b} ∪ {b}{a}}∗ reguláris nyelv, melyet
+az előbb látott, úgynevezett reguláris kifejezéssel ı́rtunk le.
+(4) Algoritmus segı́tségével.
+1.7. definı́ció. Az L nyelv rekurzı́van felsorolható ⇐⇒ ha létezik A algoritmus, mely
+az elemeit felsorolja.
+Rekurzı́v felsorolás: Az A algoritmus outputjára szavakat állı́t elő, s ı́gy a nyelv összes
+szavát (de csak azokat) felsorolja (általában végtelen sokat).
+1.8. definı́ció. Az L nyelv parciálisan rekurzı́v ⇐⇒ létezik olyan A parciálisan eldöntő algoritmus, melynek inputjára tetszőleges szót helyezve eldönti, benne van-e a
+nyelvben (u ∈ L szó esetén igen válasszal áll le, mı́g u 6∈ L esetén nem terminál, vagy
+ha terminál, akkor nem választ ad).
+1.9. definı́ció. Az L nyelv rekurzı́v ⇐⇒ létezik olyan A eldöntő algoritmus, melynek
+inputjára egy tetszőleges u szót helyezve eldönti, benne van-e az L nyelvben (igen a
+válasz, ha eleme a nyelvnek, és nem a válasz ellenkező esetben).
+
+Megjegyzés: Az algoritmus fogalom pontosı́tásával matematikai szigorúsággal bizonyı́tható, hogy a rekurzı́van felsorolható nyelvek összessége megegyezik a parciálisan
+rekurzı́v nyelvekkel, mı́g a rekurzı́v nyelvek az előbbiek valódi részét képezik.
+
+1.5. Nyelvek megadása produkciós rendszerrel
+
+9
+
+(5) Matematikai gépekkel:
+Az absztrakt matematikai gépek felépı́tése a következő: Adott egy potenciálisan végtelen input szalag, amelyre fel van ı́rva az elolvasásra megadott szó. A gép ezt az
+input szalagot egy olvasófejjel olvassa végig. Adott továbbá n darab listaszerkezetként
+(speciálisan veremként, sorként) használt munkaszalag, melyek mindegyikéhez tartozik
+egy ı́ró/olvasófej. A fejeket az úgynevezett központi egység vezérli, ami véges sok állapottal rendelkezik. Ez az állapot határozza meg a gép további működését.
+Példa matematikai gépre az n-verem.
+
+ux
+szó
+
+
+
+CPU
+
+
+
+y
+1. verem
+
+...
+
+
+
+
+y
+n-edik verem
+
+Matemaikai gépek működése:
+Adott egy diszkrét időskála, melynek minden ütemére a gép végrehajt egy lépést. Egy
+ilyen lépés két alapvető részből áll:
+(a) Felderı́tés: Milyen jelet olvastunk, a CPU milyen állapotban van, és mi van a
+munkaszalagok olvasófeje alatt.
+(b) Tényleges működés: A CPU új állapotba kerül(het), a munkaszalagokra új jeleket
+ı́r(hat)unk, az olvasófejet, illetve a munkaszalagok iró- és olvasófejeit mozgatjuk.
+Ha létezik olyan működéssorozat, amelyre az inputot elolvassa a gép, és a CPU ún.
+végállapotba kerül, akkor a szó a gép által felismert nyelvbe tartozik, különben nem.
+(6) Produkciós rendszerrel.
+Itt axiómák és következtetési szabályok segı́tségével adjuk meg a nyelvet. A produkciós
+rendszer olyan szavakból álló nyelvet ı́r le, amelyek az axiómákból levezethetők, illetve
+az axiómákra visszavezethetők. Speciális produkciós rendszer az úgynevezett generatı́v
+grammatika (formális nyelvtan).
+
+1.5.
+
+Nyelvek megadása produkciós rendszerrel
+
+1.10. definı́ció. A Π produkciós rendszer alatt a következő hármast értjük:
+Π = X, P, Ax ,
+ahol X az ábécé, P ⊆ X ∗ × X ∗ a produkciós szabályok véges halmaza, és Ax ⊆ X ∗ a véges
+axiómahalmaz.
+
+10
+
+1. Alapfogalmak
+Megállapodás szerint (p, q) ∈ P esetén az ı́rásmód: p −→ q.
+
+1.11. definı́ció. Közvetlen levezetés Π-ben: Az a ∈ X ∗ szóból közvetlenül levezethető a
+b ∈ X ∗ szó a Π produkciós rendszerben ⇐⇒ létezik g1 , g2 ∈ X ∗ és p −→ q ∈ P szabály,
+hogy a = g1 pg2 , és b = g1 qg2 .
+Jelölésben: a−→b.
+Π
+
+1.12. definı́ció. Közvetett levezetés Π-ben: Az a ∈ X ∗ szóból közvetett módon levezethető a b ∈ X ∗ szó a Π produkciós rendszerben ⇐⇒ van olyan
+k ∈ N és vannak olyan
+
+δ0 , δ1 , . . . , δk ∈ X ∗ szavak, hogy a = δ0 , b = δk , és minden i ∈ 0, k − 1 esetén δi −→δi+1 .
+Π
+
+∗
+
+Jelölésben: a−→b.
+Π
+
+1.13. definı́ció. Az előbbi definı́cióban szereplő k számot a levezetés hosszának nevezzük.
+
+Megjegyzés: Amennyiben k = 0, akkor a = δ0 = b. Tehát a definı́ció közvetlen
+következménye, hogy minden szó levezethető saját magából, tehát a levezetés reflexı́v.
+k
+Jelöljük a pontosan k hosszú levezetéseket a következőképpen: a−→b.
+Π
+
++
+
+Pozitı́v levezetésről beszélünk, ha k ≥ 1. Jelölésben: a−→b.
+Π
+
+1.5.1.
+
+A Π által leı́rt nyelv
+
+1.14. definı́ció. A Π produkciós rendszer által (a T ábécére relatı́v) generált nyelv:
+∗
+
+LgT (Π) = {u ∈ T ∗ ∃a ∈ Ax : a−→u}.
+Π
+
+1.15. definı́ció. A Π produkciós rendszer által (a T ábécére relatı́v) elfogadott nyelv (akceptált nyelv):
+∗
+LaT (Π) = {u ∈ T ∗ ∃a ∈ Ax : u−→a}.
+Π
+
+Néhány példa:
+Legyen Π1 := {(, )}, {() −→ ε}, {ε} , ekkor a Π1 által elfogadott nyelv a helyes zárójelezések halmaza, azaz La{(,)} (Π1 ) = HE.
+Legyen Π2 := {S, (, )}, P, {S} , ahol P := {S−→ (S),S−→SS,S−→ ε}. A generált nyelv
+itt is a helyes zárójelezések halmaza, tehát Lg{(,)} (Π1 ) = HE.
+Megjegyzés: Az utóbbi példában szereplő P halmazt — a rövidebb ı́rásmód kedvéért —
+a következő módon szokták megadni: P := {S−→ (S) SS ε}.
+
+1.5.2.
+
+Generatı́v nyelvtanok
+
+A generatı́v nyelvtanok speciális produkciós rendszerek az alábbi négy feltétellel:
+(a) X = T ∪ N és T ∩ N = ∅, ahol T a terminális jelek, N a nyelvtani jelek halmaza.
+
+1. Példák
+
+11
+
+(b) p −→ q ∈ P esetén p-ben van legalább egy nyelvtani jel.
+(c) Ax = {S}, ahol S ∈ N a kezdőszimbólum.
+(d) Csak a T -re relatı́v generálás megengedett.
+Ezeket a feltétleket figyelembe véve az alábbi közvetlen definiciót adhatjuk a formális
+nyelvtan fogalmára.
+1.16. definı́ció. Generatı́v nyelvtannak (formális nyelvtannak) nevezzük az alábbi négyest:
+G = T, N, P, S ,
+ahol
+T a terminális jelek ábécéje,
+N a nyelvtani jelek ábécéje,
+P véges szabályhalmaz, melynek bármely szabálya bal oldalán van legalább egy nyelvtani jel, és
+S ∈ N a kezdőszimbólum.
+A levezetés fogalom a formális nyelvtanok esetében megegyezik a produkciós rendszereknél definiált levezetés fogalommal. Mivel most kitüntetett szerepük van a terminális
+jeleknek, ezért külön elnevezést használunk azokra a szavakre, melyek vegyesen tartalmazhatnak terminális jeleket és nyelvtani jeleket, és külön a csak terminális jelekből állókra.
+Az előbbieket mondatformának hı́vjuk és konvenció szerint a görög ábécé első betűinek kisbetűs formáival (α, β, γ) jelöljük, mı́g az utóbbiakat terminális szavaknak és a latin ábécé
+végéről vett kis betükkel (u, v, w, z) jelöljük.
+Az S kezdőszimbólumból G-ben levezethető mondatformákat, terminális szavakat Gben elérhető mondatformáknak, terminális szavaknak nevezzük (Ha G rögzı́tett vagy nem
+lényeges, akkor egyszrűen csak elérhetőségről beszélünk).
+1.17. definı́ció. A G nyelvtan által generált L(G) nyelv a G-ben elérhető terminális szavak
+összessége, azaz:
+∗
+L(G) = {u ∈ T ∗ S −→u}.
+G
+
+Példák
+1-2. Legyen G1 = {a, b}, {S}, {S−→ aSb
+ekkor a generált nyelv:
+
+bSa
+
+ab
+
+ba SS},S . Bizonyı́tsuk be, hogy
+
+L(G1 ) = {u ∈ {a, b}∗ la (u) = lb (u) > 0}.
+Bizonyı́tás.
+⊇”:
+”
+Először legyen u ∈ {x ∈ {a, b}∗ la (x) = lb (x) > 0}. Bizonyı́tani kell, hogy ekkor
+u ∈ L(G1 ). Meg kell mutatni, hogy létezik olyan S-ből induló levezetés G1 -ben, mely ezt az
+u szót adja. Ezt az n := la (u) = lb (u)-ra vonatkozó teljes indukcióval igazoljuk:
+
+12
+
+1. Alapfogalmak
+n = 1: Ekkor u = ab vagy u = ba, mely S kezdőszimbólumból az S−→ ab vagy az S−→ ba
+szabályok alkalmazásával megkapható.
+n + 1: Most 1, 2, . . . , n-re elfogadjuk és bizonyı́tjuk n + 1-re. Könnyen látszik, hogy u
+felépı́tése alapján három eset lehetséges:
+∗
+
+∗
+
+G1
+
+G1
+
+u = u1 u2 (u1 , u2 ∈ L) esetén indukciós feltevésünk alapján S−→u1 és S−→u2 , ezért
+∗
+
+∗
+
+G1
+
+G1
+∗
+
+S−→SS−→u1 S−→u1 u2 = u,
+u = awb esetén S−→ aSb−→awb = u, illetve
+G1
+∗
+
+u = bwa esetén S−→ bSa−→bwa = u.
+G1
+
+⊆”:
+Most legyen u ∈ L(G1 ) és meg kell mutatni, hogy u ∈ {x ∈ {a, b}∗ la (x) = lb (x) > 0}.
+Ehhez nyilván elég belátni azt, hogy a szabályok tetszőleges alkalmazásával csak olyan u
+szavak vezethetők le, melyekben az a és b szimbólumok száma megegyezik. Ez viszont
+teljesül, mert P-ben csak olyan szabályok vannak, melyek jobboldala azonos számú a és b
+jelet tartalmaz, és a legrövidebb levezethető szó is legalább 2 hosszú.
+2
+
+”
+
+1.6.
+
+Nyelvtanok osztályozása
+
+A generatı́v nyelvtanok osztályozását a szabályok alakja alapján tehetjük meg. Egy megkötést már ismerünk: a szabályok bal oldalán mindenképpen szerepelnie kell egy nyelvtani
+jelnek.
+A szabályok alakja szerint a következő osztályozás lehetséges:
+0. tipus: Nincs további megkötés, azaz minden nyelvtan egyben 0-ás tipusú.
+1. tipus: Két szabályforma megengedett:
+(a) a1 Aa2 −→ a1 qa2 , ahol a1 , a2 ∈ (T ∪ N )∗ a környezet, A ∈ N , és q ∈ (T ∪ N )+
+(azaz q 6= ε). Ez a környezetfüggő szabályforma.
+(b) S −→ ε, ahol S a kezdő nyelvtani jel, s ha van ilyen szabály, akkor S nem
+fordulhat elő szabály jobboldalán.
+2. tipus: Itt is két szabályforma lehetséges:
+(a) A −→ q, ahol A ∈ N , és q ∈ (T ∪ N )+ . Ez a környezetfüggetlen szabályforma.
+(b) hasonlóan, mint az 1. tipus b) pontja.
+Megjegyzés: Ez a tipus az 1. tipus további megszorı́tása: a1 , a2 mindig ε-nal egyenlő.
+3. tipus: Itt három szabályforma megengedett:
+(a) A −→ aB, ahol A, B ∈ N , és a ∈ T .
+
+1.6. Nyelvtanok osztályozása
+
+13
+
+(b) A −→ a, ahol A ∈ N és a ∈ T .
+(c) hasonlóan, mint az 1. tipus b) pontja.
+Megjegyzés: Ez a 2. tipus további megszorı́tása, q csak speciális alakú lehet.
+Világos, hogy az 1, 2, 3 tı́pusok esetén az S −→ ε szabályalak csak az egyéb szabályokkal
+nem származtatható ε levezetésére használható.
+
+A különböző tipusú nyelvtanok összességét nyelvtani osztályoknak hı́vjuk és rendre Gi -vel
+jelölünk. Tehát:
+Gi := {i. tipusú nyelvtanok}.
+A definı́ciók alapján világos, hogy G3 ⊆ G2 ⊆ G1 ⊆ G0 .
+A nyelvtani osztályozást felhasználva a nyelveket is osztályozhatjuk:
+Li := {L L nyelv, és van olyan G ∈ Gi , amelyre L(G) = L}.
+Az előző nyelvtanhierarchia alapján L3 ⊆ L2 ⊆ L1 ⊆ L0 . Ez az ún. Chomsky-féle
+hierarchia.
+Igaz a hierarchia erősebb változata, ahol mindenütt a szigorú tartalmazás jele áll. Erre
+később még kitérünk.
+Legyen T véges, nemüres ábécé. Világos, hogy — a hatványhalmazra vonatkozó szokásos
+∗
+jelöléssel — 2T a T ábécé feletti összes nyelv halmazát jelenti. Jelölje LT0 azokat a T feletti
+nyelveket, melyek nyelvtannal leı́rhatók. Kérdés: Vajon minden nyelvhez megadható-e olyan
+nyelvtan, ami azt a nyelvet generálja? Erre ad választ a következő tétel.
+1.18. tétel.
+
+Nem minden nyelv ı́rható le nyelvtannal.
+
+Bizonyı́tás.
+∗
+Elég ehhez belátnunk, hogy tetszőleges nemüres T ábécé esetén LT0 ⊂ 2T . Mivel T ∗
+∗
+megszámlálható számosságú, ezért hatványhalmaza, 2T biztosan megszámlálhatónál nagyobb számosságú. Emiatt elég belátni, hogy LT0 legfeljebb megszámlálható számosságú.
+Legyen N̂ a potenciális nyelvtani jelek megszámlálható számosságú halmaza, melyre
+N̂ ∩ T = ∅. Legyen N y := {G G nyelvtani jelei N̂ -ből, terminális jelei pedig T -ből valók}.
+Állı́tás: Minden L ∈ LT0 esetén létezik olyan G ∈ N y, amelyre L(G) = L.
+Ez az állı́tás könnyen belátható, hiszen minden ilyen L-hez létezik egy G0 nyelvtan, melyre
+L(G0 ) = L. Ha a G0 nyelvtan minden nyelvtani jele N̂ -ből van, akkor készen vagyunk. Ha
+nem, akkor G0 nyelvtani jeleit szisztematikusan átcseréljük N̂ -beliekre. (N̂ megszámlálható
+volta miatt rendelkezésünkre áll megfelelő mennyiségű nyelvtani jel). Világos, hogy az ı́gy
+kapott nyelvtan N y-ben van és L-et generálja.
+Legyen Φ : N y 7−→ LT0 , melyre Φ(G) := L(G). Ez a Φ az előbbi állı́tás miatt ráképezés,
+tehát a képtere a teljes LT0 . Emiatt nyilván fennáll, hogy |N y| ≥ |LT0 |. Ez alapján elég
+belátni, hogy N y megszámlálható számosságú.
+Egy G ∈ N y nyelvtant a következőképp ı́rhatunk fel:
+G = {t1 , . . . , tk }, {A1 , . . . , An }, {x1 . . . xl −→ y1 . . . ys , . . .}, S ,
+
+14
+
+1. Alapfogalmak
+
+ezért G-t tekinthetjük az X := N̂ ∪ T ∪ h, i, −→,0 {0 ,0 }0 ∪ , megszámlálható halmazból
+vett jelek véges sorozatának. Tehát N y ⊆ X ∗ , amiből már következik, hogy |N y| ≤ |X ∗ |.
+X ∗ -ról viszont tudjuk, hogy maga is megszámlálható számosságú.
+2
+
+
+
+
+Bár az előb bizonyı́tott tétel alapján a nyelvek többsége nem ı́rható le nyelvtan segı́tségével, a gyakorlatban használt, konstruktı́v nyelvdefinı́ciós eszközök mindegyikéről kiderült,
+hogy az általuk leı́rt nyelvek nyelvtannal is leı́rhatók. Ennek alapján általánosan elfogadott,
+hogy a jövőben sem fogunk olyan, általunk konstruktı́vnak tekintett nyelvdefinı́ciókat találni,
+melyek a nyelvtanoknál többet tudnak. Ezt mondja ki a Church-tézis.
+
+Church-tézis: Minden valamilyen konstruktı́v módon megadható nyelv leı́rható nyelvtannal.
+
+1.7.
+
+Nyelvtanok további tipusai
+
+Eddig a nyelvtanokat a Chomsky-féle osztályozás szerint vizsgáltuk. Mi a helyzet akkor,
+ha a megengedett szabályok alakját másként adjuk meg? A következő definı́ciók az előbbi
+osztályozást kicsit más formában definiálják.
+
+1.7.1.
+
+Kiterjesztett nyelvtanok
+
+1.19. definı́ció. A G nyelvtan kiterjesztett 1-es tı́pusú nyelvtan, ha minden szabálya megfelel a következő feltételnek:
+i)p −→ q ∈ P esetén l(p) ≤ l(q), azaz a szabály nem csökkenti a hosszt.
+ii)S −→ ε alakú, ahol S a kezdőszimbólum és ha van ilyen szabály, akkor S nem fordul elő
+szabály jobboldalán.
+Jelölés: Gkit1 .
+1.20. definı́ció. A G nyelvtan kiterjesztett 2-es tı́pusú, ha a szabályok alakja A −→ q ∈ P,
+ahol A ∈ N, q ∈ (T ∪ N )∗ .
+Jelölés: Gkit2 .
+A kiterjesztett 2-es tipus a környezetfüggetlenség legtágabb megfogalmazása. Egy kiterjesztett 2-es tipusú nyelvtanban a mondatforma tetszőleges részét a további részeitől függetlenül alakı́thatjuk tovább a végeredmény eléréséig. Ezt fejezi ki az alábbi, kiterjesztett
+környezetfüggetlen nyelvtanokra érvényes függetlenségi lemma.
+∗
+
+1.21. lemma. Legyen G = T, N, P, S kiterjesztett 2-es tipusú nyelvtan és α−→β valaG
+
+mely levezetés G-ben. Ekkor α egy tetszőleges α = α1 . . . αk felbontása esetén a β szónak
+∗
+∗
+létezik olyan β = β1 . . . βk felbontása, melyre α1 −→β1 , . . . , αk −→βk .
+G
+
+G
+
+Bizonyı́tás.
+Az állı́tást a levezetés hossza szerinti indukcióval végezzük. i = 0 hosszúság esetén a
+reflexivitás alapján α = β és β számára a β = α1 . . . αk felbontás nyilván megfelelő.
+
+1.7. Nyelvtanok további tipusai
+
+15
+
+Tegyük fel, hogy a legfeljebb i hoszúságú levezetésekre (i ≥ 0) az állı́tás már igaz, s
+∗
+bizonyı́tsuk i+1 hosszra. Legyen tehát α−→β egy i+1 hosszúságú levezetés és α = α1 . . . αk
+G
+
+i
+
+1
+
+G
+
+G
+
+tetszőleges felbontás. Írjuk ki ennek utolsó lépését részletesebben: α−→β 0 −→β. Indukciós
+∗
+
+∗
+
+feltevésünk alapján létezik a β 0 = β10 . . . βk0 felbontás, melyre α1 −→β10 , . . . , αk −→βk0 . A β 0 =
+G
+
+G
+
+1
+
+β10 . . . βk0 −→β lépésben alkalmazott szabály legyen A −→ γ, ahol A egyetlen nyelvtani jel
+G
+
+(nyelvtanunk kiterjesztett 2-es tipusú). Kell legyen tehát olyan j index, hogy az alkalmazott
+szabály baloldala ( mely maga ez az A nyelvtani jel) βj0 -nek eleme. Legyen βj0 = γ1 Aγ2 . A
+1
+
+β 0 = β10 . . . βk0 −→β helyettesı́tési lépés ezt a részt γ1 γγ2 -vé alakı́tja át. A βi := βi0 i 6= j és
+G
+
+∗
+
+βj := γ1 γγ2 választás mellett nyilván β = β1 . . . βk . Az αi −→βi levezetések i 6= j esetén
+G
+
+1
+
+az indukciós feltevés közvetlen következmányei. A j indexre a βj0 = γ1 Aγ2 −→γ1 γγ2 = βj ,
+G
+
+∗
+
+1
+
+G
+
+G
+
+ahonnan felhasználva az indukciós feltevést is megkapjuk az αj −→βj0 −→βj levezetést.
+
+2
+
+1.22. definı́ció. A G nyelvtan kiterjesztett 3-as tı́pusú, ha a szabályok alakja A −→ uB
+vagy A −→ u, ahol A, B ∈ N , és u ∈ T ∗ .
+Jelölés: Gkit3 .
+Ezekkel a jelölésekkel nyilván Gi ⊆ Gkiti , hiszen látszik, hogy csak gyengı́tettünk a
+szabályok alakjának megkötésein. Ha hasonló jelöléseket a nyelveken is bevezetünk, akkor
+az előbbiek alapján Li ⊆ Lkiti is igaz lesz.
+1.23. tétel. Kiterjesztési tétel
+Li = Lkiti , ahol i= 1, 2, 3
+Bizonyı́tás. Csak Lkiti ⊆ Li -t kell belátni, mert a másik irány nyilvánvaló. Ehhez viszont
+elég a következő lemmát belátni:
+1.24. lemma. Tetszőleges G ∈ Gkiti nyelvtanhoz található olyan G0 ∈ Gi , melyre L(G0 ) =
+L(G).
+Ezt mindhárom kiterjesztésre be kell látni.
+i=1:
+Feltehető, hogy G-ben terminális jel csak A −→ a (a ∈ T, A ∈ N ) alakú szabályokban
+fordul elő. (Ha ez nem ı́gy lenne, akkor G-t a következőképpen alakı́tjuk át: minden t ∈ T hez bevezetjük az xt -vel jelölt álterminálisokat, melyek új nyelvtani jelek lesznek. Ezek
+különbözzenek mind egymástól, mind pedig N jeleitől. P-ben minden szabályban a terminális jeleket kicseréljük a megfelelő álterminális jelekre. Végül felvesszük az xt −→ t
+új szabályokat. Az ı́gy átalakı́tott nyelvtan nyilván ugyanazt tudja, mint az eredeti, és
+terminális jel csak az xt −→ t alakú szabályokban van, ami pontosan a kı́vánt alakú.)
+Cél olyan G0 nyelvtan konstrukciója, mely 1-es tı́pusú, és L(G0 ) = L(G). Ha történetesen
+G minden szabálya 1-es tı́pusú, akkor készen vagyunk (G0 = G). Ha nem, akkor vegyük ki G
+olyan szabályait, melyek nem 1-es tı́pusúak ( rossz” szabályok). Milyen ezeknek az alakja?
+”
+
+16
+
+1. Alapfogalmak
+
+Rossz szabály a következő formájú lehet: X1 X2 . . . Xn −→ Y1 Y2 . . . Ym (m ≥ n). Ennek
+hatását csupa 1-es tı́pusú szabállyal szimuláljuk. Ehhez bevezetünk új nyelvtani jeleket,
+Z1 , Z2 , . . . , Zn -et. A szabályok:
+X1 X2 . . . Xn −→ Z1 X2 . . . Xn ,
+Z1 X2 . . . Xn −→ Z1 Z2 X3 . . . Xn ,
+..
+.
+Z1 Z2 . . . Zn−1 Xn −→ Z1 Z2 . . . Zn Yn+1 . . . Ym
+
+(n ≤ m),
+
+Z1 Z2 . . . Zn Yn+1 . . . Ym −→ Y1 Z2 . . . Zn Yn+1 . . . Ym ,
+..
+.
+Y1 . . . Yn−1 Zn Yn+1 . . . Ym −→ Y1 Y2 . . . Ym .
+Z1 , . . . , Zn új volta miatt a szabályokat csak ebben a sorrendben lehet és kell végrehajtani,
+ezért az új nyelvtan is ugyanazt a nyelvet generálja. Csináljuk meg ezt a szabálytranszformációt az összes rossz” szabályra. Az ı́gy kapott G0 nyelvtan már 1-es tı́pusú és L(G)-t
+”
+generálja.
+i=2:
+Itt a problémát az jelenti, hogy a kiterjesztett 2-es nyelvek esetén megengedett, hogy
+üres szó álljon a szabályok jobb oldalán. Legyen G ilyen kiterjesztett 2-es tı́pusú nyelvtan.
+A probléma az A −→ ε alakú, ún. ε-szabályokkal van. Hogyan szimulálhatjuk hatásukat
+2-es tipusú szabályokkal?
+Példa: Legyen G = T, N, P,S , ahol T = {a, b, c}, N = {A, B, C, S}, P pedig a következő
+szabályokból áll:
+S−→ABc|AA,
+B−→CC,
+A−→ ε|a,
+C−→ ε|b.
+Vegyük itt a következő, ε-szabályokat tartamazó levezetést:
+S−→ABc−→Bc−→CCc−→bCc−→bc.
+G
+
+G
+
+G
+
+G
+
+G
+
+Az ε-szabállyal elhagyott nyelvtani jeleket a mondatformába már ne is hozzuk be, tehát
+ilyen levezetést várunk:
+S−→
+Bc−→
+Cc−→
+bc.
+0
+0
+0
+G
+
+G
+
+G
+
+Azt az algoritmust, mely megoldja a szabályok előbb kitűzött irányú módosı́tását, ε-mentesı́tési eljárásnak hı́vjuk.
+∗
+Legyen H := {A ∈ N A−→ε}. Mivel G0 konstrukciójában használni fogjuk a H
+G
+
+halmazt, fontos kérdés, hogyan lehet H-t megtalálni? Fokozatos közelı́téssel állı́tjuk elő:
+H1 := {A ∈ N A −→ ε ∈ P},
+
+1.7. Nyelvtanok további tipusai
+
+17
+
+Hi+1 := Hi ∪ {A ∈ N ∃A −→ Q ∈ P : Q ∈ Hi∗ }.
+Ekkor nyilván teljesül a következő összefüggés: H1 ⊆ H2 ⊆ . . . ⊆ Hi ⊆ . . .. Mivel
+minden i-re Hi ⊆ N , és az N halmaz véges, ezért egy i0 indextől kezdődően biztosan
+azonosak lesznek ezek a halmazok. Legyen i0 a legkisebb ilyen index.
+Ekkor H1 ⊂ H2 ⊂ . . . ⊂ Hi0 = Hi0 +1 . Belátjuk, hogy H = Hi0 . Ehhez elég bizonyı́tani,
+hogy Hj = Hj+1 esetén Hj+1 = Hj+2 , hiszen ebből következik, hogy Hi0 -tól kezdve a
+∗
+, és
+halmazok ugyanazok lesznek. Tegyük fel, hogy Hj = Hj+1 . Ekkor nyilván Hj∗ = Hj+1
+a definı́ció alapján:
+∗
+}=
+Hj+2 = Hj+1 ∪ {A ∈ N ∃A −→ Q ∈ P : Q ∈ Hj+1
+
+= Hj ∪ {A ∈ N ∃A −→ Q ∈ P : Q ∈ Hj ∗} = Hj+1 .
+Tehát a H halmaz megkonstruálható.
+Következmény: S ∈ H ⇐⇒ ε ∈ L(G).
+A G0 nyelvtan konstrukciója legyen a következő: G0 := T, N, P̄, S , ahol A −→ q̄ ∈ P̄
+akkor és csak akkor, ha q̄ 6= ε ∧ ∃A−→ q ∈ P, hogy q̄-t q-ból néhány (esetleg nulla) H-beli
+jel elhagyásával kapjuk.
+Az előbbi példát tekintve az ε-mentesı́tett nyelvtan konstrukciója:
+H1 = {A,C},
+H2 = {A,C,S},
+H3 = H2 = H.
+P̄ elemei:
+S−→ABc Bc Ac c AA A,
+B−→CC C,
+A−→ a,
+C−→ b.
+1.25. állı́tás. L(G0 ) = L(G) \ {ε}
+Bizonyı́tás.
+L(G0 ) ⊆ L(G) \ {ε}:
+Mivel G0 -ben nincs ε jobboldalú szabály, ezért nyilván u 6= ε. Legyen u ∈ L(G0 ) egy
+tetszőleges szó. Vizsgáljuk valamely G0 -beli levezetését:
+∗
+
+∗
+
+S −→
+α1 Aα2 −→
+α1 q̄α2 −→
+u.
+0
+0
+0
+G
+
+G
+
+G
+
+A kiemelt szabály helyettesı́thető a G nyelvtan következő levezetésével:
+∗
+
+A−→q −→q̄,
+G
+
+G
+
+ahol a q̄-ból elhagyott H-beli elemekből levezetjük ε-t. Ha ezt minden G’-beli szabályra
+∗
+elvégezzük, akkor u egy G-beli levezetését kapjuk. Tehát S −→u, ı́gy u ∈ L(G). Nyilván
+G
+
+u 6= ε miatt teljesül u ∈ L(G) \ {ε} is.
+
+18
+
+1. Alapfogalmak
+
+L(G0 ) ⊇ L(G) \ {ε}:
+∗
+
+∗
+
+G
+
+G
+
+Ehhez elég bebizonyı́tani, hogy ha S −→u 6= ε, akkor S −→
+u. Ehhez belátjuk a következő
+0
+lemmát:
+∗
+
+∗
+
+G
+
+G
+
+1.26. lemma. Ha A−→α 6= ε, akkor A−→
+α, bármely A ∈ N esetén.
+0
+Bizonyı́tás.
+A lemma állı́tását a levezetés hossza szerinti indukcióval látjuk be. Legyen i a levezetés
+hossza.
+0
+0
+i = 0-ra az állı́tás nyilván teljesül, mert A−→α ⇐⇒ A = α ⇐⇒ A−→
+α.
+0
+G
+
+G
+
+i
+
+Most tegyük fel, hogy minden i-nél rövidebb levezetésre az állı́tás igaz. Legyen A−→α,
+G
+
+(i ≥ 1), és tekintsük a levezetés legelső lépését:
+1
+
+i−1
+
+G
+
+G
+
+A−→Z1 . . . Zk −→α 6= ε.
+A környezet-függetlenségi lemma miatt α felbontható az α = α1 α2 . . . αk alakra úgy, hogy
+<i
+
+<i
+
+G
+
+G
+
+Z1 −→α1 , . . . , Zk −→αk .
+Az αi -k között még lehetnek üres szavak, ezeket vegyük ki. Így kapunk αi1 , . . . , αip 6= ε
+részszavakat, melyekre igaz, hogy α = αi1 . . . αip . Ezekre az indexekre vagy Zij ∈ T , vagy
+alkalmazható az indukciós feltétel, s mindkét esetben
+∗
+
+∗
+
+G
+
+G
+
+αik .
+αi1 , . . . , Zik −→
+Zi1 −→
+0
+0
+∗
+
+Ebből következik, hogy Zi1 Zi2 . . . Zip −→
+αi1 αi2 . . . αip . Viszont A −→ Zi1 Zi2 . . . Zip ∈ P̄,
+0
+G
+
+ugyanis láttuk, hogy A −→ Z1 Z2 . . . Zk ∈ P, mı́g Zi1 Zi2 . . . Zip -t Z1 Z2 . . . Zk -ból néhány Hbeli elem elhagyásával kaptuk.
+2
+Ha ε nem eleme L(G)-nek, akkor készen vagyunk, L(G) = L(G0 ). Ha viszont ε ∈ L(G),
+akkor természetesen gondoskodni kell ε levezethetőségéről. Ennek megoldására vegyünk fel
+egy S 0 új kezdőszimbólumot, és vegyük fel a következő két szabályt:
+S 0 −→ S
+
+ε.
+
+Így már tényleg L(G) = L(G0 ), és G0 tipusa is megfelelő.
+2
+i=3:
+Itt azt kell belátnunk, hogy tetszőleges G ∈ Gkit3 esetén van olyan G0 ∈ G3 , melyre
+L(G) = L(G0 ). Ehhez a következő három transzformációt kell elvégezni:
+a) ε-mentesı́tés:
+
+1.7. Nyelvtanok további tipusai
+
+19
+
+— Ez a kiterjesztett 2-es nyelvtanok ε-mentesı́tő eljárása. Ha ezt kiterjesztett 3-as
+nyelvtanra alkalmazzuk, az eredmény is kiterjesztett 3-as tı́pusú lesz.
+b) Láncmentesı́tés:
+— Ezt is mentesı́tő algoritmussal végezzük. (1-es tı́pusú nyelvtanra is alkalmazható
+algoritmust adunk.)
+c) Hosszredukció.
+Láncmentesı́tés:
+Legyen G egy kiterjesztett 1-es tipusú nyelvtan. Láncszabályoknak nevezzük az A −→
+B (A, B ∈ N ) alakú szabályokat. Ezeket fogjuk szimulálni nem láncszabályokkal, hogy ne
+legyenek fölösleges” lépések a levezetés során.
+”
+Tegyük fel, hogy G-ben a következő levezetést tudjuk elvégezni:
+α1 Aα2 −→α1 C1 α2 −→α1 C2 α2 −→ . . . −→α1 Bα2 −→α1 qα2 ,
+G
+
+G
+
+G
+
+G
+
+G
+
+ahol q 6∈ N , és C1 , C2 , . . . , A, B ∈ N. Ezt a levezetést tudjuk szimulálni az A−→
+q új
+0
+G
+
+szabállyal a következő módon:
+α1 Aα2 −→
+α1 qα2
+0
+G
+
+A megvalósı́táshoz meg kell határozni ezeket az új szabályokat. Legyen A ∈ N esetén
+∗
+H(A) := {B ∈ N A−→B}. Ezt a halmazt - mivel szabály jobboldalán szereplő nyelvtani
+G
+
+jelekre nincsenek ε szabályok - a következő módon határozhatjuk meg:
+H0 (A) := {A}
+Hi+1 (A) := Hi (A) ∪ {B ∃C ∈ Hi (A) ∧ C−→B}
+G
+
+Az ε-mentesı́tésnél látottakhoz hasonlóan ezek a halmazok is egy i0 indextől kezdve azonosak
+lesznek és megegyeznek H(A)-val.
+Ha G = T, N, P, S , akkor G0 = T, N, P0 , S lesz az új nyelvtan, ahol
+P0 = {A −→ q q 6∈ N ∧ ∃B ∈ H(A) : B −→ q ∈ P}.
+Ekkor L(G) = L(G0 ), melynek bizonyı́tását az olvasóra bı́zzuk.
+Ha G kiterjesztett ε-szabályoktól mentes 3-as tipusú nyelvtan volt, akkor az eredmény is
+kiterjesztett, ε -szabályoktól mentes 3-as tı́pusú lesz, melyben természetesen láncszabályok
+sincsenek.
+Hosszredukció:
+Az előző lépés miatt a nem megfelelő alakú szabályok már csak a következő formájúak
+lehetnek:
+A −→ uB,
+A −→ u,
+
+20
+
+1. Alapfogalmak
+
+ahol l(u) ≥ 2. u-t betűnként kiı́rva az A −→ t1 t2 . . . tk B-t könnyen szimulálhatjuk a
+következő 3-as tı́pusú szabályrendszerrel, ahol Z1 , Z2 , . . . , Zk−1 új nyelvtani jelek:
+A −→ t1 Z1 ,
+Z1 −→ t2 Z2 ,
+..
+.
+Zk−1 −→ tk B.
+Az A −→ u szabály esetén hasonlóan járunk el, csak az utolsó szabály Zk−1 −→ tk lesz.
+Ezzel bebizonyı́tottuk a kiterjesztési tételt.
+2
+
+1.8.
+
+Normálformák
+
+A normálformák további megszorı́tásokat jelentenek az egyes nyelvtani osztályokra. A továbbiakban az 1, 2, 3-as osztályokra adunk újabb megszorı́tásokat.
+
+1.8.1.
+
+Kuroda normálforma
+
+i = 1:
+1.27. definı́ció. Legyen G = T, N, P, S egy nyelvtan. A G nyelvtan Kuroda-féle normálformájú, ha szabályai a következő alakúak:
+(i) S −→ ε, ilyenkor S a kezdőszimbólum, és S szabály jobboldalán nem szerepelhet,
+(ii) A −→ t,
+(iii) A −→ BC,
+(iv) AB −→ AC,
+(vi) BA −→ CA,
+ahol A, B, C ∈ N , és t ∈ T .
+1.28. tétel. (Kuroda-normálforma tétel.) Bármely L ∈ L1 nyelv esetén létezik olyan
+G nyelvtan, amely Kuroda-normálformájú, és L(G) = L.
+Bizonyı́tás.
+Elegendő belátni, hogy tetszőleges G kiterjesztett 1-es nyelvtanhoz létezik olyan G0
+Kuroda-normálformájú nyelvtan, melyre L(G) = L(G0 ). Legyen G = T, N, P, S . Feltehető, hogy G-ben terminális jel csak A −→ a alakú szabályban fordul elő, ahol A ∈ N , és
+a ∈ T.
+
+1.8. Normálformák
+
+21
+
+A normálformának nem megfelelő szabályokat szimuláljuk jó szabályokkal. Hogyan
+néznek ki ezek a szabályok? Egyrészt csak nyelvtani jelek vannak bennük, másrészt ha
+a bal oldal hossza 1, akkor alakjuk:
+A −→ X1 X2 . . . Xk , ahol k = 1 vagy k ≥ 3.
+Az A −→ X alakú láncszabályok esetén a kiterjesztett 1-es tipusú nyelvtanokra bevezetett
+láncmentesı́tés algoritmusát alkalmazhatjuk. Ha k ≥ 3, akkor vezessük be a Z1 , . . . , Zk−2 új
+nyelvtani jeleket, és következő szabályokat:
+A −→ X1 Z1 ,
+Z1 −→ X2 Z2 ,
+..
+.
+Zk−2 −→ Xk−1 Xk .
+Ha a bal oldal hossza legalább 2, akkor a rossz” szabály a következőképpen ı́rható le:
+”
+X1 X2 . . . Xm −→ Y1 Y2 . . . Yn (m ≥ 2, n ≥ m)
+azaz hosszúságot nem csökkentő szabály. Szimulációja a Z1 , Z2 , . . . , Zn−2 új nyelvtani jelek
+bevezetésével:
+X1 X2 −→ Y1 Z1 ,
+Z1 X3 −→ Y2 Z2 ,
+..
+.
+Zm−3 Xm−1 −→ Ym−2 Zm−2 .
+Továbbá ha n = m, akkor
+Zm−2 −→ Ym−1 Ym ,
+egyébként (n > m) esetén:
+Zm−2 −→ Ym−1 Zm−1 ,
+..
+.
+Zn−2 −→ Yn−1 Yn .
+Ezek között még vannak nem Kuroda-normálformájúak, sémájuk AB −→ CD. Átalakı́tásokkal egy W új nyelvtani jelet vezetünk be, melyek segı́tségével a rossz” szabály hatását
+”
+jó” szabályokkal szimuláljuk:
+”
+AB −→ AW ,
+AW −→ CW ,
+CW −→ CD.
+2
+
+22
+
+1. Alapfogalmak
+
+1.8.2.
+
+Chomsky normálforma
+
+1.29. definı́ció. Legyen G = T, N, P, S egy nyelvtan. A G nyelvtan Chomsky-féle normálformájú, ha szabályai a következő alakúak:
+(i) S −→ ε, ahol S a kezdőszimbólum, és ha van ilyen szabály, akkor S szabály jobboldalán
+nem szerepelhet,
+(ii) A −→ t,
+
+t ∈ T, A ∈ N ,
+
+(iii) A −→ BC, ahol A, B, C ∈ N .
+1.30. tétel. (Chomsky-Normálforma tétel.) Tetszőleges L ∈ L2 esetén van olyan G
+Chomsky-normálformájú nyelvtan, amelyre L(G) = L.
+Bizonyı́tás.
+Azt bizonyı́tjuk be, hogy tetszőleges G ∈ Gkit2 esetén van olyan G0 Chomsky-normálformájú nyelvtan, melyre L(G) = L(G0 ). A konstrukció lépései:
+a) ε-mentesı́tés,
+b) álterminálisok bevezetése,
+c) lánc-mentesı́tés,
+d) hosszredukció.
+Az ε-, és a lánc-mentesı́tés algoritmust
+már láttuk. Az álterminálisok bevezetésének célja,
+
+hogy az A −→ q ∈ P l(q) ≥ 2 szabályokban a terminális jeleket álterminális (nyelvtani)
+jelekre cseréljük. Ezért a P’ szabályrendszerhez hozzá kell venni az Xt −→ t szabályokat.
+Így ezen lépések után a következő szabályformák lesznek:
+S −→ ε, ahol S a kezdőszimbólum, és ha van ilyen szabály, akkor S szabály jobboldalán nem fordulhat elő,
+A −→ t, ahol A ∈ N , és t ∈ T ,
+A −→Q, ahol Q∈ N ∗ és l(Q) ≥ 2.
+A hosszredukció az A −→ Q alakú szabályokra l(Q) ≥ 3 esetén hasonlóan végezhető el,
+mint a Kuroda-normálforma esetében.
+2
+
+1.8.3.
+
+Greibach normálforma
+
+1.31. definı́ció. Legyen G = T, N, P, S egy nyelvtan. A G nyelvtan Greibach-féle normálformájú, ha szabályai a következő alakúak:
+S −→ ε, ahol S kezdőszimbólum és ha van ilyen szabály, akkor S nem fordul elő
+szabály jobboldalán,
+A −→ aQ, ahol A ∈ N, a ∈ T, és Q ∈ N ∗ .
+
+1.8. Normálformák
+
+23
+
+1.32. tétel. Greibach-féle normálforma tétel Bármely L ∈ L2 nyelvhez létezik olyan
+G Greibach normálformájú nyelvtan, melyre L(G) = L.
+A tétel bizonyı́tása előtt szükségünk lesz még néhány olyan előkészı́tő fogalomra, mint a
+rekurzı́v nyelvtani jel, a rekurzı́v nyelvtan, a rendezett nyelvtan és a kvázi-Greibach nyelvtan
+fogalma.
+(i)
+
+1.33. definı́ció. Egy A nyelvtani jel rekurzı́v (önbeágyazott), ha indul belőle A−→α1 Aα2
+alakú levezetés, ahol α1 , α2 ∈ (T ∪ N )∗ és i > 0.
+
+G
+
+1.34. definı́ció. Egy A ∈ N nyelvtani jel balrekurzı́v, illetve jobbrekurzı́v, ha rekurzı́v és
+α1 = ε, illetve α2 = ε.
+Vegyük észre, hogy ha egy nyelvtani jel nem balrekurzı́v és nem jobbrekurzı́v, akkor attól
+még lehet rekurzı́v.
+A Greibach normálforma lényege, hogy kizárja a nyelvtanból a balrekurzió lehetőségét.
+Kérdés: Csökken-e a második tı́pusú nyelvtanok hatóereje, ha nem csak a bal, hanem mindenféle rekurziót kizárjunk?
+1.35. tétel.
+Ha a G 2-es tı́pusú nyelvtanban nincs rekurzı́v nyelvtani jel, akkor L(G)
+véges (és ı́gy ekkor 3-as tı́pusú).
+Bizonyı́tás.
+bı́zzuk.
+
+A nyelvtani jelek számára vonatkozó indukcióval. A részleteket az olvasóra
+2
+
+2-es tı́pusú nyelvtanok redukálása
+Legyen kiinduló nyelvtanunk egy kiterjesztett 2-es tipusú nyelvtan. A nyelvtan redukálása
+felesleges nyelvtani jelei, illetve szabályai elhagyását jelenti. Milyenek ezek a felesleges nyelvtani jelek? Az első csoportot az olyan nyelvtani jelek képezik, melyek a levezetés során
+zsákutcába visznek, azaz belőlük nem vezethető le T ∗ -beli szó. A második csoportba pedig
+a kezdőszimbólumból nem elérhető nyelvtani jelek tartoznak.
+Zsákutcák megkeresése, zsákutca-mentesı́tés:
+∗
+Legyen H := {A ∈ N ∃u ∈ T ∗ : A−→u}. Ezen H halmaz konstrukciós lépései:
+G
+
+∗
+
+H1 := {A ∈ N ∃q ∈ T : A −→ q ∈ P}.
+Hi+1 := Hi ∪ {A ∃q ∈ (Hi ∪ T )∗ : A −→ q ∈ P}.
+A Hi halmazok monoton növekvő, felülről korlátos sorozatot alkotnak, ezért — mint
+ahogy már több hasonló konstrukciónál láttuk — egy bizonyos i0 indextől kezdvődően mind
+azonosak lesznek, és erre az indexre Hi0 = H. Az N \ H-beli jelek lesznek a zsákutcák, a
+zsákutcamentes nyelvtan nyelvtani jelei a H elemei, mı́g szabályai a csak H ∪ T -beli jeleket
+tartalmazó eredeti szabályok.
+Az elérhető nyelvtani jelek megkeresése, összefüggővé alakı́tás:
+Legyen a K halmaz az S kezdőszimbólumból levezetéssel elérhető nyelvtani jelek
+halmaza. Konstrukciós lépései:
+
+24
+
+1. Alapfogalmak
+K0 = {S},
+Ki+1 = Ki ∪ {A ∈ N ∃B ∈ Ki : B −→ α1 Aα2 ∈ P}.
+
+A Ki monoton növő, felülről korlátos sorozat itt is K-ban stabilizálódik, ez lesz az
+összefüggő nyelvtan nyelvtani jeleinek halmaza, mı́g szabályai a csak K ∪ T -beli elemeket
+tartalmazó eredeti szabályok.
+Felmerülhet a kérdés, milyen sorrendben kell ezt a két lépést végrehajtani, ha a kapott
+nyelvtantól azt várjuk el, hogy zsákutcamentes és összefüggő legyen.
+1.36. állı́tás. Csak az előbbi sorrend a megfelelő, azaz először a zsákutcákat kell kiszűrni,
+utána pedig a nem elérhető jeleket.
+Bizonyı́tás. Miért nem jó a másik sorrend? Ellenpélda:
+S−→ a AB,
+A−→ a.
+Ez összefüggő. Ha most kiszűrjük a zsákutcákat:
+S−→ a,
+A−→ a.
+Ez pedig nem összefüggő.
+Az adott sorrend azért megfelelő, mert ha egy G nyelvtan zsákutcamentes, akkor összefüggővé alakı́tás után is zsákutcamentes lesz. Ennek bizonyı́tását az olvasóra bı́zzuk.
+2
+1.37. definı́ció. A zsákutcamentes és összefüggő 2-es tipusú nyelvtanokat redukáltnak nevezzük.
+1.38. definı́ció. A G nyelvtant rendezett nyelvtannak nevezzük, ha nyelvtani jelei megszámozhatóak úgy, hogy ha N = {A1 , A2 , . . . , An } és Ai −→ Aj q ∈ P, akkor i < j, q ∈ (T ∪N )∗ .
+Megjegyzés: Ha egy ε-szabályokat nem tartalmazó nyelvtan rendezett, akkor biztosan
+nem balrekurzı́v. (Ugyanis mindig nőnie kell a levezetés elején lévő nyelvtani jel indexének.)
+1.39. definı́ció. A G nyelvtan kvázi Greibach-normálformájú, ha szabályai A −→ aq alakúak, ahol q ∈ (T ∪ N )∗ , a ∈ T , és A ∈ N .
+Térjünk rá most a Greibach-féle normálforma tétel bizonyı́tására: Elegendő bizonyı́tani,
+hogy tetszőleges G ∈ G2 nyelvtan esetén létezik olyan G0 Greibach-normálformájú nyelvtan, melyre L(G0 ) = L(G). Feltehető, hogy ε 6∈ L(G), hisz a konstrukció a másra úgysem
+használható S −→ ε elhagyásával, illetve a végeredményhez való hozzávételével kiterjeszthető az általános esetre. Ennek megfelelően tehát G legyen ε-szabály mentes.
+A Greibach-normálformára hozás egymás után alkalmazandó lépései a következők:
+a) redukció,
+b) rendezetté alakı́tás,
+c) kvázi Greibach-normálformájúvá alakı́tás, és
+
+1.8. Normálformák
+
+25
+
+d) Greibach-normálformájúvá alakı́tás.
+
+A redukció a már megismert algoritmus, a b) és c) lépéseket a következőkben megadjuk.
+A d) lépés álterminálisok bevezetésével egyszerűen megvalósı́tható.
+Elemi transzformációk
+A) tı́pusú transzformáció:
+Legyen G 2-es tı́pusú nyelvtan. Tegyük fel, hogy
+s : A −→ α1 Bα2 ∈ P, és
+B −→ β1 β2 . . . βk a B-re vonatkozó összes szabály.
+Ez a transzformáció az s szabályt a következőkkel helyettesı́ti:
+A−→ α1 β1 α2 α1 β2 α2 . . . α1 βk α2 .
+Ha B ezzel az átalakı́tással elérhetetlenné válik, akkor őt és a rá vonatkozó szabályokat
+elhagyjuk. A többi szabály változatlan marad. A kapott G0 nyelvtanra nyilván fennáll,
+hogy L(G0 ) = L(G).
+Jelölés: Atrans(s, l) az az A tipusú transzformáció, mely az s szabály l-edik nyelvtani
+jelére végzi el az előbbi átalakı́tást. Ha nincs l-edik nyelvtani jel, akkor nem csinál semmit.
+Megjegyzés: Ha G ε-szabálymentes és redukált volt, akkor G0 is az.
+B) tı́pusú transzformáció:
+Legyen G 2-es tı́pusú ε-szabálymentes, redukált nyelvtan. Tegyük fel, hogy az A ∈ N
+nyelvtani jele közvetlenül balrekurzı́v, azaz legyen az összes szabály A-ra:
+A −→ Aα1 Aα2 . . . Aαk β1 β2 . . . βl ,
+ahol a zsákutcamentesség miatt l ≥ 1, továbbá minden i = 1, . . . , l-re βi első jele nem A, és
+αj 6= ε (j = 1, . . . , k).
+Hogyan néz ki egy ilyen szabály hatása? Az A nyelvtani jelből a következő alakú szavak
+vezethetők le (mint közbülső eredmény):
+{β1 , . . . , βl }{α1 , . . . , αk }∗ .
+Az új szabályok legyenek olyanok, hogy ugyancsak a {β1 , . . . , βl }{α1 , . . . , αk }∗ elemeit vezethetjük le velük A-ből, de most már jobbrekurzı́v módon. Ehhez vezessük be a Z új nyelvtani
+jelet és a következő szabályokat:
+A −→ β1 . . . βl β1 Z . . . βl Z,
+Z −→ α1 Z . . . αk Z α1 . . . αk .
+Az ı́gy kapott G0 nyelvtanra itt is teljesül, hogy L(G) = L(G0 ).
+Jelölés: Az előbb leı́rt transzformáció eredménye legyen Btrans(A, Z), ahol ha az A ∈ N
+nyelvtani jel nem közvetlenül balrekurzı́v, akkor az eljárás SKIP és Z-t sem vezetjük be.
+Megjegyzés: A G0 eredménynyelvtan ugyancsak ε-szabálymentes és redukált lesz.
+
+26
+
+1. Alapfogalmak
+
+Rendezetté alakı́tás
+Legyen a G nyelvtanunk ε-szabálymentes, redukált és rendezetlen. Számozzuk meg G nyelvtani jeleit: N = {A1 , . . . , An } és legyen A1 a kezdőszimbólum. Legyen a rendezetté alakı́tó
+algoritmus elő-, illetve utófeltétele:
+Q : A G nyelvtan ε-szabály mentes, redukált
+R : Q ∧ (∀i ∈ [1, n] : (Ai −→ Aj α ∈ P =⇒ i < j)).
+Ezt nyilván egy ciklussal oldjuk meg, melynek i-edik fázisában a következő invariáns teljesül:
+P : Q ∧ (∀k ∈ [1, i] : (s : Ak −→ Aj α ∈ P =⇒ k < j)).
+Ez i = 0-ra nyilván teljesül. Az algoritmus struktogramja ezért:
+
+i := 0
+i<n
+i := i + 1
+(∃s : Ai −→ Aj α ∈ P) ∧ j < i
+Atrans(s, 1)
+Btrans(Ai , Zi )
+
+A belső ciklus azt éri el, hogy az Ai nyelvtani jelre vonatkozó szabályok jobboldalának első
+jele vagy terminális vagy i-nél nagyobb egyenlő indexű nyelvtani jel legyen. A Btrans(Ai , Zi )
+ezek közül eltűnteti az Ai -vel kezdődőket. Az ε-szabálymentességet és redukáltságot minden
+lépés megtartja.
+Már csak egy dologra kell vigyáznunk. Az újonnan bevezetett Zi nyelvtani jelekre
+még ellenőrizni kell, hogy teljesül-e a rendezettség. Ez egyszerű módon biztosı́thatjuk,
+átszámozzuk a nyelvtani jeleket a következő sorrend szerint:
+Zn , Zn−1 , . . . , Z1 , A1 , A2 , . . . , An .
+A Zj -k keletkezésének sorrendje garantálja, hogy az új G0 nyelvtan rendezett lesz.
+Kvázi Greibach-normálformájúvá alakı́tás
+Legyen a G nyelvtan ε-szabálymentes, redukált és rendezett. Vezessük be az lh(α) jelölést
+az α szó legelső jelére. (Az lh az angol lefthead szó rövidı́tése.)
+Legyen az algoritmus elő-, illetve utófeltétele:
+Q : G ε-szabálymentes, redukált és rendezett,
+R : Q ∧ ∀i ∈ [1, n] : (s : Ai −→ α ∈ P =⇒lh(α) 6∈ N ).
+Ezt ismét ciklussal oldjuk meg, melynek invariánsa:
+P : Q ∧ ∀k ∈ [i, n] : (s : Ak −→ α ∈ P =⇒lh(α) 6∈ N ).
+Az algoritmus struktogramja:
+
+1.9. Zártsági tételek
+
+27
+
+i := n
+i>1
+i := i − 1
+∃s : Ai −→ α ∈ P∧lh(α) ∈ N
+Atrans(s, 1)
+
+A ciklus minden egyes lépése egy újabb nyelvtani jelre éri el azt, hogy jobboldalai
+terminálissal kezdődjenek, mı́g az ε-szbálymentességet és a redukáltságot minden transzformáció megtartja.
+
+1.8.4.
+
+3-as normálforma
+
+1.40. definı́ció. Legyen G = T, N, P, S egy nyelvtan. A G nyelvtan 3-as normálformájú,
+ha szabályai a következő alakúak:
+A −→ ε,
+A −→ aB.
+Kiindulás egy tetszőleges 3-as tı́pusú G nyelvtan. Ebben a rossz alakú szabályok A −→ a
+alakúak. Könnyen látható, hogy ezt egy új nyelvtani jel és a következő szabályok segı́tségével
+szimulálhatjuk:
+A −→ aF ,
+F −→ ε.
+
+1.9.
+
+Zártsági tételek
+
+Legyen Φ n-változós nyelvi operátor, azaz ha L1 , . . . , Ln nyelvek, akkor Φ(L1 , . . . , Ln ) is
+legyen nyelv.
+1.41. definı́ció. Az L nyelvcsalád zárt a Φ nyelvi operátorra, ha L1 , . . . , Ln ∈ L esetén
+Φ(L1 , . . . , Ln ) ∈ L.
+1.42. tétel. Zártsági tétel Az Li (i = 0, 1, 2, 3) nyelvosztályok zártak az unió, konkatenáció és a lezárás műveletekre.
+Bizonyı́tás.
+Elég bizonyı́tani, hogy ha G1 , G2 ∈ Gkiti , akkor léteznek olyan G∪ , Gkonk ,
+G∗ ∈ Gkiti nyelvtanok, melyekre
+L(G∪ ) = L(G1 ) ∪ L(G2 ),
+L(Gkonk ) = L(G1 )L(G2 ),
+L(G∗ ) = (L(G1 ))∗ .
+
+28
+
+1. Alapfogalmak
+
+Legyenek G1 = T1 , N1 , P1 , S1 és G2 = T2 , N2 , P2 , S2 . Feltehető, hogy N1 , N2 , T1 ∪ T2
+páronként diszjunktak. (Különben N1 , N2 elemeit átnevezzük.) Továbbá feltehető, hogy i =
+0, 1, 2-re terminális jel csak A −→ t(t ∈ T ) alakú szabályokban fordul elő. Alapkonstrukció:
+G∪ := T1 ∪ T2 , N1 ∪ N2 ∪ {S}, P1 ∪ P2 ∪ {S −→ S1 S2 }, S ,
+Gkonk := T1 ∪ T2 , N1 ∪ N2 ∪ {S}, P1 ∪ P2 ∪ {S −→ S1 S2 }, S ,
+G∗ := T1 , N1 ∪ {S}, P1 ∪ {S −→ ε S1 S}, S .
+A nyelvtanok definı́ciója alapján a ⊇” tartalmazás fennáll. Bizonyı́tani kell, hogy a
+”
+⊆” irányú tartalmazás is teljesül, és hogy a fent definiált nyelvtanok kiterjesztett i-tı́pusú
+”
+nyelvtanok.
+1) Unió:
+∗
+∗
+∗
+Bizonyı́tani kell, hogy S −→u =⇒ S1 −→ u ∨ S2 −→u.
+G∪
+
+G1
+
+G2
+
+Ez nyilván teljesül, hiszen
+
+kezdésként csak két szabály közül alkalmazhatunk egyet, azaz S −→ S1 vagy S −→ S2
+valamelyikét.
+∗
+Tegyük föl, hogy az S −→ S1 szabályt alkalmaztuk. Ekkor nyilván S1 −→u, mert a
+G1
+
+levezetés során csak N1 -beli nyelvtani jelek kerülnek be, és N1 ∩ N2 = ∅ miatt csak P1 -beli
+szabályok alkalmazhatók. Ugyanez az S −→ S2 szabályra is igaz. Tehát unióra a ⊆” irány
+”
+is teljesül.
+Kérdés, hogy megmarad-e a tı́pus? Világos, hogy i = 0, 2, 3-ra igen, de az i = 1 esetnél
+az alapkonstrukción módosı́tani kell az esetleges S1 −→ ε, S2 −→ ε szabályok miatt:
+ε 6∈ L(G1 ) ∪ L(G2 ) =⇒ nincs módosı́tás,
+ε ∈ L(G1 ) ∪ L(G2 ) =⇒ P∪ := P1 \ {S1 −→ ε} ∪ P2 \ {S2 −→ ε} ∪ {S −→ S1 S2 ε}.
+2) Konkatenáció:
+∗
+A ⊆” irányú tartalmazás bizonyı́tásához be kell látni, hogy S −→ u esetén létezik az u
+”
+Gkonk
+∗
+∗
+szónak olyan u = vw felbontása, amelyre S1 −→v, és S2 −→w teljesül.
+G1
+
+G2
+
+Tekintsünk egy tetszőleges u ∈ L(Gkonk ) szót. Erre létezik levezetés Gkonk -ban, azaz
+∗
+S −→ u. Mivel N1 ∩ N2 = ∅, és szabályok baloldalán csak nyelvtani jelek vannak, ez a
+Gkonk
+
+levezetés elvégezhető a következő módon is:
+∗
+
+∗
+
+Gkonk
+
+Gkonk
+
+S −→ S1 S2 −→ vS2 −→ vw = u,
+Gkonk
+
+ahol S1 -ből P1 -beli szabályokkal vezettük le a v szót, S2 -ből pedig a P2 -beli szabályokat
+alkalmaztuk w levezetésére. Tehát a v és w szavaknak rendre létezik levezetése az eredeti
+∗
+∗
+G1 , G2 nyelvtanokban, S1 −→v és S2 −→w. Ez viszont pontosan azt jelenti, hogy L(Gkonk ) ⊆
+G1
+
+G2
+
+L(G1 )L(G2 ).
+További kérdés, hogy milyen az ı́gy kapott nyelvtan tı́pusa? Világos, hogy az i = 0, 2
+esetekben Gkonk tipusa megfelelő. Viszont i = 3 esetén csak az A −→ u és az A −→ uB(u ∈
+T ∗ ) alakú szabályok vannak megengedve, az S −→ S1 S2 szabály már nem. Ezt a konstrukció
+módosı́tásával szimulálni fogjuk. Tegyük fel, hogy az A −→ a ∈ P1 szabállyal fejeződik be
+
+1.9. Zártsági tételek
+
+29
+
+a G1 -beli levezetés. Ekkor ettől az a jeltől kell folytatnunk a második (G2 -beli) levezetést a
+következő szabállyal:
+A −→ aS2 .
+Innen már változatlan a levezetés, mint G2 -ben. Jelöljük ezt a P1 szabályokra vonatkozó
+transzformációt Ψ(P1 , S2 )-vel. Így a módosı́tott nyelvtan:
+Gkonk := T1 ∪ T2 , N1 ∪ N2 , Ψ(P1 , S2 ) ∪ P2 , S1 .
+Ekkor már i = 3-ra is megfelelő a tipus.
+Az i = 1 esetben ismét az ε-levezetését szolgáló szabályokkal van probléma. Itt négy eset
+lehetséges. Ha sem a G1 nyelvtanban, sem a G2 nyelvtanban nem lehet ε-t levezetni, akkor
+nincs probléma, az eredeti konstrukció is 1-es tı́pusú lesz. Ha viszont vagy a G1 , vagy a
+G2 nyelvtanban levezethető ε, akkor nyilván változtatnunk kell Gkonk szabályrendszerének
+definı́cióján az alábbi módon:
+
+(P1 ∪ P2 ∪ {S −→ ε S1 S2 S2 }) \ {S1 −→ ε},
+ha ε ∈ L(G1 ), ε 6∈ L(G2 ),
+
+
+
+
+Pkonk := (P1 ∪ P2 ∪ {S −→ ε S1 S2 S1 }) \ {S2 −→ ε},
+ha ε 6∈ L(G1 ), ε ∈ L(G2 ),
+
+
+
+
+(P1 ∪ P2 ∪ {S −→ ε S1 S2 S1 S2 }) \ {S1 −→ ε, S2 −→ ε}, ha ε ∈ L(G1 ), ε ∈ L(G2 ).
+Így Gkonk már nyilván 1-es tı́pusú lesz.
+3) Lezárás:
+∗
+Bizonyı́tani kell, hogy S −→
+u esetén létezik olyan k konstans, hogy u = u1 u2 . . . uk , ahol
+∗
+G
+
+∗
+
+minden i-re S1 −→ui .
+G1
+
+Ezt az alábbi állı́tás teljes indukciós bizonyı́tásával próbálhatjuk meg belátni:
+∗
+
+α, akkor ∃k ≥ 1 és α = α1 . . . αk felbontás, hogy minden i =
+1.43. állı́tás. Ha S −→
+∗
+∗
+
+G
+
+∗
+
+1, . . . , k − 1 : S1 −→α1 és vagy αk = S vagy S1 −→αk .
+G1
+
+G2
+
+Az indukciós lépés akkor működik, ha az α = α1 . . . αk -ra valamely G∗ -beli szabályt csak
+úgy lehet alkalmazni, hogy az valamely αj területére esik be. Ez i = 0 és 1 esetben általában
+nem igaz, adható ellenpélda. i = 2-re viszont nyilvánvaló, a részleteket az olvasóra bı́zzuk.
+Tehát i = 2-re és i = 3-ra L(G∗ ) = (L(G1 ))∗ . Ha G1 tipusa 2-es, akkor G∗ is az.
+Ha i = 3, akkor az előzőek miatt ugyan L(G∗ ) = L(G)∗ , de az S −→ S1 S szabály nem
+3-as tipusú. Ezért ennek hatását a konkatenációnál látottakhoz hasonlóan szimulálni kell.
+A szabályrendszer ezért P1 ∪ Φ(P1 , S1 ) ∪ {S −→ ε S1 }-re módosul.
+Ugyanakkor az i = 0, 1 esetekben L(G∗ ) = L(G1 )∗ általában nem is igaz, az eredeti
+konstrukción változtatni kell úgy, hogy ne fordulhasson elő a fenti állı́tás bizonyı́tásában
+αi -ken átı́velő szabály alkalmazás. Ezt úgy tesszük meg, hogy a következő αi példányt csak
+akkor kezdjük el generálni, amikor az előző végén megjelent már egy terminális jel.
+P∗ := P1 ∪ {S −→ ε S1 S1 S 0 } ∪ {tS 0 −→ tS1 ∀t ∈ T1 } ∪ {tS 0 −→ tS1 S 0 ∀t ∈ T1 }.
+A kötelezően behozandó terminális jelek megakadályozzák a határokon átı́velő szabályalkalmazást, az indukciós bizonyı́tás i = 2-höz hasonlóan befejezhető.
+
+30
+
+1. Alapfogalmak
+
+Tehát i = 0, 1 esetén is elértük, hogy a módosı́tott G∗ -ra L(G∗ ) = L(G)∗ . A tipusok
+megfelelésében még annyit kell tennünk, hogy i = 1 esetén az esetleges S1 −→ ε szabályt
+kihagyjuk.
+2
+Jelölés: Ha G = T, N, P, S ∈ G1 és u ∈ T ∗ , akkor K(G, u) legyen a legfeljebb l(u)
+hosszúságú G-beli mondatformák száma. K(G, u) := (T ∪ N )≤l(u) .
+1.44. állı́tás. Egy G ∈ Gkit1 nyelvtan bármely u ∈ L(G) szavának van legfeljebb K(G, u)
+hosszú levezetése is G-ben.
+Bizonyı́tás. Két esetet különböztetünk meg.
+u = ε : Ekkor K(G, ε) = 1 (hiszen csak egyetlen nulla hosszú szó létezik), és ez illeszkedik
+az ε egyetlen S −→ ε levezetésének 1 hosszához.
+u 6= ε : Ha u ∈ L(G), akkor létezik S = α0 −→α1 −→ . . . −→αs = u levezetés. Ekkor
+G
+
+G
+
+G
+
+természetesen van olyan S = β0 −→ . . . −→βs0 = u levezetése is, ahol mindegyik βi különG
+
+G
+
+böző. (Ugyanis, ha i < j esetén αi = αj , akkor az i és j közötti lépéseket egyszerűen
+elhagyjuk.)
+A hosszúság nem csökkentése miatt l(β0 ) ≤ l(β1 ) ≤ . . . ≤ l(βs0 ) = l(u). Ebből pedig
+≤l(u)
+már következik, hogy β0 , β1 , . . . , βs0 ∈ T ∪ N
+, és mivel ezek mind különbözők, ezért
+≤l(u)
+0
+biztosan igaz, hogy s ≤ T ∪ N
+= K(G, u).
+2
+
+2. A Chomsky-osztályok és az
+algoritmussal definiált nyelvek
+kapcsolata
+Legyen LRekFel a rekurzı́van felsorolható nyelvek osztálya, LParcRek a parciálisan rekurzı́v
+nyelvek osztálya, LRek pedig a rekurzı́v nyelvek osztálya. A következő tétel azt bizonyı́tja,
+hogy a Chomsky-osztályokba tartozó nyelvek algoritmusok segı́tségével is megadhatók.
+
+2.1. tétel.
+
+L0 ⊆ LRekFel ,
+
+L0 ⊆ LParcRek ,
+
+L1 ⊆ LRek .
+
+Bizonyı́tás. Megfelelő algoritmusok konstrukciójával bizonyı́tjuk. Legyen G = T, N, P, S
+tetszőleges 0-ás tipusú nyelvtan. Konstruáljuk meg a G-beli összes levezetések tG gráfját.
+A tG gráf definı́ciója: pontjai (T ∪ N )∗ elemeivel, élei N × N elemeivel vannak cı́mkézve.
+Egy α pontból kiinduló, β végpontú és (i, j)-vel cı́mkézett él akkor és csak akkor lesz
+éle a tG gráfnak, ha α−→β és a levezetés során G-nek a j-edik szabályát használjuk,
+G
+
+mı́g a helyettesı́tés első jele α-nak az i-edik pozı́cióján van. (Előzőleg számozzuk meg a
+szabályokat.)
+Nyilván ez a gráf G összes levezetését tartalmazni fogja. Például legyen a G nyelvtan
+szabályrendszere a következő:
+1) S−→SS,
+2) S−→ aSb,
+3) S−→ ε.
+Ekkor ennek az S csúcsból elérhető részgráfja a következőképpen néz ki:
+
+31
+
+32
+
+2. A Chomsky-osztályok és az algoritmussal definiált nyelvek kapcsolata
+S
+(1, 1)
+(1, 3)
+(1, 2)
+?
+aSb
+
++
+SS
+...
+
+(2, 1)
++
+aSSb
+
+/ ...
+..
+.
+
+(2, 2)
+?
+aaSbb
+
+~
+
+ε
+
+(2, 3)
+~
+ab
+
+w
+
+/
+..
+.
+
+?
+
+Az S-ből kiinduló levezetések gráfjának egy része
+Kérdés, hogy mikor vezethető le S-ből egy adott u szó. Nyilván akkor, ha a tG gráf S-ből
+elérhető részének van olyan pontja, ami u-val van cı́mkézve. L(G) felsorolásához tehát elég
+az előbbi tG gráfot S-ből kiinduló szélességi bejárással bejárni.
+Ha a bejárási algoritmus csúcsfeldolgozó eljárása:
+\
+
+cimke(c) ∈ T ∗
+
+\
+
+különben
+SKIP
+
+kiı́r(cimke(c))
+
+akkor pontosan L(G)-t felsoroló algoritmust kapunk. Ha a bejárási algoritmus csúcsfeldolgozó eljárása:
+\
+
+cimke(c) = u
+
+\
+
+különben
+SKIP
+
+Exit(+, bejárás)
+
+ahol u az input szó, akkor pontosan egy L(G)-t parciálisan eldöntő algoritmust kapunk. Ha
+a parciálisan eldöntő algoritmus csúcsfeldolgozó eljárása:
+szintszám(c) ≤ K(G, u)
+\
+
+szintszám(c) > K(G, u)
+Exit(−, bejárás)
+
+\
+
+∧ cimke(c) = u
+Exit(+, bejárás)
+
+\
+
+különben
+SKIP
+
+akkor G ∈ G1 esetben L(G)-t rekurzı́van eldöntő algoritmust kapunk, hiszen u ∈ L(G) esetén
+ilyenkor van legfeljebb K(G, u) hosszú levezetés.
+Az Exit(+, bejárás)” és az Exit(−, bejárás)” az jelentik, hogy a szélességi bejárást
+”
+”
+befejezzük, és pozitı́v, illetve negatı́v választ adunk vissza.
+2
+Ha a Church-tézist elfogadjuk, akkor L0 =LParcRek =LRekFel .
+
+3. Veremautomatákkal jellemezhető
+nyelvek
+Ebben a fejezetben a matematikai gépek egy speciális változatával, a veremautomatákkal
+foglalkozunk. Azt vizsáljuk, hogy az általuk felismert nyelveknek mi a viszony a Chomsky
+nyelvosztályokhoz.
+3.1. definı́ció. n-verem alatt a következő 2n + 5-öst értjük:
+V = A, T, Σ1 , . . . , Σn , δ, a0 , σ01 , . . . , σ0n , F ,
+ahol
+A az állapotok halmaza (ez legyen véges halmaz),
+T egy ábécé, a bemenő ábécé,
+Σi az i-edik verem ábécéje,
+δ az állapotátmeneti függvény,
+a0 ∈ A kezdőállapot,
+σ0i az i. verem kezdőszimbóluma, ahol σ0i ∈ Σi ,
+F ⊆ A a végállapotok halmaza.
+∗
+
+∗
+
+Az állapotátmeneti függvény δ : A × (T ∪ {ε}) × Σ1 × . . . × Σn −→ 2A×Σ1 ×...×Σn alakú
+függvény, melyre megköveteljük, hogy értékkészlete véges halmazokból álljon.
+A V, mint matematikai gép működése ütemekben történik. Egy ütemben kiolvassa a
+központi egység állapotát, az input szimbólumot és a vermek tetőelemeit. Ezek függvényében
+új állapotba kerül, s a vermek eddigi tetőelemeit felülı́rja 0 vagy több jellel. Az olvasó fej
+egyet jobbra lép (kivéve az ún. ε-mozgás esetén), a tetőmutatók az új tetőelemekre állnak
+rá. A δ állapotátmeneti függvény egy ilyen, egy ütemben történő működés leı́rására szolgál.
+Formálisan a konfiguráció fogalmával lehet definiálni a veremautomaták működését.
+3.2. definı́ció. Konfigurációnak nevezzük azoknak az adatoknak az összességét, melyektől
+a gép elkövetkezendő működése függ.
+A konfigurációk a következő alakú n + 2-esek:
+[a, v, α1 , . . . , αn ],
+ahol:
+33
+
+34
+
+3. Veremautomatákkal jellemezhető nyelvek
+a az aktuális állapot,
+v az input szó még elolvasatlan része,
+αi az i-edik verem tartalma.
+
+3.3. definı́ció. Közvetlen konfigurációátmenetről beszélünk, ha V egy lépésben vált át egyik
+konfigurációból a másikba, azaz [a, u, α1 , . . . , αn ]
+[b, v, β1 , . . . , βn ] akkor és csak akkor,
+V
+
+ha van olyan t ∈ T ∪ {ε}, hogy u = tv, továbbá minden i ∈ [1, n] esetén van olyan σi ∈ Σi és
+γi , τi ∈ Σi ∗ , amelyekre αi = σi γi , βi = τi γi , valamint (b, τ1 , . . . , τn ) ∈ δ(a, t, σ1 , . . . , σn ).Ha
+itt t = ε, akkor ε-mozgásról beszélünk.
+3.4. definı́ció. A közvetett konfigurációátmenet a közvetlen átmenet reflexı́v, tranzitı́v le∗
+
+zártja. Jelölése:
+
+V
+
+3.5. definı́ció. Az u szóhoz tartozó kezdőkonfiguráció: [a0 , u, σ01 , . . . , σ0n ].
+3.6. definı́ció. Egy konfiguráció termináló konfiguráció, ha nincs rákövetkezője.
+3.7. definı́ció. Elfogadó egy [f, ε, β1 , . . . , βn ] konfiguráció, ha f ∈ F .
+A V n-verem elfogadja az u szót, ha létezik átmenet az u szóhoz tartozó kezdőkonfigurációból elfogadó konfigurációba. A V által elfogadott nyelv:
+ 
+L V = u ∈ T ∗ [a0 , u, σ01 , . . . , σ0n ]
+
+∗
+V
+
+[f, ε, β1 , . . . , βn ] valamely f ∈ F -re .
+
+3.8. definı́ció. Egy adott V n-verem determinisztikus, ha minden konfigurációnak legfeljebb egy rákövetkezője van. Ez a következő két feltétel teljesülése esetén áll fenn:
+1) Minden (a, t, σ1 , . . . , σn ) ∈ Dδ esetén δ(a, t, σ1 , . . . , σn ) ≤ 1 és
+2) δ(a, ε, σ1 , . . . , σn ) 6= ∅ esetén minden t ∈ T -re δ(a, t, σ1 , . . . , σn ) = 0.
+A második feltétel szerint ha valamely konfigurációban lehetséges ε-mozgás, ott valódi”
+”
+olvasással történő működés nem lehetséges.
+Jelölések:
+LnV jelentse az n-vermek által elfogadott nyelvek osztályát,
+LDnV jelentse a determinisztikus n-vermek által elfogadott nyelvek osztályát.
+A veremautomaták működésének néhány érdekes tulajdonságát fogalmazzák meg az
+alábbi állı́tások:
+∗
+
+3.9. állı́tás. A
+
+V
+
+reláció független a szó elolvasatlan részétől, azaz
+∗
+
+[a, u, α1 , . . . , αn ]
+
+V
+
+∗
+
+[b, ε, β1 , . . . , βn ] ⇐⇒ [a, uw, α1 , . . . , αn ]
+
+V
+
+[b, w, β1 , . . . , βn ].
+
+3.1. 0-vermek
+
+35
+
+3.10. állı́tás. A konfigurációátmenetek folytathatók, azaz
+∗
+
+[a, u, α1 , . . . , αn ]
+
+[b, ε, β1 , . . . , βn ]
+
+V
+
+és
+∗
+
+[b, v, β1 , . . . , βn ]
+
+V
+
+[c, ε, γ1 , . . . , γn ]
+
+esetén
+∗
+
+[a, uv, α1 , . . . , αn ]
+
+V
+
+[c, ε, γ1 , . . . , γn ].
+
+Bizonyı́tás. Tegyük fel, hogy
+∗
+
+[a, u, α1 , . . . , αn ]
+
+V
+
+[b, ε, β1 , . . . , βn ] és
+
+∗
+
+[b, v, β1 , . . . , βn ]
+
+V
+
+[c, ε, γ1 , . . . , γn ].
+∗
+
+Ekkor az előző állı́tás szerint [a, uv, α1 , . . . , αn ]
+[b, v, γ1 , . . . , γn ], és a
+V
+itivitásából adódik az állı́tás.
+
+∗
+V
+
+reláció tranz2
+
+3.1.
+
+0-vermek
+
+Milyen egy 0-verem? Mivel itt nincsenek kiegészı́tő tárak, ezért a működés csak az elolvasott
+input jeltől és az aktuális állapottól függ. Általában állapotátmeneti diagrammal ábrázoljuk,
+melynek pontjai állapotokkal vannak cı́mkézve, élei pedig T ∪ {ε}-beli elemekkel. Ez ı́gy egy
+irányı́tott gráf, ahol egy
+S adott a ∈ A-val cı́mkézett pontból a b ∈ B cimkéjű pontba pontosan
+akkor vezet egy t ∈ T {ε}-vel cı́mkézett él, ha b ∈ δ(a, t).
+0-vermek osztályozása:
+— Nincs megkötés (szokásos elnevezése véges, ε-átmenetes, nemdeterminisztikus automata), az elfogadott nyelvek osztályát jelölje LεNDA .
+— ε-átmenet megtiltása (véges, nemdeterminisztikus automata), az elfogadott nyelvek
+osztálya: LNDA .
+— A nemdeterminisztikusság és az ε-átmenetek megtiltása (véges, parciálisan determinisztikus automata), az elfogadott nyelvek osztálya: LPDA .
+— A nemdeterminisztikusság és az ε-átmenetek megtiltása, mindenütt definiáltság (∀a ∈
+A és t ∈ T esetén δ(a, t) = 1, és δ(a, ε) = 0) (véges, determinisztikus automata),
+az elfogadott nyelvek osztálya: LDA .
+Ezen osztályozás alapján nyilvánvaló, hogy L0V = LεNDA ⊇ LNDA ⊇ LPDA ⊇ LDA .
+A 0-vermek jelölésére tradı́cionálisan az A szimbólumot fogjuk használni.
+
+36
+
+3. Veremautomatákkal jellemezhető nyelvek
+
+3.11. tétel.
+
+L0V = L3 . A kétirányú tartalmazást látjuk be.
+
+Bizonyı́tás.
+⊇”:
+Minden 3-as tipusú nyelvhez létezik 3-as normálformájú nyelvtan, ı́gy tehát elég belátni,
+hogy tetszőleges, 3-as normálformában adott nyelvtanhoz létezik A 0-verem, hogy L(A) =
+L(G).
+Legyen G = T, N, P, S . Ennek a nyelvtannak a szabályai legyenek a következő
+alakúak:
+”
+
+A −→ tB
+A −→ ε, ahol A, B ∈ N és t ∈ T .
+Legyen az s levezetés a következő:
+B0 −→t1 B1 −→t1 t2 B2 −→ . . . −→t1 t2 . . . tk Bk −→t1 t2 . . . tn .
+G
+
+G
+
+G
+
+G
+
+G
+
+A kérdés az, hogyan tudjuk ezt automatával szimulálni? A ti jel generálásának feleljen
+meg a ti jel olvasása és Bi -k legyenek az állapotok. Ha A −→ ε szabályt alkalmazunk, akkor
+A legyen végállapot. Ekkor a következő konfigurációátmeneteket várjuk:
+[B0 , t1 . . . tk ]
+
+V
+
+[B1 , t2 . . . tk ]
+
+V
+
+...
+
+V
+
+[Bk , ε].
+
+Konstrukció: Legyen A = N, T, δ, S, F , ahol
+C ∈ δ(B, t) ⇐⇒ B −→ tC ∈ P, ahol t ∈ T , és
+B ∈ F ⇐⇒ B −→ ε ∈ P.
+Könnyen belátható az u szó hosszára vonatkozó indukció alapján, hogy
+∗
+
+[A, u]
+
+A
+
+∗
+
+[B, ε] ⇐⇒ A−→uB.
+G
+
+∗
+
+Ekkor már valóban L(A) = L(G), ugyanis u ∈ L(A) ⇐⇒ ∃B ∈ F : ([S, u]
+∗
+
+∗
+
+G
+
+G
+
+A
+
+[B, ε]) ⇐⇒
+
+∃B : (B−→ε, S −→uB) ⇐⇒ S −→u ⇐⇒ u ∈ L(G).
+G
+
+Milyen az ı́gy kapott automata? ε-átmenet nélküli, ezért egy kicsit többet láttunk be,
+nevezetesen L3 ⊆ LNDA -t.
+⊆”:
+Itt elég belátni, hogy tetszőleges A 0-veremhez létezik olyan G ∈ Gkit3 , hogy L(G) =
+L(A). Az előző konstrukció megfordı́tását alkalmazzuk.
+Legyen A = A, T, δ, a0 , F , és legyen G = T, A, P, a0 a hozzá konstruálandó nyelvtan.
+Milyenek legyenek P szabályai?
+”
+
+a −→ tb ∈ P ⇐⇒ b ∈ δ(a, t), ahol t ∈ T ∪ {ε},
+f −→ ε ∈ P ⇐⇒ f ∈ F .
+
+3.1. 0-vermek
+
+37
+
+Ez kiterjesztett 3-as nyelvtan lesz, mert t lehet ε is, ugyanis A-ban nem volt megtiltva
+az ε-átmenet. Ekkor a levezetés hossza szerinti indukcióval belátható, hogy
+∗
+
+∗
+
+a−→ub ⇐⇒ [a, u]
+G
+
+A
+
+[b, ε].
+
+Ebből már következik, hogy L(G) = L(A).
+2
+
+3.1.1.
+
+Determinisztikus 0-vermek (LD0V )
+
+3.12. tétel.
+
+LDA = LNDA .
+
+Bizonyı́tás. Mivel a ⊆ irány nyilvánvaló, elég bebizonyı́tani, hogy LNDA ⊆ LDA .
+Belátjuk, hogy tetszőleges A = A, T, δ, a0 , F véges, nemdeterminisztikus automatához
+konstruálható olyan A0 véges, determinisztikus automata, amelyre az elfogadott nyelvek
+azonosak, azaz L(A) = L(A0 ) (determinisztikussá tétel).
+Tekintsünk egy A-beli átmenetet. Legyen q0 az állapotátmeneti gráf egy csúcsa, és egy
+adott t ∈ T jel hatására az összes átmenet vezessen q1 , . . . , qn -be. Ha őket párhuzamos
+működésként fogjuk fel, akkor készı́thetünk olyan gépet, melynek ezen párhuzamos működések együttesei az alapműködései.
+
+q0
+
+
+
+q0
+
+-
+
+t
+
+
+
+...
+q1
+
+
+
+t
+
+^
+
+qn
+
+
+
+t
+?
+
+
+
+q1 . . . q n
+
+
+
+Nemdeterminisztikus átmenetek átalakı́tása
+
+Legyen tehát A0 = 2A , T, δ 0 , {a0 }, F . Definiáljuk δ 0 -t a következő módon:
+δ 0 ({b1 , . . . , bs }, t) :=
+
+s
+[
+
+δ(bi , t),
+
+i=1
+
+mı́g az A0 végállapotaira
+B ∈ F ⇐⇒ B ∩ F 6= ∅.
+∗
+
+3.13. állı́tás. [B, u]
+∗
+
+a ∈ A esetén [b, u]
+
+A’
+
+A
+
+[C, ε] akkor és csak akkor teljesül, ha egyrészt minden b ∈ B és
+
+[a, ε]-ből következik a ∈ C, másrészt minden c ∈ C-re van olyan
+
+∗
+
+b ∈ B, amelyre [b, u]
+
+A
+
+[c, ε].
+
+38
+
+3. Veremautomatákkal jellemezhető nyelvek
+
+Ezt az állı́tást teljes indukcióval láthatjuk be, melynek részletezését az olvasóra bı́zzuk.
+Az A0 automata ugyanazt tudja, mint az eredeti, hiszen: u ∈ L(A0 ) ⇐⇒ ∃B ∈ F :
+∗
+
+∗
+
+([{a0 }, u]
+∗
+
+[a0 , u]
+
+A
+
+A’
+
+[B, ε]) ⇐⇒ ∃B : (B ∩ F 6= ∅ ∧ ∀b ∈ B : [a0 , u]
+
+A
+
+[b, ε]) ⇐⇒ ∃b ∈ F :
+
+[b, ε] ⇐⇒ u ∈ L(A).
+
+Ezért tényleg L(A0 ) = L(A), és A0 egy véges, determinisztikus automata. Gyakorlatban
+általában A0 -nek csak az összefüggő részét konstruálják meg.
+2
+Következmény:
+L0V = LεNDA = LNDA = LPDA = LDA = LD0V .
+A definı́ciók alapján világos ugyanis, hogy ezen nyelvosztályok közül L0V a legtágabb, LDA
+a legszűkebb. A már bizonyı́tott L0V = L3 ⊆ LNDA = LDA miatt viszont ők — s ı́gy az
+összes közöttük elhelyezkedő nyelvosztályok is — egyenlőek.
+
+3.1.2.
+
+A 3. tipusú nyelvek néhány tulajdonsága
+
+3.14. tétel. Kis Bar-Hillel lemma: Minden L ∈ L3 nyelvhez van olyan n = n(L) ∈ N
+nyelvfüggő konstans, hogy minden
+u ∈ L szó esetén ha tekintjünk egy tetszőleges u = α1 u0 α2
+
+0
+felbontását, ahol l(u ) ≥ n , akkor van u0 -nek olyan v részszava (u0 = β1 vβ2 ), hogy 0 <
+l(v) ≤ n, és minden i ≥ 0 esetén α1 β1 v i β2 α2 ∈ L.
+Kevésbé formálisan a lényeget a következőképpen fejezhetjük ki: L minden szavának elég
+hosszú részszavában létezik elég rövid, nemüres, beiterálható részszó.
+Bizonyı́tás. Tudjuk, hogy minden L ∈ L3 nyelvhez van olyan A véges, determinisztikus
+
+automata, melyre L(A) = L. Legyen A = A, T, δ, a0 , F , és n := A = n(L) . Vizsgáljunk
+meg egy megfelelő tulajdonságú szót, azaz legyen u ∈ L(A), u = α1 u0 α2 , és l(u0 ) ≥ n = A .
+Tegyük fel, hogy u0 = t1 t2 . . . tm , és m ≥ n. Az u-t elfogadó konfigurációátmenetet
+részletezve:
+∗
+
+[a0 , α1 t1 t2 . . . tm α2 ]
+
+A
+
+[c0 , t1 t2 . . . tm α2 ]
+
+A
+
+[c1 , t2 . . . tm α2 ]
+
+A
+
+...
+
+∗
+
+...
+
+A
+
+[cm , α2 ]
+
+A
+
+[f, ε] (f ∈ F ).
+
+Tekintsük a (c0 , c1 , . . . , cm ) sorozatot. Ez m + 1 ≥ n + 1 elemű. A skatulyaelv alapján
+biztosan léteznek k, j (k 6= j) számok, melyekre 0 ≤ j < k ≤ n és cj = ck , ugyanis n = A .
+Az u0 szó felbontása legyen β1 := t1 . . . tj , v := tj+1 . . . tk , és β2 := tk+1 . . . tm . Világos,
+hogy j, k választása miatt: 0 < l(v) ≤ n.
+Továbbá az is igaz, hogy
+∗
+
+[c0 , β1 ]
+
+A
+
+[cj , ε],
+
+∗
+
+[cj , v]
+
+A
+
+[ck , ε] = [cj , ε],
+
+3.1. 0-vermek
+
+39
+∗
+
+[ck , β2 ]
+
+A
+
+[cm , ε].
+
+De ezekből már nyilván következik, hogy tetszőleges i ≥ 0 esetén
+[cj , v i ]
+
+∗
+A
+
+[cj , ε].
+
+Összegezve az eddigieket:
+[a0 , α1 β1 v i β2 α2 ]
+
+∗
+A
+
+[c0 , β1 v i β2 α2 ]
+
+∗
+A
+
+[cj , v i β2 α2 ]
+
+∗
+A
+
+∗
+
+[cj , β2 α2 ]
+
+A
+
+∗
+
+[cm , α2 ]
+
+és ebből már következik, hogy α1 β1 v i β2 α2 ∈ L(A) = L.
+
+A
+
+[f, ε].
+2
+
+Most nézzünk egy példát a Kis Bar-Hillel lemma alkalmazására. Jelölje HE a helyes
+zárójelezések halmazát. Erre fogalmazzuk meg a következő állı́tást:
+3.15. állı́tás. HE 6∈ L3 .
+Bizonyı́tás. Indirekt módon. Tegyük fel, hogy HE ∈ L3 . A Kis Bar-Hillel lemma alapján
+ekkor létezik n = n(L). Vegyük a következő szót: u := (n )n , és legyen u0 = (n . Mivel
+l(u0 ) ≥ n, ı́gy alkalmazhatjuk a Kis Bar-Hillel lemmát.
+Ezek szerint u0 -ben létezik v nemüres, beiterálható részszó. Legyen v := (d , ahol d > 0.
+i
+A lemma szerint (n−d (d )n eleme a HE halmaznak. Ez viszont i 6= 1 esetén HE definı́ciója
+miatt nem teljesül, tehát ellentmondásra jutottunk.
+2
+Következmény:
+A programozási nyelvek szintaxisa nem ı́rható le tisztán 3-as tipusú nyelvtannal. Viszont
+az alapszimbólumok (tokenek) feldolgozására már használható automata, a fordı́tóprogramokban ez a lexikális elemző (scanner).
+Véges, determinisztikus automata esetén kiterjeszthetjük a δ függvényt nemcsak egy
+jelből álló u szóra, hiszen minden a ∈ A és u ∈ T ∗ esetén létezik pontosan egy b ∈ A,
+∗
+
+amelyre [a, u]
+
+A
+
+[b, ε].
+
+3.16. definı́ció. A kiterjesztett δ̂ függvényt a következő módon definiáljuk:
+∗
+
+δ̂(a, u) := b ⇐⇒ [a, u]
+
+A
+
+[b, ε].
+
+Definı́ció alapján nyilvánvaló összefüggések az alábbiak:
+δ̂(a, ε) = a,
+δ̂(a, uv) = δ̂(δ̂(a, u), v),
+[a, t]
+
+A
+
+[δ̂(a, t), ε], a ∈ A és t ∈ T .
+
+A konfigurációátmenet fogalmát felhasználva az utóbbiból δ(a, t) = δ̂(a, t). Tehát a δ̂
+tényleg valódi kiterjesztése δ függvénynek, ı́gy tehát a ˆ jel elhagyható.
+
+40
+
+3. Veremautomatákkal jellemezhető nyelvek
+
+3.17. definı́ció. Adott L nyelv p ∈ T ∗ -ra vonatkozó maradéknyelve Lp , ahol
+Lp := {v pv ∈ L}.
+Tulajdonságai:
+
+Lp q = Lpq ,
+Lε = L,
+ε ∈ Lp ⇐⇒ p ∈ L.
+3.18. definı́ció. Az A determinisztikus automata a ∈ A állapotra vonatkozó maradékát
+jelölje LA
+a . Ennek jelentése:
+LA
+a := {v δ(a, v) ∈ F }.
+Az LA
+a tehát azokat a v szavakat tartalmazza, melyek hatására az automata a-ból
+végállapotba kerül. Az automata maradéknyelvének tulajdonságai:
+A
+(LA
+a )q = Lδ(a,q) ,
+
+LA
+a0 = L(A),
+ε ∈ LA
+a ⇐⇒ a ∈ F .
+3.19. tétel. Myhill—Nerode tétel L ∈ L3 akkor és csak akkor, ha {Lp }p∈T ∗ < ∞,
+ahol T = T (L) az L nyelv ábécéje.
+Bizonyı́tás.
+⇐=”
+Konstruálunk egy véges, determinisztikus automatát, melynek az állapothalmaza legyen
+{Lp }p∈T ∗ . Ez a feltétel szerint véges halmaz. Az Lp állapottól azt várjuk, hogy a kezdőállapotból p input elolvasása után ő legyen az aktuális állapot.
+Legyen AL
+∗ = {Lp }p∈T ∗ , T, δ, Lε , F , ahol F := {Lp ε ∈ Lp }, és δ(Lp , t) := Lpt . Ekkor
+L
+A∗ tulajdonságai:
+”
+
+1) δ jól definiált, azaz Lp = Lq esetén δ(Lp , t) = δ(Lq , t).
+— Ugyanis Lp = Lq =⇒ (Lp )t = (Lq )t =⇒ Lpt = Lqt =⇒ δ(Lp , t) = δ(Lq , t).
+2) Minden u ∈ T ∗ esetén δ(Lp , u) = Lpu .
+— A δ definı́ciója segı́tségével az u szó hosszára vonatkozó indukcióval belátható.
+3) Lp ∈ F ⇐⇒ p ∈ L.
+Már csak azt kell belátni, hogy L(AL
+∗ ) = L. Ez pedig könnyen igazolható, hiszen u ∈
+L(AL
+)
+⇐⇒
+δ(L
+,
+u)
+∈
+F
+⇐⇒
+L
+=
+Lu ∈ F ⇐⇒ u ∈ L.
+ε
+εu
+∗
+
+3.1. 0-vermek
+
+41
+
+=⇒”
+”
+Legyen L ∈ L3 . Tudjuk, hogy létezik olyan A = A, T, δ, a0 , F véges, determinisztikus
+automata, amely az L nyelvet fogadja el, azaz L = L(A). Ekkor biztos, hogy |{LA
+a }a∈A | ≤
+|A| < ∞, mert A véges. Vegyük tetszőleges u ∈ T ∗ -ra az Lu maradéknyelvet. Ekkor
+A
+Lu = LA
+a0 )u = Lδ(a0 ,u) . Így nyilván fennáll, hogy
+{Lu }u∈T ∗ ⊆ {LA
+a }a∈A ,
+amivel a tételt beláttuk.
+2
+Mivel AL
+∗ állapothalmaza {Lu }u∈T ∗ , ezért a alábbi következményt kapjuk:
+Következmény:
+Az AL
+∗ automata állapotszáma kisebb vagy egyenlő, mint tetszőleges, az L nyelvhez adott
+véges, determinisztikus automata állapotszáma.
+3.20. definı́ció. Valamely L ∈ L3 -hoz adott minimális állapotszámú véges, determinisztikus automatát L minimális automatájának nevezzük.
+Világos, hogy AL
+∗ minimális állapotszámú véges, determinisztikus automata L-hez. A
+továbbiakban algoritmust adunk egy L ∈ L3 nyelvet elfogadó véges, determinisztikus automata állapotszámának csökkentésére és kimutatjuk, hogy ı́gy az izomorfia erejéig egyetlen
+L-et felismerő minimális automatához jutunk.
+Megjegyzés: A scanner programokhoz célszerű minimális automatát használni, mert ezáltal
+jelentősen csökkenthető a lexikális elemzés tárigénye.
+
+3.1.3.
+
+Minimális automata előállı́tása
+
+Ebben a pontban automata alatt mindig véges, determinisztikus automatát fogunk érteni.
+Adott egy L ∈ L3 nyelv, mely automatával van megadva. Próbáljunk ebből megkonstruálni egy minimális, L-et felismerő automatát. Egyelőre állapotszám-csökkentő transzformációkat adunk.
+1)Összefüggővé alakı́tás:
+Nyilván el lehet hagyni az automata által a felismerés során nem használt állapotokat.
+3.21. definı́ció. Egy A automata összefüggő, ha minden a ∈ A esetén létezik u ∈ T ∗ szó,
+hogy δ(a0 , u) = a.
+Ha egy automata nem összefüggő, elhagyhatjuk a kezdőállapotból nem elérhető állapotokat, hiszen ezeknek amúgy sincs szerepük a nyelv felismerésében. Legyen az ı́gy kapott
+automata Aössz . Ennek állapothalmaza:
+Aössz = {a ∈ A ∃u ∈ T ∗ : δ(a0 , u) = a}.
+Aössz most is előállı́tható az alábbi iterációval:
+H0 := {a0 },
+
+42
+
+3. Veremautomatákkal jellemezhető nyelvek
+Hi+1 := Hi ∪ {a ∃b ∈ Hi ∧ ∃t ∈ T : δ(b, t) = a},
+
+A Hi halmazok itt is csak bővülhetnek, ezért az A állapothalmaz végessége miatt egy i0
+indextől kezdődően végig megegyeznek, és ekkor Aössz = Hi0 .
+Legyen Aössz = Aössz , T, δ A
+, a0 , F ∩ Aössz . Erre teljesül, hogy L(Aössz ) =
+össz × T
+L(A).
+2) Redukció:
+Legyen A= A, T, δ, a0 , F . Két állapot nem megkülönböztethető a nyelvelfogadás szempontjából, ha ugyanazon szavak hatására kerülnek végállapotba. Célunk az, hogy ezeket
+eggyé összevonjuk úgy, hogy az elfogadott nyelv változatlan maradjon.
+A
+3.22. definı́ció. Legyenek a, b ∈ A állapotok. a és b ekvivalensek, ha LA
+a = Lb . Jelölése:
+a ∼ b.
+
+Tulajdonságai:
+— ekvivalenciareláció,
+— jobbkongruenciareláció.
+3.23. definı́ció. Egy ρ : A × A reláció jobbkongruencia, ha minden u ∈ T ∗ esetén aρb =⇒
+δ(a, u)ρδ(b, u).
+3.24. állı́tás. A ∼ reláció jobbkongruencia.
+
+
+A
+A
+Bizonyı́tás. Ugyanis a ∼ b =⇒ LA
+=⇒ ∀u ∈ T ∗ -ra LA
+a = Lb
+a u = Lb u ⇐⇒
+A
+∗
+∀u ∈ T ∗ -ra LA
+δ(a,u) = Lδ(b,u) ⇐⇒ ∀u ∈ T -ra δ(a, u) ∼ δ(b, u).
+2
+3.25. definı́ció. Az ∼” reláció két automata állapotaira vonatkozó kiterjesztése:
+”
+A2
+1
+a1 ∼ a2 , ha LA
+a1 = La2 , ahol
+A1 , A2 a két automata, és a1 ∈ A1 , a2 ∈ A2 .
+(1)
+
+3.26. definı́ció. Legyenek A1 , A2 két automata a0
+valens A2 -vel, jelölésben:
+(1)
+
+(2)
+
+A1 ∼ A2 , ⇐⇒ a0 ∼ a0
+
+(2)
+
+és a0
+
+kezdőállapotokkal. A1 ekvi-
+
+
+vagyis ha L(A1 ) = L(A2 ) .
+
+Annak érdekében, hogy egyszerűbb automatához
+jussunk, vegyük az A automata ∼-re
+
+vonatkozó a faktorautomatáját, jelölésben: A ∼ .
+
+A ∼ := {Ca }a∈A , T, δ 0 , Ca0 , F ,
+ahol
+Ca az a-val ekvivalens állapotok osztálya, melynek reprezentánsa a,
+F = {Ca a ∈ F },
+δ 0 (Ca , t) = Cδ(a,t) , azaz egy tetszőleges reprezentánssal definiáljuk.
+
+3.1. 0-vermek
+
+Az A ∼ automata tulajdonságai:
+
+43
+
+1) δ 0 jól definiált. Ez nyilvánvaló, mert ∼ jobbkongruencia.
+2) δ 0 (Ca , u) = Cδ(a,u) , ahol u ∈ T ∗ .
+3) Cb ∈ F ⇐⇒ b ∈ F .
+3.27. definı́ció. Egy adott A (véges, determinisztikus) automata redukált automata, ha
+minden a, b ∈ A esetén a ∼ b ⇐⇒ a = b, azaz nincsenek különböző ekvivalens állapotai.
+
+
+3.28. állı́tás. Az A ∼ automata redukált, és L(A ∼ ) = L(A).
+
+⇐⇒ δ(a, u) ∈ F ⇐⇒
+Bizonyı́tás. A ∼ automata tulajdonságai alapján u ∈ LA
+a
+A/∼
+0
+Cδ(a,u) ∈ F ⇐⇒ δ (Ca , u) ∈ F ⇐⇒ u ∈ LCa , tehát beláttuk, hogy tetszőleges a ∈ A
+
+A/∼
+állapotra LA
+a = LCa . Ebből egyrészt a = a0 választásával adódik L(A 
+∼ ) = L(A),
+másrészt ∼ definı́ciója alapján fennáll a ∼ Ca . Innen következik, hogy A ∼ redukált,
+A/∼
+A/
+= LCb ∼ = LA
+ugyanis ha Ca ∼ Cb , akkor LA
+a = LCa
+b miatt a ∼ b, és emiatt ugyanazt az
+osztályt reprezentálják, azaz Ca = Cb .
+2
+Megjegyzés:
+Ha az automata a redukció előtt már összefüggő volt, akkor a redukció után is az lesz.
+Tehát ha adott egy A automata, akkor abból már tudunk készı́teni egy összefüggő, redukált
+automatát, kisebb állapotszámmal.
+Kérdés, hogy ezzel mennyire közelı́tettünk a minimalitás felé.
+(i)
+
+3.29. definı́ció. Legyenek Ai = Ai , T, δi , a0 , Fi (i = 1, 2) véges, determinisztikus automaták. Ekkor A1 és A2 izomorfak, ha létezik φ : A1 −→ A2 kölcsönösen egyértelmű
+ráképezés, melyre a következők teljesülnek:
+(1) 
+(2)
+1) φ a0 = a0 ,
+
+2) φ F1 = F2 ,
+
+
+3) δ-t megőrzi, azaz minden a1 ∈ A1 és minden t ∈ T esetén φ δ1 (a1 , t) = δ2 φ(a1 ), t .
+(Könnyen belátható, hogy ekkor ez minden u ∈ T ∗ -ra is igaz.)
+Jelölés: A1 ∼
+= A2 .
+3.30. tétel. Izomorfia tétel Legyenek A1 és A2 összefüggő, redukált és egymással ekvivalens automaták. Ekkor A1 ∼
+= A2 .
+Bizonyı́tás. Az összefüggőségből adódik a következő két állı́tás:
+(i)
+
+Ai = {δi (a0 , p) p ∈ T ∗ },
+(i)
+
+Fi = {δi (a0 , p) p ∈ L(Ai )}.
+
+44
+
+3. Veremautomatákkal jellemezhető nyelvek
+
+Így már könnyű a megfeleltetést megadni:
+(1)
+
+(2)
+
+φ : δ1 (a0 , p) 7−→ δ2 (a0 , p) minden p ∈ T ∗ -ra.
+A Φ értelmezési tartománya nyilván A1 , értékkészlete A2 . Már csak annak ellenőrzése van
+hátra, hogy bijektı́v függvény.
+(1)
+
+red
+
+(1)
+
+(1)
+
+(1)
+
+⇐⇒
+δ1 (a0 , p) = δ1 (a0 , q) ⇐⇒ δ1 (a0 , p) ∼ δ1 (a0 , q) ⇐⇒ LA1 (1) = LA1 (1)
+δ1 (a0 ,q)
+δ1 (a0 ,p)
+
+
+
+
+ekv
+(2)
+2
+2
+1
+1
+⇐⇒ δ2 (a0 , p) ∼
+⇐⇒ LA2 (2) = LA2 (2)
+= LA(2)
+⇐⇒ LA(2)
+= LA(1)
+LA(1)
+q
+p
+q
+p
+
+a0
+(2)
+δ2 (a0 , q)
+
+a0
+
+red
+
+⇐⇒
+
+a0
+a0
+(2)
+(2)
+δ2 (a0 , p) = δ2 (a0 , q).
+
+δ2 (a0 ,p)
+
+δ2 (a0 ,q)
+
+Tehát φ jól definiált és bijektı́v leképezés. Meg kell még vizsgálni, teljesülnek-e az 1) — 3)
+feltételek.
+
+(1) 
+(1)
+(2)
+(2)
+φ a0 = φ δ1 (a0 , ε) = δ2 (a0 , ε) = a0 ,
+
+φ F1 = F2 , ez F1 , F2 előállı́tásából következik.
+(1)
+
+Legyen δ1 (a0 , p) ∈ A1 tetszőleges.
+
+
+(1)
+(1)
+(2)
+φ δ1 (δ1 (a0 , p), t) = φ δ1 (a0 , pt) = δ2 (a0 , pt), és
+
+(1)
+(2)
+(2)
+δ2 φ(δ1 (a0 , p)), t = δ2 δ2 (a0 , p), t) = δ2 (a0 , pt).
+2
+Következmény:
+Mivel egy adott L nyelvhez készı́tett minimális automaták összefüggők és redukáltak
+(különben csökkenthető lenne az állapotszámuk), ezért a tételből következik, hogy egymással
+izomorfak. Az is teljesül tehát, hogy bármely L-hez készı́tett automatát összefüggővé téve
+és redukálva — az izomorfia erejéig — a minimális automatát kapjuk meg.
+
+3.1.4.
+
+Állapotok ekvivalenciájának algoritmikus eldöntése
+
+Két állapot ekvivalenciáját egyelőre nem tudjuk a definı́ció alapján eldönteni, ugyanis
+
+A
+∗
+a ∼ b ⇐⇒ LA
+a = Lb ⇐⇒ ∀u ∈ T : δ(a, u) ∈ F ⇐⇒ δ(b, u) ∈ F .
+Itt T ∗ végtelen, a probléma a definı́ció alapján nem megoldható. Megpróbáljuk ∼-t
+approximálni végesen eldönthető relációkkal.
+i
+
+3.31. definı́ció. Legyen ∼, az i-edik ekvivalencia (i ≥ 0) a következőképpen definiálva:
+
+i
+a∼b pontosan akkor, ha minden u ∈ T ≤i esetén δ(a, u) ∈ F ⇐⇒ δ(b, u) ∈ F .
+Szükségünk lesz még a következő fogalomra is:
+3.32. definı́ció. Legyenek ρ1 , ρ2 bináris relációk. Ekkor ρ1 finomabb, mint ρ2 , ha bármely
+a, b ∈ A esetén aρ1 b =⇒ aρ2 b.
+Jelölése: ρ1  ρ2 .
+
+3.1. 0-vermek
+
+45
+
+Világos, hogy ha ρ1 , ρ2 ekvivalenviarelációkra ρ1  ρ2 , akkor |ρ1 | ≤ |ρ2 | (a |ρ1 | és |ρ2 | az
+i
+ekvivalenciaosztályok száma). Az ∼ ekvivalencia tulajdonságai:
+1) ekvivalenciareláció,
+i+1
+
+i
+
+i
+
+2) minden a, b ∈ A esetén a ∼ b ⇐⇒ a∼b ∧ (∀t ∈ T : δ(a, t)∼δ(b, t)),
+0
+
+1
+
+2
+
+i
+
+3) ∼ ≺ ∼ ≺ ∼ ≺ . . . ≺∼, továbbá a ∼ b ⇐⇒ ∀i ≥ 0 : a∼b.
+A folyamatos finomodás miatt az osztályszámokra fennáll, hogy
+0
+
+1
+
+2
+
+|∼| ≤ |∼| ≤ |∼| ≤ . . . ≤ | ∼ | ≤ |A| < ∞.
+l
+
+l+1
+
+Ekkor viszont létezik olyan l ∈ N, melyre |∼| = | ∼ |. Legyen a legkisebb ilyen szám i0 .
+Tehát
+l
+
+l+1
+
+i0 := min{l |∼| = | ∼ |}.
+0
+
+Milyen becslést tudunk adni i0 -ra? Az nyilvánvaló, hogy 1 ≤ |∼|, i0 pedig akkor lesz a
+legnagyobb, ha az osztályok száma a lehető leglassabban nő, azaz egyesével. Tehát tegyük
+i0
+0
+1
+föl, hogy |∼| ≥ 1, |∼| ≥ 2, . . . , |∼|
+≥ i0 + 1, ahonnan i0 + 1 ≤ |A|. Tehát i0 ≤ |A| − 1.
+j
+
+j
+
+i
+
+j+1
+
+0
+A rekurzı́v összefüggés alapján nyilván minden j ≥ i0 esetén ∼ = ∼,
+ugyanis ha ∼ = ∼ ,
+j+1
+j+2
+j
+j+1
+j+2
+j+1
+akkor ∼ = ∼ , mivel ∼ = ∼ esetén minden a, b-re a ∼ b ⇐⇒ a ∼ b ∧ (∀t ∈ T :
+
+j+1
+
+j
+
+j+1
+
+i
+
+δ(a, t) ∼ δ(b, t)) ⇐⇒ a∼b ∧ (∀t ∈ T : δ(a, t)∼δ(b, t)) ⇐⇒ a ∼ b.
+i
+
+j
+
+i
+
+i
+
+Tehát az is fennáll, hogy minden j ≥ 0-ra ∼0  ∼, amiből adódik, hogy ∼0 ∼. Azaz ∼0
+és ∼ kölcsönösen finomabbak egymásnál, ami csak úgy lehetséges, hogy megegyeznek, tehát
+i
+∼0 =∼. Az ekvivalencia eldöntését ezzel algoritmikusan végrehajthatóvá tettük.
+Következmény:
+|A|−1
+
+∼= ∼ .
+
+3.1.5.
+
+Reguláris nyelvek
+
+3.33. definı́ció. Reguláris nyelveknek nevezzük az alábbi három tulajdonsággal definiált
+LREG nyelvosztály elemeit:
+(i) LREG tartalmazza az elemi nyelveket (∅, {ε}, {t}, ahol t ∈ U ,
+(ii) LREG zárt az unió, konkatenáció és a lezárás műveletekre,
+(iii) LREG a legszűkebb olyan nyelvosztály, mely az (i), (ii) feltételeknek megfelel.
+3.34. tétel. Kleene tétele:
+
+LREG = L3 .
+
+Bizonyı́tás. Itt is a kétirányú tartalmazást kell belátni:
+⊆”:
+”
+Elég belátni, hogy L3 rendelkezik az (i), (ii) tulajdonságokkal.
+(i) Tudunk adni 3-as tipusú nyelvtant az elemi nyelvekhez:
+
+46
+
+3. Veremautomatákkal jellemezhető nyelvek
+— P = {S −→ t}, ha L = {t},
+— P = {S −→ ε}, ha L = {ε},
+— P = ∅, ha L = ∅.
+
+(ii) korábban már láttuk, hogy L3 zárt a reguláris műveletekre.
+
+⊇”
+Tudjuk, hogy L3 = LDA . Elegendő tetszőleges A véges, determinisztikus automata
+esetén belátni, hogy L(A) ∈ LREG .
+Számozzuk meg az automata állapotait a következőképpen:
+
+s
+A = {a1 , . . . , an }, T, δ, a1 , aij j=1 .
+”
+
+Vezessük be a következő jelölést, ahol 1 ≤ i, j ≤ n és k ≥ 0:
+Lki,j := {u ∈ T ∗ [ai , u]
+
+∗
+A
+
+[aj , ε], és a közben érintett állapotok indexe nem nagyobb
+
+k-nál }.
+A definı́ció alapján világos, hogy Lni,j = Ln+1
+i,j = . . . , hiszen nincs valódi megkötés az érintett
+állapotokra. A végállapotokra véve az uniót:
+L(A) =
+
+s
+S
+j=1
+
+Ln1,ij .
+
+
+Ha minden i, j, k-ra igaz lenne a regularitás Lki,j ∈ LREG , akkor L(A) ∈ LREG igaz
+volna, hiszen LREG zárt az únió műveletére. Az Lki,j -k regularitását külön lemmaként igazoljuk, ezzel téve teljessé a tétel bizonyı́tását.
+2
+3.35. lemma. Minden i, j, k esetén Lki,j ∈ LREG .
+Bizonyı́tás. Teljes indukcióval k-ra vonatkozóan, minden i, j-re párhuzamosan.
+k = 0 : Ekkor nyilván L0i,j = {t ∈ T δ(ai , t) = aj } ∪ ∆ij , ahol
+
+∆ij =
+
+{ε}, ha i = j,
+∅,
+ha i 6= j.
+
+Következésképp L0i,j reguláris, mert elemi nyelvek uniója.
+k + 1: Tegyük fel, hogy k-ig igaz az állı́tás, tehát Lki,j reguláris bármely i, j-re.
+Vizsgáljuk meg k + 1-re. Két eset lehetséges:
+k ≥ n:
+k+1
+k
+Ebből viszont következik, hogy Lk+1
+i,j = Li,j , tehát Li,j is reguláris.
+k < n:
+Legyen u ∈ Lk+1
+tetszőleges. Ekkor az automata ai állapotából aj állapotába
+i,j
+kerül az u szó hatására úgy, hogy a köztesen érintett állapotok A-beli sorszáma maximum k + 1. Két eset lehetséges:
+a) Köztesen nem fordul elő az ak+1 állapot. Ekkor nyilván u ∈ Lki,j is fennáll.
+
+3.1. 0-vermek
+
+47
+
+b) l + 1 ≥ 1-szer előfordult köztesen az ak+1 állapot. Ekkor osszuk föl az u szót úgy, hogy
+ezeknél az ak+1 állapotoknál állapı́tjuk meg a részszavak határát. Tehát:
+u1
+v1
+v2
+vl
+u2
+ai z .}|
+. . { ak+1 z .}|
+. . { ak+1 z .}|
+. . { . . . z .}|
+. . { ak+1 z .}|
+. . { aj .
+|
+{z
+}
+u
+Tudjuk, hogy minden közbülső szakaszon az állapotok sorszáma legfeljebb k,
+vagyis
+u1 ∈ Lki,k+1 , vd ∈ Lkk+1,k+1 , u2 ∈ Lkk+1,j (d = 1, 2, . . . , l).
+Ebből már következik, hogy
+∗
+u = u1 v1 . . . vl u2 ∈ Lki,k+1 Lkk+1,k+1 Lkk+1,j .
+Az a) és b) eseteket összefoglalva azt kaptuk, hogy
+∗ k
+k
+k
+k
+Lk+1
+i,j ⊆ Li,j ∪ Li,k+1 Lk+1,k+1 Lk+1,j .
+A másik irányú ⊇” tartalmazás már nyilvánvaló, tehát a két nyelv azonos.
+”
+∗
+Lki,j = Lki,j ∪ Lki,k+1 Lkk+1,k+1 Lkk+1,j .
+Az indukciós feltétel szerint a jobb oldalon álló nyelvek regulárisak, ı́gy Lk+1
+i,j a reguláris
+műveletekre való zártság miatt reguláris. Ezzel a lemma bizonyı́tását befejeztük.
+2
+
+3.1.6.
+
+A 3-as tipusú nyelvek néhány további zártsági tulajdonsága
+
+Tegyük fel, hogy adott egy A = A, T, δ, a0 , F véges, determinisztikus automata. Ez kiterjeszthető tetszőleges T 0 ⊇ T ábécére. Bővı́tsük ki az állapothalmazt egy új d zsákutca
+állapottal, és definiáljuk erre δ-t a következőképp:
+δ(a, t0 ) := d minden t0 ∈ T 0 \ T -re és a ∈ A-ra,
+δ(d, t0 ) := d minden t0 ∈ T 0 -re.
+A kezdő- és végállapotokat változatlanul hagyva az ı́gy kapott A0 automatára nyilván
+L(A0 ) = L(A).
+3.36. tétel. Az L3 nyelvosztály zárt a komplementer, a metszet, a különbség és a szimmetrikus differencia műveletekre.
+Bizonyı́tás.
+Elég belátni az állı́tást a véges, determinisztikus automaták által felismert nyelvek osztályára.
+Komplementer:
+
+48
+
+3. Veremautomatákkal jellemezhető nyelvek
+
+A standard jelöléssel adott A véges, determinisztikus automatához konstruálunk egy
+olyan A automatát, amelyre L(A) = L(A). Legyen A = A, T, δ, a0 , A \ F , és erre teljesül
+az állı́tás.
+Metszet, különbség, szimmetrikus differencia:
+(i)
+Legyenek Ai = Ai , T, δi , a0 , Fi , véges, determinisztikus automaták, i = 1, 2, ahol
+feltettük, hogy az input ábécéik azonosak (hiszen különben kiterjeszthetők mindketten az
+únió ábécére). Legyen
+tetszőleges művelet a ∩, \, 4 műveletek közül. Konstruálni kell
+egy A automatát, melyre fennáll, hogy
+L(A ) = L(A1 )
+
+L(A2 ).
+(1)
+
+(2)
+
+Legyen A = A1 × A2 , T, δ1 × δ2 , (a0 , a0 ), F
+ún. direkt szorzat automata. A
+működése egyszerű, komponensenként párhuzamosan
+történik,
+amit
+
+ a δ1 × δ2 jelöléssel fejezünk ki. Formálisan: (δ1 × δ2 ) (a1 , a2 ), t = δ1 (a1 , t), δ2 (a2 , t) . Definiálni kell még a
+végállapotok halmazát:
+F∩ := F1 × F2 ,
+F\ := F1 × (A2 \ F2 ),
+
+
+F4 := F1 × (A2 \ F2 ) ∪ (A1 \ F1 ) × F2 .
+2
+
+4. Algoritmikusan eldönthető
+problémák 3-as tı́pusú nyelveken
+Egy adott probléma algoritmikusan eldönthető, ha létezik olyan algoritmus, mely igen
+válasszal áll le, ha a problémának van megoldása, különben pedig nem választ ad.
+Eldöntési problémák:
+I) u ∈ L, ahol u input szó, és L ∈ L3 .
+Tegyük fel, hogy L egy véges, determinisztikus automatájával van megadva. (Ez L egy
+lehetséges véges leı́rása.) A döntési eljárás:
+1) ha u 6∈ T (A)∗ , akkor nem” a válasz,
+”
+2) ha u ∈ T (A)∗ , akkor az u szót az A automata inputjára tesszük, és elindı́tjuk A-t. Ha
+az A automata elfogadja az u szót, akkor a döntési eljárás is igent válaszol, egyébként
+nemet.
+Itt az automatát elegendő fekete doboz”-ként megadni, ugyanis a döntési eljárás nem
+”
+használja explicit módon az automata belső szerkezetét, hanem azt mintegy orákulumként
+működteti.
+Az alábbi három feltétel teljesülését viszont elvárjuk az automatánktól:
+1) ismert legyen az ábécéje,
+
+2) ismert legyen az állapotainak száma n(A), ez a későbbiekben lesz szükséges ,
+3) legyen egy RESET kapcsoló, amivel alapállapotba tudjuk hozni.
+Ezekkel a feltételekkel jónéhány további eldöntési feladat megoldható feketedoboz automatákkal.
+II) L 6= ∅?
+Egy kézenfekvő (direkt) módszer, hogy minden T (A)∗ -ban szereplő szóra megoldjuk az
+I) eldöntési problémát. Ha valamikor igen választ kapunk, akkor igen válasszal jelezzük,
+hogy a nyelv nem üres. Természetesen ez az út nem járható, mert T (A)∗ nem véges, s az
+algoritmus nem válasz helyett végtelen ideig működne.
+4.1. állı́tás. L 6= ∅ ⇐⇒ L ∩ T (A)<n(A) 6= ∅.
+49
+
+50
+
+4. Algoritmikusan eldönthető problémák 3-as tı́pusú nyelveken
+
+Bizonyı́tás.
+⇐=” irány triviális. =⇒” irány bizonyı́tása a kis Bar-Hillel-lemmával
+”
+”
+történik. Legyen u az L nyelv egy minimális hosszúságú szava. Azt kellene belátni, hogy
+l(u) < n(A).
+Indirekt módon tegyük fel, hogy l(u) ≥ n(A). Mivel L ∈ L3 , ezért igaz a kis Bar-Hillellemma, ahol konstansként választhatjuk n(A)-t, hiszen bármely L-et felismerő automata
+állapotszáma megfelelő. Mivel l(u) ≥ n(A), ezért létezik v 6= ε beiterálható részszava.
+Iteráljuk ezt i = 0-szor és jelölje az ı́gy kapott L-beli szót u0 . Világos, hogy l(u0 ) = l(u) −
+l(v) < l(u), ami ellentmond az u választásának.
+2
+Ezzel beláttuk, hogy II) visszavezethető az I)-es eldöntési problémára úgy, hogy az összes
+u ∈ T (A)<n(A) szóra döntjük el, hogy u ∈ L teljesül-e. Ha valamely u-ra I) igen választ ad,
+II)-ben is igen választ adunk, egyébként nemet.
+III) |L| = ∞?
+Ha ez eldönthető, akkor nyilván |L| < ∞ is eldönthető.
+4.2. állı́tás. |L| = ∞ ⇐⇒ L ∩ T (A)n(A)≤l<2n(A) 6= ∅.
+Bizonyı́tás. Az előző állı́táshoz hasonlóan a kis Bar-Hillel-lemmával történhet, amit az
+olvasóra bı́zunk.
+2
+Ezzel III)-t visszavezettük I)-re úgy, hogy az összes u ∈ T (A), ahol n(A) ≤ l(u) < 2n(A)
+szóra döntjük el, u ∈ L teljesül-e. Ha valamely u-ra igen választ ad, III)-ban is igen választ
+adunk, egyébként nemet.
+IV ) L1 ⊆ L2 ?
+Világos, hogy L1 ⊆ L2 ⇐⇒ L1 \ L2 = ∅. Ezzel a feladatot visszavezethetjük II)-re.(A
+zártsági tételt felhasználva L1 \ L2 ∈ L3 .)
+Probléma: Az A1 , A2 automaták külön-külön adottak, most pedig a különbségautomatára van szükségünk. Nyilván az előző zártsági tételt felhasználva megkonstruálható a direkt
+szorzat automata: A\ . Ennek végállapotai: F1 × (A2 \ F2 ) és n(A\ ) = n(A1 )n(A2 ).
+Kérdés: hogyan lehetne A\ -t mint fekete dobozt előállı́tani az A1 , A2 fekete dobozokból?
+Szimulálással. Az A1 , A2 -t egyszerre indı́tjuk el ugyanazzal az input szóval, és ha mindkettő
+leállt, megvizsgáljuk az eredményt. Ha A1 igent adott, A2 pedig nemet, akkor igent adjon
+vissza a szimulált különbség automata, egyébként nemet.
+V ) L1 = L2 ?
+Ez is visszavezethető II)-re, ugyanis L1 = L2 ⇐⇒ L1 4L2 = ∅. Az A4 automata az
+előző feladathoz hasonló módon szimulálható.
+
+5. 2-es tipusú nyelvek
+5.1. definı́ció. Legyen G = T, N, P, S tetszőleges kiterjesztett 2-es tipusú nyelvtan. A t
+nemüres fát G feletti szintaxisfának nevezzük, ha megfelel a következő tulajdonságoknak:
+1) Pontjai T ∪ N ∪ {ε} elemeivel vannak cı́mkézve.
+2) Belső pontjai N elemeivel vannak cı́mkézve.
+3) Ha egy belső pont cı́mkéje X, a közvetlen leszármazottjainak cı́mkéi pedig balról jobbra
+olvasva X1 , X2 , . . . , Xk , akkor X −→ X1 X2 . . . Xk ∈ P.
+4) Az ε-nal cı́mkézett pontoknak nincs testvére.
+Szintaxisfákkal a levezetések szerkezetét ábrázoljuk. Jelölje egy adott t szintaxisfa leveleinek
+balról jobbra való összeolvasását front(t), a fa gyökerét pedig gy(t).
+∗
+
+5.2. lemma. Ha t G feletti szintaxisfa, akkor gy(t)−→front(t).
+G
+
+Bizonyı́tás. A fa magasságára vonatkozó indukcióval.
+h = 0 magasság:
+Ekkor a t szintaxisfa csak egy pontból állhat, mely esetben gy(t) = front(t), a levezetés
+pedig reflexı́v reláció.
+h + 1 magasság:
+Tegyük fel, hogy legfeljebb h magasságra igaz az állı́tás. Lássuk be, hogy h + 1
+magasságra is igaz.
+Legyen h(t) = h + 1. Ekkor biztosan van legalább két szintje. Legyen a gyökér
+X ∈ N -nel, mı́g közvetlen leszármazottai balró jobbra X1 , . . . , Xn -nel cimkézve. Ha
+t G feletti szintaxisfa volt, akkor a t1 , t2 , . . . , tn részfák is G feletti szintaxisfák,
+melyekre h(t1 ), . . . , h(tn ) ≤ h. Alkalmazzuk az indukciós feltételt a ti részfákra,
+∗
+tehát Xi −→front(ti ), minden i = 1, . . . , n esetén.
+G
+
+51
+
+52
+
+5. 2-es tipusú nyelvek
+X
+
+X1
+
+...
+
+Xn
+
+t1
+
+...
+
+tn
+
+Továbbá tudjuk a G feletti szintaxisfa definı́ciójából, hogy X −→ X1 . . . Xn ∈ P,
+s ı́gy megkonstruálhatjuk a következő levezetést:
+∗
+
+∗
+
+G
+
+G
+
+gy(t) = X−→X1 . . . Xn −→front(t1 )X2 . . . Xn −→ . . .
+G
+
+∗
+
+. . . −→front(t1 ) . . . front(tn ) = front(t).
+G
+
+2
+Az előbbiekben a t G feletti szintaxisfához konstruált levezetés speciális tulajdonságú.
+Ha ugyanis a levezetés folyamán valamely pozición (a mondatforma i. betűjén) helyettesı́tés
+történik, akkor a korábbi pozı́ciókat (1, ..., i−1) a levezetés már nem érinti, azok változatlanul
+maradnak.
+5.3. definı́ció. Az előbb leı́rt tulajdonságú levezetéseket legbal levezetésnek hı́vjuk. Analóg
+módon adhatjuk meg a legjobb levezetés fogalmát is.
+Jelölés: A legbal, illetve legjobb levezetésekre a továbbiakban a
+∗
+∗
+A−→α, illetve A−→α jelöléseket fogjuk használni.
+G,lb
+
+G,lj
+
+Világos, hogy terminális szót eredményező legbal, illetve legjobb levezetés esetében a
+helyettesı́tés helye minden mondatformában csak annak első (legbal), illetve utolsó (legjobb)
+nyelvtani jelénél lehet.
+A terminális szavakat eredményező legbal, illetve a legjobb levezetésekhez kapcsolódva
+bevezetjük az elérhető mondatformák két speciális esetét, a legbal, illetve legjobb mondatformát.
+5.4. definı́ció. Valamely L(G)-beli szó lagbal (legjobb) levezetése során előforduló mondatformákat legbal (legjobb) mondatformának nevezzük.
+Az előbb definiált fogalmakra az elemzési módszerek tárgyalásánál lesz szükségünk.
+
+53
+Következmény:
+∗
+Minden G feletti t szintaxisfa esetén gy(t)−→front(t). (Természetesen legjobb levezetés
+G,lb
+
+is létezik.)
+∗
+
+5.5. lemma. Legyen X ∈ T ∪ N ∪ {ε} tetszőleges. Ha X −→α, akkor létezik G feletti t
+G
+
+szintaxisfa, amelyre gy(t) = X, és front(t) = α.
+Bizonyı́tás. Levezetés hossza szerinti indukcióval.
+h = 0 hosszú levezetésre:
+(0)
+Ekkor nyilván X −→α. A definı́ció szerint ekkor X = α, és ekkor az X-szel cimkézett
+G
+
+egyetlen pontból álló fa megfelelő.
+h + 1 hosszú levezetésre:
+Tegyük fel, hogy a legfeljebb h hosszú levezetésekre igaz az állı́tás,s bizonyı́tjuk
+(h+1)
+
+h + 1-re. Legyen X −→ α. Ekkor természetesen létezik legelső lépés (h ≥ 0). Írjuk
+G
+
+ki ezt a legelső lépést:
+(h)
+
+X−→X1 X2 . . . Xk −→α.
+G
+
+G
+
+Mivel a G nyelvtan 2-es tipusú, ezért a függetlenségi lemma alapján α felbontható
+(≤h)
+
+az α = α1 . . . αk alakra úgy, hogy Xi −→ αi , i = 1, . . . , k. Alkalmazva az indukciós
+G
+
+feltételt ezekhez léteznek ti szintaxisfák, amikre gy(ti ) = Xi és front(ti ) = αi . Tehát
+megkonstruálható a következő fa:
+a) k = 0 esetén az X −→ ε szabályt alkalmaztuk, tehát a keresett szintaxisfa az X
+nyelvtani jellel cı́mkézett gyökérből és egy ε-nal cı́mkézett levélből áll.
+b) k ≥ 1 esetén létrehozunk egy X nyelvtani jellel cı́mkézett csúcsot, és ehhez kapcsoljuk
+hozzá balról jobbra a t1 , . . . , tk szintaxisfák gyökereit. Ezt megtehetjük, mert X −→
+X1 X2 . . . Xk ∈ P.
+Világos,hogy mindkét esetben gy(t) = X és front(t) = α.
+2
+Következmény:
+∗
+X −→α ⇐⇒
+G
+
+∗
+
+X −→α
+G,lb
+
+⇐⇒
+
+∗
+
+X −→α
+G,lj
+
+⇐⇒ létezik G feletti t szintaxisfa, amelyre
+
+gy(t) = X és front(t) = α.
+Ezt felhasználva az L(G)-re vonatkozó szóproblémát úgy is el lehet dönteni, hogy megpróbálunk megkonstruálni egy olyan G feletti t szintaxisfát, melyre gy(t) = S, és front(t) =
+u. Ezt a folyamatot nevezzük elemzésnek, mı́g t-t az u szintaxisfájának. A szóprobléma
+eldöntésének a szintaxisfa konstrukcióján alapuló módszere jól használható a programnyelvek
+elemzéséhez, ugyanis az eljárás ı́gy az elemzendő szó szerkezetét is megadja.
+A gyakorlati problémák során a szavaknak jelentést tulajdonı́tunk, amit a levezetés szerkezete alapján adunk meg. Ehhez kapcsolódóan fontos kérdés azt vizsgálni, hogy egy
+adott szónak hány lényegesen különböző szerkezetű levezetése, szintaxisfája lehet. Ha ugyanis több, egymástól különböző szintaxisfát lehet konstruálni egy adott szóhoz, akkor esetleg
+több különböző jelentése is létezhetne.
+
+54
+
+5. 2-es tipusú nyelvek
+
+5.6. definı́ció. Egy adott G ∈ Gkit2 nyelvtan egyértelmű, ha minden u ∈ L(G) szónak
+pontosan egy szintaxisfája létezik.
+5.7. definı́ció. Az L ∈ L2 nyelv egyértelmű, ha van hozzá olyan G ∈ Gkit2 nyelvtan, mely
+egyértelmű.
+5.8. definı́ció. Az L ∈ L2 nyelv lényegesen nem egyértelmű, ha az adott nyelvhez nem
+létezik egyértelmű nyelvtan.
+
+1.Példa: Nem egyértelmű nyelvtanra: Legyen a az azonosı́tókat jelölő terminális jel, és G1
+pedig az alábbi nyelvtan:
+T := {a, +, ∗},
+N := {< kif >},
+P := {< kif >−→< kif > + < kif > < kif > ∗ < kif > a}.
+Nézzük meg az u = a + a ∗ a szót. Ehhez két különböző szintaxisfa is adható:
+
+< kif >
+
+< kif >
+
++
+< kif >
+
+/
+
+?
+
+< kif >
+
++
+
+?
+a
+
+?
+∗
+
+w
+< kif >
+
+~
+< kif >
+
++
+< kif >
+
+?
+a
+
+?
+a
+
+?
+a
+
+~
+< kif >
+
+?
++
+
+/
+< kif >
+
+?
+a
+
+?
+∗
+
+w
+< kif >
+
+?
+a
+
+a + a ∗ a két különböző szintaxisfája G1 -ben
+
+Tehát a nyelvtan nem egyértelmű. Ugyanakkor az általa generált nyelv mégis egyértelmű,
+mert tudunk adni hozzá egyértelmű nyelvtant. Legyen G2 nyelvtan szabályrendszere a
+következő:
+< kif >−→< tag > < tag > + < kif >
+< tag >−→ a a∗ < tag >
+Ugyanezen u = a + a ∗ a szóhoz már csak egy szintaxisfa létezik:
+
+55
+< kif >
+
++
+< tag >
+
+?
++
+
+~
+< kif >
+
+?
+< tag >
+
+?
+a
+/
+a
+
+?
+∗
+
+w
+< tag >
+
+?
+a
+a + a ∗ a egyértelmű G2 feletti szintaxisfája
+
+2.Példa: Lényegesen nem egyértelmű nyelvre:
+L := {an bn cm n, m ≥ 0} ∪ {am bn cn n, m ≥ 0}.
+Könnyű 2-es tipusú egyértelmű nyelvtant adni az unió mindkét tagjára külön-külön, de
+magára az unióra már, mert az an bn cn alakú szavak többségének minden L-hez készı́tett
+nyelvtanban bizonyı́thatóan lesz két különböző szintaxisfája.
+5.9. tétel. Nagy Bar-Hillel-lemma Minden L ∈ L2 esetén léteznek p, q > 0 nyelvfüggő
+egész konstansok (p = p(L), q = q(L)), amelyekre ha u ∈ L, és l(u) > p, akkor u-nak létezik
+u = xyzvw felbontása, ahol l(yv) > 0, l(yzv) ≤ q és minden i ≥ 0 egészre xy i zv i w ∈ L.
+Kevésbé formálisan a lényeget a következőképpen fejezhetjük ki: L minden elég hosszú
+szavában van két, egymáshoz közel lévő, nem triviális, párhuzamosan beiterálható részszó.
+Bizonyı́tás.
+Mivel L ∈ L2 , ezért létezik hozzá G Chomsky-normálformájú nyelvtan, melyre L(G) = L.
+Legyen G = T, N, P, S ez a Chomsky-nyelvtan. (Szabályai A −→ BC, A −→ a, S −→ ε
+alakúak.) A konstansokat definiáljuk a következő módon: p := 2|N |−1 és q := 2|N | . Ezek a
+konstansok függnek a nyelvtől, de a nyelv szavaitól már nem.
+Legyen u ∈ L olyan, hogy l(u) > p. Tudjuk, hogy u-hoz létezik olyan G feletti t
+szintaxisfa, melyre gy(t) = S és front(t) = u. Tudjuk továbbá, hogy t bináris fa, mert G
+Chomsky-normálformájú. Ha elhagyjuk leveleit, a maradék fának ugyanannyi levele lesz.
+(Az A −→ a alakú szabályok miatt.) Jelöljük ezt a maradék fát red(t)-vel.
+Becsüljük meg t magasságát front(t) hossza segı́tségével:
+
+h(t) = 1 + h(red(t)) ≥ 1 + log2 l front(red(t)) = 1 + log2 l(front(t)) = 1 + log2 l(u).
+De log2 l(u) > log2 2|N |−1 = |N | − 1. Ebből az következik, hogy h(t) > |N |.
+
+56
+
+5. 2-es tipusú nyelvek
+S
+^
+
+t
+
+Ar
+^
+
+t1
+
+s
+A
+t2
+x
+
+^
+
+z
+
+y
+
+v
+
+w
+
+A szintaxisfa egyik leghosszabb útja
+
+Ezért t-ben a leghosszabb úton legalább |N | + 2 darab pont van. Ebből egy terminális
+jellel, a maradék |N | + 1 pont nyelvtani jellel van cı́mkézve. Tehát biztosan van legalább
+egy ismétlődő nyelvtani jel. Válasszuk ki a leghosszabb úton alulról az először ismétlődő
+nyelvtani jel párt. Legyen ez az ismétlődő nyelvtani jel A és vegyük azt a két részfát,
+melyekben A nyelvtani jel a gyökér (az ábrán a felső A-hoz tartozó fát t1 -gyel, az alsó A-hoz
+tartozó részfát t2 -vel jelöltük). Ezek f ront(t)-t, tehát u-t öt részre osztják szét, melyeket
+rendre x, y, z, v, w-vel jelöltünk. Ekkor:
+∗
+
+a) S −→xAw, a t − t1 szintaxisfából,
+G
+∗
+
+b) A−→yAv, a t1 − t2 szintaxisfából,
+G
+∗
+
+c) A−→z, a t2 szintaxisfából.
+G
+
+Alkalmazzuk egyszer az a) levezetést, majd i-szer a b) levezetést, végül ismét egyszer a
+c) levezetést:
+∗
+∗
+∗
+S −→xAw−→xy i Av i w−→xy i zv i w.
+G
+
+G
+
+G
+
+Ez pedig valóban azt jelenti, hogy xy i zv i w ∈ L(G).
+Be kell még látnunk, hogy l(yv) > 0. Nézzük meg a b) levezetést. Ha l(yv) = 0 lenne,
+(k)
+
+az azt jelentené, hogy a G nyelvtanban A−→A teljesülne valamely k > 0-ra. Ez viszont a
+G
+
+Chomsky-tulajdonságnak ellentmond, azaz l(yv) > 0.
+Bizonyı́tani kell még, hogy l(yzv) ≤ q. Világos, hogy a t fában leghosszabb út t1 -re eső
+szakasza t1 -ben a leghosszabb, ezért t1 szintszámára a következő becslést adhatjuk:
+sz(t1 ) ≤ |N | + 1 + 1,
+ahol sz(t1 ) t1 fa szintjeinek számát, |N | a különböző nyelvtani jelek számát, az első +1 az
+ismétlést, a második +1 pedig a terminális jelet jelenti. Tehát
+h(t1 ) ≤ |N | + 1.
+Ebből következik, hogy
+
+5.1. Algoritmikusan eldönthető problémák 2-es tipusú nyelvekre
+57
+
+|N | ≥ h(t1 ) − 1 = h(red(t1 )) ≥ log2 l front(red(t1 )) = log2 l(front(t1 )) = log2 l(yzv).
+Tehát összegezve megkaptuk, hogy
+q = 2|N | ≥ l(yzv).
+2
+
+5.0.7.
+
+A nagy Bar-Hillel-lemma alkalmazása
+
+Mivel ez a lemma egy szükséges feltételt ad a 2. tipusú nyelvekre, ezért arra használhatjuk,
+hogy kimutassuk vele, hogy valamely adott nyelv nem 2-es tipusú.
+Példa:
+Legyen T olyan ábécé, amelyre |T | ≥ 2, és két különböző jele legyen t1 , t2 . Legyen
+L az úgynevezett dadogós szavak nyelve, tehát L = {uu u ∈ T (A)∗ }. (Ez a nyelv a
+programozási nyelvek deklaráció fogalmának modellje, ahol az első u a deklarációt, a második
+u a használatot jelenti.)
+5.10. állı́tás. L 6∈ L2 .
+Bizonyı́tás. Indirekt módon. Tegyük fel, hogy L ∈ L2 . Ekkor a nagy Bar-Hillel lemma
+alapján léteznek a p, q nyelvfüggő konstansok. Legyen M := max{p, q}. Vizsgáljuk az α =
+M M M
+tM
+1 t2 t1 t2 ∈ L szót. Nyilván l(α) > p, tehát léteznie kell két, párhuzamosan beiterálható,
+együtt nemüres részszónak, amire a kapott új szavak ismét benne vannak a nyelvben.
+Végezzük el az i = 0-ra az iterációt, azaz hagyjuk el a megfelelő részszavakat. Legyen
+1 m2 m3 m4
+az iteráció eredménye tm
+∈ L. De ekkor valamely 1 ≤ j ≤ 4-re mj < M , mert
+1 t 2 t1 t 2
+nemüres részszót hagytunk el. Tegyük fel, hogy t1 -ből hagytunk el (a bizonyı́tás hasonló
+módon történik t2 -re is). Ekkor viszont m1 = m3 < M . Ebből következik, hogy az yzv
+részszó mindenképpen lefedi az első t2 -es blokkot, és belemetsz mindkét t1 -be, legalább egyegy jellel. Emiatt l(yzv) ≥ M + 2 lenne, ami ellentmond a nagy Bar-Hillel-lemma alapján
+fennálló l(yzv) ≤ q ≤ M becslésnek.
+2
+Következmény:
+A programozási nyelvek szintaxisa nem ı́rható le tisztán 2-es tipusú nyelvtanok segı́tségével, hiszen a deklarációknak az előbb adott, dadogós szavakat tartalmazó legegyszerűbb
+modellje sem ı́rható már le 2-es tipusú nyelvtannal.
+
+5.1.
+
+Algoritmikusan eldönthető problémák 2-es tipusú
+nyelvekre
+
+5.11. tétel.
+hetők:
+
+Legyen L egy 2-es tipusú nyelv. Az alábbi problémák algoritmikusan eldönt-
+
+I) u ∈ L,
+II) L 6= ∅,
+III) |L| = ∞.
+
+58
+
+5. 2-es tipusú nyelvek
+
+Bizonyı́tás.
+I) Beláttuk 1-es tipusú nyelvekre az L1 ⊆ LRek tétel bizonyı́tásánál, s L2 ⊆ L1 .
+II) Ez visszavezethető L 6= ∅ ⇐⇒ L ∩ T (A)≤p 6= ∅ alapján az I) problémára, ahol p a nagy
+Bar-Hillel-lemma megfelelő konstansa.
+III) Ez is visszavezethető az |L| = ∞ ⇐⇒ L ∩ T (A)p<i≤p+q 6= ∅ állı́tás alapján, ahol a p, q
+konstansok a nagy Bar-Hillel-lemma konstansai.
+A két állı́tás bizonyı́tása hasonlóan történhet, mint ahogy a 3. tipusú nyelveknél láttuk.
+2
+Kérdés: Miért nem oldható meg a 3. tipusnál látott módon az L1 ⊆ L2 , illetve az
+L1 = L2 probléma L2 -n? Erre ad választ a következő tétel.
+5.12. tétel.
+L2 nem zárt a komplementer, a metszet, a különbség és a szimmetrikus
+differencia műveletekre.
+Bizonyı́tás.
+Metszet:
+Vizsgáljuk meg a következő nyelveket:
+L1 = {an bn cm n, m > 0},
+L2 = {am bn cn n, m > 0}.
+Könnyen látszik, hogy L1 , L2 ∈ L2 , de ugyanakkor
+L1 ∩ L2 = {an bn cn n ≥ 0} 6∈ L2 .
+Ezt a nagy Bar-Hillel-lemma segı́tségével láthatjuk be, hasonlóan ahhoz, ahogy azt a
+dadogós szavak esetében tettük.
+Komplementer:
+Indirekt módon. Tegyük fel, hogy L2 zárt a komplementerre. A De Morgan-azonosság
+alapján L1 ∩ L2 = L1 ∪ L2 . Mivel L2 az únióra zárt, ezért a komplementerre való zártságból
+következne a metszetre való zártsága, amiről az imént kimutattuk, hogy nem teljesül
+Különbség, szimmetrikus differencia:
+Indirekt módon. Ha különbségre, illetve szimmetrikus differenciára zárt lenne,
+akkor tetszőleges L mellett tartalmazná T (A)∗ \ L-et, illetve T (A)∗ L-et, de ezek
+mindegyike L ezért zárt lenne a komplementerre is.
+2
+
+5.2.
+
+A veremautomaták és 2-es tipusú nyelvek kapcsolata
+
+A továbbiakban 1-vermekkel fogunk foglalkozni, ezért a vermek számát mutató előtagot
+elhagyva csak veremautomatákról beszélünk. Legyen V = A, T, Σ, δ, a0 , σ0 , F veremau-
+
+5.2. A veremautomaták és 2-es tipusú nyelvek kapcsolata
+
+59
+
+tomata. Emlékeztetünk a végállapottal elfogadott nyelv definı́ciójára, melyet itt LF (V)-vel
+jelölünk.
+5.13. definı́ció. A V veremautomata által végállapottal elfogadott nyelv:
+LF (V) = {u ∈ T ∗ [a0 , u, σ0 ]
+
+∗
+V
+
+[f, ε, α] valamely f ∈ F -re}.
+
+Veremautomaták esetében szokás bevezetni egy másik elfogadási módot, az üres veremmel való elfogadást.
+5.14. definı́ció. A V veremautomata által üres veremmel elfogadott nyelv:
+Lε (V) = {u ∈ T ∗ [a0 , u, σ0 ]
+
+∗
+V
+
+[b, ε, ε] valamely b ∈ A-re}.
+
+Ilyenkor az automata definı́ciójában a végállapotok halmazát nem szokták jelölni.
+ε
+Jelölések: LF
+V a végállapottal elfogadott nyelvek osztálya. LV az üres veremmel elfogadott
+nyelvek osztálya.
+
+5.15. lemma. Tetszőleges V veremautomatához létezik olyan V0 veremautomata, melyre
+Lε (V0 ) = LF (V).
+Bizonyı́tás.
+V0 -nek szimulálnia kell V-t, továbbá el kell kerülnie, hogy elutası́tandó szavakra idő előtt
+ürüljön ki a verem, valamint V végállapotba kerülése esetén (és csak akkor) ki kell ürı́tenie
+a vermet.
+Legyen
+V = A, T, Σ, δ, a0 , σ0 , F ,
+standard jelöléssel adott veremautomata. Az őt szimuláló, üres veremmel elfogadó V’ veremautomata formálisan a következő alakú:
+V0 = A ∪ {a00 , d}, T, Σ ∪ {σ00 }, δ 0 , a00 , σ00 , , ahol
+a00 új kezdőállapot, σ00 új veremkezdő szimbólum, mely V’ utolsó lépéséig a verem alján
+marad, d az ürı́tőállapot, δ 0 megegyezik δ-val, az alábbi plussz tevékenységekkel:
+— δ 0 (a00 , ε, σ00 ) = (a0 , σ0 σ00 ),
+— minden f ∈ F, σ ∈ Σ ∪ {σ00 } esetén (d, ε) ∈ δ 0 (f, ε, σ), és minden σ ∈ Σ ∪ {σ00 }-re
+δ 0 (d, ε, σ) = (d, ε).
+Ekkor nyilván Lε (V0 ) = LF (V).
+2
+5.16. lemma. Tetszőleges V veremhez létezik olyan V0 verem, melyre LF (V0 ) = Lε (V).
+Bizonyı́tás.
+Ez előző lemma megfordı́tása, hasonlóan is bizonyı́tjuk. Konstruálunk egy V0 veremautomatát, mely alapvetően V-t szimulálja. Fel kell venni egy új veremkezdő jelet, hogy
+
+60
+
+5. 2-es tipusú nyelvek
+
+Velfogadó működése esetén V’ verme ki ne ürüljön, továbbá kell még két új állapot, az
+új kezdő állapot, illetve az új végállapot. Amikor V elfogad egy szót (eredetileg kiürült a
+verem), akkor V0 -nek az új veremkezdő jel hatására végállapotba kell mennie. δ 0 tehát itt is
+megegyezik δ-val az alábbi plussz tevékenységekkel:
+δ 0 (a00 , ε, σ00 ) = (a0 , σ0 σ00 ),
+δ 0 (b, ε, σ00 ) = (avég , σ00 ), minden b ∈ A esetén.
+A végállapotok halmaza F 0 = {avég }.
+
+2
+
+Az előző két lemmát összefoglalva az alábbi tételt kapjuk.
+5.17. tétel.
+
+ε
+LF
+V = LV .
+
+Mivel az új elfogadási mód nem bővı́tette a felismert nyelvek körét, ezért a továbbiakban
+LV -t fogunk használni mindkettőjükre.
+5.18. definı́ció. Legyen G ∈ Gkit2 tetszőleges nyelvtan. Legbal, kezdőszelet-egyeztetéses
+elemzésnek hı́vjuk azt az elemzési módszert, mely során egy u ∈ T ∗ szó egy S-ből induló legbal
+levezetését konstruáljuk meg a levezetés során kialakult mondatforma terminális jelekből álló
+kezdőszeletének az eredeti u szó kezdőszeleteivel való egyeztetésével. (Természetesen ez csak
+az u ∈ L(G) szavak esetén vezethet sikerre.)
+Példa:
+S−→SS aSb bSa ab ba.
+Legyen u = abba. Ekkor egy levezetés például S−→SS−→ abS. Itt az ab szó megegyezik
+u szó kezdőszeletével, tehát ez egy legbal, kezdőszelet-egyeztetéses elemzés kezdete lehet. Ha
+a továbbiakban nincs egyezés, más alternatı́vát kell keresni. Világos, hogy u ∈ L(G) ⇐⇒
+ha u-nak van legbal, kezdőszelet egyeztetéses elemzése G-ben.
+5.19. tétel.
+
+LV = L2 .
+
+Bizonyı́tás. ⊇”:
+”
+Ehhez elég belátni, hogy tetszőleges G = T, N, P, S ∈ Gkit2 esetén létezik olyan V
+verem, melyre Lε (V) = L(G).
+Olyan V veremautomatát készı́tünk, mely a veremben egy legbal, kezdőszelet-egyeztetéses
+elemzést végez. Legyen V = {a0 }, T, T ∪ N, δ, a0 , S . Kétféle szabálytipus lesz. Az első
+tipus ε-mozgást végző szabályok összessége, melyek a legbal levezetést végzik:
+
+(a0 , p) ∈ δ(a0 , ε, B) ⇐⇒ B −→ p ∈ P p ∈ (T ∪ N )∗ .
+(A verem teteje a legbal levezetés első nyelvtani jele, ezt helyettesı́tjük a szabály jobb
+oldalával.)
+A másik szabálytipus a kezdőszelet-egyeztetést végzi:
+δ(a0 , t, t) = (a0 , ε), minden t ∈ T -re.
+Tulajdonképpen ez az az összehasonlı́tás, mely a levezetett terminális jelet összveti az
+input szó következő, még nem egyeztetett jelével.
+Erre a V-re nyilván Lε (V) = L(G).
+
+5.2. A veremautomaták és 2-es tipusú nyelvek kapcsolata
+Példánkban:
+[a0 , abba, S]
+V
+
+V
+
+[a0 , abba, SS]
+
+[a0 , ba, ba]
+
+V
+
+[a0 , abba, abS]
+
+V
+
+[a0 , a, a]
+
+V
+
+V
+
+[a0 , bba, bS]
+
+61
+[a0 , ba, S]
+
+V
+
+V
+
+[a0 , ε, ε].
+
+⊆”:
+”
+Azt kell belátni, hogy tetszőleges V = A, T, Σ, δ, a0 , σ0 veremautomatához létezik olyan
+G ∈ Gkit2 , melyre L(G) = Lε (V).
+∗
+
+Tudjuk, hogy V akkor és csak akkor fogadja el az u szót, ha [a0 , u, σ0 ]
+[b, ε, ε] valamely
+V
+b ∈ A-ra. Ez azt jelenti, hogy miközben V elolvasta az inputot, és átment az a0 állapotból
+a b állapotba, a veremben feldolgozta” a σ0 jelet.
+”
+5.20. definı́ció. Az [a, u, σ]
+[b, ε, ε] alakú konfiguráció átmeneteket, σ feldolgozásának
+V
+nevezzük. Egy feldolgozás adatai:
+u input, a vezérlés,
+a kiinduló állapot,
+b befejező állapot.
+
+G nyelvtani jelei feldolgozások lesznek. Egy nyelvtani jel három információt tartalmaz:
+∗
+
+honnan indult V, hová érkezett, és mit dolgozott fel. Az [a, u, σ]
+
+V
+
+[b, ε, ε] feldolgozásnak
+
+tehát az (a, σ, b) nyelvtani jelet feleltetjük meg úgy, hogy a következőket várjuk tőle:
+∗
+
+(a, σ, b)−→u ⇐⇒ [a, u, σ]
+G
+
+∗
+V
+
+[b, ε, ε].
+
+Kiegészül még a nyelvtani jelek halmaza az S kezdőszimbólummal.
+N := {(a, σ, b) a, b ∈ A, σ ∈ Σ} ∪ {S}.
+Milyenek legyenek a nyelvtan szabályai?
+1) S −→ (a0 , σ0 , b) minden b ∈ A esetén, az elfogadáshoz tartozó feldolgozások megkezdését szimulálja.
+2) Egylépéses feldolgozás esetén u = t, t ∈ T ∪ {ε}, tehát t hatására σ-t a veremből
+kivesszük, amit az alábbi szabály szimulál:
+— (a, σ, b) −→ t ∈ P ⇐⇒ δ(a, t, σ) 3 (b, ε), t ∈ T ∪ {ε}.
+3) Nem egylépéses feldolgozás esetén a következő szabályokat vesszük fel:
+— (a, σ, b) −→ t(c0 , σ1 , c1 )(c1 , σ2 , c2 ) . . . (ck−1 , σk , ck ) ∈ P, ahol ck = b,
+(c0 , σ1 . . . σk ) ∈ δ(a, t, σ), és c1 , . . . , ck−1 ∈ A tetszőlegesek, melyek σ feldolgozását visszavezetik a verembe helyezett σ1 , . . . , σk elemeinek feldolgozására.
+Bizonyı́tanunk kell, hogy ez tényleg jó nyelvtan lesz, azaz L(G) = Lε (V), ahol G =
+{S} ∪ {(a, σ, b) a, b ∈ A, σ ∈ Σ}, T, P, S és P az előbb definiált szabályokból áll.
+
+62
+
+5. 2-es tipusú nyelvek
+
+5.21. állı́tás. Tetszőleges u ∈ T ∗ esetén
+∗
+
+∗
+
+(a, σ, b)−→u akkor és csak akkor, ha [a, u, σ]
+G
+
+V
+
+[b, ε, ε].
+
+Bizonyı́tás. Teljes indukcióval látjuk be.
+=⇒”:
+A levezetés hossza szerint mutatjuk meg, hogy minden levezetés megfelel egy feldolgozásnak.
+Mivel u ∈ T ∗ , ezért a legrövidebb levezetés 1 hosszúságú. Ekkor az alkalmazott szabály
+2) tipusú és u ∈ T ∪ {ε},
+”
+
+(1)
+
+(1)
+
+(a, σ, b)−→u ∈ T ∪ {ε} =⇒ (b, ε) ∈ δ(a, u, σ) =⇒ [a, u, σ]
+G
+
+V
+
+[b, ε, ε].
+
+Most tegyük fel, hogy a legfeljebb h hosszú levezetésekre (h ≤ 1) az állı́tás igaz, és
+(h+1)
+
+vizsgáljuk meg az (a, σ, b) −→ u ∈ T ∗ levezetést u ∈ T ∗ esetén. Nyilvánvaló, hogy van egy
+G
+
+legelső lépés. Ez a lépés csak a 3) pontban definiált valamely szabállyal lehetséges, tehát:
+(1)
+
+(a, σ, b)−→t(c0 , σ1 , c1 ) . . . (ck−1 , σk , ck ),
+G
+
+∗
+
+
+
+ahol ck = b, továbbá (c0 , σ1 σ2 . . . σk ) ∈ δ(a, t, σ).
+Mivel G 2-es tipusú nyelvtan, ezért az u szó a függetlenségi lemma alapján felbontható
+u = t1 v1 v2 . . . vk alakra úgy, hogy
+≤h
+
+≤h
+
+G
+
+G
+
+(c0 , σ1 , c1 )−→v1 , . . . , (ck−1 , σk , ck )−→vk .
+Ezekre alkalmazzuk az indukciós feltételt, azaz
+∗
+
+∗
+
+[c0 , v1 , σ1 ]
+
+V
+
+[c1 , ε, ε], . . . , [ck−1 , vk , σk ]
+
+V
+
+[ck , ε, ε].
+
+Most rakjuk össze” ezeket a működéseket, ı́gy azt kapjuk, hogy
+”
+∗
+
+[c0 , v1 . . . vk , σ1 σ2 . . . σk ]
+
+V
+
+[ck , ε, ε].
+
+A (*) lépésnek megfelelő működéssel kiegészı́tve ezt kapjuk, hogy
+(1)
+
+[a, tv1 . . . vk ]
+
+V
+
+∗
+
+[c0 , v1 . . . vk , σ1 . . . σk ]
+
+V
+
+[ck , ε, ε],
+
+és mivel ck = b, az állı́tást beláttuk.
+”
+
+⇐=”:
+∗
+Most feltesszük, hogy [a, u, σ]
+[b, ε, ε], és a feldolgozás hossza szerinti indukcióval biV
+
+zonyı́tjuk, hogy az (a, σ, b) nyelvtani jelből levezethető az u ∈ T ∗ szó.
+
+5.3. Determinisztikus 1-vermek
+
+63
+
+Egy jel feldolgozásra került, ezért világos, hogy a feldolgozás legalább 1 hosszú. Vizs(1)
+
+gáljuk tehát a h = 1 legrövidebb feldolgozási hosszt. Ekkor tehát [a, u, σ]
+
+V
+
+[b, ε, ε], és u ∈
+
+T ∪ {ε}, amiből nyilván következik, hogy (b, ε) ∈ δ(a, σ, b). Viszont a 2)-es szabálydefinı́ció
+alapján (a, σ, b) −→ u ∈ P és ı́gy levezethető u.
+h + 1 hossz: Most tegyük fel, hogy a legfeljebb h hosszú feldolgozásokra van levezetés, és
+(h+1)
+
+lássuk be h + 1-re. Legyen a feldolgozás [a, u, σ]
+[b, ε, ε]. Mivel h legalább 1 volt, ezért
+V
+ez nem egy közvetlen konfigurációátmenet, tehát létezik egy legelső lépése. Ezek alapján
+tehát az u szó felbontható u = tv alakban, ahol t ∈ T ∪ {ε}, és v ∈ T ∗ . Ekkor a legelső
+lépést külön kiı́rva:
+(1)
+
+
+∗∗
+
+[a, tv, σ]
+
+V
+
+≤h
+
+[c0 , v, σ1 . . . σk ]
+
+V
+
+[b, ε, ε]
+
+.
+
+A σ1 . . . σk jelek teljesen feldolgozásra kerülnek, ı́gy létezik egy legelső időpont, amikor σ1
+eltűnik. Legyen az automata ebben az időpontban a c1 állapotban. (Ekkor nyilván σ2 van
+a verem tetején.) Folytassuk ezt a jelölést, és legyen az automata ck−1 állapotban abban az
+időpontban, amikor már csak σk van a verem tetején. Végül vezessük be a ck = b jelölést is.
+Jelölje v1 , . . . , vk azokat a részszavakat, amiket a c0 , c1 , . . . , ck állapotok között olvastunk.
+Ezen jelölések alapján nyilván igaz, hogy
+≤h
+
+[c0 , v1 , σ1 ]
+
+V
+
+≤h
+
+[c1 , ε, ε], . . . , [ck−1 , vk , σk ]
+
+V
+
+[ck , ε, ε].
+
+Ezekre már alkalmazhatjuk az indukciós feltételt, miszerint
+∗
+
+∀i = 1, . . . , k : (ci−1 , σi , ci )−→vi .
+G
+
+
+Viszont a legelső konfigurációátmeneti lépés ∗∗ miatt igaz, hogy
+(a, σ, b) −→ t(c0 , σ1 , c1 ) . . . (ck−1 , σk , ck ) ∈ P.
+Innen nyilván már következik az állı́tás, mivel u = tv1 v2 . . . vk .
+2
+Most térjünk vissza a tétel bizonyı́tásához. Az előbbi állı́tás és az 1)-es szabálydefinı́ció
+alapján könnyen látszik, hogy
+∗
+
+(1)
+
+∗
+
+G
+
+G
+
+G
+
+S −→u ⇐⇒ ∃b ∈ A : S −→(a0 , σ0 , b)−→u ⇐⇒ ∃b ∈ A : [a0 , u, σ0 ]
+
+∗
+V
+
+[b, ε, ε] ⇐⇒ u ∈ Lε (V).
+
+A V veremautomatához tehát tényleg tudunk adni olyan G ∈ Gkit2 nyelvtant, melyre L(G) =
+Lε (V).
+2
+
+5.3.
+
+Determinisztikus 1-vermek
+
+Láttuk, hogy a determinisztikus 0-vermek ugyanazt tudják, mint a nemdeterminisztikus
+0-vermek. Kérdés az, hogy mit mondhatunk 1-vermek esetén.
+
+64
+
+5. 2-es tipusú nyelvek
+
+Emlékeztető:
+Az 1-verem determinisztikus, ha minden konfigurációjának legfeljebb egy rákövetkezője
+van. Az állapotfüggvánnyel ez a következő képpen ı́rható le:
+a) ∀a ∈ A, σ ∈ Σ, t ∈ T ∪ {ε} : |δ(a, t, σ)| ≤ 1.
+b) ∀a ∈ A, σ ∈ Σ : |δ(a, ε, σ)| 6= 0 =⇒ ∀t ∈ T : |δ(a, t, σ)| = 0.
+A következőkben kimutatjuk, hogy a determinisztikus 1 vermek kevesebbet tudnak, mint a
+nemdeterminisztikusak. Ehhez szükségünk lesz néhány új fogalomra.
+
+5.3.1.
+
+Veremautomaták normálformái
+
+5.22. definı́ció. A V 1-verem 1-es normálformájú, ha (b, γ) ∈ δ(a, t, σ) esetén γ ∈
+{ε} ∪ {σ} ∪ Σ{σ}.
+Megjegyzés: Ez a normálforma tulajdonképpen a klasszikus verem megvalósı́tója, ugyanis
+— γ = ε a pop művelet,
+— γ = σ a top művelet,
+
+— γ ∈ Σ{σ} a push művelet.
+5.23. definı́ció. A V 1-verem 2-es normálformájú, ha 1-es normálformájú, és bármely
+[a, u, α] termináló konfiguráció esetén u = ε. (Azaz ha az automata megáll, akkor biztosan
+végigolvasta az inputot.)
+5.24. definı́ció. A V 1-verem 3-as normálformájú, ha 2-es normálformájú, és minden
+bemenetre megáll.
+
+A fejezet további részében csak a végállapottal történő elfogadással foglalkozunk. A V 1vermet a standard jelöléssel adjuk meg.
+5.25. lemma. Tetszőleges V 1-veremautomatához létezik 1-es normálformájú V0 1-veremautomata, amire L(V0 ) = L(V).
+Bizonyı́tás. δ 0 konstrukciójával célunk, hogy a normálforma szempontjából rossz átmeneteket megfelelőkkel szimuláljuk. Hogy néznek ki ezek a rossz átmenetek? Nyilván ı́gy:
+(b, σk σk−1 . . . σ1 ) ∈ δ(a, t, σ).
+Ennek szimulációja 1-es normálformájú működésekkel, ahol c0 , c1 , . . . , ck−1 új állapotok:
+δ 0 (a, t, σ) = (c0 , ε),
+δ 0 (c0 , ε, σ 0 ) = (c1 , σ1 σ 0 ) minden σ 0 ∈ Σ ∪ {σ00 } esetén,
+δ 0 (c1 , ε, σ1 ) = (c2 , σ2 σ1 ),
+..
+.
+
+5.3. Determinisztikus 1-vermek
+
+65
+
+δ 0 (ck−1 , ε, σk−1 ) = (b, σk σk−1 ).
+Az új σ00 veremkezdő jelet a δ 0 (a, t, σ) = (c0 , ε) hatására történő veremkiürülés elleni védekezésül a δ 0 (a00 , ε, σ00 ) = (a0 , σ0 σ00 ) átmenettel hozzuk be, ahol a00 új kezdőállapot.
+2
+5.26. lemma. Tetszőleges V 1-veremautomatához létezik V0 2-es normálformájú 1-veremautomata, melyre L(V0 ) = L(V).
+Bizonyı́tás.
+Az előző lemma értelmében feltehető, hogy V már 1-es normálformában adott. Ekkor a
+gond az, hogy egy [a, u, α] konfiguráció úgy is lehet termináló, hogy u 6= ε. Azt szeretnénk,
+hogy ebből a helyzetből V’ tovább tudjon lépni. Ha α = ε, tehát a verem kiürült, akkor
+ezen új kezdőállapottal és veremkezdő jellel a már korábban is látott módon tudunk segı́teni.
+Feltehető tehát, hogy α 6= ε. Ilyenkor a V azért nem tud működni, mert u = tv és α = σα0
+első jeleire δ(a, t, σ) és δ(a, ε, σ) mindegyike üres.
+Megoldásként bevezetünk egy új d állapotot, és minden ilyen a ∈ A, t ∈ T és σ ∈ Σ
+esetén felvesszük a következő átmeneteket:
+δ 0 (a, t, σ) := (d, σ).
+A d új állapot arra szolgál, hogy segı́tségével végig tudjuk olvasni az inputot.
+δ 0 (d, t, σ 0 ) := (d, σ 0 )
+
+minden t ∈ T -re és σ 0 ∈ Σ-ra.
+
+Természetesen d-t a végállapotok közé nem vesszük be.
+Tehát kaptunk egy V0 2-es normálformájú veremautomatát V-ből, melyre L(V0 ) = L(V).
+2
+Megjegyzés: Mindkét lemma esetében nyilvánvaló, hogy ha a V veremautomata determinisztikus volt, akkor V0 is az lesz.
+5.27. lemma. Tetszőleges V determinisztikus 1-veremautomatához létezik V0 3-as normálformájú determinisztikus 1-veremautomata, melyre L(V0 ) = L(V).
+Bizonyı́tás.
+Az előző lemma értelmében feltehető, hogy a V 1-verem 2-es normálformában adott. Ha
+V nem 3-as normálformájú, akkor létezik V-ben végtelen konfigurációátmenet-lánc. Célunk
+az, hogy az ilyen láncokat felismerjük és V’ - megelőzve őket - álljon meg. A végtelen
+∗
+
+konfigurációátmenet-láncokra vezessük be a [a, u, α]
+
+V
+
+∞ jelölést.
+
+∗
+
+Tegyük fel, hogy [a, u, α]
+∞. Ekkor tudunk találni a működés során olyan állapotot,
+V
+ahol már vagy elolvasta az input szót, vagy már nem olvas többet. A nem olvasott inputot
+∗
+
+elhagyva ı́gy egy [b, ε, β]
+∞ alakú konfigurációátmenetet kapunk. Tegyük fel, hogy ekkor
+V
+β := σ1 . . . σk . Mivel V 2-es normálformájú, ezért 1-es is, tehát σk sose kerül ki a veremből.
+(Ugyanis pop tudná kivenni a veremből, de akkor az automata üres veremmel leállna.)
+Legyen j0 a legkisebb indexű olyan σj , mely a működés során végig a veremben van,
+azaz j0 := min{j σj mindig a veremben van}. Ekkor nyilván létezik egy olyan időpillanat,
+amikor ez a σj0 lesz a verem tetején. Legyen ennek az időpillanatnak a konfigurációja
+
+66
+
+5. 2-es tipusú nyelvek
+
+[c0 , ε, σj0 σj0 +1 . . . σk ]. Tudjuk, hogy σj0 sose kerül ki a veremből, tehát a veremben takart
+σj0 +1 , . . . , σk jeleket el is hagyhatjuk, ı́gy egy
+∗
+
+[c0 , ε, σj0 ]
+
+V
+
+∞, végtelen konfigurációátmenetet kapunk.
+
+Ha V’-ben az ilyen tipusú végtelen konfigurációátmenetek lehetőségét a δ átdefiniálásával
+ki tudjuk zárni, készen vagyunk. Legyen
+
+δ(a, ε, σ), ha [a, ε, σ]-ből indulva nem végtelen a konfigurációátmenet-lánc,
+
+
+
+∗
+
+∞, és közben nem érint végállapotot,
+ha [a, ε, σ]
+δ 0 (a, ε, σ) := (d, σ),
+V
+
+∗
+
+
+ (f, σ),
+ha [a, ε, σ]
+∞, és közben érint végállapotot.
+V
+
+0
+
+Itt d, f új állapotok, és F := F ∪ {f }. Ekkor d ismét csak az input szó végigolvasását végzi
+el.
+δ 0 (d, t, σ 0 ) := (d, σ 0 ) minden σ 0 ∈ Σ-ra.
+Egyetlen probléma még az f végállapotnál maradt, ugyanis lehet, hogy itt még nem
+olvastuk végig az input szót. Ezért ha van még jel az inputon, azt a szót se fogadhatjuk el,
+azaz
+δ 0 (f, t, σ 0 ) := (d, σ 0 ) minden σ ∈ Σ, t ∈ T -re.
+Az ı́gy definiált V0 veremautomára tényleg L(V0 ) = L(V), és ez a V0 is determinisztikus
+lesz.
+2
+∗
+Kérdés, megállapı́tható-e algoritmikusan, hogy valamely a ∈ A és σ ∈ Σ mellett
+∗
+
+[a, ε, σ]
+
+V
+
+∞ vagy sem. Ha az [a, ε, σ] konfigurációból indı́tott determinisztikus működés
+∗
+
+során találunk két olyan [c1 , ε, α1 ]
+
+V
+
+[c2 , ε, α2 ] konfigurációt, melyre c1 = c2 és
+
+1) α1 = α2 vagy
+2) α1 és α2 ugyanazzal a σ jellel kezdődik és az átmenet során α1 végig a veremben
+marad,
+akkor az automata ettől kezdve az ezen két konfiguráció közötti működést ismétli periódikusan, tehát az átmenet biztosan végtelen. (A második esetben az α1 = σβ, α2 = σγσβ és
+∗
+
+a c1 = c2 = c jelölést alkalmazva a [c, ε, σ]
+
+V
+
+[c, ε, σγσ] működés ismétlődik, egyre újabb
+
+σγ-val hı́zlalva a vermet.)
+∗
+
+Igaz-e, hogy az [a, ε, σ]
+
+V
+
+∞ átmenet az előbb emlı́tett két tipusú periódikusság valame∗
+
+lyike miatt végtelen? Ha [a, ε, σ]
+∞ során a verem mérete korlátos marad, akkor csak
+V
+véges számú konfiguráció fordulhat elő benne, tehát valamelyik ismétlődni fog. Az ilyen
+esetben az átmenet az első tipus szerint periódikus.
+∗
+
+Ha [a, ε, σ]
+
+V
+
+∞ során a verem mérete nem korlátos, akkor minden i ≥ 1-re léteznek
+
+olyan [ci , ε, αi ] közbülső konfigurációk, melyektől kezdve a verem mérete már mindig legalább
+
+5.3. Determinisztikus 1-vermek
+
+67
+
+i hosszúságú. Az első normálforma miatt ez csak úgy lehetséges, hogy a [ci , ε, αi ]-t követő
+konfigurációk során αi már mindig a veremben marad (hiszen például αi első elemét onnan
+törölni csak a pop művelettel lehetne az első normálforma tulajdonsága miatt, de akkor a
+pop után a verem mérete i − 1 lenne, ellentétben ci és αi választásával). Ennek alapján
+léteznek σ1 , σ2 , . . . jelek, hogy αi = σi σi−1 . . . σ1 . De ekkor a (ci , σi ) párok között biztosan
+van ismétlődő, például az i1 < i2 indexpárhoz tartozó. De akkor [ci1 , ε, αi1 ] és [ci2 , ε, αi2 ]
+pontosan megfelel a második tipusú periódikusságot eredményező feltételnek.
+Hány lépésen belül találjuk meg egy végtelen láncban a periódikusságot bizonyı́tó konfiguráció-párt? A [ci , ε, αi ] konfiguráció előtt, ha közöttük nem volt ismétlődő, legfeljebb
+|A| × |Σ≤i | konfiguráció lehet. (Ha volt ismétlődés, már az 1. tipusú periódikusságot felismertük.) A különböző állapot és veremtető párok száma |A||Σ|, tehát i0 = |A||Σ| + 1 mellett
+már biztosan megtalálunk egy 2. tipusú periódikusságot garantáló párt. Ez előtt tehát legfeljebb |A| × |Σ|A||Σ|+1 | konfiguráció lehet, azaz legfeljebb ennyi lépésen belül megállapı́tható,
+hogy az [a, ε, σ]-ból induló működés véges-e vagy végtelen. Ha végtelen a lánc, akkor a
+végállapot detektálása a periódus végéig terjedő működés vizsgálatával, tehát szintén véges
+időn belül történhet meg.
+5.28. definı́ció. A V veremautomatát inputterminátoros veremautomatának nevezzük, ha
+az inputja végén van egy vége jel (EOF), amit # jelöl, és δ erre a # jelre is definiálva van.
+Ekkor
+L(V) = {u ∈ T ∗ [a0 , u#, σ0 ]
+
+∗
+
+V
+
+[f, ε, α] valamely f ∈ F -re}.
+
+Jelölése: LIt1V = {L(V) V inputterminátoros 1-verem }.
+Megjegyzés: ha V determinisztikus, akkor jelölésben LDIt1V -et használunk.
+Könnyen belátható, hogy LIt1V =L1V .
+Tegyük fel, hogy V egy inputterminátoros veremautomata. A V0 őt szimuláló (nem inputterminátoros) veremautomata a # olvasása helyett ε-mozgást végezzen, tehát ha (b, α) ∈
+δ(a, #, σ), akkor (b, α) ∈ δ 0 (a, ε, σ). V0 már nem feltétlenül lesz determinisztikus még akkor
+sem, ha a V az volt.
+Egy V veremautomatából szintén könnyen készı́thetünk V0 inputterminátoros veremautomatát a δ 0 (f, #, σ) := (f (2) , σ) új átmenetek segı́tségével (minden f ∈ F és σ ∈ Σ-ra),
+ahol f (2) új végállapot. Determinisztikus V esetén V0 is az lesz.
+Azt is kimutattuk tehát, hogy LD1V ⊆ LDIt1V . Összefoglalva:
+LD1V ⊆ LDIt1V ⊆ LIt1V = L1V = L2 .
+Célunk az, hogy kimutassuk, LDIt1V zárt a komplementer képzésre. Ugyanis amiatt, hogy
+L2 nem zárt a komplementer képzésre, következményként megkapnánk az LD1V ⊂L2 valódi
+tartalmazást.
+5.29. lemma.
+
+LDIt1V zárt a komplementer műveletre.
+
+Bizonyı́tás. Legyen L ∈ LDIt1V tetszőleges nyelv. Be kell látni, hogy ekkor L ∈ LDIt1V .
+Legyen V = A, T, Σ, δ, a0 , σ0 , F, # az L nyelvet elfogadó inputterminátoros determinisztikus 1-verem, melyre L(V) = L.
+
+68
+
+5. 2-es tipusú nyelvek
+
+A korábbi lemmák alapján feltehető, hogy V 3-as normálformában adott, azaz tetszőleges
+u# inputot végigolvas és megáll. Ez általában úgy történik, hogy a # olvasása után még
+következik néhány ε-lépés.
+Egy tetszőleges u 6∈ L(V) szó feldolgozása során V a # elolvasását követő ε-lépések során
+nem érint végállapotot (legyen ez a ’ tulajdonság), mı́g u ∈ L(V) esetén a # elolvasása után
+az ε-lépésekben érint végállapotot (legyen ez a ” tulajdonság).
+Most próbáljuk megkonstruálni a V determinisztikus, inputterminátoros 1-vermet. Ez
+lényegét tekintve V-vel azonos, eltérés csak a # jel elolvasása után van.
+Legyen V = A ∪ A0 ∪ A00 ∪ {avég }, T, Σ, δ 0 , a0 , σ0 , {avég }, # , ahol A0 = {b0 b ∈ A} és
+A00 = {b00 b ∈ A}. Ekkor # elolvasására δ 0 definı́ciója:
+ 0
+(b , α), ha δ(a, #, σ) = (b, α), és b 6∈ F ,
+0
+δ (a, #, σ) :=
+.
+(b00 , α), ha δ(a, #, σ) = (b, α), és b ∈ F
+Valamint
+0
+
+0
+
+δ (a , ε, σ) :=
+
+
+
+(b0 , α), ha δ(a, ε, σ) = (b, α) és b 6∈ F ,
+.
+(b00 , α), ha δ(a, ε, σ) = (b, α) és b ∈ F
+
+Tehát ha megérkezünk V-ben az első végállapotba, akkor V ”-ős állapotba megy át, amit
+meg is tart:
+δ 0 (a00 , ε, σ) := (b00 , α), ha δ(a, ε, σ) = (b, α).
+Ha V’ ’-ös állapotban áll meg, akkor nyilván u 6∈ L(V), és ha egy ”-ős állapotban, akkor
+u ∈ L(V). De a megállás során kialakult eredeti (vesszőtlen) állapotra az eredeti δ a megállás
+miatt nincs definiálva, tehát δ 0 -t definiálhatjuk ı́gy:
+δ 0 (a0 , ε, σ) := (avég , σ), ha δ(a, ε, σ) = ∅.
+Az ı́gy megadott V1-veremre nyilván L(V) = L(V) = L.
+
+2
+
+Foglalkozhatnánk még a 2-vermekkel, illetve az ezeknél nagyobb veremszámú automatákkal. Ezek már minden L0 -beli nyelvet el tudnak fogadni, azaz az 1-vermekhez képest már
+két osztálynyi az ugrás. Továbbá igaz, hogy az 1-vermekkel ellentétben a determinisztikus
+2-vermek ugyanazt a nyelvosztályt adják, mint a nemdeterminisztikus 2-vermek.
+
+6. Elemzési módszerek
+A most következő fejezetben a fordı́tóprogramok készı́tsének elméleti hátteréül szolgáló elemzési módszerekkel foglalkozunk. Nem célunk, hogy teljes részletességgel mutassuk be az
+egyes algoritmusokat, hiszen ez már túlmutatna egy bevezető automaták és formális nyelvek
+kurzus keretein.
+
+6.1.
+
+Az elemzési módszerek célja
+
+A fordı́tóprogramok az inputként kapott karaktersorozatot az adott programozási nyelv
+szabályai alapján szintaktikusan ellenőrzik és a helyesnek bizonyuló programokból elkészı́tik
+a tárgykódot. A fordı́tás általában több lépésben történik, melyre már volt néhány utalás
+az előző fejezetekben. Az első lépés, a lexikális elemzés során a fordı́tó felismeri a programnyelv lexikális egységeit (azonosı́tók, alapszavak,...) és azokat táblázatban rögzı́tve a
+felsőbb szintek számára érthető kódjukkal helyettesı́ti. A lexikális analı́zis egy 3-as tipusú
+(reguláris) nyelv szavainak felismerésén alapszik, mely a nyelvet felismerő véges determinisztikus automata programnyelvi eszközökkel történő szimulációjával viszonyleg könnyen
+megvalósı́tható (ezzel a továbbiakban nem foglalkozunk). A szintaktikus elemző a lexikálisan
+elemzett, átkódolt szimbólumsorozatot szerkezetileg ellen őrzi a nyelvet leı́ró 2-es tipusú
+nyelvtan felhasználásával. Ennek az elemzési fázisnak egy szintaxisfa a kimenete. A szintaktikus analı́zis utolsó lépésében a fordı́tó szemantikusan ellen őrzi a felépı́tett szintaxisfát,
+majd a kódgenerálás fázisában a fa alapján elkészı́ti a tárgykódot. Ez utóbbi két lépést sem
+tesszük vizsgálat tárgyává könyvünk keretein belül.
+Nézzük tehát, mi a szűkebb értelemben vett szintaktikus elemzők feladata. Legyen adva
+egy G = T, N, P, S ∈ Gkit2 második tı́pusú nyelvtan és egy u ∈ T ∗ szó. Az elemzési
+algoritmusok feladata azt eldönteni, hogy u szó eleme-e L(G)-nek és ha igen, akkor felépı́teni
+u egy G feletti szintaxisfáját.
+
+6.2.
+
+A szintaxis elemzési módszerek osztályozásai
+
+Az elemzés során tehát az adott G = T, N, P, S 2-es tı́pusú nyelvtan és u ∈ T ∗ szó esetén
+meg kell kı́sérlelni felépı́teni u egy szintaxisfáját. Ha ez sikerült, az elemzés sikeres volt,
+egyébként pedig a szó szintaktikusan hibás.
+69
+
+70
+
+6. Elemzési módszerek
+
+Az elemzési módszereket elsősorban annak alapján osztályozzuk, hogy a szintaxisfát
+honnan kezdve próbáljuk meg felépı́teni. Amikor a nyelv főfogalmából elindulva, vagyis
+a gyökértől kezdve épı́tkezünk, akkor felülről lefelé (top-down) elemzésről beszélünk, mı́g
+ha magából az u-ból, vagyis a készı́tendő fa leveleinek irányából indulva épı́tkezünk, akkor
+alulról-felfelé (bottom-up) elemzővel van dolgunk. Bár mindkét módszer általánosan használható, de valamely konkrét nyelvtan esetében előfordulhat, hogy a kettő közül valamelyik
+sokkal hatékonyabb, mint a másik (például a későbbiekben definiált LL(k) myelvtanokat
+felülről lefelé elemzővel célszerű elemezni). Természetesen előfodulhat a két módszer kombinációja is, például magát a nyelvet az egyik módszerrel, mı́g annak egy szintaktikus
+egységét a másik módszerrel elemezzük (ilyennek tekinthető a lexikális elemző is egy felülrőllefele elven alapuló szintaktikus elemzőben).
+Az elemzők másik szempont szerinti osztályozása az input karaktersorozat elemeihöz való
+hozzáférés lehetőségein alapul. Direkt módon elérhetők-e például az input szó karakterei,
+vagy csak valamelyik irányból szekvenciális olvashatjuk végig őket. Ha csak a valamilyen
+irányú végigolvasás megengedett, akkor hányszor tehetjük ezt meg.
+Mivel a legfontosabb alkalmazás, a fordı́tóprogramok esetében az elemzendő program
+szövege szekvenciális input file-ban érhető el, s a nagy méret alapján nem gazdaságos a
+többszöri végigolvasás, ezért mi csak olyan elemzési módszerekkel foglalkozunk , ahol az
+input szót csak balról jobbra, egyszer lehet olvasni. Ezeket az elemzőket balról-jobbra (Left
+to right) elemzőknek nevezzük.
+Osztályozhatjuk az elemző algoritmusokat aszerint is, hogy determinisztikus, illetve nemdeterminisztikus algoritmusok-e. A nemdeterminisztikus algoritmusoknak a számı́tástudományban elméleti jelentőségük van, mert segı́tségükkel tömören, elegánsan oldhatók meg
+bizonyos keresési feladatok, mint amilyen például a szintaktikus elemzés feladata is. A
+gyakorlatban elemzésre természetesen csak determinisztikus algoritmusokat lehet használni.
+Programtranszformációk segı́tségével minden nemdeterminisztikus algoritmusból előállı́tható vele ekvivalens determinisztikus algoritmus, például úgy, hogy a nemdeterminisztikus
+algoritmus össszes lehetséges működéseinek fáját, az úgynevezet lefutási fát, valamilyen
+bejárási algoritmussal bejárjuk. Az ı́gy kapott determinisztikus algoritmusok általában nem
+hatékonyak, ezért a fordı́tóprogramok specálisan kifejlesztett determinisztikus elemzőket
+használnak, melyek csak bizonyos tulajdonságú nyelvtanokra alkalmazhatók (például a későbbiekben definiált LL(k), LR(k)) nyelvtanok), de ezekre igen gyorsan működnek.
+
+6.3.
+
+Felülről-lefelé elemzések
+
+Mint már utaltunk rá, ezek a módszerek a szintaxisfát a gyökérétől (S kezdőszimbólumtól)
+kezdve épı́tik fel.
+Először nézzük egy példát. Legyen T = {(, )}, N = {S}, u = ()(), és legyen
+G1 = T, N, P,S , ahol
+P = {S −→ SS (S) ()}.
+Ekkor a szintaxisfa felépı́tése S kezdőszimbólumból az S−→SS−→ ()S−→ ()() legbal
+levezetést követve az alábbi:
+
+6.3. Felülről-lefelé elemzések
+
+71
+
+S
+
+S
+
++
+
+~
+
+U
+(
+
+S
+
+U
+
+)
+
+(
+
+)
+
+az u = ()() szó szintaxisfája
+
+Az általános, nemdeterminisztikus Top-Down elemző algoritmusa igen egyszerű és elegáns, amint azt az alábbi struktogram mutatja. Itt a t változó szintaxisfát jelent, s felhasználjuk a köv(t) függvényt , mely valamely t szintaxisfából egy szabály alkalmazásával
+származtatható új szintaxisfák halmazát adja eredmányül.
+t := S
+köv(t) 6= ∅
+t :∈ köv(t)
+f ront(t) = u
+
+\
+
+/
+
+Exit(igen, t)
+
+Exit(nem)
+
+Ez a nemdeterminisztikus algoritmus abban az értelemben oldja meg az elemzés feladatát,
+hogy ha a szó valóban eleme a nyelvtan által generált nyelvnek, akkor van olyan működése,
+melynek során ez kiderül, s ilyenkor felépül amegfelelő szintaxisfa is.
+A determinisztikussá alakı́tás érdekében a lefutási fát bejárjuk valamilyen stratégiával
+keresve egy olyan működést, mely u felismeréséhez tartozik. A fa csúcspontjaiban most
+- az algoritmus állapotait jellemző adatként - a működés során előállı́tott szintaxisfa áll.
+Ahhoz, hogy a lefutási fa alakja - s ı́gy a bejárási sorrend - egyértelmű legyen, a köv(t)
+halmazt, a t szintaxisfa lehetséges továbbépı́téseinek halmazát, rendezzük úgy, hogy előbb
+legyenek a szó elejéhez közelebb eső pozı́ción végzett helyettesı́tések, mı́g ugyanazon pozicı́ón
+az alternatı́váknak a nyelvtan megadásánál rögzı́tett sorrendje határozza meg a levezetések
+sorrendjét. Nézzük meg, milyen lesz a lefutási fa előbbi nyelvtanunk esetében:
+S
+
+s
+
++
+
+?
+S
+
+S
+S
+
+S
+
+(
+
+S
+
+S
+)
+
+(
+
+a lefutási fa első két szintje
+
+)
+
+72
+
+6. Elemzési módszerek
+
+A lefutási fában egy levél kapjon +” cimkét, ha a pontban az adott u szó szintaxisfája
+”
+van, ellenkező esetben pedig kapjon -” cimkét. A determinisztikus algoritmusunk a lefutási
+”
+fában keres +” cimkéjű levelet, amihez a (lefutási) fa pontjainak valamilyen szisztematikus
+”
+sorrend szerinti bejárása, melyre általánosan ismert sémák vannak. Ha a bejárás során
+valamikor +” cimkéjű pontot érintünk, igen választ adva megállunk. Ha a fa ”elfogy”,
+”
+illetve valahonnan megállapı́tható, hogy a további keresés felesleges, akkor nem válasszal
+állunk meg. Egyébként a bejárás végtelen ideig folytatódhat tovább.
+Fontos kérdés, hogy milyen bejárást alkalmazzunk. Tekintsük először a szintfolytonos
+(szélességi) bejárást. Mivel a lefutási fában minden pontnak csak véges számú leágazása
+van (köv(t) mindig véges), ezért minden szintje véges. Emiatt - ha egyátalán vannak - a
++” cimkéjű leveleket a szintfolytonos bejárás biztosan megtalálja. Ha nincs +” cimkéjű
+”
+”
+levél, akkor végtelen fák esetén a bejárás egyéb kritériumok hı́ján soha nem áll le, mı́g véges
+lefutási fa esetén az összes pont megtekintése után nem válasszal megáll.
+Meg kell vizsgálni, hogy mennyi lehet egy +” cimkéjű csúcs megtalálásának műveletigé”
+nye a legrosszabb esetben. Ezt l(u) függvényében fogjuk megbecsülni. Legyen nyelvtanunk
+kellően nemdeterminisztikus, azaz minden nyelvtani jelre legyen legalább két alkalmazható
+szabály, továbbá legyen K az összes szabály jobboldalát tekintve a leghosszabb helyettesı́tés
+hossza. Ekkor u levezetéséhez biztosan kell legalább l(u)
+K levezetési lépés (hogy elérjük az
+u hosszát), ezért egy +” cimkejű pontnak a lefutási fában lévő magassága ennél rövidebb
+”
+l(u)
+nem lehet. Ekkor viszont a bejárt pontok száma legalább 2 K , mert a lefutási fa legalább
+bináris. A szintfolytonos bejárási stratégiánál tehát még a pozitı́v válasznak is lehet exponenciális időbonyolultsága, ezért ebben az általánosságában a kapott determinisztikus
+algoritmus gyakorlatban nem használható.
+Most nézzük meg, hogy a preorder, másképpen mélységi bejárás esetén (ami tulajonképpen a visszalépéses keresés algoritmusa), mit mondhatunk. Ez az algoritmus még a
+létező +” cimkéjű leveleket sem mindig találja meg, mert előtte ráfuthat egy végtelen ágra
+”
+(az előbbi példánk is ilyen). Valamely +” cimke megtalálása csak akkor garantált, ha a
+”
+fának a preorder bejárás szerint a csúcsot megelőző része véges. (Ezt például elősegı́thetjük
+azzal, hogy a balrekurzı́v szabályokat az alternatı́vák sorának végére helyezzük.) A lefutási
+idő az igen válasz esetén itt akár lehet polinomiális is, ha például a legelső ágon van a
+megfelelő +” cimkéjű levél, de a nem válaszhoz (egyéb kritérium hı́ján) az egész fát végig
+”
+kell nézni.
+Vizsgáljuk meg, milyen módszerekkel lehetne az előbb emlı́tett algoritmusok futási idejét
+csökkenteni.
+— Csökkenthetjük a lefutási fa szélességét azzal, hogy a levezetésekre kikötünk bizonyos
+feltételeket (például csak legbal levezetésekkel foglalkozunk, korlátozzuk az alkalmazható szabályokat).
+— Vágási kritériumokat határozunk meg, melyek alapján egy pontról eldönthető, hogy
+az alatta lévő részfában már nincs +” csúcs. (Ilyen vágási kritérium lehet például
+”
+a kezdőszeletek különbözősége, hosszúságot nem csökkentő nyelvtan esetében l(u)
+hosszának meghaladása)
+Igazán hatékony top-down elemzők ı́gy is csak bizonyos feltételeknek megfelelő nyelvtanok esetén készı́thetőek, mint amilyenek például az LL(k) nyelvtanok.
+
+6.4. LL(k) nyelvtanok
+
+6.4.
+
+73
+
+LL(k) nyelvtanok
+
+Vizsgáljuk most azt a nemdeterminisztikus felülről-lefelé elemzőt, mely csak legbal levezetéseket enged meg, kezdőszelet egyeztetés mellett (legbal, kezdőszelet egyezetetéses felülről-lefelé elemző). Ilyenkor csak f ront(t) legelső nyelvtani jelére engedünk meg helyettesı́tést, és azokat az ágakat már nem vizsgáljuk, ahol az eredmény terminálisokból álló
+maximális prefixe nem prefixe u-nak. A kezdőszelet egyezősége mellett persze még mindig
+lehet több alkalmazható szabály, algoritmusunk tehát továbbra is nemdeterminisztikus. Az
+lenne jó, ha tudnánk találni olyan algoritmikusan is jól kezelhető kritériumot, mely már
+csak legfeljebb egy ág továbbépı́tését engedi meg, hiszen ekkor algoritmusunk önmagában is
+determinisztikus lenne, nem volna szükség az időt rabló bejárásra. Általában nem adható
+az előbb emlı́tett célt elérő kritérium, de vannak olyan nyelvtanok, melyek esetében igen,
+például az LL(k) nyelvtanoknál.
+Egy nyelvtan LL(k) nyelvtan, ha legbal, kezdőszelet egyezetetéses felülről-lefelé elemzést
+végezeve az u még nem egyezetetett részének első k jele alapján egy hı́ján minden alternatı́va
+kizárható. (Az első L az input balról jobbra olvasására, a második L a legbal levezetésre
+utal, mı́g a k jelentése világos.) Formálisan ez a következőképp fogalmazható meg:
+6.1. definı́ció. A G 2-es tı́pusú nyelvtan LL(k) nyelvtan, ha tetszőleges
+∗
+
+∗
+
+S −→vAα1 −→vγ1 α1 −→vw1 és
+G,lb
+
+G,lb
+
+G
+
+∗
+
+∗
+
+G,lb
+
+G
+
+S −→vAα2 −→vγ2 α2 −→vw2
+G,lb
+
+levezetések esetén abból, hogy pre(w1 , k)=pre(w2 , k) következik, hogy γ1 = γ2 .
+Világos, hogy minden kvázi-Greibach formában adott nyelvtan, melyben az azonos baloldalhoz tartozó alternatı́vák különböző jellel kezdődnek, LL(1) nyelvtan. Az ilyen nyelvtanokat egyszerű LL(1) nyekvtanoknak nevezzük.
+Hasonlóan LL(1) (bár nem egyszerű) az alábbi szabályokat tartalmazó nyelvtan:
+S−→ aBBBc|bC,
+B−→ bB|aC,
+C−→SS|c.
+A C-re vonatkozó bizonytalanságot ugyanis feloldja, hogy az SS első jeléből csak a-val, illetve
+b-vel kezdődő szavak vezethetők le.
+Az alábbi(szabályaival megadott) nyelvtan esetében 2 jelre előre nézve tehetünk különbséget a B-re vonatkozó két alternatı́va között:
+S−→ aBBc|bC,
+B−→CB|aC,
+C−→ abS|c,
+tehát a nyelvtan LL(2). Egy LL(k) nyelvtan esetében elkészı́thetők azok a táblázatok,
+melyek az elemzés pillanatnyi állapota, a legbal nyelvtani jel és az előre olvasott k jel alapján
+
+74
+
+6. Elemzési módszerek
+
+egyértelműen meghatározzák a használható alternatı́vát. Mindezek következtében LL(k)
+nyelvtanok egyértelmű nyelvtanok, s ı́gy az általuk meghatározott nyelvek is azok.
+6.2. állı́tás. LL(k) nyelvtan esetében a legbal, kezdőszelet egyezetetéses felülről-lefelé elemző egy u ∈ L szó levezetése során legfeljebb a nyelvtani jelek számánál eggyel kevesebb
+lépést tehet úgy, hogy ne hozzon be újabb terminális jelet a mondatforma elejére.
+Bizonyı́tás. Világos, hogy minden legbal levezetési lépés során egyértelmű, mely szabályt
+lehet egyátalán alkalmazni. Tegyük fel, hogy lenne u levezetése során olyan szituáció, amikor
+a nyelvtani jelek számával egyező lépést elvégezve az egyeztetett rész hossza nem nőne meg.
+Ekkor ezen lépések során - a skatulya elv miatt - volna két olyan mondatforma, amelyben
+az egyezetetett rész és a legbal nyelvtani jel egyezik, továbbá az input még nem egyeztetett
+részének első k jele is ugyanaz. De ekkor az LL(k) tulajdonság miatt mindkét helyzetben
+csak ugyanazzal a szabállyal lehetne folytatni a levezetést, s ettől kezdve a levezetés további
+része periódikusan ismétlődő levezetés-szekvenciákból állna, s emiatt nem juthatnánk el uhoz.
+2
+Az előző állı́tásból következik, hogy tetszőleges u ∈ L szó legbal levezetéséhez legfeljebb
+a nyelvtani jelek számaszor a szó hossza levezetési lépés kell. Emiatt ha ennyi lépésen belül
+nem vezettük le u-t, akkor az már nem is lesz levezethető, tehát negatı́v választ lehet adni.
+Az előbbieket összefoglalva elmondhatjuk, hogy a legbal, kezdőszelet egyeztetéses elemző
+LL(k) nyelvtanok esetében lineáris idejű elemzést tesz lehetővé.
+A gyakorlatban az LL(1) nyelvtanokat használják, melyek esetében könnyen előállı́thatók
+azok a táblázatok, melyek valamely nyelvtani jel (mint legbal nyelvtani jel) és egy előre
+olvasott jel esetén megadják az alkalmazható alternatı́vát. Ennek vizsgálata azonban már
+meghaladja könyvünk kereteit.
+
+6.5.
+
+Alulról-fölfelé módszerek
+
+Az alulról-felfelé elemzés során a szintaxisfa rekonstrukcióját magából az elemzendő szóból
+kiindulva kezdjük meg. Az általános, nemdeterminisztikus bottom-up elemző algoritmus itt
+is nagyon egyszerű, mint az alábbi struktogram is mutatja. Ebben s G feletti szintaxisfák
+egy sorozatát jelöli (ilyen sorozatokra az erdő elnevezést használjuk a továbbiakban). Egy
+s erdő esetén gyökér(s) az s-beli fák gyökereinek, mı́g f ront(s) a frontjaik (s-beli sorrend
+szerinti) konkatenációját jelöli . su az az erdő, melyre front(su = u, mı́g red(s) az olyan
+erdők halmaza, melyekben valamely fát a közvetlen leágazásaival helyettesı́tve s-et kapjuk
+(a lehetséges visszahelyettesı́tések eredményeinek halmaza).
+s := su
+gyökér(s) 6= S∧red(s) 6= ∅
+s :∈ red(s)
+gyökér(s) = S
+
+\
+Exit(igen, s)
+
+/
+Exit(nem)
+
+6.6. LR(k) nyelvtanok
+
+75
+
+Ez az algoritmus - visszafelé alkalmazva a szabályokat - valójában egy levezetés megfordı́tását állı́tja elő. A nemdeterminisztikus bottom-up elemző determinisztikussá alakı́tása
+- a lefutási fa segı́tségével - hasonló módon történhet, mint a top-down elemzőknél. A lefutási
+fa szélességének csökkentésére most azzal próbálkozunk, hogy csak legjobb levezetéseket engedünk meg. Világos, hogy egy legjobb levezetés utolsó lépése a legtöbb esetben az eredmény
+elejéhez közel eső helyettesı́tés. Emiatt az előző algoritmust megpróbálhatnánk úgy specializálni, hogy mindig a legbaloldali visszahelyettesı́thető részt helyettesı́tjük vissza. Sajnos
+azonban semmi sem garantálja, hogy az adott szó legjobb levezetésének utolsó lépése pontosan az adott szó legbaloldali visszahelyettesı́thető részét adja eredményül, mint azt az
+alábbi példa is mutatja.
+Legyen T = {a, b}, N = {S} és legyen
+G = T, N, P,S , ahol
+P = {S −→ aSb a}.
+Az u = aaabb (egyetlen, tehát legjobb is) levezetésében a harmadik a betű az utolsó
+helyettesı́téssel előálló rész, pedig a legbaloldali visszahelyettesı́thető rész az első s lenne.
+6.3. definı́ció. Az olyan visszahelyettesı́thető részre, mely egy legjobb mondatforma valamely legjobb levezetésének utolsó lépésében áll elő, a nyél elnevezést használjuk.
+Nem minden mondatformának van tehát nyele (csak azoknak, melyek L(G)-beli szó
+legjobb levezetése során állnak elő), mı́g nem egyértelmű nyelvtanokban akár több nyele is
+lehet ugyanannak a mondatformának.
+Az alulról-felfelé elemzésnél a lefutási fa szélességét úgy szeretnénk csökkenteni, hogy
+gyökér(s) nyelét próbáljuk meg visszahelyettesı́teni, redukálni (s ı́gy egy legjobb levezetést
+fordı́tott sorrendben megtalálni). Egy mondatformából a nyele nem olvasható ki olyan
+könnyen, mint ahogy a legbaloldali nyelvtani jel a top-down elemzőknél. Annyi igaz ugyan,
+hogy egy legjobb mondatformában a nyélétől jobbra már nem lehetnek nyelvtani jelek (hiszen
+ekkor az eredeti levezetés már nem lehetne legjobb levezetés), de a nyél kiválasztása továbbra
+is nemdeterminisztikus marad, s ı́gy a lefutási fa bejárásán alapuló determinisztikus elemzők
+műveleti igénye (az input szó hosszának függvényében) itt is exponenciális lesz.
+Ahhoz, hogy gyakorlati szempontból is használható algoritmust nyerjünk, most is kitűzhetjük célként, hogy a top-down elemzőknél látottak analógiájára kritériumokat keressünk
+arra, hogyan lehet a mondatformából közvetlen megállapı́tani, mi a nyele (ha van egyátalán).
+Ahogy várható, nem minden nyelvtan esetében vannak megfelelő kritériumok, de például az
+LR(k) nyelvtanok esetében léteznek ilyenek.
+
+6.6.
+
+LR(k) nyelvtanok
+
+Az LR(k) nyelvtanok esetében tetszőleges mondatforma esetén magából a mondatformából
+egyértelműen megmondható, mely visszahelyettesı́thető része lehet a nyele és azt mire lehet
+csak visszahelyettesı́teni (ez utóbbi azért lényeges, mert lehetnek egyező jobboldalú szabályok). Hogy tényleg nyél volt-e ez az egyértelműen visszahelyettesı́tendő rész, úgy derül ki,
+hogy a visszahelyettesı́tés eredménye vagy közvetlenül S, vagy a visszahelyettesı́téssel kapott
+mondatformára rekurzı́van feltett hasonló kérdésre igen a válasz.
+
+76
+
+6. Elemzési módszerek
+
+Magát az elemzendő u szót most is úgy képzeljük el, hogy egyszer, balról jobbra haladva olvashatjuk el. A mondatforma nyelének vége mindig a mondatforma még visszahelyettesı́tésekkel nem bolygatott, feldolgozatlan terminális része előtt helyezkedhet csak el
+(utaltunk rá, hogy a nyél után csak terminálisok lehetnek). Ha az addigi visszahelyettesı́tési
+lépések, valamint egy adott visszahelyettesı́thető rész és a mögötte lévő (még nem bolygatott) terminális sorozat első k eleme alapján egyértelműen eldönhető, hogy csak az adott
+rész lehet a mondatforma nyele, s hogy azt mire kelll visszahelyettesı́teni, akkor a nyelvtant
+LR(k) nyelvtannak hı́vjuk. (Az L az input balról jobbra olvasására, az R a legjobb levezetésre utal, mı́g a k jelentése világos.) Világos, hogy egy LR(k) nyelvtanban egyértelműen
+rekonstruálhatjuk tetszőleges nyelvbeli szó legjobb levezetését, emiatt minden LR(k) nyelvtan egyértelmű nyelvtan is.
+Formálisan az LR(k) nyelvtan fogalmát következőképp definiálhatjuk:
+6.4. definı́ció. A G 2-es tı́pusú nyelvtan LR(k) nyelvtan, ha tetszőleges
+∗
+
+∗
+
+S −→α1 Av1 −→α1 γ1 v1 −→w1 v1 és
+G,lj
+
+G,lj
+
+G,lb
+∗
+
+∗
+
+S −→α2 Bv2 −→α2 γ2 v2 −→w2 v2
+G,lj
+
+G,lj
+
+G,lj
+
+legjobb levezetések esetén abból, hogy α1 γ1 pre(v1 , k) és α2 γ2 pre(v2 , k) valamelyike kezdőszelete a másiknak, következik, hogy α1 = α2 , A = B és γ1 = γ2 .
+Az S−→ aSc|a szabályokkal adott nyelvtan nyilván LR(1) nyelvtan, hiszen generált
+nyelvének szavai an+1 cn , n ≥ 0 alakúak, s ebben az az a a nyél, melyet c vagy semmi sem
+követ. A további legjobb mondatformák nyele már egyértelműen csak aSc lehet.
+Az S−→ aSa|a szabályokkal adott nyelvtan viszont nyilván nem lehet semmilyen kra LR(k) nyelvtan, hiszen a generált nyelv a2n+1 alakú szavainak nyele mindig az n + 1.
+(középső) a. A nyél tehát függ a szó hosszától, s ezt a hosszt rögzı́tett számú jel előre
+olvasásával sehogyan sem tudjuk megállapı́tani.
+Az LR(k) nyelvtanok esetében is elkészı́thetők azok a táblázatok, melyek az elemzés
+pillanatnyi állapota (belátható, hogy ez véges információval jellemezhető), továbbá az előre
+olvasott k jel alapján egyértelműen meghatározzák a visszahelyettesı́tések menetét. Mindezek következtében LR(k) nyelvtanok egyértelmű nyelvtanok, s ı́gy az általuk meghatározott nyelvek is azok.
+
+6.7.
+
+Kapcsolat LDIt1V és az LR(k) nyelvek között
+
+Az LR(k) nyelvtanok definiálásának pontosan az volt a célja, hogy determinisztikus módon
+elemezhetők legyenek. Felmerül a kérdés, hogy mit lehet mondani LR(k) nyelvtanok esetén,
+ha a szóproblémát veremautomata segı́tségével szeretnénk eldönteni. Igaz-e, hogy ilyen
+nyelvtanok esetében a veremautomatával történő elemzés is determinisztikusan történhet.
+A választ erre a kérdésre a következő, bizonyı́tás nélkül közölt tétel adja meg:
+6.5. tétel. Az inputterminátoros determinisztikus veremautomaták által felismert nyelvek
+osztálya megegyezik az LR(k) nyelvtanok által generált nyelvek osztályával.
+
+6.7. Kapcsolat LDIt1V és az LR(k) nyelvek között
+
+77
+
+Az LL(k) és LR(k) nyelvek közötti összefüggésről szól az alábbi, szintén bizonyı́tás nélkül
+közöt tétel:
+6.6. tétel.
+nyelvtan is.
+
+Minden LL(k) nyelvtannal generálható nyelvhez létezik őt generáló LR(k)
+
+Az LL(k) és LR(k) nyelvtanok részeltes tanulmányozása és gyakorlati felhasználásuk
+bemutatása a fordı́tóprogramokkal foglalkozó kurzusok, illetve könyvek témája.
+
+Irodalomjegyzék
+[1] A.V. Aho, J.D. Ullman The Theory of Parsing, Translation, and computing, PrenticeHall, 1972.
+[2] Arto Salomaa, Formal Languages, Academic Press, 1973.
+[3] Révész György, Formális nyelvek, Tankönyvkiadó, 1977.
+[4] J. Demetrovics, J. Denev, R. Pavlov, A számı́tástudomány matematikai alapjai,
+Tankönyvkiadó, 1995.
+[5] Fülöp Zoltán, Formális nyelvek és szitaktikus elemzésük, Poligon, 1999.
+
+78
+
+

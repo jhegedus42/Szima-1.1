@@ -1,0 +1,2164 @@
+                                                        Octonionic representations of Clifford algebras and triality
+
+                                                                                              Jörg Schray
+                                                             Department of Physics, Oregon State University, Corvallis, OR 97331, USA
+                                                                                    schrayj@physics.orst.edu
+
+                                                                                         Corinne A. Manogue
+                                                             Department of Physics, Oregon State University, Corvallis, OR 97331, USA
+                                                                                    corinne@physics.orst.edu
+                                                                                          (July 26, 1994)
+                                                     The theory of representations of Clifford algebras is extended to employ the division algebra of
+                                                  the octonions or Cayley numbers. In particular, questions that arise from the non-associativity and
+                                                  non-commutativity of this division algebra are answered. Octonionic representations for Clifford
+                                                  algebras lead to a notion of octonionic spinors and are used to give octonionic representations of the
+
+
+
+
+arXiv:hep-th/9407179v1 27 Jul 1994
+                                                  respective orthogonal groups. Finally, the triality automorphisms are shown to exhibit a manifest
+                                                  Σ3 × SO(8) structure in this framework.
+
+
+
+
+                                                                                        I. INTRODUCTION
+
+
+                                        The existence of classical supersymmetric string theories in (n + 1, 1) dimensions has been linked to the existence of
+                                     the normed division algebras Kn [1,2], where Kn = R, C, H, and O for n = 1, 2, 4, and 8 are the algebras of the reals,
+                                     complexes, quaternions, and octonions. One reason for this correspondence is the isomorphism sl(2, Kn ) ∼    = so(n+ 1, 1)
+                                     on the Lie algebra level [3]. However, because of the non-associativity of the octonions, the extension of this result
+                                     to finite Lorentz transformations, i.e., on the Lie group level, for n = 8 has posed a problem until recently [4,5].
+                                     Nevertheless, octonionic spinors based on sl(2, O) have been used successfully as a tool to solve and parametrize
+                                     classical solutions of the superstring and superparticle [5–7].
+                                        Another link between octonions and supersymmetric theories is given by the triality [8,2,9] automorphisms of SO(8),
+                                     which interchange the spaces of vectors, even spinors, and odd spinors. These automorphisms are constructed using
+                                     the Chevalley algebra, which combines these three spaces into a single 24-dimensional algebra. Our formulation of
+                                     the Chevalley algebra in terms of 3 × 3 octonionic hermitian matrices naturally extends to the exceptional Jordan
+                                     algebra. A variety of articles connect this algebra to theories of the superstring, the superparticle, and supergravity
+                                     [10,11].
+                                        Division algebras are also used in the spirit of GUTs to provide a group structure that contains the known inter-
+                                     actions [12].
+                                        The contribution of this paper is to bring these many isolated observations together and place them on the foundation
+                                     of the theory of Clifford algebras. Our framework allows an elegant unified derivation of all the previous results about
+                                     orthogonal groups. The octonionic triality automorphisms, for example, are completely symmetric with respect to
+                                     the spaces of vectors, even spinors, and odd spinors, as they should be. We explain new features and properties of
+                                     octonionic representations of Clifford algebras related to the possible choices of different octonionic multiplication
+                                     rules. We also find that not all of the common constructions from complex representations have exact analogues for
+                                     octonionic representations because of the non-commutativity of the octonions. For example, the octonionic analogue of
+                                     the charge conjugation operation involves the opposite octonionic algebra, without which the transformation behavior
+                                     is inconsistent. However, the extra structure of two distinguished octonionic algebras may turn out to be a feature of
+                                     our formalism rather than a bug.
+                                        In a previous article [4] a demonstration of the construction of SO(7), SO(8), SO(9, 1), and G2 is given, which
+                                     illustrates how the octonionic algebra works explicitly. However, in this article, we only use the general algebraic
+                                     properties of the octonions, rather than rely on explicit computations involving a specific multiplication rule. This
+                                     approach is taken to highlight the central role of the alternativity of the octonions in the development of our formalism.
+                                     In essence, we suggest the division algebra of the octonions not as an afterthought, but as a starting point for
+                                     incorporating Lorentzian symmetry and supersymmetry in supersymmetrical theories. This principle is brought to
+                                     fruition in a fully octonionic description of the triality automorphisms of the Chevalley algebra.
+                                        The content of this article is organized as follows: First we give a thorough introduction to composition algebras
+                                     and the division algebra of the octonions. In particular, we devote a large part of section II to the investigation
+
+                                                                                                    1
+of the relationship amongst different multiplication tables of the octonions. In section III we state basic concepts
+about Clifford algebras and their representations. We characterize the Clifford group and the orthogonal group
+of a vector space with a metric by generating sets. This approach turns out to be better adapted to octonionic
+representations than the usual Lie algebra one. Then we introduce the octonionic representation of the Clifford
+algebra in 8-dimensional Euclidean space in section IV. In section V, the reductions to 7 and 6 dimensions and the
+extension to 9+1 dimensions are discussed. In section VI, we introduce an octonionic description of the Chevalley
+algebra and show that the triality symmetry is inherent in the octonionic description. Then, in section VII, we briefly
+explain how our results with regard to sets of finite generators of Lie groups are related to the usual description in
+terms of infinitesimal generators of the corresponding Lie algebra. Section VIII discusses our results.
+
+
+                             II. THE DIVISION ALGEBRA OF THE OCTONIONS
+
+   This section lays the first part of the foundation for octonionic representations of Clifford algebras, namely it
+introduces the octonionic algebra. The first subsection deals with some general properties of composition algebras.
+A subsection introducing our convention for octonions follows. We then turn our attention to the relationship among
+different multiplication tables for the octonions and introduce the opposite octonionic algebra. For further information
+and omitted proofs see [13,14,3]. A less rigorous approach is taken in [4].
+
+
+                                               A. Composition algebras
+
+  An algebra A over a field F is a vector space over F with a multiplication that is distributive and F-linear:
+                                                      
+                                   x(y + z) = xy + xz
+                                                              ∀ x, y, z ∈ A,                                         (1)
+                                   (x + y)z = xz + yz
+
+                                  (f x)y = x(f y) = f (xy)         ∀ x, y ∈ A, ∀ f ∈ F.                              (2)
+
+A is also assumed to have a multiplicative identity 1A .
+  A composition algebra A over a field F is defined to be an algebra equipped with a non-degenerate symmetric
+F-bilinear form,
+
+                                               h·, ·i : A × A → F                                                    (3)
+                                                        (x, y) 7→ hx, yi ,
+
+with the special property that it gives rise to a quadratic norm form which is compatible with multiplication in the
+algebra:
+                                                  2
+                                                |·| : A → F                                                          (4)
+                                                              2
+                                                      x 7→ |x| := hx, xi ,
+
+                                           |xy|2 = |x|2 |y|2       ∀ x, y ∈ A.                                       (5)
+
+(In the case of the octonions (5) is known as the eight-squares theorem, i.e., a sum of eight squares is the product of
+two sums of eight squares, and many applications rely on this identity.) Two main consequences can be derived (see
+[13]) from this essential property of composition algebras. Firstly, these algebras exhibit a weak form of associativity:
+                                                           
+                                            x(xy) = (xx)y
+                                                               ∀ x, y ∈ A.                                            (6)
+                                            (yx)x = y(xx)
+
+Defining the associator as a measure of the deviation from associativity via
+
+                                     [x, y, z] := x(yz) − (xy)z,          x, y, z ∈ A,                               (7)
+
+then (6) implies
+
+                                        [x, x, y] = [y, x, x] = 0       ∀ x, y ∈ A                                   (8)
+
+                                                               2
+or (by polarization)
+                                     [x, y, z] = −[x, z, y] = −[y, x, z]                              ∀ x, y, z ∈ A,                   (9)
+i.e., the associator is an alternating function of its arguments. This weak form of associativity is also called alterna-
+tivity. (9) and (6) are equivalent, if the characteristic χ(F) of F does not equal 2, which is assumed from now on. As
+shown in [13] alternativity implies the so-called Moufang [15] identities,
+                                                             
+                                          (xyx)z = x(y(xz)) 
+                                          z(xyx) = ((zx)y)x       ∀ x, y, z ∈ A,                                     (10)
+                                                             
+                                                             
+                                          x(yz)x = (xy)(zx)
+which will turn out to be useful later on.
+  Secondly, composition algebras are endowed with an involutory antiautomorphism ·∗ :
+                                                      ·∗ : A → A
+                                                           x 7→ x∗ := 2 h1, xi − x ,                                                  (11)
+                                                           ∗         ∗     ∗
+                                                      (xy) = y x
+                                                           ∀ x, y ∈ A.
+(Obviously, we view F as embedded in the algebra A via F ∼    = F 1A ⊆ A, in particular 1A = 1F = 1. With this
+identification and (2), multiplication with an element of F is commutative, i.e., F ⊆ Z, where Z is the center of
+A.) We observe that ·∗ is linear and fixes F. (Note that h1, 1i = 1, since hx, xi = hx, xih1, 1i ∀ x ∈ A.) This
+                                                                                  2
+antiautomorphism can be shown to provide a way to express the quadratic form |·| :
+                                                                                   2
+                                                   x x∗ = x∗ x = |x|                           ∀ x ∈ A.                               (12)
+So all elements of A satisfy a quadratic equation over F:
+                                                                               2
+                                                x2 − 2h1, xix + |x| = 0                           ∀ x ∈ A.                            (13)
+Polarizing (12) results in an expression for the bilinear form:
+                                                           1
+                                                hx, yi =     (x y ∗ + y x∗ )                    ∀ x, y ∈ A.                           (14)
+                                                           2
+We determine inverses:
+                                                               x∗                                 2
+                                                  x−1 =                        ∀ x ∈ A, |x| 6= 0.                                     (15)
+                                                            |x|2
+However, in order to solve a linear equation ax = b, we need a−1 (ax) = x. To see that we do indeed have associativity
+in this case, we need the following relationship,
+                                                                    
+                           6[x, y, z] = x, [y, z] + y, [z, x] + z, [x, y]  ∀ x, y, z ∈ A,                         (16)
+between the associator and the commutator
+                                                   [x, y] := xy − yx,                          x, y ∈ A,                              (17)
+which is defined as usual. So for χ(F) 6= 2, 3, we see that products with elements in Z are associative:
+                       x∈Z         ⇐⇒            [x, y] = 0         ∀y ∈ A                 =⇒         [x, y, z] = 0 ∀ y, z ∈ A.       (18)
+Since the associator is linear in its arguments, we can put (15), (11), and (18) together:
+                                   [x∗ , x, y]        2h1, xi[1, x, y] − [x, x, y]                                          2
+                  [x−1 , x, y] =            2     =                        2                       =0         ∀ x, y ∈ A, |x| 6= 0.   (19)
+                                      |x|                                |x|
+Finally, we observe more general consequences of (11) and (18):
+                                                                                       ∗
+                                            [x∗ , y] = −[x, y] = [x, y]                          ∀ x, y ∈ A                           (20)
+and
+                                                                                           ∗
+                                   [x∗ , y, z] = −[x, y, z] = [x, y, z]                            ∀ x, y, z ∈ A,                     (21)
+which imply that both commutators and associators have vanishing inner products with 1:
+                                       h1, [x, y]i = h1, [x, y, z]i = 0                           ∀ x, y, z ∈ A.                      (22)
+  We will now turn to the specific composition algebra of the octonions.
+
+                                                                                   3
+                                                             B. Octonions
+
+   According to a theorem by Hurwitz [16], which relies heavily on (13) there are only four composition algebras over
+the reals with a positive definite bilinear form, namely the reals, R; the complexes, C; the quaternions, H [17]; and
+the octonions or Cayley numbers, O [18]. Their dimensions as vector spaces over R are 1, 2, 4, and 8. Since the norm
+is positive definite, there exist inverses for all elements except 0 in these algebras. Therefore, they are also called
+normed division algebras.
+   For specific calculations the following concrete form of O is useful. O ∼     = R8 as a normed vector space. Fortunately,
+it is always possible to choose an orthonormal basis {i0 , i1 , . . . , i7 } which induces a particularly simple multiplication
+table for the basis elements such as the one given by the following triples:
+
+     i0 = 1,
+     i2a = −1     (1 ≤ a ≤ 7),                                                                                                        (23)
+   ia ib = ic = −ib ia and cyclic for (a, b, c) ∈ P = {(1, 2, 3), (1, 4, 5),(1, 6, 7), (2, 6, 4), (2, 5, 7), (3, 4, 7), (3, 5, 6)}.
+
+The algorithm to obtain such a basis is similar to the Gram-Schmidt procedure [19] with additional requirements
+about products of the basis elements (see [4]).
+  Working over the field of real numbers, the following definitions of real and imaginary parts are customary:
+
+                                              Re x := h1, xi = 21 (x + x∗ ) ∈ R,
+                                                                                                                                      (24)
+                                            Im x := x − h1, xi = 21 (x − x∗ ) ∈ R⊥ .
+
+Also i0 is called the real unit and the other basis elements are called imaginary units,
+
+                                         Re i0 = i0 ,       Im ia = ia       (1 ≤ a ≤ 7).                                             (25)
+
+In analogy to C and H, the antiautomorphism ·∗ is called “octonionic conjugation”. it also changes the sign of the
+imaginary part. With these conventions (22) reads
+
+                                         Re [x, y] = Re [x, y, z] = 0        ∀ x, y, z ∈ A.                                           (26)
+
+
+
+                                                      C. Multiplication tables
+
+  The question of possible multiplication tables arises, for example, when one reads another article on octonions,
+which, of course, uses a different one from the one given in (23). Usually it is remarked, that all 480 possible ones are
+equivalent, i.e., given an octonionic algebra with a multiplication table and any other valid multiplication table one
+can choose a basis such that the multiplication follows the new table in this basis. One may also take the point of
+view, that there exist different octonionic algebras, i.e., octonionic algebras with different multiplication tables. With
+this interpretation the previous statement means that all these octonionic algebras are isomorphic. However, this fact
+does not imply that a physical theory might not make use of more than one multiplication table at any given time. In
+this section we extend the ideas of Coxeter [20], giving a detailed description of how the various multiplication tables
+are related to each other. A new result, which emerges from our description, is that two classes of multiplication
+tables can be identified, namely the class corresponding to a given algebra and the one corresponding to its opposite
+algebra. In a physical theory, the distinction between these two classes becomes important when parity is not a good
+symmetry, i.e., in a chiral theory.
+  The set P in (23) can be taken to represent a labeling of the projective plane Z2 P 2 over the field with two elements
+Z2 = GF (2) = {0, 1} (see Fig. 1). Before we explain this correspondence, we introduce the basic properties of
+Z2 P 2 . (Readers who are not familiar with projective geometry may consult [21].) This plane contains as points the
+one-dimensional linear subspaces of (Z2 )3 . Given a basis of (Z2 )3 these subspaces are
+                              *  +           *  +             * +            * +
+                                   1               0                   1                0
+                         p1 =  0  , p2 =  1  , p3 =  1  , p4 =  0  ,
+                                   0               0                   0                1
+                                      *      +         *      +        *     +                                  (27)
+                                           1                  0                1
+                                 p5 =  0  , p6 =  1  , p7 =  1  .
+                                           1                  1                1
+
+
+                                                                    4
+                  FIG. 1. The projective plane Z2 P 2 representing a multiplication table for the octonions.
+
+
+(Since these linear subspaces contain only one non-zero element, we will drop the angle brackets and identify the
+points with the non-zero elements of (Z2 )3 .) The lines l1 , l2 , . . . , l7 of the plane are the two-dimensional linear
+subspaces of (Z2 )3 , which can also be described by their normal vectors n1 , n2 , . . . , n7 , i.e., the dual vectors that
+annihilate the subspaces:
+                                                                                            
+                  1             0            1            0                  1            0               1
+          n1 =  0  , n2 =  1  , n3 =  1  , n4 =  0  , n5 =  0  , n6 =  1  , n7 =  1  .                    (28)
+                  0             0            0            1                  1            1               1
+
+So there are also seven lines in Z2 P 2 . The geometry of the plane is then defined by the incidence of points and lines,
+where
+
+                     pj and lk are incident      ⇐⇒      pj ⊂ lk     ⇐⇒      nTk pj ≡ 0 (mod 2),                       (29)
+
+for example, p3 , p5 , and p6 are incident with l7 .
+    We are now in a position to specify the previously mentioned correspondence between Z2 P 2 and P . P contains
+seven triples formed out of seven labels. The labels represent points and the triples represent lines containing the
+three points given by the labels, i.e., a label and a triple are incident, if and only if the label is part of the triple.
+Cyclic permutations of a triple change neither the multiplication table nor the geometry of the plane. However, P
+does define an orientation on each line, since a transposition in a triple would change the multiplication table. This
+notion of orientation on the lines, is represented by arrows in Fig. 1. So we can read the multiplication table off
+the triangle. If we follow a line connecting two labels in direction of the arrow we obtain the product, for example,
+i3 i4 = i7 . When moving opposite to the direction of the arrow we pick up a minus sign, i4 i2 = −i6 . (Note that in
+projective geometry the ends of the lines are connected, i.e., lines are topologically circles, S 1 .
+    What are possible transformations of the multiplication table P and how do they correspond to transformations of
+the projective plane Z2 P 2 ? Looking at Fig. 1, we see that there are three ways to change the picture:
+  (i) We may relabel the corners, leaving the arrows unchanged.
+ (ii) The labels may be kept fixed while some or all arrows are reversed.
+ (iii) Minus signs may be attached to the labels, i.e., we change part of (23) to read ia ib = −ic = −ib ia and cyclic for
+       (a, b, c) ∈ P .
+The sign change of a label in type (iii) is equivalent to reversing the orientation of the three lines through that point
+and therefore is included in the transformations of type (ii). For the second kind of transformation, we have to make
+
+                                                              5
+sure, that the multiplication table so obtained satisfies alternativity, for it to define another octonionic algebra. One
+can show that given the arbitrary orientation of four lines including all seven points, the orientations of the remaining
+three lines are determined by alternativity. (Note that there is only one case to consider. Among the four lines there
+are necessarily three which have one point in common. Two of those together with the fourth one fix one of the
+remaining orientations.) This in turn implies that elementary transformations of type (ii) change the orientation of
+three lines which have one point in common. So the transformations of type (ii) and type (iii) are equivalent. Since
+four arrows can be chosen freely, we obtain sixteen as the number of possible configurations of arrows, i.e., the number
+of distinct multiplication tables that can be reached this way, namely: 1 original configuration with no changes, 7
+with the orientation of three lines through one point reversed, 7 with the orientation of four lines avoiding one point
+reversed, and 1 with the orientation of all lines reversed.
+  In order to discuss these transformations further, we will introduce some notation. (Before developing this frame-
+work, I verified most of these results using the computer algebra package Maple. So the reader who is not algebraically
+inclined may take this proof by exhaustion as sufficient. For a basic reference on group theory see [22].) We denote
+an octonionic algebra given by an orthonormal basis of R8 and a set P of the type given in (23) by OP , and the set
+made up of all such octonionic algebras by O := { all possible P : OP }. “All possible P ” means those that induce a
+multiplication table satisfying alternativity. So O can be viewed as the set of possible multiplication tables.
+  We now consider the group action of T = T1 ∗ T2 , the free product of transformations of type (i) and (ii), on O:
+
+                                                     T ×O →O                                                               (30)
+                                                     (t, OP ) 7→ Ot(P ) .
+                                                 t
+Thus each t ∈ T induces an isomorphism OP → Ot(P ) . The group of transformations T1 of type (i), i.e., the relabelings
+of the corners, is of course the permutation group on seven letters, Σ7 , acting in the obvious way. We identify the
+group T2 of transformations of type (ii) as (Z2 )7 , with the 7 generators acting as the elementary transformations
+reversing the orientation of the three lines through one point. Earlier we saw that the orbits of an element of O under
+the action of this group are of size 16: |Orb(Z2 )7 (OP )| = 16. In order to determine the orbits of Σ7 we first consider
+its subgroup H which acts as the group of projective linear transformations on Z2 P 2 labeled as in Fig. 1, i.e., we
+let H act on one specific OP ∈ O, namely with P as in (23). H ∼          = P GL(3, Z2 ) ∼= GL(3, Z2 ) is generated by the
+permutations (1 2 4 3 6 7 5) and (1 2 5)(3 7 4). H is in fact simple, of Lie-type, of order 168 = 23 · 3 · 7, and denoted by
+A2 (2) (see [23]). Since elements of H as projective linear transformation do not change the geometry of Z2 P 2 , they
+can only reverse the orientations of lines, i.e., OrbH (OP ) ⊆ Orb(Z2 )7 (OP ). Hence, we have |OrbH∗(Z2 )7 (OP )| = 16.
+Thus the index of the stabilizing subgroup of H has to divide 16:
+
+                                         [H : StabH (OP )] = |OrbH (OP )| 16.                                              (31)
+
+Since the action of H is not trivial and H being simple of order 168 cannot have subgroups of index 2 or 4, we conclude
+|OrbH (OP )| = 8. To determine |OrbΣ7 (OP )| we need to consider the cosets of H in Σ7 . There are [Σ7 : H] = 30 of
+them corresponding to distinct geometries of Z2 P 2 , i.e., the incidence of lines and points is different for different cosets.
+Therefore, there are 30 distinct classes of multiplication tables, with members of one class related by a projective
+linear transformation. So it follows
+
+                                             |OrbΣ7 (OP )| = 30 · 8 = 240,
+                                                                                                                           (32)
+                                              |OrbT (OP )| = 30 · 16 = 480.
+
+So relabelings of the corners reach only half of the possible multiplication tables, which is a consequence of the fact
+that projective linear transformations reach only half of the possible configurations of arrows. Why is this so and
+what are the possible implications? To answer these questions we need to understand how elements of H change
+orientations of lines. We can decompose the action of elements of H into one part that permutes the lines and another
+one that reverses the orientation of certain lines in the image. An element t1 ∈ H of odd order p may only change the
+orientation of an even number of lines. For t1 p = 1 has to act trivially on P , and the changes of orientation add up
+modulo 2. However, H is generated by elements of odd order, so all of its elements change only the orientation of an
+even number of lines. To obtain the full orbit we may add just one element ζ ∈ T2 that changes the orientation of an
+odd number of lines. A particularly good choice for ζ is the product of all generators, i.e., the one corresponding to
+reversing all seven lines (or attaching minus signs to all labels when viewed as type (iii) transformation). Obviously,
+t1 ζ(P ) = ζ t1 (P ) ∀ t1 ∈ T1 , so that we may form the direct product T1 ′ = T1 × {1, ζ} and OrbT1 ′ (OP ) = OrbT (OP ).
+Note that ζ corresponds to the operation of octonionic conjugation, so that the isomorphism given by ζ is illustrated
+by the following diagram:
+
+                                                                6
+                                            OP × OP          −→             OP
+                                           (a, b)            7−→            ab
+                                                                           
+                                                                                        .                           (33)
+                                        ζ × ζy                              yζ
+                                       Oζ(P ) × Oζ(P )       −→            Oζ(P )
+                                    (a , b ) = (a , b ) 7−→ (ab) = b∗ a∗ = b′ a′
+                                        ∗    ∗      ′    ′             ∗
+
+
+Therefore, Oζ(P ) is the opposite algebra of OP , i.e., the algebra obtained by reversing the order of all products. So for
+octonionic algebras, there is an isomorphism of an algebra and its opposite algebra given by octonionic conjugation,
+besides the natural anti-isomorphism given by identification. What are the consequences of these results for a physical
+theory? Usually, the physical theory will contain a vector space of dimension 8, for which we want to introduce an
+octonionic description. This description, however, should be invariant under the appropriate symmetry group, most
+commonly, SO(8). The multiplication table changes in a more general way under SO(8). The product of two basis
+elements will turn out to be a linear combination of all basis elements, but the relabelings given by Σ7 are certainly
+a subgroup contained in SO(8). Moreover, ζ ∈       / SO(8), which implies that the most general multiplication tables
+with respect to an orthonormal basis split in two classes with SO(8) acting transitively on each class, but only
+SO(8) × {1, ζ} ∼ = O(8) acting transitively on all of them. In fact we will find it useful to consider two algebra
+structures, namely O and its opposite Oopp , on the same R8 to describe the spinors of opposite chirality.
+   In a recent article, Cederwall & Preitschopf [24] introduce an “X-product” on O via
+
+                                 a ◦ b := (a X)(X ∗ b),            a, b, X ∈ O, X X ∗ = 1,                            (34)
+                                   X
+
+
+which is just the original product for X = 1. As X becomes different from 1, the multiplication table for this product
+changes continuously in a way related to the SO(8) transformations that leave 1 fixed. This changing product appears
+naturally when the basis of a spinor space is changed, see section IV E.
+
+
+                       III. CLIFFORD ALGEBRAS AND THEIR REPRESENTATIONS
+
+  The second building block for octonionic representations of Clifford algebras is presented in this section. First we
+define an abstract Clifford algebra and observe some of its basic properties. Then we consider the Clifford group
+which gives us the action of the orthogonal groups on vectors and spinors. In our approach to the Clifford group
+in this second subsection we also introduce the key idea of characterizing groups by finite generators. The third
+subsection states the necessary facts about representations of Clifford algebras, i.e., how we can find matrix algebras
+to describe Clifford algebras. For further reference and proofs that are left out see [25,9,26,27]. We only consider the
+real or complex field, i.e., F = R, C, in this section, even though some of the statements generalize to other fields, in
+particular of characteristic different from 2.
+
+
+                                                        A. Clifford algebras
+
+  The tensor algebra T (V ) of a vector space V of dimension n over a field F is the free associative algebra over V :
+(All the products in this section are associative.)
+
+                                                    T (V ) := ⊕∞       k
+                                                               k=0 (V ) ,                                             (35)
+
+where
+
+                                   (V )k = V
+                                           | ⊗V ⊗
+                                                {z· · · ⊗ V}, k > 0,             (V )0 = F.                           (36)
+                                                    k copies
+
+The identity element is 1 ∈ F and F lies in the center of T (V ). Given a metric g on V, i.e., g is a non-degenerate
+symmetric bilinear form on V , the Clifford algebra Cl(V, g) is defined to be
+
+                                                 Cl(V, g) := T (V )/I(g) ,                                            (37)
+
+where
+
+                                                                   7
+                                            I(g) = hu ⊗ u − g(u, u) : u ∈ V i                                     (38)
+
+is the two-sided ideal generated by all expressions of the form u ⊗ u − g(u, u). If V is unambiguously defined from the
+context, we simply write Cl(g). We denote multiplication in Cl(g) by
+
+                                  u ∨ v := π −1 (u) ⊗ π −1 (v) + I(g)        ∀ u, v ∈ Cl(g),                      (39)
+
+where π is the canonical projection:
+
+                                                  π : T (V ) → Cl(g)                                              (40)
+                                                        u 7→ u + I(g)
+
+and π −1 (u) is any preimage of u. Since π restricted to F ⊕ V is injective, we identify this space with its embedding
+in Cl(g).
+  From a more practical perspective a Clifford product is just a tensor product with the additional rule that
+
+                                               u ∨ u = g(u, u)       ∀ u ∈ V.                                     (41)
+
+As a consequence elements of V ⊆ Cl(g) anticommute up to an element of F:
+
+                                    {u, v} := u ∨ v + v ∨ u = 2g(u, v)             ∀ u, v ∈ V                     (42)
+
+or in terms of an orthonormal basis {e1 , e2 , . . . , en }
+                                                        
+                                                           ±2, for i = j
+                          {ei , ej } := 2g(ei , ej ) =                               (1 ≤ i, j ≤ n).              (43)
+                                                            0, for i 6= j
+
+Based on these relationships, we find a basis for Cl(g) as a vector space,
+
+                              {ea1 ∨ ea2 ∨ · · · ∨ eak : 0 ≤ k ≤ n, 1 ≤ a1 < a2 < · · · ≤ n},                     (44)
+
+which shows that
+                                                             n  
+                                                             X  n
+                                               dim Cl(g) =                = 2n .                                  (45)
+                                                                     k
+                                                             k=0
+
+The product η = e1 ∨ e2 ∨ · · · ∨ en is called the volume form and has the special property
+
+                                            η ∨ u = (−1)n+1 u ∨ η         ∀ u ∈ V.                                (46)
+
+So for odd n, η lies in the center Z of Cl(g). In fact
+                                                
+                                                  F,             for n even
+                                           Z=                               .                                     (47)
+                                                  F ⊕ Fη,        for n odd
+
+  There are two involutions on T (V ) given by the obvious extensions of the following maps on V ⊆ T (V ): the main
+automorphism α,
+
+                                                     αV :V →V                                                     (48)
+                                                         u 7→ −u ,
+and the main antiautomorphism β,
+
+                                                       β V :V →V                                                  (49)
+                                                            u 7→ u
+                                                β(u ⊗ v) = v ⊗ u         ∀ u, v ∈ V .
+
+Since I(g) is invariant under α and β, we obtain maps on the quotient Cl (g). The main antiautomorphism can also
+be understood as an isomorphism between Cl(g) and its opposite algebra (Cl (g))opp :
+
+                                                                 8
+                                                            ∨
+                                 Cl (g) × Cl (g)           −−→                     Cl (g)
+                                    (a, b)                  7−→                    a∨b
+                                                                                   
+                                                                                   
+                                 β × βy                                             yβ
+                                                                                                      .            (50)
+                                                            ∨opp
+                           (Cl (g))opp × (Cl (g))opp       −−→                   (Cl(g))opp
+                         (β(a), β(b)) = (aopp , bopp )      7−→        aopp ∨opp bopp = bopp ∨ aopp
+                                                                        = β(b) ∨ β(a) = β(a ∨ b)
+
+The main automorphism α defines a Z2 -grading on Cl (g) given by the projections
+                                                1                           1
+                                        P0 :=     (id + α),        P1 :=      (id − α).                            (51)
+                                                2                           2
+The even and odd part of the Clifford algebra are defined to be
+
+                                    Cl 0 (g) := P0 (Cl (g)),       Cl 1 (g) := P1 (Cl (g)).                        (52)
+
+Then
+
+                                                   Cl(g) = Cl 0 (g) ⊕ Cl 1 (g)                                     (53)
+
+and the even part Cl 0 (g) is in fact a subalgebra of Cl(g).
+  We already saw how the Clifford algebra contains vectors. A spinor space S is defined to be a minimal left ideal of
+Cl(g). Such a space
+
+                                                        S = Cl(g) ∨ Q                                              (54)
+
+is generated by a primitive idempotent Q ∈ Cl(g), i.e.,
+
+                       Q2 = Q,        / Q1 , Q2 : Q21 = Q1 6= 0, Q22 = Q2 6= 0, Q = Q1 + Q2 .
+                                      ∃                                                                            (55)
+
+(This characterization of minimal left ideals relies on the fact that Clifford algebras over R and C are semisimple, see
+section III C.) If the primitive idempotent is even, the spinor space S decomposes into the spaces of even and odd
+Weyl spinors:
+
+                               S = S0 ⊕ S1 ,          Sk = Pk S = Cl k (g) ∨ Q, (k = 0, 1).                        (56)
+
+Different names for these spaces are used within the mathematical physics community. S is also called the space
+of Dirac spinors and S0 and S1 are called semi-spinor spaces. Sometimes, elements of S are called bi-spinors and
+elements of S0 and S1 are just called even and odd spinors.
+   For a mixed primitive idempotent Q there may still be a Weyl decomposition (see (86)), but it is not compatible
+with the Z2 grading on Cl(g):
+
+                                      S = Cl(g) ∨ Q = Cl 0 (g) ∨ Q = Cl 1 (g) ∨ Q.                                 (57)
+
+   For odd n, S is also called the space of Pauli spinors or semi-spinors. If only the double 2S := S ⊕ S carries a
+faithful representation of Cl(g) (see section III C), then some authors refer only to 2S as the space of spinors.
+
+
+                                                     B. The Clifford group
+
+  The connection of the symmetry group of the metric, i.e., the orthogonal group, with the Clifford algebra is made
+in this subsection via the Clifford group Γ(g) (see (65), (66), and (70)). We use a non-standard definition of the
+Clifford group in terms of a set of finite generators. We were led to this approach because octonionic representations
+are naturally implemented in this way. However, we feel this characterization of the Clifford group is simpler in many
+applications. By relating both definitions to the orthogonal group we show that they are essentially equivalent (see
+(67), (68), and (69)).
+  We define the Clifford group Γ(g) to be the group generated by the vectors of non-zero norm, i.e.,
+
+                                                                   9
+                                     Γ(g) := hu ∈ V ⊆ Cl(g) : u2 = g(u, u) 6= 0i.                                   (58)
+
+As we will see, this definition is almost equivalent to the usual one,
+
+                       Γ′ (g) := {u ∈ Cl (g) : u invertible, u ∨ x ∨ u−1 ∈ V ∀ x ∈ V } ⊇ Γ(g).                      (59)
+
+Considering u ∈ Γ(g) ∩ V and any x ∈ V we see that
+                                                    1          1
+                            u ∨ x ∨ u−1 = u ∨ x ∨ g(u,u) u = g(u,u) (−x ∨ u + 2g(x, u)) ∨ u
+                                                  g(x,u)
+                                                                                                                    (60)
+                                         = −x + 2 g(u,u) u ∈ V.
+
+Therefore, Γ′ (g) ⊇ Γ(g) indeed, and in particular Γ′ (g) ∩ V = Γ(g) ∩ V . In fact, the definition of Γ′ (g) implies that
+Γ(g) is stable under conjugation in Γ′ (g), i.e., Γ(g) is a normal subgroup of Γ′ (g). We will investigate the structure
+of the Clifford group on the basis of this group action of Γ′ (g) on V :
+
+                                        φ′ : Γ′ (g) × V → V                                                         (61)
+                                                  (u, x) 7→ φ′u (x) := u ∨ x ∨ u−1 .
+Dropping all the primes we have the obvious restriction
+
+                                        φ : Γ(g) × V → V                                                            (62)
+                                               (u, x) 7→ φu (x) := u ∨ x ∨ u−1 .
+(We will not explicitly give the unprimed analogues of expressions below.) Of course, these actions can be extended
+to give inner automorphisms of Cl (g). According to (60), the action of u ∈ V ∩ Γ′ (g) is just a reflection of x at the
+hyperplane orthogonal to u composed with an inversion of the whole space. In particular φ′u (x) ∈ V and φ′u is an
+isometry:
+                         g(φ′u (x), φ′u (x)) = φ′u (x) ∨ φ′u (x) = ( u12 )2 u ∨ x ∨ u−1 ∨ u ∨ x ∨ u−1
+                                                                                                                    (63)
+                                            = u ∨ x ∨ x ∨ u−1 = g(x, x).
+
+So (61) (resp. (62)) gives a homomorphism Φ′ (resp. Φ) of Γ′ (g) (resp. Γ(g)) to the group of isometries or orthogonal
+transformations O(g) of V :
+
+                                     Φ′ : Γ′ (g) → O(g)                                                             (64)
+                                               u 7→ φ′u : V → V
+                                                          x 7→ φ′u (x) = u ∨ x ∨ u−1
+To compare Γ′ (g) (resp. Γ(g)) with O(g) we need to know the range and the kernel of Φ′ (resp. Φ). Since the reflections
+at hyperplanes generate all orthogonal transformations Φ′ (resp. Φ) is onto, if we can find a preimage of the inversion
+x 7→ −x. Because of (46), η ∈ Γ(g) ⊆ Γ′ (g) does the job for even n. For odd n, there is no element of Cl(g) that
+anticommutes with all x ∈ V . So there is no preimage of the inversion, which leaves us with SO(g) as the range.
+The kernel coincides with the part of the center, that lies in the Clifford group. Thus we have according to the
+homomorphism theorems
+                                                      ′
+                                    Γ(g)/F∗ ∼
+                                            = O(g) ∼
+                                                   = Γ (g)/F∗               (for even n)                            (65)
+                                                        ′
+                                             = SO(g) ∼
+                                 Γ(g)/F∗ hηi ∼       = Γ (g)/Z ∗            (for odd n),                            (66)
+
+where F∗ = F \ {0}, hηi is the group generated by η, and Z ∗ := Γ′ (g) ∩ Z is the invertible part of the center. So
+the Clifford group is isomorphic to the orthogonal (resp. simple orthogonal) group up to a subgroup of the center Z.
+Therefore,
+
+                                            Γ(g) ∼
+                                                 = Γ′ (g)               (for even n)                                (67)
+                                                ∗
+                                     Γ(g) × Z /F∗ hηi ∼
+                                                      = Γ′ (g)          (for odd n),                                (68)
+
+So for even n both definitions (58) and (59) of the Clifford group are equivalent. For odd n they differ by inhomogeneous
+elements of the invertible part of the center Z ∗ . For our purposes it will be sufficient to consider the Clifford group
+Γ(g) as defined in (58) only.
+
+                                                                10
+   For both even and odd n, we obtain a homomorphism from the even Clifford group Γ0 (g),
+
+                           Γ0 (g) := Γ(g) ∩ Cl 0 (g) = P0 Γ(g) = Γ′ (g) ∩ Cl 0 (g) = P0 Γ′ (g),                       (69)
+
+onto SO(g):
+
+                                                  Γ0 (g)/F∗ ∼
+                                                            = SO(g).                                                  (70)
+
+The even Clifford group is generated by pairs of vectors with non-zero norm:
+
+                                  Γ0 (g) = hu ∨ v : u, v ∈ V, g(u, u) 6= 0 6= g(v, v)i.                               (71)
+
+In fact one of the vectors may be fixed,
+
+                        Γ0 (g) = hu ∨ w : u ∈ V, g(u, u) 6= 0i, for some w ∈ V, g(w, w) 6= 0,                         (72)
+
+since any product of two vectors u, v can be written as a product of two pairs that contain w: u ∨ v = (u ∨ w) ∨ (v ′ ∨ w),
+               1
+where v ′ = g(w,w) w ∨ v ∨ w−1 ∈ V .
+   We also have an action ψ of Γ(g) on the Clifford algebra Cl(g) and in particular on any of its minimal left ideals, a
+space of spinors S:
+
+                                           ψ : Γ(g) × S → S                                                           (73)
+                                                  (u, s) 7→ ψu (s) := u ∨ s .
+
+   So we have two actions of the Clifford group Γ(g) and its subgroup Γ0 (g), the action φ on vectors (62) and the
+action ψ on spinors (73). These actions give rise to the so-called vector and spinor representations of the simple
+orthogonal group via the isomorphism (70). All octonionic representations of orthogonal groups in sections IV and V
+are based on this relationship. In physics particles are understood in terms of representations of groups describing the
+symmetries in the physical theory, in particular the Lorentz group. Therefore these representations of the orthogonal
+group are important, because they determine how physical fields transform.
+   The way in which F∗ should be divided out in (70) is obvious for the vector representation, since F∗ is the kernel
+of Φ. For the spinor representation, requiring the invariance of the spinor bilinear form (see section III D) determines
+how to divide out scalars (see (101) and (101)). Actually, this leads to a homomorphism of Γ0 (g) onto the universal
+covering group of SO(g), which is also called Spin(g). We will take SO(g) to be the appropriate group depending on
+the context and not make a distinction in notation between SO(g) and Spin(g).
+
+
+                                       C. Representations of Clifford algebras
+
+  In this subsection we describe how we can get a matrix algebra that is isomorphic to a Clifford algebra. In a
+sense this is the analogue to II B, where we gave an explicit form of the octonions, which implemented their abstract
+properties. We start out by introducing some definitions concerning representations in general. Algebras are assumed
+to be finite dimensional and contain a unit element. (For a general reference for representation theory see, e.g., [28].)
+  A representation γ of an algebra A over a field F in a vector space W is a homomorphism
+
+                                             γ : A → EndF (W )                                                        (74)
+                                                 a 7→ γ(a) : W → W
+                                                             w 7→ γ(a)w ,
+i.e.,
+                                                             
+                                        γ(a ∨ b) = γ(a)γ(b)
+                                                                        ∀ a, b ∈ A,                                   (75)
+                                       γ(a + b) = γ(a) + γ(b)
+
+where we denote multiplication in A by ∨ even though A is not necessarily a Clifford algebra. Given a basis of W ,
+γ(a) as an endomorphism of W may be understood as an l × l-matrix, where l = dim W is called the dimension
+of the representation. The representation is called faithful, if γ is injective. R is an invariant subspace of γ, if
+γ(a)R ⊆ R ∀a ∈ A. The representation γ is called irreducible, if there are no invariant subspaces of γ other than
+W 6= {0} and {0}. A reducible representation γ may be reduced to a representation γR on an invariant subspace R,
+
+                                                              11
+       γR
+i.e., A → EndF (R) requiring γR (a)w = γ(a)w ∀ w ∈ R, a ∈ A. An algebra is called simple, if it allows a faithful
+and irreducible representation. An algebra is called semisimple if it is a direct sum of simple algebras.
+   Since a left ideal J of A is by definition stable under left multiplication,
+
+                                                        A ∨ J ⊆ J,                                                       (76)
+
+and since J is a vector space, we have a natural representation λJ of A on J. (Again given a basis {b1 , b2 , . . . , bl }
+we have a representation in terms of matrices: a ∨ bi = λJ (a)ij bj .) Taking J = A we obtain the so called left regular
+representation, which is faithful. If J is a minimal left ideal, then the representation on it is irreducible, since invariant
+subspaces would correspond to proper subspaces of J which are left ideals and contradict the minimality of J.
+   If the algebra A is semisimple then the converse is also true, i.e., any irreducible representation can be written as
+a λJ for some minimal left ideal J: In this case an irreducible representation γ of A = A1 ⊕ A2 ⊕ · · · ⊕ Ak is an
+irreducible representation of one of the simple components, say Ak . So a minimal ideal L of γ(A) can be lifted to a
+minimal ideal of J ⊆ Aj , such that γ(J) = L. Then the following diagram commutes,
+                                                        γ
+                                             A      −−→          γ(A) ⊆ End(W )
+                                                                      
+                                                                      
+                                          λJ y                         yλL      .                                        (77)
+                                                   γ(J)=L
+                                         End(J)     −−→                 End(L)
+
+Since the maps λL and γ(J) = L are isomorphisms, there is an isomorphism relating W and J as vector spaces,
+
+                                                        F : W → J,                                                       (78)
+
+such that
+
+                                          γ(a) ◦ F = F ◦ λJ (a)             ∀ a ∈ A.                                     (79)
+
+F is said to intertwine the representations γ and λJ :
+                                                            γ(a)
+                                                   W        −−→ W
+                                                               
+                                                               
+                                                  Fy            yF .                                                     (80)
+                                                            λJ
+                                                    J       −−→         J
+
+Representations related in this way are called equivalent. In terms of their matrix form, equivalent representations are
+related by a basis transformation. This observation also shows that for a simple algebra all irreducible representations
+are equivalent to λJ and therefore equivalent to each other.
+   As is shown in the references given (see in particular [25,27]), Clifford algebras over R and C are simple or semisimple.
+Therefore, there is an equivalent definition for spinors in terms of representations of Cl(g), i.e., a spinor space S can
+be defined to be the carrier space of an irreducible representation of Cl(g).
+   In order to find a concrete representation, we must still find a primitive idempotent Q that generates a minimal
+left ideal J and observe how the basis elements of Cl(g) act on it. Actually, we will give a procedure to construct
+a representation that does not use a primitive idempotent explicitly. For this purpose we define the signature of a
+metric for the case F = R. We say that g has the signature p, q (written gp,q ), where dim V = p + q = n, if there is
+an orthonormal basis {e1 , e2 , . . . , en } of V , such that
+                                                               
+                                                                0, for i 6= j
+                                          gij := g(ei , ej ) =    1, for i = j ≤ p .                                    (81)
+                                                                −1, for i = j > p
+
+We write Cl (p, q) and γp,q to denote Cl (gp,q ) and one of its representations. It is particularly simple to give a procedure
+that produces a representation of Cl(m, m), i.e., in the case of a so-called neutral space. The procedure starts by
+“guessing” a representation γ1,1 for Cl (1, 1):
+                                                                                        
+                                              0 1                                  0 −1
+                              γ1,1 (e1 ) :=           =: σ and γ1,1 (e2 ) :=                 =: ǫ
+                                              1 0                                  1     0
+                                                                                                                      (82)
+                                                  1    0                                1 0
+                       =⇒ γ1,1 (e1 ∨ e2 ) =                =: τ and γ1,1 (1) =                 = 1.
+                                                  0 −1                                  0 1
+
+                                                                   12
+Notice that the representation is completely specified by defining it on a basis of V , since V generates the algebra.
+In order to ensure that these assignments actually lead to a representation of the Clifford algebra, we need to check
+that (42) is satisfied for all pairs of images of basis elements, i.e.,
+
+                           {γ(ei ), γ(ej )} = γ(ei ) γ(ej ) + γ(ej ) γ(ei ) = 2gij 1        (1 ≤ i, j ≤ n).                      (83)
+
+The representation γ1,1 is faithful and irreducible, since its image is the space M2 (F) of 2 × 2-matrices. So there are
+no proper invariant subspaces and the dimensions of Cl (1, 1) and M2 (F) match. This representation may be used as a
+building block to give the Cartan extension of a faithful irreducible representation γp,q of Cl(p, q), (p + q = 2m even)
+to a representation γ ′ of Cl(V ′ , g ′ ) with dim V ′ = 2m + 2:
+
+        γ ′ (e′i ) = σ ⊗ γp,q (ei )   (1 ≤ i ≤ 2m),         γ ′ (e′2m+1 ) = σ ⊗ γp,q (η),        γ ′ (e′2m+2 ) = ǫ ⊗ γp,q (1).   (84)
+
+(Of course, there are other extensions using the same building blocks.) It is easy to check that γ ′ is faithful and
+irreducible if γp,q was. The signature of the resulting metric g ′ depends on the value of
+                                                                        1
+                                                   γp,q (η)2 = (−1) 2 ν(ν−1) 1,                                                  (85)
+
+where ν := p − q = 2(p − m) = 2(m − q) is called the index of the metric gp,q . So for even (resp. odd) ν2 , we obtain
+a representation γ ′ of Cl(p + 1, q + 1) (resp. Cl (p, q + 2)). Since for neutral spaces ν = 0, we can get any γm,m ,
+starting from γ1,1 by iteration of this extension. We note that the dimension l of the carrier space of this irreducible
+                           n
+representation is 2m = 2 2 .
+  For even ν2 , γp,q (η) has eigenvalues +1 and −1 and we have Weyl projections P± (56):
+
+                                                                 1
+                                                        P± :=      (1 ± η).                                                      (86)
+                                                                 2
+One of these projectors can be decomposed
+                                           to give an even primitive idempotent Q. A representation such as the one
+                          1m×m 0
+given, where γp,q (η) = 0       −1m×m   is called a Weyl representation, since the Weyl projections P± take a simple
+form. Due to the property (46) of η,
+
+                                                     P± a = a0 P± + a1 P∓ ,                                                      (87)
+
+where a0 and a1 are the even and odd part of a. Since either P+ or P− annihilates the even primitive idempotent Q,
+we indeed get projections onto the spaces of even and odd Weyl spinors. Let, for example, P+ ∨ Q = Q and P− ∨ Q = 0,
+then for s = a ∨ Q = a0 ∨ Q + a1 ∨ Q ∈ S0 ⊕ S1 , a = a0 + a1 as before,
+
+                              P+ ∨ s = P+ ∨ a ∨ Q = a0 ∨ P+ ∨ Q + a1 ∨ P− ∨ Q = a0 ∨ Q ∈ S0 ,
+                                                                                                                                 (88)
+                              P− ∨ s = P− ∨ a ∨ Q = a0 ∨ P− ∨ Q + a1 ∨ P+ ∨ Q = a1 ∨ Q ∈ S1 .
+
+If we choose a mixed primitive idempotent Q, then we get a different decomposition S = P+ S ⊕ P− S unrelated to
+the decomposition of the Clifford algebra in its even and odd part.
+   The procedure continues for even n and ν 6= 0. In this case we can get a complex representation of the same
+dimension l = 2m by complexifying and transforming the  n metric to obtain a neutral space. (We can change the sign
+                                                                   for k6=j
+of g(ej , ej ) for given j using the transformation ek 7→ ieekj ,, for k=j . Thus we may choose a basis to obtain a form
+(81) of the metric with any p, q where p + q = n.) This complex representation is faithful and irreducible but not
+necessarily equivalent to a real one. To examine this issue we define the complex conjugate γ ∗ of a representation
+γ : A → EndC (W ) by
+
+                                                   γ ∗ : A → EndC (W ∗ )                                                         (89)
+                                                         a 7→ γ ∗ (a) = (γ(a))∗ .
+
+If A is simple then γ and γ ∗ are equivalent, i.e., there exists a linear map C : W → W ∗ intertwining these two
+representations:
+
+                                              γ ∗ (a) ◦ C = C ◦ γ(a)          ∀ a ∈ A.                                           (90)
+
+It follows by complex conjugation that
+
+                                                                   13
+                            γ(a) ◦ C ∗ ◦ C = C ∗ ◦ γ ∗ (a) ◦ C = C ∗ ◦ C ◦ γ(a)      ∀ a ∈ A,                           (91)
+
+whence by Schur’s Lemma C ∗ ◦ C is proportional to the identity. Since C ∗ ◦ C has a real eigenvalue, C can be
+normalized to satisfy
+
+                                                       C ∗ ◦ C = ±1.                                                    (92)
+
+If and only if C ∗ ◦ C = +1, then we can find a basis transformation to make γp,q real. This is the case for ν ≡ 0, 2
+(mod 8). In practice, we relate W and W ∗ by complex conjugation in the obvious way. C is found by imposing (90)
+for a ∈ {e1 , e2 , . . . , en }. (Following the procedure given above, any of the matrices γ(ek ) is either real or purely
+imaginary, so that C either commutes or anticommutes with it.) The new basis is a basis of eigenvectors for C, which
+is invariant under s 7→ sC := (C s)∗ . (sC is essentially the charge conjugate spinor for s.) For the cases ν ≡ 0, 6
+(mod 8) we can make a similar transformation to make γp,q purely imaginary. These real (resp. purely imaginary)
+representations are known as Majorana representations of the first (resp. second) kind. Of course, even for ν ≡         4, 6
+                                                                                               m+1                  10
+(mod 8) we   can find   an irreducible real representation of higher dimension, namely l = 2     , by letting 1 → 01 =1
+            0 −1
+and i → 1 0 = ǫ in an irreducible complex representation.
+   From a faithful, irreducible representation γ of the full Clifford algebra Cl(g) we derive a representation γ0 of the
+even subalgebra Cl 0 (g) by the obvious restriction. γ0 is faithful, but not irreducible, except for real representations
+when ν ≡ 2 (mod 8). For ν ≡ 0, 4 (mod 8), there are two-sided ideals of Cl 0 (g) generated by the idempotents
+1                                                                                                      m−1
+2 (1 ± η). Each of these two-sided ideals J carries an irreducible representation of dimension 2            , but only the
+double 2J carries a faithful representation. For ν ≡ 6 (mod 8) the isomorphism (93) in the following paragraph
+shows that Cl 0 (q, p) ∼
+                       = Cl 0 (p, q), hence we know the dimension of the irreducible representation to be l = 2m from the
+case ν ≡ 2 (mod 8).
+   Representations γp,q with odd n can be obtained by shrinking a representation of higher dimension, since we have
+the isomorphisms
+
+                              Cl 0 (q + 1, p) ∼
+                                              = Cl (p, q) ∼
+                                                          = Cl 0 (p, q + 1)                                             (93)
+obtained from extending
+                                      e1 ek+1 ←⊣ ek ⊢→ ek en+1                (1 ≤ k ≤ n).                              (94)
+
+Given the procedure above we can find an irreducible representation of Cl(p, q) by constructing one corresponding to
+an even subalgebra for even n. According to the isomorphism (93) which also holds true for p + q even, we can shrink
+representations for odd n in a similar way.
+  Irreducible representations of the Clifford algebra Cl(g) induce irreducible representations of the Clifford group
+Γ(g), since the basis elements of Cl(g) as in (44) are contained in Γ(g). The representations arising from the tensor
+(resp. spinor) action (62) (resp. (73)) are known as the vector (resp. spinor) representation of Γ(g).
+
+
+                                               D. Bilinear forms on spinors
+
+
+   Physical observables are tensors, which in terms of the Clifford algebra transform under the orthogonal group like
+(62), while spinors transform like (73). For this reason it seems likely that a bilinear form on spinors may provide
+observables based on spinors. The algebraic approach uses the fact that for u ∈ Γ(g) its inverse u−1 is proportional to
+β(u). Therefore, up to a normalization sβ(s′ ) transforms under the tensorial action of Γ(g). A decomposition in terms
+of a basis of the Clifford algebra gives the tensorial pieces of certain rank. In terms of representations we construct a
+bilinear form on spinors considering induced representations of the opposite Clifford algebra. Given a representation
+γ : A → EndF (W ) there is an induced representation γ T , its “transpose”:
+
+                     γ T : Aopp → EndF (W T )                                                                           (95)
+                           aopp 7→ (γ T )(aopp ) := (γ(a))T : W T → W T
+                                                              wT 7→ γ T (aopp )(wT ) = wT γ(aopp ).
+
+This is indeed a representation since
+
+                           γ T (aopp ∨opp bopp ) = (γ(bopp ∨ aopp ))T = (γ(b)γ(a))T
+                                                                                                                        (96)
+                                                 = γ T (aopp )γ T (bopp ) ∀ aopp , bopp ∈ Aopp .
+
+                                                                14
+As we pointed out in (50), the main antiautomorphism β can be viewed as connecting the algebra A and its opposite
+Aopp , so that we may obtain another induced representation γ̌ for A by
+
+                                          γ̌(a) := γ T (β(a)) = (γ(β(a)))T             (a ∈ A),                                (97)
+                                   β                                                                      β
+where we interpret β first A −→ Aopp as in (50) and then as an antiautomorphism A −→ A on A.
+   Since a bilinear form on spinors can be understood as a linear transformation B : W → W T , we take B to be a
+map that intertwines the representations γ and γ̌. Such a map exists if the representation γ is irreducible, whence γ̌
+is also irreducible. In this case B is defined up to a constant by
+
+                B ◦ γ(a) = γ̌(a) ◦ B         ∀a ∈ A         ⇐⇒         Bγ(ek ) = (γ(ek ))T B        ∀ k ∈ {1, . . . , n}.      (98)
+
+We understand B as a bilinear form on W :
+
+                                    B :W ×W →F                                                                                 (99)
+                                        (s, s′ ) 7→ B(s, s′ ) := (B(s))(s′ ) = ss′ = sT Bs′
+
+both as a map and as its matrix form. s := B(s) = sT B is the adjoint to s with respect to B. Indeed, B(s, s′ )
+transforms like a scalar (compare (73)):
+                                    ψu
+                          B(s, s′ ) 7→ B(u ∨ s, u ∨ s′ ) = sT γ(u)T Bγ(u)s′ = sT γ̌(β(u))Bγ(u)s′
+                                                                                                                              (100)
+                                                         = sT Bγ(β(u))γ(u)s′ = [β(u) ∨ u] sT Bs′ ,
+
+if u = u1 ∨ · · · ∨ uk ∈ Γ(g) and u1 , . . . , uk ∈ V such that
+
+                                             β(u) ∨ u = g(u1 , u1 ) . . . g(uk , uk ) = 1.                                    (101)
+                    ψu
+For x ∈ V , x ∨ s′ 7→ u ∨ x ∨ s′ = (u ∨ x ∨ u−1 ) ∨ (u ∨ s′ ), hence B(s, x ∨ s′ ) also transforms like a scalar. Therefore, a
+vector y is given by
+
+                                       yk = B(s, ek ∨ s′ ) = sT Bγ(ek )s′            (1 ≤ k ≤ n).                             (102)
+
+In a similar way, a tensor Y of rank r may be formed:
+
+                Yk1 ...kr = B(s, ek1 ∨ · · · ∨ ekr ∨ s′ ) = sT Bγ(ek1 ) . . . γ(ekr )s′      (1 ≤ k1 , . . . , kr ≤ n).       (103)
+
+   Another bilinear form E may be obtained by replacing the main antiautomorphism β with α ◦ β which, of course,
+is an antiautomorphism also. So E is determined up to a constant by
+
+             E ◦ γ(a) = γ̌(α(a)) ◦ E         ∀a ∈ A         ⇐⇒         Eγ(ek ) = −(γ(ek ))T E         ∀ k ∈ {1, . . . , n};   (104)
+
+therefore, for even n
+
+                                                            E = Bγ(η).                                                        (105)
+
+The condition (101) changes to
+
+                                       (α ◦ β)(u) ∨ u = (−1)k g(u1 , u1 ) . . . g(uk , uk ) = 1,                              (106)
+
+which reduces to the previous condition for u ∈ Γ0 (g). So both bilinear forms are invariant under the action of
+normalized elements of Γ0 (g).
+  Both of these bilinear forms may be combined with C to give a sesquilinear form A : W → W † on W . We only
+consider the combination A := B ∗ ◦ C here:
+                               A ◦ γ(a) = B ∗ ◦ C ◦ γ(a) = B ∗ ◦ γ ∗ (a) ◦ C = γ ∗ (β(a))T ◦ B ∗ ◦ C
+                                        = γ † (β(a)) ◦ A   ∀ a ∈ A.                                                           (107)
+                                                †
+                         ⇐⇒     Aγ(ek ) = γ (ek )A           ∀ k ∈ {1, . . . , n},
+
+By a similar argument as in (91),
+
+                                                                     15
+                          (A−1 )† ◦ A ◦ γ(a) = (A−1 )† ◦ γ † (β(a)) ◦ (A† ◦ (A−1 )† ) ◦ A
+                                             = (A−1 )† ◦ (A ◦ γ(β(a))† ◦ (A−1 )† ◦ A
+                                             = (A−1 )† ◦ (γ † ((β ◦ β)(a)) ◦ A)† ◦ (A−1 )† ◦ A                          (108)
+                                             = ((A−1 )† ◦ A† ) ◦ γ(a) ◦ A† ◦ A
+                                             = γ(a) ◦ A† ◦ A        ∀ a ∈ A,
+
+we conclude by Schur’s Lemma that we can normalize A to satisfy
+
+                                                   (A−1 )† ◦ A = 1.                                                     (109)
+
+Therefore, A may be assumed to be hermitian. Of course, A like B may be used to define a spinor adjoint s := A(s) =
+s† A and to construct tensors of various rank as sesquilinear forms of spinors. Which one of these forms is chosen
+depends on the signature and the physical theory.
+   In all of our derivations involving C, B, E, and A, we relied on certain properties of matrix multiplication over
+the field C (resp. R), namely the fact that transposition is an antiautomorphism and complex conjugation is an
+automorphism of matrix multiplication. We are about to replace F by O. Since octonionic multiplication is not
+commutative and octonionic conjugation has become an antiautomorphism, the only remaining antiautomorphism
+of octonionic matrix multiplication is hermitian conjugation. Due to the non-associativity of the octonions even the
+carrier space W is no longer a vector space, but an “octonionic module”. It is surprising but true that there are
+natural resolutions for these difficulties as we show in the following section IV.
+
+
+                              IV. AN OCTONIONIC REPRESENTATION OF Cl(8, 0)
+
+  In this section we will put the results of sections II and III to work and examine the features of octonionic rep-
+resentations of Clifford algebras, considering the example of Cl (8, 0). So V = R8 with a positive definite norm. Let
+{e0 , e1 , . . . , e7 } be an orthonormal basis of V . Note that we choose indices ranging from 0 to 7 in this section. The
+octonionic algebra O is assumed to be given with basis {i0 , i1 , . . . , i7 } obeying the multiplication table (23). However,
+the properties
+
+                                            i0 = 1,
+                                            i2a = −1         (1 ≤ a ≤ 7),                                               (110)
+                                          ia ib = −ib ia     (1 ≤ a < b ≤ 7)
+
+rather than the particular multiplication rule, i.e., the particular set P of triples, will be relevant. Furthermore, we
+identify V with O as vector spaces by xk ek 7→ xk ik .
+
+
+                                                  A. The representation
+
+  An octonionic representation γ8,0 : Cl (8, 0) → M2 (O) is given by
+                                                         
+                                                    0 ik
+                                    γ8,0 (ek ) :=           =: Γk     (0 ≤ k ≤ 7)                                       (111)
+                                                    i∗k 0
+                                                         
+                                                     0 x
+                          ⇐⇒         γ8,0 (x) :=            = xk Γk =: x
+                                                                       /    (x ∈ V ).                                   (112)
+                                                    x∗ 0
+
+The carrier space W of the representation is understood to be O2 , i.e., the set of columns of two octonions, with
+γ8,0 (x) acting on it by left multiplication. Therefore, octonionic matrix products are interpreted as being associated to
+the right and acting on W , i.e., octonionic matrix multiplication is understood to be composition of left multiplication
+onto W . For example, if we want to verify that (112) is a representation, then checking that
+                                              ∗             
+                              0 x        0 x         xx       0         2
+                     x
+                     /x/=                        =                 = |x| 1 = g(x, x)1     ∀x ∈ V                     (113)
+                              x∗ 0      x∗ 0           0    x∗ x
+                                                                                                               
+in accordance with (83) is not sufficient. This relationship has to hold even when acting on an element w = w   w1 ∈ W :
+                                                                                                                 0
+
+
+
+
+                                                              16
+                                                                                                     
+                                       0     x         0        x           w0      x (x∗ w0 )     (x x∗ )w0
+                        x
+                        /x/w :=                                                  =               =
+                                       x∗    0         x∗       0           w1       x∗ (xw1 )      (x∗ x)w1                    (114)
+                                       2
+                               = |x| w            ∀ w ∈ W ∀ x ∈ V.
+
+Thus the alternative property (19) of the octonions ensures the validity of the representation.
+  For the representation to be irreducible,
+                                          we need to show that there are no non-trivial invariant subspaces. We do
+this in two steps. First, we show that 10 ∈ W can be mapped to any w ∈ W :
+                                                                                 
+                   ∗           1       0 w1∗      1       0 w0          0 1       1       w0
+                (w/1 + w/0 1
+                           /)     =                  +                                =         .              (115)
+                               0      w1 0        0       w0∗ 0         1 0       0        w1
+                                                                                                 
+Second, we will show that any non-zero w ∈ W can be mapped to 10 , using the Weyl projections P± . If this is so,
+then there are no non-trivial invariant subspaces of the representation γ8,0 .
+  Since (46) holds for the volume element η, we have for Γ9 := γ8,0 (η) = i/0 i/1 . . . i/7
+                                                                                                      
+                                             0                     i0 (i∗1 (i2 (. . . (i∗7 x) . . .)))
+                  Γ9 x
+                     /=
+                           i∗ (i1 (i∗2 (. . . (i7 x∗ ) . . .)))                     0
+                          0                                                                                                    (116)
+                                                 0                          −x(i0 (i1 (i∗2 (. . . (i∗6 i7 ) . . .))))
+                                                                                    ∗
+              = −x/ Γ9 =                                                                                                ∀ x ∈ V,
+                           −x∗ (i0 (i∗1 (i2 (. . . (i6 i∗7 ) . . .))))                            0
+
+hence
+
+                            i0 (i1 (i2 (. . . (i7 x) . . .))) = x(i0 (i1 (i2 (. . . (i6 i7 ) . . .))))      ∀ x ∈ O.            (117)
+
+Since Γ29 = 1, Γ9 has eigenvalues ±1, whence we can find solutions to the equation
+
+                                                                  Γ9 w = ±w
+                         ∗                                                                                                (118)
+                         i0 (i1 (i∗2 (. . . (i∗7 w0 ) . . .)))       −w0 (i∗0 (i1 (i∗2 (. . . (i∗6 i7 ) . . .))))        w0
+                ⇐⇒                                               =                                                  = ±     .
+                         i0 (i∗1 (i2 (. . . (i7 w1 ) . . .)))        −w1 (i0 (i∗1 (i2 (. . . (i6 i∗7 ) . . .))))         w1
+
+Since a non-trivial solution exists,
+
+                                            i0 (i1 (i2 (. . . (i7 x) . . .))) = ±x             ∀ x ∈ O.                         (119)
+
+Which sign is true depends on the specific multiplication rule. With our convention the plus sign applies. In fact,
+the sign difference corresponds to the two classes of multiplication tables. Since Γ9 is defined by its action under left
+multiplication, we have an octonionic Weyl representation:
+                                                              
+                                                        1 0
+                                                Γ9 =              .                                                (120)
+                                                        0 −1
+
+The Weyl projections take the form
+                                                                                                 
+                                                            1       0                      0    0
+                                                 P+ =                       ,   P− =                    .                       (121)
+                                                            0       0                      0    1
+
+For any 0 6= w ∈ W , at least one of P+ w or P− w does not vanish. If P+ w 6= 0, then
+                                                                          
+                                          0     w0−1    0 1       1 0       w0        1
+                      w/0 −1 1
+                             /P+ w =      −1 ∗                                    =     .                                       (122)
+                                       (w0 )      0     1 0       0 0       w1        0
+
+(Note that 1/ = Γ0 corresponds to a vector e0 ∈ V ⊆ Cl(8, 0) and is to be distinguished from the identity γ(1) = 1.)
+If P− w 6= 0, then
+                                                                
+                              −1             0     w0−1     0 0      w0         1
+                           w/1 P− w =                                     =        .                           (123)
+                                          (w0−1 )∗  0       0 1      w1         0
+
+This completes the proof that γ8,0 is irreducible. Since Cl(8, 0) is simple, it does not contain any two-sided ideals other
+than {0} and itself, which are also the only candidates for the kernel of any representation of Cl(8, 0). Therefore, γ8,0
+
+                                                                                17
+is faithful, since it is not trivial. Faithfulness of the representation can also been shown constructively without using
+the fact that Cl(8, 0) is simple. One has to check, for example, if the dimension of the algebra generated by {Γ0 , Γ1 ,
+. . . , Γ7 } is 28 . Another approach is to construct orthogonal transformations (see [4]), since the Clifford group spans
+the Clifford algebra. So if the representation obtained for the Clifford group is faithful, then so is the representation
+for the Clifford algebra.
+    In this article we have chosen to rely only on the algebraic properties of the octonions, rather than using the
+correspondence to a real representation. However, for completeness, we give the matrices corresponding to left
+multiplication with respect to our convention:
+
+                                    Γ0 = σ ⊗ 1 ⊗ 1 ⊗ 1,               Γ1 = −ǫ ⊗ 1 ⊗ 1 ⊗ ǫ,
+                                    Γ2 = −ǫ ⊗ τ ⊗ ǫ ⊗ τ,              Γ3 = −ǫ ⊗ 1 ⊗ ǫ ⊗ σ,
+                                                                                                                       (124)
+                                    Γ4 = −ǫ ⊗ ǫ ⊗ 1 ⊗ τ,              Γ5 = −ǫ ⊗ ǫ ⊗ τ ⊗ σ,
+                                    Γ6 = −ǫ ⊗ σ ⊗ ǫ ⊗ τ,              Γ7 = −ǫ ⊗ ǫ ⊗ σ ⊗ σ.
+
+  Since we have an irreducible representation, we may identify the carrier space W with the space of spinors. So
+for now we consider elements of O2 as octonionic spinors. Later in section IV E we will add a subtle twist to this
+understanding.
+
+
+                          B. The hermitian conjugate representation and spinor covariants
+
+   Since octonionic conjugation is an antiautomorphism of O, the octonionic conjugate of the product of two matrices
+is not the product of the octonionic conjugates. Matrix transposition requires a commutative multiplication to be
+an antiautomorphism. Thus only hermitian conjugation, which combines both operations, remains as an antiauto-
+morphism of M2 (O). More precisely, for products of three matrices we need to keep the grouping of the product the
+same, i.e., under hermitian conjugation left multiplication by a matrix goes to right multiplication by its hermitian
+conjugate and vice versa. So we can define γ̌8,0 : Cl(8, 0) → (M2 (O))† by
+
+                                        γ̌8,0 (a) := (γ8,0 (β(a)))†         (a ∈ Cl (8, 0)).                           (125)
+
+This representation acts on the set W † = (O2 )† of rows of two octonions by right multiplication. It is also faithful
+and irreducible and therefore equivalent to γ8,0 . The isomorphism A intertwining γ8,0 and γ̌8,0 is given by
+
+                                             A:     W
+                                                     →        W†                                                     (126)
+                                                  w= w       †    ∗    ∗
+                                                      w1 7→ w = (w0 , w1 ).
+                                                       0
+
+
+
+
+Its matrix form is just the identity,
+                                                                       
+                                                                 1 0
+                                                       A=                   ,                                          (127)
+                                                                 0 1
+
+which is verified,
+
+            A ◦ γ8,0 (a) = γ̌8,0 (a) ◦ A   ∀ a ∈ Cl(8, 0)        ⇐⇒             Aγ8,0 (x) = (γ8,0 (x))† ◦ A ∀ x ∈ V,   (128)
+
+considering Γk = (Γk )† (0 ≤ k ≤ 7).
+  From A we obtain a hermitian form on W :
+
+                        A:W ×W →R                                                                                    (129)
+                           (w, z) 7→ A(w, z) := (A(w))(z) = Re w† Az = Re (w0∗ , w1∗ ) zz01
+                                                    = Re (w0∗ z0 + w1∗ z1 ).
+
+The designation “hermitian” is somewhat misleading, since the octonionic representation γ8,0 is Majorana, i.e., es-
+sentially real, which is also the reason for taking the real part above. So the spinor adjoint is given by
+
+                                           w := A(w) = w† A = w†                (w ∈ W ).                              (130)
+
+Apart from the scalar, we form tensors as spinor bilinears as in (103):
+
+                                                                  18
+                                                 Yk1 ...kr := Re wΓk1 . . . Γkr z.                                    (131)
+Since the real part of an associator vanishes (26) and A is real, we may associate the matrices sandwiched between
+the two spinors differently:
+                                                                                     
+                             Re wΓk1 . . . Γkr z = Re (w† A) Γk1 (. . . (Γkr z) . . .)
+                                                       †        
+                                                 = Re (w A)Γk1 (Γk2 (. . . (Γkr z) . . .))
+                                                                
+                                                 = Re w† (AΓk1 ) (Γk2 (. . . (Γkr z) . . .))                  (132)
+                                                       † †      
+                                                 = Re (w Γk1 )A (Γk2 (. . . (Γkr z) . . .))
+                                                      = Re Γk1 w(Γk2 (. . . (Γkr z) . . .)).
+Since the real part of a commutator vanishes also, we may cyclicly permute, if a trace is included
+                  Re wΓk1 . . . Γkr z = Re tr (w(Γk1 (. . . (Γkr z) . . .))) = Re tr ((Γk1 (. . . (Γkr z) . . .))w)
+                                                                                                                      (133)
+                                      = Re tr ((Γk2 (. . . (Γkr z) . . .)w)Γk1 ).
+For the vector covariant, we have a particular expression
+                                                                 
+                                                        0 i          z0
+                     yk := Re wΓk z = Re (w0∗ , w1∗ ) ∗ k                 = Re (w0∗ ik z1 + w1∗ i∗k z0 )
+                                                       ik 0          z1
+                                                                                                                      (134)
+                                    = Re (ik z1 w0∗ + z0 w1∗ i∗k ) = Re (w0 z1∗ i∗k + z0 w1∗ i∗k )
+                                    = (w0 z1∗ + z0 w1∗ )k ,
+where we used once for part of the expression that the real part does not change under octonionic conjugation. So
+we can express the k-th component of y by the k-th component of an octonionic product, which allows us to write y/
+without the use of the matrix representations of the basis elements:
+                                                 
+                                           0 y
+                                   y/ =              = Γk Re wΓk z
+                                          y∗ 0
+                                                                                                          (135)
+                                                   0          w0 z1∗ + z0 w1∗
+                                      =                                         .
+                                          (w0 z1∗ + z0 w1∗ )∗        0
+
+
+
+                                                 C. Orthogonal transformations
+
+  From section III B we know the action of the Clifford group on vectors (62) and spinors (73). The condition (101)
+shows how to divide out R∗ to obtain the orthogonal group. So elements of V satisfying
+                                                                                               2
+                                 β(u) ∨ u = 1          ⇐⇒           u ∨ u = g(u, u) = |u| = 1                         (136)
+generate the orthogonal transformations via
+                                                                                          
+                                                                    0              ux∗ u
+                                      x/′ = (γ ◦ φu )(x) = u/x
+                                                             /u/ =                             ,                      (137)
+                                                                 u∗ xu∗             0
+                                                                
+                                                           uw1
+                                     w′ = ψu (w) = u/w =           .                                                  (138)
+                                                           u∗ w0
+
+The Moufang (10) identities ensure that (137) is unambiguous and even holds under the action of left multiplication,
+which can be seen in the example, (x ∨ w)′ = x′ ∨ w′ :
+                                                              ∗ ∗                
+                             ′ ′        0     ux∗ u       uw1         (u xu )(uw1 )
+                           x/ w =                                 =
+                                     u∗ xu∗     0        u∗ w0        (ux∗ u)(u∗ w0 )
+                                    ∗                                        
+                                     u (x(u∗ (uw1 )))         u∗ (x((u∗ u)w1 ))
+                                 =                        =
+                                     u(x∗ (u(u∗ w0 )))        u(x∗ ((uu∗ )w0 ))                               (139)
+                                         ∗         
+                                      2   u (xw1 )
+                                 = |u|                = u/(x
+                                                           /w)
+                                          u(x∗ w0 )
+                                    /w)′ .
+                                 = (x
+
+                                                                    19
+The third Moufang identity guarantees that the vector covariant (135) of two spinors transform correctly:
+                                                                                                   
+                    ′        0      uy ∗ u                      0              u(w0 z1∗ + z0 w1∗ )∗ u
+                  y/ =                        =
+                          u∗ yu∗       0           u∗ (w0 z1∗ + z0 w1∗ )u∗               0
+                                                      ∗        ∗       ∗ ∗ ∗
+                                                                                 
+                                     0               (u (w0 z1 + z0 w1 )u )
+                      =
+                          u∗ (w0 z1∗ + z0 w1∗ )u∗                  0
+                                                                                                          
+                                            0                     [(u∗ w0 )(z1∗ u∗ ) + (u∗ z0 )(w1∗ u∗ )]∗           (140)
+                      =
+                          (u∗ w0 )(z1∗ u∗ ) + (u∗ z0 )(w1∗ u∗ )                      0
+                                                                                                          
+                                            0                     [(u w0 )(uz1 ) + (u∗ z0 )(uw1 )∗ ]∗
+                                                                     ∗            ∗
+                      =
+                          (u∗ w0 )(uz1 )∗ + (u∗ z0 )(uw1 )∗                          0
+                       = Γk Re w′ Γk z ′ .
+   According to (72), simple orthogonal transformations are generated by pairs (u, v) ∈ V × V , where we take v = e0
+fixed and |u|2 = 1:
+                                                                                      
+                      ′                                         0     uxu       0    uxu
+                    x/ = (γ8,0 ◦ φ(u∨v) )(x) = u//1x
+                                                   /1/u/ =                 =               ,                   (141)
+                                                             u∗ x∗ u∗  0      (uxu)∗  0
+                                                        
+                      ′                            uw0
+                   w = ψ(u∨v) (w) = u/1  /w =              .                                                   (142)
+                                                   u∗ w1
+Choosing the fixed vector to be e0 allows significant simplification, since its representation Γ0 is real. How to construct
+any orthogonal transformation from these generators is thoroughly explained in [4]. These transformation properties
+imply that the definition of the spinor covariants in section IV B is consistent. For example,
+                                                              † †
+               Re w′ x/′ z ′ = Re u//1w u/1
+                                          /x//1u/ u//1z = Re w† u/ 1/ Au/1/ x
+                                                                            / z = Re w† A1/u/u//1 x
+                                                                                                  / z = Re w x
+                                                                                                             /z.     (143)
+
+
+                      D. Related representations using the opposite octonionic algebra Oopp
+
+  As pointed out in section IV B, transposition and octonionic conjugation are not (anti-)automorphisms of octonionic
+matrix multiplication. However, we can find (anti-)isomorphisms to matrix algebras by using the opposite octonionic
+algebra Oopp . We define the octonionic conjugate representation γ ∗ of an octonionic representation γ : A → Ml (O)
+by
+                                              γ ∗ : A → Ml (O∗opp )                                                  (144)
+                                                    a 7→ γ ∗ (a) := (γ(a))∗opp .
+Octonionic products are now to be evaluated in the opposite algebra as is indicated in the following examples. First
+                           ∗
+we consider the action of γ8,0 (x) for x ∈ V on an element w∗ of the carrier space Wopp
+                                                                                      ∗
+
+                                                 ∗     ∗                ∗ 
+                         ∗       ∗           0 x        w0               0 x∗     w0
+                       γ8,0 (x)wopp =                               =
+                                            x∗ 0        w1      opp
+                                                                         x  0     w1
+                                                                                    ∗
+                                                                                        opp
+                                         ∗ ∗
+                                          w1 x                                                                 (145)
+                                      =
+                                           w0∗ x
+                                                ∗              
+                                           xw1           (xw1 )∗
+                     = (γ8,0 (x)w)∗ =              =
+                                          x∗ w0         (x∗ w0 )∗
+So in this representation the action on the carrier space is effectively right multiplication by octonions.
+                   ∗
+  We check that γ8,0  is indeed a representation. Let u, v ∈ V , then
+                                             ∗          ∗                        
+                     ∗       ∗            0 u        0 v                0 u∗       0 v∗
+                    γ8,0 (u)γ8,0 (v) =                           =
+                                         u∗ 0 opp v ∗ 0 opp             u 0        v 0       opp
+                                        ∗        
+                                         vu   0
+                                     =
+                                           0 v∗ u                                                                    (146)
+                        ∗                             ∗         ∗
+                     = γ8,0 (u ∨ v) = (γ8,0 (u ∨ v)) = (u/v/)
+                                       ∗            ∗
+                                        uv       0
+                                    =                   .
+                                          0     u∗ v
+
+                                                                    20
+In both cases the subscript “opp” indicates that the remaining products are to be done in the opposite octonionic
+                                                                         ∗
+algebra. However the final result is to be interpreted as an element of Wopp (resp. M2 (O∗opp )).
+  Since
+
+                                         Γ0 Γk = (Γk )∗ Γ0         (0 ≤ k ≤ 7),                                     (147)
+
+we define the map
+                                                        ∗
+                                             C : W → Wopp                                                           (148)
+                                                 w 7→ C(w) := Γ0 wopp .
+
+This map gives rise to an operation on W which is analogous to charge conjugation:
+                                                            ∗
+                                                             w1
+                                     wC := C(w)∗ = Γ0 w∗ =         ∈ W.                                             (149)
+                                                             w0∗
+
+Let us examine how wC transforms under an orthogonal transformation:
+                                                  ∗ 
+                            ′               0 u        w1
+                       (wC ) = u/wC =
+                                            u∗ 0       w0∗
+                                                    ∗
+                                   uw0∗          w0 u∗
+                              =              =
+                                   u∗ w1∗        w1 u
+                                 ∗ ∗                              !∗
+                                  u w0                 0 u∗    0 1    w0                                            (150)
+                              =                =
+                                   uw1 opp             u 0     1 0    w1 opp
+                                                ∗
+                                    ∗
+                              = γ8,0   (u)Γ0 w opp
+                                                 ∗
+                              = Γ0 [γ8,0 (u)w]opp .
+
+                                 ∗
+So the map C almost intertwines γ8,0 and γ8,0 , except that the opposite octonionic algebra has to be included explicitly:
+                                                             ∗  ∗ ∗
+                                                         uw1        u w0
+                                (wC )′ 6= (C(w′ ))∗ = Γ0          =       .                                         (151)
+                                                         u∗ w0       uw1
+                                               ∗
+Of course, octonionic conjugation intertwines γ8,0 and γ8,0 , but there is no octonionic linear transformation that does
+the job.
+  Related to matrix transposition we obtain another representation γ̌ involving Oopp :
+
+              γ̌ : A → MlT (Oopp )                                                                                  (152)
+                                                  T      T
+                   a 7→ γ̌(a) := (γ(β(a)))Topp : Wopp → Wopp
+                                                                                              T
+                                                    wT 7→ γ̌(a)(wT ) = wT γ(β(a)) = γ T (β(a))w opp .
+
+The verification of γ̌(a ∨ b) = γ̌(a)γ̌(b) is another exercise in applying opposite algebras:
+                                                      T                      T
+                           γ̌(a ∨ b) = (γ(β(a ∨ b))) = (γ(β(b) ∨ β(a)))
+                                                                               
+                                                       T              T       T
+                                     = (γ(β(b))γ(β(a))) = (γ(β(a))) (γ(β(b)))                                       (153)
+                                                                                      opp
+                                    = γ̌(a)γ̌(b).
+
+The map that almost intertwines γ̌8,0 and γ8,0 is
+                                                      T
+                                             B : W → Wopp                                                           (154)
+                                                                  T
+                                                    w 7→ B(w) := wopp Γ0 ,
+
+since
+
+                                         Γ0 Γk = (Γk )T Γ0         (0 ≤ k ≤ 7).                                     (155)
+
+                                                              21
+  We have seen that the non-commutativity of the octonions has important consequences for representations that
+are related by octonionic conjugation and matrix transposition. The natural space for these representations to act on
+involves the opposite octonionic algebra, which prevents us from finding intertwining maps. Therefore special care
+should be taken when octonionic conjugation or matrix transposition is part of a manipulation involving octonionic
+spinors. However, this additional freedom of choosing different multiplication rules for different representations and
+carrier spaces may turn out to be advantageous in applications. In the following section we will observe how more
+general changes of multiplication rules further increase the flexibility of an octonionic representation.
+
+
+                              E. Octonionic spinors as elements of minimal left ideals
+
+   In this section we take a different perspective on octonionic spinors, regarding them as elements of a minimal
+left ideal which is generated by a certain primitive idempotent. The choice of an idempotent will turn out to be
+equivalent to the choice of a basis of the carrier space of the representation, which may be understood as a change of
+the multiplication rule of the octonions. An immediate application of the ideas presented here can be found in [29].
+   In a real or complex representation γ : A → EndF (W, W ) of dimension l an idempotent is given by an l × l-matrix
+Q satisfying the minimal polynomial Q(Q − 1) = 0. Therefore, Q can be diagonalized with eigenvalues 0 and 1. If the
+representation is onto and the idempotent is primitive, then Q is of rank 1 and there is a transformation such that Q
+takes the form
+                                                           
+                                         1 0 ... 0              1 (1 0 ... 0)
+                                      0 0 ... 0 0
+                                Q=                                             .                             (156)
+                                       ... ... . . . ...  =  ... 
+                                          0    0 ... 0              0
+
+So for a surjective representation a primitive idempotent is represented by a matrix of the form
+
+                                          Q = q pT ,     pT q = 1       (q, p ∈ W ).                                 (157)
+
+The minimal left ideal J = A ∨ Q generated by Q in this representation consists of matrices with linearly dependent
+columns. Therefore, the action of the Clifford algebra on the minimal left ideal J is determined by q alone. So the
+relevant choices of primitive idempotents are given by the choices for q. The choice of a basis for J is still arbitrary at
+this point. For the octonionic case, however, there is a connection   between the choice of q and a multiplication rule.
+   In terms of the octonionic representation γ8,0 we have q = qq01 ∈ O2 . For q to correspond to an even primitive
+idempotent Q, one of its components has to vanish. (Note that even elements of the Clifford algebra are represented
+by diagonal matrices, whereas   for odd2 elements the matrices have vanishing diagonal components.) We may also
+                             ρ
+normalize q. So let q = 0 with |ρ| = 1. (A vanishing upper component leads to similar results.) A natural
+parametrization of the spinor space J is given by
+                                                                               
+                                                            s0 s1      ρ      s0 ρ
+                                 s := (s/1 + s/0 Γ0 ) q =                 =           .                               (158)
+                                                            s∗1 s∗0    0      s∗1 ρ
+
+We interpret the octonions s0 and s1 as the new labels or components for the spinor s. The choice of this parametriza-
+tion is natural, since it is up to octonionic conjugation the only one that involves only one left multiplication by an
+octonion. How does the Clifford algebra act in terms of the new spinor components? For x ∈ V
+                                                                    ′ 
+                                                         x(s∗1 ρ)      s0 ρ
+                                             s′ = x
+                                                  /s =              =
+                                                         x∗ (s0 ρ)     s∗1 ′ ρ                                    (159)
+                                              ′      ∗    ∗      ′     ∗ ∗
+                                      =⇒ s0 = [x(s1 ρ)]ρ , s1 = ρ[(ρ s0 )x],
+
+which leads to two other versions of the “X-product” (34) with X = ρ:
+
+                    s′0 = [x(s∗1 ρ)]ρ∗ = [(xρρ∗ )(s∗1 ρ)]ρ∗ = [((xρ)ρ∗ )(s∗1 ρ)]ρ∗ = (xρ)[ρ∗ (s∗1 ρ)ρ∗ ],
+                        = (xρ)(ρ∗ s∗1 ) = x ◦ρ s∗1 ,
+                                                                                                                     (160)
+                    s′1 = ρ[(ρ∗ s∗0 )x] = ρ[(ρ∗ s∗0 )(ρρ∗ x)] = ρ[(ρ∗ s∗0 )(ρ(ρ∗ x))] = [ρ(ρ∗ s∗0 )ρ](ρ∗ x),
+                        = (s∗0 ρ)(ρ∗ x) = s∗0 ◦ρ x,
+
+
+                                                                 22
+where the fourth equality uses (10). Octonionic conjugation is also an antiautomorphism of the “X-product”, which
+gives the transformation behavior of s∗1 as new spinor component.
+                                                   ∗
+                                                s′1 = s∗1 ′ = (s∗0 ◦ρ x)∗ = x∗ ◦ρ s0 ,
+                                                                                                                    (161)
+                                                       s′0                     s0
+                                                           ∗       =x
+                                                                    / ◦ρ                 .
+                                                       s′1                     s∗1
+
+Therefore, choosing s0 and s∗1 as new spinor components is equivalent to replacing the original octonionic product
+with the “ρ-product”. We confirm this result for the scalar formed out of two spinors (compare (129)):
+                                                             
+                                  ( ρ∗ s∗0 ρ∗ s1 ) s′0 ρ                                             ∗
+                     Re ss′ = Re                           ∗    = Re [(ρ∗ s∗0 )(s′0 ρ) + (ρ∗ s1 )(s′1 ρ)]
+                                                        s′1 ρ
+                                                         ∗                                 ∗
+                            = Re [(s′0 ρ)(ρ∗ s∗0 ) + (s′1 ρ)(ρ∗ s1 )] = Re (s′0 ◦ s∗0 + s′1 ◦ s1 )
+                                                                                                ρ          ρ
+                                                                                                             (162)
+                                                    ∗                                          ∗
+                                 = Re (s′0 s∗0 + s′1 s1 ) = Re (s∗0 ◦ρ s′0 + s1 ◦ρ s′1 )
+
+as well as the vector (compare (135))
+                                                                                                             
+                                                        0                   (s0 ρ)(ρ∗ s′1 ) + (s′0 ρ)(ρ∗ s1 )
+                    Γk Re sΓk s′ =
+                                     [(s0 ρ)(ρ∗ s′1 ) + (s′0 ρ)(ρ∗ s1 )]∗                   0
+                                                                                      !                                 (163)
+                                                0               s0 ◦ρ s′1 + s′0 ◦ρ s1
+                                 =                                                      .
+                                     [s0 ◦ρ s′1 + s′0 ◦ρ s1 ]∗            0
+
+   Of course, orthogonal transformations, as described in section IV C, also induce a change of basis on the spinor
+space. The corresponding change of the octonionic multiplication rule is more complex since the real part is no longer
+fixed (compare section II C).
+
+
+                                     V. OTHER OCTONIONIC REPRESENTATIONS
+
+   In this section, we point out the constructions of octonionic representations related to γ8,0 . We follow the program
+outlined in section III C. First we shrink the representation of Cl (8, 0) to obtain one of Cl 0 (8, 0) ∼
+                                                                                                        = Cl(0, 7) and further
+of Cl(0, 6). Then we look at the extension to a representation of Cl(9, 1), which is of particular importance, since it
+applies to superstring and superparticle models.
+
+
+                                                           A. Cl 0 (8, 0) and Cl(0, 7)
+
+  Restricting the representation γ8,0 to Cl 0 (8, 0) ∼
+                                                     = Cl 0 (0, 8) produces a faithful representation with the generators
+                                                                        
+                                                    ik 0            ik  0
+                       Γ0 Γk = γ8,0 (e0 ∨ ek ) =              =                    (1 ≤ k ≤ 7).                       (164)
+                                                    0 i∗k           0 −ik
+
+So Cl 0 (8, 0) is represented by diagonal matrices, i.e., this representation decomposes into two irreducible representa-
+tions given by the two elements on the diagonal. By the isomorphism Cl 0 (8, 0) ∼    = Cl(0, 7) (93), these two are also
+                               ±
+irreducible representations γ0,7  : Cl(0, 7) → M1 (O) = O,
+                                               ±
+                                              γ0,7 (ek ) := ±ik                (1 ≤ k ≤ 7)                              (165)
+                                                ±                                                      7
+                                   ⇐⇒          γ0,7 (x) := ±x = ±Im x                        (x ∈ V = R ).              (166)
+
+So we identify V = R7 with the purely imaginary subspace of the octonions Im O. A faithful representation of Cl (0, 7)
+is found by letting γ0,7 (ek ) = Γ0 Γk in (164):
+                                                                 +                
+                                      +      −                   γ0,7 (a)    0
+                             γ0,7 := γ0,7 ⊕ γ0,7 ⇐⇒  γ0,7 (a) =            −         .                         (167)
+                                                                    0     γ0,7 (a)
+
+                                                                           23
+A hermitian form A′ : O± → O± † on the carrier space of an irreducible representation is given by
+
+                                                           A′ (w) := w∗                                               (168)
+
+with the property
+                                ±             ±†               ±
+                                                                        ∗
+                            A′ γ0,7 (ek ) = −γ0,7 (ek )A′ = − γ0,7 (ek )              (1 ≤ k ≤ 7).                    (169)
+
+                              ±        ±†
+Thus the form A′ intertwines γ0,7 and γ0,7 ◦ α ◦ β:
+
+                                   ±          ±
+                                                              †
+                             A′ ◦ γ0,7 (a) = γ0,7 ((α ◦ β)(a)) ◦ A′                (a ∈ Cl(0, 7)).                    (170)
+
+There is no sesquilinear form satisfying (107) on a carrier space of the irreducible representation. However, one can
+            +        −
+intertwine γ0,7 and γ0,7  to obtain such a form on the carrier space 2O = O+ ⊕ O− of the faithful representation that
+swaps the two copies O and O− of O since
+                         +
+
+                                      ±          ∓
+                                                           ∗
+                                     γ0,7 (a) = γ0,7 (β(a))      (a ∈ Cl (0, 7)).                               (171)
+
+A, defined by
+                                                                                                   
+                              +        −         −∗        +∗                                 0 1
+                         A(w ⊕ w ) := w               ⊕w        =w         ⇐⇒    A :=                   = σ,          (172)
+                                                                                              1 0
+
+satisfies
+                                                           †
+                                           A ◦ γ0,7 (a) = γ0,7 (β(a)) ◦ A         (a ∈ Cl(0, 7))
+                                                             †
+                                                                                                                      (173)
+                                  ⇐⇒          Aγ0,7 (ek ) = γ0,7 (ek )A         (1 ≤ k ≤ 7).
+                                                                                               2
+Simple orthogonal transformations are generated by unit vectors u ∈ Im O, |u| = −u2 = 1 via
+                                     ±
+                              x′ = (γ0,7 ◦ φu )(x) = (±u)x(±u)−1 = uxu∗ = −uxu,                                       (174)
+                             w± ′ = ψu (w) = ±uw.                                                                     (175)
+
+Since the real part of u vanishes, u−1 = −u. Therefore, the transformations have the same form as (137) and (138)
+up to signs and the Moufang identities ensure the compatibility of the spinor and vector transformations as before.
+As is seen from (66), improper rotations, for example, inversion of R7 , x 7→ −x = x∗ , is not described by the action of
+                                                                                                              ±       ∓
+the Clifford group for odd n. In fact, inversion is equivalent to octonionic conjugation or switching from γ0,7  to γ0,7 .
+In order to implement inversion we need to use the faithful representation:
+                                                                               
+                                                     0 −1        x    0      0 −1
+                                   x/′ = −ǫx
+                                           /ǫ = −                                     = −x /,
+                                                     1     0     0 −x        1    0
+                             +′                        +                                                    (176)
+                              w                  0 −1        w           w−
+                       w′ =     −′     = ǫw′ =                 −   =        +   .
+                              w                  1     0     w          −w
+
+The transformation preserves scalars:
+
+                               /z = w† σ(−ǫ)(−ǫ)x
+                              wx                /ǫǫz = (w† ǫσ)[−ǫx
+                                                                 /ǫ](ǫz) = w ′ x/′ z ′ .                              (177)
+
+
+
+                                                      B. Cl 0 (0, 7) and Cl(0, 6)
+
+  Shrinking a representation of Cl (0, 7) further leads to the smallest Clifford algebra that has the octonions as a
+                                                                                      +        −
+natural carrier space for a representation. Both irreducible representations γ0,7        and γ0,7 agree on the even Clifford
+                    ∼
+algebra Cl 0 (0, 7) = Cl 0 (7, 0). Their restriction is an irreducible representation given by the generators
+                                             ±
+                                            γ0,7 (ek ∨ e7 ) = ik i7        (1 ≤ k ≤ 6),                               (178)
+
+                                                                      24
+which act by successive left multiplication on the carrier space W = O. Again by the isomorphism Cl 0 (0, 7) ∼
+                                                                                                             = Cl (0, 6)
+(93), we obtain a faithful and irreducible representation of Cl (0, 6), γ0,6 : Cl (0, 6) → M1 (O) = O,
+
+                                                     γ0,6 (ek ) := ik i7           (1 ≤ k ≤ 6),                      (179)
+                                                       ±                                             6
+                                       ⇐⇒             γ0,6 (x) := xi7              (x ∈ V = R ).                     (180)
+
+V = R6 is identified with the imaginary subspace of O with vanishing 7-component, {x ∈ Im O : x7 = 0}. The volume
+form η is represented by
+
+                       γ0,6 (η) = γ0,6 (e1 ∨ e2 ∨ · · · ∨ e6 ) = i1 i7 i2 i7 . . . i6 i7 = −i1 i2 . . . i6 = i7 ,    (181)
+
+according to (119). A hermitian form A′ : O → O† is given by
+
+                                                                  A′ (w) := w∗ .                                     (182)
+                                                                                            2
+Orthogonal transformations are generated by unit vectors u ∈ R6 , |u| = −u2 = 1 via
+
+                                             x′ = (γ0,6 ◦ φu )(x) = (u(i7 xi7 )u)                                    (183)
+                                                 ′
+                                             w = ψu (w) = u(i7 w)                                                    (184)
+
+Since these transformations have the same structure as the simple orthogonal transformations for V = R8 , the Moufang
+identities ensure their compatibility and their validity under the interpretation of left multiplication. Since γ0,6 is
+faithful and irreducible and Cl (0, 6) is a 26 -dimensional algebra, we conclude from this section that left multiplication
+by octonions generates a 64-dimensional algebra isomorphic to M8 (R).
+
+
+                                                                      C. Cl(9, 1)
+
+  In this section we will give a little more detail because of the frequent use of Cl(9, 1) in supersymmetric models.
+Starting from Cl(8, 0), we do a Cartan extension (84) to obtain a representation of Cl(9, 1), γ9,1 : Cl (9, 1) → M4 (O),
+given by the generators
+                                                                      
+                                                                 0 Γk
+                               γ9,1 (ek ) := σ ⊗ γ8,0 (ek ) =              (0 ≤ k ≤ 7),
+                                                                Γk 0
+                                                                  
+                                                               0 τ
+                               γ9,1 (e8 ) := σ ⊗ γ8,0 (η) =          ,                                            (185)
+                                                               τ 0
+                                                                      
+                                                                  0 1
+                             γ9,1 (e−1 ) := −ǫ ⊗ γ8,0 (1) =              ,
+                                                                −1 0
+
+or equivalently by
+                                                                                   
+                                                                             0 X
+                                                / = xµ γµ =
+                                    γ9,1 (x) := x
+                                                                             X̃ 0
+
+                                                                                                   
+                                                                                       x+       x                    (186)
+                                                                    0                                   
+                                                                                       x∗       x−
+                                                 = 
+                                                   −x−
+                                                                                                        ,
+                                                                                                         
+                                                                          x
+                                                                                            0
+                                                      x∗                 −x+
+
+where we defined
+                                                         
+                                            x+       x
+                      X := xµ Γµ =                            ,          Γ8 := τ, Γ−1 := 1, x± := x−1 ± x8 ,
+                                            x∗       x−
+                                                              n
+                                         −x−   x                   Γµ , (0≤µ≤8)
+                      X̃ := xµ Γ̃µ =                ,   Γ̃ µ :=                 ,                                    (187)
+                                          x∗ −x+                  −Γ−1 , (µ=−1)
+                                                
+                                            0 Γµ
+                      γµ := γ9,1 (eµ ) =              (−1 ≤ µ ≤ 8).
+                                           Γ̃µ 0
+
+                                                                             25
+(Labeling the basis elements of V = R10 by indices ranging from −1 to 8, allows us to keep the notation we developed
+for γ8,0 .) The representation γ9,1 is Weyl, since the volume element η = e−1 ∨ e0 ∨ · · · ∨ e8 is represented by
+                                                                         
+                                                             1        0
+                                γ9,1 (η) = τ ⊗ 1 =                             = γ−1 γ0 . . . γ8 =: γ11 .                     (188)
+                                                             0       −1
+
+The Weyl projections (86) take the form
+                                                                                                 
+                                                    1    0                                 0    0
+                                         P+ =                    ,            P− =                      .                     (189)
+                                                    0    0                                 0    1
+
+We denote an element w ∈ W = O4 of the carrier space by its Weyl projections
+
+                                                        w± := P± w ∈ O2 ,                                                     (190)
+
+where we discard the two vanishing components of w± . The identity
+                                                                                                                 
+                                                                 XX̃  0                                     1   0
+                             x
+                             /x/ = xµ xµ 1      ⇐⇒                                         = xµ xµ                      ,     (191)
+                                                                  0  X̃X                                    0   1
+
+holds under left multiplication because of the alternative property (19), since only one full octonion x and its conjugate
+are contained in X and X̃. Noting that
+
+                                                    X̃ = X − (tr (X)) 1,                                                      (192)
+
+it follows that
+
+                              XX̃ = X2 − (tr (X)) X = X̃X = − det X 1 = xµ xµ 1,                                              (193)
+
+since the characteristic polynomial for a hermitian 2 × 2-matrix A is pA (λ) = λ2 − tr (A)λ + det A. Polarizing (193),
+we get
+
+                                         2xµ y µ 1 = XỸ + YX̃ = X̃Y + ỸX
+                                                                                                                              (194)
+                                    ⇐⇒       2gµν 1 = Γµ Γ̃ν + Γν Γ̃µ = Γ̃µ Γν + Γ̃ν Γµ .
+
+To extract components, we have the familiar formulas involving traces:
+
+                         1               1                 1          1         
+                  xµ =            /γµ ) = Re tr XΓ̃µ + X̃Γµ = Re tr XΓ̃µ = Re tr X̃Γµ .
+                           Re tr (x                                                                                           (195)
+                         4               4                   2            2
+
+Considering
+                                                         
+                                                              γµ , (µ 6= −1)
+                                                γµ =                         ,                                                (196)
+                                                             −γµ , (µ = −1)
+
+a hermitian form A is given by
+                                                              †        †
+                                                                                              
+                                †        †                   w+       w−               0    1          †         †
+                                                                                                                   
+                    A(w) := w A = w γ11 γ−1 =                                                       = w−        w+   =: w .   (197)
+                                                                                       1    0
+
+So the scalar covariant formed out of w, z ∈ W is
+                                                                                      
+                                                         †            †
+                                                                                 z+              †       †
+                         A(w, z) = Re wz = Re           w−           w+                    = Re (w− z+ + w+ z− ),             (198)
+                                                                                  z−
+
+which only involves terms combining spinors of opposite chirality. For the vector covariant y, we obtain
+
+                                                                          26
+                      yµ := Re wγµ z
+                                   †       †
+                                                                   
+                                 w−        w+         0    Γµ      z+
+                          = Re
+                                                     Γ̃µ   0      z−
+                                                                                             
+                                   †             †                        †              †
+                          = Re (w+   Γ̃µ z+ + w−   Γµ z− ) = Re tr z+ w+    Γ̃µ + z− w−    Γµ
+                               h                                                                     i               (199)
+                                             †              †                      †            †
+                          = 21 Re tr z+ w+     Γ̃µ + z− w−    Γµ + Re tr (z+ w+      Γ̃µ + z− w−  Γµ )†
+                                                                                     
+                                            †          †              †        †
+                          = 21 Re tr [z+ w+    + w+ z+   ]Γ̃µ + [z− w−  + w− z−   ]Γµ
+                                                                                      
+                            1               †          †              †^        †
+                          = 2 Re tr [z+ w+ + w+ z+ ]Γ̃µ + [z− w− + w− z− ]Γ̃µ .
+
+So the vector covariant is formed of combinations of spinors of the same chirality. Since the hermitian matrix Y is
+completely determined by the components according to (195) and the terms in square brackets are hermitian, we can
+give a formula analogous to (135):
+                            
+                      0 Y
+               y/ =            := γ k Re wγk z
+                      Ỹ 0
+                                                                                              
+                                                                †       †          †^      †                  (200)
+                                        0                  [z+ w+ + w+ z+ ] + [z− w− + w− z− ] 
+                  =                                                                             .
+                           †^       †          †       †
+                      [z+ w+  + w+ z+ ] + [z− w− + w− z− ]                  0
+
+Proper Lorentz transformations are generated by pairs of timelike (resp. spacelike) unit vectors u, v ∈ V , i.e., uµ uµ =
+∓1 = vµ v µ . We choose v = e−1 fixed
+                                                                        
+                                       ′                      0    UXU
+                                     x/ = u/γ−1 x
+                                                /γ−1 u/ =                  ,
+                                                            ŨX̃Ũ
+                                                                                                                  (201)
+                                                        −Uw+
+                                    w′ = u/γ−1 w =               .
+                                                        Ũw−
+
+The correct transformation behavior of spinors and vectors is ensured by the Moufang identities as in the 8-dimensional
+case, since u/ contains additional real parameters but only one full octonion. This form of proper Lorentz transforma-
+tions makes the isomorphism SL(2, O) ∼    = SO(9, 1) as Lie groups precise.
+   Since for C := γ−1 γ0 γ8 = −ǫ ⊗ ǫ
+
+                                             Cγµ = γµ∗ C         (−1 ≤ µ ≤ 8),                                           (202)
+
+a “charge conjugation” operation is given by
+                                                                                 ∗
+                                                                                      
+                                                       ∗              ∗        ǫ w−
+                                       wC := C(w) = −ǫ ⊗ ǫ w =                    ∗       ,                              (203)
+                                                                              −ǫ w+
+
+which must involve the opposite octonionic algebra as it was pointed in (150) and (151). This transition to the
+opposite algebra for spinors with opposite chirality may be useful in theories with N > 1 supersymmetry.
+   Of course, we may iterate the process of shrinking and extending of a representation with γ9,1 as a starting point.
+We can shrink it to obtain representations of Cl 0 (9, 1) ∼
+                                                          = Cl(9, 0) ∼= Cl (1, 8) and from there to Cl 0 (9, 0) ∼
+                                                                                                                = Cl (0, 8) and
+Cl 0 (1, 8) ∼
+            = Cl(1, 7). Also an extension to a representation of Cl (10, 2) is possible.
+
+
+        VI. AN OCTONIONIC DESCRIPTION OF THE CHEVALLEY ALGEBRA AND TRIALITY
+
+  The triality automorphisms of the Chevalley algebra are well known and have been discussed in detail before [30,8,9],
+even in an octonionic formulation [31]. However, in our opinion, the following treatment based on the preparatory
+work of section IV adds another unique and very transparent perspective with regard to this topic.
+  In the case of 8 euclidean dimensions we are in a special situation; the spaces of vectors, V , even spinors, S0 , and
+odd spinors, S1 , have the same dimension, namely 8. This allows the construction of the triality maps that interchange
+the transformation behavior of these three spaces. We define the Chevalley algebra A := V ⊕ S0 ⊕ S1 to be the direct
+
+                                                                 27
+sum of these three spaces. This definition automatically provides a vector space structure for A. Furthermore, A
+inherits an SO(8)-invariant bilinear form B = 2 g ⊕ 2 A from the metric g on the vector space and the hermitian
+form A on S = S0 ⊕ S1 . (For notational convenience later on, we put in a factor of 2 in the definition of B.) For
+a = av ⊕ a0 ⊕ a1 , b = bv ⊕ b0 ⊕ b1 ∈ A, we obtain
+                                                      
+                                                    a    b0
+                     B(a, b) = 2 g(av , bv ) + 2 A( ∗0 ,     ) = 2 Re (av b∗v + a∗0 b0 + a1 b∗1 ),           (204)
+                                                    a1   b∗1
+
+where we used the parametrization of the spinor components introduced in section IV E. (204) confirms that A
+decomposes and is a real symmetric bilinear form on the 16 real spinor components. The SO(8)-invariance of B is
+clear using the results of section IV C. Furthermore, we observed in (143) that the expression
+                                                                    
+                         ′              ∗           ( 0 a1 ) 0 a∗v      a0
+                       T (a) := Re a1 a/v a0 = Re                             = Re a1 av a0               (205)
+                                                              av 0      0
+
+is SO(8)-invariant. (Note that, we also redefined our basis of V by octonionic conjugation for symmetry reasons,
+which will become relevant below.) By polarization, we define a SO(8)-invariant symmetric trilinear form on A,
+which we denote by T:
+
+             T(a, b, c) := Re (a1 bv c0 + a1 cv b0 + b1 av c0 + b1 cv a0 + c1 av b0 + c1 bv a0 )                 (a, b, c ∈ A).   (206)
+
+The Chevalley product “◦A ” is then implicitly defined to satisfy the following condition connecting B and T:
+
+                                           B(a ◦A b, c) = T(a, b, c)                 ∀ a, b, c ∈ A.                               (207)
+
+The Chevalley product is obviously symmetric and SO(8) invariant.
+   In this setting the triality maps are just automorphisms of the Chevalley algebra, which interchange V , S0 , and
+S1 . But before we describe the triality maps, we will take advantage of the octonionic formalism and rewrite the
+bilinear and trilinear forms, B and T, and the Chevalley product by representing elements of the Chevalley algebra
+by octonionic hermitian 3 × 3-matrices with vanishing diagonal elements,
+                                                       !            
+                                             0 a∗v a0
+                                                     ∗       a/∗v as
+                                     a = av 0 a1 =                     ∈ A,                                    (208)
+                                                             as 0
+                                            a∗0 a1 0
+              
+where as = aa∗0 = ao ⊕ a1 ∈ S. Then the bilinear form B is given by
+              1
+
+
+              B(a, b) = 21 tr (ab + ba) = tr (a ◦ b)
+                                               !                             !                        !                      !!
+                                   0 a∗v a0          0           b∗v   b0              0     b∗v b0        0     a∗v   a0
+                         1
+                      = 2 tr      av 0 a1    ∗
+                                                    bv           0     b∗1       +     bv    0 b∗1         av    0     a∗1
+                                  a∗0 a1 0          b∗0          b1    0               b∗0   b1 0          a∗0   a1    0
+                                                                                              !!
+                                    a∗v bv + a0 b∗0          a0 b 1                a∗v b∗1
+                       = 21 tr           a∗1 b∗0             ∗       ∗
+                                                        av b v + a1 b 1            av b 0
+                                         a1 b v              a∗0 b∗v          a∗0 b0 + a1 b∗1                                     (209)
+                                                                                                          !!
+                                              b∗v av + b0 a∗0            b 0 a1                b∗v a∗1
+                                 + 12 tr           b∗1 a∗0          bv a∗v + b∗1 a1            b v a0
+                                                   b 1 av                b∗0 a∗v          b∗0 a0 + b1 a∗1
+                       = 21 [(a∗v bv + b∗v av + av b∗v + bv a∗v ) + (a0 b∗0 + b0 a∗0 + a∗0 b0 + b∗0 a0 )
+                              + (a∗1 b1 + b∗1 a1 + a1 b∗1 + b1 a∗1 )]
+                       = 2 Re (av b∗v + a∗0 b0 + a1 b∗1 ),
+
+where “◦” denotes the symmetrized matrix product
+                                                                   1
+                                                       a ◦ b :=      (ab + ba).                                                   (210)
+                                                                   2
+In fact, the symmetrized product is the Jordan product and the matrices that we are dealing with are a subset of the
+exceptional Jordan algebra of 3 × 3 octonionic hermitian matrices [10].
+
+                                                                       28
+  For the trilinear form T we find
+                    T(a, b, c) = tr ((a ◦ b) ◦ c)
+                               = 14 [(a0 b1 cv + cv a0 b1 + b∗1 a∗0 c∗v + c∗v b∗1 a∗0 ) + (b0 a1 cv + cv b0 a1
+                                  + a∗1 b∗0 c∗v + c∗v a∗1 b∗0 ) + (av b0 c1 + c1 av b0 + b∗0 a∗v c∗1 + c∗1 b∗0 a∗v )
+                                                                                                                        (211)
+                                  + (bv a0 c1 + c1 bv a0 + a∗0 b∗v c∗1 + c∗1 a∗0 b∗v ) + (a1 bv c0 + c0 a1 bv
+                                  + b∗v a∗1 c∗0 + c∗0 b∗v a∗1 ) + (b1 av c0 + c0 b1 av + a∗v b∗1 c∗0 + c∗0 a∗v b∗1 )]
+                               = Re (b1 cv a0 + a1 cv b0 + c1 av b0 + c1 bv a0 + a1 bv c0 + b1 av c0 ).
+
+It follows from (207), (209), and (211) that the Chevalley product “◦A ” is given by the off-diagonal elements of the
+symmetrized matrix product “◦”,
+
+                               tr ((a ◦A b) ◦ c) = B(a ◦A b, c) = T(a, b, c) = tr ((a ◦ b) ◦ c)                         (212)
+                         =⇒                              (a ◦A b) = (a ◦ b)A ,                                          (213)
+
+where the subscript “A” on a matrix denotes the matrix with erased diagonal elements, i.e.,
+                                                                                      !
+                                             0       a0 b1 + b0 a1 a∗v b∗1 + b∗v a∗1
+                                        ∗ ∗     ∗ ∗
+                          (a ◦ b)A := a1 b0 + b1 a0          0         av b 0 + b v a0 .                                (214)
+                                       a1 bv + b1 av a∗0 b∗v + b∗0 a∗v        0
+
+(Note that only the off diagonal elements of a ◦ b contribute to the last term of (213)). Traditionally the Chevalley
+product is written in terms of Clifford products, which we combine into the 3 × 3-matrix
+                                                k                             
+                                                  Γ as Γk bs a/∗v bs + b/∗v as
+                                      a ◦A b =                                                                 (215)
+                                                as b/∗v + bs a/∗v    0
+
+What we have done is to utilize the Jordan product and project onto the Chevalley algebra. Since both B and T are
+expressed entirely in terms of the Jordan product, automorphisms of the Jordan product, that map the Chevalley
+algebra onto itself, will also be automorphisms of the Chevalley algebra. We have already encountered one such
+                                                                                                      2
+automorphism, namely the orthogonal transformation corresponding to a generator pv ∈ V with |pv | = 1, which is
+written in matrix form
+                                       !               !             !                           
+                               0 p∗v 0      0 a∗v a0       0 p∗v 0
+                                                     ∗                     p/∗v a/∗v p/∗v p/∗v as
+                 τpv (a) := pv 0 0         av 0 a1        pv 0 0 =                                  .       (216)
+                                                                              as p/∗v         0
+                               0 0 1       a∗0 a1 0        0 0 1
+
+This first triality map combines the vector action and spinor action of the Clifford group (see section III B). The
+action of the generator pv is a reflection at a hyperplane orthogonal to pv combined with an inversion of the whole
+space. This transformation is an improper rotation and interchanges even and odd spinors:
+
+                                                    τpv (av ) = pv a∗v pv ∈ V ,
+                                                    τpv (a0 ) = (pv a0 )∗ ∈ S1 ,                                        (217)
+                                                    τpv (a1 ) = (a1 pv )∗ ∈ S0 .
+
+Using the Moufang identities, it is easy to check that τpv is indeed an automorphism of A of order 2, i.e., τp2v = 1.
+Composing an even number of maps τpv with different parameters pv , we generate the simple orthogonal group SO(8)
+as is seen in (141) and (142). From the form of (216), it is obvious that there are two more families of automorphisms
+of A of order 2, parametrized by an even spinor variable p0 and an odd spinor variable p1 with |p0 |2 = 1 = |p1 |2 :
+                                                               !                      !                    !
+                                              0      0   p0        0      a∗v   a0        0      0 p0
+                              τp0 (a) :=      0      1   0         av     0     a∗1       0      1 0                    (218)
+                                              p∗0    0   0         a∗0    a1    0         p∗0    0 0
+and
+                                                               !                      !                    !
+                                             1 0         0         0      a∗v   a0        1     0    0
+                             τp1 (a) :=      0 0         p∗1       av     0     a∗1       0     0    p∗1       .        (219)
+                                             0 p1        0         a∗0    a1    0         0     p1   0
+
+                                                                         29
+For these two families of maps, the matrix formalism shows the clear parallel structure to the maps τpv . Traditionally
+expressions in terms of both Clifford products and the spinor bilinear form are used for the maps τp0 and τp1 , which
+obscures this symmetry, because in τpv only Clifford products are used. These two families preserve one of the spinor
+spaces and interchange the other one with V :
+
+                                             τp0 (av ) = (av p0 )∗ ∈ S1 ,
+                                             τp0 (a0 ) = p0 a∗0 p0 ∈ S0 ,                                          (220)
+                                             τp0 (a1 ) = (p0 a1 )∗ ∈ V ,
+
+and
+                                             τp1 (av ) = (p1 av )∗ ∈ S0 ,
+                                             τp1 (a0 ) = (a0 p1 )∗ ∈ V ,                                           (221)
+                                             τp1 (a1 ) = p1 a∗1 p1 ∈ S1 ,
+
+By combining two triality maps with the same octonionic parameter pv = p = p0 from different families, we obtain a
+automorphisms Ξp of order 3:
+
+                                                     Ξp = τpv =p ◦ τp0 =p
+                                                 !                 !               !
+                                      0   1 0         0 a∗v a0          0   0 p∗                                   (222)
+                    =⇒ Ξp (a) =       0   0 p∗        av 0 a∗1          1   0 0        (a ∈ A),
+                                      p   0 0         a∗0 a1 0          0   p 0
+hence
+                                              Ξp (av ) = p∗ av ∈ S0 ,
+                                              Ξp (a0 ) = pa0 p ∈ S1 ,                                              (223)
+                                              Ξp (a1 ) = p∗ a1 ∈ V .
+
+As is seen from their matrix forms, τpv =p and Ξp generate Σ3 , the permutation group on three letters. (In particular
+for p = 1, this is easy to verify.) We observed before that the maps τpv generate O(8), so that the triality maps,
+we have found so far, have a group structure isomorphic to Σ3 × SO(8). It is known (see [8]) that this is the full
+automorphism group of the Chevalley algebra, which is also the automorphism group of SO(8). This concludes our
+demonstration of triality.
+
+
+                               VII. FINITE VS. INFINITESIMAL GENERATORS
+
+   In this article we characterize orthogonal groups in terms of a set of finite generators. This approach is not as
+widely used as the description in terms of infinitesimal generators, i.e., the Lie algebra of the group. In this section
+we compare the two approaches.
+   If we want to compare two Lie groups given by infinitesimal generators we know how to proceed [32]. We determine
+their Lie algebra by working out the commutators of the generators. We then determine their structure constants and
+identify the Lie algebra. For semi-simple Lie algebras the Cartan-Weyl normalization provides a unique identification.
+We may also use a Lie algebra homomorphism and determine its image and kernel to relate the two groups in question.
+Whether the homomorphism is surjective and injective can often be determined by counting the dimension of the Lie
+algebras involved. Having identified the Lie algebra we have full knowledge of the local structure of the Lie group.
+From this information we can construct the simply connected universal covering group, which has this local structure.
+However, the Lie group we are trying to characterize may be neither connected nor simply connected. So in order to
+compare two groups we need to have some global information about them in addition to the infinitesimal generators.
+   In section III B we compared two groups given by finite generators, namely the orthogonal group generated by
+reflections on hyperplanes and the Clifford group generated by non-null vectors of the Clifford algebra. The relationship
+was established considering a group homomorphism. The homomorphism is surjective if the generators lie in the image.
+This is the analogue to counting the dimension of the Lie algebras. Determining the kernel, which has to be a normal
+subgroup, completes the comparison. The advantage of finite generators is the global information that they carry.
+Having found an isomorphism based on the finite generators, we know that the groups have the same global structure.
+   Even though the two descriptions have different features, they are closely related. The exponential map provides a
+means to parametrize a neighborhood of the identity element of the group. This coordinate chart can be translated by
+
+                                                             30
+a finite element in this neighborhood, hence we can construct an atlas of the component of the group that is connected
+to the identity. Actually, we need information about the global structure to patch the charts together correctly. For
+an additional component of the group that is not connected to the identity, we may use the same atlas, since the
+components are diffeomorphic.
+   The finite generators that determine the groups considered in this article are elements of a topological manifold of
+dimension less than the dimension of the group. For example, the octonions that generate SO(8) (141) are elements
+of the octonionic unit sphere, S 7 . Translating a disk centered at a point p ∈ S 7 by p−1 ∈ S 7 , we obtain a submanifold
+of the group containing the identity. (A generating set of a group is always assumed to contain inverses of every
+element.) This submanifold is of lower dimension than the Lie group, so its tangent space at the identity is only a
+linear subspace of the Lie algebra. In most of our examples it is sufficient to consider the translation of a sufficient
+number of disks contained in the generating set to obtain linear subspaces that span the Lie algebra. Otherwise the
+process continues by taking products of elements of two disks around p1 and p2 in the generating set and translating
+these products by (p1 p2 )−1 to the identity. An example of this latter construction is the S 6 generating SO(8) described
+in [4]. In this way infinitesimal generators can be found starting from finite ones.
+   There is also a formal construction of the entire group; namely, the group is given by the set of equivalence classes of
+finite sequences of generators. The group product of two elements [g1 ], [g2 ] is just the class of the juxtaposition [g1 g2 ] of
+two representatives. For the octonionic description we need to do this decomposition into generators to find spinor and
+vector transformations that are consistent. For example, if a vector given by x ∈ O transforms by x 7→ uxu∗ , which
+                                                                                                         2       2               2
+is an SO(8) transformation, we need to re-express uxu∗ as v1 (v2 (. . . (vk xvk ) . . .)v2 )v1 with |v1 | = |v2 | = · · · = |vk |
+in order to determine the corresponding spinor transformation w 7→ v1 (v2 (. . . (vk w) . . .)). In general, octonionic
+transformations, because of their non-associativity, involve this nesting of multiplications. Therefore the octonionic
+description of Lie groups in terms of generators is the natural one. Octonionic descriptions of Lie algebras, which are
+also possible, have the disadvantage that the exponential map no longer works because of the non-associativity. So
+this avenue does not provide a construction of finite group elements.
+
+
+
+                                                    VIII. CONCLUSION
+
+
+   We have demonstrated that the abstract octonionic algebra is a suitable structure to represent Clifford algebras
+in certain dimensions. We obtained most of our results from the basic property of composition algebras, which is
+the norm compatibility of multiplication, and its consequence alternativity. The alternative property, in particular in
+the form of the Moufang identities, was found to be responsible for ensuring the correct transformation behavior of
+octonionic spinors and for ensuring the consistency of the representation in terms of left multiplication by octonionic
+matrices. The choice of a multiplication rule for the octonions, in particular, the modified “X-product”, was found to
+be related to coordinate transformations or a change of basis of the spinor space. The opposite octonionic algebra was
+shown to be connected to an analogue of the charge conjugate representation. The Clifford group and its action on
+vectors and spinors led to octonionic representations of orthogonal groups in corresponding dimensions. The natural
+octonionic description of these groups is in terms of generating sets of the Lie group rather than in terms of generators
+of the Lie algebra. This is due to the nested structure which is necessary to accommodate the non-associativity of
+the octonions.
+   The usefulness of this tool of octonionic representations was evident in the presentation of the triality automorphisms
+of the Chevalley algebra. This presentation unequivocally showed that the spaces of vectors and even and odd spinors
+are interchangeable in this case. We expect that a similar, fully octonionic treatment of supersymmetrical theories
+will make their symmetries more transparent. In fact, we have successfully applied the methods of this article to the
+CBS-superparticle [29]. We hope to be able to find a parallel treatment of the Green-Schwarz superstring.
+
+
+
+                                                 ACKNOWLEDGMENTS
+
+
+  JS is grateful to Dr. Burt Fein for his comments and for pointing out references concerning group theory and
+algebra. JS wishes to thank the Bayley family for establishing the Bayley Graduate Fellowship, which he had the
+honor to receive this year. This work was partially funded by NSF grant # PHY92-08494.
+
+
+
+
+                                                               31
+ [1] T. Kugo, P. Townsend, Supersymmetry and the division algebras, Nucl. Phys. B 221, 357 (1983); I. Bengtsson, M. Cederwall,
+     Particles, twistors and the division algebras, Nucl. Phys. B 302, 81 (1988).
+ [2] J.M. Evans, Supersymmetric Yang-Mills theories and division algebras, Nucl. Phys. B 298, 92 (1988).
+ [3] A. Sudbery, Division algebras, (pseudo) orthogonal groups and spinors, Journal of Physics A, mathematical and general
+     17 939 (1984); K.W. Chung, A. Sudbery, Octonions and the Lorentz and conformal groups of ten-dimensional space-time,
+     Phys. Lett. B 198, 161 (1987); F. Gürsey, Super Poincaré Groups and Division Algebras, Modern Physics A 2, 967 (1987);
+     F. Gürsey, Supergroups in Critical Dimensions and Division Algebras, Monographs on Fundamental Physics, Proceedings
+     of Capri Symposia 1983-1987, ed. Buccella-Franco, Lecture Notes Series No. 15, American Institute of Physics, 1990,
+     p. 529.
+ [4] C.A. Manogue and J. Schray, Finite Lorentz transformations, automorphisms, and division algebras, J. Math. Phys. 34
+     3746 (1993).
+ [5] H. Tachibana, K. Imaeda, Octonions, superstrings and ten-dimensional spinors, Nuovo Cimento B 104, 91 (1989).
+ [6] D.B. Fairlie and C.A. Manogue, A parameterization of the covariant superstring, Phys. Rev. D 36 475 (1987);
+     C.A. Manogue, A. Sudbery, General solutions of covariant superstring equations of motion, Phys. Rev. D 40 4073 (1989).
+ [7] I. Oda, T. Kimura, A. Nakamura, Superparticles and division algebras — ten dimensions and octonions,
+     Prog. Theor. Phys. 80, 367 (1988).
+ [8] J.F. Adams, Superspace and supergravity, proceedings of the Nuffield workshop, ed. S.W. Hawking, M. Roček,
+     (Cambridge University Press, Cambridge, 1981).
+ [9] I.R. Porteous, Topological Geometry, (Cambridge University Press, Cambridge, 1981).
+[10] P. Jordan, J. von Neumann, E. Wigner, Ann. Math. 36, 29 (1934).
+[11] M. Cederwall, Jordan algebra dynamics, Physics Letters B 210, 169 (1988); E. Corrigan, T.J. Hollowood, The Excep-
+     tional Jordan Algebra and the Superstring, Commun. Math. Phys. 122 393 (1989); E. Corrigan, T.J. Hollowood, A string
+     construction of a commutative non-associative algebra related to the exceptional Jordan algebra, Physics Letters B 203,
+     47 (1988); R. Foot, G.C. Joshi, Space-time symmetries of superstring and Jordan algebras, Int. J. Theor. Phys. 28 1449
+     (1989); R. Foot, G.C. Joshi, String theories and Jordan algebras, Physics Letters B 199, 203 (1987); M. Günaydin, G. Sierra,
+     P.K. Townsend, The geometry of N = 2 Maxwell-Einstein supergravity and Jordan algebras, Nucl. Phys. B 242, 244 (1984);
+     M. Günaydin, G. Sierra, P.K. Townsend, Exceptional supergravity theories and the magic square, Nucl. Phys. B 242, 244
+     (1984); F. Gürsey, Lattices generated by discrete Jordan algebras, Modern Physics Letters 3, 1155 (1988); G. Sierra, An ap-
+     plication of the theories of Jordan algebras and Freudenthal triple systems to particles and strings, Class. Quantum Grav. 4,
+     227 (1987).
+[12] G. Dixon, Adjoint division algebras and SU (3), J. Math. Phys. 31, 1504 (1990); G. Dixon, Division algebras, (1, 9)-space-
+     time, matter-antimatter mixing, hep-th/9303039; G. Dixon, Derivation of the Standard model, Il Nuovo Cimento 105B,
+     349 (1990).
+[13] R.D. Schafer, An Introduction to Non-Associative Algebras (Academic Press, New York, 1966).
+[14] M. Zorn, Theorie der alternativen Ringe, Abhandlungen des mathematischen Seminars der Hamburgischen Universität, 8
+     (1930).
+[15] R. Moufang, Zur Struktur von Alternativkörpern, Mathematische Annalen, 110, 416-430 (1934).
+[16] A. Hurwitz, Über die Composition der quadratischen Formen von beliebig vielen Variablen, Nachrichten von der Gesellschaft
+     der Wissenschaften zu Göttingen, 309-316 (1898); L.E. Dickson, On Quaternions and the History of the Eight Square
+     Theorem, Annals of Mathematics 2 20, 155 (1919).
+[17] W.R. Hamilton, On Quaternions; or a new System of Imaginaries in Algebra, Phil. Mag. ser.3 25 489 (1845).
+[18] A. Cayley, On Jacobi’s Elliptic Functions, in reply to the Rev. Brice Bronwin; and on Quaternions, Phil. Mag. ser.3 26
+     210 (1845).
+[19] see any standard text on Linear Algebra, for example:
+     K. Hoffman, R.A. Kunze, Linear algebra, (Prentice-Hall Englewood Cliffs, N.J., 1971), p. 280.
+[20] H.S.M. Coxeter, Integral Cayley Numbers, Duke Math. J. 13, 561 (1946).
+[21] A.A. Adrian, R. Sandler, An introduction to finite projective planes, (Holt, Rinehart and Winston; New York, 1968).
+[22] J. Rotman, The theory of groups, an introduction, (Allyn and Bacon, Boston, 1965).
+[23] M. Aschbacher, Finite group theory (Cambridge University Press, Cambridge 1988), Table 16.1.
+[24] M. Cederwall, C.R. Preitschopf, S 7 and S  c7 , hep-th/9309030, (1993).
+[25] I.M. Benn, R.W. Tucker, An introduction to spinors and geometry with applications in physics, (Adam Hilger,
+     Bristol, Philadelphia, 1987).
+[26] P. Lounesto, Scalar Products of Spinors and an Extension of Brauer-Wall Groups, Foundations of Physics 11, 721 (1981).
+[27] P. Budinich, A. Trautman, The Spinorial Chessboard (Springer, Berlin Heidelberg, 1988).
+[28] C.W. Curtis, I. Reiner, Representation theory of finite groups and associative algebras (Interscience Publishers
+     New York, 1962).
+[29] J. Schray, The general classical solution of the superparticle, hep-th/9407045, (submitted to Physical Review D).
+[30] C.C. Chevalley, The algebraic theory of spinors, (Columbia University Press, New York, 1954).
+[31] A.R. Dündarer, F. Gürsey, Octonionic representations of SO(8) and its subgroups and cosets, J. Math. Phys. 32, 1176
+     (1991); A.R. Dündarer, F. Gürsey, C.-H. Tze, Generalized vector products, duality and octonionic identities in D = 8
+
+
+                                                               32
+     geometry, J. Math. Phys. 25, 1496 (1984).
+[32] B.G. Wybourne, Classical groups for physicists, (Wiley, New York, 1974).
+
+
+
+
+                                                         33
+This figure "fig1-1.png" is available in "png" format from:
+
+        http://arxiv.org/ps/hep-th/9407179v1
+

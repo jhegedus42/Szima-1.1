@@ -1,0 +1,1158 @@
+arXiv:0908.3430v1 [math.QA] 24 Aug 2009
+
+RENORMALIZATION AND COMPUTATION II:
+TIME CUT–OFF AND THE HALTING PROBLEM
+Yuri I. Manin
+Max–Planck–Institut für Mathematik, Bonn, Germany,
+and Northwestern University, Evanston, USA
+Abstract. This is the second installment to the project initiated in [Ma3]. In
+the first Part, I argued that both philosophy and technique of the perturbative
+renormalization in quantum field theory could be meaningfully transplanted to the
+theory of computation, and sketched several contexts supporting this view.
+In this second part, I address some of the issues raised in [Ma3] and provide their
+development in three contexts: a categorification of the algorithmic computations;
+time cut–off and Anytime Algorithms; and finally, a Hopf algebra renormalization
+of the Halting Problem.
+Contents
+0. Introduction
+1. Enriched programming methods with typing and parallelism: a categorical
+approach
+2. Cut-off regularization and Anytime Algorithms
+3. Regularization and renormalization of the Halting Problem
+0. Introduction
+0.1. Regularization and Anytime Algorithms. It is well known that
+classical theory of computability includes as its organic part phenomena of non–
+computability. Namely, an attempt to compute the value of a partially recursive
+function at a point where it is not defined, might stall the computation forever, but
+we will never know whether this is so or simply we did not wait long enough (“the
+Halting Problem is undecidable”).
+Applied theory of computation deals with algorithms processing finite amount
+of data into finite outputs. Nevertheless, even in such theoretically safe situations
+time/memory requirements may make the implementation of a sound algorithm
+unfeasible.
+The celebrated theory of polynomial time computations and discovery of the
+P/N P –problem served as a neutral zone meeting point between theoretical possibility and practical feasibility, and revealed beautiful new mathematical structures.
+1
+
+2
+
+However, applied computer scientists consider other possible ways of turning
+unfeasible computations into feasible ones, known under the code word “Anytime
+Algorithms”. Basically, an “Anytime Algorithm” allows the computation to stop
+at a feasible time, and supplies the result of such a mutilated procedure with a
+measure of its quality. See [GrZi] and a nice short introduction [Gr].
+In the Sec. 2 of this article, the second installment to the project initiated in
+[Ma3], it is suggested that theoretically “Anytime Algorithms” can be treated as
+one of the versions of regularization schemes in Quantum Field Theory: time cut–
+off (for more detailed description of the whole project, see Introduction to [Ma3]).
+More precisely, I analyze from this viewpoint results of the stimulating paper by
+Ch. Calude, M. Stay “Most programs stop quickly or never halt” ([CalSt1]).
+One of the themes, that the analogies with renormalization and experience with
+Anytime Algorithms bring to the foreground in the computation theory, is the
+stress on the structure of programs determined by the operation “composition of
+programs” and by the explicit parallelism, that played a key role in our treatment
+of perturbative renormalization as a model for regularizing computations in [Ma3].
+Notice that many standard descriptions of programming methods are not stable
+with respect to the composition and have no natural means for expressing parallelism.
+For example, composition T2 ◦ T1 of two Turing machines, informally defined as
+computation in which the output of T1 becomes the oracular input (“program”) for
+T2 , is not directly described as a new Turing machine T3 .
+Language–like constructions such as lambda–calculus, being inherently linear/sequential, are not well–suited for expressing options of parallelism.
+”Flowcharts” imagery for which I made some propaganda in [Ma3] serves these
+goals much better. In the Section 1 of this article, I show that the same ideas admit
+a succinct categorical expression, and suggest that flowcharts constructions from
+[Ma3] can be interpreted as a constructive existence theorem, to produce what I call
+“an enriched programming method with unrestricted parallelism” (cf. Definition
+1.8.1). This seems to be very much in the spirit of [BaSt].
+Finally, Section 3, using some ideas from quantum computation, provides a Hopf
+renormalization scheme for the Halting Problem.
+0.2. Computability as a mathematical structure and its interaction
+with other mathematical structures. Most of the constructions considered in
+this paper refer to (un)feasible algorithms with infinite domains/ranges. Devising
+
+3
+
+their natural quantitative characteristics and regularization schemes for them, one
+should keep in mind that they can be roughly subdivided into two large blocks.
+BLOCK A. This block consists of the inherent problems referring to an infinite
+constructive world X, which depend only on the class of “admissible” recursively
+equivalent numberings of X, and which are the same for all infinite X. From the
+computational viewpoint, any such X can be identified with N (natural numbers)
+or Z+ (nonzero natural numbers).
+A typical example of such an X is some set of finite Bourbaki structures, such
+words in a finite alphabet, or finite groups, or graphs, or their descriptions, etc.
+In this context, one uses the Bourbaki description primarily in order to define
+the class of admissible bijections (numberings) Z+ → X in question: they must be
+informally computable together with their inversions. One aspect of Church’s thesis
+consists in the statement that recursive functions will provide an adequate notion
+of algorithmic processing of elements of X whenever we can imagine an informal
+algorithm producing the numbering.
+Once it is decided that the role of the respective Bourbaki structure is over
+as soon as the class of numberings is determined, one can make explicit various
+secondary structures on X that can be defined exclusively in terms of admissible
+numberings.
+One such structure is the algebra of enumerable subsets of X: definition domains
+D(f ) of partial recursive functions. This family is stable wrt finite intersections
+and enumerable unions. If one consider these sets modulo finite ones, one can prove
+interesting results about simple sets, maximal sets etc. For example, maximal D(f )
+display a striking similarity to the holomorphy domains V in the theory of complex
+analytic functions of ≥ 2 variables: in both cases, there are functions defined on
+D(f ), resp. V , that cannot be extended to a larger domain.
+The proviso “modulo finite subsets” can be very naturally formalized by changing the Constructive Universe C described in Sec. 1: simply consider the largest
+quotient of C making invertible those morphisms (computable maps) X → Y that
+become computably invertible after the restriction to some subsets of X and Y with
+finite complements.
+Another such structure is the class of Kolmogorov’s orderings: total orders on
+X defined by increasing Kolmogorov complexity with respect to various optimal
+enumerations.
+Such orderings are not computable, but with respect to them all recursive functions, including admissible numberings, become functions of linearly bounded growth.
+
+4
+
+I discuss this feature from the renormalization viewpoint in Sec. 3.
+BLOCK B. This group consists of problems about interaction of computability
+with other Bourbaki sructures on X. An elementary example is the embedding
+X = Q ⊂ R used in the theory of computable rational approximations to real
+numbers.
+In this block, the Diophantine representability of enumerable subsets of N was
+the greatest discovery (Davis, Robinson, Putnam, Matiyasevich).
+A very interesting and unexpected example of such interaction was elaborated in
+the work of A. Nabutovsky and S. Weinberger, (cf. [NaWe]), who have shown that
+the computational complexity can be used to display a highly irregular landscape
+of minima of natural differential–geometric functionals on the space of Riemannian
+metrics modulo diffeomorphisms.
+Since path integration over such a space is one of the key tools of quantum
+gravity, this can become an important next meeting space between renormalization
+and computation.
+Acknowledgements. I am very grateful to Cristian Calude, Leonid Levin, Mike
+Stay, Noson Yanofsky, who sent their remarks and suggestions incorporated in this
+draft of the article.
+1. Enriched programming methods with typing and parallelism:
+a categorical approach
+1.1. Preliminary remarks. We denote by N the set of natural numbers, and
+by Z+ that of positive natural numbers. Usually N is taken as the basic set on
+which recursive functions are defined; in [Ma1] I used Z+ having found it more
+convenient in a Diophantine context.
+As a Bourbaki structure, both Z+ and N are here (isomorphic) totally ordered
+sets, with a minimal element 1 (resp. 0) and successor function suc(x): “the smallest
+y such that y > x”, or suc(x) = x + 1 in the standard notation. In a sense, this
+is the minimal structure needed to define the set of partial recursive functions that
+are partial maps Z+ → Z+ or, more generally (Z+ )a → (Z+ )c . The remaining
+components of the definition (see e. g. [Ma1], V.2.1–2.4) are just the standard
+category–theoretic constructions in a fixed monoidal category of sets (P arSets, ×)
+with partial maps as morphisms and cartesian product: cf. [Ma3], 3.7.
+However this total order structure is not invariant with respect to the structure
+that we will define below, in the sense that it is not preserved under the automor-
+
+5
+
+phisms of this structure. For this reason, we avoid one of the standard categorifications of computation theory in which N is replaced by a “natural numbers object”
+N (of an abstract category), endowed with a morphism sucN : N → N : this categorification unduly stresses the role of this total order and iteration sucN ◦· · ·◦sucN
+related to it.
+Instead, we adopt the version advocated in [Ma2], that of a subcategory C of
+P arSets called Constructive Universe. In 1.2–1.8 below I collect the relevant formal
+definitions. Informal comments are relegated to 1.10.
+1.2. Objects. Objects of C will be called constructive worlds.
+1.2.1. Definition. A constructive world X is either a finite set, or an infinite set endowed with a nonempty set N um(X) of bijections ν : Z+ → X, called
+admissible numberings, satisfying the following conditions:
+(i) If ν1 , ν2 ∈ N um(X), then ν2−1 ◦ ν1 is a total recursive bijection.
+(ii) If ν ∈ N um(X) and f : Z+ → Z+ is a total recursive bijection, then
+ν ◦ f ∈ N um(X).
+Elements of the constructive world X are called constructive objects of the type
+X.
+1.3. Morphisms. Let X, Y be two constructive worlds. Morphisms X → Y are
+induced by partial recursive maps on their structure numberings. More precisely:
+1.3.1. Definition. A morphism X → Y is partial map f : D(f ) → Y , where
+D(f ) ⊂ X a subset (possibly empty) satisfying the following conditions:
+(i) If X be infinite, Y is finite, then for one (equivalently, any) admissible numbering ν : Z+ → X and any y ∈ Y , the set ν −1 (f −1 (y)) is recursive enumerable.
+(ii) If X and Y are infinite, then for one pair (equivalently, any pair) admissible
+numberings νX : Z+ → X, νY : Z+ → Y , the partial map νY−1 ◦ f ◦ νX : Z+ → Z+
+is a partial recursive function.
+(iii) If X is finite, Y is infinite, any partial map is a morphism.
+With the standard composition of partial maps, constructive worlds form a category C, which we will call Constructive Universe. The set of morphisms X → Y
+will be denoted C(X, Y ). Its subcategory consisting of infinite constructive worlds
+is equivalent to a very simple category consisting of one object, say Z+ , and partial
+recursive maps as morphisms. In [He], such categories are called isotypical ones.
+However, it is important to consider C as (bi)monoidal
+category, with two sym`
+metric monoidal structures × (direct product) and (coproduct, or disjoint union,
+see [He]), connected by the standard coherence diagrams.
+
+6
+
+These monoidal structures are induced by those in a small category of (unstructured) sets in which our constructive worlds lie, so that it suffices to specify some
+privileged numberings of disjoint sums and direct products.
+Moreover, it suffices to
+`m
++
++
+consider numberings that are bijective maps Z → i=1 Z and Z+ → (Z+ )m .
+`m
+For i=1 Z+ , we simply assign to m(k−1)+i the number k in the i–th summand.
+
+The cartesian product is more interesting, because there are several numberings
+that become privileged in the context of Kolmogorov complexity. TO BE CONTINUED ...
+We will
+` generally assume that C is closed with respect to the monoidal structures
+× and .
+
+1.4. Constructive descriptions of morphisms. Fix two constructive worlds
+X, Y . Since the set of recursive maps C(X, Y ) is not a constructive world, we may
+try to replace it by descriptions.
+1.4.1. Definition. A constructive world of descriptions is a pair (P (X, Y ), F ),
+where P (X, Y ) is an object of C, and F : P (X, Y ) × X → Y is a morphism in C,
+satisfying the following condition.
+Let p ∈ P (X, Y ). Denote by fp the partial map x 7→ F (p, x) ∈ Y, x ∈ X. Then
+each fp is a morphism X → Y in C.
+In other words, descriptions produce a set theoretic map P (X, Y ) → C(X, Y )
+constructively depending on (p, x).
+1.4.2. Translations. Let (P (X, Y ), F ) and (Q(X, Y ), G) be two constructive
+worlds of descriptions. A translation (or compilation) method
+transP,Q : P (X, Y ) → Q(X, Y )
+is an everywhere defined morphism in C such that for all p ∈ P (X, Y ), trans(p) ∈
+Q(X, Y ) defines the same morphism fp : X → Y . In other words,
+G ◦ (transP,Q × idX ) = F.
+1.4.3. Universal descriptions. The world (U (X, Y ), W ) is the world of universal descriptions, if for any other world of descriptions (P (X, Y ), F ), there exists
+a translation morphism
+transP,U : P (X, Y ) → U (X, Y )
+
+7
+
+In particular, it can compute any (semi)computable function, in the sense that
+the family of maps fu : X → Y, u ∈ U (X, Y ) contain all morphisms in C.
+1.4.4. Complements. Among various constructive worlds of descriptions
+P (X, Y ) there exist ones with better properties than the general definition allows
+to guess. The terminology for them is rather unstable. We will say sometimes (see
+2.6 below) that P (X, Y ) is the base of a family fp : X → Y , p ∈ P (X, Y ) of partial
+functions.
+We will review below some relevant definitions and existence theorems. We
+consider separately four cases.
+(i) If X, Y are infinite, we may assume without losing generality that X = Y =
+Z+ .
+H. Rogers in [Ro] calls such a world of descriptions U semi–effective, if it computes all morphisms (partial recursive functions), and he calls U fully effective, if
+it is universal in the sense of 1.4.5.
+An easy construction in [Ro] (example following Definition 3) shows that there
+are semi–effective descriptions that are not fully effective. A universal description
+world U (X, Y ) = Z+ (or rather N) is also called a Gödel numbering in [Ro].
+The main Theorem of [Ro] in our language implies that for any two universal
+description worlds (for infinite X, Y ), there exist two mutually inverse translation
+isomorphisms between them: total recursive bijections, compatible with functions
+that these descriptions compute.
+C. P. Schnorr in [Sch] considerably strengthens this result. Namely, he calls
+a universal description world (U = Z+ , W ) an optimal Gödel numbering, if for
+any other world of descriptions (P = Z+ , F ), there exists a translation morphism
+t : P → U which is a linearly bounded function Z+ → Z+ . We will call such a
+description world simply optimal one.
+Schnorr then proves that optimal descriptions exist, and for any two optimal
+description worlds (with infinite X, Y ), there exist two mutually inverse linearly
+bounded translation isomorphisms between them.
+Similar results hold in the case when only one of the worlds X, Y is infinite.
+The general situation can be reduced to the case when the relevant finite world is
+one–element set; for simplicity, we will consider only this case.
+(ii) The case X = {∗} is truly exceptional in the following sense: C({∗}, Y ) , that
+is “Y –valued recursive functions of zero variables”, can be canonically identified
+with the set Y and thus it is a constructive world. Nevertheless, the notions and
+
+8
+
+main results of Rogers and Schnorr are applicable to this case as well and lead to
+a strengthening of the notion of Kolmogorov optimal enumeration of constructive
+objects of a given type.
+(iii) In the case Y = {∗}, C(X, {∗}) can be naturally identified with the set of
+all enumerable subsets of X, domains of partial recursive functions with one value.
+Gödel and optimal numberings of enumerable subsets also can be easily defined,
+and again the Rogers and Schnorr theorems are valid for them.
+(iv) Finally, when both X, Y are finite, the useful structurizations of descriptions
+are those of Boolean polynomials, circuits, etc. Many complexity problems are
+centered around polynomial time computations. Cf. [Ma2] for an introduction,
+that is close in style to this paper.
+1.5. Enrichments of C over itself and programming methods. There
+is a well–known general notion of a category C enriched over a monoidal category
+(M, ⊗, I) where I is an identity object.
+Below, we will consider enrichments of C over (C, ×, I) where I is a fixed one–
+element constructive world. Products of empty families, such as Na for a = 0, are
+interpreted as I.
+According to the general pattern, such an enrichment must consist of the following data.
+a) For each pair of constructive worlds X, Y , an ”object of morphisms” P (X, Y ) ∈
+ObC.
+b) For each triple of constructive worlds X, Y, Z, a “composition morphism” in
+C:
+◦ : P (Y, Z) × P (X, Y ) → P (X, Z)
+
+(1.1)
+
+c) For each object X of C, an identity morphism
+idX : I → P (X, X).
+
+(1.2)
+
+The standard axioms for morphisms in a category translate into requirements of
+commutativity of three classes of diagrams in C expressing properties of associativity
+of enriched composition, and left and right identities.
+1.5.1. Definition. An enrichment of C over (C, ×, I) as above is called an
+enriched programming method and denoted CP , if the following additional data are
+given and axioms satisfied:
+
+9
+
+For each pair of constructive worlds X, Y , a morphism in C is given
+FX,Y : P (X, Y ) × X → Y
+such that P (X, Y ) becomes a constructive world of descriptions in the sense of
+Definition 1.4.1. Thus, we have a family of set–theoretic maps
+ΦX,Y : P (X, Y ) → C(X, Y ) :
+
+p 7→ fp .
+
+(1.3)
+
+We will say that p is a description, or a program, computing fp .
+Moreover, the following axioms must be satisfied:
+(i) Morphisms (1.1) and (1.2) must be everywhere defined (total recursive) maps.
+(For (1.2), this means simply that they are non-empty maps).
+(ii) Compositions (1.1) must be compatible with the compositions of morphisms
+in C:
+fp◦q = fp ◦ fq .
+(iii) Element idX (I) ∈ P (X, X) must be a description of the “copying” program:
+mapping x to x.
+(The latter should not be mixed with the “cloning” program computing the diagonal map X → X × X, x 7→ (x, x).)
+Informally speaking, we have a functor
+ΦP : CP → C
+
+(1.4)
+
+identical on objects and mapping a program to the function that this program
+computes.
+The most important feature of this formalism consists in an explicit and systematic inclusion of composition of programs into our formalism: this is a key
+requirement for all Hopf algebra renormalization schemes.
+Finally, a remark on terminology: we use the word program as a synonym of
+“description of a method to compute a given function”. Input of such a program
+is a specific value of the argument of this function, output is the value of the
+function. This praxis should not be confused with the one used in the theory of
+Turing machines, where programs are often understood as our inputs: the initial
+binary string on the tape.
+
+10
+
+1.6. A (uni)versal enrichment. An enrichment CU as above is called (uni)versal
+one, if programs from U compute all partial recursive maps, and moreover, if for
+each CP , there is a functor between enriched categories
+Ψ : CP → CU
+
+(1.5)
+
+identical on objects, with total recursive maps
+ΨX,Y ) : P (X, Y ) → U (X, Y )
+
+(1.6)
+
+such that ΨX,Y (p) for each p computes the same function as p. In other words, we
+have
+ΦU ◦ Ψ = ΦP .
+Intuitively, we want the following properties of U as a programming method, that
+are somewhat stronger than those in 1.4.
+a) It can compute any (semi)computable function.
+b) For each other programming method P , there must exist a computable (on
+the world of P –programs) translation of P –programs into U –programs, computing
+the same functions.
+c) The translation must be compatible with composition of programs and copying/identity programs (functorality of Ψ).
+1.7. Coproducts and typing. Coproducts (disjoint sums) admit the most
+straightforward interpretation in the contexts, where computer
+scientists speak
+`
+about typing. In the simplest situation, a program p ∈ P (X Y, Z) accepts inputs
+of either type X or Y , and produces outputs of type Z.
+Iterated application of similar interpretations, as far as I can judge, can be used
+in all contexts where the notion of typing is essential.
+1.8. Products and parallelism. Let Xi , Yi , i = 1, . . . , n be constructive
+worlds. Then the map
+π : C(X1 , Y1 )×C(X2 , Y2 )×· · ·×C(Xn , Yn ) → C(X1 ×X2 ×· · ·×Xn , Y1 ×Y2 ×· · ·×Yn ),
+π(f1 , . . . , fn )(x1 , . . . , xn ) := (f1 (x1 ), . . . , fn (xn ))
+
+(1.7)
+
+defines families of computations with independent inputs/outputs that can be implemented parallely. This can be generalized to programming methods as follows.
+
+11
+
+1.8.1. Definition. Let P be an enriched programming method. We will say
+that P admits unrestricted parallelism, if the following additional structure is given.
+Let {Xi }, {Yi }, i = 1, . . . , n, be any finite family σ of constructive worlds. We
+must be given maps
+πσ :
+
+n
+Y
+
+i=1
+
+P (Xi , Yi ) → P (
+
+n
+Y
+
+i=1
+
+Xi ,
+
+n
+Y
+
+Yi ),
+
+(1.8)
+
+i=1
+
+that are lifts of (1.7). These maps must be equivariant with respect to the natural
+action of the symmetric group Sn permuting subscripts at both sides.
+1.9. Basic example: flowcharts. Flowcharts defined in [Ma3] form a convenient context for constructing enriched progamming methods with unrestricted
+parallelism. One example of of such a method is the world P , computing primitive
+recursive functions, described im [Ma3], Definition 2.11. This definition uses the
+ideas of N. Yanofsky paper [Ya].
+Additional work remains to be done in order to produce a manageable construction of an universal enrichment with unrestricted parallelism.
+1.10. Comments: constructive worlds and admissible numberings.
+Technically speaking, conditions (i) and (ii) of Definition 1.2.1 together mean that
+N um(X) forms a principal homogeneous space over the group of total recursive
+permutations of Z+ which we may denote SZ+ ,rec , as an infinite analog of nite
+symmetric groups. Hence the whole N um(X) can be reconstructed from any one
+numbering in this set. Usually there are some simplest, or privileged numberings,
+with which one mostly works, such as the numbering of binary words w ∈ {0, 1}N
+used in [CalSt1]: bin−1 : w 7→ 1w, where the line over a binary word means that it
+should be treated as a natural number given by its binary digits.
+The idea of privileged numberings is essential especially when one deals with
+polynomial time, or more general “feasible” computations. In order to accommodate this idea, we can strengthen Definition 1.2.1 in the following way. Consider
+the smaller “symmetric group” SZ+ ,pol of total recursive permutations that are
+polynomial time computable together with their inverses. Define the structure of
+polynomial time constructive world X by a set N umpol(X) forming a principal
+homogeneous space over the group SZ+ ,pol .
+An (often implicit) part of contemporary philosophy around Turing’s Thesis
+consists in postulating that whenever we can informally speak about algorithms and
+(semi) computable maps between two constructive worlds, we always can produce in
+
+12
+
+the context of this discussion admissible numberings that are informally algorithmic
+and transform informal (semi)computable maps into (partial) recursive functions.
+In any case, starting with such a class of numberings of X, we want to stress
+that we study notions that are either invariant, or behave in a controlled way under
+the action of the group SX,rec .
+We add a few more remarks.
+Sometimes, a constructive world X itself is an unstructured set, in the sense
+that the only relevant structure on it is given by its set of admissible numberings.
+The typical example is a world A that in further constructions may serve as an
+alphabet. In this case, a numbering dening the whole N um(A) usually is introduced
+ad hoc. But in most applications, X itself consists of certain sets (often finite and/or
+considered only up to isomorphism, or even organized into a category) endowed with
+a certain fixed Bourbaki structure, such as:
+(a) Finite words in an alphabet A.
+(b) Finite graphs up to an isomorphism.
+(c) Finite groups.
+In such cases, the privileged numberings (“encodings”) generating the whole
+N um(X) are supposed to interact with this structure in such a way that the number of a constructive object can be “algorithmically calculated” when we know
+this object as an instance of this structure, and vice versa, this instance must be
+algorithmically reconstructible from the number. It is only very rarely that such
+encodings can translate well the basic relations, composition laws etc., involved in
+the definition of the structure. This is one reason to formulate models of computation directly in terms of this structure: one can recall Church’s lambda–calculus,
+Kolmogorov–Uspenski’s graphs and Gács–Levin causal nets (cf. [GaLe]).
+On the other hand, such a simple task as the choice of a privileged numbering
+of Z+ × Z+ (upon which one of the monoidal structures on C is based) can lead
+to quite interesting constructions when this choice is related, for example, with
+complexity estimates: see our discussion in 2.7–2.10 below using L. Levin’s norms
+for definitions of such numberings.
+Notice that instances of the constructive worlds of causal nets studied in [GaLe]
+are themselves categories, and the study of interaction of computability with symmetries of the respective constructive objects reveals interesting new phenomena.
+We want to argue that our categorical framework suggests other possibilities to
+avoid too close attention to the elementary steps of computation. In particular, the
+“categorical Church Thesis” admits a wonderfully succinct expression:
+
+13
+
+The category C is defined uniquely up to equivalence.
+An important complication and variation of the theme of admissible numberings
+arises, when a structure S that we want to treat “constructively” is thus imposed
+on eventually innite sets. In such cases the relevant constructive objects are often
+not the structures themselves, but their finite descriptions: a group might be given
+by generators and relations, an affine scheme over Z by its equations etc.
+The usual complication with descriptions is that many descriptions can produce
+one and the same (or canonically isomorphic) Bourbaki structure, and the relevant equivalence relation on the set of descriptions can be undecidable, or even
+not recursively enumerable. This is precisely the case of the structure constituted
+by recursive functions themselves, which is our main motivation for introducing
+enrichments as in Definitions 1.5.1 and 1.8.1.
+2. Cut–off regularization and Anytime Algorithms
+2.1. Cut–off regularization. In Quantum Field Theory, cut–off regularization
+schemes have the following typical structure. The relevant Feynman integrals, say,
+in momentum space, may diverge when momentum becomes large (resp. small).
+In this case, the formal integral in question I is replaced by the finite integral IP
+taken over momenta p ≤ P := pcutof f (resp. p ≥ P := pcutof f ). The behavior of
+IP as P → ∞ (resp. P → 0) is then studied, and physical information is extracted
+from the behavior of the polar part, or regular part, of IP .
+In computer science based upon Turing machines and/or recursive functions, the
+natural “divergence” occurs in space–time: a computation uses discrete memory
+(space) and runtime. A typical example of such a divergence is the infinite runtime
+of a Turing machine computing a partial recursive function f at an input (program)
+x which is outside the definition domain of f .
+Application–oriented computer scientists, of course, recognize the practical necessity of time cut–offs, accompanied by sober estimates of quality of outputs.
+Systematic work on this problem resulted in the notion of ”Anytime Algorithms”,
+cf. [GrZi]. The usefulness of composition and exploiting parallelism was stressed
+in [RuZi].
+In a stimulating paper [CalSt1], Ch. Calude and M. Stay addressed the problem
+of cut–off of runtime theoretically, and designed meaningful quantitative characteristics of such a cut–off.
+More precisely, let f be a partial recursive function (“a morphism of constructive
+worlds X → Y ”) as above, and F its description, a program calculating it. Computation time (or runtime) is another partial recursive function, with the same
+
+14
+
+domain D(t(F )) = D(f ) ⊂ X and target Z+ , whose precise definition depends on
+the details of the implied choice of our programming method.
+For a Turing machine F , t(F )(x) is the number of steps required to halt and print
+f (x) on the tape, if x ∈ D(f ). One can similarly define another partial recursive
+function, “memory volume” m(F ) : X → Z+ such that for x ∈ D(f ), m(F )(x) is
+the minimal length of tape required to compute f (x). Here W is the constructive
++
+world of binary words {0, 1}Z . Yet another partial recursive function, s(F ), is
+the sum total of lengths of filled parts of the tape over all steps of computation.
+Notice that the settling function of Soare ([So], Definition 8.2), which is essentially
+max {t(F )(y) | y < x, y ∈ D(f )}, generally is not partial recursive, but some of the
+inequalities stated below, such as (2.3), are valid for it as well.
+One can define natural analogs of functions t(F ), m(F ), and s(F ) for rather
+general normal programming methods F , discussed in [Ma2] and Chapter IX of the
+new edition of [Ma1].
+Returning to [CalSt1], we will first of all show that some of the basic results of
+that paper related to cut–offs, admit a straightforward reformulation in such a way
+that they become applicable and true for any partial recursive function, including,
+of course, t(F ), m(F ), and s(F ).
+This naturally raises a question, what is so specific about t(F ), m(F ), and s(F ).
+We will treat this question in 2.6 below in the context of categorification developed
+in Sec. 1, and will show that this provides some meaningful insights about these
+measures of processes of computation.
+2.2. Complexity. I will first recall the definition and properties of the Kolmogorov (“exponential”, or “program”) complexity Cu : Z+ → Z+ , cf. [Ma1],
+VI.9. In [CalSt1] it is called the natural complexity and denoted ∇U or simply ∇.
+This complexity measure is defined with respect to a partial recursive function
+u : Z+ → Z+ which is surjective:
+Cu (x) := min {y | u(y) = x}.
+This function u is an arbitrary element of the set of Kolmogorov, or Gödel, optimal
+functions, representatives of which can be effectively constructed: cf. [Ro], [Sch]
+and [Ma1]. Optimality implies that for any other partial recursive v : Z+ → Z+ ,
+there exists a constant cu,v > 0 such that for all x, Cu (x) ≤ cu,v Cv (x). (The right
+hand side is interpreted as ∞, if x is not in the range of v).
+
+15
+
+It follows that another choice of optimal function replaces Cu by a function
+Cu′ = 2O(1) Cu . We will say that two such functions belong to the same bounded
+equivalence class.
+Moreover, as we have discussed above, the definition of the complexity of integers can be extended to the definition of complexity of partial recursive functions
+of any fixed number of variables m, as in VI.9.1 of [Ma1]. This requires a choice of
+Kolmogorov optimal recursive function of m + 1 variables. We have then the following simple result (omitting the subscripts at C specifying the choices of optimal
+families, and denoting by c with subscripts various constants depending on these
+choices as well):
+2.2.1. Proposition. For any partial recursive function f : Z+ → Z+ and
+x ∈ D(f ) we have
+C(f (x)) ≤ cf C(x) ≤ c′f x,
+(2.1)
+If f and x ∈ D(f ) are allowed to vary, we have
+C(f (x)) ≤ c C(f )C(x) log (C(f )C(x)) .
+
+(2.2)
+
+In particular, if f is a total recursive permutation, then complexities of x and
+f (x) are bounded equivalent. It follows that we can define the complexity function,
+up to bounded equivalence, C : X → Z+ for any infinite constructive world X:
+choose an admissible numbering ν : Z+ → X and put C(x) := Cu (ν −1 (x)) for
+some optimal u.
+2.3. Runtimes according to [CalSt1]. Proposition 2.2.1 is a special case of
+Proposition 9.6 in [Ma1], VI.9. In turn, it implies as special cases the inequality
+(2) and Theorem 4 of [CalSt1].
+In order to see this, one has simply to compare terminology and notation.
+[CalSt1] deals with the complexity C (their ∇ = ∇U ) of binary words, that
+reduces to the complexity of integers via the admissible numbering denoted bin in
+[CalSt1]. It is defined via a ”universal Turing machine” U , which in our language
+is a programming method computing one of the Kolmogorov optimal functions u.
+Consider the partial recursive function x 7→ t(U )(x): runtime of U at the argument
+x ∈ Z+ . The inequality (2) of [CalSt1] in our notation can be rewritten as
+C(t(U )(x)) ≤ cx
+
+(2.3)
+
+16
+
+which is our (2.1) for f = t(U ). The same inequality is valid for m(U ), s(U ), but
+also for t(F ), m(F ), s(F ) for any F , and even for Soare’s settling functions: see
+section 2.1 above.
+2.4.1. Growth of recursive functions and algorithmic randomness. The
+central argument of [CalSt1] is based upon two statements:
+a) The runtime of the Kolmogorov optimal program at a point x of its definition
+domain is either ≤ cx2 , or is not “algorithmically random” (Theorem 5 of [CalSt1]).
+b) “Algorithmically random” integers have density zero for a class of computable
+probability distributions.
+This last statement justifies the time cut–off prescription which is the main result
+of [CalSt1]:
+if the computation on the input x did not halt after cx2 Turing steps, stop it,
+decide that the function is not determined at x, and proceed to x + 1.
+Proposition 2.5.1 below somewhat generalizes the statement a).
+2.5. Randomness and growth. Consider a pair of functions ϕ, ψ : R>0 →
+R>0 satisfying the following conditions:
+x
+are strictly increasing starting with a certain x0 and tend to
+a) ϕ(x) and
+ϕ(x)
+infinity as x → ∞.
+ψ(x)
+are increasing and tend to infinity as x → ∞.
+b) ψ(x) and
+xϕ(ψ(x))
+The simplest examples are ϕ(x) = log(x + 2), ψ(x) = (x + 1)1+ε , ε > 0.
+In our context, ϕ will play the role of a “randomness scale”. Call x ∈ Z+
+algorithmically ϕ–random, if C(x) > x/ϕ(x). The second function ψ will then play
+the role of associated growth scale.
+2.5.1. Proposition. Let f be a partial recursive function. Then for all sufficiently large x exactly one of the following alternatives holds:
+(i) x ∈ D(f ), and f (x) ≤ ψ(x).
+(ii) x ∈
+/ D(f ).
+(iii) x ∈ D(f ), and f (x) is not algorithmically ϕ–random.
+Proof. We must only check that if x ∈ D(f ) and f (x) > ψ(x), then f (x) is not
+algorithmically ϕ–random, that is
+C(f (x)) ≤
+
+f (x)
+.
+ϕ(f (x))
+
+(2.4)
+
+17
+
+In fact, in view of (2.1),
+C(f (x)) ≤ cx
+
+(2.5)
+
+for some constant c (depending on u and f ). Furthermore, for sufficiently large x,
+in view of 2.5 b), we have
+cx ≤
+
+ψ(x)
+f (x)
+≤
+.
+ϕ(ψ(x))
+ϕ(f (x))
+
+(2.6)
+
+Clearly, (2.5) and (2.6) imply (2.4).
+2.6. Cost estimate functions. Since, as we argued, the randomness/growth
+alternative holds for arbitrary recursive functions, not only for runtimes and alike,
+we will briefly discuss specific properties of runtimes, considered from the perspective of categorification, explained in sec. 1.
+Let P be an enriched programming method, as in Definition 1.5.1. We will say
+that a partial function δ : P (X, Y ) × X → Z+ is a cost estimate function, if the
+following conditions are satisfied:
+(i) δ is partial recursive (morphism in C), and D(δ) = {(p, x) | x ∈ D(fp )}.
+(ii) δ(p ◦ q, x) = δ(q, x) + δ(p, q(x)) whenever both sides are defined.
+The requirement (i) is natural, because the “run–cost” of computation (time,
+maximum storage size) must be computable in terms of cost increments required
+at each step. The requirement (ii) then expresses the additivity of such increments.
+We may, or may not, ascribe a non–zero cost to the program calculating identical
+function (“data transfer”).
+Requirement (i), complemented by the requirement of the decidability of the
+graph of δ, constitute two axioms due to M. Blum. This latter property has a clear
+intuitive meaning as well.
+Finally, if our cost estimate function refers to time only, and we allow the unrestricted parallelism, the following property is natural. Using notation (1.8), we
+must have
+(iii) δ(πσ (p1 , . . . , pn ), (x1 , . . . , xn )) = max (δ(p1 , x1 ), . . . , δ(pn , xn )).
+2.7. Constants related to Kolmogorov complexity estimates. Since
+inequalities (2.1), (2.2), and their extensions are often useful, we will say a few
+words about their computability.
+
+18
+
+As in [Ma3], VI.9, we call partial maps (Z+ )m → Z+ , m ≥ 0, m–functions. A
+Kolmogorov optimal family of m–functions u(x1 , . . . , xm ; k), k ∈ Z+ , is produced
+from two inputs:
+(a) A fully effective (in the sense of Rogers, cf. 1.4.4) family of (m + 1)–functions
+U.
+(b) A recursive embedding θ : Z+ × Z+ → Z+ with decidable image, satisfying
+a linear growth condition
+θ(k, j) ≤ k · ϕ(j)
+(2.7)
+where ϕ : Z+ → Z+ an appropriate function.
+Having made these choices, we put
+u(x1 , . . . , xm ; k) := U (x1 , . . . , xm ; θ −1 (k)).
+
+(2.8)
+
+Then for any other family v of m–functions v with base Z+ and each m–function
+f , we have the inequality
+Cu (f ) ≤ cu,v Cv (f ),
+(2.9)
+with
+cu,v := ϕ(CU (v)).
+
+(2.10)
+
+(cf. [Ma1], VI.9.4).
+Clearly, (2.1) is a special case of (2.9). An effective estimate of (2.10) from above
+will be assured, if ϕ is computable and increasing, and if, knowing a P –description
+of v, we can find some member of the family U coinciding with v. The latter, in
+turn, is automatic, if P is supplied with a translation morphism transP,U .
+We will now discuss numberings θ.
+2.8. Slowly growing numberings. Let R = (Rk | k ∈ Z+ ) be a sequence of
+positive numbers tending to infinity with k. For M ∈ Z+ , put
+VR (M ) := {(k, l) ∈ (Z+ )2 | kRl ≤ M }.
+Clearly,
+card VR (M ) ≤
+
+
+∞ 
+X
+M
+l=1
+
+where [a] denotes the integral part of a.
+
+Rl
+
+< ∞,
+
+(2.11)
+
+(2.12)
+
+19
+
+We have
+
+VR (M ) ⊂ VR (M + 1), (Z+ )2 = ∪∞
+M =1 VR (M ).
+
+Therefore we can define a bijection NR : Z+ → (Z+ )2 in the following way:
+NR (k, l) will be the number of (k, l) in the total ordering <R of (Z+ )2 determined
+inductively by the following rule: (i, j) <R (k, l) iff one of the following alternatives
+holds:
+(a) iRj < kRl ;
+(b) iRj = kRl and j < l;
+2.9. Proposition. The numbering NR is well defined and has the following
+property: all elements of VR (M + 1) \ VR (M ) have strictly larger numbers than
+those of VR (M ). Moreover:
+(i) If each Rl is rational, or computable from above, then NR is computable (total
+recursive).
+P∞
+(ii) If the series l=1 Rl−1 converges and its sum is bounded by a constant c,
+then
+NR (k, l) ≤ c(kRl + 1).
+(2.13)
+P∞
+(iii) If the series l=1 Rl−1 diverges, and
+M
+X
+
+Rl−1 ≤ F (M )
+
+(2.14)
+
+l=1
+
+for a certain increasing function F = FR , then
+NR (k, l) ≤ (kRl + 1)F (kRl + 1).
+
+(2.155)
+
+Proof. The first statements are an easy exercise. For (2.13) and (2.14), notice
+that if M is the minimal value for which (k, l) ∈ VR (M ), we have M −1 < kRl ≤ M
+and
+NR (k, l) ≤ card VR (M ),
+and in the case (ii) we have from (2.12)
+card VR (M ) ≤
+
+∞
+X
+
+m=1
+
+−1
+M Rm
+≤ c(kRl + 1).
+
+20
+
+Similarly, in the case (iii) we have
+card VR (M ) ≤ M
+
+M
+X
+
+−1
+Rm
+≤ (kRl + 1)F (kRl + 1)
+
+m=1
+
+2.10. L.PLevin’s norms. From (2.13) one sees that any sequence {Rl } with
+converging l Rl−1 can be used in order to construct the bijection Z+ × Z+ → Z+ ,
+(k, l) 7→ NR (k, l) linearly growing wrt k. Assume that it is computable and therefore
+can play the role of θ in (2.7) (b).
+In this case, for any integer M the set VR (M ) must be decidable. It follows that
+for any l, the set of rational numbers k/M ≤ rl := Rl−1 is decidable.
+Even if we weaken the last condition, requiring only recursivity of the set k/M
+P ≤
+rl (i. e. asking each rl to be computable from below), the convergence of
+l rl
+implies that there is a universal upper bound (up to a constant) for such rl . Namely,
+let CP be the prefix Kolmogorov complexity on Z+ defined with the help of a certain
+optimal prefix enumeration.
+2.10.1. Proposition. ([Le]).
+For any sequence of computable from below
+P
+numbers rl with convergent
+r
+,
+there
+exists a constant c such that for all l,
+l l
+−1
+rl ≤ c · CP (l)
+More generally, L. Levin constructs in this way a hierarchy of complexity measures associated with a class of abstract norms, functionals on sequences computable
+from below.
+3. Regularization and renormalization of the Halting Problem
+3.1. Introduction. In this section, we devise simple regularization/renormalization schemes tailored to fit the halting problem. The general structure of such a
+scheme is sketched in [Ma3], subsection 0.2. It involves the following components.
+(a) Deforming the Halting Problem. At this step, we transform the problem of
+recognizing, whether a number k ∈ Z+ belongs to the definition domain D(f ) of a
+partial recursive function f , to the problem, whether an analytic function Φ(k, f ; z)
+of a complex parameter z has a singularity (in our case, a pole) at z = 1.
+In fact, using an idea from quantum computing, we may reduce the case of arbitrary f to the case of a partial recursive permutation σ = σf : D(σ) → D(σ) of its
+definition domain, and construct Φ(k, σ; z) for such permutations. This reduction
+is described in [Ma3], subsections 3.6 – 3.8.
+
+21
+
+(b) Choosing a minimal subtraction algebra. Our choice of an appropriate minimal subtraction algebra (see the definition in [Ma3], 4.2) is based on the established
+properties of functions Φ(k, σ; z): cf. Proposition 3.5 below.
+Namely, let A+ be the algebra of analytic functions in |z| < 1, continuous at
+|z| = 1. It is a unital algebra; we endow it with augmentation εA : Φ(z) 7→ Φ(1).
+Put A− := (1 − z)−1 C[(1 − z)−1 ]. Finally, let A := A+ ⊕ A− .
+Now we can use Theorem 4.4.1 of [Ma3] in renormalization schemes, involving a
+connected filtered Hopf algebra H (cf. [E-FMan], sec. 2.5, Theorem 1, and [Ma3],
+4.1). It remains to indicate, which Hopf algebras and their A–characters will be
+involved in this game.
+(c) Hopf algebra of an enriched programming method. A class of such algebras
+is described in [Ma3], subsections 3.3 – 3.4. This construction explicitly refers to
+flowcharts, however, it can be readily modified and generalized to enriched programming methods P in the sense of Definition 1.5.1.
+Basically, H = HP is the symmetric algebra, spanned by isomorphism classes
+[p] of certain descriptions belonging to, say, P (Z+ , Z+ ). Comultiplication in HP is
+dual to the composition of descriptions:
+∆([p]) :=
+
+X
+
+[r] ⊗ [q].
+
+(3.1)
+
+q,r|q◦r=p
+
+(Recall that the composition of descriptions is associative).
+In order to ensure finiteness of the right hand side of (3.1) and to produce a
+Hopf filtration, we must postulate in addition existence of a “size function” on
+descriptions. The simplest properties of such a function p 7→ |p| that will serve our
+goal, are finiteness of the set of descriptions of bounded size, and additivity
+|q ◦ r| = |q| + |r|.
+For a concrete example, see [Ma3], subsection 3.4.
+(d) Characters, corresponding to the halting problem. Finally, assume that we
+have constructed HP and Φ(k, f ; z) as above. Then the character ϕk : HP → A
+(cf. [Ma3], 4.4) corresponding to the halting problem at a point k ∈ Z+ for the
+partial recursive function computable with the help of a description p ∈ P (Z+ , Z+ ),
+is defined as follows:
+ϕk ([p]) := Φ(k, f ; z) ∈ A.
+(3.2)
+
+22
+
+As soon as this definition is adopted, the machinery and philosophy of Hopf renormalization and Birkhoff decomposition ([Ma3], Theorem 4.4.1) becomes applicable
+to the classical halting problem.
+Perhaps, it will be even more relevant for quantum computation schemes based
+upon infinite–dimensional Hilbert spaces.
+3.2. The simplest construction. Let f : Z+ → Z+ be a partial recursive
+function. Consider its extension f¯ : N → N defined as follows: f¯(x) = f (x) if
+x ∈ D(f ) and f (x) = 0 otherwise.
+Put
+∞
+X
+zn
+Ψ(k, f ; z) :=
+(3.3)
+¯(k))2 .
+(1
++
+n
+f
+n=0
+3.2.1. Proposition. (i) If k ∈
+/ D(f ), then
+Ψ(k, f ; z) =
+
+1
+.
+1−z
+
+(3.4)
+
+(ii) If k ∈ D(f ), then Ψ(x, σ; z) is the Taylor series of a function analytic at
+|z| < 1 and continuous at the boundary |z| = 1. The value f¯(k) = f (k) can be
+uniquely reconstructed from Ψ, for example
+s
+dz
+f (k) =
+− 1.
+(3.5)
+dΨ z=0
+The proof is obvious.
+Actually, formula (3.3) can be seen in its natural context if one invokes the
+general prescription of reducing any function to a permutation, borrowed from the
+theory of quantum computation.
+I will briefly recall this prescription now following [Ma3], subsections 3.6 – 3.8.
+3.3. Reduction of the general halting problem to the recognition of
+fixed points of permutations. Start with a partial recursive function f : X → X
+where
+` X is an infinite constructive world. Extend X by one point, i. e. form
+X {∗`X }. Choose a total recursive structure of an additive group without torsion
+on X {∗X } with zero ∗X . Extend
+f to the
+`
+` everywhere defined (but generally
+uncomputable) function g : X {∗X } → X {∗X }, by
+g(y) := ∗X if y ∈
+/ D(f ).
+
+23
+
+Define the map
+τf : (X
+by
+
+a
+
+{∗X })2 → (X
+
+a
+{∗X })2
+
+τf (x, y) := (x + g(y), y).
+(3.6)
+`
+Clearly, it is a permutation. Since (X {∗X }, +) has no torsion, the only finite
+orbits of τfZ are fixed points.
+Moreover, the restriction of τf upon the recursive enumerable subset
+D(σf ) := (X
+of the constructive world Y := (X
+σf of this subset.
+
+`
+
+a
+
+{∗X }) × D(f )
+
+{∗X })2 induces a partial recursive permutation
+
+Since g(y) never takes the zero value ∗X on y ∈ D(f ), but always is zero outside
+it, the complement to D(σf ) in Y consists entirely of fixed points of τf .
+Thus, the halting problem for f reduces to the fixed point recognition for τf .
+3.4. Permutations with bounded shift. The formula (3.3) can be generalized as follows.
+3.4.1. Definition. Let σ be a permutation of Z+ , k ∈ Z+ . We say that σ has
+a bounded shift at k if there exist constants a, b, c (depending on σ and k) such that
+for all n ∈ Z,
+c · |n + a| ≤ σ n (k) ≤ c · |n + b|.
+(3.7)
+
+3.4.2. Lemma. If σ has bounded shift at k, then the σ Z –orbit of k is infinite,
+and for any m 6= 0 and any point of this orbit l, σ m has bounded shift at l.
+Proof. Let l = σ d (k). From (3.3) we get
+c · |mn + d + a| ≤ σ mn (l) = σ mn+d (k) ≤ c · |mn + d + b|
+that is
+c|m| · n +
+
+d+b
+d+a
+≤ (σ m )n (l) ≤ c|m| · n +
+.
+m
+m
+
+This inequality has the same form as (3.7), with different constants.
+
+(3.8)
+
+24
+
+3.5. Proposition. Let σ be a permutation of Z+ , k ∈ Z+ . Put
+Ψ(k, σ; z) :=
+
+∞
+X
+
+zn
+.
+n (k))2
+(σ
+n=1
+
+(3.9)
+
+Then we have:
+(i) If σ Z –orbit of k is finite, then Φ(σ, x; z) is a rational function in z whose all
+poles are of the first order and lie at roots of unity.
+(ii) If this orbit is infinite, and σ has bounded shift at (any point of ) this orbit,
+then Φ(σ, k; z) is the Taylor series of a function analytic at |z| < 1 and continuous
+at the boundary |z| = 1.
+Proof. If σ Z –orbit of k is finite, then (3.5) is a finite sum of several geometric
+progressions each of each sums to a rational function of the type
+const ·
+
+zk
+.
+1 − zl
+
+Otherwise, because of (3.7) we get a series absolutely converging for |z| ≤ 1. This
+proves our statement.
+3.6. The Kolmogorov order. Many interesting σ, such as total recursive
+permutations, are not permutations of bounded shift. To cope with this situation,
+we will (uncomputably) reorder Z+ , and show, that after this reordering, all partial
+recursive functions and permutations corresponding to them will satisfy a version
+of bounded shift property, allowing one to construct a modification of Ψ(z).
+Slightly more generally, let X be an infinite constructive world. Consider an
+optimal enumeration u : Z+ → X in the sense of Kolmogorov or Schnorr (see
+1.4.4 above). This means that u is total recursive, surjective, and the function
+Cu : X → Z+ ,
+Cu (x) := min {k | u(k) = x}
+is (a representative of) Kolmogorov complexity of constructive objects of type X.
+Now, define the Kolmogorov total order on X associated to u by
+x < y ⇔ Cu (x) < Cu (y)
+and denote by K = Ku : X → Z+ the function
+K(x) := 1 + card {y | Cu (y) < Cu (x)}.
+
+25
+
+Clearly, K is a bijection. If we arrange X in the order of growing Kolmogorov
+complexity, K(x) is precisely the number of x in this order.
+It is convenient also to introduce a Kolmogorov order on Z+ . We will denote the
+respective numbering by the same letter K. This should not lead to a confusion.
+It is straightforward to check that for some constant c0 > 0 and all x ∈ X, we
+have
+c0 Cu (x) ≤ K(x) ≤ Cu (x).
+(3.10)
+Let now σ : X → X be a partial recursive map, such that σ maps D(σ) to D(σ)
+and induces a permutation of this set. Put
+σK := K ◦ σ ◦ K−1
+and consider this as a permutation of the subset
+D(σK ) := K(D(σ)) ⊂ Z+
+consisting of numbers of elements of D(σ) in the Kolmogorov order. We have then
+the following modified version of (3.7):
+3.6.1. Proposition. Let x ∈ D(σ). If the orbit σ Z (x) is infinite, then there
+exist such constants c1 , c2 > 0 that for k := K(x) and all n ∈ Z we have
+n
+c1 · K(n) ≤ σK
+(k) ≤ c2 · K(n).
+
+(3.11)
+
+Proof. Let k = K(x), x ∈ X. We have for n > 0:
+n
+σK
+(k) = K(σ n (x)) ≤ c · K(n)
+
+(3.12)
+
+for any fixed Kolmogorov complexity order on Z+ (which we denote by the same
+letter K in order to simplify notation). In fact, if we replace K in (3.12) by the
+appropriate complexity C, this will follow from (2.1), since n 7→ σ n (x) is an everywhere defined morphism Z+ → X in C. It remains to invoke (3.10).
+Furthermore, let Y := {σ n (x) | n ∈ Z+ }. This is a recursively enumerable subset
+of X, and the partial function λ : X → Z+ with definition domain Y
+λ(y) = n, if y = σ n (x)
+
+26
+
+is partial recursive. Hence again in view of (3.6) and (2.1),
+K(n) = K(λ(y)) ≤ c′ · K(y) = c′ · K(σ n (x)).
+
+(3.13)
+
+Combining (3.12) and (3.13), we get (3.11) for n ≥ 0. Applying the same reasoning
+to σ −1 in place of σ, we obtain (3.11) for negative n.
+3.7. Proposition. With the same notations as in Proposition 3.6.1, put
+∞
+X
+z K(n)
+1
+Φ(k, σ; z) := 2 +
+n (k))2 .
+k
+(σK
+n=1
+
+(3.14)
+
+Then we have:
+(i) If σ Z –orbit of x is finite, then Φ(x, σ; z) is a rational function in z whose all
+poles are of the first order and lie at roots of unity.
+(ii) If this orbit is infinite, then Φ(x, σ; z) is the Taylor series of a function
+analytic at |z| < 1 and continuous at the boundary |z| = 1.
+3.8. Remarks. (a) In the proofs of Propositions 3.6.1 and 3.5, we actually
+used only the fact that σ restricted to the particular orbit Y := {σ n (x) | n ∈ Z+ }
+is recursive. thus justifying our choice of A− in 3.1 (b) above.
+(b) Although Kolmogorov’s order is as uncomputable as Kolmogorov’s complexity, there are serious arguments for studying constructions, explicitly involving it,
+such as our renormalization characters.
+One can argue that all cognitive activity of our civilization, based upon symbolic
+(in particular, mathematical) representations of reality, deals actually with the
+initial Kolmogorov segments of potentially infinite linguistic constructions, always
+replacing vast volumes of data by their compressed descriptions. This is especially
+visible in the outputs of the modern genome projects.
+In this sense, such linguistic cognitive activity can be metaphorically compared
+to a gigantic precomputation process, shellsorting infinite worlds of expressions in
+their Kolmogorov order.
+References
+[BaSt] J. Baez, M. Stay. Physics, topology, logic and computation: a Rosetta
+stone. Preprint arXiv:0903.0340
+[CalSt1] Ch. Calude, M. Stay. Most programs stop quickly or never halt. Adv.
+in Appl. Math., 40 (2008), 295–308
+
+27
+
+[CalSt2] Ch. Calude, M. Stay. Natural halting probabilities, partial randomness,
+and zeta functions. Information and Computation, 204 (2006), 1718–1739.
+[E-FMan] K. Ebrahimi–Fard and D. Manchon. The combinatorics of Bogolyubov’s
+recursion in renormalization. math-ph/0710.3675
+[GaLe] P. Gács, A. Levin. Causal Nets or What Is a Deterministic Computation?
+Int. Journ. Theor. Phys., vol. 21, No. 12 (1982), 961–971.
+[Gr] J. Grass. Reasoning about Computational Resource Allocation. An introduction to anytime algorithms. Posted on the Crossroads website.
+[GrZi] J. Grass, S. Zilberstein. Programming with anytime algorithms. In: Proc.
+of the IJCAI–95 Workshop on Anytime Algorithms and Deliberation Schedulyng.
+Montreal, 1995.
+[He] A. Heller. An existence theorem for recursive categories. Journ. of Symb.
+Logic, vol. 55, No 3 (1990), 1252–1268.
+[Le] L. Levin. Various measures of complexity for finite objects (axiomatic description). Soviet Math. Dokl., vol 17, No. 2 (1976), 522 –526.
+[LiVi] Ming Li, P. Vitányi. An introduction to Kolmogorov complexity and its
+applications. Springer, 1993.
+[Ma1] Yu. Manin. A Course in Mathematical Logic. Springer Verlag, 1977.
+XIII+286 pp. (The second, expanded Edition to be published in 2009).
+[Ma2] Yu. Manin. Classical computing, quantum computing, and Shor’s factoring
+algorithm. Séminaire Bourbaki, no. 862 (June 1999), Astérisque, vol 266, 2000,
+375–404. quant-ph/9903008.
+[Ma3] Yu. Manin. Renormalization and computation I. Motivation and background. Preprint arxiv:0904.492
+[NaWe] A. Nabutovsky, S. Weinberger. The fractal nature of Riemm/Diff I.
+Geometriae Dedicata, 101 (2003), 145–250.
+[Ro] H. Rogers. Gödel numberings of partial recursive functions. Journ. Symb.
+Logic, 23 (1958), 331–341.
+[RuZi] S. J. Russell, S. Zilberstein. Composing real–time systems. In: Proc. of
+the XIIth International Joint Conference on Artificial Intelligence, (1991), Sydney,
+pp. 212–217.
+[Sch] C. P. Schnorr. Optimal enumerations and optimal Gödel numberings.
+Math. Systems Theory, vol. 8, No. 2 (1974), 182–191.
+[So] R. I. Soare. Computability theory and differential geometry. Bull. of Symb.
+Logic, vol. 10, Nr 4 (2004), 457–486.
+
+28
+
+[Ya] N. S. Yanofsky. Towards a definition of an algorithm. math.LO/0602053
+
+

@@ -1,0 +1,124 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - heading "Szima — Projekt-áttekintés" [level=1] [ref=e3]
+    - paragraph [ref=e4]:
+      - text: A kód maga a kutatás. Ez az oldalt az Idris generálta (
+      - code [ref=e5]: idris2 --exec htmlKiiras Attekintes.idr
+      - text: ).
+    - paragraph [ref=e6]:
+      - text: "Frissítve: 2026-08-18 · 164/164 teszt + 50 Refl ✓ ·"
+      - link "github.com/jhegedus42/Szima" [ref=e7] [cursor=pointer]:
+        - /url: https://github.com/jhegedus42/Szima
+  - navigation [ref=e8]:
+    - text: "Oldalak:"
+    - link "📊 Dashboard" [ref=e9] [cursor=pointer]:
+      - /url: dashboard.html
+    - link "📖 Carnot" [ref=e10] [cursor=pointer]:
+      - /url: carnot_entropia.html
+    - link "📈 Zitterbewegung" [ref=e11] [cursor=pointer]:
+      - /url: zitterbewegung.html
+    - link "🏠 Régi főoldal" [ref=e12] [cursor=pointer]:
+      - /url: index.html
+  - heading "1. A megépült elemek (mind Idrisben, gép-ellenőrzött)" [level=2] [ref=e13]
+  - table [ref=e14]:
+    - rowgroup [ref=e15]:
+      - row [ref=e16]:
+        - columnheader "Modul" [ref=e17]
+        - columnheader "Mit bizonyít" [ref=e18]
+        - columnheader "Miért kell az AI-hez" [ref=e19]
+        - columnheader "Állapot" [ref=e20]
+      - row [ref=e21]:
+        - cell "Fonetika.idr" [ref=e22]
+        - cell "40 hang, IPA, szótagolás (AkH.226.f), ng→[ŋ]" [ref=e23]
+        - cell "a szókincs TÍPUS — a szavak nem String, hanem Hang-konstruktorok" [ref=e24]
+        - cell "65 teszt" [ref=e25]
+      - row [ref=e26]:
+        - cell "FanoParitás.idr" [ref=e27]
+        - cell "hangrend = paritásbit; Fanó-sík 7 egyenes XOR=0 [Refl]; Pauli [Refl]" [ref=e28]
+        - cell "a nyelv önellenőrző — a rossz toldalékot a típus elutasítja" [ref=e29]
+        - cell "12 teszt + 9 Refl" [ref=e30]
+      - row [ref=e31]:
+        - cell "Kerdoszo.idr" [ref=e32]
+        - cell "kérdőszó→esetrag típusos; „mikor?\"-ra nincs rag [Refl] (T≠C,P)" [ref=e33]
+        - 'cell "a kíváncsiság TÍPUS: kérdés = morfizmus üres célal; Yoneda" [ref=e34]'
+        - cell "13 teszt + 7 Refl" [ref=e35]
+      - row [ref=e36]:
+        - cell "HanMagKodolas.idr" [ref=e37]
+        - cell "5 bit kínai + 3 bit magyar = 8 bit = E8Pont; 137=11²+4² [Refl]" [ref=e38]
+        - cell "egy gondolat = egy bájt a Steane-rácsban, paritás-önellenőrző" [ref=e39]
+        - cell "7 teszt + 5 Refl" [ref=e40]
+      - row [ref=e41]:
+        - cell "E8Gyokrendszer.idr" [ref=e42]
+        - cell "2→4→8→24→240 torony; 112+128=240 (két út) [Refl]; 128=2⁷" [ref=e43]
+        - cell "a szó mérete = oktonion egységek = E8 gyökök" [ref=e44]
+        - cell "12 teszt + 16 Refl" [ref=e45]
+      - row [ref=e46]:
+        - cell "DiracGammaMatricak.idr" [ref=e47]
+        - cell "Weyl γ⁰ keveri ψ_L↔ψ_R; szerveri sosem; γ⁵=diag [Refl]" [ref=e48]
+        - 'cell "a kétnyelvű gondolkodás mechanizmusa: γ⁰ (idő/magyar) forgat" [ref=e49]'
+        - cell "6 teszt + 11 Refl" [ref=e50]
+      - row [ref=e51]:
+        - cell "OktonionAlgebra.idr" [ref=e52]
+        - cell "49 pár × 3 törvény EGY Refl-lel; Fano-sík [Refl]; nem-asszoc. [Refl]" [ref=e53]
+        - cell "a mondat = nem assz. szorzat (a csoportosítás változtatja a jelentést)" [ref=e54]
+        - cell "8 teszt + 3 Refl" [ref=e55]
+      - row [ref=e56]:
+        - cell "SteaneHamiltonian.idr" [ref=e57]
+        - cell "H=−6 alapállapot [Refl]; szindróma=hibapozíció binárisan [Refl]" [ref=e58]
+        - cell "a hibajavítás = Carnot-ciklus (mérés→javítás→törlés→újrakészítés)" [ref=e59]
+        - cell "9 teszt + 9 Refl" [ref=e60]
+      - row [ref=e61]:
+        - cell "LejeuneTranszformacio.idr" [ref=e62]
+        - 'cell "ℒ-család (Landauer ℒ_I); 2. főtétel: csak a törlési ütem fizet [Refl]" [ref=e63]'
+        - cell "Legendre általánosítása; a Carnot = kör a ℒ-gráfban" [ref=e64]
+        - cell "5 teszt + 4 Refl" [ref=e65]
+      - row [ref=e66]:
+        - cell "DiracIdoFejlodes.idr" [ref=e67]
+        - cell "P(magyar)=sin²(t) két úton ≤10⁻¹²; szerveri γ⁰-val P=0 pontosan" [ref=e68]
+        - cell "a jelentés oszcillál (Zitterbewegung); Idris számol, böngésző rajzol" [ref=e69]
+        - cell "5 teszt" [ref=e70]
+      - row [ref=e71]:
+        - cell "ErtelmezoSzotar.idr" [ref=e72]
+        - 'cell "8 ÉKSZ-szócikk; GAUGE: kézzel írt == független parser [teszt]" [ref=e73]'
+        - cell "a szócikkek genus-differentia szerkezete = a fogalom-gráf" [ref=e74]
+        - cell "14 teszt" [ref=e75]
+      - row [ref=e76]:
+        - cell "LawvereGodel.idr" [ref=e77]
+        - cell "Lawvere fixpont [Refl]; hazug p=1/2 [Refl]; Kleene 3-értékű" [ref=e78]
+        - 'cell "az öntudat csírája: a rendszer kérdezhet önmagáról" [ref=e79]'
+        - cell "Refl" [ref=e80]
+      - row [ref=e81]:
+        - cell "Komplex.idr" [ref=e82]
+        - cell "φ-kontrakció 10⁻¹⁰; ϱ fixpont; oda-vissza (Loschmidt)" [ref=e83]
+        - 'cell "a Y-kombinátor numerikus magja: a kontrakció = kérdés→információ" [ref=e84]'
+        - cell "Show" [ref=e85]
+      - row [ref=e86]:
+        - cell "KorOsztas.idr" [ref=e87]
+        - cell "Gauss-Wantzel; komma=23,46 cent; bájt=8 (256)" [ref=e88]
+        - cell "a konszonancia-prímek = Fermat-prímek" [ref=e89]
+        - cell "Refl" [ref=e90]
+  - heading "2. Ami NEM megvan (őszintén)" [level=2] [ref=e91]
+  - list [ref=e93]:
+    - listitem [ref=e94]:
+      - generic [ref=e95]:
+        - text: Nincs egy
+        - code [ref=e96]: main
+        - text: ", ami gondolkodik."
+      - text: A LEGO-elemek külön-külön bizonyítottak, de nincsenek összekötve.
+    - listitem [ref=e97]:
+      - text: "A hiányzó lépés: egy"
+      - code [ref=e98]: main
+      - text: ", ami kap egy kérdést ("
+      - code [ref=e99]: Kerdoszo
+      - text: ), kódolja (
+      - code [ref=e100]: HanMag→E8Pont
+      - text: ), lefuttatja a Carnot-ciklust, és ad egy választ — Idrisben.
+    - listitem [ref=e101]: "α⁻¹ = 137 + 9/250: 6,5σ nyitott ⚡"
+    - listitem [ref=e102]: "A szerveri Dirac-nyelv: a gammák hibásak (javítva Idrisben, szerveren nem)."
+  - heading "3. Hogyan futtasd" [level=2] [ref=e103]
+  - generic [ref=e104]: git clone https://github.com/jhegedus42/Szima && cd Szima/osveny_index idris2 -c Teszt.idr && idris2 --exec main Teszt.idr → 164/164 teszt + 50 Refl ✓ idris2 --exec htmlKiiras Attekintes.idr > ../docs/attekintes.html → ez az oldal idris2 --exec jsonKiiras DiracIdoFejlodes.idr > ../docs/adatok/zitterbewegung.json → a grafikon adata ./ellenorzes.sh → a harness ellenőrzi a szabályokat
+  - contentinfo [ref=e105]:
+    - text: Szima · a kód maga a kutatás ·
+    - link "github.com/jhegedus42/Szima" [ref=e106] [cursor=pointer]:
+      - /url: https://github.com/jhegedus42/Szima
+    - text: Dedikálva Szimának, a szeretett cicának 🐱

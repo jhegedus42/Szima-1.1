@@ -1,0 +1,40 @@
+- generic [active] [ref=e1]:
+  - heading "Vizualizációk — az Idris számolta, a böngésző rajzolta" [level=1] [ref=e2]
+  - paragraph [ref=e3]:
+    - text: Minden adat az Idrisből jön (
+    - code [ref=e4]: idris2 --exec jsonKiiras Vizualizaciok.idr
+    - text: ).
+    - link "← vissza az áttekintéshez" [ref=e5] [cursor=pointer]:
+      - /url: attekintes.html
+  - heading "1. Fano-sík (7 pont, 7 egyenes — a Steane [[7,1,3]] alapja)" [level=2] [ref=e6]
+  - paragraph [ref=e9]:
+    - text: A 7 pont = a 7 qubit; a 7 egyenes = a stabilizátor-ellenőrzések. Minden egyenes 3 ponton át megy; minden pont 3 egyenesen.
+    - link "FanoParitás.idr →" [ref=e10] [cursor=pointer]:
+      - /url: https://github.com/jhegedus42/Szima/blob/master/osveny_index/FanoParitás.idr
+  - heading "2. Cayley–Dickson-torony (2→4→8→24→240)" [level=2] [ref=e11]
+  - paragraph [ref=e14]:
+    - text: A kör 8 pontja → a gömb 24 → az oktonion-gömb 240 = az E8 gyökök.
+    - link "E8Gyokrendszer.idr →" [ref=e15] [cursor=pointer]:
+      - /url: https://github.com/jhegedus42/Szima/blob/master/osveny_index/E8Gyokrendszer.idr
+  - heading "3. Oktonion szorzattábla (7×7, a Fano-síkból)" [level=2] [ref=e16]
+  - paragraph [ref=e18]:
+    - text: "A 49 pár × 3 alternativitási törvény egyetlen Refl-lel bizonyítva. Nem asszociatív: (e₁e₂)e₃ = −e₆ ≠ e₁(e₂e₃) = +e₆."
+    - link "OktonionAlgebra.idr →" [ref=e19] [cursor=pointer]:
+      - /url: https://github.com/jhegedus42/Szima/blob/master/osveny_index/OktonionAlgebra.idr
+  - heading "4. Steane-Hamiltonián spektrum" [level=2] [ref=e20]
+  - paragraph [ref=e23]:
+    - text: A tiszta állapot a legalacsonyabb (H=−6); a hibák magasabb energiára visznek. A szindróma binárisan megmondja a hiba pozícióját.
+    - link "SteaneHamiltonian.idr →" [ref=e24] [cursor=pointer]:
+      - /url: https://github.com/jhegedus42/Szima/blob/master/osveny_index/SteaneHamiltonian.idr
+  - heading "5. Zitterbewegung (a Dirac-nyelv időfejlődése)" [level=2] [ref=e25]
+  - paragraph [ref=e28]:
+    - text: A jelentés oszcillál a térbeli (中文) és időbeli (magyar) nézet között.
+    - link "Részletes oldal →" [ref=e29] [cursor=pointer]:
+      - /url: zitterbewegung.html
+    - text: ·
+    - link "DiracIdoFejlodes.idr →" [ref=e30] [cursor=pointer]:
+      - /url: https://github.com/jhegedus42/Szima/blob/master/osveny_index/DiracIdoFejlodes.idr
+  - contentinfo [ref=e31]:
+    - text: Szima · az adatokat az Idris számolta, a böngésző csak rajzol ·
+    - link "github.com/jhegedus42/Szima" [ref=e32] [cursor=pointer]:
+      - /url: https://github.com/jhegedus42/Szima

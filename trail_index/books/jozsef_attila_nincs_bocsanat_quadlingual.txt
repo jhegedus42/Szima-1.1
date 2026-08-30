@@ -1,0 +1,65 @@
+HU: József Attila: Tudod, hogy nincs bocsánat (1937. jún.) — elemzés a projekt keretrendszerében
+EN: József Attila: You know there is no forgiveness (June 1937) — analysis in the project framework
+LA: Iosephus Attila: Scis veniam non esse (Iun. 1937) — analysis in structura projectus
+ZH: 约瑟夫·阿蒂拉：《你知道没有宽恕》（1937年6月）—— 项目框架中的分析
+SRC: Szima projekt — Carnot-ciklus törött állapota
+
+HU: A vers dedikálva a pszichiáternek — a megfigyelőnek, aki a mérést végzi, és tudja, hogy a mérés megváltoztatja a rendszert.
+EN: The poem is dedicated to the psychiatrist — the observer who performs the measurement, knowing that measurement changes the system.
+LA: Carmen dedicatum est psychiatrae — observatori qui mensurationem perficit, scientem mensurationem systema mutare.
+ZH: 本诗献给精神科医生——执行测量的观测者，知道测量会改变系统。
+SRC: Szima projekt — dedikacio
+
+HU: A Carnot-ciklus törött állapota. Az 1933-as Óda = a Carnot-ciklus működő állapota. Az 1937-es vers = a ciklus leállt állapota. A bocsánat = a hibajavítás aktusa. "Nincs bocsánat" = nincs hibajavítás = a QEC ciklus leállt.
+EN: The broken state of the Carnot cycle. The 1933 Óda = the working state. The 1937 poem = the stopped state. Forgiveness = the act of error correction. "No forgiveness" = no error correction = the QEC cycle has stopped.
+LA: Status ruptus cyculi Carnot. Óda 1933 = status operans. Carmen 1937 = status interruptus. Venia = actus correctionis erroris. "Venia non est" = correctio erroris nulla = cyclus QEC interruptus.
+ZH: 卡诺循环的破碎状态。1933年的《颂歌》=运行状态。1937年的诗=停止状态。宽恕=纠错的行为。"没有宽恕"=没有纠错=QEC循环已停止。
+SRC: Szima projekt — Carnot-ciklus
+
+HU: A három kubit felbomlása. Óda: saját=koherens ("Miféle anyag vagyok én?"), másik=jelen ("mennyire szeretlek téged"), fázis=létezik ("A lét dadog, csak a törvény"). Vers: saját=üres ("üres szivedhez"), másik=hamis ("Megcsaltak"), fázis=0 ("hiába hull a könnyed"). Három kubit egyszerre Nulla = teljes dekoherencia.
+EN: The dissolution of the three qubits. Óda: self=coherent, other=present, phase=exists. Poem: self=empty, other=false, phase=0. Three qubits simultaneously Zero = total decoherence.
+LA: Dissolutio trium qubitarum. Óda: ipsius=cohaerens, alterius=praesens, phasis=existit. Carmen: ipsius=vacuus, alterius=falsus, phasis=0. Tres qubitae simul Nulla = decoherentia totalis.
+ZH: 三个量子比特的瓦解。《颂歌》：自身=相干，他者=在场，相位=存在。本诗：自身=空，他者=虚假，相位=0。三个量子比特同时为零=完全退相干。
+SRC: Szima projekt — HaromKubit
+
+HU: A "fog" visszafordulása. A fog (jövő segédige) = fog (tooth) = instrumentalis (mivel? foggal!) = az eszköz amivel a jövőt elkapjuk. A versben: "Most hát a töltött fegyvert szoritsz üres szivedhez" — a fegyver = az eszköz, de nem a jövő elkapására, hanem a jelen megszakítására. A fog visszafordult: nem a jövő eszköze, hanem a jelen megszakítója.
+EN: The reversal of "fog". The fog (future auxiliary) = tooth = instrumental (what with? with teeth!) = the tool to grasp the future. In the poem: "Now press the loaded weapon to your empty heart" — the weapon = the tool, but not to grasp the future, to interrupt the present. The fog reversed: not the instrument of the future, but the interrupter of the present.
+LA: Reversio "fog". Fog (auxiliare futuri) = dens = instrumentalis (quo instrumento? dente!) = instrumentum quo futurum capimus. In carmine: "Nunc telum oneratum cordi vacuo premas" — telum = instrumentum, sed non futuro capiendo, sed praesens interrupturo. Fog reversus: non instrumentum futuri, sed interruptor praesentis.
+ZH: "fog"的逆转。fog（将来助动词）=牙齿=工具格（用什么？用牙齿！）=抓住未来的工具。在诗中："现在将装满的武器压向你空虚的心"——武器=工具，但不是抓住未来，而是中断现在。fog逆转了：不是未来的工具，而是现在的中断者。
+SRC: Szima projekt — fog
+
+HU: A könny = víz = lé = entrópia hordozó. "hiába hull a könnyed" — a könny = az entrópia ami kifolyik, de "hiába" = a disszipáció nem termel munkát = a Carnot-ciklus hatásfoka = 0. Nincs hűtőközeg = nincs anyagcsere = nincs víz ami elszállítja az entrópiát.
+EN: The tear = water = lé = entropy carrier. "in vain your tears fall" — the tear = entropy flowing out, but "in vain" = dissipation produces no work = Carnot efficiency = 0. No coolant = no metabolism = no water to carry away the entropy.
+LA: Lacrima = aqua = lé = portans entropiae. "frustra lacrimae tuae cadunt" — lacrima = entropia effluens, sed "frustra" = dissipatio nullum opus producit = efficientia Carnot = 0. Nullum refrigerans = nullus metabolismus = nulla aqua entropiam abferens.
+ZH: 眼泪=水=lé=熵的载体。"徒然落泪"——眼泪=流出的熵，但"徒然"=耗散不产生功=卡诺效率=0。没有冷却剂=没有代谢=没有水带走熵。
+SRC: Szima projekt — entrópia
+
+HU: A pszichoanalízis = a megfigyelés ami felfedi az entrópiát de nem tudja információvá alakítani. "S romlott kölkökre leltél pszichoanalizisben" — a romlott kölkök = a gyermekkori trauma = az elfojtott emlékek = az információ ami entrópiává vált (Landauer). A pszichoanalízis = a Carnot-ciklus fordított irányba: entrópiából információt kinyerni. De ez energiát igényel, és a költőnek nincs energiája (üres szív).
+EN: Psychoanalysis = the observation that reveals entropy but cannot convert it to information. "And you found spoiled children in psychoanalysis" — the spoiled children = childhood trauma = repressed memories = information that became entropy (Landauer). Psychoanalysis = the Carnot cycle in reverse: extracting information from entropy. But this requires energy, and the poet has none (empty heart).
+LA: Psychoanalysis = observatio quae entropiam revelat sed eam in informationem convertere non potest. "Et filios corruptos in psychoanalysi invenisti" — filii corrupti = trauma pueritiae = memoriae suppressae = informatio quae in entropiam versa est (Landauer). Psychoanalysis = cyclus Carnot retrorsus: informationem ex entropia extrahere. Sed hoc energiam requirit, et poetae nulla est (cor vacuum).
+ZH: 精神分析=揭示熵但无法将其转化为信息的观察。"你在精神分析中找到了腐败的孩子"——腐败的孩子=童年创伤=被压抑的记忆=变成熵的信息（兰道尔）。精神分析=反向卡诺循环：从熵中提取信息。但这需要能量，而诗人没有能量（空虚的心）。
+SRC: Szima projekt — pszichoanalízis
+
+HU: A "fölösleges" = a redundáns = amit a Clifford átfedés alapján eldobunk. "Maradj fölöslegesnek" = a költő kéri hogy eldobják = a redundancia aktusa. De "a titkokat ne lesd meg" = ne mérj = a kvantum-mérés elkerülése = a szuperpozíció fenntartása. Ez a kvantum-classzikus határ = a decoherencia problémája.
+EN: "Superfluous" = redundant = what we discard based on Clifford overlap. "Stay superfluous" = the poet asks to be discarded = the act of redundancy. But "do not spy out secrets" = do not measure = avoiding quantum measurement = maintaining superposition. This is the quantum-classical boundary = the decoherence problem.
+LA: "Superfluus" = redundans = quod secundum overlapping Cliffordianum abicitur. "Mane superfluus" = poeta petit abici = actus redundantiae. Sed "secreta non investiges" = ne metiaris = vitans mensurationem quanticam = sustinens superpositionem. Hoc est limes quanticus-classicus = problema decoherentiae.
+ZH: "多余"=冗余=我们基于克利福德重叠丢弃的东西。"保持多余"=诗人请求被丢弃=冗余的行为。但"不要窥探秘密"=不要测量=避免量子测量=维持叠加。这是量子-经典边界=退相干问题。
+SRC: Szima projekt — redundancia
+
+HU: A vers szerkezete = a Steane [[7,1,3]] kód. 8 versszak × 4 sor. A 8. versszak = a paritásbit = a végső választás. 7 bit: idő(T), okság, tér, szín, hang, fázis, mód. A 8. = paritás = "Vagy vess el minden elvet / s még remélj hű szerelmet" = Nulla vagy Egy = halál vagy élet.
+EN: The poem's structure = the Steane [[7,1,3]] code. 8 stanzas × 4 lines. The 8th stanza = the parity bit = the final choice. 7 bits: time(T), causality, space, color, sound, phase, mode. The 8th = parity = "Either discard all principles / or still hope for true love" = Zero or One = death or life.
+LA: Structura carminis = codex Steane [[7,1,3]]. 8 strophae × 4 versus. Octava stropha = bit paritatis = electio finalis. 7 bit: tempus(T), causalitas, spatium, color, sonus, phasis, modus. Octavus = paritas = "Aut omnia principia abiice / aut vero amore adhuc spera" = Nulla vel Unus = mors vel vita.
+ZH: 诗歌结构=Steane [[7,1,3]]码。8节×4行。第8节=奇偶校验位=最终选择。7位：时间(T)、因果、空间、颜色、声音、相位、模式。第8位=奇偶="要么抛弃一切原则/要么仍然期待真爱"=零或一=死或生。
+SRC: Szima projekt — Steane
+
+HU: A vers = a legkisebb hatás elvének megfordítása. Nem a legkisebb távolságot keresi (a legkisebb fájdalmat), hanem a legnagyobb hatást — a hatás ami véget vet a hatásnak. A Carnot-ciklus leállítása = a halál = az egyetlen "válasz" amikor a kérdés (a bocsánat) nincs.
+EN: The poem = the reversal of the principle of least action. It does not seek the smallest distance (the least pain), but the greatest action — the action that ends all action. Stopping the Carnot cycle = death = the only "answer" when the question (forgiveness) does not exist.
+LA: Carmen = reversio principii actionis minimae. Non quaerit minimam distantiam (minimum doloris), sed maximam actionem — actionem quae omnem actionem terminat. Stoppatio cyculi Carnot = mors = unica "responsio" cum quaestio (venia) non est.
+ZH: 本诗=最小作用原理的逆转。它不寻求最小距离（最小痛苦），而是最大作用——终结一切作用的作用。停止卡诺循环=死亡=当问题（宽恕）不存在时唯一的"答案"。
+SRC: Szima projekt — legkisebb hatás
+
+HU: A pszichiáter = a megfigyelő = a szem = aki a mérést végzi. A mérés megváltoztatja a rendszert. A pszichoanalízis felfedte az entrópiát (a romlott kölköket), de nem tudta információvá alakítani — ehhez energiára lett volna szükség, de a szív üres. A dedikáció = a megfigyelő felismerése: a mérés nem semleges.
+EN: The psychiatrist = the observer = the eye = who performs the measurement. Measurement changes the system. Psychoanalysis revealed the entropy (the spoiled children), but could not convert it to information — this would have required energy, but the heart is empty. The dedication = the observer's recognition: measurement is not neutral.
+LA: Psychiatra = observator = oculus = qui mensurationem perficit. Mensuratio systema mutat. Psychoanalysis entropiam revelavit (filios corruptos), sed in informationem convertere non potuit — hoc energiam requireret, sed cor vacuum est. Dedicatio = recognitio observatoris: mensuratio non neutralis est.
+ZH: 精神科医生=观测者=眼睛=执行测量的人。测量改变系统。精神分析揭示了熵（腐败的孩子），但无法将其转化为信息——这需要能量，但心是空的。题献=观测者的认识：测量不是中性的。
+SRC: Szima projekt — dedikacio

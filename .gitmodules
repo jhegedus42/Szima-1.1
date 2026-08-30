@@ -1,0 +1,3 @@
+[submodule "source/gondnok-laptop"]
+	path = source/gondnok-laptop
+	url = https://github.com/jhegedus42/gondnok-laptop.git

@@ -1,0 +1,114 @@
+- generic [active] [ref=f3e1]:
+  - heading "Vizualizációk — az Idris számolta, a böngésző rajzolta" [level=1] [ref=f3e2]
+  - paragraph [ref=f3e3]:
+    - text: Minden adat az Idrisből jön (
+    - code [ref=f3e4]: idris2 --exec jsonKiiras Vizualizaciok.idr
+    - text: ).
+    - link "← vissza az áttekintéshez" [ref=f3e5] [cursor=pointer]:
+      - /url: attekintes.html
+  - heading "1. Fano-sík (7 pont, 7 egyenes — a Steane [[7,1,3]] alapja)" [level=2] [ref=f3e6]
+  - paragraph [ref=f3e9]:
+    - text: A 7 pont = a 7 qubit; a 7 egyenes = a stabilizátor-ellenőrzések. Minden egyenes 3 ponton át megy; minden pont 3 egyenesen.
+    - link "FanoParitás.idr →" [ref=f3e10] [cursor=pointer]:
+      - /url: https://github.com/jhegedus42/Szima/blob/master/osveny_index/FanoParitás.idr
+  - heading "2. Cayley–Dickson-torony (2→4→8→24→240)" [level=2] [ref=f3e11]
+  - paragraph [ref=f3e14]:
+    - text: A kör 8 pontja → a gömb 24 → az oktonion-gömb 240 = az E8 gyökök.
+    - link "E8Gyokrendszer.idr →" [ref=f3e15] [cursor=pointer]:
+      - /url: https://github.com/jhegedus42/Szima/blob/master/osveny_index/E8Gyokrendszer.idr
+  - heading "3. Oktonion szorzattábla (7×7, a Fano-síkból)" [level=2] [ref=f3e16]
+  - table [ref=f3e18]:
+    - rowgroup [ref=f3e19]:
+      - row [ref=f3e20]:
+        - columnheader [ref=f3e21]
+        - columnheader "e1" [ref=f3e22]
+        - columnheader "e2" [ref=f3e23]
+        - columnheader "e3" [ref=f3e24]
+        - columnheader "e4" [ref=f3e25]
+        - columnheader "e5" [ref=f3e26]
+        - columnheader "e6" [ref=f3e27]
+        - columnheader "e7" [ref=f3e28]
+      - row [ref=f3e29]:
+        - rowheader "e1" [ref=f3e30]
+        - cell "-1" [ref=f3e31]
+        - cell "+e4" [ref=f3e32]
+        - cell "+e7" [ref=f3e33]
+        - cell "-e2" [ref=f3e34]
+        - cell "+e6" [ref=f3e35]
+        - cell "-e5" [ref=f3e36]
+        - cell "-e3" [ref=f3e37]
+      - row [ref=f3e38]:
+        - rowheader "e2" [ref=f3e39]
+        - cell "-e4" [ref=f3e40]
+        - cell "-1" [ref=f3e41]
+        - cell "+e5" [ref=f3e42]
+        - cell "+e1" [ref=f3e43]
+        - cell "-e3" [ref=f3e44]
+        - cell "+e7" [ref=f3e45]
+        - cell "-e6" [ref=f3e46]
+      - row [ref=f3e47]:
+        - rowheader "e3" [ref=f3e48]
+        - cell "-e7" [ref=f3e49]
+        - cell "-e5" [ref=f3e50]
+        - cell "-1" [ref=f3e51]
+        - cell "+e6" [ref=f3e52]
+        - cell "+e2" [ref=f3e53]
+        - cell "-e4" [ref=f3e54]
+        - cell "+e1" [ref=f3e55]
+      - row [ref=f3e56]:
+        - rowheader "e4" [ref=f3e57]
+        - cell "+e2" [ref=f3e58]
+        - cell "-e1" [ref=f3e59]
+        - cell "-e6" [ref=f3e60]
+        - cell "-1" [ref=f3e61]
+        - cell "+e7" [ref=f3e62]
+        - cell "+e3" [ref=f3e63]
+        - cell "-e5" [ref=f3e64]
+      - row [ref=f3e65]:
+        - rowheader "e5" [ref=f3e66]
+        - cell "-e6" [ref=f3e67]
+        - cell "+e3" [ref=f3e68]
+        - cell "-e2" [ref=f3e69]
+        - cell "-e7" [ref=f3e70]
+        - cell "-1" [ref=f3e71]
+        - cell "+e1" [ref=f3e72]
+        - cell "+e4" [ref=f3e73]
+      - row [ref=f3e74]:
+        - rowheader "e6" [ref=f3e75]
+        - cell "+e5" [ref=f3e76]
+        - cell "-e7" [ref=f3e77]
+        - cell "+e4" [ref=f3e78]
+        - cell "-e3" [ref=f3e79]
+        - cell "-e1" [ref=f3e80]
+        - cell "-1" [ref=f3e81]
+        - cell "+e2" [ref=f3e82]
+      - row [ref=f3e83]:
+        - rowheader "e7" [ref=f3e84]
+        - cell "+e3" [ref=f3e85]
+        - cell "+e6" [ref=f3e86]
+        - cell "-e1" [ref=f3e87]
+        - cell "+e5" [ref=f3e88]
+        - cell "-e4" [ref=f3e89]
+        - cell "-e2" [ref=f3e90]
+        - cell "-1" [ref=f3e91]
+  - paragraph [ref=f3e92]:
+    - text: "A 49 pár × 3 alternativitási törvény egyetlen Refl-lel bizonyítva. Nem asszociatív: (e₁e₂)e₃ = −e₆ ≠ e₁(e₂e₃) = +e₆."
+    - link "OktonionAlgebra.idr →" [ref=f3e93] [cursor=pointer]:
+      - /url: https://github.com/jhegedus42/Szima/blob/master/osveny_index/OktonionAlgebra.idr
+  - heading "4. Steane-Hamiltonián spektrum" [level=2] [ref=f3e94]
+  - paragraph [ref=f3e97]:
+    - text: A tiszta állapot a legalacsonyabb (H=−6); a hibák magasabb energiára visznek. A szindróma binárisan megmondja a hiba pozícióját.
+    - link "SteaneHamiltonian.idr →" [ref=f3e98] [cursor=pointer]:
+      - /url: https://github.com/jhegedus42/Szima/blob/master/osveny_index/SteaneHamiltonian.idr
+  - heading "5. Zitterbewegung (a Dirac-nyelv időfejlődése)" [level=2] [ref=f3e99]
+  - paragraph [ref=f3e102]:
+    - text: A jelentés oszcillál a térbeli (中文) és időbeli (magyar) nézet között.
+    - link "Részletes oldal →" [ref=f3e103] [cursor=pointer]:
+      - /url: zitterbewegung.html
+    - text: ·
+    - link "DiracIdoFejlodes.idr →" [ref=f3e104] [cursor=pointer]:
+      - /url: https://github.com/jhegedus42/Szima/blob/master/osveny_index/DiracIdoFejlodes.idr
+  - contentinfo [ref=f3e105]:
+    - text: Szima · az adatokat az Idris számolta, a böngésző csak rajzol ·
+    - link "github.com/jhegedus42/Szima" [ref=f3e106] [cursor=pointer]:
+      - /url: https://github.com/jhegedus42/Szima

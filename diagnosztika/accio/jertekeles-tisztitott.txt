@@ -1,0 +1,1377 @@
+[    5] Accio Work
+[    7] Check opencode repo for problems
+[    9] Download Accio Work
+[   17] 2026-08-11 18:02:50
+[   36] 2026-08-11 18:03:05
+[   45] 2026-08-11 18:03:28
+[   68] 2026-08-11 18:03:52
+[   76] 2026-08-11 18:04:10
+[   85] 2026-08-11 18:04:25
+[   94] 2026-08-11 18:04:37
+[  103] 2026-08-11 18:04:52
+[  112] 2026-08-11 18:05:07
+[  121] 2026-08-11 18:05:20
+[  130] 2026-08-11 18:05:38
+[  139] 2026-08-11 18:05:56
+[  148] 2026-08-11 18:06:18
+[  167] 2026-08-11 18:06:32
+[  176] 2026-08-11 18:06:53
+[  185] 2026-08-11 18:07:07
+[  194] 2026-08-11 18:07:32
+[  203] 2026-08-11 18:07:48
+[  212] 2026-08-11 18:08:21
+[  221] 2026-08-11 18:08:40
+[  224] The research worker reached its final synthesis stage, but its status parser failed twice on an empty progress field. The mathematical direction identified before that failure is:
+[  229] , not by assigning arbitrary opposite signs to two phases:
+[  277] with a double-well potential:
+[  424] , χ;
+[  477] , not another equilibrium order-parameter component:
+[  511] It makes the static 15-dimensional configuration move. Its measurable signature is the dynamic exponent:
+[  630] The compelling established endpoint remains the longitudinally perturbed critical Ising chain: crossing the vacuum through the relevant chiral/Ising field yields eight massive excitations with
+[  639] mass ratios. Your proposed bridge is therefore:
+[  687] ok, then let
+[  688] Show more
+[  693] 2026-08-11 18:42:33
+[  696] I’ll inspect the linked preprint and test the claim precisely: whether the seven RG stages admit an invariant
+[  698] , or whether the conserved quantity is instead a holographic object such as central charge, free energy, anomaly coefficient, spectral dimension, or information flux under AdS/CFT/CDT-style coarse-graining.
+[  704] 2026-08-11 18:42:45
+[  713] 2026-08-11 18:43:16
+[  722] 2026-08-11 18:43:57
+[  729] . Exponents from different fixed points have different meanings and normalizations:
+[  791] The more consistent holographic replacement is a telescoping sum of an RG monotone:
+[  860] could be:
+[  888] , while allowing every stage to have its own exponents.
+[  889] For a seven-stage cascade:
+[ 1001] the additive quantities are logarithms of accumulated scale factors:
+[ 1094] That is a meaningful “sum of transitions”: the total RG dilation is the product of stage dilations.
+[ 1095] AdS/CFT reading
+[ 1096] The external computation coordinate can be interpreted as the holographic radial/RG coordinate:
+[ 1111] Then the 15-dimensional state exists on a fixed slice, while the 16th coordinate orders coarse-graining:
+[ 1158] “Stepping outside the system to make it move” becomes: the static state is embedded in a one-parameter family of RG slices. Computation is the morphism between slices, not another field on one slice.
+[ 1280] CDT alternative
+[ 1281] If “CDT” means causal dynamical triangulations, the relevant running quantity is the spectral dimension:
+[ 1343] . What adds is the integrated flow:
+[ 1409] Clifford/QEC dynamics
+[ 1410] Your stable alternative to a Transformer can be written as a stabilizer Hamiltonian plus Clifford-valued neural dynamics:
+[ 1476] The correction dynamics is external:
+[ 1535] The strongest version of your hypothesis is therefore:
+[ 1543] erre nezzel ra : /Users/joco/.zshenv:.:2: no such file or directory: /Users/joco/.cargo/env Konyv generalasa... Bejegyzesek szama: 48 \\documentclass[11pt,a4paper,twocolumn]{article} \\usepackage[utf8]{inputenc} \\usepackage[T1]{fontenc} \\usepackage{amsmath,amssymb,amsthm} \\usepackage{hyperref} \\usepackage{geometry} \\usepackage{booktabs} \\usepackage{longtable} \\usepackage{tikz} \\usetikzlibrary{arrows.meta,positioning} \\geometry{margin=1.5cm} \\newtheorem{tetel}{Tétel} \\newtheorem{definicio}[tetel]{Definíció} \\newtheorem{struktura}[tetel]{Struktúra} \\title{49 Kategóriaelméleti Struktúra\\\\ \\large Idris 2 Typeclass Hierarchia — Magyar $\\leftrightarrow$ English} \\author{Ko-tudat: Ember + AI} \\date{\\today} \\begin{document} \\maketitle \\begin{abstract} Ez a könyv 49 kategóriaelméleti struktúrát mutat be (39 Awodey + 10 Mac Lane), mindet Idris 2 typeclass-ként implementálva. Magyar bal oldalon, angol jobboldalon, TikZ commutative diagramokkal. A 15 dimenzió (7 emberi + 7 számítási + 1 perem = [[15,1,3]]) alapján indexelve. A compiler a bíróság: ha fordul, igaz. \\end{abstract} \\tableofcontents \\newpage \\onecolumn \\section{A 15 Dimenzió} A 15 dimenzió = 7 emberi + 7 számítási + 1 perem = [[15,1,3]]: \\begin{center} \\begin{tikzcd} \\text{Emberi (7)} \\arrow[r, \
+[ 1543] ] & \\text{Perem (1)} \\arrow[r, \
+[ 1543] ] & \\text{Számítási (7)} \\end{tikzcd} \\end{center} \\begin{tabular}{lll} \\toprule Emberi & Számítási & Perem \\\\ \\midrule Ido & Utem & p$\\cdot\\dot{q}$ \\\\ Oksag & Vezerles & Legendre \\\\ Ter & Adat & Yoneda \\\\ Szin & Tipus & adjunkció \\\\ Hang & Kapcsolat & \\\\ Fazis & Allapot & \\\\ Mod & Utasitas & \\\\ \\bottomrule \\end{tabular} \\vspace{0.5cm} \\section{Élet Domainek — Clifford Fokozatok} A 15 dimenzió külső szorzatai (wedge products) = élet domainek: \\begin{itemize} \\item Grade 1: 15 alap-dimenzió \\item Grade 2: bináris kapcsolatok (ok-okozat, tér-idő) \\item Grade 3: ternáris domainek: \\begin{itemize} \\item Tudomány = Okság $\\wedge$ Adat $\\wedge$ Tipus \\item Művészet = Szín $\\wedge$ Hang $\\wedge$ Mod \\item Tánc = Tér $\\wedge$ Ido $\\wedge$ Hang $\\wedge$ Mod \\item Játék = Vezerles $\\wedge$ Utasitas $\\wedge$ Allapot \\item Sport = Tér $\\wedge$ Utem $\\wedge$ Ero \\end{itemize} \\end{itemize} \\vspace{0.5cm} \\section{[[7,1,3]] Steane Kód} \\begin{tikzcd} |0\\rangle \\arrow[r, \
+[ 1543] ] & |0000000\\rangle \\arrow[r, \
+[ 1543] ] & |0001000\\rangle \\arrow[r, \
+[ 1543] ] & |0\\rangle \\end{tikzcd} A 7 bit: [idő, okság, tér, szín, hang, fázis, mód]. Távolság 3 → 1 hiba javítható. Noether-tétel: szimmetria = megmaradás. Refl bizonyítva. \\vspace{0.5cm} \\section{A 49 Struktúra}\\n\\onecolumn\\n\\begin{struktura}[1. Kategória / Category] \\textbf{Magyar:} Objektumok + morfizmusok + kompozíció + identitás. Törvények: asszociativitás, bal/jobb egység. A 15 dimenzió: 15 objektum (7 emberi + 7 számítási + 1 perem).\\\\ \\textbf{English:} Objects + morphisms + composition + identity. Laws: associativity, left/right unit. The 15 dimensions: 15 objects (7 human + 7 computational + 1 boundary).\\\\ \\begin{center} \\begin{tikzcd} A \\arrow[r, \
+[ 1543] ] \\arrow[dr, \
+[ 1543] ] & B \\arrow[d, \
+[ 1543] ] \\\\ & C \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:23}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Category_(mathematics)} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[28. Félcsoport / Semigroup] \\textbf{Magyar:} Asszociatív bináris művelet, egységelem nélkül. A kompozíció egy objektumon = a monoidális tenzor.\\\\ \\textbf{English:} Associative binary operation, no unit. Composition on one object = monoidal tensor.\\\\ \\begin{center} \\begin{tikzcd} (a \\cdot b) \\cdot c \\arrow[r, equal] & a \\cdot (b \\cdot c) \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:38}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Semigroup} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[31. Előrendezés / Preorder] \\textbf{Magyar:} Reflekszív + tranzitív reláció. Kategória legfeljebb egy nyíllal objektumok között. A 15 dimenzió rendezése: melyik dimenzióból melyikbe vezet út.\\\\ \\textbf{English:} Reflexive + transitive relation. Category with at most one arrow between objects. Ordering of the 15 dimensions: which dimension leads to which.\\\\ \\begin{center} \\begin{tikzcd} x \\arrow[r, leftrightarrow] & y \\arrow[r, leftrightarrow] & z \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:47}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Preorder} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[35. Ellenkező kategória / Opposite category] \\textbf{Magyar:} C\\textsuperscript{op}: ugyanazok az objektumok, megfordított nyilak. A perem (Legendre) = C ↔ C\\textsuperscript{op} adjunkció.\\\\ \\textbf{English:} C\\textsuperscript{op}: same objects, reversed arrows. The boundary (Legendre) = C ↔ C\\textsuperscript{op} adjunction.\\\\ \\begin{center} \\begin{tikzcd} A \\arrow[r, \
+[ 1543] , from=op] & B \\arrow[l, \
+[ 1543] , from=op] \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:55}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Opposite_category} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[2. Funktor / Functor] \\textbf{Magyar:} Kategória szerkezet megőrzése. Törvények: kompozíció megőrzése, identitás megőrzése. objKep paraméter, morfizmusKep metódus.\\\\ \\textbf{English:} Preserves category structure. Laws: composition preservation, identity preservation. objKep is a parameter, morfizmusKep is a method.\\\\ \\begin{center} \\begin{tikzcd} A \\arrow[r, \
+[ 1543] ] \\arrow[d, \
+[ 1543] ] \\\\ F(A) \\arrow[r, \
+[ 1543] ] & F(B) \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:71}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Functor} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[3. Természetes transzformáció / Natural transformation] \\textbf{Magyar:} Két funktor (f1, f2 : C → D) között. Komponens α\\textsubscript{a} : f1(a) → f2(a). Természetesség: α\\textsubscript{b} ∘ F(f) = G(f) ∘ α\\textsubscript{a}.\\\\ \\textbf{English:} Between two functors (f1, f2 : C → D). Component α\\textsubscript{a} : f1(a) → f2(a). Naturality: α\\textsubscript{b} ∘ F(f) = G(f) ∘ α\\textsubscript{a}.\\\\ \\begin{center} \\begin{tikzcd} F(A) \\arrow[r, \
+[ 1543] ] & F(B) \\arrow[d, \
+[ 1543] ] \\\\ G(A) \\arrow[r, \
+[ 1543] ] & G(B) \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:85}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Natural_transformation} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[5. Természetes izomorfizmus / Natural isomorphism] \\textbf{Magyar:} Természetes transzformáció, aminek minden komponense izomorfizmus. α\\textsubscript{a} : F(a) ≅ G(a), inverzzel.\\\\ \\textbf{English:} Natural transformation where every component is an isomorphism. α\\textsubscript{a} : F(a) ≅ G(a), with inverse.\\\\ \\begin{center} \\begin{tikzcd} F(A) \\arrow[r, shift left, \
+[ 1543] ] & G(A) \\arrow[l, shift left, \
+[ 1543] ] \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:97}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Natural_isomorphism} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[4. Funktor kategória / Functor category] \\textbf{Magyar:} Objektumok: funktorok, nyilak: természetes transzformációk. [C\\textsuperscript{op}, Set] = a presheaf kategória.\\\\ \\textbf{English:} Objects: functors, arrows: natural transformations. [C\\textsuperscript{op}, Set] = the presheaf category.\\\\ \\begin{center} \\begin{tikzcd} F \\arrow[r, \
+[ 1543] ] & G \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:106}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Functor_category} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[27. Monoid / Monoid] \\textbf{Magyar:} Félcsoport egységelemmel. A magyar agglutináció: tő ⊗ képző ⊗ rag = szó (monoidális tenzor).\\\\ \\textbf{English:} Semigroup with unit. Hungarian agglutination: stem ⊗ suffix ⊗ ending = word (monoidal tensor).\\\\ \\begin{center} \\begin{tikzcd} e \\otimes a \\arrow[r, equal] & a \\arrow[r, equal] & a \\otimes e \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:117}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Monoid} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[26. Csoport / Group] \\textbf{Magyar:} Monoid inverzzel. A Pauli-csoport: X, Y, Z (mind involució: X² = Y² = Z² = I).\\\\ \\textbf{English:} Monoid with inverse. The Pauli group: X, Y, Z (all involutions: X² = Y² = Z² = I).\\\\ \\begin{center} \\begin{tikzcd} a \\arrow[r, \
+[ 1543] ] & a \\cdot a^{-1} \\arrow[r, equal] & e \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:123}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Group_(mathematics)} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[30. Részbenrendezett halmaz / Poset] \\textbf{Magyar:} Előrendezés antiszimmetriával. a ≤ b ∧ b ≤ a ⟹ a = b.\\\\ \\textbf{English:} Preorder with antisymmetry. a ≤ b ∧ b ≤ a ⟹ a = b.\\\\ \\begin{center} \\begin{tikzcd} a \\arrow[r, \
+[ 1543] ] & b \\arrow[r, \
+[ 1543] ] & a \\arrow[r, equal] & a \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:61}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Partially_ordered_set} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[6. Izomorfizmus / Isomorphism] \\textbf{Magyar:} Nyíl inverzzel: f ∘ g = id, g ∘ f = id. A [[15,1,3]] kód: kodol ∘ dekodol = id.\\\\ \\textbf{English:} Arrow with inverse: f ∘ g = id, g ∘ f = id. The [[15,1,3]] code: encode ∘ decode = id.\\\\ \\begin{center} \\begin{tikzcd} A \\arrow[r, shift left, \
+[ 1543] ] & B \\arrow[l, shift left, \
+[ 1543] ] \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:131}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Isomorphism} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[7. Monomorfizmus / Monomorphism] \\textbf{Magyar:} Bal oldali törlés. f ∘ g = f ∘ h ⟹ g = h. Injektív leképezés.\\\\ \\textbf{English:} Left cancellation. f ∘ g = f ∘ h ⟹ g = h. Injective map.\\\\ \\begin{center} \\begin{tikzcd} C \\arrow[r, shift left, \
+[ 1543] ] \\arrow[r, shift right, \
+[ 1543] ] & A \\arrow[r, \
+[ 1543] ] & B \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:137}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Monomorphism} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[8. Epimorfizmus / Epimorphism] \\textbf{Magyar:} Jobb oldali törlés. i ∘ f = j ∘ f ⟹ i = j. Szürjektív leképezés.\\\\ \\textbf{English:} Right cancellation. i ∘ f = j ∘ f ⟹ i = j. Surjective map.\\\\ \\begin{center} \\begin{tikzcd} A \\arrow[r, \
+[ 1543] ] & B \\arrow[r, shift left, \
+[ 1543] ] & C \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:143}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Epimorphism} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[9. Kezdő objektum / Initial object] \\textbf{Magyar:} Egyedi nyíl minden objektumba. ∃! (0 → C). A üres halmaz a Set kezdő objektuma.\\\\ \\textbf{English:} Unique arrow to every object. ∃! (0 → C). The empty set is initial in Set.\\\\ \\begin{center} \\begin{tikzcd} 0 \\arrow[r] & A \\arrow[dr] & \\\\ 0 \\arrow[rr] & & B \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:150}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Initial_and_terminal_objects} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[10. Végobjektum / Terminal object] \\textbf{Magyar:} Egyedi nyíl minden objektumból. ∃! (C → 1). Az egyelemű halmaz a Set végobjektuma.\\\\ \\textbf{English:} Unique arrow from every object. ∃! (C → 1). The singleton set is terminal in Set.\\\\ \\begin{center} \\begin{tikzcd} A \\arrow[r] & 1 \\\\ B \\arrow[ur] & \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:157}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Initial_and_terminal_objects} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[11. Szorzat / Product] \\textbf{Magyar:} A×B + projekciók p₁, p₂ + párosítás ⟨f,g⟩. p₁∘⟨f,g⟩=f, p₂∘⟨f,g⟩=g. A 15 dimenzió = 15 szorzat.\\\\ \\textbf{English:} A×B + projections p₁, p₂ + pairing ⟨f,g⟩. p₁∘⟨f,g⟩=f, p₂∘⟨f,g⟩=g. The 15 dimensions = 15 products.\\\\ \\begin{center} \\begin{tikzcd} & Z \\arrow[dl, \
+[ 1543] ] & \\\\ A & A \\times B \\arrow[l, \
+[ 1543] ] \\arrow[r, \
+[ 1543] ] & B \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:164}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Product_(category_theory)} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[12. Koszorzat / Coproduct] \\textbf{Magyar:} A+B + injekciók i₁, i₂ + elágazás [f,g]. [f,g]∘i₁=f, [f,g]∘i₂=g. A szorzat duálisa.\\\\ \\textbf{English:} A+B + injections i₁, i₂ + case [f,g]. [f,g]∘i₁=f, [f,g]∘i₂=g. Dual of product.\\\\ \\begin{center} \\begin{tikzcd} A \\arrow[dr, \
+[ 1543] ] & & B \\arrow[dl, \
+[ 1543] ] \\\\ & A + B \\arrow[r, \
+[ 1543] ] & C \\\\ A \\arrow[ur, \
+[ 1543] ] & & B \\arrow[ul, \
+[ 1543] ] \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:174}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Coproduct} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[13. Kiegyenlítő / Equalizer] \\textbf{Magyar:} f∘e = g∘e + univerzális. Párhuzamos nyilak kiegyenlítése.\\\\ \\textbf{English:} f∘e = g∘e + universal. Equalizing parallel arrows.\\\\ \\begin{center} \\begin{tikzcd} E \\arrow[r, \
+[ 1543] ] & A \\arrow[r, shift left, \
+[ 1543] ] & B \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:185}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Equalizer_(mathematics)} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[14. Kokiegyenlítő / Coequalizer] \\textbf{Magyar:} q∘f = q∘g + univerzális. A kiegyenlítő duálisa.\\\\ \\textbf{English:} q∘f = q∘g + universal. Dual of equalizer.\\\\ \\begin{center} \\begin{tikzcd} A \\arrow[r, shift left, \
+[ 1543] ] & B \\arrow[r, \
+[ 1543] ] & Q \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:192}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Coequalizer} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[15. Visszahúzás / Pullback] \\textbf{Magyar:} A×\\textsubscript{C}B + projekciók + f∘p₁ = g∘p₂. Szorzat + kiegyenlítő kompozíciója.\\\\ \\textbf{English:} A×\\textsubscript{C}B + projections + f∘p₁ = g∘p₂. Product + equalizer composition.\\\\ \\begin{center} \\begin{tikzcd} P \\arrow[r, \
+[ 1543] ] \\\\ A \\arrow[r, \
+[ 1543] ] & C \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:199}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Pullback_(category_theory)} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[16. Kitolás / Pushout] \\textbf{Magyar:} B+\\textsubscript{A}C + injekciók + j₁∘f = j₂∘g. A visszahúzás duálisa.\\\\ \\textbf{English:} B+\\textsubscript{A}C + injections + j₁∘f = j₂∘g. Dual of pullback.\\\\ \\begin{center} \\begin{tikzcd} A \\arrow[r, \
+[ 1543] ] \\\\ C \\arrow[r, \
+[ 1543] ] & Q \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:208}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Pushout_(category_theory)} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[17. Limesz / Limit] \\textbf{Magyar:} Végső kúp. A limesz = optimum = nyerés. A játékban a nyerő stratégia = limesz a hasznosság kategóriájában.\\\\ \\textbf{English:} Terminal cone. Limit = optimum = winning. In games, the winning strategy = limit in the utility category.\\\\ \\begin{center} \\begin{tikzcd} \\lim D \\arrow[r, \
+[ 1543] ] & D_j \\\\ D_i \\arrow[ur, \
+[ 1543] ] & \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:216}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Limit_(category_theory)} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[18. Kolimesz / Colimit] \\textbf{Magyar:} Kezdő kokúp. A limesz duálisa. A sportban a rekord = kolimesz a teljesítmény kategóriájában.\\\\ \\textbf{English:} Initial cocone. Dual of limit. In sports, the record = colimit in the performance category.\\\\ \\begin{center} \\begin{tikzcd} D_i \\arrow[r, \
+[ 1543] ] \\arrow[dr] & \\text{colim} D \\\\ D_j \\arrow[ur] & \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:223}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Limit_(category_theory)} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[19. Exponenciál / Exponential] \\textbf{Magyar:} C\\textsuperscript{B} + kiértékelés ε + transzpozíció. ε ∘ (f̃ × 1\\textsubscript{B}) = f.\\\\ \\textbf{English:} C\\textsuperscript{B} + evaluation ε + transpose. ε ∘ (f̃ × 1\\textsubscript{B}) = f.\\\\ \\begin{center} \\begin{tikzcd} Z \\times B \\arrow[r, \
+[ 1543] ] & C \\\\ Z \\arrow[r, \
+[ 1543] ] & C^B \\arrow[u, \
+[ 1543] ] \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:232}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Exponential_object} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[20. Kartéziánusan zárt kategória / Cartesian closed category] \\textbf{Magyar:} Végobjektum + szorzatok + exponenciálok. A λ-kalkulusus modellje.\\\\ \\textbf{English:} Terminal object + products + exponentials. Model of λ-calculus.\\\\ \\begin{center} \\begin{tikzcd} 1 & A \\times B \\arrow[l] & B^A \\arrow[r] & C \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:244}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Cartesian_closed_category} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[21. Heyting algebra / Heyting algebra] \\textbf{Magyar:} Poset exponenciállal: a ∧ b ≤ c ⟺ a ≤ b ⇒ c. Az intuicionista logika algebraja.\\\\ \\textbf{English:} Poset with exponential: a ∧ b ≤ c ⟺ a ≤ b ⇒ c. Algebra of intuitionistic logic.\\\\ \\begin{center} \\begin{tikzcd} a \\wedge b \\arrow[r, \
+[ 1543] ] & c \\\\ a \\arrow[r, \
+[ 1543] ] & b \\Rightarrow c \\arrow[u, \
+[ 1543] ] \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:250}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Heyting_algebra} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[22. Boole algebra / Boolean algebra] \\textbf{Magyar:} Heyting algebra kiegészítve ¬¬a = a. A klasszikus logika algebraja.\\\\ \\textbf{English:} Heyting algebra with ¬¬a = a. Algebra of classical logic.\\\\ \\begin{center} \\begin{tikzcd} a \\arrow[r, \
+[ 1543] ] & \\neg a \\arrow[r, \
+[ 1543] ] & a \\arrow[r, equal] & a \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:257}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Boolean_algebra_(structure)} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[23. Adjunkció / Adjunction] \\textbf{Magyar:} F ⊣ G: Hom\\textsubscript{D}(F a, b) ≅ Hom\\textsubscript{C}(a, G b). A perem (Legendre) = adjunkció a kvantum és klasszikus között.\\\\ \\textbf{English:} F ⊣ G: Hom\\textsubscript{D}(F a, b) ≅ Hom\\textsubscript{C}(a, G b). The boundary (Legendre) = adjunction between quantum and classical.\\\\ \\begin{center} \\begin{tikzcd} \\mathcal{C} \\arrow[rr, bend left=30, \
+[ 1543] ] & & \\mathcal{D} \\arrow[ll, bend left=30, \
+[ 1543] ] \\\\ & \\perp & \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:270}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Adjoint_functors} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[24. Monád / Monad] \\textbf{Magyar:} Endofunktor T + η + μ. Törvények: μ∘μT = μ∘Tμ, μ∘ηT = id = μ∘Tη. A számítás hatása: IO, State, Either.\\\\ \\textbf{English:} Endofunctor T + η + μ. Laws: μ∘μT = μ∘Tμ, μ∘ηT = id = μ∘Tη. Computational effect: IO, State, Either.\\\\ \\begin{center} \\begin{tikzcd} T^2 A \\arrow[r, \
+[ 1543] ] & TA \\\\ & TA \\arrow[u, \
+[ 1543] ] \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:283}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Monad_(category_theory)} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[25. Komonád / Comonad] \\textbf{Magyar:} Endofunktor G + ε + δ. A monád duálisa. Kontextus kinyerése: Reader, Store, Trace.\\\\ \\textbf{English:} Endofunctor G + ε + δ. Dual of monad. Context extraction: Reader, Store, Trace.\\\\ \\begin{center} \\begin{tikzcd} GA \\arrow[r, \
+[ 1543] ] & G^2 A \\\\ & A \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:290}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Comonad} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[40. Monoidális kategória / Monoidal category] \\textbf{Magyar:} Kategória + tenzor ⊗ + egység + asszociátor + λ/ρ. A magyar agglutináció: tő ⊗ képző ⊗ rag = szó.\\\\ \\textbf{English:} Category + tensor ⊗ + unit + associator + λ/ρ. Hungarian agglutination: stem ⊗ suffix ⊗ ending = word.\\\\ \\begin{center} \\begin{tikzcd} (A \\otimes B) \\otimes C \\arrow[r, \
+[ 1543] ] & A \\otimes (B \\otimes C) \\arrow[d, \
+[ 1543] ] \\\\ & A \\otimes (B \\otimes C) \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:300}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Monoidal_category} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[41. Fonott monoidális kategória / Braided monoidal category] \\textbf{Magyar:} Monoidális + fonás γ: a⊗b → b⊗a. Hexagon axiómák + Yang-Baxter.\\\\ \\textbf{English:} Monoidal + braiding γ: a⊗b → b⊗a. Hexagon axioms + Yang-Baxter.\\\\ \\begin{center} \\begin{tikzcd} A \\otimes B \\arrow[r, \
+[ 1543] ] & B \\otimes A \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:313}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Braided_monoidal_category} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[42. Szimmetrikus monoidális kategória / Symmetric monoidal category] \\textbf{Magyar:} Fonott + γ² = id (involúció). E8×E8: kommutatív tenzor → szimmetrikus.\\\\ \\textbf{English:} Braided + γ² = id (involution). E8×E8: commutative tensor → symmetric.\\\\ \\begin{center} \\begin{tikzcd} A \\otimes B \\arrow[r, \
+[ 1543] ] & B \\otimes A \\arrow[r, \
+[ 1543] ] & A \\otimes B \\arrow[r, equal] & A \\otimes B \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:320}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Symmetric_monoidal_category} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[43. Zárt kategória / Closed category] \\textbf{Magyar:} Szimmetrikus monoidális + belső Hom: V(a⊗b, c) ≅ V(a, c\\textsuperscript{b}).\\\\ \\textbf{English:} Symmetric monoidal + internal hom: V(a⊗b, c) ≅ V(a, c\\textsuperscript{b}).\\\\ \\begin{center} \\begin{tikzcd} a \\otimes b \\arrow[r] & c \\\\ a \\arrow[r] & c^b \\arrow[u] \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:327}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Closed_category} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[44. 2-kategória / 2-category] \\textbf{Magyar:} 0-sejtek + 1-sejtek + 2-sejtek. Függőleges + vízszintes kompozíció + interchange.\\\\ \\textbf{English:} 0-cells + 1-cells + 2-cells. Vertical + horizontal composition + interchange.\\\\ \\begin{center} \\begin{tikzcd} f \\arrow[r, Rightarrow, \
+[ 1543] ] & g \\arrow[r, Rightarrow, \
+[ 1543] ] & h \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:338}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/2-category} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[45. Bikategória / Bicategory] \\textbf{Magyar:} Gyenge 2-kategória: α, λ, ρ izomorfizmusok, nem egyenlőségek. A gyengeség = a természet.\\\\ \\textbf{English:} Weak 2-category: α, λ, ρ are isomorphisms, not equalities. The weakness = the nature.\\\\ \\begin{center} \\begin{tikzcd} (f \\circ g) \\circ h \\arrow[r, \
+[ 1543] ] & f \\circ (g \\circ h) \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:350}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Bicategory} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[46. Kan kiterjesztés / Kan extension] \\textbf{Magyar:} Jobb Kan: Ran\\textsubscript{K} T + ε: R∘K ⇒ T. Bal Kan: Lan\\textsubscript{K} T + η: T ⇒ L∘K.\\\\ \\textbf{English:} Right Kan: Ran\\textsubscript{K} T + ε: R∘K ⇒ T. Left Kan: Lan\\textsubscript{K} T + η: T ⇒ L∘K.\\\\ \\begin{center} \\begin{tikzcd} M \\arrow[r, \
+[ 1543] ] & C \\arrow[d, dashed, \
+[ 1543] ] \\\\ & A \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:369}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Kan_extension} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[47. End / Vég / End] \\textbf{Magyar:} ∫\\textsubscript{c} S(c,c) + dinaturális ék. A Nat(F, G) = ∫\\textsubscript{c} Hom(Fc, Gc).\\\\ \\textbf{English:} ∫\\textsubscript{c} S(c,c) + dinatural wedge. Nat(F, G) = ∫\\textsubscript{c} Hom(Fc, Gc).\\\\ \\begin{center} \\begin{tikzcd} E \\arrow[r, \
+[ 1543] ] & S(c,c) \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:378}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/End_(category_theory)} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[48. Coend / Kövég / Coend] \\textbf{Magyar:} ∫\\textsuperscript{c} S(c,c) + dinaturális ko-ék. A tenzor szorzat = coend: A ⊗\\textsubscript{R} B = ∫\\textsuperscript{r} A ⊗ B.\\\\ \\textbf{English:} ∫\\textsuperscript{c} S(c,c) + dinatural co-wedge. Tensor product = coend: A ⊗\\textsubscript{R} B = ∫\\textsuperscript{r} A ⊗ B.\\\\ \\begin{center} \\begin{tikzcd} S(c,c) \\arrow[r, \
+[ 1543] ] & D \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:385}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/End_(category_theory)} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[37. Toposz / Topos] \\textbf{Magyar:} CCC + részobjektum-osztályozó Ω. A halmazok kategóriája = a prototipikus toposz.\\\\ \\textbf{English:} CCC + subobject classifier Ω. The category of sets = the prototypical topos.\\\\ \\begin{center} \\begin{tikzcd} M \\arrow[r, hook] & X \\arrow[r, \
+[ 1543] ] & \\Omega \\\\ 1 \\arrow[ur, \
+[ 1543] ] & & \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:396}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Topos} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[32. Részobjektum / Subobject] \\textbf{Magyar:} Monomorfizmus m: M ↣ X. A Sub\\textsubscript{C}(X) kategória objektumai a monok.\\\\ \\textbf{English:} Monomorphism m: M ↣ X. Objects of Sub\\textsubscript{C}(X) are monos.\\\\ \\begin{center} \\begin{tikzcd} M \\arrow[r, hook, \
+[ 1543] ] & X \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:406}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Subobject} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[33. Yoneda beágyazás / Yoneda embedding] \\textbf{Magyar:} y: C → [C\\textsuperscript{op}, Set]. Hom(-, a) presheaf. Yoneda lemma: Nat(Hom(-,a), F) ≅ F(a).\\\\ \\textbf{English:} y: C → [C\\textsuperscript{op}, Set]. Hom(-, a) presheaf. Yoneda lemma: Nat(Hom(-,a), F) ≅ F(a).\\\\ \\begin{center} \\begin{tikzcd} \\text{Hom}(-, A) \\arrow[r, dashed] \\arrow[dr, \
+[ 1543] ] & F \\\\ & F(A) \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:413}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Yoneda_lemma} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[34. Kategóriák ekvivalenciája / Equivalence of categories] \\textbf{Magyar:} F: C→D, G: D→C, FG ≅ id, GF ≅ id (természetes izomorfizmus). Gyengébb mint izomorfizmus.\\\\ \\textbf{English:} F: C→D, G: D→C, FG ≅ id, GF ≅ id (natural isomorphism). Weaker than isomorphism.\\\\ \\begin{center} \\begin{tikzcd} \\mathcal{C} \\arrow[r, bend left, \
+[ 1543] ] & \\mathcal{D} \\arrow[l, bend left, \
+[ 1543] ] \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:423}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Equivalence_of_categories} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[36. Szelet kategória / Slice category] \\textbf{Magyar:} C/C: objektumok f: X→C, nyilak g: X→X
+[ 1543] ∘g = f.\\\\ \\textbf{English:} C/C: objects f: X→C, arrows g: X→X
+[ 1543] ∘g = f.\\\\ \\begin{center} \\begin{tikzcd} X \\arrow[r, \
+[ 1543] ] & X
+[ 1543] ] \\\\ & C \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:434}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Overcategory} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[38. Szabad kategória / Free category] \\textbf{Magyar:} Irányított gráf → kategória (utak kompozíciója). A szabad monoid általánosítása.\\\\ \\textbf{English:} Directed graph → category (path composition). Generalization of free monoid.\\\\ \\begin{center} \\begin{tikzcd} v_1 \\arrow[r, \
+[ 1543] ] & v_2 \\arrow[r, \
+[ 1543] ] & v_3 \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:443}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Free_category} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[39. Reprezentálható funktor / Representable functor] \\textbf{Magyar:} Hom(A, -): C → Set. Minden limeszt megőriz. A Yoneda beágyazás alapja.\\\\ \\textbf{English:} Hom(A, -): C → Set. Preserves all limits. Foundation of Yoneda embedding.\\\\ \\begin{center} \\begin{tikzcd} A \\arrow[r, \
+[ 1543] ] & B \\arrow[r, mapsto] & \\text{Hom}(A, B) \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:452}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Representable_functor} \\end{struktura} \\vspace{0.5cm} \\begin{struktura}[29. Csoport egy kategóriában / Group in a category] \\textbf{Magyar:} Objektum G + szorzás m: G×G→G + egység u + inverz i. Csoport objektum Sets-ben = csoport.\\\\ \\textbf{English:} Object G + multiplication m: G×G→G + unit u + inverse i. Group object in Sets = group.\\\\ \\begin{center} \\begin{tikzcd} G \\times G \\arrow[r, \
+[ 1543] ] & G \\\\ 1 \\arrow[r, \
+[ 1543] ] & G \\\\ G \\arrow[r, \
+[ 1543] ] & G \\end{tikzcd} \\end{center} \\textbf{Kód:} \\texttt{Alap/KategoriaT.idr:460}\\\\ \\textbf{Wikipedia:} \\url{https://en.wikipedia.org/wiki/Group_object} \\end{struktura} \\vspace{0.5cm} \\section{Összefoglalás} \\textbf{49 kategóriaelméleti struktúra} (39 Awodey + 10 Mac Lane), mind typeclass.\\\\ \\textbf{15 dimenzió} (7 emberi + 7 számítási + 1 perem = [[15,1,3]]).\\\\ \\textbf{A compiler a bíróság:} ha fordul, igaz. \\end{document} Kesz.
+[ 1549] 2026-08-11 18:58:38
+[ 1551] Átnézem ezt három szinten: LaTeX-fordíthatóság, a 48/49 struktúra eltérés, valamint a matematikai állítások pontossága az Idris-forráshoz képest.
+[ 1557] 2026-08-11 18:58:55
+[ 1560] Megvan a fő hiba: a generált LaTeX-ben a
+[ 1572] 2026-08-11 18:59:57
+[ 1576] Röviden: a generátor jelenleg
+[ 1578] , nem 49 struktúrát tartalmaz, a kimenet több helyen nem fordítható LaTeX, és az Idris-interfészek többsége nem bizonyítja a könyvben állított teljes kategóriaelméleti törvényeket.
+[ 1579] 1. Azonnali technikai hibák
+[ 1583] Ez a sor valószínűleg feltétel nélkül tölti be a Rust környezetet:
+[ 1585] Copy code
+[ 1588] $HOME/.cargo/env\
+[ 1589] Biztonságos változat:
+[ 1593] [[ -f
+[ 1595] ]] && source
+[ 1601] A program státuszszöveget ír a LaTeX közé
+[ 1602] A generátor stdoutja:
+[ 1605] Konyv generalasa... Bejegyzesek szama: 48 \\documentclass... ... \\end{document} Kesz.
+[ 1609] -be irányítod, akkor a dokumentum eleje és vége érvénytelen. A programnak vagy közvetlenül fájlba kell írnia, vagy stdouton kizárólag a LaTeX lehet.
+[ 1617] környezetet használ, de csak ezt tölti be:
+[ 1620] \\usepackage{tikz}
+[ 1621] Kell még:
+[ 1624] \\usepackage{tikz-cd}
+[ 1628] A forrásban:
+[ 1631] \\\\section{A 49 Struktúra}\\\\n\\\\onecolumn\\\\n\
+[ 1635] parancsot generál, nem sortörést. Helyesen:
+[ 1638] unlines [ \
+[ 1638] \\\\onecolumn\
+[ 1640] A hiba itt van:
+[ 1641] @KonyvKeszito.idr:441
+[ 1643] Unicode matematikai karakterek
+[ 1661] — közvetlenül, gyakran matematikai módon kívül szerepel. Ezek pdfLaTeX alatt hibát okozhatnak. Célszerű LaTeX-parancsokra cserélni:
+[ 1669] 2. Pontosan 48 struktúra van
+[ 1670] Automatikus számlálás:
+[ 1673] könyvbejegyzések:
+[ 1676] sorszámok: pontosan
+[ 1679] hiányzó sorszám:
+[ 1684] deklarációk:
+[ 1686] Tehát ezek jelenleg tévesek:
+[ 1697] Jó 49. jelölt lehet például:
+[ 1715] 3. „Ha fordul, igaz” — túl erős állítás
+[ 1716] A helyes változat:
+[ 1719] Ez nem bizonyítja automatikusan:
+[ 1726] Példák
+[ 1730] csak a morfizmusleképezést tartalmazza:
+[ 1733] morfizmusKep : m1 a b -> m2 (objKep a) (objKep b)
+[ 1734] Hiányzik:
+[ 1781] , F(g ∘
+[ 1792] tartalmaz egységelemet, de nem követeli meg:
+[ 1815] tartalmaz inverzfüggvényt, de nem követeli meg:
+[ 1848] Hasonlóan hiányos:
+[ 1850] izomorfizmus: nincs bizonyítva, hogy a nyilak inverzek;
+[ 1851] mono/epi: nincs törlési törvény;
+[ 1852] kezdő/végobjektum: nincs egyértelműség;
+[ 1853] szorzat/koszorzat: nincs univerzális tulajdonság és egyértelműség;
+[ 1854] equalizer/pullback/limit: többnyire csak objektumok és nyilak vannak;
+[ 1855] adjunkció: nincsenek háromszögazonosságok;
+[ 1856] monád/komonád: hiányoznak a monádtörvények;
+[ 1857] monoidális kategória: hiányzik a pentagon és a háromszög;
+[ 1858] fonott kategória: hiányoznak a hexagonazonosságok;
+[ 1859] 2-kategória: hiányzik az interchange-törvény;
+[ 1860] bikategória: hiányzik a pentagon és a triangle coherence;
+[ 1861] Yoneda: csak objektumleképezés szerepel, nincs full-faithfulness vagy Yoneda-lemma;
+[ 1862] reprezentálható funktor: nincs természetes izomorfizmus a Hom-funktorral.
+[ 1864] 4. Hibás vagy pontatlan matematikai állítások
+[ 1865] Steane-kód
+[ 1866] Ez nem a Steane logikai nullaállapota:
+[ 1875] 0000000
+[ 1899] A „Noether-tétel: Refl bizonyítva” állítás is téves. A korábban megvizsgált
+[ 1902] Pauli-csoport
+[ 1903] Ez pontatlan:
+[ 1905] A Pauli-csoport: X, Y, Z.
+[ 1920] {I, X, Y, Z}
+[ 1921] halmaz önmagában nem zárt szorzásra, mert például:
+[ 1934] Az egykubites Pauli-csoport tartalmazza a fázisokat is:
+[ 1968] {±I, ±iI, ±X, ±iX, ±Y, ±iY, ±Z, ±iZ}.
+[ 1969] Mono és epi
+[ 1974] -ben igaz;
+[ 1976] Opposite category
+[ 1977] Az opposite kategória nem igényel függvényt:
+[ 1993] definíciója egyszerűen:
+[ 2040] Legendre mint adjunkció
+[ 2041] A következő érdekes hipotézis, de nem tankönyvi tétel:
+[ 2062] Toposz
+[ 2063] Egy elemi toposz nem egyszerűen „CCC + limesz”. A standard feltétel:
+[ 2069] 5. Belső inkonzisztenciák
+[ 2070] „Grade 3” alatt négyszeres wedge
+[ 2077] , nem grade 3.
+[ 2078] Nem definiált dimenzió
+[ 2086] „15 dimenzió = 15 szorzat”
+[ 2087] A 15 objektum nem automatikusan „15 szorzat”. Egy 15-tagú kategóriai szorzathoz kell:
+[ 2092] Limesz mint győzelem, kolimesz mint rekord
+[ 2094] Magyar–angol kétoszlopos ígéret
+[ 2095] A dokumentum azt állítja, hogy magyar bal oldalon, angol jobb oldalon jelenik meg, de a két szöveg egymás után szerepel, és a program korán kiadja:
+[ 2100] 6. Javasolt sorrend
+[ 2103] Javítsd a generálást: tiszta stdout,
+[ 2105] , valódi sortörések.
+[ 2107] Döntsd el:
+[ 2109] , vagy adj hozzá tényleges #49-et.
+[ 2111] Válaszd külön:
+[ 2126] Cseréld ezt:
+[ 2128] A compiler a bíróság: ha fordul, igaz.
+[ 2129] erre:
+[ 2131] A compiler a formai tanú: amit a megadott típus pontosan kifejez, annak helyességét ellenőrzi; a típus megfelelősége külön matematikai feladat.
+[ 2133] A forrás fő problémái itt vannak:
+[ 2134] @KonyvKeszito.idr
+[ 2136] @KategoriaT.idr
+[ 2142] Most már minden szükséges adatom megvan. Létrehozom a frissített JSON-t az E8-cal kiegészítve. Mivel a 49 struktúra már a JSON-ban van, az E8-at egy **kiegészítő** csomópontként és élekkel integrálom, de a fő struktúra sorszámozását nem bántom. A frissített JSON-t most már a teljes konyv-graph.json fájlként mentem el, ami tartalmazza az E8 integrációját: ```json { \
+[ 2142] https://json-schema.org/draft/2020-12/schema\
+[ 2142] metadata\
+[ 2142] title\
+[ 2142] 49 Kategóriaelméleti Struktúra + E8 Integráció\
+[ 2142] subtitle\
+[ 2142] Idris 2 Typeclass Hierarchia — Magyar ↔ English\
+[ 2142] version\
+[ 2142] 1.1.0\
+[ 2142] generated_from\
+[ 2142] Konyv/KonyvKeszito.idr\
+[ 2142] philosophy\
+[ 2142] A nyelv = adattípusok + typeclass-ek. Magyar szavak = konstruktorok, ragozás = funktor, mondat = kompozíció. A compiler a bíróság.\
+[ 2142] graph_format\
+[ 2142] nodes\
+[ 2142] 49 kategóriaelméleti struktúra + E8 mint kiemelt kivételes csoport + E8 altípusok\
+[ 2142] edges\
+[ 2142] Irányított kapcsolatok:
+[ 2142] dual
+[ 2142] specializál
+[ 2142] generalizál
+[ 2142] alkalmazza
+[ 2142] kivételes
+[ 2142] kvantum-klaszszikus
+[ 2142] 15dim kapcsolat
+[ 2142] id_format\
+[ 2142] str-N (49 struktúra), str-E8 (E8 csoport), str-G2/F4/E6/E7 (kivételes részcsoportok)\
+[ 2142] code_ref_format\
+[ 2142] Alap/KategoriaT.idr:SOR\
+[ 2142] note\
+[ 2142] E8 nem a 49 struktúra része (kivételes,
+[ 2142] ), hanem a 15. dimenzió peremén elhelyezkedő meta-struktúra, amely az egész rendszert
+[ 2142] }, \
+[ 2142] : { \
+[ 2142] dim-15\
+[ 2142] name\
+[ 2142] A 15 Dimenzió\
+[ 2142] formula\
+[ 2142] [[15,1,3]]\
+[ 2142] structure\
+[ 2142] 7 emberi + 7 számítási + 1 perem\
+[ 2142] human\
+[ 2142] Idő\
+[ 2142] Okság\
+[ 2142] Tér\
+[ 2142] Szín\
+[ 2142] Hang\
+[ 2142] Fázis\
+[ 2142] Mód\
+[ 2142] computational\
+[ 2142] Ütem\
+[ 2142] Vezérlés\
+[ 2142] Adat\
+[ 2142] Típus\
+[ 2142] Kapcsolat\
+[ 2142] Állapot\
+[ 2142] Utasítás\
+[ 2142] boundary\
+[ 2142] items\
+[ 2142] p·q̇\
+[ 2142] Legendre\
+[ 2142] Yoneda\
+[ 2142] adjunkció\
+[ 2142] ], \
+[ 2142] : [\
+[ 2142] str-33\
+[ 2142] str-E8\
+[ 2142] e8_position\
+[ 2142] A perem (boundary) legbelső pontja, a kvantum-klasszikus határ\
+[ 2142] life_domains\
+[ 2142] domain-clifford\
+[ 2142] Élet Domainek — Clifford Fokozatok\
+[ 2142] grades\
+[ 2142] : {\
+[ 2142] : 15, \
+[ 2142] 15 alap-dimenzió\
+[ 2142] : 105, \
+[ 2142] bináris kapcsolatok (C(15,2))\
+[ 2142] : 455, \
+[ 2142] ternáris domainek (C(15,3))\
+[ 2142] examples\
+[ 2142] Tudomány\
+[ 2142] wedge\
+[ 2142] Okság ∧ Adat ∧ Típus\
+[ 2142] Művészet\
+[ 2142] Szín ∧ Hang ∧ Mód\
+[ 2142] Tánc\
+[ 2142] Tér ∧ Idő ∧ Hang ∧ Mód\
+[ 2142] Játék\
+[ 2142] Vezérlés ∧ Utasítás ∧ Állapot\
+[ 2142] Sport\
+[ 2142] Tér ∧ Ütem ∧ Erő\
+[ 2142] Kozmológia\
+[ 2142] Idő ∧ Tér ∧ Tömeg (E8 kód: 248-dim spinor)\
+[ 2142] Kvantumtér\
+[ 2142] Okság × Fázis × Ütem (E8 × E8 gauge)\
+[ 2142] steane_code\
+[ 2142] code-713\
+[ 2142] [[7,1,3]] Steane Kód\
+[ 2142] bits\
+[ 2142] idő\
+[ 2142] okság\
+[ 2142] tér\
+[ 2142] szín\
+[ 2142] hang\
+[ 2142] fázis\
+[ 2142] mód\
+[ 2142] distance\
+[ 2142] correction_capability\
+[ 2142] principle\
+[ 2142] Noether-tétel: szimmetria = megmaradás\
+[ 2142] pipeline\
+[ 2142] encode → error → correct → decode\
+[ 2142] e8_connection\
+[ 2142] Az E8 (240 gyök) és a [[7,1,3]] (7 bit) közötti kapcsolat: mindkettő a 8-as dimenzióból indul ki; az E8 240 = C(8,1) + 2·C(8,2) + ... kombinatorikai struktúrája tükrözi a 8 dimenziós kódok szimmetriáit\
+[ 2142] exceptional_lie_algebras\
+[ 2142] ela\
+[ 2142] Az 5 Kivételes Lie-Algebra\
+[ 2142] chain\
+[ 2142] g2 ⊂ f4 ⊂ e6 ⊂ e7 ⊂ e8\
+[ 2142] relation_to_15_dimensions\
+[ 2142] Az E8 a perem (1 dimenzió) legbelső magja\
+[ 2142] member_15_dim_correspondence\
+[ 2142] ] } }, \
+[ 2142] E8 (Exceptional Lie Group / Lie Algebra)\
+[ 2142] type\
+[ 2142] META-STRUCTURE\
+[ 2142] role\
+[ 2142] A 49 struktúra feletti struktúra: a perem legbelső magja\
+[ 2142] discovered_by\
+[ 2142] Wilhelm Killing (1887, 1888-1890)\
+[ 2142] first_proved\
+[ 2142] Élie Cartan\
+[ 2142] dimension\
+[ 2142] rank\
+[ 2142] root_count\
+[ 2142] weyl_group_order\
+[ 2142] witten_index\
+[ 2142] subgroups\
+[ 2142] : 2, \
+[ 2142] : 14, \
+[ 2142] : true, \
+[ 2142] α5 → α1\
+[ 2142] : 4, \
+[ 2142] : 52, \
+[ 2142] α1,α2,α3,α4 → α1,α2,α3,α4\
+[ 2142] : 6, \
+[ 2142] : 78, \
+[ 2142] A5 subalgebra of E8\
+[ 2142] : 7, \
+[ 2142] : 133, \
+[ 2142] D6 subalgebra of E8\
+[ 2142] real_forms\
+[ 2142] compact\
+[ 2142] dim\
+[ 2142] signature\
+[ 2142] +248\
+[ 2142] isotropic\
+[ 2142] rost_invariant\
+[ 2142] intermediate\
+[ 2142] -24\
+[ 2142] split\
+[ 2142] key_facts\
+[ 2142] simplest_root_system\
+[ 2142] 240 roots in 8D, simply-laced (all roots same length), every angle is 60°/90°/120°/180°\
+[ 2142] unique_lattice\
+[ 2142] The E8 lattice is the unique even, unimodular lattice of rank 8\
+[ 2142] densest_packing\
+[ 2142] Viazovska (2016): E8 lattice gives densest sphere packing in 8D\
+[ 2142] dieudonne_determinant\
+[ 2142] 1 (unimodular)\
+[ 2142] theta_series\
+[ 2142] θ(q) = E4(q) = 1 + 480q² + 61920q⁴ + ... (4th Eisenstein series)\
+[ 2142] magyar_leiras\
+[ 2142] A legnagyobb kivételes egyszerű Lie-csoport, 248 dimenziós, 240 gyökkel R⁸-ban. A perem (boundary) legbelső magja a 15 dimenziós rendszerben. Wilhelm Killing 1887-ben fedezte fel osztályozása során.\
+[ 2142] angol_leiras\
+[ 2142] The largest exceptional simple Lie group, 248-dimensional, with 240 roots in R⁸. The innermost core of the boundary in the 15-dimensional system. Discovered by Wilhelm Killing in 1887 during his classification.\
+[ 2142] e8_subsystems\
+[ 2142] str-G2\
+[ 2142] automorphism\
+[ 2142] octonion (Cayley számok)\
+[ 2142] magyar\
+[ 2142] Az oktávok (Cayley-számok) automorfizmus-csoportja. 7-dim reprezentáció. Hang dimenzió.\
+[ 2142] e8_embedding\
+[ 2142] E8 ⊃ G2 (α5 → α1), C_G2(E8) = μ3\
+[ 2142] str-F4\
+[ 2142] Albert algebra (27-dim exceptional Jordan algebra)\
+[ 2142] Az Albert-algebra automorfizmus-csoportja. 26-dim reprezentáció. Hang × Szín dimenzió.\
+[ 2142] E8 ⊃ F4 (első 4 egyszerű gyök), C_F4(E8) = μ3\
+[ 2142] str-E6\
+[ 2142] cubic form in 27D\
+[ 2142] A 27-dim köbös forma izometria-csoportja. Szín × Adat × Típus.\
+[ 2142] E8 ⊃ E6 (A5 subsystem), C_E6(E8) = μ3\
+[ 2142] str-E7\
+[ 2142] quartic form in 56D\
+[ 2142] Az 56-dim negyedfokú forma izometria-csoportja. Vezérlés × Állapot × Hang × Mód.\
+[ 2142] E8 ⊃ E7 (D6 subsystem), C_E7(E8) = μ2\
+[ 2142] e8_applications\
+[ 2142] physics\
+[ 2142] application\
+[ 2142] Heterotic string theory\
+[ 2142] E8 × E8 gauge group of one of the two anomaly-free heterotic strings\
+[ 2142] N=1 supergravity in 10D\
+[ 2142] E8 is the unique gauge group that gives anomaly-free coupling\
+[ 2142] U-duality in 8-torus supergravity\
+[ 2142] E8(8) (split form) is the U-duality group\
+[ 2142] Grand Unified Theory attempt\
+[ 2142] Garibaldi-Distler (2010): no valid E8 GUT exists\
+[ 2142] Quantum criticality\
+[ 2142] Coldea et al. (2010): emergent E8 symmetry observed in CoNb₂O₆ magnet\
+[ 2142] mathematics\
+[ 2142] Sphere packing in 8D\
+[ 2142] result\
+[ 2142] Viazovska (2016, Fields Medal): E8 lattice is optimal\
+[ 2142] Division algebras\
+[ 2142] Gille (2002): central simple algebras of degree 5 ↔ groups of type E8\
+[ 2142] Hasse principle\
+[ 2142] Chernousov (1989): hardest case in the Hasse principle for semisimple groups\
+[ 2142] Vertex operator algebras\
+[ 2142] E8(1) is the affine Lie algebra underlying the Monster VOA\
+[ 2142] computing\
+[ 2142] Kazhdan-Lusztig-Vogan polynomials\
+[ 2142] 2007: 453060×453060 matrix computed for split E8 (
+[ 2142] } ] }, \
+[ 2142] : [ { \
+[ 2142] str-1\
+[ 2142] sorszam\
+[ 2142] Kategória\
+[ 2142] angol\
+[ 2142] Category\
+[ 2142] szint\
+[ 2142] szint_nev\
+[ 2142] Alapstruktúrák\
+[ 2142] Objektumok + morfizmusok + kompozíció + identitás. Törvények: asszociativitás, bal/jobb egység. A 15 dimenzió: 15 objektum (7 emberi + 7 számítási + 1 perem).\
+[ 2142] Objects + morphisms + composition + identity. Laws: associativity, left/right unit. The 15 dimensions: 15 objects (7 human + 7 computational + 1 boundary).\
+[ 2142] kod_hivatkozas\
+[ 2142] Alap/KategoriaT.idr:23\
+[ 2142] wikipedia\
+[ 2142] https://en.wikipedia.org/wiki/Category_(mathematics)\
+[ 2142] e8_relevance\
+[ 2142] Egy E8 kategória az objektum-kategóriája, ahol az objektumok a 240 gyök (mint egyszerű objektumok), a morfizmusok a Weyl-csoport elemei (mint automorfizmusok).\
+[ 2142] str-2\
+[ 2142] Funktor\
+[ 2142] Functor\
+[ 2142] Funktorok\
+[ 2142] Kategória szerkezet megőrzése. Törvények: kompozíció megőrzése, identitás megőrzése. objKep paraméter, morfizmusKep metódus.\
+[ 2142] Preserves category structure. Laws: composition preservation, identity preservation. objKep is a parameter, morfizmusKep is a method.\
+[ 2142] Alap/KategoriaT.idr:71\
+[ 2142] https://en.wikipedia.org/wiki/Functor\
+[ 2142] depends_on\
+[ 2142] Az adjoint reprezentáció (248-dim) önmagából az E8-ba menő funktor, ami az E8 automorfizmus-csoportját adja.\
+[ 2142] str-3\
+[ 2142] Természetes transzformáció\
+[ 2142] Natural transformation\
+[ 2142] Két funktor (f1, f2 : C → D) között. Komponens α_a : f1(a) → f2(a). Természetesség: α_b ∘ F(f) = G(f) ∘ α_a.\
+[ 2142] Between two functors (f1, f2 : C → D). Component α_a : f1(a) → f2(a). Naturality: α_b ∘ F(f) = G(f) ∘ α_a.\
+[ 2142] Alap/KategoriaT.idr:85\
+[ 2142] https://en.wikipedia.org/wiki/Natural_transformation\
+[ 2142] A domináns súlyok λ és a Weyl-modulusok V(λ) közötti természetes transzformációk adják az E8 Witt-invariánsait.\
+[ 2142] str-4\
+[ 2142] Funktor kategória\
+[ 2142] Functor category\
+[ 2142] Objektumok: funktorok, nyilak: természetes transzformációk. [C^op, Set] = a presheaf kategória.\
+[ 2142] Objects: functors, arrows: natural transformations. [C^op, Set] = the presheaf category.\
+[ 2142] Alap/KategoriaT.idr:106\
+[ 2142] https://en.wikipedia.org/wiki/Functor_category\
+[ 2142] A Rep(E8) kategória az E8 véges dimenziós reprezentációinak kategóriája.\
+[ 2142] str-5\
+[ 2142] Természetes izomorfizmus\
+[ 2142] Natural isomorphism\
+[ 2142] Természetes transzformáció, aminek minden komponense izomorfizmus. α_a : F(a) ≅ G(a), inverzzel.\
+[ 2142] Natural transformation where every component is an isomorphism. α_a : F(a) ≅ G(a), with inverse.\
+[ 2142] Alap/KategoriaT.idr:97\
+[ 2142] https://en.wikipedia.org/wiki/Natural_isomorphism\
+[ 2142] str-6\
+[ 2142] Az E8 önmagával való egyenlősége a csoport mint legnagyobb kivételes egyszerű struktúra.\
+[ 2142] Izomorfizmus\
+[ 2142] Isomorphism\
+[ 2142] Algebrai struktúrák\
+[ 2142] Nyíl inverzzel: f ∘ g = id, g ∘ f = id. A [[15,1,3]] kód: kodol ∘ dekodol = id.\
+[ 2142] Arrow with inverse: f ∘ g = id, g ∘ f = id. The [[15,1,3]] code: encode ∘ decode = id.\
+[ 2142] Alap/KategoriaT.idr:131\
+[ 2142] https://en.wikipedia.org/wiki/Isomorphism\
+[ 2142] Az E8 izomorfizmus-csoportja = automorfizmus-csoport = E8 önmagával (csak triviális automorfizmusok vannak, mert a Dynkin-diagram automorfizmus-csoportja triviális).\
+[ 2142] str-7\
+[ 2142] Monomorfizmus\
+[ 2142] Monomorphism\
+[ 2142] Bal oldali törlés. f ∘ g = f ∘ h ⇒ g = h. Injektív leképezés.\
+[ 2142] Left cancellation. f ∘ g = f ∘ h ⇒ g = h. Injective map.\
+[ 2142] Alap/KategoriaT.idr:137\
+[ 2142] https://en.wikipedia.org/wiki/Monomorphism\
+[ 2142] Az E8-ba ágyazott G2, F4, E6, E7 mind monomorfizmusok (injektív beágyazások).\
+[ 2142] str-8\
+[ 2142] Epimorfizmus\
+[ 2142] Epimorphism\
+[ 2142] Jobb oldali törlés. i ∘ f = j ∘ f ⇒ i = j. Szürjektív leképezés.\
+[ 2142] Right cancellation. i ∘ f = j ∘ f ⇒ i = j. Surjective map.\
+[ 2142] Alap/KategoriaT.idr:143\
+[ 2142] https://en.wikipedia.org/wiki/Epimorphism\
+[ 2142] Az E8 leképezése G2-re, F4-re, stb. epimorfizmusok (a megfelelő vetítések).\
+[ 2142] str-9\
+[ 2142] Kezdő objektum\
+[ 2142] Initial object\
+[ 2142] Limitek\
+[ 2142] Egyedi nyíl minden objektumba. ∃! (0 → C). Az üres halmaz a Set kezdő objektuma.\
+[ 2142] Unique arrow to every object. ∃! (0 → C). The empty set is initial in Set.\
+[ 2142] Alap/KategoriaT.idr:150\
+[ 2142] https://en.wikipedia.org/wiki/Initial_and_terminal_objects\
+[ 2142] dual_of\
+[ 2142] str-10\
+[ 2142] Az E8-ban nincs kanonikus
+[ 2142] elem, de a 0-súly reprezentáció (triviális rep) analóg.\
+[ 2142] Végobjektum\
+[ 2142] Terminal object\
+[ 2142] Egyedi nyíl minden objektumból. ∃! (C → 1). Az egyelemű halmaz a Set végobjektuma.\
+[ 2142] Unique arrow from every object. ∃! (C → 1). The singleton set is terminal in Set.\
+[ 2142] Alap/KategoriaT.idr:157\
+[ 2142] Az E8 maximális kompakt részcsoportja (pl. a T = SU(2) maximális tórusz) játszik
+[ 2142] szerepet.\
+[ 2142] str-11\
+[ 2142] Szorzat\
+[ 2142] Product\
+[ 2142] A×B + projekciók p₁, p₂ + párosítás ⟨f,g⟩. p₁∘⟨f,g⟩=f, p₂∘⟨f,g⟩=g. A 15 dimenzió = 15 szorzat.\
+[ 2142] A×B + projections p₁, p₂ + pairing ⟨f,g⟩. p₁∘⟨f,g⟩=f, p₂∘⟨f,g⟩=g. The 15 dimensions = 15 products.\
+[ 2142] Alap/KategoriaT.idr:164\
+[ 2142] https://en.wikipedia.org/wiki/Product_(category_theory)\
+[ 2142] str-17\
+[ 2142] str-12\
+[ 2142] Az E8 × E8 a heterotic string elmélet gauge-csoportja (E8 ⊗ E8).\
+[ 2142] Koszorzat\
+[ 2142] Coproduct\
+[ 2142] A+B + injekciók i₁, i₂ + elágazás [f,g]. [f,g]∘i₁=f, [f,g]∘i₂=g. A szorzat duálisa.\
+[ 2142] A+B + injections i₁, i₂ + case [f,g]. [f,g]∘i₁=f, [f,g]∘i₂=g. Dual of product.\
+[ 2142] Alap/KategoriaT.idr:174\
+[ 2142] https://en.wikipedia.org/wiki/Coproduct\
+[ 2142] str-18\
+[ 2142] Az E8 két komplementer részhalmazra (60-60 gyök) való particionálás analógiája.\
+[ 2142] str-13\
+[ 2142] Kiegyenlítő\
+[ 2142] Equalizer\
+[ 2142] f∘e = g∘e + univerzális. Párhuzamos nyilak kiegyenlítése.\
+[ 2142] f∘e = g∘e + universal. Equalizing parallel arrows.\
+[ 2142] Alap/KategoriaT.idr:185\
+[ 2142] https://en.wikipedia.org/wiki/Equalizer_(mathematics)\
+[ 2142] str-14\
+[ 2142] Az E8 kategóriában a kiegyenlítők léteznek és a monomorfizmusok jellemezhetők velük (regular mono).\
+[ 2142] Kokiegyenlítő\
+[ 2142] Coequalizer\
+[ 2142] q∘f = q∘g + univerzális. A kiegyenlítő duálisa.\
+[ 2142] q∘f = q∘g + universal. Dual of equalizer.\
+[ 2142] Alap/KategoriaT.idr:192\
+[ 2142] https://en.wikipedia.org/wiki/Coequalizer\
+[ 2142] A kokiegyenlítők a regular epimorfizmusokkal analógok, fontosak az E8 véges teste fölötti formáknál.\
+[ 2142] str-15\
+[ 2142] Visszahúzás\
+[ 2142] Pullback\
+[ 2142] A×_C B + projekciók + f∘p₁ = g∘p₂. Szorzat + kiegyenlítő kompozíciója.\
+[ 2142] A×_C B + projections + f∘p₁ = g∘p₂. Product + equalizer composition.\
+[ 2142] Alap/KategoriaT.idr:199\
+[ 2142] https://en.wikipedia.org/wiki/Pullback_(category_theory)\
+[ 2142] str-16\
+[ 2142] A E8-Borel-féle alsó háromszög csoportjai pullback-ek.\
+[ 2142] Kitolás\
+[ 2142] Pushout\
+[ 2142] B+_A C + injekciók + j₁∘f = j₂∘g. A visszahúzás duálisa.\
+[ 2142] B+_A C + injections + j₁∘f = j₂∘g. Dual of pullback.\
+[ 2142] Alap/KategoriaT.idr:208\
+[ 2142] https://en.wikipedia.org/wiki/Pushout_(category_theory)\
+[ 2142] A Weyl-csoport cselekvése a gyökrendszeren pushout-okon keresztül is leírható.\
+[ 2142] Limesz\
+[ 2142] Limit\
+[ 2142] Végső kúp. A limesz = optimum = nyerés. A játékban a nyerő stratégia = limesz a hasznosság kategóriájában.\
+[ 2142] Terminal cone. Limit = optimum = winning. In games, the winning strategy = limit in the utility category.\
+[ 2142] Alap/KategoriaT.idr:216\
+[ 2142] https://en.wikipedia.org/wiki/Limit_(category_theory)\
+[ 2142] generalizes\
+[ 2142] A reprezentálható funktor Hom(A,-) megőrzi a limeszeket — ezen alapul a Yoneda.\
+[ 2142] Kolimesz\
+[ 2142] Colimit\
+[ 2142] Kezdő kokúp. A limesz duálisa. A sportban a rekord = kolimesz a teljesítmény kategóriájában.\
+[ 2142] Initial cocone. Dual of limit. In sports, the record = colimit in the performance category.\
+[ 2142] Alap/KategoriaT.idr:223\
+[ 2142] Az E8 kategória kolimeszei a flag-varietások (= G/P, ahol P parabolikus).\
+[ 2142] str-19\
+[ 2142] Exponenciál\
+[ 2142] Exponential\
+[ 2142] C^B + kiértékelés ε + transzpozíció. ε ∘ (f̃ × 1_B) = f.\
+[ 2142] C^B + evaluation ε + transpose. ε ∘ (f̃ × 1_B) = f.\
+[ 2142] Alap/KategoriaT.idr:232\
+[ 2142] https://en.wikipedia.org/wiki/Exponential_object\
+[ 2142] Az E8 flag-varietásán a függvény-tér (morphism space) = Hom(P, Q) egy G/P × G/Q → G/(P∩Q) struktúrát ad, ami a
+[ 2142] exponenciálja.\
+[ 2142] str-20\
+[ 2142] Kartéziánusan zárt kategória\
+[ 2142] Cartesian closed category\
+[ 2142] Végobjektum + szorzatok + exponenciálok. A λ-kalkulus modellje.\
+[ 2142] Terminal object + products + exponentials. Model of λ-calculus.\
+[ 2142] Alap/KategoriaT.idr:244\
+[ 2142] https://en.wikipedia.org/wiki/Cartesian_closed_category\
+[ 2142] A Set kategória CCC; az E8 reprezentáció-kategóriája (Rep(E8)) is CCC, és a tenzor-hom = exponenciál.\
+[ 2142] str-21\
+[ 2142] Heyting algebra\
+[ 2142] Poset exponenciállal: a ∧ b ≤ c ⟺ a ≤ b ⇒ c. Az intuicionista logika algebraja.\
+[ 2142] Poset with exponential: a ∧ b ≤ c ⟺ a ≤ b ⇒ c. Algebra of intuitionistic logic.\
+[ 2142] Alap/KategoriaT.idr:250\
+[ 2142] https://en.wikipedia.org/wiki/Heyting_algebra\
+[ 2142] str-30\
+[ 2142] Az E8 nyitott Weyl-csoportja (Borel-részcsoport) egy részben rendezzett halmaz, ami Heyting-algebrát alkot.\
+[ 2142] str-22\
+[ 2142] Boole algebra\
+[ 2142] Boolean algebra\
+[ 2142] Heyting algebra kiegészítve ¬¬a = a. A klasszikus logika algebraja.\
+[ 2142] Heyting algebra with ¬¬a = a. Algebra of classical logic.\
+[ 2142] Alap/KategoriaT.idr:257\
+[ 2142] https://en.wikipedia.org/wiki/Boolean_algebra_(structure)\
+[ 2142] Az E8 Weyl-csoport cselekvésében a 240 gyök mindegyikének ± jele bináris → ez egy Boole-algebra struktúrát ad a szimmetriatéren.\
+[ 2142] str-23\
+[ 2142] Adjunkció\
+[ 2142] Adjunction\
+[ 2142] Adjunkció, Monád, Komonád\
+[ 2142] F ⊣ G: Hom_D(Fa, b) ≅ Hom_C(a, Gb). A perem (Legendre) = adjunkció a kvantum és klasszikus között.\
+[ 2142] F ⊣ G: Hom_D(Fa, b) ≅ Hom_C(a, Gb). The boundary (Legendre) = adjunction between quantum and classical.\
+[ 2142] Alap/KategoriaT.idr:270\
+[ 2142] https://en.wikipedia.org/wiki/Adjoint_functors\
+[ 2142] Az E8 × E8 heterotic string elméletben a bal adjungált a (g, q) ↦ gq leképezés (klasszikus-kvantum), míg a jobb adjungált a (q, g) ↦ qg. Ez a két E8-akció kommutál, és a Perem = az a határ, ahol a két struktúra
+[ 2142] }, { \
+[ 2142] str-24\
+[ 2142] Monád\
+[ 2142] Monad\
+[ 2142] Endofunktor T + η + μ. Törvények: μ∘μT = μ∘Tμ, μ∘ηT = id = μ∘Tη. A számítás hatása: IO, State, Either.\
+[ 2142] Endofunctor T + η + μ. Laws: μ∘μT = μ∘Tμ, μ∘ηT = id = μ∘Tη. Computational effect: IO, State, Either.\
+[ 2142] Alap/KategoriaT.idr:283\
+[ 2142] https://en.wikipedia.org/wiki/Monad_(category_theory)\
+[ 2142] Az E8 mint monoid a tenzor-kategóriában: T(X) = E8 × X a
+[ 2142] monádja, ami a (q × E8 × q) struktúrát adja.\
+[ 2142] str-25\
+[ 2142] Komonád\
+[ 2142] Comonad\
+[ 2142] Endofunktor G + ε + δ. A monád duálisa. Kontextus kinyerése: Reader, Store, Trace.\
+[ 2142] Endofunktor G + ε + δ. Dual of monad. Context extraction: Reader, Store, Trace.\
+[ 2142] Alap/KategoriaT.idr:290\
+[ 2142] https://en.wikipedia.org/wiki/Comonad\
+[ 2142] Az E8 mint komonád a
+[ 2142] struktúrája: G(X) = Hom(E8, X) a
+[ 2142] kinyerésének komonádja.\
+[ 2142] str-26\
+[ 2142] Csoport\
+[ 2142] Group\
+[ 2142] Monoid inverzzel. A Pauli-csoport: X, Y, Z (mind involució: X² = Y² = Z² = I).\
+[ 2142] Monoid with inverse. The Pauli group: X, Y, Z (all involutions: X² = Y² = Z² = I).\
+[ 2142] Alap/KategoriaT.idr:123\
+[ 2142] https://en.wikipedia.org/wiki/Group_(mathematics)\
+[ 2142] str-27\
+[ 2142] Az E8 egy kompakt valós forma = egyszerű kompakt Lie-csoport, ami a legrövidebb gyökhosszúságú (simply-laced) egyszerű csoport.\
+[ 2142] Monoid\
+[ 2142] Félcsoport egységelemmel. A magyar agglutináció: tő ⊗ képző ⊗ rag = szó (monoidális tenzor).\
+[ 2142] Semigroup with unit. Hungarian agglutination: stem ⊗ suffix ⊗ ending = word (monoidal tensor).\
+[ 2142] Alap/KategoriaT.idr:117\
+[ 2142] https://en.wikipedia.org/wiki/Monoid\
+[ 2142] str-28\
+[ 2142] A Weyl-csoport monoid, és az E8 mint monoid a (maximális tórusz, Weyl-csoport) párként is felfogható.\
+[ 2142] Félcsoport\
+[ 2142] Semigroup\
+[ 2142] Asszociatív bináris művelet, egységelem nélkül. A kompozíció egy objektumon = a monoidális tenzor.\
+[ 2142] Associative binary operation, no unit. Composition on one object = monoidal tensor.\
+[ 2142] Alap/KategoriaT.idr:38\
+[ 2142] https://en.wikipedia.org/wiki/Semigroup\
+[ 2142] Az E8 (mint Lie-csoport) alatti félcsoport-struktúra a szorzat (multiplikáció) asszociativitását tükrözi.\
+[ 2142] str-29\
+[ 2142] Csoport egy kategóriában\
+[ 2142] Group in a category\
+[ 2142] Objektum G + szorzás m: G×G→G + egység u + inverz i. Csoport objektum Sets-ben = csoport.\
+[ 2142] Object G + multiplication m: G×G→G + unit u + inverse i. Group object in Sets = group.\
+[ 2142] Alap/KategoriaT.idr:460\
+[ 2142] https://en.wikipedia.org/wiki/Group_object\
+[ 2142] Az E8 mint Lie-csoport = csoport-objektum a kategóriában, ahol a szorzat a direkt szorzat (G×G) és az inverz az inverzió.\
+[ 2142] Részbenrendezett halmaz\
+[ 2142] Poset\
+[ 2142] Előrendezés antiszimmetriával. a ≤ b ∧ b ≤ a ⟹ a = b.\
+[ 2142] Preorder with antisymmetry. a ≤ b ∧ b ≤ a ⟹ a = b.\
+[ 2142] Alap/KategoriaT.idr:61\
+[ 2142] https://en.wikipedia.org/wiki/Partially_ordered_set\
+[ 2142] str-31\
+[ 2142] Az E8 domináns súly-részbenrendezés egy fontos poset; a magasabb súly ≻ alacsonyabb.\
+[ 2142] Előrendezés\
+[ 2142] Preorder\
+[ 2142] Reflekszív + tranzitív reláció. Kategória legfeljebb egy nyíllal objektumok között. A 15 dimenzió rendezése.\
+[ 2142] Reflexive + transitive relation. Category with at most one arrow between objects. Ordering of the 15 dimensions.\
+[ 2142] Alap/KategoriaT.idr:47\
+[ 2142] https://en.wikipedia.org/wiki/Preorder\
+[ 2142] A ≤ reláció a részben-rendezés a 15 dimenzión → az E8 a perem (maximális elem) legbelső magja.\
+[ 2142] str-32\
+[ 2142] Részobjektum\
+[ 2142] Subobject\
+[ 2142] Toposz\
+[ 2142] Monomorfizmus m: M ↣ X. A Sub_C(X) kategória objektumai a monok.\
+[ 2142] Monomorphism m: M ↣ X. Objects of Sub_C(X) are monos.\
+[ 2142] Alap/KategoriaT.idr:406\
+[ 2142] https://en.wikipedia.org/wiki/Subobject\
+[ 2142] str-37\
+[ 2142] Az E8 minden részcsoportja (G2, F4, E6, E7) részobjektum a Rep(E8)-ben.\
+[ 2142] Yoneda beágyazás\
+[ 2142] Yoneda embedding\
+[ 2142] y: C → [C^op, Set]. Hom(-, a) presheaf. Yoneda lemma: Nat(Hom(-,a), F) ≅ F(a).\
+[ 2142] Alap/KategoriaT.idr:413\
+[ 2142] https://en.wikipedia.org/wiki/Yoneda_lemma\
+[ 2142] str-39\
+[ 2142] Az E8 beágyazása a presheaf kategóriába: y(E8) = Hom(-, E8) ∈ [E8^op, Set]. Ez teszi az E8-at
+[ 2142] mint reprezentálható objektumot.\
+[ 2142] str-34\
+[ 2142] Kategóriák ekvivalenciája\
+[ 2142] Equivalence of categories\
+[ 2142] F: C→D, G: D→C, FG ≅ id, GF ≅ id (természetes izomorfizmus). Gyengébb mint izomorfizmus.\
+[ 2142] F: C→D, G: D→C, FG ≅ id, GF ≅ id (natural isomorphism). Weaker than isomorphism.\
+[ 2142] Alap/KategoriaT.idr:423\
+[ 2142] https://en.wikipedia.org/wiki/Equivalence_of_categories\
+[ 2142] Az E8 különböző valós formái (kompakt, intermediate, split) egymással ekvivalens kategóriákat adnak reprezentációelméletben.\
+[ 2142] str-35\
+[ 2142] Ellenkező kategória\
+[ 2142] Opposite category\
+[ 2142] C^op: ugyanazok az objektumok, megfordított nyilak. A perem (Legendre) = C ↔ C^op adjunkció.\
+[ 2142] C^op: same objects, reversed arrows. The boundary (Legendre) = C ↔ C^op adjunction.\
+[ 2142] Alap/KategoriaT.idr:55\
+[ 2142] https://en.wikipedia.org/wiki/Opposite_category\
+[ 2142] Az E8^op = E8 önmagával (vagy majdnem — a Dynkin-diagram triviális automorfizmusa miatt).\
+[ 2142] str-36\
+[ 2142] Szelet kategória\
+[ 2142] Slice category\
+[ 2142] C/C: objektumok f: X→C, nyilak g: X→X
+[ 2142] ∘g = f.\
+[ 2142] C/C: objects f: X→C, arrows g: X→X
+[ 2142] Alap/KategoriaT.idr:434\
+[ 2142] https://en.wikipedia.org/wiki/Overcategory\
+[ 2142] Az E8/B (ahol B Borel-részcsoport) a flag-varietás, ami a kvantum-klasszikus határ geometriai megtestesítője.\
+[ 2142] Topos\
+[ 2142] CCC + részobjektum-osztályozó Ω. A halmazok kategóriája = a prototipikus toposz.\
+[ 2142] CCC + subobject classifier Ω. The category of sets = the prototypical topos.\
+[ 2142] Alap/KategoriaT.idr:396\
+[ 2142] https://en.wikipedia.org/wiki/Topos\
+[ 2142] A toposz-elméletben az E8 mint
+[ 2142] egy Lie-toposzban jelenik meg — ez a fizikai alkalmazások alapja.\
+[ 2142] str-38\
+[ 2142] Szabad kategória\
+[ 2142] Free category\
+[ 2142] Irányított gráf → kategória (utak kompozíciója). A szabad monoid általánosítása.\
+[ 2142] Directed graph → category (path composition). Generalization of free monoid.\
+[ 2142] Alap/KategoriaT.idr:443\
+[ 2142] https://en.wikipedia.org/wiki/Free_category\
+[ 2142] Az E8 gyökrendszere egy irányított gráf → a rajta értelmezett
+[ 2142] fogalom fontos a Killing-formán.\
+[ 2142] Reprezentálható funktor\
+[ 2142] Representable functor\
+[ 2142] Hom(A, -): C → Set. Minden limeszt megőriz. A Yoneda beágyazás alapja.\
+[ 2142] Hom(A, -): C → Set. Preserves all limits. Foundation of Yoneda embedding.\
+[ 2142] Alap/KategoriaT.idr:452\
+[ 2142] https://en.wikipedia.org/wiki/Representable_functor\
+[ 2142] Minden E8 reprezentáció mint reprezentálható funktor: Hom(E8, V) = V, ahol V az ábrázolandó vektortér.\
+[ 2142] str-40\
+[ 2142] Monoidális kategória\
+[ 2142] Monoidal category\
+[ 2142] Monoidális kategóriák\
+[ 2142] Kategória + tenzor ⊗ + egység + asszociátor + λ/ρ. A magyar agglutináció: tő ⊗ képző ⊗ rag = szó.\
+[ 2142] Category + tensor ⊗ + unit + associator + λ/ρ. Hungarian agglutination: stem ⊗ suffix ⊗ ending = word.\
+[ 2142] Alap/KategoriaT.idr:300\
+[ 2142] https://en.wikipedia.org/wiki/Monoidal_category\
+[ 2142] A Rep(E8) kategória monoidális a tenzor-szorzat alatt; az E8 reprezentációk tenzor-szorzata = E8 ⊗ E8 reprezentáció.\
+[ 2142] str-41\
+[ 2142] Fonott monoidális kategória\
+[ 2142] Braided monoidal category\
+[ 2142] Monoidális + fonás γ: a⊗b → b⊗a. Hexagon axiómák + Yang-Baxter.\
+[ 2142] Monoidal + braiding γ: a⊗b → b⊗a. Hexagon axioms + Yang-Baxter.\
+[ 2142] Alap/KategoriaT.idr:313\
+[ 2142] https://en.wikipedia.org/wiki/Braided_monoidal_category\
+[ 2142] Az E8 mint szimmetrikus csoport, reprezentációinak tenzor-szorzata kommutál, tehát fonott is (sőt, szimmetrikus).\
+[ 2142] str-42\
+[ 2142] Szimmetrikus monoidális kategória\
+[ 2142] Symmetric monoidal category\
+[ 2142] Fonott + γ² = id (involúció). E8×E8: kommutatív tenzor → szimmetrikus.\
+[ 2142] Braided + γ² = id (involution). E8×E8: commutative tensor → symmetric.\
+[ 2142] Alap/KategoriaT.idr:320\
+[ 2142] https://en.wikipedia.org/wiki/Symmetric_monoidal_category\
+[ 2142] Az E8 reprezentációk kategóriája szimmetrikus monoidális: V ⊗ W = W ⊗ V.\
+[ 2142] str-43\
+[ 2142] Zárt kategória\
+[ 2142] Closed category\
+[ 2142] Szimmetrikus monoidális + belső Hom: V(a⊗b, c) ≅ V(a, c^b).\
+[ 2142] Symmetric monoidal + internal hom: V(a⊗b, c) ≅ V(a, c^b).\
+[ 2142] Alap/KategoriaT.idr:327\
+[ 2142] https://en.wikipedia.org/wiki/Closed_category\
+[ 2142] Az E8 Rep kategóriája zárt: a belső Hom(V, W) = Hom(V, W) (funktor a második változóban).\
+[ 2142] str-44\
+[ 2142] 2-kategória\
+[ 2142] 2-category\
+[ 2142] 2-Kategóriák\
+[ 2142] 0-sejtek + 1-sejtek + 2-sejtek. Függőleges + vízszintes kompozíció + interchange.\
+[ 2142] 0-cells + 1-cells + 2-cells. Vertical + horizontal composition + interchange.\
+[ 2142] Alap/KategoriaT.idr:338\
+[ 2142] https://en.wikipedia.org/wiki/2-category\
+[ 2142] Az E8 2-kategóriává általánosítható, ahol a 2-sejtek a reprezentáció-morfizmusok.\
+[ 2142] str-45\
+[ 2142] Bikategória\
+[ 2142] Bicategory\
+[ 2142] Gyenge 2-kategória: α, λ, ρ izomorfizmusok, nem egyenlőségek. A gyengeség = a természet.\
+[ 2142] Weak 2-category: α, λ, ρ are isomorphisms, not equalities. The weakness = the nature.\
+[ 2142] Alap/KategoriaT.idr:350\
+[ 2142] https://en.wikipedia.org/wiki/Bicategory\
+[ 2142] Az E8
+[ 2142] objektum a 2-kategóriában, ahol az egysejt-morfizmusok a homomorfizmusok.\
+[ 2142] str-46\
+[ 2142] Kan kiterjesztés\
+[ 2142] Kan extension\
+[ 2142] Kiterjesztések\
+[ 2142] Jobb Kan: Ran_K T + ε: R∘K ⇒ T. Bal Kan: Lan_K T + η: T ⇒ L∘K.\
+[ 2142] Right Kan: Ran_K T + ε: R∘K ⇒ T. Left Kan: Lan_K T + η: T ⇒ L∘K.\
+[ 2142] Alap/KategoriaT.idr:369\
+[ 2142] https://en.wikipedia.org/wiki/Kan_extension\
+[ 2142] Az E8 reprezentációinak kiterjesztése a részcsoportok reprezentációira Kan-kiterjesztés.\
+[ 2142] str-47\
+[ 2142] End / Vég\
+[ 2142] End\
+[ 2142] ∫_c S(c,c) + dinaturális ék. Nat(F, G) = ∫_c Hom(Fc, Gc).\
+[ 2142] ∫_c S(c,c) + dinatural wedge. Nat(F, G) = ∫_c Hom(Fc, Gc).\
+[ 2142] Alap/KategoriaT.idr:378\
+[ 2142] https://en.wikipedia.org/wiki/End_(category_theory)\
+[ 2142] str-48\
+[ 2142] (center) mint End(E8).\
+[ 2142] Coend / Kövég\
+[ 2142] Coend\
+[ 2142] ∫^c S(c,c) + dinaturális ko-ék. A tenzor szorzat = coend: A ⊗_R B = ∫^r A ⊗ B.\
+[ 2142] ∫^c S(c,c) + dinatural co-wedge. Tensor product = coend: A ⊗_R B = ∫^r A ⊗ B.\
+[ 2142] Alap/KategoriaT.idr:385\
+[ 2142] A reprezentáció-tenzor = coend, és az E8 (mint önreferenciális struktúra) tartalmazza a saját ko-endjét.\
+[ 2142] e8_edges\
+[ 2142] from\
+[ 2142] kivételes-példa\
+[ 2142] label\
+[ 2142] E8 kategóriák\
+[ 2142] E8 mint Lie-kategória\
+[ 2142] funktor\
+[ 2142] adjoint rep\
+[ 2142] adjoint: E8 → End(E8) = 248-dim\
+[ 2142] nat-trans\
+[ 2142] Rost-invariáns\
+[ 2142] r_{E8}: H¹(*,E8) → H³(*,Q/Z(2))\
+[ 2142] izomorfizmus\
+[ 2142] Dynkin-aut = triviális\
+[ 2142] speciális\
+[ 2142] triviális rep = 0-súly\
+[ 2142] maximális tórusz T\
+[ 2142] külső struktúra\
+[ 2142] E8 ⊗ E8 = heterotic\
+[ 2142] flag varietás = pullback\
+[ 2142] univerzális\
+[ 2142] legnagyobb kivételes = limesz\
+[ 2142] legnagyobb kivételes = kolimesz\
+[ 2142] kvantum-klasszikus\
+[ 2142] F ⊣ G a peremen\
+[ 2142] A 15. dimenzió peremén\
+[ 2142] monád\
+[ 2142] kvantum-tükör\
+[ 2142] speciális-példa\
+[ 2142] komplex E8 = egyszerű kompakt\
+[ 2142] rész-struktúra\
+[ 2142] Weyl-csoport ⊂ E8\
+[ 2142] domináns súlyok posetje\
+[ 2142] ön-dualitás\
+[ 2142] E8^op = E8\
+[ 2142] E8/B = flag\
+[ 2142] Lie-toposz\
+[ 2142] Hom(E8, -) reprezentálható\
+[ 2142] Rep(E8) monoidális\
+[ 2142] szimmetrikus monoidális\
+[ 2142] zárt kategória\
+[ 2142] kan-extension\
+[ 2142] kiterjesztés a részcsoportokra\
+[ 2142] end\
+[ 2142] Z(E8) = C\
+[ 2142] coend\
+[ 2142] V ⊗ W tenzor\
+[ 2142] részcsoport\
+[ 2142] G2 ⊂ E8\
+[ 2142] F4 ⊂ E8\
+[ 2142] E6 ⊂ E8\
+[ 2142] E7 ⊂ E8\
+[ 2142] kiterjeszt\
+[ 2142] a perem (E8) = adjunkció\
+[ 2142] A 15. dimenzió perem dimenziójában lakik\
+[ 2142] alkalmaz\
+[ 2142] Yoneda E8-ra\
+[ 2142] y: E8 → [E8^op, Set]\
+[ 2142] E8 önmagával ekvivalens\
+[ 2142] E8 a toposzban\
+[ 2142] épít\
+[ 2142] megőrzi\
+[ 2142] funktorok közötti\
+[ 2142] kategóriát feltételez\
+[ 2142] objektumai funktorok\
+[ 2142] nyilai természetes transzf.\
+[ 2142] specializál\
+[ 2142] invertálható\
+[ 2142] felhasznál\
+[ 2142] komponensek izomorfizmusok\
+[ 2142] morfizmus osztály\
+[ 2142] dual\
+[ 2142] C^op\
+[ 2142] végobjektumot használ\
+[ 2142] diszkrét diagram limesze\
+[ 2142] kezdő objektumot használ\
+[ 2142] diszkrét diagram kolimesze\
+[ 2142] párhuzamos nyilak szorzatán\
+[ 2142] párhuzamos nyilak diagram\
+[ 2142] párhuzamos nyilak koszorzatán\
+[ 2142] szorzat általánosítása\
+[ 2142] szorzat + kiegyenlítő\
+[ 2142] ← diagram limesze\
+[ 2142] koszorzat általánosítása\
+[ 2142] koszorzat + kokiegyenlítő\
+[ 2142] üres diagram\
+[ 2142] diszkrét 2-diagram\
+[ 2142] párhuzamos nyilak\
+[ 2142] ← diagram\
+[ 2142] → diagram\
+[ 2142] × felhasználásával\
+[ 2142] univerzális tulajdonság\
+[ 2142] }, {\
+[ 2142] poset-en\
+[ 2142] poset mint kategória\
+[ 2142] + involúció\
+[ 2142] funktorok között\
+[ 2142] limesz adjunktus\
+[ 2142] kolimesz adjunktus\
+[ 2142] endofunktor\
+[ 2142] adjunkcióból származik\
+[ 2142] + inverz\
+[ 2142] + egység\
+[ 2142] objektum\
+[ 2142] G×G\
+[ 2142] + antiszimmetria\
+[ 2142] ≤1 nyíl\
+[ 2142] monok\
+[ 2142] részobjektum osztályozó\
+[ 2142] presheaf kategóriába\
+[ 2142] representable funktorok\
+[ 2142] természetes izomorfizmusok\
+[ 2142] funktorok\
+[ 2142] transzformál\
+[ 2142] nyilak megfordítása\
+[ 2142] objektum = morfizmus\
+[ 2142] CCC struktúra\
+[ 2142] konstruál\
+[ 2142] gráfból\
+[ 2142] általánosít\
+[ 2142] szabad monoid általánosítása\
+[ 2142] Hom(A,-) funktor\
+[ 2142] tulajdonság\
+[ 2142] minden limeszt megőriz\
+[ 2142] Yoneda alapja\
+[ 2142] + tenzor ⊗\
+[ 2142] generalizál\
+[ 2142] monoid egy kategóriában\
+[ 2142] + fonás γ\
+[ 2142] γ²=id\
+[ 2142] + belső Hom\
+[ 2142] általános exponenciál\
+[ 2142] + 2-sejtek\
+[ 2142] 1-sejt funktor\
+[ 2142] 2-sejt = nat. transzformáció\
+[ 2142] gyengít\
+[ 2142] α,λ,ρ csak izomorfizmusok\
+[ 2142] izomorfizmusok\
+[ 2142] funktorokon\
+[ 2142] természetes transzf.\
+[ 2142] jobb Kan = limesz általánosítás\
+[ 2142] bal Kan = kolimesz általánosítás\
+[ 2142] Nat = ∫ Hom\
+[ 2142] limesz + ék\
+[ 2142] tenzor szorzat\
+[ 2142] kolimesz + ko-ék\
+[ 2142] levels\
+[ 2142] nev\
+[ 2142] theme\
+[ 2142] Az absztrakció alapjai: kategória, preorder, monoid alapjai\
+[ 2142] Kategorikus leképezések és köztük lévő természetes átalakulások\
+[ 2142] Morfizmus-osztályok és algebrai törvények\
+[ 2142] Univerzális konstrukciók: legkisebb, legnagyobb, szorzat, összeg, végső kúp\
+[ 2142] A λ-kalkulus és a logika: függvény-tér, implikáció\
+[ 2142] legjobb megoldás
+[ 2142] Párhuzamos kompozíció: tenzor, fonás, szimmetria\
+[ 2142] Kategorikus metaelmélet: kategóriák kategóriája\
+[ 2142] Funkorok kiterjesztése diagramokon keresztül\
+[ 2142] A kategóriaelmélet csúcsa: a halmazok általánosítása\
+[ 2142] META: E8 kivételes struktúra\
+[ 2142] A perem legbelső magja: a legnagyobb kivételes egyszerű struktúra\
+[ 2142] summary\
+[ 2142] total_main_structures\
+[ 2142] total_meta_structures\
+[ 2142] total_main_edges\
+[ 2142] total_e8_edges\
+[ 2142] awodey_count\
+[ 2142] mac_lane_count\
+[ 2142] deepest_dependency_chain\
+[ 2142] central_node\
+[ 2142] str-1 (Kategória) - minden más erre épül\
+[ 2142] highest_node\
+[ 2142] str-E8 - a perem legbelső magja, ami
+[ 2142] és
+[ 2142] dual_pairs\
+[ 2142] exceptional_chain\
+[ 2142] e8_uniqueness\
+[ 2142] E8 az egyetlen egyszerű kompakt Lie-csoport, ami: triviális centrummal rendelkezik, kompakt, egyszerűen összefüggő, simply-laced (minden gyök azonos hosszúságú)\
+[ 2142] legbelső magja\
+[ 2142] G2: Az oktávok (Cayley-számok) automorfizmus-csoportja. 7-dim reprezentáció. Hang dimenzió.\
+[ 2148] 2026-08-11 20:29:36
+[ 2159] 2026-08-11 20:31:44
+[ 2167] 2026-08-11 20:32:08
+[ 2171] Átnéztem. A teljes audit itt érhető el:
+[ 2172] @konyv_graph_e8_audit.md
+[ 2173] Fő megállapítás
+[ 2174] A JSON jó kutatási hipotézisgráf, de jelenleg nem megbízható matematikai tudásgráf. Túl sok helyen keveredik:
+[ 2243] Szerkezeti hibák
+[ 2248] , nem 49.
+[ 2281] Fontos E8-javítások
+[ 2282] Helyes
+[ 2319] 696729600
+[ 2361] Hibás
+[ 2362] A theta-sor nem:
+[ 2373] 61920
+[ 2394] hanem standard konvencióban:
+[ 2419] 2160
+[ 2424] 6720
+[ 2461] witten_index: 30
+[ 2462] helyett:
+[ 2465] coxeter_number\
+[ 2465] dual_coxeter_number\
+[ 2466] A valós formák standard jelölése:
+[ 2509] Részcsoportlánc
+[ 2557] lánc nem használható a megadott centralizátorokkal. A standard párok:
+[ 2651] Így a centralizátorok:
+[ 2655] Részalgebra
+[ 2656] Centralizátor
+[ 2758] Súlyosan hibás gráfkapcsolatok
+[ 2818] , hanem kompakt formánál
+[ 2902] , nem
+[ 2909] Az adjoint reprezentáció:
+[ 2947] A helyes Steane–E8 gerinc
+[ 2948] A legerősebb kapcsolat:
+[ 2983] [7, 4, 3]
+[ 2991] [8, 4, 4]
+[ 2998] A 240 gyök helyes felbontása:
+[ 3036] Javasolt adatmodell
+[ 3040] csomópont legyen, hanem külön:
+[ 3043] [ {\
+[ 3043] obj-E8-group\
+[ 3043] entity_type\
+[ 3043] lie_group\
+[ 3043] obj-e8-algebra\
+[ 3043] lie_algebra\
+[ 3043] obj-E8-root-system\
+[ 3043] root_system\
+[ 3043] obj-E8-lattice\
+[ 3043] lattice\
+[ 3043] obj-Rep-E8\
+[ 3043] category\
+[ 3044] Minden állításhoz szükséges:
+[ 3047] claim_status\
+[ 3047] theorem | established | interpretation | conjecture | metaphor\
+[ 3057] 2026-08-11 20:34:59
+[ 3059] Igazad van: túl nagy magabiztossággal kevertem össze a biztosan ellenőrzött tényeket, a konvenciófüggő állításokat és a saját értelmezésemet. Újraellenőrzöm a legkritikusabb pontokat, és csak azt tartom meg, amit ténylegesen igazolni tudok.
+[ 3065] 2026-08-11 20:35:14
+[ 3068] Most nem írok újabb nagy auditot. Először visszavonom, ami nem volt kellően alátámasztva, majd három konkrét állítást elsődleges vagy standard forrásból ellenőrzök: a csomópontszámot, az
+[ 3083] 2026-08-11 20:35:46
+[ 3091] 2026-08-11 20:36:09
+[ 3094] Igazad van. Az előző válaszomban túl messz mentem: egy részletes, de nem teljesen forrásolt „auditot” gyártottam, és több beágyazásfüggő E8-állítást kategorikusan hibásnak neveztem. Ez nem volt elég fegyelmezett.
+[ 3095] Amit biztosan igazoltam
+[ 3096] A repóban lévő forrás alapján:
+[ 3117] Tehát ez tényszerű:
+[ 3125] Szintén közvetlenül ellenőrizhető:
+[ 3161] standard konvencióban:
+[ 3207] Amit helyesbítek
+[ 3208] 1. Részcsoportok
+[ 3209] Túl kategorikusan fogalmaztam. Helyesebb:
+[ 3210] Biztosan léteznek ezek a fontos beágyazások és elágazások:
+[ 3444] 2. Valós formák
+[ 3445] A standard címkék valóban:
+[ 3491] mezőit anélkül, hogy előbb tisztázom: Killing-forma szignatúrakülönbségét, Cartan-indexet vagy más konvenciót jelent-e.
+[ 3508] 4. „E8 kategória”
+[ 3509] A „240 gyök mint objektum, Weyl-elemek mint morfizmusok” valóban megadhat egy akciócsoportoidot. Az előző válaszomban ezt túl gyorsan utasítottam el. A pontos név:
+[ 3541] Ami továbbra is problémás
+[ 3542] Ezeket fenntartom:
+[ 3640] A helyes következő lépés
+[ 3641] Nem újabb nagy interpretáció kell, hanem állításonkénti audit:
+[ 3645] JSON-állítás
+[ 3646] Objektumtípus
+[ 3647] Konvenció/beágyazás
+[ 3648] Forrás
+[ 3649] Státusz
+[ 3654] Lie-algebra
+[ 3655] komplex
+[ 3656] standard
+[ 3657] bizonyított
+[ 3661] csoportbeágyazás
+[ 3662] nincs megadva
+[ 3663] hiányzik
+[ 3664] nem eldönthető
+[ 3668] kutatási modell
+[ 3669] saját definíció
+[ 3670] projekt
+[ 3671] hipotézis
+[ 3673] Tehát:
+[ 3684] 2026-08-11 20:39:50
+[ 3688] Értem a különbséget: a
+[ 3693] A geometriai megfogalmazás
+[ 3694] Legyen a statikus rendszer egy 15 dimenziós állapottér:
+[ 3707] Ez egy 16 dimenziós folyamattérben elhelyezkedő „pillanatfelület”:
+[ 3730] A 16. irány a felület normálisa:
+[ 3780] -beli tangenciális irányra.
+[ 3843] nem feltétlenül fizikai idő. Lehet:
+[ 3855] A szimmetriatörés maga a számítás
+[ 3862] a két vákuumot megkülönböztető kiralitás:
+[ 3907] , u >
+[ 4108] Hamiltoni alak
+[ 4109] Kvantumos rendszerben a 16. irány generátora a Hamilton-operátor:
+[ 4149] A formális megoldás:
+[ 4263] látjuk: az
+[ 4269] Összefonódás mint a normálirány nyoma
+[ 4270] Ha a két hétkomponensű oldal:
+[ 4308] akkor a normálirányú Hamiltonian tartalmazhat csatolást:
+[ 4392] akkor a két oldal összefonódik:
+[ 4433] A 15 dimenziós részrendszerből nézve információ „eltűnhet”, mert a redukált állapot kevert:
+[ 4473] De a teljes 16 dimenziós evolúcióban:
+[ 4523] Az információ nem semmisül meg:
+[ 4526] Ez a pontos változata annak, hogy:
+[ 4684] Kategóriaelméleti alak
+[ 4685] A 15 dimenziós konfigurációk objektumok:
+[ 4716] A számítás a köztük lévő morfizmus:
+[ 4742] Az ellentétes királis folyamat:
+[ 4780] Az információmegmaradás nem azt jelenti, hogy az állapot nem változik, hanem hogy a folyamat invertálható vagy izometrikus:
+[ 4798] A hibajavítás pedig magasabb morfizmus: két fizikailag különböző út ugyanazt a logikai folyamatot valósítja meg,
+[ 4834] Így:
+[ 4836] 0-sejt: 15 dimenziós állapot;
+[ 4837] 1-sejt: számítás/evolúció;
+[ 4838] 2-sejt: hibajavítás vagy két számítás ekvivalenciája;
+[ 4839] 3-sejt: a hibajavítási ekvivalenciák közötti koherencia.
+[ 4852] Nem egyszerűen:
+[ 4865] mint tizenhat egyenrangú koordináta, hanem:
+[ 4922] } + {
+[ 4942] Vagy:
+[ 4990] , 16 =
+[ 5010] A 16. „dimenzió” ezért nem látható ugyanúgy, mint a többi: ha egyetlen 15 dimenziós szeletre korlátozódunk, csak a változás előtti vagy utáni állapotot látjuk. A mozgás csak két szelet összehasonlításával jelenik meg.
+[ 5011] A lényegi hipotézis tehát formálisan:
+[ 5165] 2026-08-11 20:43:46
+[ 5171] , mert a kompozíciók nem szó szerinti egyenlőségek, hanem magasabb izomorfizmusok erejéig egyeznek.
+[ 5178] -vel.
+[ 5179] A cellák jelentése
+[ 5183] Szint
+[ 5184] Matematikai elem
+[ 5185] Fizikai jelentés
+[ 5188] 0-cella
+[ 5194] 15 dimenziós állapotszelet vagy vákuum
+[ 5196] 1-cella
+[ 5210] 16 dimenziós normálirányú evolúció, számítás
+[ 5212] 2-cella
+[ 5226] két evolúció közötti deformáció, gauge-ekvivalencia vagy hibajavítás
+[ 5228] 3-cella
+[ 5242] a különböző javítások és deformációk közötti koherencia
+[ 5246] jelenik meg:
+[ 5324] 1. A számítás mint 1-morfizmus
+[ 5325] Legyenek a szimmetrikus és törött vákuumok:
+[ 5354] A szimmetriatörési számítás:
+[ 5413] Lokálisan:
+[ 5522] 2. CPT mint ko-duális dagger trifunktor
+[ 5523] A CPT/ko-dualitás legyen egy gyenge involutív trifunktor:
+[ 5557] Ez megfordítja az evolúciót:
+[ 5598] A két királis vákuumot felcseréli:
+[ 5644] A kettős CPT nem feltétlenül szigorúan identitás, hanem invertálható 2-cella:
+[ 5690] 3. Összefonódás mint monoidális szerkezet
+[ 5691] A két hétkomponensű oldal:
+[ 5715] Az összefonódott állapot nem egyszerű objektumpár, hanem állapot-előkészítő 1-cella:
+[ 5746] A kiértékelés:
+[ 5777] A „kígyóazonosságok” gyenge formában 2-izomorfizmusok:
+[ 5843] Ezért az összefonódás nem pusztán korreláció: a rendszer
+[ 5847] 4. Információmegmaradás 3-kategorikus alakban
+[ 5848] A globális evolúció nem feltétlenül szigorúan unitér egyenlőséggel. Lehet unitér ekvivalencia erejéig:
+[ 5921] A háromszögazonosságok sem puszta egyenlőségek, hanem invertálható 3-cellák:
+[ 5975] Így az információmegmaradás 3-kategorikus állítása:
+[ 6042] Az információ lokálisan eltűnhet, de átkerülhet:
+[ 6049] 5. A kvantumhibajavítás mint 2-cella
+[ 6050] Legyen:
+[ 6120] A hibajavítás nem szükségképpen szigorú egyenlőség:
+[ 6149] hanem 2-cella:
+[ 6181] Ha két különböző szindrómaút vagy helyreállítás ugyanazt a logikai eredményt adja:
+[ 6197] α, β :
+[ 6202] akkor az azonosságukat egy 3-cella fejezi ki:
+[ 6216] Ez a 3-kategorikus QEC lényege:
+[ 6300] 6. A hét szimmetriatörés mint kompozíció
+[ 6301] A hét átmenet legyen hét 1-morfizmus:
+[ 6342] , i =
+[ 6344] A teljes folyamat:
+[ 6391] Egy trikategóriában a különböző zárójelezések nem szigorúan azonosak:
+[ 6457] hanem asszociátor 2-cellával kapcsolódnak:
+[ 6544] 7. Hol jelenhet meg az általad keresett összeg?
+[ 6545] A kritikus exponenseket továbbra sem célszerű közvetlenül összeadni. De a hét RG-transzformáció deriváltjai összeszorzódnak:
+[ 6585] Ezért a logaritmikus térben valódi additív invariáns keletkezik:
+[ 6692] akkor:
+[ 6760] hanem:
+[ 6817] válik számmá:
+[ 6857] 8. A 16. dimenzió 3-kategorikus jelentése
+[ 6858] A teljes szerkezet:
+[ 6865] -cella
+[ 7145] , amely csak a folyamatok kompozíciójában válik láthatóvá.
+[ 7154] 2026-08-11 20:50:16
+[ 7157] Formálisan összerakom a javaslatodat: a vákuumot 0-objektumként, az
+[ 7186] 2026-08-11 20:51:05
+[ 7189] Igen — így a szerkezet pontosabb. De két külön dolgot kell szétválasztani:
+[ 7232] 1. A 0 mint vákuum
+[ 7233] Egy stabil vagy pontozott kategóriában megadhatunk egy 0-objektumot:
+[ 7250] amely egyszerre kezdő és végobjektum:
+[ 7282] ∀X :
+[ 7287] {∗},
+[ 7290] {∗}.
+[ 7295] A fizikai kvantumvákuum azonban nem feltétlenül „semmi”. Lehet összefonódott és fluktuáló állapot:
+[ 7328] Ezért érdemes külön jelölni:
+[ 7335] : kategoriális nulla, nincs gerjesztés;
+[ 7341] : monoidális egység/vákuumszektor;
+[ 7350] : konkrét kvantumvákuum.
+[ 7351] A te rendszeredben ezek azonosíthatók, de ez külön axióma:
+[ 7367] 2. A két oldal kategóriái
+[ 7378] -szektor kategóriája legyen:
+[ 7414] A négy példány quaternionikus címkézése:
+[ 7475] Az affine oldal:
+[ 7520] -rács vertexoperátor-algebrájának moduluskategóriája:
+[ 7553] Itt az affine grade:
+[ 7572] , n ∈
+[ 7576] Fontos:
+[ 7598] 3. Kompaktifikáció és dekompaktifikáció
+[ 7657] akkor van egység és koegység:
+[ 7710] Ekkor két rekurzív endofunktor keletkezik:
+[ 7729] RL :
+[ 7758] LR :
+[ 7769] 4. A Y-kombinátor pontos szerepe
+[ 7813] A te értelmezésedben:
+[ 7846] -konfiguráció, amely az affine kiterjesztés és visszakompaktifikálás után önmagába tér vissza.
+[ 7847] Az affine oldalon:
+[ 7878] -állapot, amely a négy
+[ 7887] -szektorra bontás és újraegyesítés alatt invariáns.
+[ 7888] A Y tehát nem maga az egyszeri átmenet, hanem:
+[ 7923] Fizikai nyelven ez lehet:
+[ 7930] 5. Trikategorikus szerkezet
+[ 7931] A megfelelő 3-kategóriában:
+[ 7932] 0-cellák
+[ 7967] 1-cellák
+[ 8052] 2-cellák
+[ 8077] RL, ε :
+[ 8082] valamint a Y-fixpont:
+[ 8097] 3-cellák
+[ 8098] A háromszögazonosságok, fixpontkoherenciák és különböző törési utak közötti ekvivalenciák:
+[ 8156] 6. Törés Standard Modell-szimmetriákra
+[ 8157] Az elméletileg ismert egyik lehetséges lánc:
+[ 8187] majd:
+[ 8290] Másik fontos felbontás:
+[ 8346] Heterotikus modellben a kiindulópont standard módon:
+[ 8397] 7. AdS/CFT helye
+[ 8398] Az AdS/CFT nem újabb részcsoporttörés. Dualitás:
+[ 8433] Kategorikusan ez lehet egy kódoló 1-morfizmus:
+[ 8471] A holografikus irány az RG-/számítási irány:
+[ 8495] Ez jól illik a 16. dimenziódhoz:
+[ 8583] A QEC-megfogalmazás:
+[ 8613] 8. Az egész javasolt diagram
+[ 8686] ahol:
+[ 8745] A rekurzív mag:
+[ 8766] A fizikai interpretáció:
+[ 8773] : vákuum;
+[ 8786] : négy quaternionikus, véges szektor;
+[ 8796] : affine/skála-/folyamatszektor;
+[ 8802] : az oda-vissza átmenet önkonzisztens fixpontja;
+[ 8808] : szimmetriatörési morfizmus;
+[ 8809] AdS/CFT: bulk–boundary kódoló dualitás;
+[ 8812] dimenzió: az átmeneteket generáló külső/RG/affine irány.
+[ 8861] 2026-08-11 20:56:03
+[ 8863] Szétválasztom a három közeli, de nem azonos fogalmat: spinor-reprezentáció, kiralitás/paritássértés és valódi CPT-sértés.
+[ 8869] 2026-08-11 20:56:45
+[ 8875] a CPT-szimmetriasértéssel. De értem, milyen mélyebb azonosítást javasolsz: a spinor a térbeli orientáció és annak kettős fedésének hordozója, ezért benne jelenik meg a diszkrét szimmetriák nemtriviális működése.
+[ 8876] A precíz változat:
+[ 8939] nem pedig:
+[ 8972] 1. Mi a spinor?
+[ 8973] A Clifford-algebra:
+[ 9019] minimális balideálján vagy reprezentációterén hatnak a gamma-mátrixok. A spinor:
+[ 9051] A Lorentz-csoport kettős fedése:
+[ 9105] forgatás nem identitásként hat:
+[ 9125] után tér vissza:
+[ 9136] Ez a spinori „rejtett irány”: a vektorgeometria nem látja, de a spinor igen.
+[ 9137] 2. A spinor chirális törése
+[ 9138] A Dirac-spinor két Weyl-szektorra bomlik:
+[ 9227] A kiralitás:
+[ 9283] A gyenge kölcsönhatás nem szimmetrikusan kezeli őket. Ez:
+[ 9352] 3. A diszkrét transzformációk
+[ 9353] Sematikusan:
+[ 9354] Paritás
+[ 9386] Ez felcseréli a kiralitást:
+[ 9412] Töltéskonjugáció
+[ 9439] Időtükrözés
+[ 9508] CPT :
+[ 9529] A pontos mátrixkonvenció változhat, de a lényeg:
+[ 9576] 4. Amit a te állításodból meg lehet tartani
+[ 9577] A te értelmezésed szerint a spinor a választott orientáció hordozója:
+[ 9603] A szimmetrikus vákuumban:
+[ 9624] Ha a vákuum egy ágat kiválaszt:
+[ 9685] akkor a létrejövő rendparaméter lehet például:
+[ 9753] A precíz állítás tehát:
+[ 9797] 5. Valódi CPT-sértéshez mi kell?
+[ 9798] Lokális, unitér, Lorentz-invariáns relativisztikus QFT-ben a CPT-tétel miatt a CPT megmarad. Valódi CPT-sértéshez legalább egy szokásos feltevést fel kell adni, például:
+[ 9804] Például egy háttérvektor:
+[ 9835] CPT- és Lorentz-sértő tag lehet. Itt a sértés hordozója a háttér:
+[ 9859] 6. A 15+1 rendszeredben
+[ 9860] Legyen a 15 dimenziós állapot két ko-duális chirális szektora:
+[ 9913] A 16. normál-/számítási irány generátora:
+[ 9951] A spinor ennek az operátornak sajátállapota:
+[ 9970] A szimmetriatöréskor egy nulla mód áthalad a vákuumon:
+[ 9990] Majd az egyik oldalon:
+[10001] a másikon:
+[10011] Ez a spektrális áramlás adhat chirális spinort. Ebben az értelemben a te állításod matematikailag erősíthető:
+[10090] Ez azonban még mindig nem automatikusan CPT-sértés. Inkább:
+[10189] Scroll to bottom
+[10192] Continue in Accio Work

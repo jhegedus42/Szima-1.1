@@ -1,0 +1,23 @@
+{
+  "skill_name": "research-agent",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Research whether a security-relevant breaking change was introduced in a major JavaScript runtime in the last year. Give me a source-backed brief that distinguishes official release notes from third-party commentary and states what I should verify before upgrading.",
+      "expected_output": "A current technical research brief with primary official sources, a screening log, uncertainty, and no unverified claims.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "What is the current evidence that regular physical activity reduces the risk of major depressive symptoms in adults? Find high-quality recent reviews and key primary studies, call out important limitations, and identify any disagreement.",
+      "expected_output": "A scholarly evidence brief with source hierarchy, linked identifiers, limitations, uncertainty, and a reproducible search/screening log.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Find a legally available open-access paper or dataset about coastal sea-level rise projections. Do not download anything yet. Tell me the best source, why it is legal and trustworthy, the exact landing URL, file format if available, and what you would download after I approve.",
+      "expected_output": "A download-safe report that proposes a reputable legal public asset without downloading it, and documents access status and selection rationale.",
+      "files": []
+    }
+  ]
+}

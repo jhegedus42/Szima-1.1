@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F2 — E8 gyökrendszer és W(E8) · Kristálytiszta Könyv</title>
+<style>
+  /* ═══ F2 FEJEZET-OLDAL — a muszerefal_v2 műszerfal-mintája ═══ */
+  /* 本页不含任何数字——全部数据来自 adat.js（GAUGE）。 */
+  :root {
+    --háttér: #0b0f14;
+    --felület: #131a22;
+    --felület2: #0f151d;
+    --keret: #26303d;
+    --szöveg: #c9d4e0;
+    --halvány: #7d8a99;
+    --kék: #58a6ff;
+    --zöld: #3ddc84;
+    --arany: #e3b341;
+    --piros: #f85149;
+    --lila: #bc8cff;
+    --türkiz: #39d2c0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background:
+      radial-gradient(1200px 500px at 50% -100px, rgba(88, 166, 255, 0.10), transparent),
+      var(--háttér);
+    color: var(--szöveg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+  .tartalom { max-width: 1180px; margin: 0 auto; padding: 2rem 1.4rem 3rem; }
+
+  .fejléc { text-align: center; padding: 1.6rem 0 1.2rem; border-bottom: 1px solid var(--keret); margin-bottom: 1.4rem; }
+  .fejléc h1 { font-size: 2.1rem; letter-spacing: 0.04em; color: var(--kék); text-shadow: 0 0 24px rgba(88, 166, 255, 0.35); }
+  .fejléc h1 .fény { color: var(--arany); text-shadow: 0 0 24px rgba(227, 179, 65, 0.35); }
+  .fejléc .alcím { color: var(--halvány); font-size: 0.95rem; margin-top: 0.45rem; }
+  .fejléc .négyNyelv { margin-top: 0.55rem; font-size: 0.88rem; color: var(--türkiz); }
+  .fejléc .négyNyelv .zh { font-size: 0.95rem; }
+  .fejléc .négyNyelv .he { direction: rtl; unicode-bidi: isolate; color: var(--lila); }
+
+  .vezérlés { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; align-items: center; margin-bottom: 1.6rem; }
+  button { font: inherit; font-size: 0.86rem; color: var(--szöveg); background: var(--felület); border: 1px solid var(--keret); border-radius: 999px; padding: 0.42rem 0.95rem; cursor: pointer; transition: border-color 0.15s, color 0.15s, background 0.15s; }
+  button:hover { border-color: var(--kék); color: var(--kék); }
+  button.aktív { background: rgba(88, 166, 255, 0.14); border-color: var(--kék); color: var(--kék); font-weight: 600; }
+  .számláló { font-size: 0.85rem; color: var(--halvány); border: 1px dashed var(--keret); border-radius: 999px; padding: 0.25rem 0.8rem; }
+
+  .csoport { margin-bottom: 2.2rem; }
+  .csoportFej { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.9rem; border-bottom: 1px solid var(--keret); padding-bottom: 0.4rem; margin-bottom: 0.9rem; }
+  .csoportFej .magyar { font-size: 1.28rem; font-weight: 700; color: var(--zöld); }
+  .csoportFej .nyelvek { font-size: 0.88rem; color: var(--halvány); }
+  .csoportFej .nyelvek .zh { color: var(--türkiz); font-size: 0.95rem; }
+  .csoportFej .nyelvek .de { color: var(--halvány); }
+  .csoportFej .nyelvek .he { direction: rtl; unicode-bidi: isolate; color: var(--lila); }
+  .csoportFej .számláló { margin-left: auto; font-size: 0.8rem; }
+
+  .kártyaRács { display: grid; grid-template-columns: repeat(auto-fill, minmax(540px, 1fr)); gap: 1.1rem; }
+  .kártya { background: var(--felület); border: 1px solid var(--keret); border-radius: 10px; padding: 1.1rem 1.2rem; break-inside: avoid; }
+  .kártya fej { display: block; }
+  .kártya .azonosító { display: inline-block; font-family: ui-monospace, Menlo, monospace; font-size: 0.8rem; color: var(--háttér); background: var(--arany); border-radius: 6px; padding: 0.06rem 0.5rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .kártya h3 { font-size: 1.05rem; color: var(--kék); margin-bottom: 0.15rem; }
+  .kártya .címek { font-size: 0.82rem; color: var(--halvány); margin-bottom: 0.5rem; }
+  .kártya .címek .zh { color: var(--türkiz); }
+  .kártya .címek .he { direction: rtl; unicode-bidi: isolate; color: var(--lila); }
+  .jelölő { display: inline-block; font-size: 0.74rem; border-radius: 6px; padding: 0.08rem 0.5rem; border: 1px solid var(--keret); margin: 0 0.3rem 0.5rem 0; color: var(--zöld); }
+  .jelölő.kétÚt { color: var(--arany); border-color: var(--arany); }
+  .jelölő.futásidejű { color: var(--türkiz); border-color: var(--türkiz); }
+  .jelölő.spekulatív { color: var(--piros); border-color: var(--piros); }
+  .kártya pre { font-family: ui-monospace, Menlo, monospace; font-size: 0.8rem; background: var(--felület2); border: 1px solid var(--keret); border-radius: 6px; padding: 0.6rem 0.7rem; overflow-x: auto; margin: 0.45rem 0; color: var(--türkiz); }
+  .kártya pre.bizonyítás { color: var(--zöld); }
+  .kártya ol.lépések { margin: 0.45rem 0 0.45rem 1.3rem; }
+  .kártya ol.lépések li { margin-bottom: 0.4rem; font-size: 0.9rem; }
+  .kártya ol.lépések .képlet { font-family: ui-monospace, Menlo, monospace; color: var(--kék); }
+  .kártya ol.lépések .érték { color: var(--arany); font-weight: 600; }
+  .kártya ol.lépések .miért { color: var(--halvány); font-size: 0.85rem; }
+  .kártya .szimuláció { font-size: 0.85rem; color: var(--szöveg); background: rgba(61, 210, 192, 0.07); border-left: 3px solid var(--türkiz); padding: 0.5rem 0.7rem; border-radius: 4px; margin: 0.5rem 0; }
+  .grafikonRács { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.5rem; margin: 0.6rem 0; }
+  .grafikonRács figure { background: var(--felület2); border: 1px solid var(--keret); border-radius: 6px; padding: 0.4rem; }
+  .grafikonRács img { width: 100%; height: auto; border-radius: 4px; display: block; }
+  .grafikonRács figcaption { font-size: 0.72rem; color: var(--halvány); padding-top: 0.3rem; }
+  details.összefoglaló { margin-top: 0.55rem; border: 1px dashed var(--keret); border-radius: 6px; padding: 0.5rem 0.7rem; }
+  details.összefoglaló summary { cursor: pointer; color: var(--kék); font-size: 0.85rem; }
+  details.összefoglaló .zh { color: var(--türkiz); }
+  details.összefoglaló .de { color: var(--halvány); }
+  details.összefoglaló .he { direction: rtl; unicode-bidi: isolate; color: var(--lila); }
+  details.összefoglaló p { font-size: 0.86rem; margin-top: 0.45rem; }
+  .kártya lábléc { display: block; margin-top: 0.55rem; font-size: 0.76rem; color: var(--halvány); border-top: 1px solid var(--keret); padding-top: 0.45rem; }
+  .kártya lábléc .parancs { font-family: ui-monospace, Menlo, monospace; color: var(--türkiz); }
+  .rejtett { display: none; }
+  .láb { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--keret); color: var(--halvány); font-size: 0.82rem; }
+</style>
+</head>
+<body>
+<div class="tartalom">
+
+  <header class="fejléc" id="fejléc"></header>
+
+  <nav class="vezérlés" id="vezérlés">
+    <button data-csoport="mind" class="aktív">Mind</button>
+  </nav>
+  <div style="text-align:center; margin-bottom:1.2rem;">
+    <span class="számláló" id="kártyaSzámláló"></span>
+  </div>
+
+  <main id="csoportok"></main>
+
+  <footer class="láb">
+    <p>Az oldal EGYETLEN számot sem tartalmaz — minden érték a <code>adat.js</code>-ből jön,
+    amelyet az <code>KonyvAdat_E8Gyokrendszer_v1.idr</code> main-je írt (GAUGE-elv).
+    A grafikonokat az Idris által generált <code>grafikon_gen.py</code> rajzolta;
+    a maradéktábla a <code>maradekok.csv</code>-ben (max |Δ| = 0).</p>
+    <p style="margin-top:0.4rem;">Fejezet-ügynök futása: F2 pilot — a KonyvTerv_v1 §5 protokollja szerint.</p>
+  </footer>
+</div>
+
+<script src="adat.js"></script>
+<script>
+(function () {
+  var ADAT = window.KONYV_ADAT.e8gyokrendszer;
+
+  /* ── Fejléc (négy nyelv) ── */
+  var fej = document.getElementById("fejléc");
+  fej.innerHTML =
+    "<h1>F2 — <span class='fény'>E8</span> gyökrendszer és W(E8)</h1>" +
+    "<div class='alcím'>A Kristálytiszta Könyv pilot-fejezete — minden levezetés kártyán, minden szám futásból</div>" +
+    "<div class='négyNyelv'><span class='zh'>" + ADAT.címKínai + "</span> · " +
+    ADAT.címNémet + " · <span class='he'>" + ADAT.címHéber + "</span></div>";
+
+  /* ── Besorolás-jelölő osztály ── */
+  function jelölőOsztály(besorolás) {
+    if (besorolás.indexOf("KÉT ÚT") >= 0) return "jelölő kétÚt";
+    if (besorolás.indexOf("FUTÁSID") >= 0) return "jelölő futásidejű";
+    if (besorolás.indexOf("SPECULAT") >= 0) return "jelölő spekulatív";
+    return "jelölő";
+  }
+
+  /* ── Egy kártya HTML-e ── */
+  function kártyaHtml(kártya) {
+    var definíció = "<pre>" + kártya.definíciók.map(function (sor) {
+      return sor.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+    }).join("\n") + "</pre>";
+    var lépések = "<ol class='lépések'>" + kártya.lépések.map(function (lépés) {
+      return "<li><span class='képlet'>" + lépés.képlet + "</span> → <span class='érték'>" +
+        lépés.érték + "</span><br><span class='miért'>" + lépés.miért + "</span></li>";
+    }).join("") + "</ol>";
+    var grafikonok = "<div class='grafikonRács'>" + kártya.grafikonok.map(function (grafikon) {
+      return "<figure><img loading='lazy' src='grafikonok/" + grafikon.fájl +
+        "' alt='" + grafikon.cím + "'><figcaption>" + grafikon.cím + "</figcaption></figure>";
+    }).join("") + "</div>";
+    return "<article class='kártya' data-modul='" + kártya.forrásModul + "'>" +
+      "<fej><span class='azonosító'>" + kártya.azonosító + "</span>" +
+      "<span class='" + jelölőOsztály(kártya.besorolás) + "'>" + kártya.besorolás + "</span></fej>" +
+      "<h3>" + kártya.címMagyar + "</h3>" +
+      "<div class='címek'><span class='zh'>" + kártya.címKínai + "</span> · " +
+      kártya.címNémet + " · <span class='he'>" + kártya.címHéber + "</span></div>" +
+      "<pre class='bizonyítás'>" + kártya.bizonyításTípus + "</pre>" +
+      "<p style='font-size:0.85rem; color:var(--halvány);'>" + kártya.kernelSzerepe + "</p>" +
+      definíció + lépések +
+      "<div class='szimuláció'><strong>Szimuláció:</strong> " + kártya.szimuláció + "</div>" +
+      grafikonok +
+      "<details class='összefoglaló'><summary>Kristály-összefoglaló (négy nyelv)</summary>" +
+      "<p>" + kártya.összefoglalóMagyar + "</p>" +
+      "<p class='zh'>中文：" + kártya.összefoglalóKínai + "</p>" +
+      "<p class='de'>Deutsch: " + kártya.összefoglalóNémet + "</p>" +
+      "<p class='he'>עברית: " + kártya.összefoglalóHéber + "</p></details>" +
+      "<lábléc>forrás: " + kártya.forrásModul + " · futtatás: <span class='parancs'>" +
+      kártya.futtatásiParancs + "</span></lábléc></article>";
+  }
+
+  /* ── Csoportonkénti renderelés ── */
+  var fő = document.getElementById("csoportok");
+  ADAT.csoportok.forEach(function (csoport) {
+    var kártyák = ADAT.kártyák.filter(function (kártya) {
+      return kártya.forrásModul === csoport.modul;
+    });
+    if (kártyák.length === 0) return;
+    var szakasz = document.createElement("section");
+    szakasz.className = "csoport";
+    szakasz.dataset.modul = csoport.modul;
+    szakasz.innerHTML =
+      "<div class='csoportFej'><span class='magyar'>" + csoport.címMagyar + "</span>" +
+      "<span class='nyelvek'><span class='zh'>" + csoport.címKínai + "</span> · " +
+      csoport.címNémet + " · <span class='he'>" + csoport.címHéber + "</span></span>" +
+      "<span class='számláló'>" + kártyák.length + " kártya</span></div>" +
+      "<div class='kártyaRács'>" + kártyák.map(kártyaHtml).join("") + "</div>";
+    fő.appendChild(szakasz);
+  });
+
+  /* ── Szűrés csoportra ── */
+  var vezérlés = document.getElementById("vezérlés");
+  ADAT.csoportok.forEach(function (csoport, sor) {
+    var gomb = document.createElement("button");
+    gomb.textContent = csoport.címMagyar;
+    gomb.dataset.csoport = csoport.modul;
+    vezérlés.appendChild(gomb);
+  });
+  var számláló = document.getElementById("kártyaSzámláló");
+  function számlálóFrissítés(látható) {
+    számláló.textContent = "látható kártyák: " + látható + " / " + ADAT.kártyák.length;
+  }
+  vezérlés.addEventListener("click", function (esemény) {
+    var gomb = esemény.target.closest("button");
+    if (!gomb) return;
+    vezérlés.querySelectorAll("button").forEach(function (elem) {
+      elem.classList.remove("aktív");
+    });
+    gomb.classList.add("aktív");
+    var célérték = gomb.dataset.csoport;
+    var látható = 0;
+    document.querySelectorAll(".csoport").forEach(function (szakasz) {
+      var egyezik = (célérték === "mind" || szakasz.dataset.modul === célérték);
+      szakasz.classList.toggle("rejtett", !egyezik);
+      if (egyezik) látható += szakasz.querySelectorAll(".kártya").length;
+    });
+    számlálóFrissítés(látható);
+  });
+  számlálóFrissítés(ADAT.kártyák.length);
+})();
+</script>
+</body>
+</html>

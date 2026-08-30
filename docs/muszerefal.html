@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Szima műszerfal</title>
+<style>
+  /* ═══ SZIMA MŰSZERFAL — sötét műszerfal-stílus · 深色仪表盘样式 ═══ */
+  /* Instrument panel dark theme · Dunkles Instrumententafel-Design */
+  :root {
+    --háttér: #0b0f14;
+    --felület: #131a22;
+    --felület2: #0f151d;
+    --keret: #26303d;
+    --szöveg: #c9d4e0;
+    --halvány: #7d8a99;
+    --kék: #58a6ff;
+    --zöld: #3ddc84;
+    --arany: #e3b341;
+    --piros: #f85149;
+    --lila: #bc8cff;
+    --türkiz: #39d2c0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background:
+      radial-gradient(1200px 500px at 50% -100px, rgba(88, 166, 255, 0.10), transparent),
+      var(--háttér);
+    color: var(--szöveg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+  .tartalom { max-width: 1180px; margin: 0 auto; padding: 2rem 1.4rem 3rem; }
+
+  /* ── Fejléc · 页眉 · Kopfzeile ── */
+  .fejléc {
+    text-align: center;
+    padding: 1.6rem 0 1.2rem;
+    border-bottom: 1px solid var(--keret);
+    margin-bottom: 1.4rem;
+  }
+  .fejléc h1 {
+    font-size: 2.3rem;
+    letter-spacing: 0.04em;
+    color: var(--kék);
+    text-shadow: 0 0 24px rgba(88, 166, 255, 0.35);
+  }
+  .fejléc h1 .fény { color: var(--arany); text-shadow: 0 0 24px rgba(227, 179, 65, 0.35); }
+  .fejléc .alcím { color: var(--halvány); font-size: 0.95rem; margin-top: 0.45rem; }
+  .fejléc .négyNyelv {
+    margin-top: 0.55rem;
+    font-size: 0.88rem;
+    color: var(--türkiz);
+    direction: ltr;
+  }
+  .fejléc .négyNyelv .zh { font-size: 0.95rem; }
+  .fejléc .négyNyelv .he { direction: rtl; unicode-bidi: isolate; }
+
+  /* ── Vezérlősáv (szűrés + rendezés) · 控制栏 · Steuerleiste ── */
+  .vezérlés {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.6rem;
+  }
+  .vezérlés gomb, button {
+    font: inherit;
+    font-size: 0.86rem;
+    color: var(--szöveg);
+    background: var(--felület);
+    border: 1px solid var(--keret);
+    border-radius: 999px;
+    padding: 0.42rem 0.95rem;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+  }
+  button:hover { border-color: var(--kék); color: var(--kék); }
+  button.aktív {
+    background: rgba(88, 166, 255, 0.14);
+    border-color: var(--kék);
+    color: var(--kék);
+    font-weight: 600;
+  }
+  button.rendezés { border-style: dashed; }
+
+  /* ── Csoport-fejléc (négy nyelvű) · 分组标题（四语）· Gruppenüberschrift ── */
+  .csoport { margin-bottom: 2.2rem; }
+  .csoportFej {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.3rem 0.9rem;
+    border-bottom: 1px solid var(--keret);
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.9rem;
+  }
+  .csoportFej .magyar {
+    font-size: 1.28rem;
+    font-weight: 700;
+    color: var(--zöld);
+  }
+  .csoportFej .nyelvek {
+    font-size: 0.88rem;
+    color: var(--halvány);
+  }
+  .csoportFej .nyelvek .zh { color: var(--türkiz); font-size: 0.95rem; }
+  .csoportFej .nyelvek .de { color: var(--halvány); }
+  .csoportFej .nyelvek .he { direction: rtl; unicode-bidi: isolate; color: var(--lila); }
+  .csoportFej .számláló {
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: var(--halvány);
+    border: 1px solid var(--keret);
+    border-radius: 999px;
+    padding: 0.1rem 0.7rem;
+  }
+
+  /* ── Kártyarács · 卡片网格 · Kartenraster ── */
+  .rács {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));
+    gap: 0.9rem;
+  }
+  .kártya {
+    background: linear-gradient(180deg, var(--felület), var(--felület2));
+    border: 1px solid var(--keret);
+    border-radius: 12px;
+    padding: 0.95rem 1.05rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .kártya::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: var(--csík, var(--kék));
+    opacity: 0.85;
+  }
+  .kártya .név { font-size: 0.88rem; color: var(--szöveg); }
+  .kártya .érték {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 1.72rem;
+    font-weight: 700;
+    color: var(--szöveg);
+    word-break: break-word;
+  }
+  .kártya .érték.kicsiSzám { font-size: 1.12rem; }
+  .kártya .érték.igaz { color: var(--zöld); }
+  .kártya .érték.hamis { color: var(--piros); }
+  .kártya .érték.szöveg { font-size: 1.02rem; color: var(--arany); }
+  .kártya .megjegyzés { font-size: 0.78rem; color: var(--halvány); }
+  .kártya .forrás {
+    margin-top: auto;
+    padding-top: 0.35rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    color: var(--halvány);
+  }
+  .kártya .forrás::before { content: "⌘ "; color: var(--türkiz); }
+  .kártya nullaÉrték .érték { color: var(--zöld); text-shadow: 0 0 14px rgba(61, 220, 132, 0.25); }
+
+  /* A híd-bizonyítás külön kártyája */
+  .kártya.tétel { grid-column: 1 / -1; }
+  .kártya.tétel .tételSzöveg { font-size: 0.9rem; color: var(--szöveg); }
+  .kártya.tétel .tételKód {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.86rem;
+    color: var(--türkiz);
+    background: rgba(57, 210, 192, 0.07);
+    border: 1px dashed var(--keret);
+    border-radius: 8px;
+    padding: 0.5rem 0.7rem;
+    margin: 0.4rem 0;
+    word-break: break-word;
+  }
+
+  /* ── Lábléc · 页脚 · Fußzeile ── */
+  .lábléc {
+    border-top: 1px solid var(--keret);
+    margin-top: 2.4rem;
+    padding-top: 1.3rem;
+    text-align: center;
+    color: var(--halvány);
+    font-size: 0.85rem;
+  }
+  .lábléc .parancs {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.84rem;
+    color: var(--türkiz);
+    background: var(--felület);
+    border: 1px solid var(--keret);
+    border-radius: 8px;
+    display: inline-block;
+    padding: 0.45rem 0.9rem;
+    margin: 0.5rem 0;
+  }
+  .lábléc .gauge {
+    color: var(--zöld);
+    margin-top: 0.35rem;
+  }
+  .lábléc .négyNyelvLábl { margin-top: 0.45rem; font-size: 0.82rem; }
+  .lábléc .he { direction: rtl; unicode-bidi: isolate; }
+  .lábléc a { color: var(--kék); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .fejléc h1 { font-size: 1.7rem; }
+    .kártya .érték { font-size: 1.45rem; }
+  }
+</style>
+</head>
+<body>
+<div class="tartalom">
+
+  <header class="fejléc">
+    <h1>Szima <span class="fény">műszerfal</span></h1>
+    <div class="alcím">
+      Muszerefal_v1 · W9 · minden kulcsmutató egy helyen · Idris 2 · E8×E8 · Steane [[7,1,3]]
+    </div>
+    <div class="négyNyelv">
+      <span class="zh">西玛仪表盘</span> · Instrumententafel ·
+      <span class="he">לוח המחוונים של סימה</span>
+    </div>
+  </header>
+
+  <nav class="vezérlés" id="vezérlősáv" aria-label="Szűrés és rendezés"></nav>
+
+  <main id="műszerfal"></main>
+
+  <footer class="lábléc">
+    <div>A futtatás parancsa · <span class="zh" style="color:var(--türkiz)">运行命令</span> · Ausführungsbefehl · <span class="he" style="color:var(--lila)">פקודת ההרצה</span></div>
+    <div class="parancs">cd szima_ter/modul &amp;&amp; idris2 --exec main Muszerefal_v1.idr</div>
+    <div>Futtatás dátuma: <strong>2026-08-23</strong> (macOS arm64, Idris 2 0.8.0)</div>
+    <div class="gauge">Minden szám Idris-futtatásból származik (GAUGE-elv — semmi ellenőrizetlen kijelentés, AGENTS §18/5).</div>
+    <div class="négyNyelvLábl">
+      Minden szám Idris-futtatásból (GAUGE) ·<br>
+      <span class="zh" style="color:var(--türkiz)">所有数字均来自 Idris 实际运行（GAUGE 原则）</span> ·<br>
+      Alle Zahlen stammen aus der Idris-Ausführung (GAUGE-Prinzip) ·<br>
+      <span class="he" style="color:var(--lila)">כל המספרים מהרצת Idris בפועל (עקרון GAUGE)</span>
+    </div>
+    <div style="margin-top:0.7rem">
+      <a href="https://github.com/jhegedus42/Szima">github.com/jhegedus42/Szima</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+"use strict";
+/* ═════════════════════════════════════════════════════════════════
+   A MŰSZERFAL ADATAI — EZEN a futáson készültek (GAUGE-elv):
+   cd szima_ter/modul && idris2 --exec main Muszerefal_v1.idr
+   Futtatás: 2026-08-23 17:46, macOS arm64.
+   仪表盘数据——来自本次真实运行（GAUGE）。Alles aus dieser Ausführung.
+   ═════════════════════════════════════════════════════════════════ */
+const műszerfalAdatok = {
+  futtatás: {
+    parancs: "cd szima_ter/modul && idris2 --exec main Muszerefal_v1.idr",
+    dátum: "2026-08-23",
+    megjegyzés: "minden szám Idris-futtatásból (GAUGE)"
+  },
+  csoportok: [
+    {
+      azonosító: "e8",
+      magyar: "1. E8 geometria",
+      zh: "E8 几何",
+      de: "E8-Geometrie",
+      he: "גיאומטריית E8",
+      csík: "var(--kék)",
+      mutatók: [
+        { név: "gyök száma", érték: "240", szám: 240, forrás: "E8Iranymutato_v1" },
+        { név: "egész gyökök (112-es osztály)", érték: "112", szám: 112, forrás: "E8Iranymutato_v1 · tipus1SzamSzamitott" },
+        { név: "fél-egész gyökök (128-as osztály)", érték: "128", szám: 128, forrás: "E8Iranymutato_v1 · tipus2SzamSzamitott" },
+        { név: "W(E8) rendje", érték: "696 729 600", megjegyzés: "= 2¹⁴·3⁵·5²·7", szám: 696729600, forrás: "E8Iranymutato_v1" },
+        { név: "E8 dimenzió", érték: "248", szám: 248, forrás: "E8Iranymutato_v1" },
+        { név: "E8×E8 dimenzió (heterotikus string)", érték: "496", szám: 496, forrás: "E8Iranymutato_v1" },
+        { név: "240 gyök + 16 penge hídja", érték: "256", szám: 256, forrás: "E8Iranymutato_v1 · hid256Szamitott (E8TizenhatPenge)" },
+        { név: "minden gyök normája² = 8?", érték: "True", típus: "igaz", forrás: "E8Iranymutato_v1 · mindenGyokNormajaNyolc" }
+      ]
+    },
+    {
+      azonosító: "híd713",
+      magyar: "2. A [[7,1,3]] híd és a pozitív ábécé",
+      zh: "斯坦恩码桥与正字母表",
+      de: "Die [[7,1,3]]-Brücke",
+      he: "גשר [[7,1,3]]",
+      csík: "var(--türkiz)",
+      mutatók: [
+        { név: "pozitív ábécé (a 240 felső fele)", érték: "120", szám: 120, forrás: "E8FazisKapcsolat_v2 · PozitivGyokokKonst" },
+        { név: "Steane 7 bit", érték: "idő · okság · tér · szín · hang · fázis · mód", típus: "szöveg", megjegyzés: "a futás kiírása: [idő okság tér szín hang fázis mód]", forrás: "E8FazisKapcsolat_v2 · steaneHetBitNevek" },
+        { név: "a „fázis” bit indexe (0-alapú)", érték: "5", szám: 5, megjegyzés: "Refl: BizFazisBitHíd", forrás: "E8FazisKapcsolat_v2 · SteaneFazisIndexKonst" }
+      ]
+    },
+    {
+      azonosító: "nyelv",
+      magyar: "3. A nyelv",
+      zh: "语言",
+      de: "Die Sprache",
+      he: "השפה",
+      csík: "var(--arany)",
+      mutatók: [
+        { név: "alapszókincs", érték: "240", szám: 240, forrás: "GyokSzo_v1 · AlapszókincsKonst" },
+        { név: "egész szavak (állandó fogalmak)", érték: "112", szám: 112, forrás: "GyokSzo_v1 · EgészSzavakKonst" },
+        { név: "fél-egész szavak (kapcsolati fogalmak)", érték: "128", szám: 128, forrás: "GyokSzo_v1 · FélEgészSzavakKonst" },
+        { név: "fogalomtár (szó + D8-pálya + kategória)", érték: "240", szám: 240, forrás: "Fogalom_v1 · fogalomTárMéreteFutás" },
+        { név: "távolság-eloszlás (+1, +½, 0, −½, −1)", érték: "1 · 56 · 126 · 56 · 1", szám: 126, megjegyzés: "nyers Show a futásból: (1, (56, (126, (56, 1)))) — az Idris2 az n-es tuple-t jobbra zárójelezi", forrás: "E8BelsoSzorzat · eloszlas" },
+        { név: "bélyegek (3×3×3 töltés·paritás·idő)", érték: "27", szám: 27, forrás: "Mondat_v1 · CPTBélyegekKonst" },
+        { név: "példabélyeg fázistényezője (diagonális koherencia)", érték: "1.0", szám: 1.0, forrás: "Mondat_v1 · fázistényező (FazisAlgebra_v2)" }
+      ]
+    },
+    {
+      azonosító: "fizika",
+      magyar: "4. Fizika",
+      zh: "物理",
+      de: "Physik",
+      he: "פיזיקה",
+      csík: "var(--piros)",
+      mutatók: [
+        { név: "2D Ising α, β, γ, ν", érték: "0.0 · 0.125 · 1.75 · 1.0", szám: 1.75, megjegyzés: "pontos törtek: E8Univerzalitas_v1", forrás: "E8Iranymutato_v1 · ising-mezők" },
+        { név: "univerzalitási osztály", érték: "2D Ising (Z₂ szimmetria-törés)", típus: "szöveg", forrás: "E8Iranymutato_v1" },
+        { név: "ising-egyezés (tört ⟷ Double)", érték: "True", típus: "igaz", forrás: "E8Univerzalitas_v1 · kétDimenziósIsingEgyezésE8Iranymutatóval" },
+        { név: "3D skálacímkék teljesülnek?", érték: "True", típus: "igaz", megjegyzés: "tűrés: 1e-6 (konzervatív küszöb)", forrás: "E8Univerzalitas_v1 · mindenHáromDimenziósCímkeTeljesül" },
+        { név: "Rushbrooke-maradék |α+2β+γ−2|", érték: "9.99999993922529e-9", szám: 9.99999993922529e-9, megjegyzés: "bootstrap: Chang et al. 2025", forrás: "E8Univerzalitas_v1 · rushbrookeMaradékHáromDimenziós" },
+        { név: "Hiperskála-maradék |2−α−3ν|", érték: "9.99999993922529e-9", szám: 9.99999993922529e-9, forrás: "E8Univerzalitas_v1 · hiperskálázásMaradékHáromDimenziós" },
+        { név: "Fisher-maradék |γ−ν(2−η)|", érték: "1.1840323610456949e-8", szám: 1.1840323610456949e-8, forrás: "E8Univerzalitas_v1 · fisherMaradékHáromDimenziós" },
+        { név: "Carnot η (Th=500 K, Tc=300 K)", érték: "0.4", szám: 0.4, megjegyzés: "tört alakban 200/500, Refl", forrás: "MagyarCarnotE9_v3_CodatAlpha · carnotHatekonysag (CarnotCiklus_v1 · hatásfokTört)" },
+        { név: "Carnot η (Th=600 K, Tc=300 K)", érték: "0.5", szám: 0.5, megjegyzés: "1/2", forrás: "MagyarCarnotE9_v3_CodatAlpha · carnotHatekonysag" },
+        { név: "Carnot η (Th=800 K, Tc=300 K)", érték: "0.625", szám: 0.625, megjegyzés: "5/8", forrás: "MagyarCarnotE9_v3_CodatAlpha · carnotHatekonysag" },
+        { név: "Carnot η (Th=373 K, Tc=273 K)", érték: "0.26809651474530827", szám: 0.26809651474530827, megjegyzés: "100/373 — a víz/jég pár", forrás: "MagyarCarnotE9_v3_CodatAlpha · carnotHatekonysag" },
+        { név: "Boltzmann kB (SI-exakt, 2019 SI)", érték: "1.380649e-23 J/K", szám: 1.380649e-23, megjegyzés: "SI-definíció szerint exakt (nincs mérési σ)", forrás: "CarnotCiklus_v1 · boltzmannÁllandó" },
+        { név: "Landauer-küszöb T = 300 K", érték: "2.870978885078724e-21 J", szám: 2.870978885078724e-21, megjegyzés: "E = kB·T·ln 2", forrás: "CarnotCiklus_v1 · landauerKüszöb" },
+        { név: "Landauer-küszöb T = 1 K", érték: "9.569929616929079e-24 J", szám: 9.569929616929079e-24, forrás: "CarnotCiklus_v1 · landauerKüszöb" }
+      ]
+    },
+    {
+      azonosító: "gauge",
+      magyar: "5. Kimerítő futásidejű állapotok (GAUGE-elv)",
+      zh: "穷举运行时状态（GAUGE 原则）",
+      de: "Erschöpfende Laufzeitzustände (GAUGE)",
+      he: "מצבי זמן ריצה ממצים (GAUGE)",
+      csík: "var(--zöld)",
+      mutatók: [
+        { név: "szó-osztályhibák", érték: "0", szám: 0, megjegyzés: "várt: 0 — a 240 szóból", forrás: "GyokSzo_v1 · osztályHibákSzáma" },
+        { név: "távolság-skála hibái", érték: "0", szám: 0, megjegyzés: "várt: 0 — a 240×240 = 57 600 párból", forrás: "GyokSzo_v1 · távolságSkálaHibákSzáma" },
+        { név: "kategória-hibák", érték: "0", szám: 0, megjegyzés: "várt: 0 — a 240 fogalomból", forrás: "Fogalom_v1 · kategóriaHozzárendelésHibákSzáma" },
+        { név: "zártságsértések (komponálás)", érték: "0", szám: 0, megjegyzés: "várt: 0 — 57 600 komponálás", forrás: "SzintaxisMorfizmus_v1 · komponálásZártságiHibákSzáma" },
+        { név: "involúció-sértések (σ∘σ = id)", érték: "0", szám: 0, megjegyzés: "várt: 0 — 57 600 dupla komponálás", forrás: "SzintaxisMorfizmus_v1 · involúcióHibákSzáma" },
+        { név: "ellenpont pályaváltásai", érték: "0", szám: 0, megjegyzés: "várt: 0 — a 240 ellenpontból", forrás: "SzintaxisMorfizmus_v1 · ellenpontPályaHibákSzáma" },
+        { név: "bélyeg-különbözőségek (nub)", érték: "27", szám: 27, megjegyzés: "várható: 27 (a 27 bélyegből)", forrás: "Mondat_v1 · különbözőBélyegekSzáma" }
+      ]
+    },
+    {
+      azonosító: "bizonyítás",
+      magyar: "6. Híd-bizonyítás (kernel-Refl, §18 — két független út, egy híd)",
+      zh: "桥证明（内核 Refl——两条独立道路，一座桥）",
+      de: "Brückenbeweis (Kernel-Refl — zwei Wege, eine Brücke)",
+      he: "הוכחת הגשר (Refl של הליבה — שני נתיבים, גשר אחד)",
+      csík: "var(--lila)",
+      mutatók: [
+        {
+          név: "bizMűszerfalEmeletekHídja — a nyelv két emelete (szavak ⟷ fogalmak) ugyanannyi jelet fog át",
+          érték: "240 = 240",
+          típus: "tétel",
+          tételTípus: "List.length AlapszókincsKonst = List.length FogalomTárKonst",
+          tételHíd: "bizMűszerfalEmeletekHídja = trans (sym bizKétÚtHíd) bizKétPályaHídFogalmon",
+          megjegyzés: "Két IMPORTÁLT, független enumeráció kényszerített találkozása a kombinatorikai hídon (112 + 128) — nem X = X (§18).",
+          forrás: "Muszerefal_v1 · bizMűszerfalEmeletekHídja"
+        },
+        {
+          név: "importált támasz-bizonyítások",
+          érték: "TipusOsszegBizonyit (112 + 128 = 240) · WeylRendFelezettBizonyit · WeylRendPrimtenyezosBizonyit · E8E8DimenzioBizonyit — E8Iranymutato_v1; bizKétÚtHíd — GyokSzo_v1; bizKétPályaHídFogalmon — Fogalom_v1; bizBélyegHíd (3×3×3 = 27) — Mondat_v1",
+          típus: "tételSzöveg"
+        }
+      ]
+    }
+  ]
+};
+
+/* ═══ Megjelenítés — egyszerű, külső függőség nélkül · 显示逻辑 ═══ */
+const gyökérMűszerfal = document.getElementById("műszerfal");
+const vezérlősáv = document.getElementById("vezérlősáv");
+
+let aktuálisCsoport = "mind";   /* "mind" vagy csoport-azonosító */
+let rendezésCsökkenő = false;   /* false = eredeti sorrend a futás szerint */
+
+function szövegVédett(s) {
+  return String(s)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function kártyaHtml(mutató, csík) {
+  const értékOsztály =
+    mutató.típus === "igaz" ? "érték igaz" :
+    mutató.típus === "szöveg" ? "érték szöveg" :
+    mutató.típus === "tétel" || mutató.típus === "tételSzöveg" ? "érték szöveg kicsiSzám" :
+    "érték";
+  const hosszú = String(mutató.érték).length > 22 ? " kicsiSzám" : "";
+  let belseje =
+    '<div class="név">' + szövegVédett(mutató.név) + "</div>" +
+    '<div class="' + értékOsztály + hosszú + '">' + szövegVédett(mutató.érték) + "</div>";
+  if (mutató.típus === "tétel") {
+    belseje +=
+      '<div class="tételSzöveg">Tétel típusa (a fordító ellenőrizte):</div>' +
+      '<div class="tételKód">' + szövegVédett(mutató.tételTípus) + "</div>" +
+      '<div class="tételSzöveg">A híd (két importált tétel összetétele):</div>' +
+      '<div class="tételKód">' + szövegVédett(mutató.tételHíd) + "</div>";
+  }
+  if (mutató.megjegyzés) {
+    belseje += '<div class="megjegyzés">' + szövegVédett(mutató.megjegyzés) + "</div>";
+  }
+  if (mutató.forrás) {
+    belseje += '<div class="forrás">' + szövegVédett(mutató.forrás) + "</div>";
+  }
+  const osztályok = ["kártya"];
+  if (mutató.szám === 0) { osztályok.push("nullaÉrték"); }
+  if (mutató.típus === "tétel" || mutató.típus === "tételSzöveg") { osztályok.push("tétel"); }
+  return (
+    '<article class="' + osztályok.join(" ") + '" style="--csík:' + csík + '">' +
+    belseje + "</article>"
+  );
+}
+
+function csoportKirajzolása(csoport) {
+  let mutatók = csoport.mutatók.slice();
+  if (rendezésCsökkenő) {
+    mutatók.sort(function (a, b) {
+      const aSzámos = typeof a.szám === "number";
+      const bSzámos = typeof b.szám === "number";
+      if (aSzámos && bSzámos) return b.szám - a.szám;
+      if (aSzámos) return -1;
+      if (bSzámos) return 1;
+      return 0;
+    });
+  }
+  const kártyák = mutatók.map(function (m) { return kártyaHtml(m, csoport.csík); }).join("");
+  return (
+    '<section class="csoport" id="csoport-' + szövegVédett(csoport.azonosító) + '">' +
+      '<div class="csoportFej">' +
+        '<span class="magyar">' + szövegVédett(csoport.magyar) + "</span>" +
+        '<span class="nyelvek">' +
+          '<span class="zh">' + szövegVédett(csoport.zh) + "</span> · " +
+          '<span class="de">' + szövegVédett(csoport.de) + "</span> · " +
+          '<span class="he">' + szövegVédett(csoport.he) + "</span>" +
+        "</span>" +
+        '<span class="számláló">' + csoport.mutatók.length + " mutató</span>" +
+      "</div>" +
+      '<div class="rács">' + kártyák + "</div>" +
+    "</section>"
+  );
+}
+
+function műszerfalKirajzolása() {
+  const láthatók =
+    aktuálisCsoport === "mind"
+      ? műszerfalAdatok.csoportok
+      : műszerfalAdatok.csoportok.filter(function (c) { return c.azonosító === aktuálisCsoport; });
+  gyökérMűszerfal.innerHTML = láthatók.map(csoportKirajzolása).join("");
+}
+
+function vezérlősávKirajzolása() {
+  const gombok = ['<button data-csoport="mind" class="aktív">Mind (38+)</button>'];
+  műszerfalAdatok.csoportok.forEach(function (c) {
+    gombok.push(
+      "<button data-csoport=\"" + szövegVédett(c.azonosító) + "\">" + szövegVédett(c.magyar) + "</button>"
+    );
+  });
+  gombok.push('<button class="rendezés" id="rendezésGomb">Rendezés: eredeti (a futás szerint)</button>');
+  vezérlősáv.innerHTML = gombok.join("");
+  vezérlősáv.querySelectorAll("button[data-csoport]").forEach(function (g) {
+    g.addEventListener("click", function () {
+      aktuálisCsoport = g.getAttribute("data-csoport");
+      vezérlősáv.querySelectorAll("button[data-csoport]").forEach(function (másik) {
+        másik.classList.toggle("aktív", másik === g);
+      });
+      műszerfalKirajzolása();
+    });
+  });
+  document.getElementById("rendezésGomb").addEventListener("click", function () {
+    rendezésCsökkenő = !rendezésCsökkenő;
+    this.textContent = rendezésCsökkenő
+      ? "Rendezés: érték szerint csökkenő"
+      : "Rendezés: eredeti (a futás szerint)";
+    this.classList.toggle("aktív", rendezésCsökkenő);
+    műszerfalKirajzolása();
+  });
+}
+
+vezérlősávKirajzolása();
+műszerfalKirajzolása();
+</script>
+</body>
+</html>

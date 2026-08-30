@@ -1,0 +1,755 @@
+Beyond holography:
+the entropic quantum gravity foundations of anisotropic diffusion
+Ginestra Bianconi1, ∗
+
+arXiv:2503.14048v3 [cond-mat.dis-nn] 5 Oct 2025
+
+1
+
+School of Mathematical Sciences, Queen Mary University of London, London, E1 4NS, United Kingdom
+Recently, thanks to the development of artificial intelligence (AI) there is increasing scientific
+attention in establishing the connections between theoretical physics and AI. Traditionally, these
+connections have been focusing mostly on the relation between string theory and image processing
+and involve important theoretical paradigms such as holography. Recently G. Bianconi has formulated the Gravity from Entropy (GfE) approach to quantum gravity in which gravity is derived
+from the geometric quantum relative entropy (GQRE) between two metrics associated with the
+Lorentzian spacetime. Here it is demonstrated that the famous Perona-Malik algorithm for image processing is the gradient flow that maximizes the GfE action in its simple warm-up scenario.
+Specifically, this algorithm is the outcome of the maximization of the GfE action calculated between
+two Euclidean metrics: the one of the support of the image and the one induced by the image. As
+the Perona-Malik algorithm is known to preserve sharp contours, this implies that the GfE action,
+does not in general lead to uniform images upon iteration of the gradient flow dynamics as it would
+be intuitively expected from entropic actions maximising classical entropies. Rather, the outcome
+of the maximization of the GfE action is compatible with the preservation of complex structures.
+These results provide the geometrical and information theory foundations for the Perona-Malik algorithm and might contribute to establish deeper connections between GfE, machine learning and
+brain research.
+
+Recently there is an increasing recognition of the common mathematical foundations of theoretical physics and
+artificial intelligence (AI) algorithms [1–8]. Specifically
+there is a growing consensus on the fundamental role of
+topology and geometry to inform the most recent developments of AI and network theory. This scientific interest
+is currently leading to the fast developments of very vibrant research fields such as topological and geometrical
+machine learning [9, 10] and to topological higher-order
+network dynamics [7, 11, 12] that might lead to a more
+comprehensive understanding of brain dynamics [13–17].
+At the interface between problems in brain research an in
+AI, a key research question is whether theoretical physics
+can inspire geometric diffusion models [18, 19] that can
+be crucial to develop the foundation of the next generation of unsupervised or self-supervised learning algorithms [20]. In addition to geometry and topology, information theory is also recognized as fundamental for both
+AI [21, 22] and brain research [23]. In particular, the
+relative entropy, also known as Kullback-Leibler entropy,
+is acquiring a fundamental role in AI and has given rise
+to very successful theoretical concepts and algorithms as
+the information bottleneck principle [24] and diffusion
+models [25, 26]. In this work we define the geometric
+quantum relative entropy (GQRE) in Euclidean spaces
+and we show that the GQRE provides solid information
+theory foundations to geometric anisotropic diffusion algorithms. By doing so, we establish the connection between these anisotropic diffusion algorithms and the recently proposed Gravity from entropy (GfE) approach to
+quantum gravity [27].
+
+∗ ginestra.bianconi@gmail.com
+
+The relation between artificial intelligence, network
+theory and theoretical physics has a long history. Theoretical physics inspiration from computer vision has led
+to important conceptual frameworks such as the formulation of the holographic principle [28–30]. The holographic principle was originally motivated [28] to obtain
+the area law for the entropy of black-holes. More in general, this principle states that our three-dimensional universe might be encoded in a two dimensional surface as
+an hologram and leading to a very vibrant and active
+research direction in theoretical physics [29, 31].
+On the other side, important proposals to reconcile
+image processing algorithms and in general AI algorithm
+with theoretical physics are at the forefront of physicsinspired AI [18, 19]. The root of this field can be traced
+back to the work [32] by Sochen, Kimmel and Malladi.
+This work is the first work that has framed image processing into a differential geometry theory involving the
+metric induced by the image. Moreover this work has
+proposed the adoption of the Polyakov action of string
+theory in order to formulate modified anisotropic diffusion models for image processing.
+The cross-fertilization of ideas between theoretical
+physics and specifically quantum information and network science is also very fertile [33–39]. In this context,
+quantum entropy has found applications in the characterization of complex network structure, thanks to the
+use of the Von Neumann entropy associated with the
+graph Laplacian. This so-called Von Neumann entropy
+of networks has been originally proposed in Ref. [33] by
+Passerini and Severini and since then has found wide
+applications in the theory of simple and multilayer networks [34–36, 38] and provides the underlying theoretical framework for the recently proposed renormalization
+group approach in network theory [37]. However, the
+
+2
+quantum relative entropy that is so central in quantum
+information theory [40] has not yet been recognized to
+have wide applications in either AI or network science.
+Recently, in Ref. [27], the author has combined quantum mechanics with gravity in a comprehensive statistical mechanics and quantum information theory framework known as Gravity from Entropy (GfE). Specifically
+she has formulated a geometrical definition of quantum
+relative entropy called GQRE in Lorentzian spacetimes.
+In this framework the metrics associated with spacetime
+are treated as quantum operators and the GfE action is
+determined by a Lagrangian given by the GQRE between
+the metric of the manifold and the metric induced by the
+matter field and curvature. Thus, the action of GfE is
+a quantum information theory action that fully captures
+the interplay between geometry and the matter fields defined on the manifold. Interestingly, the GQRE can also
+be calculated for the Schwarzschild black hole giving rise
+to an area law for large Schwarzschild radius [41] without
+obeying the holographic principle.
+Here, we demonstrate that the action of GfE, is key
+for geometric anisotropic diffusion models. In particular we reveal that in one of its simplest incarnations,
+the GfE action, associated to a GQRE Lagrangian defined on Euclidean spaces, provides the quantum information theory foundations for the famous Perona-Malik
+algorithm [42] for image processing. The Perona-Malik
+algorithm is a fundamental reference model in the field of
+image processing [43–45] that denoises an image by implementing a diffusion process. This diffusion is however
+anisotropic and takes place in presence of a metric that
+is chosen to have an ad hoc functional form dependent
+on the contrast of the image. Previous attempts to relate the Perona-Malik algorithm to string theories and in
+particular the Polyakov action, [32] have not been able
+to justify the empirical choice of the functional form of
+the metric assumed in the Perona-Malik algorithm. Here
+we provide solid quantum information theory foundations
+for the Perona-Malik algorithm by defining the GQRE in
+an Euclidean setting and showing that the Perona-Malik
+algorithm is given by the gradient flow that maximizes
+the GfE action proposed in Ref. [27]. The definition of
+the GQRE is here shown to be rooted in the theory of von
+Neumann algebras [46, 47] and to constitute a significant
+advance with respect to the Araki entropy [48, 49]. The
+GQRE provides an information theory quantity that is
+built from two metrics associated to the image: the true
+metric of the 2D flat Euclidean space that offers the support to the image, and the metric induced by the image
+defined on it. Anisotropic diffusion emerges from the tension between these two metrics to reduce their differences
+quantified through the GQRE Lagrangian of GfE. As the
+Perona-Malik is known to preserve sharp contours of the
+image, the GfE foundation of the Perona-Malik action
+also points out an important property of the GfE action.
+Indeed, the maximization of the GfE action is compatible with the preservation of structure and complexity of
+the image. This is a notable feature of the GfE action as
+
+it reveals that, contrary to the expectations in scenarios
+when the classical entropy is maximized, the maximization of the GfE action, based on the GQRE Lagrangian,
+is compatible with non-homogeneous and complex outcomes.
+The Perona-Malik algorithm. We consider a 2D
+flat Euclidean manifold Ω of coordinates r = (x1 , x2 ) ∈
+Ω with metric gµν = ηµν with ηµν = 1 if µ = ν and
+ηµν = 0 otherwise. The infinitesimal distance ds between
+points in 2D is defined by this metric and obeys ds2 =
+gµν dxµ dxν . Note that the metric gµν and its inverse g µν
+will be central to transform vectors in one-forms and vice
+versa by lowering or raising the indices, i.e.
+gµν V ν = Vµ ,
+
+g µν Vν = V µ .
+
+(1)
+
+On top of this manifold we define a function ϕ(r) ∈ R
+indicating the intensity of the colour of the single colour,
+black-white image in our simple setting. Given an initial
+noisy image determined by the function ψ(r) the PeronaMalik algorithm [42, 44, 45] proposes to reconstruct the
+true image by performing a Laplace-Beltrami diffusion
+with metric. Specifically, the reconstructed image ϕ(r) is
+found by integrating the system
+dϕ(r, t)
+= ∇µ ρ(|∇ϕ|2 )∇µ ϕ(r, t)
+dt
+ϕ(r, 0) = ψ(r).
+
+(2)
+
+where the metric ρ(|∇ϕ|2 ) is taken to be
+ρ(|∇ϕ|2 ) =
+
+1
+,
+1 + α|∇ϕ|2
+
+(3)
+
+and where α ∈ R+ is a parameter of the model. The
+power and beauty of this model is that the metric evolves
+together with the diffusion model and the reconstruction of the image. It is clearly highly desirable to derive
+the specific functional form of the metric ρ(|∇ϕ|2 ) in a
+principled way. However, in the original work of Perona and Malik [42] there are no fundamental information
+theory principle driving this choice which remains an ad
+hoc choice in order to achieve anisotropic diffusion and
+a good performance of the algorithm. Additionally, also
+the string theory approach to anisotropic diffusions proposed in Ref. [32] does not provide this explanation.
+As we will see in this article, this particular choice of
+the metric ρ(|∇ϕ|2 ) is exactly what is predicted by the
+GfE action.
+Induced metric. The set of points (r, ϕ(r)) with r ∈
+Ω defines a 2D surface K immersed in 3D (see Figure
+1). At any given point of K, the tangent vectors are
+given by e1 = (1, 0, ∇x1 ϕ) and e2 = (0, 1, ∇x2 ϕ). Let
+us assume that the 3D embedding space of K has flat
+Euclidean metric with diagonal elements (1, 1, α), where
+α is a positive real constant. The infinitesimal distance
+dŝ between points X and X + δX with δX = e1 dx1 +
+e2 dx2 in K obeys dŝ2 = Gµν dxµ dxν where Gµν are the
+elements of the real and symmetric rank 2 tensor that
+
+3
+
+FIG. 1. Schematic representation of the metrics associated to a black-and-white image and the GQRE Lagrangian of the
+GfE action which provides the foundations of the Perona-Malik algorithm. The flat 2D Euclidean manifold Ω (in green) that
+offers the support of the image, has points r of coordinates r = (x1 , x2 ) and an Euclidean metric gµν = ηµν . The infinitesimal
+distance ds between points in Ω is defined by this metric and obeys ds2 = gµν dxµ dxν . The image is associated to the surface K
+(in orange) embedded in a flat 3D Euclidean metric,thus every point of K has coordinates (r, ϕ(r)). The infinitesimal distance
+dŝ between two points in this surface obeys dŝ2 = Gµν dxµ dxν where Gµν , given by Eq.(4), is the symmetric rank 2 tensor that
+defines the metric induced by the surface K on the 2D flat support of the image Ω. The GfE action, associated to the Lagrangian
+L, is given by the GQRE between the metrics G and g. In this work we show that the Perona-Malik algorithm is the gradient
+flow that maximizes the GfE action. Therefore the Perona-Malik algorithm emerges from the principle of maximization of the
+GfE action calculated between the metric induced by the image Gµν and the metric gµν of the 2D image support.
+
+defines the induced metric on Ω. Specifically, we have
+that the induced metric G on the 2D manifold Ω that
+provides the support of the image, is given by
+Gµν = gµν + α∇µ ϕ∇ν ϕ.
+
+(4)
+
+Thus the considered manifold Ω is associated with two
+metrics; the metric gµν and the metric Gµν . Note that
+in the following we will use Ĝµν when referring to either
+one of these two metrics.
+According to the GfE approach here we will treat both
+g and G as quantum operators and we will consider the
+action S given by the GQRE between these two metrics.
+We will show that the Perona-Malik algorithm can be
+obtained as the gradient flow that maximizes the GfE
+action.
+Eigenvalues of the metrics associated to the
+manifold. The GQRE will be defined in terms of the
+eigenvalues of the true metric g and the induced metric
+G. In order to define the eigenvalues and eigenvectors of
+these two metrics in a rotationally invariant way, we define λ as an eigenvalue of Ĝµν if it solves the eigenvalue
+problem
+Ĝµν [V (λ) ]ν = λVµ(λ) .
+
+(5)
+
+It follows that all the eigenvalues λ′ of gµν are equal to
+one λ′n = 1, for n ∈ {1, 2} independently of the choice of
+the metric gµν Instead, the eigenvalues λ and the associated (non-normalized) eigenvectors Vµ of the induced
+metrics Gµν , are given by
+λ1 = (1 + α|∇ϕ|2 ), Vµ = ∇µ ϕ
+
+
+∇µ ϕ∇ν ϕ
+λ2 = 1,
+ηµν −
+V ν.
+|∇ϕ|2
+
+(7)
+
+An action that is only dependent on these eigenvalues
+will be clearly rotational invariant.
+The GfE action. The GfE action [27] is associated
+with a Lagrangian given by the GQRE between two
+Lorentzian metrics: the metric of the manifold and the
+metric induced by the matter fields, and curvature. In
+the context of the Perona-Malik algorithm we consider
+the warm-up scenario of GfE where the two metrics associated to the GQRE are Euclidean of the metric induced
+by the matter-field and curvature is played by Gµν which
+is defined in Eq.(4) and schematically described in Figure
+1. The action S of GfE is given by
+Z p
+1
+| − g|Ldr,
+(8)
+S=
+2 Ω
+
+Thus this eigenvalue problem is the usual eigenvalue
+problem for the matrix Ĝg −1 as the above equation reduces to
+
+where the Lagrangian L is given by the GQRE between
+g and G. Anticipating the results of the next paragraph,
+the GQRE Lagrangian L in Euclidean space that encodes
+for the Perona-Malik algorithm is given by
+
+Ĝµν g νρ Vρ = λVµ .
+
+L = −Tr ln Gg −1 .
+
+(6)
+
+(9)
+
+4
+This definition of the GQRE implies that the GQRE that
+encodes for the Perona-Malik algorithm, can be also expressed in terms of the eigenvalues λn of G and the eigenvalues λ′n of g in a familiar form for the relative entropy.
+Indeed we have
+L=−
+
+2
+X
+n=1
+
+ln λn =
+
+2
+X
+
+λ′n (ln λ′n − ln λn ),
+
+(10)
+
+n=1
+
+The metric g̃ of the manifold Ω can be used to define
+a dual Hilbert space H⋆ . To this end we define the dual
+of |Ψ⟩ as |Φ⋆ ⟩ and the dual of |Φ⟩ as |Φ⋆ ⟩ given by
+|Ψ⋆ ⟩ = ϕ ⊕ ω µ dxµ ,
+
+(11)
+
+which constitute the Euclidean version of the warm-up
+scenario of GfE proposed in Ref.[27].
+First principles derivation of the GQRE in Euclidean space Eq. (9) and its connection with
+Araki entropy. In this paragraph we formulate the
+GQRE in Euclidean space. We discuss the quantum information theory foundations of the GQRE Lagragian L
+(Eq.(9)) and we relate it to the Araki entropy [48, 49].
+Consistently with the GfE approach [27], here we consider a Dirac-Kähler [50, 51] interpretation of the gradient in which ∇µ ϕ describes the component of a one-form.
+Therefore, in order to provide the theoretical foundations
+for our definition of the GQRE, we will consider Hilbert
+spaces formed by the direct sum of a zero-form and a oneform. The generic vector |Ψ⟩ of the considered Hilbert
+space H is given by
+|Ψ⟩ = ϕ ⊕ ωµ dxµ ,
+
+where ω̂ µ = g µρ ω̂ρ . Thus the metric tensor g̃ −1 associated to this scalar product is given by
+g̃ −1 = 1 ⊕ g µν dxµ ⊗ dxν .
+
+(14)
+
+g̃ = 1 ⊕ gµν dxµ ⊗ dxν
+
+(19)
+
+⟨⟨Ψ, Φ⟩⟩ = ⟨⟨Ψ⋆ , Φ⋆ ⟩⟩⋆ .
+
+(20)
+
+and satisfies
+
+The dual operator G̃⋆ : H⋆ → H⋆ of G̃ is given by
+µν
+
+G̃⋆ = 1 ⊕ [G⋆ ] dxµ ⊗ dxν .
+
+(21)
+
+which must satisfy
+EE
+DD
+EE DD
+G̃⋆ · Ψ⋆ , Φ⋆
+.
+Ψ, G̃ · Φ
+=
+
+(22)
+
+⋆
+
+for any arbitrary choices of |Ψ⟩ and |Φ⟩. Here the action
+of G̃⋆ on the generic dual vector ⟨Φ⋆ | obeys
+µν
+
+G̃⋆ · |Φ⋆ ⟩ = ϕ ⊕ [G⋆(1) ] ων dxµ .
+
+(23)
+
+Thus, using the symmetry of Gµν we conclude that G̃⋆
+is related to G̃ by
+G̃⋆ = g̃ −1 G̃g̃ −1 .
+
+(12)
+
+Thus both the image (encoded by ϕ ⊕ 0µ dxµ ) and the
+gradient of the image encoded by 0 ⊕ ∇µ ϕdxµ can be
+interpreted as elements of this Hilbert space. The scalar
+product between |Φ⟩ and another generic vector |Φ⟩ given
+by |Φ⟩ = ϕ̂ ⊕ ω̂µ dxµ is defined as
+Z p
+
+
+−|g| ϕ̄ϕ̂ + ω̄µ ω̂ µ dr,
+(13)
+⟨⟨Ψ, Φ⟩⟩ =
+
+(18)
+
+where ω µ = g µρ ωρ , ω̂ µ = g µρ ω̂ρ .
+The scalar product ⟨⟨Ψ⋆ , Φ⋆ ⟩⟩⋆ is mediated by g̃ given
+by
+
+where we have used λ′n = 1 for n ∈ {1, 2}. Using the
+explicit expression of λn given by Eq.(7), we obtain
+L = − ln(1 + α|∇ϕ|2 ),
+
+|Φ⋆ ⟩ = ϕ̂ ⊕ ω̂ µ dxµ ,
+
+(24)
+
+indicating that
+µν
+
+[G⋆ ]
+
+= g µρ Gρσ g νσ .
+
+(25)
+
+The topological metrics G̃ and G̃⋆ that we consider
+in this work are respectively elements of the algebras U
+and U∗ that generalizes the C ∗ algebra [47]. The norm
+associated to the topological metric G̃ ∈ U is equal to
+the norm associated to its dual, i.e.. ∥G̃∥ = ∥G̃⋆ ∥ with
+Z p
+
+
+| − g|TrF G̃G̃⋆ dr,
+(26)
+∥G̃∥ = ∥G̃⋆ ∥ =
+
+
+where TrF G̃G̃⋆ is given by
+
+All vectors |Φ⟩ in the Hilbert space H must satisfy
+⟨⟨Φ| Φ⟩⟩ < ∞.
+
+(15)
+
+Starting from the induced metric G we can construct
+the topological induced metric G̃ given by
+G̃ = 1 ⊕ Gµν dxµ ⊗ dxν .
+
+(16)
+
+This topological induced metric can be interpreted as a
+quantum operator G̃ : H → H where G̃ · |Φ⟩ ∈ H,
+G̃ · |Φ⟩ = ϕ ⊕ Gµν ω ν dxµ .
+
+(17)
+
+
+
+TrF G̃G̃⋆ = 1 + Gµν Gνµ .
+
+(27)
+
+For a topological metric G̃ interpreted as a quantum
+operator in U we define the square root of the modular
+1/2
+operator ∆G̃,g : H → H as
+1/2
+
+∆G̃,g =
+
+p
+
+G̃G̃⋆ = G̃g̃ −1 ,
+
+(28)
+
+where the last identity is derived under the assumption
+that G̃ is positively definite, i.e. it has only positive
+
+5
+eigenvalues. By this notation we indicate the square 1/2
+root modular operator ∆G̃,g acting on the topological
+field |Φ⟩ as
+1/2
+
+∆G̃,g |Φ⟩ = ϕ ⊕ [G(1) ]µρ g ρν ων dxµ .
+
+(29)
+
+Using the flattened trace (TrF ) formalism introduced in
+Ref. [27] we obtain that the Lagrangian L indicating the
+GQRE can be expressed as
+1/2
+
+L = −TrF ln ∆G̃,g = −Tr ln Gg −1 ,
+
+(30)
+
+where the trace Tr of the last expression indicates the
+usual trace of a matrix. Therefore the action S defined in
+Eq.(8) and associated with the GQRE Lagrangian given
+by Eq.(9), extends the definition of Araki [48, 49] quantum relative entropy and provides geometrical definition
+of this entropy by treating metrics as quantum operators.
+The Perona-Malik algorithm as the gradient
+flow of the GfE action The GfE action, associated with
+the Lagrangian given by Eq.(11), expressing the GQRE
+between the metric gµν = ηµν of the 2D support of the
+image and the induced metric Gµν defined in (4), is given
+by
+Z
+1
+dr ln(1 + α|∇ϕ|2 ).
+(31)
+S=−
+2 Ω
+Thus, the Perona-Malik algorithm can be easily shown to
+be the gradient flow that maximizes this action, which is
+given by
+dϕ(r, t)
+δS
+=
+.
+dt
+δϕ(x, t)
+
+(32)
+
+Indeed in this way we get the dynamical equations
+dϕ(r, t)
+= α∇µ ρ(|∇ϕ|2 )∇µ ϕ(r, t),
+dt
+
+(33)
+
+where ρ(|∇ϕ|2 ) is given by Eq.(3), i.e.
+ρ(|∇ϕ|2 ) =
+
+1
+1 + α|∇ϕ|2
+
+(34)
+
+with initial condition ϕ(r, 0) = ψ(r). Therefore, upon a
+rescaling of the time t → t/α we recover the PeronaMalik algorithm defined in Eq.(2). As anticipated above,
+the GfE action, given by the GQRE between the metric
+g and the metric induced by the image G provides the
+information theory principle that justifies the choice of
+ρ(|∇ϕ|2 ).
+Conclusions. This work shows that the GfE approach
+that gives rise to modified gravity, provides the entropic
+quantum gravity foundations of the Perona-Malik algorithm for anisotropic diffusion. In particular, we have
+revealed that the Perona-Malik algorithm is the gradient
+flow that maximizes the GfE action calculated among the
+flat 2D metric gµν = ηµν and the metric Gµν induced
+
+by the image. This implies that the Perona-Malik algorithm can be interpreted as the outcome of the tension
+between the metric of the flat 2D support of the image
+and the metric induced by the image on the 2D plane
+trying to minimize their differences locally. Interestingly,
+the maximization of the GfE action is compatible with
+heterogeneous and complex images with sharp contours.
+This result is in sharp contrast with the expectations
+arising from the classical maximum entropy principle and
+might be reflected also in the properties of the solutions
+of the GfE modified gravity equations. Therefore this
+result might indicate relevant consequences of adopting
+the GQRE as the Lagrangian for both quantum gravity
+and image processing algorithms.
+From the point of view of artificial intelligence, our
+findings establish solid quantum information-theoretic
+grounds for anisotropic diffusion and the Perona-Malik
+algorithm, justifying the ad hoc choice for the functional
+expression of the metric adopted by Perona and Malik.
+From the point of view of entropic quantum gravity, these
+findings provide a rather immediate application of the
+GfE approach to machine learning opening new perspectives on the development of the next generation of AI diffusion algorithms. Moreover, in this application, the 2D
+metric associated with the image is flat and Euclidean
+and remains unchanged during the learning of the image, while, going beyond the warm-up scenario, the GfE
+approach envisages that this metric is associated to the
+curvature, and can evolve in time. Therefore, future research could explore the full potential of GfE action to
+develop the next generation of AI algorithms.
+Based on this considerations, our expectations are
+that the GfE approach could provide new perspectives
+on physics inspired artificial intelligence, unsupervised
+learning [20] and brain research. On one side, these results might lead to the formulation of a new generation of
+geometric diffusion algorithms. On the other side, they
+might inspire research at the interface between topological and geometrical learning and brain research [52–55].
+which could potentially capture, among the other things,
+the main mechanisms beyond brain illusions such as the
+Kanizsa triangle [56]. Thus the GfE approach might turn
+to be a fertile framework for proposing the next generation of diffusion models fully based on the information
+encoded in the geometrical description of data.
+In summary, this work demonstrates the common
+foundations of GfE and anisotropic diffusion for image
+processing and indicates that the full GfE action could
+potentially offer valuable insights for developing future
+generations of AI algorithms.
+
+ACKNOWLEDGEMENTS
+
+The author acknowledges interesting scientific discussions with Giovanna Citti and Alessandro Sarti and
+thanks them for pointing out Ref. [32]. This work was
+
+6
+partially supported by a grant from the Simons Foundation. The author would like to thank the Isaac Newton
+Institute for Mathematical Sciences, Cambridge, for support and hospitality during the programme Hypergraphs:
+
+Theory and Applications, where work on this paper was
+undertaken. This work was supported by EPSRC grant
+EP/V521929/1.
+
+[1] Herbert Levine and Yuhai Tu. Machine learning meets
+physics: A two-way street. Proceedings of the National
+Academy of Sciences, 121(27):e2403580121, 2024.
+[2] Giuseppe Carleo, Ignacio Cirac, Kyle Cranmer, Laurent Daudet, Maria Schuld, Naftali Tishby, Leslie VogtMaranto, and Lenka Zdeborová. Machine learning and
+the physical sciences.
+Reviews of Modern Physics,
+91(4):045002, 2019.
+[3] Jonathan Carifio, James Halverson, Dmitri Krioukov,
+and Brent D Nelson. Machine learning in the string landscape. Journal of High Energy Physics, 2017(9):1–36,
+2017.
+[4] Yang-Hui He. Deep-learning the landscape. In Machine
+Learning: In Pure Mathematics and Theoretical Physics,
+pages 183–221. World Scientific, 2023.
+[5] Juan Carrasquilla and Roger G Melko. Machine learning
+phases of matter. Nature Physics, 13(5):431–434, 2017.
+[6] Tiago Mendes-Santos, Markus Schmitt, Adriano Angelone, Alex Rodriguez, Pascal Scholl, Hannah J
+Williams, Daniel Barredo, Thierry Lahaye, Antoine
+Browaeys, Markus Heyl, et al. Wave-function network description and kolmogorov complexity of quantum manybody systems. Physical Review X, 14(2):021029, 2024.
+[7] Ana P Millán, Hanlin Sun, Lorenzo Giambagli, Riccardo Muolo, Timoteo Carletti, Joaquı́n J Torres, Filippo
+Radicchi, Jürgen Kurths, and Ginestra Bianconi. Topology shapes dynamics of higher-order networks. Nature
+Physics, pages 1–9, 2025.
+[8] Runyue Wang, Yu Tian, Pietro Liò, and Ginestra
+Bianconi. Dirac-equation signal processing: Physics
+boosts topological machine learning. arXiv preprint
+arXiv:2412.05132, 2024.
+[9] Theodore Papamarkou, Tolga Birdal, Michael Bronstein,
+Gunnar Carlsson, Justin Curry, Yue Gao, Mustafa Hajij, Roland Kwitt, Pietro Lio, Paolo Di Lorenzo, et al.
+Position: Topological deep learning is the new frontier
+for relational learning. arXiv preprint arXiv:2402.08871,
+2024.
+[10] Michael M Bronstein, Joan Bruna, Yann LeCun, Arthur
+Szlam, and Pierre Vandergheynst. Geometric deep learning: going beyond euclidean data. IEEE Signal Processing Magazine, 34(4):18–42, 2017.
+[11] Ginestra Bianconi. Higher-order networks: An introduction to simplicial complexes. Cambridge University Press,
+2021.
+[12] Federico Battiston, Enrico Amico, Alain Barrat, Ginestra Bianconi, Guilherme Ferraz de Arruda, Benedetta
+Franceschiello, Iacopo Iacopini, Sonia Kéfi, Vito Latora,
+Yamir Moreno, et al. The physics of higher-order interactions in complex systems. Nature Physics, 17(10):1093–
+1098, 2021.
+[13] Giovanni Petri, Paul Expert, Federico Turkheimer,
+Robin Carhart-Harris, David Nutt, Peter J Hellyer, and
+Francesco Vaccarino. Homological scaffolds of brain functional networks. Journal of The Royal Society Interface,
+
+11(101):20140873, 2014.
+[14] Michael W Reimann, Max Nolte, Martina Scolamiero,
+Katharine Turner, Rodrigo Perin, Giuseppe Chindemi,
+Pawel Dlotko, Ran Levi, Kathryn Hess, and Henry
+Markram. Cliques of neurons bound into cavities provide
+a missing link between structure and function. Frontiers
+in computational neuroscience, 11:266051, 2017.
+[15] Andrea Santoro, Federico Battiston, Giovanni Petri, and
+Enrico Amico. Higher-order organization of multivariate
+time series. Nature Physics, 19(2):221–229, 2023.
+[16] Joshua Faskowitz, Richard F Betzel, and Olaf Sporns.
+Edges in brain networks: Contributions to models of
+structure and function. Network Neuroscience, 6(1):1–
+28, 2022.
+[17] Dániel L Barabási, Ginestra Bianconi, Ed Bullmore,
+Mark Burgess, SueYeon Chung, Tina Eliassi-Rad, Dileep
+George, István A Kovács, Hernán Makse, Thomas E
+Nichols, et al. Neuroscience needs network science. Journal of Neuroscience, 43(34):5989–5995, 2023.
+[18] Francesco Di Giovanni, James Rowbottom, Benjamin P
+Chamberlain, Thomas Markovich, and Michael M Bronstein. Understanding convolution on graphs via energies.
+arXiv preprint arXiv:2206.10991, 2022.
+[19] Michael M Bronstein, Joan Bruna, Taco Cohen, and
+Petar Veličković.
+Geometric deep learning: Grids,
+groups, graphs, geodesics, and gauges. arXiv preprint
+arXiv:2104.13478, 2021.
+[20] Lars Schmarje, Monty Santarossa, Simon-Martin
+Schröder, and Reinhard Koch. A survey on semi-, selfand unsupervised learning for image classification. IEEE
+Access, 9:82146–82168, 2021.
+[21] Cristopher Moore and Stephan Mertens. The nature of
+computation. Oxford University Press, 2011.
+[22] Marc Mezard and Andrea Montanari. Information,
+physics, and computation. Oxford University Press, 2009.
+[23] Karl Friston. The free-energy principle: a unified brain
+theory?
+Nature reviews neuroscience, 11(2):127–138,
+2010.
+[24] Naftali Tishby, Fernando C Pereira, and William Bialek.
+The information bottleneck method. arXiv preprint
+physics/0004057, 2000.
+[25] Ling Yang, Zhilong Zhang, Yang Song, Shenda Hong,
+Runsheng Xu, Yue Zhao, Wentao Zhang, Bin Cui, and
+Ming-Hsuan Yang. Diffusion models: A comprehensive
+survey of methods and applications. ACM Computing
+Surveys, 56(4):1–39, 2023.
+[26] Ben Chamberlain, James Rowbottom, Maria I Gorinova,
+Michael Bronstein, Stefan Webb, and Emanuele Rossi.
+Grand: Graph neural diffusion. In International conference on machine learning, pages 1407–1418. PMLR,
+2021.
+[27] Ginestra Bianconi. Gravity from entropy. Physical Review D, 111(6):066001, 2025.
+[28] Gerard’t Hooft. The holographic principle. In Basics and
+Highlights in Fundamental Physics, pages 72–100. World
+
+7
+Scientific, 2001.
+[29] Leonard Susskind. The world as a hologram. Journal of
+Mathematical Physics, 36(11):6377–6396, 1995.
+[30] Juan Maldacena. The illusion of gravity. Scientific American, 293(5):56–63, 2005.
+[31] Juan Maldacena. The large-n limit of superconformal
+field theories and supergravity. International journal of
+theoretical physics, 38(4):1113–1133, 1999.
+[32] Ron Kimmel, Nir Sochen, and Ravi Malladi. From high
+energy physics to low level vision. In Scale-Space Theory in Computer Vision: First International Conference,
+The Netherlands, July 2–4, 1997 Proceedings 1, pages
+236–247. Springer, 1997.
+[33] Filippo Passerini and Simone Severini. The von neumann
+entropy of networks. arXiv preprint arXiv:0812.2597,
+2008.
+[34] Kartik Anand and Ginestra Bianconi. Entropy measures
+for networks: Toward an information theory of complex
+topologies. Physical Review E—Statistical, Nonlinear,
+and Soft Matter Physics, 80(4):045102, 2009.
+[35] Kartik Anand, Ginestra Bianconi, and Simone Severini.
+Shannon and von Neumann entropy of random networks
+with heterogeneous expected degree. Physical Review E,
+83(3):036109, 2011.
+[36] Manlio De Domenico and Jacob Biamonte. Spectral entropies as information-theoretic tools for complex network comparison. Physical Review X, 6(4):041062, 2016.
+[37] Pablo Villegas, Tommaso Gili, Guido Caldarelli, and
+Andrea Gabrielli. Laplacian renormalization group for
+heterogeneous networks. Nature Physics, 19(3):445–450,
+2023.
+[38] Manlio De Domenico, Vincenzo Nicosia, Alexandre Arenas, and Vito Latora. Structural reducibility of multilayer networks. Nature Communications, 6(1):1–9, 2015.
+[39] Flaviano Morone, Ian Leifer, and Hernán A Makse. Fibration symmetries uncover the building blocks of biological networks. Proceedings of the National Academy
+of Sciences, 117(15):8306–8314, 2020.
+[40] Vlatko Vedral. The role of relative entropy in quantum information theory. Reviews of Modern Physics,
+74(1):197, 2002.
+[41] Ginestra Bianconi. The quantum relative entropy of
+the schwarzschild black hole and the area law. Entropy,
+27(3):266, 2025.
+
+[42] Pietro Perona and Jitendra Malik. Scale-space and edge
+detection using anisotropic diffusion. IEEE Transactions
+on pattern analysis and machine intelligence, 12(7):629–
+639, 1990.
+[43] Satyanad Kichenassamy. The Perona–Malik paradox.
+SIAM Journal on Applied Mathematics, 57(5):1328–
+1342, 1997.
+[44] Patrick Guidotti. Some anisotropic diffusions. Ulmer
+Seminare, 14:215–221, 2009.
+[45] Antoni Buades, Bartomeu Coll, and Jean-Michel Morel.
+A review of image denoising algorithms, with a new one.
+Multiscale modeling & simulation, 4(2):490–530, 2005.
+[46] Edward Witten. APS Medal for Exceptional Achievement in Research: Invited article on entanglement properties of quantum field theory. Reviews of Modern
+Physics, 90(4):045003, 2018.
+[47] Huzihiro Araki. Mathematical theory of quantum fields.
+Oxford University Press, USA, 1999.
+[48] Huzihiro Araki. Relative entropy of states of von Neumann algebras. Publications of the Research Institute for
+Mathematical Sciences, 11(3):809–833, 1975.
+[49] Masanori Ohya and Dénes Petz. Quantum entropy and
+its use. Springer Science & Business Media, 2004.
+[50] SI Kruglov. Dirac–Kähler equation. International Journal of Theoretical Physics, 41(4):653–687, 2002.
+[51] Peter Becher and Hans Joos. The Dirac-Kähler equation and fermions on the lattice. Zeitschrift für Physik C
+Particles and Fields, 15:343–365, 1982.
+[52] Fernando AN Santos, Ernesto P Raposo, Maurı́cio D
+Coutinho-Filho, Mauro Copelli, Cornelis J Stam, and
+Linda Douw. Topological phase transitions in functional
+brain networks. Physical Review E, 100(3):032414, 2019.
+[53] Yuansheng Zhou, Brian H Smith, and Tatyana O
+Sharpee. Hyperbolic geometry of the olfactory space.
+Science advances, 4(8):eaaq1458, 2018.
+[54] Giovanna Citti and Alessandro Sarti. A gauge field model
+of modal completion. Journal of Mathematical Imaging
+and Vision, 52:267–284, 2015.
+[55] Giovanna Citti and Alessandro Sarti. Neuromathematics
+of vision, volume 32. Springer, 2014.
+[56] Gaetano Kanizsa. Subjective contours. Scientific American, 234(4):48–53, 1976.
+
+

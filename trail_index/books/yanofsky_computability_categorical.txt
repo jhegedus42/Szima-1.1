@@ -1,0 +1,2488 @@
+COMPUTABILITY AND COMPLEXITY OF CATEGORICAL
+STRUCTURES
+
+arXiv:1507.05305v2 [cs.CC] 28 Sep 2018
+
+NOSON S. YANOFSKY
+Abstract. We examine various categorical structures that can and cannot be constructed. We show that total computable functions can be mimicked by constructible
+functors. More generally, whatever can be done by a Turing machine can be constructed
+by categories. Since there are infinitary constructions in category theory, it is shown
+that category theory is strictly more powerful than Turing machines. In particular, categories can solve the Halting Problem for Turing machines. We also show that categories
+can solve any problem in the arithmetic hierarchy.
+
+1. Introduction
+Categories are used in almost every branch of mathematics and theoretical computer
+science. As of late, a large part of theoretical physics also use categorical structures. There
+are, however, parts of mathematics that have not been conducive to categorical thinking.
+We are interested in what exactly can and cannot be constructed or computed using
+category theory? What is within its ability to describe and what is outside its ability?
+We shall use the words “constructed,” and “computed” interchangeably throughout this
+paper.
+In the 1930’s mathematicians asked what processes are computable and what processes
+are not. Although there was much intuition, there was no clear way to answer this question
+until there was a concrete model of computation. Alan Turing introduced the idea of a
+Turing machine in order to formulate the intuitive notion of a computation. By fixing our
+ideas with one particular model, he was able to move the discussion forward. In a similar
+vain, if we are going to move forward investigating what can and cannot be described by
+categories, we are going to need a concrete model of categorical constructions.
+In [20] I formulated a programming language that described categories, functors and
+natural transformations. The programing language was named Sammy in honor of Sammy
+Eilenberg who was one of the founders of category theory and who also had a deep interest
+in formal language theory and computability theory. Sammy has certain constants and
+its operations are simple categorical constructs (like composition of functors and Kan
+extensions of functors) that are used in everyday mathematical reasoning.We will examine
+what categorical structures can be constructed by a Sammy program and what structures
+cannot.
+Support for this project was provided by a PSC-CUNY Award, jointly funded by The Professional
+Staff Congress and The City University of New York. This work was also supported by a generous“Physics
+of Information” grant from The Foundational Questions Institute (FQXi).
+Key words and phrases: computability theory, complexity theory, categorical structures.
+c Noson S. Yanofsky, . Permission to copy for private use granted.
+
+1
+
+2
+In classical computability theory we are not only interested in what is computable but
+also in what is relative computable, that is, what is computable given other information. In
+this paper, we are not only interested in what structures are constructible but also in what
+structures are relative constructible. We will examine what structures are constructible
+when other structures are used in a Sammy program as inputs. As a simple example,
+it might be hard to construct the category of Lie groups out of the constants in the
+Sammy programing language, but it is not hard to construct if you are given the category
+of smooth manifolds. Lie groups are simply group objects in the category of smooth
+manifolds.
+Of course this only tells us what can and cannot be described by Sammy. What
+about other ways of describing categorical structures? There is a similar problem in
+classical computability theory where the Turing machine is the computational model.
+This problem is dealt with by the Church-Turing thesis which states that everything
+that can be computed by any other computational model can also be computed by a
+Turing machine. More important is the contrapositive of this thesis which says that
+whatever cannot be computed by a Turing machine cannot be computed by any other
+computational model. We believe an unprovable thesis that says that whatever can be
+constructed categorically from basic terms can be constructed by a Sammy program.
+Sammy rests heavily on the important work [10] of William Lawvere. In order to use
+category theory as a foundation of mathematics, he formulated first order axioms for the
+theory of categories. We are using categories as a way of describing structures and we use
+a programming language that has some similarity to those axioms. Just as the axioms
+consist of small categories that generate all of Cat, so too our programming language
+describes operations and small categories that generate constructable categories.
+Some of our proofs of the fact that certain structures will not be constructible will be
+very similar to proofs of certain limitations in classical computability theory and classical
+Kolmogorov complexity theory. Usual computability limitations are based on variations
+of the self-referential liar paradox (“This statement is false”). Gödel’s famous incompleteness theorem (“This statement is unprovable”) and Turing’s unsolvability of the halting
+problem (“This program will output the wrong answer when asked if it will halt or go
+into an infinite loop”) are two such examples (see [18] and [23] for comprehensive surveys
+of such limitations.) In contrast, the limitations of Kolmogorov complexity are based
+on the Berry Paradox: consider the number described by “The least number that needs
+more than fifteen words to describe it.” This sentence has twelve words. That is, there
+is a description of a number that is shorter than it is supposed to be. We will have a
+categorical version of such a limitation.
+This work grew out of our work in the Kolmogorov complexity of categories [20, 21, 22].
+Classical Kolmogorov complexity describes how complicated a string is by looking at the
+shortest program that describes that string. If a short program exists to describe a string,
+then the string does not contain much information and is compressible. In contrast, if
+only a large program can describe a string, than it has a lot of information. If the only
+way to describe a string is to literally have it printed out, then it is extremely complex
+
+3
+or, in other words, random. In [20] and in forthcoming papers we generalize classical
+Kolmogov complexity by looking at categorical structures as opposed to strings. In that
+work we needed the Sammy programming language to describe categorical structures. We
+were interested in the shortest Sammy program which is a description of that structure.
+In this work we use that programming language to decide what is and is not constructible.
+(Knowledge of [20] is not necessary to read this paper.)
+Another way to approach this work is via hyper-computation. Turing was one of the
+first people to formulate a concrete notion of computation with his Turing machine. Over
+the years others have formulated other notions. Most of these other notions were all
+shown to be equivalent to Turing machines and hence each other. There are, however,
+some notions of machines that are more powerful than Turing machines. A prominent
+examples is Joel Hamkins and Andy Lewis’s notion of an infinite time Turing machine.
+These are machines that can do an infinite amount of operations (see, e.g., [8]). Another
+example is the Blum-Shub-Smale machine which can deal with the ring of real numbers
+as opposed to the usual natural numbers [3]. These models of computation, and several
+others, are more powerful than standard Turing machines. We look at category theory as
+a more powerful computational tool. Since it is used in standard mathematics and there
+are infinitary operations, one should expect it to do more. This paper describes some of
+the more powerful operations that it can perform.
+An analogy is in order. Gödel’s incompleteness theorem tells us that for Peano arithmetic, there are some statements that are true but not provable within that system. In
+what sense are they true? They are true in the model of natural numbers, or another way
+to say this is that they are true in more powerful ZFC set theory. What about classical
+computability theory? For what larger, more powerful systems can the halting predicate be constructed? Category theory is such a system. We show that parts of classical
+computability theory can be worked out within category theory.
+This paper is organized as follows: Section 2 describes the Sammy programming language and has a mini-appendix on Kan liftings, one of the operations in the programing
+language. Section 3 gives several examples of structures that are constructible, including
+some that cannot be done by regular computers. The next section discusses several constructions that are beyond the ability of Sammy. Section 5 shows the power of Sammy
+within the arithmetic hierarchy. The next section discusses some possible ways this work
+can progress in the future. The paper concludes with an appendix containing the formal
+syntax and semantics of Sammy.
+Acknowledgment. I thank Michael Barr, Gershom Bazerman, John Connor, Joel
+Hamkins, Florian Lengyel, Fred Linton, Dustin Mulcahey, Robert Paré, Andrei Rodin,
+Robert Seely, Ross Street, David Spivak, Jouko Väänänen, Gerald Weiss, Neng-Fa Zhou,
+and two anonymous reviewers for helpful suggestions and discussions.
+
+4
+
+2. Describing Categorical Structures
+In order to fix our ideas, we formulate a programming language named Sammy that can
+be used to describe categorical structures. Most of the lines of the programming language
+will consist of an assignment statement that sets some variable equal to a categorical
+construction
+W = Operation(X, Y, Z).
+The variables (W, X, Y, Z) can contain categories, functors, or natural transformations.
+They are set to constants or constructions built by operations on previously defined variables. The operations are typical operations that are used in the description of categorical
+structures to be described below. Some lines in the program will also have conditional
+breaks to control the execution of the program.
+The constant categories of Sammy are 0, the empty category, 1, the category with
+one object, 0, and 2, the category 0 −→ 1 with two objects and one nontrivial morphism
+between them. We will also need the constant category Cat which corresponds to the
+category of all small categories. Constant functors are the unique morphisms !01 : 0 −→
+1, !02 : 0 −→ 2, !0Cat : 0 −→ Cat, !Cat1 : Cat −→ 1, and !21 : 2 −→ 1. There
+are also identity constant functors on 0, 1, 2 and Cat. Sammy’s only constant natural
+transformations are identity natural transformations on the constant functors.
+There are several operations that take a single input. For a functor F : A −→ B
+if we set C = Source1 (F : A −→ B) then C = A. That is, Source1 takes a functor
+and outputs the category that is the source of the functor. There is a similar operation
+C = Target1 (F : A −→ B). There are similar operations for natural transformations
+Source2 and Target2 . For a given category A, the operation F = Ident0 (A) has the
+effect that F = IdA .There is a similar operations Ident1 for functors. For a category A,
+if we let C = Op0 (A) then C = Aop . The Op1 operation works on functors.
+One of the three main operation in categories is composition. For functor F : A −→ B
+and G : B −→ C we let H = Comp(G, F ) be the composition of the two functors. If
+the target of the F is not the same as the source of G then the Sammy program will
+not be defined. For natural transformations of the appropriate source and target Sammy
+has a horizontal composition and vertical composition written as α = Hcomp(β, γ) and
+α = Vcomp(β, γ). For categories A and B, we will let C = Pow0 (A, B) be the category of
+all functors and natural transformations from A to B. The operation Pow1 is defined on
+functors and takes F : A −→ B and G : C −→ D and outputs the induced functor
+GF = G ◦ − ◦ F : CB −→ DA .
+Probably the most important operations are the Kan extensions. For categories A, B
+and C and functors G : C −→ A and F : C −→ B, a right Kan extension of F along
+G is a pair (R, α) = KanEx(G, F ) where R : A −→ B and α : R ◦ G −→ F is a natural
+transformation that satisfies certain universal properties. A left Kan extension can be
+described using the Op0 operation on B. A Kan extension induces a natural transformation
+whenever another functor and natural transformation are given: for every H : A −→ B
+
+5
+and β : H ◦ G −→ F there is a unique γ = KanExInd(G, F, H, β) where γ : H −→ R and
+satisfies α · γG = β. The uniqueness of γ basically says that the information in β is the
+same as the information in γ.
+Using Kan extensions one can derive, products, coproducts, pushouts, pullbacks,
+equalizers, coequalizers, (and constructible) limits, colimits, ends, coends, etc. It is a
+well-known fact that if G : A −→ B is a right adjoint (left adjoint, equivalence, isomorphism), then its left adjoint (right adjoint, quasi-inverse, inverse) G∗ : B −→ A can be
+found as a simple Kan extension of the identity IdA along G, that it, G∗ = KanEx(G, IdA ).
+The left and right Kan extension along the unique constant functors
+1 _❄
+
+s,t
+
+❄❄
+❄❄
+❄❄
+❄❄
+❄
+! ❄❄
+❄❄
+❄❄
+
+0
+
+/2
+⑧?
+⑧
+⑧
+⑧⑧
+⑧
+⑧⑧
+⑧⑧ !
+⑧
+⑧
+⑧⑧
+⑧⑧
+
+give the functors s : 1 −→ 2 and t : 1 −→ 2 that picks out the source and target of 2.
+In addition to Kan extensions Sammy also has right and left Kan liftings. Since these
+are less well known, we will have a mini-appendix about them at the end of this section.
+Briefly, for categories A, B and C and functors P : B −→ C and a functor F : A −→ C,
+a right Kan lifting of F along P is constructed as (R, α) = KanLif(P, F ) where R :
+A −→ B and α : P ◦ R −→ F is a natural transformation which satisfies certain universal
+properties. There is also an induced Kan lifting natural transformation,that is, if we have
+a H : A −→ B and a β : P ◦ H −→ F then we have an induced γ = KanLifInd(P, F, H, β)
+where γ : H −→ R and satisfies γ = α ◦ P (β). A left Kan lifting can be described using
+the Op0 operation on B.
+One can see these three operations — composition, extension and lifting — as three
+sides of a triangle:
+Lifting
+/•
+•❄
+❄❄
+⑧⑧
+❄❄
+⑧⑧
+❄❄
+⑧
+❄❄
+⑧⑧
+❄❄
+⑧⑧
+⑧
+Composition ❄❄❄
+⑧⑧ Extension
+❄❄ ⑧⑧⑧
+ ⑧
+
+•
+
+Each side demands the other two sides as input. That is, Lifting needs Composition and
+Extension as input. Extension needs Lifting and Composition as input. And Composition
+needs Extension and Lifting as input. Another way to see this is to realize that given any
+two functors that share a domain or a codomain or one domain is the other’s codomain,
+there is an operation that describes a third functor that connects them.
+Another operation that will be needed is the actual composition operation of a category, MapComp. For every category C, there is a functor MapComp : C2 ×C1 C2 −→ C2 that
+takes pairs of composible arrows to their composition.
+
+6
+Programs will not just be sequences of statements. Some lines will be given labels.
+There will be conditional statements of the form
+If α ==
+
+β goto L
+
+where α and β are natural transformations and L is a label of some line. When such a
+conditional statement is met, the program will evaluate to see if the two natural transformations are exactly the same and if so, execution of the program will go to the first
+line of the program with the label L. This will permit us to control the execution of
+the programs. These conditional statements can be used to not only compare natural
+transformations but also functors and categories.
+The last line of any program will be a Return operation, such as Return(X, Y, Z) where
+X, Y and Z are three categorical structures. This will tell what structure are being defined
+by the program. There can be any finite number of categorical structures returned. In
+general, there are many parts to a structure. For example, a monad/triple is a category,
+an endofunctor and a few natural transformations that satisfy certain requirements.
+These are the major operations needed to describe categorical structures. The syntax
+and semantics of Sammy is presented in an appendix at the end of this paper.
+There are a few remarks that need to be stated about Sammy:
+• Numbers, strings, trees, graphs, arrays, and other typical data types are not mentioned in our programming language. The only types that Sammy deals with are
+categories, functors, and natural transformations. This was done on purpose. We
+want to emphasize that the usual data types can be derived from the categorical
+structures. Categories and algorithms are more “primitive” than numbers, strings,
+etc.
+• This is not the first time a programming language has been formulated to describe
+categorical structures. An important work in this area is Computational Category
+Theory by Rydeheard and Burstall [13]. Another work found in the literature is
+Tatsuya Hagino’s thesis [7]. These languages are, however, different than Sammy.
+These programming languages were intended to be implemented and to get computers to actually calculate with categories. In contrast, Sammy is used to describe
+structures. As we shall see, Sammy cannot be implemented.
+• Sammy might not the best or smallest programming language that can describe
+categories. We could have used fewer operation. For example, Target1 could have
+been derived using Source1 and Op1 . Since categories and functors are special types
+of natural transformations, we could have formulated most of our programming
+language with the single type of natural transformations. This, however, would have
+made Sammy programs unreadable. Our goal is neither succinctness nor cleverness.
+Rather, our goal is clarity.
+• Sammy can never be totally implemented. While one can write compilers for such
+a language, the compilers will not always work. This can be seen when we prove
+
+7
+later that Sammy can construct a functor that essentially solves the halting problem. Turing taught us that no computer can solve the halting problem. We can
+conclude from this that while Sammy can be partially implemented, we will never
+get any computer to run every Sammy program. (This is in line with similar statements about infinite-time Turing machines and other super-computable models of
+computation.)
+• There is a need for a Church-Turing type thesis. The classic Church-Turing thesis
+says that whatever can be computed, can be computed by a Turing machine. We
+need a thesis that says that whatever can be constructed by categorical means, can
+be constructed using the Sammy programming language. We shall show this in the
+same way that it is shown with Turing machines, namely, we will show that many
+structures that one believes should be constructible, can be constructed by Sammy.
+Alas, this is a thesis and not a theorem because we cannot exactly characterize what
+can and cannot be constructed by categorical means.
+• We use the term “relative computable” or “relative constructible” for programs that
+use already defined structures. For example, a program that describes the category
+of Lie groups might use the category of smooth manifolds as a given category.
+• Just as hardly anyone ever actually sits down and writes up the code for a Turing
+machine, so too, we have no intention to write much Sammy code to describe various
+constructions. Such programs would be too long, too complicated and not very
+enlightening. We do write some pseudo-code for Sammy programs in this paper
+and we will show how different constructions are made in typical category theoretic
+notation.
+• Kan extensions (and Kan liftings) are only defined up to isomorphism. Hence, products, coproducts, equalizers, colimits, etc are also only defined up to isomorphism.
+We are left with the question as to which of the many possible Kan extensions does
+Sammy actually give. We leave this as implementation-dependent. Let the virtual
+machine choose one of them. Categorically they are all isomorphic and indistinguishable.
+• In [20] we already showed how to construct equalizers, coequalizers, pullbacks,
+pushouts, comma categories, slice categories, the category 2 which is the category
+with two distinct objects and an isomorphism between them, and several other
+constructs. We will not repeat those constructions here.
+• Not every operation will work. Sometimes a program might want to compose two
+functors that are not adjacent to each other, or take a Kan extension that does not
+exist. In that case the Sammy program will just not be defined. This is similar to
+a case in classical computers where a program might come to divide by zero. Such
+programs are not valid. As in classical computers, it is in general impossible to
+syntactically determine if a Sammy program is valid.
+
+8
+• If an operation is defined, then it is assumed to take a finite amount of time to
+execute. This is true despite the fact that the operation might be taking a limit
+over an infinite category or deciding if two natural transformations with an infinite
+class of components are equal. Every program either goes into an infinite loop or
+halts after a finite amount of time. Programs do not go on for a transfinite amount of
+time. With this fact in mind, we can go on and talk of the computational complexity
+of a categorical construct.
+• There are about 20 types of commands in the Sammy programming language and
+the programs are of finite length. This makes it very easy to encode and decode a
+Sammy program as a finite number. For Sammy programs, a number will correspond
+to a functor P : 1 −→ ω where ω is the totally ordered category of natural numbers.
+We will have Sammy programs that describe functors which could be describe the
+number of a Sammy program. This will give us the self-reference that is so central
+to computability theory.
+Formally, we say that a category A is constructible if there exists a Sammy program
+that Returns a category that is isomorphic to A. There is a similar definition for functors.
+A natural transformation α is constructible if there exists a Sammy program that returns
+α with the command Returns (α).
+Although Kolmogorov complexity of categories will not be the central focus of this
+paper, several such concepts will be used and need to be spelled out. When a certain
+structure is constructible by Sammy, we will be interested in what is the smallest number
+of Sammy operations needed to describe this structure. For a structure X, its Kolmogorov
+complexity, KSammy (X) = K(X) is the smallest number of operations in a Sammy program
+that can produce X. For two categorical structures X and Y, the relative Kolmogorov
+complexity, KSammy (X|Y) = K(X|Y) is the smallest number of Sammy operations needed
+to describe X given that Y can be used as input to the program.
+If there is a finite number of operations so that one can go from one categorical
+structure to another and vice versa, we say that the Kolmogorov complexity of these
+categorical structures are approximately the same. In detail, if there exists a c such that
+for all appropriate categorical structures, X and X′ , one can change X to X′ and vice versa
+in c Sammy operations, that is |K(X) − K(X′ )| ≤ c, then we write K(X) ≈ K(X′ ). As
+an example, notice that only one Sammy operation is needed to go from category A to
+functor IdA and vice versa. Hence K(A) ≈ K(IdA ).
+There is a need for something called an invariance theorem. The Kolmogorov complexity does not depend on the programing language that is used to describe the structures.
+Imagine another programming language to describe categorical structures called Saunders
+(after the other founder of category theory, Saunders Mac Lane.) Then since presumably
+both languages can program any constructible categorical structure, they can each program the other’s operations. That means there exist compilers that can translate Sammy
+programs into Saunders programs and vice versa. From this, we can prove the following
+
+9
+theorem: There exists a constant c such that for all categorical structures X we have
+|KSammy (X) − KSaunders (X)| ≤ c. The proof of this essentially lets c be the larger of
+the two possible compilers: The Sammy compiler in the Saunders language or the Saunders compiler in the Sammy language. By precomposing the appropriate compiler to a
+program in one language we get the program in the other language.
+A mini-appendix on Kan liftings. In this appendix we familiarize ourselves with
+the basic properties and ideas of Kan liftings. Kan extensions are well known and as
+Saunders Mac Lane proclaimed [11] “All concepts are Kan extensions.” Their cousins,
+Kan liftings, are less well known but we believe just as ubiquitous. While Kan extensions
+are found everywhere in the literature, Kan liftings are only found in a few places. For
+the prehistory of Kan liftings see [16]. Kan liftings and their relationship with relative
+adjoints are developed further in [14] and [15].
+Let A, B and C be three categories and let P : B −→ C be any functor. P induces a
+functor
+P ◦ − = P A : BA −→ CA .
+Left and right adjoints of P A , if they exist, are called left and right Kan liftings:
+LP
+A
+
+B d
+
+z
+
+⊥
+P ◦−
+
+/ CA .
+
+⊥
+RP
+
+In detail, for F ∈ CA and H ∈ BA we have
+BA (LP (F ), H) ∼
+= CA (F, P ◦ H)
+
+and
+
+BA (H, RP (F )) ∼
+= CA (P ◦ H, F ).
+
+One can restate this in terms of universal properties. The following diagrams will be
+helpful:
+LP (F )
+⇓β
+
+*/
+A❆
+B
+H
+❆❆
+⑥
+⑥
+❆❆
+⑥
+❆❆
+⑥⑥
+❆❆
+⑥⑥
+⑥
+❆❆
+=⇒ α ⑥⑥⑥P
+F ❆❆
+❆❆
+⑥⑥
+❆❆
+⑥⑥
+⑥
+❆ ~⑥⑥
+
+C
+
+H
+⇓β
+
+/* B
+RP (F )
+❆❆
+⑥
+⑥
+❆❆
+⑥⑥
+❆❆
+⑥
+❆❆
+⑥⑥
+❆❆
+⑥⑥
+⇐=
+α
+⑥
+F ❆❆
+⑥⑥ P
+❆❆
+⑥⑥
+❆❆
+⑥
+❆ ~⑥⑥⑥
+
+A❆
+
+C
+
+A left Kan lifting of F along P is a functor LP (F ) and a natural transformation
+α : F =⇒ P ◦ LP (F ) which is universal from F to P ◦ −. This means that for any
+other H : A −→ B and β : F =⇒ P ◦ H there is a unique natural transformation
+
+10
+γ : LP (F ) =⇒ H such that
+α
++3 P ◦ LP (F )
+●●●●
+●●●●
+●●●●
+●●●●
+●●●●
+P ◦γ
+β ●●●●●●
+●●●●
+●●●
+' 
+
+F ●●●
+
+LP (F )
+γ
+
+
+
+P ◦H
+
+H
+
+That is, β = (P ◦ γ) ◦ α.
+A right Kan lifting of F along P is a functor RP (F ) and a natural transformation
+α : P ◦ RP (F ) =⇒ F which is universal from P ◦ − to F . This means for any H : A −→ B
+and β : H =⇒ RP (F ), there is a unique natural transformation γ : P ◦ H =⇒ F such
+that
+RP (F )
+
+KS
+
+(P ◦β)
+
+β
+
+H
+
+α
+
++34< F
+qq
+q
+q
+qq
+qqqq
+q
+q
+qqq
+qqqqγ
+q
+q
+q
+qqqq
+qqq
+
+P ◦ RP (F )
+
+KS
+
+P ◦H
+
+That is, γ = α ◦ (P ◦ β).
+Kan liftings can be constructed with limits and colimits. First some preliminaries. For
+P : B −→ C, F : A −→ C and object a in A consider the comma category (F (a) ↓ P )
+which consists of arrows f : F (a) −→ P (b) in C for some b in B. The morphisms of this
+category consists of commuting triangles
+F (a)
+①
+f ①①
+①
+①
+①
+{①①
+
+P (b)
+
+P (g)
+
+●● ′
+●●f
+●●
+●●
+#
+/ P (b′ )
+
+for some g : b −→ b′ in B. This category has an obvious forgetful functor Qa : (F (a) ↓
+P ) −→ B which sends f : F (a) −→ P (b) to b and sends the above diagram to the
+g : b −→ b′ arrow in B. Any h : a −→ a′ in A induces a functor
+h∗ : (F (a′ ) ↓ P ) −→ (F (a) ↓ P )
+which commutes with the forgetful functor: Qa′ = Qa h∗ . This means that whatever is in
+the image of Qa′ will also be in the image of Qa .
+Kan extensions exist and can be described with limits and colimits when the target
+category has the proper limits and colimits. No requirements are made for the functors
+between the categories. In sharp contrast to this — and analogous to the algebraic
+
+11
+topological notions — Kan liftings only exist when P is a continuous functor (and when
+B has appropriate limits).
+If the left Kan lifting exists, it can be calculated on the object a ∈ A as
+LP (F )(a) = Lim(Qa : (F (a) ↓ P ) −→ B).
+We have many steps in showing that this formula works. First, for any h : a −→ a′ we
+have that Qa′ = Qa h∗ we can see that there is an induced LP (F )(a) −→ LP (F )(a′ ) which
+shows that LP (F ) is functorial.
+The Definition of α : F =⇒ P ◦ LP (F ) is given as follows. A typical limit looks like
+the following diagram in B:
+❦5 b
+❦❦❦
+❦❦❦
+❦
+❦
+❦❦
+❦❦❦
+❦❦❦
+
+LP (F )(a) = Lim
+❙
+
+g
+
+❙❙❙
+❙❙❙
+❙❙❙
+❙❙❙
+❙❙❙ 
+❙) ′
+
+b
+
+Apply P to this diagram and notice that by the continuity of P , we have that P (Lim) =
+Lim(P ) we get the following diagram in C
+❞❞❞❞24 P (b)
+❞❞❞❞❞✐❞✐❞✐✐✐✐✐
+❞
+❞
+❞
+❞
+❞
+❞
+✐✐✐✐
+❞❞❞❞❞❞❞
+❞❞❞❞❞❞❞
+✐✐✐✐
+❞
+❞
+✐
+❞
+❞
+✐
+❞
+✐
+❞
+✐
+❞❞
+❞❞❞❞❞❞❞ αa
+P (g)
+F (a) ❞❩❴❩❩❴❩❩❴❩❩❴❩❩❴ ❴/ LimP = P (LP (F )(a))
+❯❯❯❯
+❩❩❩❩❩❩❩
+❯❯❯❯
+❩❩❩❩❩❩❩
+❩❩❩❩❩❩❩
+❯
+❩❩❩❩❩❩❩ ❯❯❯❯❯❯❯
+❩❩❩❩❩❩❩ ❯❯❯
+
+❩❩❩,*
+′
+
+P (b )
+
+Since the F (a) also has arrows to everything in the limit, there is an induced αa . Naturality
+of α can be seen by looking at the following commutative square:
+❡❡❡❡25 P (b)
+❡❡❡❡❡❦❡❦❦❦❦❦
+❡
+❡
+❡
+❡
+❡
+❦
+❡
+❦❦❦
+❡❡❡❡❡❡
+❦❦❦
+❡❡❡❡❡❡
+❦
+❡
+❡
+❦
+❡
+❡
+❦
+❡
+❡❡❡❡❡ αa /
+P (LP (F (a)))
+F (a) ❡
+❏❏
+❏❏
+❏❏
+❏❏
+❏❏
+❏❏
+P (L(F (h)))
+F (h)
+❏❏
+❏❏
+❏❏
+❏❏
+$ 
+
+′
+F (a ) ❨❨❨❨❨❨❨αa′ / P (LP (F (a′ )))
+❙❙❙
+❨❨❨❨❨❨
+❙
+❨❨❨❨❨❨
+❨❨❨❨❨❨ ❙❙❙❙❙❙
+❨❨❨❨❨❨ ❙❙❙
+❨❨❨❨❨❨❙❙)
+❨,
+′′
+
+P (b )
+
+12
+(The diagonal map is induced by the limit.)
+The universal property of α is derived as follows. Let H : A −→ B and β : F =⇒ P ◦H.
+This means that for every a in A there is a map βa : F (a) −→ P (H(a)). This map is
+necessarily in (F (a) ↓ P ) which will look like
+❤❤3 P (b)
+❤❤❤❤
+❤
+❤
+❤
+❤❤
+❤❤❤❤
+❤❤❤❤
+❤
+❤
+❤
+❤❤❤❤
+P (g)
+F (a) ❱❱❱❱
+❱❱❱❱
+❱❱❱❱
+❱❱❱❱
+❱❱❱❱
+βa
+❱❱❱❱
+
++
+
+P (H(a))
+
+Taking the forgetful functor, then the limit and then the P functor gives us this:
+❞❞❞❞❞❞✐24 P (b)
+❞❞❞❞❞❞✐❞✐✐✐✐✐✐
+❞
+❞
+❞
+❞
+❞
+❞
+✐
+❞
+✐✐✐
+❞❞❞❞❞❞❞
+✐✐✐✐
+❞❞❞❞❞❞❞
+✐
+❞
+❞
+✐
+❞
+❞
+✐
+❞
+❞
+✐
+❞
+❞❞❞❞❞❞❞ αa
+P (g)
+F (a) ❞❩❩❩❩❩❩❩❩❩ / LimP = P (LP (F )(a))
+❯❯❯❯
+❩❩❩❩❩❩❩
+❩❩❩❩❩❩❩
+❯❯❯❯
+❩❩❩❩❩❩❩
+❩❩❩❩❩❩P❩γ❯❯❯❯❯❯❯
+βa
+❩a❩❩❩❩❩❩ ❯❯❯*
+
+❩❩❩-
+
+P (H(a))
+
+The induced γa will come from the fact that H(a) is in the image of the forgetful functor.
+Naturality of γ, which means the commutativity of the following square:
+LP (F (h))
+
+/ LP (F (a′ ))
+❏❏
+❏❏
+❏❏
+❏❏
+❏❏
+❏❏
+γa′
+γa
+❏❏
+❏❏
+❏❏
+❏❏
+
+% 
+/ H(a′ )
+H(a)
+
+LP (F (a))
+
+H(h)
+
+We leave this for the reader.
+Notice that if for a given a in A there exists a b in B such that F (a) = P (b) then
+id : F (a) −→ P (b) will be an initial object in (F (a) ↓ P ). The limit of the forgetful
+functor Qa will then be isomorphic to b. Notice that if there are several b’s that have this
+property, then they can all be the limits because they will all be isomorphic.
+The right Kan lifting is done similarly with the category (P ↓ F (a)) and a similar
+forgetful functor Q′a : (P ↓ F (a)) −→ B. The formula will be
+RP (F )(m) = Colim(Q′a : (P ↓ F (a)) −→ B).
+RP (F ) exists when B is cocomplete, and P : B −→ C preserves colimits.
+
+13
+
+3. Constructible Categorical Structures
+We begin by forming a few little constructions that will be needed for the rest of the paper.
+Since classical computability and complexity theory is based on the natural numbers, we
+begin with their construction. The coequalizer
+s
+
+1
+t
+
+/
+
+/2
+
+ρ
+
+/N
+
+gives the (infinite) natural numbers as a monoid. That is, N is the one-object category
+whose morphisms are the natural numbers. The single object of N is ∗. The totally
+ordered category of natural numbers is formulated as a coslice category of the one object
+category.
+∗/N = ω =
+0 −→ 1 −→ 2 −→ 3 −→ · · · .
+In order to get the discrete category of natural numbers we need a special type of
+categorical structure which we will call a iso-comma category. Whereas for functors L :
+A −→ C and R : B −→ C the objects of a comma category are morphisms of the form
+f : L(a) −→ R(b) in C, here we need isomorphisms. We can construct the iso-comma
+category, denoted L ↓↑ R from the following pullbacks:
+L ↓↑ R❑
+
+s
+sss
+s
+s
+s
+ysss
+
+L ↓↑ C❑
+
+①①
+①①
+①
+①①
+|①①
+A ●●
+●●
+●●
+●
+L ●●●
+#
+
+C
+
+❑❑❑
+❑❑❑
+❑❑❑
+%
+
+C ↓↑ R
+❋
+
+❑❑
+s
+❑❑
+sss
+s
+❑❑
+s
+❑❑
+ss
+❑%
+ysss
+2
+C ▲▲
+r
+r
+▲▲▲
+r
+▲▲▲
+rr
+r
+r
+r Cs
+▲▲▲
+t
+r
+C
+r
+▲%
+yrr
+
+C
+
+❋❋
+❋❋
+❋❋
+❋❋
+"
+B
+✇✇
+✇
+✇
+✇✇
+✇✇ R
+✇
+{✇
+
+Using this construction we can get iso-slice categories C ↓↑ c and iso-coslice categories
+c ↓↑ C. The obvious forgetful functors from L ↓↑ R to C work as usual.
+The discrete category of natural numbers is described as
+∗ ↓↑ ω = ωd =
+
+0 1 2 3
+
+···.
+
+This works because the only isomorphisms in ω are identity morphisms. There is the
+obvious inclusion ωd −→ ω which comes from the forgetful functor from the iso-coslice
+category.
+We will also need the category of natural numbers with isomorphisms between each
+number.
+The group of integers comes in many forms. We can form the coeqaulizer
+/ `
+/ ζ′
+1
+ω op
+/ω
+
+14
+where the two maps point to the 0 ∈ ω and the 0 ∈ ω op . This category looks like this
+ζ′ =
+
+··· o
+
+−2 o
+
+−3 o
+
+−1 o
+
+0
+
+/1
+
+/2
+
+/3
+
+/ ···
+
+and is not very useful. A better category is obtained from the coequalizer
+s
+
+/
+
+1
+t
+
+ρ
+
+/2
+
+/Z
+
+This gives us the group of integers as a one object category. Taking the slice category
+gives us
+ζi = ∗/Z =
+
+∼
+
+···
+
+/ −3
+
+∼
+
+∼
+
+/ −2
+
+/ −1
+
+∼
+
+/0
+
+∼
+
+/1
+
+∼
+
+/2
+
+∼
+
+/3
+
+∼ /
+
+···.
+
+While the isomorphisms between the objects of this category are important and we could
+work with this category, classical computability and complexity theory works with the
+natural numbers and does not place any importance on negative numbers. We can collapse
+the negative numbers to 0 as follows:
+c
+
+ω
+inc
+
+/
+
+/ ζi
+
+/ ωi
+
+where the c map is a constant at 0 and the inc map is the inclusion of the natural number
+into the integers. This coequalizer essentially collapses the nonegitive integers to zero and
+leaves the rest alone. The category
+ωi =
+
+0
+
+∼
+
+/1
+
+∼
+
+/2
+
+∼
+
+/3
+
+∼ /
+
+···.
+
+is the (negative) natural numbers with unique isomorphisms between them. Since the
+nonpositive natural numbers are isomorphic to the nonnegative natural numbers, it does
+not matter which we use. ωi will be one of the major players in the tale we shall tell.
+Each of these three categories ( ω, ωi and ωd ) have advantages and disadvantages.
+The ωd and ωi do not have interesting limits or colimits. In contrast ω is a good target
+category only for a nondecreasing function. ωi is good as a target category for arbitrary
+functions. The three categories ωd ֒→ ω ֒→ ωi and the way we go from one to the other
+will be important.
+We will also be interested in operations on these ordered categories. The successor
+operation on ω is defined by first constructing the successor operation on the monoid of
+natural numbers:
+succ : N
+
+∼
+
+/ N × 1 Id×s / N × 2 Id×ρ / N × N M apComp
+
+/N
+
+where s is the source functor, ρ takes the single arrow in 2 to the first natural number, and
+MapComp is the operation in the monoid. This functor works as it should: succ(n) = n + 1.
+
+15
+With this, we can create the successor function on the linear order. Remembering that
+a slice category is a special type of comma category and for three functors L : A −→ C,
+R : B −→ C and H : C −→ D there is an induced functor of comma categories:
+H∗ : (L ↓ R) −→ ((HL) ↓ (HR))
+which takes f : L(a) −→ R(b) to H(f ) : H(L(a)) −→ H(R(b)). For the case of the total
+order of ∗/N this becomes
+succ∗ : ω −→ ω
+which works as it is supposed to. There is a similar operation that can easily be defined
+on ζi and ωi . When there is no ambiguity around, we refer to all the successor functors
+as succ.
+A number, n ∈ N, will correspond to a functor Pn : 1 −→ ω such that P (0) = n. We
+can make similar definitions for ζi and ωi . If P is pointing to n, then succ ◦ P : 1 −→
+ω −→ ω points to the successor of n.
+Finally we are ready to deal with computable functions.
+3.1. Definition. A total function f : N k −→ N is constructible if there is a Sammy
+program that describes a functor F : ωik −→ ωi such that for all x1 , x2 , x3 , . . . , xk in N k
+the following square commutes
+1 × 1 ×O · · · × 1
+
+Px1 ×···×Pxk
+
+/ ωi × ωi × · · · × ωi
+
+∼
+
+1
+
+F
+
+Pf (x1 ,x2 ,...xk )
+
+
+/ ωi .
+
+3.2. Theorem. Any totally computable function of natural numbers is constructible .
+Proof. First we show that the initial functions are constructible:
+• The zero function z : N −→ N defined as z(n) = 0 is obtained as the composition
+of the unique function from ωi to 1 and the pointer P0 : 1 −→ ωi . That is,
+z = P0 ◦!ωi : ωi −→ 1 −→ ωi .
+• The projection functions are simply categorical projections functors πjk : ωik −→ ωi
+for 1 ≤ j ≤ k which are induced by the product.
+• The successor was already shown to be constructible.
+We also must show that constructibility is preserved under the operations of composition,
+recursion and the µ-minimization operator.
+
+16
+• Composition. If f is constructible by the functor F and g is constructible by the
+functor G, then function g ◦ f will be described by a Sammy program that describes
+F and then G and then gives the composition of the functors. We have to erase the
+Return statement at the end of the program for F . More sophisticated versions of
+composition are also easily done.
+• Recursion. If h is defined via recursion from f and g as
+h(x, 0) = f (x)
+
+and
+
+h(x, n + 1) = g(h(x, n))
+
+and if f and g are constructible by F and G, then h is constructible by H.
+We shall construct H by using a (parameterized) natural number object. We remind
+the reader of the basics of natural number objects. A natural number object in a
+category C is an object N and two maps z: 1 −→ N (to be thought of as using the
+terminal object 1 to chose the zero in N) and s: N −→ N (to be thought of as the
+successor function) which satisfies the following universal property: If there is any
+object A in the category with two maps f : 1 −→ A and g: A −→ A then there is a
+unique map h: N −→ A such that both parts of the following diagram commutes
+z
+/N
+❄❄
+❄❄
+❄❄
+❄❄
+❄
+h
+f ❄❄
+❄❄
+❄❄
+ 
+
+1❄
+
+A
+
+s
+
+/N
+
+(1)
+
+h
+
+g
+
+
+/ A.
+
+Given a natural number object in a cartesian closed category (like Cat), it is easy
+to construct a “stable” or “parametrized” natural number object (see section 5.5 of
+[2] or section I.9 of [9]). This is a natural number object such that for any object
+B and for any map f : B −→ A and g: A −→ A, there is a unique h: B × N −→ A
+such that the following diagram commutes
+hId ,zi
+
+B
+/B×N
+❉❉
+❉❉
+❉❉
+❉❉
+❉❉
+h
+f ❉❉❉
+❉❉
+❉❉ 
+"
+
+B❉
+
+A
+
+IdB ×s
+
+/B×N
+
+(2)
+
+h
+
+g
+
+
+/ A.
+
+We will show how to construct a natural number object in Cat, i.e., the initial object
+in the category Cat1−→X−→X . (Another way of dealing with this is saying that a
+natural number object is the initial algebra for the X 7→ (X + 1) endofunctor. We
+will not go this way.) First let us construct Cat1−→X−→X . We do this with two
+
+17
+equalizers. Start by easily constructing the category · −→ · −→ ·. Now take the
+equalizer
+Cat
+
+·−→X−→X
+
+/ Cat·−→·−→·
+
+ev2
+ev3
+
+/
+
+/ Cat
+
+where ev2 and ev3 are the evaluations at the second and third · of the diagram. Now
+find an even smaller subcategory of this functor category by taking the following
+equalizer
+/ Cat·−→X−→X
+
+Cat1−→X−→X
+
+ev1
+Const1
+
+/
+
+/ Cat
+
+where ev1 is evaluation at first · and Const1 is the constant functor that picks out
+the terminal category 1. To find the initial object in this category we simply take
+the following Kan extension:
+1 _❄
+
+❄❄
+❄❄
+❄❄
+❄❄
+❄❄
+❄❄
+❄❄
+❄
+
+0.
+
+/ Cat1−→X−→X
+:
+✉✉
+✉✉
+✉
+✉
+✉✉
+✉✉
+✉
+✉✉
+✉✉
+✉
+✉✉
+✉✉
+
+We claim that the initial object in this category is
+
+1
+
+P0
+
+/ ωi
+
+s
+
+/ ωi .
+
+Let us use this paramaterized natural number object with the object B = ωin . Given
+any F : ωin −→ ωi and G: ωi −→ ωi , we have an object in the category Cat1−→X−→X .
+The morphism H: ωin × ωi −→ ωi is constructed from the induced map from the
+Kan extension (the morphism from an initial object of a category).
+
+• µ-minimization. Let f : N k × N −→ N be a total function. The µ-minimization
+of f is a function g : N k −→ N that is defined for an x ∈ N k as the smallest y
+such that f (x, y) = 0. We assume that f has the following property: for all x ∈ N k
+there exists a y ∈ N such that f (x, y) = 0. This makes g a total function. If f is
+constructible by F : ωik × ωi −→ ωi then g will be constructible by G : ωik −→ ωi
+
+18
+where G is defined by the composition of the double lines in the following diagram:
+L
++3 α
+❇❇
+❇❇
+❇❇
+❇❇
+❇❇
+H
+Id×0 ❇❇
+❇❇
+❇❇
+
+
+!
+
+ωik ∼ ωik × 1
+
+ωik × ω
+
+/1
+
+P0
+
+Id×inc+3
+
+ωik × ωi
+
+F
+
+
+/ ωi
+
+π
+
+
+
+ωi
+In detail, first precompose F to get the bottom line ωik × ω −→ ωik × ωi −→ ωi . Also
+take the functor P0 : 1 −→ ωi . Now take the pullback to get α. Notice that α is
+the full subcategory of ωi × ω of all the y such that F (x, y) = 0. We would like the
+smallest one of these. Both ωik and α are completely contactable groupoids and so
+to find the smallest one use a left Kan lifting L of Id × 0 that picks out (x, 0) and
+the inclusion of H. L will pick out find the least of all y in α. Notice the triangle
+on the left does not commute. Let
+G = π ◦ inc ◦ H ◦ L : ωik −→ α −→ ωik × ω −→ ωik × ωi −→ ωi .
+
+While we can use computable functions to discuss computability, we can also use
+Turing machines. Turing machines are important for dealing with complexity. The usual
+definition of the time complexity of an algorithm is the amount of time clicks a Turing
+machine uses in order to complete its mission. If we are going to compare category theory
+with complexity, we will need to show how category theory can mimic Turing machines.
+Our Turing machine tape will be the category
+ω=
+
+0 −→ 1 −→ 2 −→ 3 −→ · · · .
+
+The head of a the Turing machine will be a functor Pi : 1 −→ ω pointing to the ith
+position. To move the pointer to the right, we use the successor function:
+Pi+1 = succ ◦ Pi : 1 −→ ω −→ ω.
+Similarly, if Pi : 1 −→ ω points to the ith position, then the predecessor Pi−1 : 1 −→ ω is
+constructed using the Kan lifting:
+Pi−1
+
+/ω
+❆❆
+⑥
+⑥
+❆❆
+⑥⑥
+❆
+⑥⑥ succ
+Pi ❆❆
+~⑥⑥
+
+1❆
+
+ω.
+
+(3)
+
+19
+This will permit us to move to the left and right on the Turing machine tape.
+If Pi : 1 −→ ω points to the ith position on the tape, then the comma category
+constructions gives us truncated tapes:
+(ω ↓ Pi ) =
+
+0
+
+/1
+
+/2
+
+/3
+
+/ ···
+
+/i−1
+
+/i
+
+/i+3
+
+/i+4
+
+/ ···.
+
+and
+(Pi ↓ ω) =
+
+/i+1
+
+i
+
+/i+2
+
+There are canonical inclusions of these subcategories into ω. These constructions will
+permit us to partition the tape and manipulate parts of it.
+The tape alphabet will be {0, 1, } where the  will correspond to the blank. Using
+coequalizers with copies of 2 and 2, it is easy to construct the following two categories
+and the inclusion of the first into the second
+3̇ =
+
+❃❃
+❃❃
+❃❃
+❃
+
+b=
+3
+
+/1
+
+0 ❃o
+
+
+
+0 ^❂o
+
+❂❂
+❂❂
+❂❂
+❂
+
+
+
+/1.
+✁@
+✁
+✁✁
+✁✁
+✁
+✁
+
+A functor F : ω −→ b
+3 assigns a value in the tape alphabet to every position on the tape.
+F is a string in {0, 1} if it starts at 0 or 1 and factors as follows:
+ω❁
+
+❁❁
+❁❁
+❁❁
+❁
+
+F
+
+3̇
+
+/b
+3.
+✂A
+✂
+✂
+✂
+✂✂ inc
+✂✂
+
+(We can tell if a functor factors by taking a Kan lifting and seeing if the associated α is
+the identity natural transformation.)
+Now to deal with the contents of the tape. There are three distinguished functors
+b 1 : 1 −→ 3,
+b and  : 1 −→ 3.
+b The contents of ith position of a Turing
+0 : 1 −→ 3,
+machine tape is
+F ◦ Pi : 1 −→ ω −→ b
+3.
+
+If we would like to do some procedure when the ith position of the tape has a 1 in it, we
+can use this in a Sammy program:
+If F oPi == 1 goto L.
+
+We put all these parts together to make a Turing machine. First we use a Sammy program
+to make ω, 3̇ and b
+3. There will also be a variable qx which will point to some element
+of the discrete category Q = {0, 1, 2, , . . . , |Q|} that will correspond to the state of the
+Turing machine. The input to the Turing machine will be given as a functor F : N −→ b
+3.
+There will be a pointer P0 : 1 −→ ω that begins by pointing at the zeroth position of the
+
+20
+tape. What remains is to show how to translate a transition rule of a Turing machine
+into a Sammy program.
+Let us say that the Turing machine rule says
+δ(q35 , a) = (q52 , b, D)
+where a, b ∈ {0, 1, } and D ∈ {R, L}. This rule will be done when the conditional
+IfF ◦ Pi == a AND qx == 35 goto L
+is satisfied. If this condition is met, then the following algorithm in Sammy will be
+executed:
+
+③
+
+Pi−1 ③③③
+③③ Pi
+
+0
+
+/1
+
+/ ···
+
+|③③
+
+/i−1
+
+1 ❉❉
+
+
+i
+
+❉❉ Pi+1
+❉❉
+❉❉
+"
+
+i+1
+
+/i+2
+
+/i+3
+
+/ ···
+
+/⋆
+/⋆
+❍❍
+⋆
+✉
+❍❍
+✉✉
+❍❍
+✉✉
+✉
+❍❍
+❍❍
+✉✉
+❍❍
+✉✉
+✉
+❍❍
+✉
+b
+✉✉
+F ◦Ui−1 ❍❍
+❍❍
+✉✉ F ◦Ui+1
+✉
+❍❍ 
+✉
+❍❍
+✉✉
+# z✉✉
+
+b
+3
+
+1. Form Pi−1 , (ω ↓ Pi−1 ), and forgetful functor Ui−1 : (ω ↓ Pi−1 ) −→ ω. This is the
+left side of the tape.
+2. Form Pi+1 , (Pi+1 ↓ ω), and forgetful functor Ui+1 : (Pi+1 ↓ ω) −→ ω. This is the
+right side of the tape.
+b and F ◦ Ui+1 : (Pi+1 ↓
+3. Use composition to form F ◦ Ui−1 : (ω ↓ Pi−1 ) −→ ω −→ 3
+b These two sides retain their old values.
+ω) −→ ω −→ 3.
+
+b This is the new value at point i of the tape.
+4. Consider b : 1 −→ 3.
+
+5. Use coeqalizers to attach (ω ↓ Pi−1 ) with 2 and 2 to 1. Connect the left side of the
+tape to position i.
+6. Use coqualizers to attach 1 to 2 and 2 to (Pi+1 ↓ ω). Connect the right side of the
+tape to position i.
+7. Since all three of these parts have a map into b
+3, there is an induced functor from
+b
+the combination of all three parts into 3. This is the new tape and values.
+
+8. Set qx = 52.
+
+21
+9. If D = R then Pi is set to its successor, else Pi is set to its predecessor.
+Conclusion: We showed that for every rule of the Turing machine there is a set amount
+of steps of a Sammy program. Hence our programming language can do whatever Turing
+machines can do. For a string s, there is a functor Fs : ω −→ 3̇ and our programming
+language can manipulate the Turing machine tape in the same way that the Turing
+machine would manipulate the tape. What this means is that for the computational
+complexity to create the functor Fs is the same as the computational complexity for a
+Turing machine to create s. The size of the Sammy program is, up to a multiplicative
+constant, the same as the number of rules in the Turing machine. In particular, if we
+consider the smallest programs, we get
+3.3. Theorem. For every string s, KSammy (Fs ) = O(KClassical (s)).
+In a sense, this says that our Kolmogorov complexity is a generalization of classical
+Kolmogorov complexity.
+
+We will need to look at the Kolmogorov complexity for numbers. In classical Kolmogorov complexity, for any natural number n, K(n) ≤ log2 n. For categories, the analogous theorem is as follows:
+3.4. Theorem. For any natural number n, the functor Pn : 1 −→ ω can be constructed
+by Sammy in O(log2n) operations. That is, KSammy (Pn ) ≤ O(log2 n).
+Proof. We must compose with the successor function n times on P0 in order to get Pn .
+Basically, the idea is that one can look at the binary representation of n and write a
+program based on that. For example 727 can be written in binary as 1011010111. We
+can express this number as
+(((((((((1 × 2 + 0) × 2 + 1) × 2 + 1) × 2 + 0) × 2 + 1) × 2 + 0) × 2 + 1) × 2 + 1) × 2 + 1).
+Similarly, we can start with P0 and Px = P1 and then look at each digit of the binary
+expression of n and either
+(a) double the length between P0 and Px or
+(b) double the length between P0 and Px and then compose with the successor function
+one more time.
+For example the following algorithm will perform option (b):
+1. Pt = P0
+2. Pend = Px
+3. IfPt == Pend goto 7
+4. Px = succ ◦ Px
+
+22
+5. Pt = succ ◦ Pt
+6. goto 3.
+7. Px = succ ◦ Px
+8. Return(Px )
+For option (a), simply leave out line 7.
+For a given n, a Sammy program that will either consist of a sequence of option (a)
+or option (b) will perform the required task. The length of this program will be 6 or 7
+times as long as log2 n.
+In the above, for every natural number n there will be a different Sammy program.
+One can, instead, think of having the number n inputed as a binary string. Such a string
+will be a functor F : (ω ↓ logn) −→ 2. A constant sized Sammy program can then
+produce the functor Pn . Basically the Sammy program reads the input by looking at the
+functor F deciding at each point to do option (a) or option (b). The pseudo-code will
+look like this
+1. Pi = P0
+2. IfF ◦ Pi == 0, then perform option (a) else perform option (b)
+3. IfPi == Plogn goto 6
+4. Pi = succ ◦ Pi
+5. goto 2.
+6. Pn = Px
+7. Return(Pn )
+We have just proved that
+KSammy (Pn : 1 −→ ω
+
+| F : (ω ↓ logn) −→ 2)
+
+=
+
+O(1)
+
+where F describes n in binary.
+In the future we will need to know when a category is discrete. A is a discrete when
+the map induced by s : 1 −→ 2,
+A2 −→ A1
+is an isomorphism. This basically says that the only morphisms in A are identities.
+We will also need to know when a category is connected. A is connected when
+(1 + 1)A ∼ 1 + 1.
+
+23
+That is, a category is connected when there are exactly two morphisms from the category
+to the discrete category with two objects.
+The most celebrated limitation of theoretical computer science is that no computer
+can solve the halting problem. That is, if φy is the function that corresponds to the yth
+computer program and x is an input, there is no computer program that can tell if φy (x)
+will halt or go into an infinite loop. The categorical analog for this problem is to construct
+the functor Halt : ωi × ωi −→ 2
+
+ 1 : if φ (x) ↓
+y
+Halt(x, y) =
+ 0 : if φ (x) ↑
+y
+
+Whereas no regular computer can describe the halting predicate, categories can.
+
+3.5. Theorem. Halt is a constructible functor.
+Proof. It is known that the predicate Halt′ defined as
+
+ 1 : if φ (x) ↓ within t steps
+y
+′
+Halt (x, y, t) =
+ 0 : if φ (x) ↑ within t steps
+y
+
+is total and computable and hence constructible in Sammy.
+Notice that for a given x and y, once Halt′ (x, y, t) becomes true, it remains true for
+any t′ ≥ t. This means that the constructible functor Halt′′ = Halt′ ◦ (inc × inc × Id) :
+ωd × ωd × ωi −→ ωi × ωi × ωi −→ 2 factors through 2 as in
+ωd × ωd ×
+▲ ωi
+
+Halt′′
+
+▲▲
+▲▲
+▲▲
+Halt∗ ▲▲▲
+▲%
+
+2
+
+/2
+✁@
+✁
+✁✁
+✁✁ inc
+✁
+✁
+
+Another way to say this is that the Kan lifting of Halt′′ is Halt∗ .
+Halt∗ can be used in the following right Kan extension to construct the Halting functor:
+❴ ❴ ❴ ❴ ❴ ❴ ❴ ❴ 8/ 2
+ωi × ωigP❴ ❴ ❴ ❴ ❴ Halt
+rr
+PPP
+PPP
+PP
+(incπ13 )×(incπ23 )PPP
+
+rr
+rrr
+r
+r
+rrr Halt∗
+
+ωd × ωd × ωi .
+
+For a given x and y, the halt functor has the value
+Colim(0 −→ 0 −→ 0 −→ 0 −→ 0 −→ 0 −→ 0 −→ · · ·) = 0
+if program y does not halt on input x. In contrast, if program y on input x does eventually
+halt, then the value of the functor is
+Colim(0 −→ 0 −→ 0 −→ 0 −→ 0 −→ 0 −→ · · · 0 −→ 0 −→ 1 −→ 1 −→ 1 −→ 1 −→ · · ·) = 1.
+We will use these idea again in Section 5.
+
+24
+Essentially this follows from the intuition that
+Halt(x, y) = Colimitt Halt′ (x, y, t).
+This should however not be surprising since categories can do infinitary operations. However this says something about implementations of Sammy. To reiterate what was said
+above: since we know from the Turing’s halting theorem and the Church-Turing thesis
+that the halting problem cannot be solved by any computer, we know that the Sammy
+programming language can not be totally implemented on any computer.
+
+4. Nonconstructible Categorical Structures
+Not every categorical structure is constructible. A simple counting argument can be
+used to see this. A functor ω −→ 2 corresponds to a real number. Therefore there exists
+uncountably infinite functors from ω to 2. However, every Sammy program can be encoded
+as a natural number. This means that there are only countably infinite constructable
+functors from ω to 2. The vast vast majority of structures are not constructible.
+A concrete example of a functor that is not constructible is KSammy . It is well known
+KClassical : Strings −→ N is not a computable function. First let us be careful about the
+definition of KSammy . It is a functor that assigns to every category, functor, and natural
+transformation a natural number. We might as well assume that it only assigns natural
+transformations since identity natural transformations are simply functors and identity
+functors are simply categories. Let us think of Cat as the discrete category of natural
+transformation. We are going to forget the (two) composition structures on Cat because
+KSammy does not behave well with respect to maps. Another problem is that not all
+elements of Cat are constructible. If X is not constructible we shall let KSammy (X) = ∞.
+So we have a functor KSammy : Cat −→ ω where ω = ω ∪ ∞ is the completed natural
+numbers.
+4.1. Theorem. KSammy : Cat −→ ω is not constructible.
+Proof. The proof is a self-referential proof by contradiction argument similar to the Berry
+paradox. Assume (wrongly) that K = KSammy is, in fact, constructible, then there is a
+shortest program that creates K. So we can ask for the finite value of K(K) (this is the
+core of self reference!). Let K(K) = c. Let n be a natural number and let Pn : 1 −→ ω
+be a functor such that Pn (0) = n. Now use K and and Pn to construct the following
+pullback:
+
+/ Cat
+Catn 
+K
+
+
+
+(Pn ↓ ω) 
+
+
+
+/ ω.
+
+25
+(Pn ↓ ω) is the sub-total order of the completed natural numbers that start at n. Catn
+is the discrete set of natural transformations whose shortest program is greater than or
+equal to n lines. For any n, to construct Catn one needs
+1. c lines of code to construct K
+2. logn lines to construct Pn
+3. and a few lines to construct the pullback. Call this small number pb.
+That is, Catn can be constructed in c + logn + pb lines or K(Catn ) ≤ c + log n + pb.
+Choose an n such that n >> c + log n + pb. Then Catn contains objects that require
+n or more lines of code (or are unconstructible) while we just described Catn in c +
+log n + pb lines of code.We assume that Catn has the axiom of choice. This is like a Berry
+sentence. Contradiction! The only thing assumed is that K was constructible. It is not
+constructible.
+What else is not constructible? Consider the functor that determines if a categorical
+structure is constructible or not. The functor Cons : Cat −→ 2 which accepts a natural
+transformation and tells if that natural transformation is constructible or not. While, at
+the moment, I cannot prove it, I conjecture that Cons is not constructible.
+In the last section we showed that one can write a Sammy program to solve the halting
+problem for classical Turing machines. What about the halting problem for Sammy
+programs? There are several issues here to deal with. First off, We have seen that
+some programs will go on for ω steps and then stop. This is similar to the infinite time
+Turing machines. Do we say that such problems halt? Another point is that the halting
+problem is not about a program halting, rather it is about a program and an input to the
+program. The analogous categorical question would ask about a functor F : A −→ B and
+a input functor I : ⋆ −→ A. With these two functors we can ask if F ◦ I is defined or is
+constructible.
+Throughout this paper, the structures that we dealt with were totally defined. Category theory usually deals with totally defined structures. Mathematicians do not talk
+about “partially defined cohomology functors.” Physicists generally do not talk of “a
+partially defined Lagrangian.” In fact, essentially the only time that category theorists
+talk about partial functors is to mimic something from computability theory.
+So even though this is orthogonal to our main purpose, we will spend a little time
+looking at partially defined functors. In the spirit of [5] one can define a partial functor
+F : C −→ D as a pair(incF , F0 ) where incF is an inclusion of a subcategory incF :
+CF −→ C and F0 : C0 −→ D is a functor from that subcategory to D. Composition
+of F = (incF , F0 ) : C −→ D and G = (incG , G0 ) : D −→ E is given by the following
+
+26
+pullback:
+F
+
+G
+/D
+/E
+>
+④= O
+⑦
+④
+④
+⑦⑦
+④
+⑦
+⑦
+④④
+⑦⑦
+④④
+⑦
+④
+inc
+inc
+⑦⑦
+④④
+⑦⑦ G0
+④④ F0
+⑦
+④
+⑦
+④
+④④
+⑦⑦
+
+CO
+
+CO F
+
+DG
+④=
+④
+④④
+④④
+④
+④④
+④④
+④
+④
+④④
+④④
+
+CGF
+
+The problem with this is that composition is only associative up to a natural transformation. This takes us out of the domain of category theory and into the the field of
+bicategories. One would have to formulate the notion of a natural transformation between two partial functors and then go on to describe Kan extensions and Kan liftings of
+partial functors. The Sammy programing language would have to be modified to Sammy’
+which describes categories, partial functors and partial natural transformations between
+them. In this setting, there will be many analogs to the theorems in classical computability theory. Sammy’ programs are very simple objects. Sammy’ only has a finite number
+of operations and each Sammy’ program consists of a finite number of lines. So every
+Sammy’ program can be encoded as a finite number and hence a functor P : 1 −→ ω.
+From this it follows that we can enumerate all Sammy’ programs.
+We are only interested in Sammy’ programs whose returned value is a partial functor
+ωi −→ 2. Formally, let φSn : ωi −→ 2 be the partial functor described by the nth Sammy’
+program. If the nth program describes a partial functor from a different source or target
+category, then let it be undefined. Let x and y both be thought of as natural numbers
+and as functors 1 −→ ω. Consider the functor HaltS : ωi × ωi −→ 2 that is defined as
+
+ 1 : if φS (x) ↓
+y
+S
+Halt (x, y) =
+ 0 : if φS (x) ↑
+y
+4.2. Theorem. The total functor HaltS is not a constructible functor.
+Proof. The proof will follow the usual self-referential ideas found in the classical proof
+that the halting problem is unsolvable (see e.g. [18].) Assume (wrongly) that HaltS :
+ωi × ωi −→ 2 was a total constructible functor. We can compose this total functor with
+the following easily constructible total functors ∆ : ωi −→ ωi × ωi and NOT : 2 −→ 2
+
+27
+such that NOT (0) = 1 and NOT (1) = 0 and get
+ωi ×O ωi
+
+HaltS
+
+∆
+
+1
+
+Py
+
+/ ωi
+
+/2
+
+N OT
+
+D
+
+
+/ 2.
+
+By composition we get the functor D : ωi −→ 2 (for diagonal). D is defined so that
+D(n) = 1 iff Sammy’ program n on input n is not constructible. If HaltS was constructible
+than D would be constructible and there would be a program number, say y, for this
+program. That is D = φSy : ωi −→ 2. Composing D with Py : 1 −→ ωi would make a
+functor
+D ◦ Py = φSy ◦ Py : 1 −→ ωi −→ 2.
+We then have
+φSy (y) = 1 iff D(y) = 1 iff NOT (HaltS (y, y)) = 1 iff HaltS (y, y) = 0 iff φSy (y) = 0
+We conclude that D cannot be constructible which means that HaltS cannot be constructible.
+
+5. The Arithmetic and Analytic Hierarchies
+Logicians have defined several hierarchies of logical predicates. The simplest such hierarchies is called the arithmetic hierarchy. This is the class of predicates or relations on
+natural numbers that are either recursive or can be gotten from recursive relations from
+either complementation and/or projections. Complementation corresponds to the ¬ operation while projection corresponds to ∃. Noticing that ∀ ≡ ¬∃¬ and that quantifiers
+can be brought to the beginning of a logical formula, we can write all predicates in the
+arithmetic hierarchy as a sequence of existential and universal quantifiers followed by a
+recursive relation. The classification is then based on whether the first quantifier is a existential or universal, and on the number of alternations between the types of quantifiers.
+A predicate that can be expressed as an existential quantifier
+P followed by n alternations
+between universal and existential quantifiers will be called 0n . A predicate that
+Q0can be
+expressed with a universal quantifier followed by n alternations will be called n . Our
+main source and our notation will follow chapters 14-16 of [12].
+5.1. Theorem. Every predicate in the arithmetic hierarchy is constructible.
+Proof. The proof is by induction on the complexity of the predicate.
+• If φ is a recursive predicate of n variables, then, since we can think of 2 as a subcategory of ωi , and as we saw about such recursive functions, there is a constructible
+functor Φ : ωin −→ 2 that mimics φ.
+
+28
+• If φ ≡ ¬ψ, and ψ is mimicked by the constructible Ψ : ωin −→ 2, then φ is mimicked
+by the composition of constructible functors
+Φ = NOT ◦ Ψ : ωin −→ 2 −→ 2
+where NOT is the easily constructed functor that such that NOT (0) = 1 and
+NOT (1) = 0.
+• Let φ ≡ ∃xψ where ψ is n+1 variable predicate that is mimicked by Ψ : ωin+1 −→ 2.
+We shall construct Φ : ωin −→ 2 in four steps.
+1. Change the source of Ψ to be partially discrete
+Ψ′ = Ψ ◦ (incn × Id) : ωdn × ωi −→ ωin × ωi −→ 2.
+We will need this so that step 3 will work out well.
+2. Change the target of Ψ′ . Since there are no nontrivial limits or colimits in 2
+we must change the target category to 2 using a Kan lifting:
+Ψ̂
+
+ωdn × ωi
+
+✼✼
+✼✼
+✼✼
+✼✼
+Ψ′ ✼✼✼
+✼✼
+✼
+
+2
+
+/2
+✍✍ ✍
+✍✍
+✍✍ ✍
+✍ inc
+✍✍ ✍
+✍
+
+3. Now we use Ψ̂ in the following right Kan extension
+ωin
+
+Φ̂
+
+\✽✽
+✽✽
+✽✽
+✽✽
+incn ◦π n ✽✽
+✽✽
+✽✽
+
+/2
+✞C
+✞
+✞
+✞✞
+✞
+✞
+✞✞Ψ̂
+✞
+✞
+✞✞
+✞✞
+
+ωdn × ωi
+
+4. To get back a functor whose range is 2 we simply compose Φ̂ with the obvious
+inclusion of 2 to 2:
+Φ : ωin −→ 2 −→ 2.
+We do these inductive steps for each complimentation and projection. In the end, we get
+a functor 1 −→ 2 which tells the truth or falsity of the predicate.
+
+29
+While we showed that categories can deal with all of the arithmetic hierarchy, we
+left open the question of the analytic hierarchy? Categories cannot solve everything. As
+we saw, they cannot construct the KSammy functor. So what exactly is the power of
+categories?
+In a sense, set theory can describe all the effective hierarchies and hence is less interesting. In contrast, category theory is limited. Some problems they can solve and
+some they cannot. This makes the study of the effective hierarchies from the categorical
+standpoint important.
+An interesting problems in the analytic hierarchy is to determine if a given real number
+is a rational number. It is interesting to look at the problem from a categorical point of
+view. Think of a real number as a functor r : ω −→ 2. In order to describe a rational
+number we need the notion of a lollipop. For every two nonnegative integers m ≤ n, we
+shall call the following partially ordered category Lm,n
+0
+
+/1
+
+/2
+
+/ ···
+
+/m−1
+
+/m
+O
+
+/m+1
+
+/m+2
+
+
+..
+.
+
+n−1o
+
+n−2o
+
+
+
+n−3
+
+There is always a canonical projection ω −→ Lm,n . It is not hard to see that r is rational
+number if there is some m and n such that r factors as
+ω ❇❇
+
+r
+
+❇❇
+❇❇
+❇❇
+❇!
+
+/2.
+⑤=
+⑤
+⑤
+⑤⑤
+⑤⑤
+⑤
+⑤
+
+Lm,n
+
+One can look at the category of lollipops with ω as the initial object and 1 = L0,0 as the
+terminal object. However it is not clear how one constructs this category of lollipops or
+sees if an arbitrary real number factors through any of them. Much work remains.
+
+6. Future Directions
+We see this paper as just the beginning of a larger project to understand the computability
+and complexity of categorical structures. There are many more subjects that we would
+like to attack with the tools developed here. Here are a few of them.
+Complexity Measures. We would like to better clarify what is constructible and what
+is not. We discussed the Kolmogorov complexity of categorical structures. We would
+also like to study different complexity measures on these structures. Rather than asking
+what is the shortest program that produces a categorical structure, we can ask how
+
+30
+much time/space does a program take to create a certain structure. That is, what is the
+computational complexity of a structure. We can also ask how much time does it take
+for the shortest program to produce that structure (Bennett’s logical depth). Another
+measures of interest are Adelmann’s time-bounded Kolmogorov complexity. All these
+measures induce hierarchies and classifications of categorical structures.
+Entropy. There is a relationship between classical Kolmogorov complexity and Shannon’s complexity theory. Classical Kolmogorov complexity measures the complexity of
+an individual string while Shannon’s complexity measures the complexity of a source of
+strings, or a whole class of strings. Shannon’s entropy function, H, measures how much
+rigidity there is in the source. Or to put it another way, how many different ways can the
+strings be swapped. The relationship says that if X is a source of messages or a class of
+messages, than H(X) is about the average of all the K(x) where x is a string that can be
+produced by X. Formally,
+X
+p(xi )K(xi ).
+H(X) ∼
+xi ∈X
+
+We would like to formulate a notion of Shannon’s complexity theory for categories.
+There should be a definition of entropy of a category. This should measure how rigid
+or flexible a categorical structure is. Let C be a category, then Aut(C) is the group of
+automorphism functors F : C −→ C. Define the “entropy” (or “Hartley entropy”) of C
+1
+where p is some
+as H(C) = Log2 |Aut(C)| (perhaps this should be H(C) = pLog2 |Aut(C)|
+constant.) There is a similar definition for the “entropy” of a functor F : C −→ D as
+H(F ) = Log2 |Aut(F )| where we mean the set of iso-natural transformations F −→ F.
+We might look at the entropy of a particular object c of C as the entropy of the functor
+c : 1 −→ C that “picks” an object c ∈ C. H(c) = H(c : 1 −→ C) = Log2 |Aut(c)|. It would
+be interesting to see the relationship between such entropy measures for categories and
+functors with KSammy (C) and KSammy (c : 1 −→ C). Just as there is a relationship between
+these measures for strings, there should be a relationship for categorical structures.
+Categories With Structure. So far we have restricted to classical categories, functors,
+and natural transformations. But that is not the whole story. What about categories
+with more structure? For example, what can we say about a category that we know
+has all limits and colimits? What about enriched categories, 2-categories, n-categories,
+weak-n-categories, quasi-categories, categories with Quillen model structures (i.e., the
+ability to do homotopy theory) etc? These different structures have been applied in
+almost every area of mathematics, computer science and theoretical physics. For each of
+these classes of categories with structure, we are going to have to come up with another
+Sammy programing language that can deal with such structure. We are interested in what
+structures of these types can and cannot be constructed and what is their complexity. For
+example when dealing with 2-categories, we might be interested in given the category B
+to construct the 2-category F ib(B) of fibrations over B. We also would like to see its
+relationship with [Bop , Cat].
+
+31
+Classical Computational Complexity Theory. There is an intuition that the difference between P and NP is that the solution space for P is somehow structured while
+the solution space for NP is unstructured. An algorithm in P uses the structure of the
+solution space to find the correct solution efficiently. In contrast, the only known way
+of solving an NP problem is to perform a brute-force search through the unstructured
+solution space. We believe that it should be possible to formalize this intuition with our
+Kolmogorov complexity of categories. What does it mean for a solution space to have a
+workable structure? Most of the solution spaces for NP problems do have some type of
+structure. They usually form an exponential tree. Why is that not good enough? What
+about other complexity classes. How does PSPACE compare with NP? There must be
+some type of trade-off between the size of the solution space and the amount of structure
+of the solution space. If the size is very large but there is a lot of structure, then the
+problem could still be effectively solved. In contrast, if the solution space is relatively
+small but there is little structure, the problem will be hard to solve. We hope to examine
+this notion of structured solution space with Kolmogorov complexity.
+
+32
+
+7. Appendix: Syntax and Semantics of Sammy
+In order to be more exact we give the formal syntax and semantics of Sammy.
+The EBNF Syntax for Sammy
+program −→ { statement } return
+statement
+label
+assignmentStmt
+varList
+
+−→ [ label ] ( assignmentStmt | ifStmt )
+−→ ( A | B | · · · | Z )
+−→ varList = function ( varList )
+−→ var {, var }
+
+var −→ catVar | functorVar | ntVar
+catVar −→ 0 | 1 | 2 | A | B | C . . .
+functorVar −→ Id0 | Id1 | Id2 | !01 | !02 | !21 | F | G | H · · ·
+ntVar −→ α | β | γ . . .
+function
+
+−→ Source1 | Source2 | Target1 | Target2 |
+Ident0 | Ident1 | Op0 | OP1 | Comp | Hcomp | Vcomp |
+Pow0 | Pow1 | KanEx | KanExInd | KanLif | KanLifInd |
+MapComp
+
+ifStmt
+
+−→ If ntVar == ntVar goto label
+
+return
+
+−→ [label] Return( varList )
+
+The basic types of Sammy are c, f, and n which correspond to categories, functors
+and natural transformations. There are maps between these types as follows:
+s
+
+n
+t
+
+/
+
+s
+
+/f
+
+t
+
+/
+
+/c
+
+These maps correspond to the source and targets of natural transformations and of functors.
+In order to describe the operations in Sammy we need dependent type theory. Since the
+notation in the literature is not standardized we will steer clear of some of the notation
+that is harder to follow. For every two categories A and B there is a type fA,B which
+corresponds to all the functors from A to B. Similarly, for all pairs of functors F : A −→ B
+and G : A −→ B there is a type nA;F,G;B that corresponds to all natural transformations
+
+33
+from F to G. Using the product types of these dependent types we can formally give the
+semantics of Sammy.
+The semantics of Sammy takes place in the universe Cat, the 2-category of small
+categories and functors. The input, output and semantics of the Sammy operations are
+given in Table 1. For the semantics, we use the standard notation of [11].
+There are some other conventions about semantics that we follow (some are repeated
+here from the beginning of the paper for completion sake.)
+1. We have the following constant categories
+• 0, the empty category
+• 1, the category with one object, 0,
+• 2, the category 0 −→ 1 with two objects and one nontrivial morphism between
+them
+• Cat, the category of all small categories
+2. Kan extensions and Kan liftings are only defined up to a unique isomorphism. Hence,
+products, coproducts, equalizers, colimits, etc are also only defined up to a unique
+isomorphism. We leave it as implementation-dependent as to which of the many
+Kan extensions and Kan liftings Sammy returns. Because of the universal property
+stated with the unique isomorphism, categorically they are all indistinguishable.
+3. The program will move forward every line until there is a conditional statement. If
+the two natural transformations are equal, then the program will go to the first line
+in the program that has the given label.
+
+Table 1: Functions in the Sammy Programming Language
+Function
+
+Input
+
+Output
+
+Note
+
+Semantics
+
+Source1
+
+f
+
+c
+
+Source of the functor
+
+A = Source1 (F : A −→ B)
+
+Source2
+
+n
+
+f
+
+Source of the N.T.
+
+F = Source2 (α : F =⇒ G)
+
+Target1
+
+f
+
+c
+
+Target of the functor
+
+B = Target1 (F : A −→ B)
+
+Target2
+
+n
+
+f
+
+Target of the N.T.
+
+G = Target2 (α : F =⇒ G)
+
+Ident0
+
+c
+
+f
+
+Identity functor
+
+IdA = Ident0 (A)
+
+Ident1
+
+f
+
+n
+
+Identity N.T.
+
+ιF = Ident1 (F : A −→ B)
+
+Op0
+
+c
+
+c
+
+Opposite category
+
+Aop = Op0 (A)
+
+OP1
+
+f
+
+f
+
+Opposite functor
+
+F op = Op1 (F : A −→ B)
+
+Comp
+
+fB,C × fA,B
+
+fA,C
+
+Comp. of functors
+
+G ◦ F = Comp(G, F )
+
+Hcomp
+
+nB;F ′ ,G′ ;C × nA;F,G;B
+
+nA;F ′ ◦F,G′ ◦G;C
+
+Horizontal comp. N.T.
+
+α ◦ β = Hcomp(α, β)
+
+Vcomp
+
+nA;G,H;B × nA;F,G;B
+
+nA;F,H;B
+
+Vertical comp. N.T.
+
+σ • τ = Vcomp(σ, τ )
+
+Pow0
+
+c×c
+
+c
+
+Power category
+
+BA = Pow0 (A, B)
+
+Pow1
+
+fC,D × fA,B
+
+fCB ,DA
+
+Power functor
+
+GF : CB −→ DA = Pow1 (F, G)
+
+KanEx
+
+fC,A × fC,B
+
+fA,B × nC;RanF (G)◦G,F ;A
+
+R. Kan extension
+
+(RanF (G), α) = KanEx(F, G)
+
+KanExInd
+
+fC,A × fC,B × fA,B × nA;H◦G,F ;C
+
+nA;H,RanF (G);B
+
+Induced by r. Kan ext.
+
+γ = KanExInd(G, F, H, β)
+
+KanLif
+
+fB,C × fA,C
+
+fA,B × nA;P ◦RLifP (F ),F ;C
+
+R. Kan lifting
+
+(RLifP (F ), α) = KanLif(P, F )
+
+KanLifInd
+
+fB,C × fA,C × fA,B × nA;P ◦H,F ;C
+
+nA;H,RLifP (F );B
+
+MapComp
+
+c
+
+f
+
+Induced by r. Kan lifting γ = KanLifInd(P, F, H, β)
+(F : C2 ×C1 C2 → C2 ) = MapComp(C)
+34
+
+Composition functor
+
+35
+
+References
+[1] Barr, Michael and Wells, Charles, Toposes, Triples and Theories. Grundlehren der
+Mathematischen Wissenschaften, 278. Springer-Verlag, New York, 1985.
+[2] Barr, Michael and Wells, Charles, Category Theory for Computing Science, Third
+Edition, Les Publications CRM, 1999.
+[3] Blum L., M. Shub, and S. Smale, “On a Theory of Computation and Complexity over
+the Real Numbers: NP-completeness, Recursive Functions and Universal Machines”
+Bulletin of the American Mathematical Society 21 (1), 1989
+[4] Calude, Cristian, Information and Randomness: An Algorithmic Perspective, Second
+Edition Springer-Verlag New York, 2002.
+[5] Di Paola, Robert A. and Heller, Alex, “Dominical Categories: Recursion Theory
+without Elements”, J. Symbolic Logic Volume 52, Issue 3 (1987), 594-635.
+[6] Eilenberg, Sammy and Harrison, D. K. and Mac Lane, Saunders and Röhrl, Helmut
+editors. Categorical Algebra (La Jolla, 1965), Springer-Verlag, 1966.
+[7] Hagino, Tatsuya, A Categorical Programming Language, available at
+http://voxoz.com/publications/cat/Category
+[8] Hamkins, Joel David and Lewis, Andy, “Infinite Time Turing Machines” The Journal
+of Symbolic Logic Vol. 65, No. 2 (Jun., 2000), pp. 567-604.
+[9] Lambek, J, and Scott, P.J., Introduction to Higher-Order Categorical Logic, Cambridge University Press, 1988.
+[10] Lawvere, F. William,“The Category of Categories as a Foundation for Mathematics,”
+pages 1–20 in [6].
+[11] Mac Lane, Saunders, Categories for the Working Mathematician, Second edition.
+Graduate Texts in Mathematics, 5. Springer-Verlag, New York, 1998.
+[12] Rogers, Hartley, Jr. Theory of recursive functions and effective computability.
+McGraw-Hill Book Co., New York-Toronto, Ont.-London 1967 xx+482 pp.
+[13] Rydeheard, D.E., and Burstall, R.M., Computational Category Theory available at
+http://www.cs.man.ac.uk/∼david/categories/book/book.pdf
+[14] Street, Ross, Fibrations and Yoneda’s lemma in a 2-category, Lecture Notes in Math.
+420 (1974) Pg.104–133.
+[15] Street, Ross and Walters, R.F.C., Yoneda structures on 2-categories, J. Algebra, 50
+(1978) Pg. 350–379.
+
+36
+[16] Ulmer, Fritz, Properties of dense and relative adjoint functors. J. Algebra, 8. 1968,
+Pg 77 - 95.
+[17] Li, Ming and Vitányi, Paul M. B. An Introduction to Kolmogorov Complexity and
+its Applications. Second Edition. Springer, 1997.
+[18] Yanofsky, N.S. A Universal Approach to Self-Referential Paradoxes, Incompleteness
+and Fixed Points. The Bulletin of Symbolic Logic, September 2004.
+[19] Yanofsky, N.S., and Mannucci, M.A. Quantum Computing for Computer Scientists.
+Cambridge University Press, 2008.
+[20] Yanofsky, N.S., “Kolmogorov Complexity of Categories” In Computation, Logic,
+Games, and Quantum Foundations - The Many Facets of Samson Abramsky. Edited
+by Bob Coecke, Luke Ong, Prakash Panangaden. Springer LNCS 7860, 2013. See also
+http://arxiv.org/abs/1306.2675.
+[21] Yanofsky, N.S., “Algorithmic Information Theory in Categorical Algebra” (Work in
+progress.)
+[22] Yanofsky, N.S., “The Entropy of Categorical Constructs” (Work in progress.)
+[23] Yanofsky, N.S., The Outer Limits of Reason: What Science, Mathematics, and Logic
+Cannot Tell Us. MIT Press, 2013.
+Department of Computer and Information Science, Brooklyn College, The City University
+of New York, Brooklyn, N.Y. 11210.
+Email: noson@sci.brooklyn.cuny.edu.
+
+

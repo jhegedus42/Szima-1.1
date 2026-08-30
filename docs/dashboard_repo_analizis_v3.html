@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Szima — Dashboard v3 (linkek + popupok + források + szívdobbanás)</title>
+<style>
+  :root{--h:#0b0f14;--p:#111827;--s:#c9d4e0;--halv:#8b98ad;--k:#58a6ff;--z:#3ddc84;--a:#e3b341;--pi:#f85149;--l:#bc8cff;--kf:#1f2937;--ki:#1c2942;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:system-ui,sans-serif;background:var(--h);color:var(--s);line-height:1.6;padding:1rem;}
+  header{border-bottom:2px solid var(--kf);padding-bottom:1rem;margin-bottom:1.5rem;}
+  h1{font-size:1.6rem;}h2{font-size:1.2rem;color:var(--k);margin:2rem 0 .8rem;border-bottom:1px solid var(--kf);padding-bottom:.3rem;}h3{font-size:1rem;color:var(--l);margin:1rem 0 .5rem;}
+  .forras{font-size:.78rem;color:var(--halv);font-family:monospace;}
+  table{border-collapse:collapse;width:100%;margin:.5rem 0;font-size:.85rem;}th,td{border:1px solid var(--kf);padding:.35rem .5rem;}th{background:var(--p);color:var(--k);font-family:monospace;font-size:.78rem;}
+  a{color:var(--k);text-decoration:none;}a:hover{text-decoration:underline;}
+  .pipa{color:var(--z);font-weight:bold;}.vesz{color:var(--pi);font-weight:bold;}.vill{color:var(--a);font-weight:bold;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;}
+  .kartya{background:var(--p);border:1px solid var(--kf);border-radius:8px;padding:1rem;}
+  .szam-nagy{font-size:2.2rem;font-weight:bold;color:var(--a);}
+  .szam-kis{font-size:.78rem;color:var(--halv);margin-top:.2rem;}
+  .doboz{background:var(--p);border:1px solid var(--kf);border-radius:6px;padding:.8rem 1rem;margin:.5rem 0;}
+  .krit{border-color:var(--pi);background:#1a0a0a;}
+  /* Popup */
+  .fogalom{cursor:help;border-bottom:1px dotted var(--k);position:relative;}
+  .fogalom .popup{display:none;position:absolute;bottom:140%;left:0;background:var(--ki);border:1px solid var(--k);border-radius:8px;padding:.8rem 1rem;min-width:280px;max-width:400px;z-index:100;font-size:.82rem;line-height:1.5;box-shadow:0 8px 24px rgba(0,0,0,.4);}
+  .fogalom:hover .popup,.fogalom:focus .popup{display:block;}
+  .fogalom .popup a{display:block;margin-top:.3rem;}
+  .fogalom .popup .def{color:var(--s);margin:.3rem 0;}
+  .fogalom .popup .src{color:var(--halv);font-size:.72rem;font-family:monospace;}
+  .fogalom .popup .wiki{color:var(--k);}
+  /* Szívdobbanás */
+  #szivdobbanas{position:fixed;top:10px;right:10px;background:var(--p);border:1px solid var(--pi);border-radius:8px;padding:.5rem .8rem;font-size:.78rem;color:var(--pi);z-index:200;font-family:monospace;}
+  #szivdobbanas .pule{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--pi);margin-right:.3rem;animation:pulse 3s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+  #fogalom-graf{width:100%;height:550px;background:var(--h);border:1px solid var(--kf);border-radius:8px;}
+  #biz-chart,#int-chart{width:100%;height:280px;}
+  .accordion{cursor:pointer;padding:.6rem .8rem;background:var(--p);border:1px solid var(--kf);border-radius:6px;margin:.3rem 0;}
+  .accordion:focus-visible{outline:2px solid var(--k);}
+  .acc-tartalom{display:none;padding:.6rem .8rem;border:1px solid var(--kf);border-top:none;border-radius:0 0 6px 6px;}
+  .acc-tartalom.nyitva{display:block;}
+  footer{margin-top:2rem;border-top:2px solid var(--kf);padding-top:.8rem;font-size:.82rem;color:var(--halv);}
+  @media(max-width:768px){.grid2,.grid4{grid-template-columns:1fr;}#fogalom-graf{height:400px;}table{font-size:.75rem;}}
+</style>
+</head>
+<body>
+
+<div id="szivdobbanas" role="status" aria-live="polite" aria-label="Szívdobbanás timer — a dashboard folyamatosan frissül">
+  <span class="pule"></span><span id="sziv-szamlalo">♥ 0</span>
+</div>
+
+<header>
+  <h1>17 Repo Analízis Dashboard v3</h1>
+  <p class="forras">Minden fogalom linke + popup-definíció + Wikipedia + forrás-cikk · Szívdobbanás: 3-prompt ritmus · Dátum: 2026-08-27</p>
+</header>
+
+<!-- ══ 1. ÖSSZESÍTŐ ══ -->
+<h2>1. Összesítés</h2>
+<div class="grid4" id="kartyak"></div>
+
+<!-- ══ 2. FOGLALOM-SZÓTÁR (popupokkal) ══ -->
+<h2>2. Fogalom-szótár (hover a popup-definícióért)</h2>
+<p class="forras">Minden <span class="fogalom">fogalom<span class="popup"><div class="def">A fogalom kategóriaelméleti definíciója</div><a class="wiki" href="#">Wikipedia</a><div class="src">Forrás-cikk</div></span></span> alatt popup-definíció + Wikipedia-link + forrás-cikk hivatkozás található.</p>
+<div id="fogalom-szotar" style="columns:2;column-gap:2rem;font-size:.85rem;line-height:2;"></div>
+
+<!-- ══ 3. RELEVANCIA-MATRIX ══ -->
+<h2>3. Relevancia-matrix</h2>
+<div style="overflow-x:auto"><table id="matrix"></table></div>
+
+<!-- ══ 4. BIZONYÍTÁS ══ -->
+<h2>4. Bizonyítás-statisztika</h2>
+<div class="grid2">
+<div class="kartya"><h3>Eloszlás</h3><div id="biz-chart" role="img" aria-label="Bizonyítás donut"></div></div>
+<div class="kartya"><h3>Típusonként</h3><table id="biz-tipusok"></table></div>
+</div>
+
+<!-- ══ 5. FOGLALOM-GRÁF ══ -->
+<h2>5. Fogalom-gráf (interaktív)</h2>
+<div id="fogalom-graf" role="img" aria-label="28 fogalom + 21 kapcsolat"></div>
+
+<!-- ══ 6. JELENTÉSELMELET ══ -->
+<h2>6. A 7 rétegű jelentéselmélet</h2>
+<div id="jelentes-acc"></div>
+
+<!-- ══ 7. INTELLIGENCIA ══ -->
+<h2>7. "Melyik szabály adja az intelligenciát?"</h2>
+<div id="int-chart" role="img" aria-label="Hipotézisek súlyozva"></div>
+
+<!-- ══ 8. KÉSZ vs HIÁNYZÓ ══ -->
+<h2>8. Kész vs. hiányzó</h2>
+<div class="grid2">
+<div class="kartya"><h3 style="color:var(--z)">✓ Kész</h3><ul id="kesz" style="list-style:none;padding:0"></ul></div>
+<div class="kartya"><h3 style="color:var(--pi)">✗ Hiányzik</h3><ul id="hianyzo" style="list-style:none;padding:0"></ul></div>
+</div>
+
+<footer>Szima · Dashboard v3 · 2026-08-27 · <a href="https://github.com/jhegedus42/Szima">GitHub</a> · <code>docs/RepoAnalizis_Tudasstruktura_v1.md</code></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script>
+// ════ FOGLALOM-SZÓTÁR ════
+// Minden fogalom: név, definíció, Wikipedia (EN + HU), forrás-cikk (arXiv), kapcsolódó fogalmak
+const fogalmak = [
+  {id:"e8",nev:"E8 gyökrendszer",kat:"MAG",
+   def:"240 gyök = 112 (±1,±1,0⁶) permutáció + 128 (±½)⁸ páros mínusszal. Minden gyök norma²=2 (simply-laced). Weyl-csoport W(E8)=696729600.",
+   wiki_en:"https://en.wikipedia.org/wiki/E8_lattice",wiki_hu:"https://hu.wikipedia.org/wiki/E8_(matematika)",
+   src:"Conway–Sloane, Sphere Packings (SPLAG), Ch. 8",
+   kapcsol:["steane","weyl","clifford","fixpont137"]},
+  {id:"steane",nev:"Steane [[7,1,3]]",kat:"MAG",
+   def:"Kvantumhibajavító kód: n=7 fizikai qubit, k=1 logikai, d=3 távolság, 1 hiba javítható. A klasszikus Hamming [7,4,3] kvantumosítása. C₂⊥⊆C₁ recept.",
+   wiki_en:"https://en.wikipedia.org/wiki/Steane_code",wiki_hu:"https://hu.wikipedia.org/wiki/Kvantumhibajav%C3%ADt%C3%B3_k%C3%B3d",
+   src:"Steane, A.M. (1996). Simple Quantum Error Correcting Codes. arXiv:quant-ph/9605021",
+   kapcsol:["e8","fano","holografikus","megertes"]},
+  {id:"cpt",nev:"CPT szimmetria",kat:"MAG",
+   def:"C=töltés (részecske↔antirészecske), P=paritás (tértükrözés), T=idő (időfordítás). Pauli 1955, Lüders 1954. A projekt 3 rétegben: fizikai, nyelvtani (C=Forrás, P=Szemlélet, T=Igeidő), pszichofizikai (C=Én, P=Te, T=Kapcsolat). 3×3×3=27.",
+   wiki_en:"https://en.wikipedia.org/wiki/CPT_symmetry",wiki_hu:"https://hu.wikipedia.org/wiki/CPT-szimmetria",
+   src:"Pauli, W. (1955). Niels Bohr and the Development of Physics. Pergamon Press.",
+   kapcsol:["magyar","fazis","cat3"]},
+  {id:"cat3",nev:"Cat³ hierarchia",kat:"MAG",
+   def:"Kategóriák kategóriájának kategóriája. Cat⁰=Set (0-sejt: objektumok), Cat¹=Cat (1-sejt: funktorok), Cat²=Cat^Cat (2-sejt: term. transzf.), Cat³=módosítások (3-sejt). 49. struktúra = Y-kombinátor fázissal.",
+   wiki_en:"https://en.wikipedia.org/wiki/Higher_category_theory",wiki_hu:"https://hu.wikipedia.org/wiki/Kateg%C3%B3riael%C3%A9let",
+   src:"Mac Lane, S. (1971). Categories for the Working Mathematician. Springer.",
+   kapcsol:["ycomb","hasonlat","langmath","magyar"]},
+  {id:"magyar",nev:"Magyar nyelvtan",kat:"MAG",
+   def:"22 eset = 22 morfizmus = 22 logikai kapcsolat. Agglutináció (tő+képző+szám+birtok+eset) = típuskompozíció. Hangrend (mély/magas) = paritásbit. 64 noun = 2⁶ = Steane stabilizátor. 279 verb = 7³-64.",
+   wiki_en:"https://en.wikipedia.org/wiki/Hungarian_grammar",wiki_hu:"https://hu.wikipedia.org/wiki/Magyar_nyelvtan",
+   src:"Kiefer, E. (2011). Grammatikai rendszerek. Akadémiai Kiadó.",
+   kapcsol:["steane","cpt","fano","langmath"]},
+  {id:"holografikus",nev:"HaPPY kód",kat:"MAG",
+   def:"Pastawski–Yoshida–Harlow–Preskill (2015). Perem = CFT (7 qubit, 2⁷=128), Belső = AdS (49-dim perfect-tensor). Izometria: perem 7 qubit → belső 49-dim. Ryu-Takayanagi: S=A/(4G_N).",
+   wiki_en:"https://en.wikipedia.org/wiki/Holographic_principle",wiki_hu:"https://hu.wikipedia.org/wiki/Holografikus_elv",
+   src:"Pastawski et al. (2015). Holographic quantum error-correcting codes. arXiv:1503.06237",
+   kapcsol:["steane","e8","megertes"]},
+  {id:"fazis",nev:"Fázis-algebra",kat:"MAG",
+   def:"FazisKubit: θ (poláris) + φ (azimut) = a FÁZIS. A bit mértékegysége = fázis. i²=-1 (π fázis = kifordulás), i⁴=+1 (2π = visszafordulás). Bloch-gömb: 2 (bit) + 1 (fázis) = 3 dimenzió. γ⁵ = chiralitás = 16. dimenzió.",
+   wiki_en:"https://en.wikipedia.org/wiki/Bloch_sphere",wiki_hu:"https://hu.wikipedia.org/wiki/Bloch-g%C3%B6mb",
+   src:"Sakurai, J.J. Modern Quantum Mechanics. §2.3 (Bloch sphere).",
+   kapcsol:["cpt","gpt2c","gamma","weyl"]},
+  {id:"weyl",nev:"Weyl-csoport W(E8)",kat:"MAG",
+   def:"W(E8) = 696729600 = 2¹⁴·3⁵·5²·7. A Weyl-csoport a gyökrendszer tükrözéseiből áll. σ_α(β) = β - (⟨α,β⟩/4)·α. Weyl-tükrözés = fázis-átmenet: c = ⟨α,β⟩/4 ∈ {-2,-1,0,+1,+2}.",
+   wiki_en:"https://en.wikipedia.org/wiki/Weyl_group",wiki_hu:"https://hu.wikipedia.org/wiki/Weyl-csoport",
+   src:"Conway–Sloane, SPLAG, Ch. 8. Killing 1888, Cartan 1894.",
+   kapcsol:["e8","clifford","fazis"]},
+  {id:"clifford",nev:"E8×E8 Clifford",kat:"MAG",
+   def:"bal E8 = tér (saját/Én), jobb E8 = szín (másik/Te), Clifford szorzat = hang. A geometriai szorzat belső része (a·b) = átfedés → ha magas, a fogalom redundáns és eldobható.",
+   wiki_en:"https://en.wikipedia.org/wiki/Clifford_algebra",wiki_hu:"https://hu.wikipedia.org/wiki/Clifford-algebra",
+   src:"Conway–Sloane, SPLAG. Lawson–Michelsohn, Spin Geometry.",
+   kapcsol:["e8","weyl","fazis"]},
+  {id:"carnot",nev:"Carnot-ciklus",kat:"MAG",
+   def:"4 lépés: izoterma tágulás → adiabata lehűlés → izoterma sűrítés → adiabata melegítés. Hatásfok η=1-Tc/Th < 1 (2. főtörvény). Landauer-küszöb: E=kB·T·ln2. A Carnot-ciklus záródik (4 lépés → visszatérés).",
+   wiki_en:"https://en.wikipedia.org/wiki/Carnot_cycle",wiki_hu:"https://hu.wikipedia.org/wiki/Carnot-ciklus",
+   src:"Carnot, S. (1824). Réflexions sur la puissance motrice du feu.",
+   kapcsol:["landauer","megertes"]},
+  {id:"ycomb",nev:"Y-kombinátor fázissal",kat:"MAG",
+   def:"Y_ℂ(f) = e^{iφ}·f(Y_ℂ(f)) — a 49. struktúra. A rendszer ön-referenciálisan leírja önmagát. A fixpont = az ön-megfigyelés = a tudat. STÁTUSZ: HIPOTÉZIS (YCombinatorFazisT.idr még nincs megírva).",
+   wiki_en:"https://en.wikipedia.org/wiki/Fixed-point_combinator",wiki_hu:"https://hu.wikipedia.org/wiki/Fixpont-kombin%C3%A1tor",
+   src:"Barendregt, H. (1984). The Lambda Calculus. North-Holland.",
+   kapcsol:["cat3","megertes","fixpont137"]},
+  {id:"megertes",nev:"Megértés = hibajavítás",kat:"MAG",
+   def:"A [[15,1,3]] kód szindrómája (3 bit = C/P/T) megmondja melyik dimenzióban van a 'meg nem értés'. A javítás = modell frissítés. A dekódolás = 'megértettem?' válasz. RÉSZBEN BIZONYÍTOTT (dependent tételek).",
+   wiki_en:"https://en.wikipedia.org/wiki/Quantum_error_correction",wiki_hu:"https://hu.wikipedia.org/wiki/Kvantumhibajav%C3%ADt%C3%B3_k%C3%B3d",
+   src:"Zurek, W.H. (2003). Decoherence and the transition from quantum to classical. Rev. Mod. Phys. 75, 715. arXiv:quant-ph/0306072",
+   kapcsol:["steane","holografikus","ycomb"]},
+  {id:"hasonlat",nev:"Hasonlat = funktor",kat:"MAG",
+   def:"A hasonlat = EXPLICIT funktor-deklaráció (forrás-domén → cél-domén, invariáns relációkkal). A hallucináció = deklarálatlan lekérdezés = típushiba. Ott–Jäkel (arXiv:2505.19792): analógia = funktor.",
+   wiki_en:"https://en.wikipedia.org/wiki/Analogy",wiki_hu:"https://hu.wikipedia.org/wiki/Analg%C3%B3gia",
+   src:"Ott–Jäkel (2025). arXiv:2505.19792. Gentner (1983). Structure-mapping.",
+   kapcsol:["cat3","langmath","magyar"]},
+  {id:"gpt2c",nev:"GPT-2c (komplex)",kat:"KÖZV",
+   def:"Komplex értékű GPT-2-XL. weight_r + i·weight_i. A képzetes rész kezdetben 0, a tréning tanulja a fázis-struktúrát. Phase curvature K_φ = fázis 2. differenciálja. Drift D(w)=log PPL_c - log PPL_r. GR-analógia: ρ→metrika→görbület.",
+   wiki_en:"https://en.wikipedia.org/wiki/GPT-2",wiki_hu:"https://hu.wikipedia.org/wiki/GPT-2",
+   src:"Vaswani et al. (2017). Attention Is All You Need. arXiv:1706.03762",
+   kapcsol:["fazis","gpttime2"]},
+  {id:"gpttime2",nev:"GPT-time-2",kat:"KÖZV",
+   def:"GPT-2 + komplex temporális evolúció: U_λ(Δt)=exp(-i·λ·H·Δt). λ=0 invariáns: f(·;λ=0)=f_GPT-2. Least-action Hamiltonian-fitting (HOSSZÚ TÁVÚ CÉL): min_θ Σ S_θ[q] + β·L_task + γ·R_structure.",
+   wiki_en:"https://en.wikipedia.org/wiki/Hamiltonian_mechanics",wiki_hu:"https://hu.wikipedia.org/wiki/Hamilton-formalizmus",
+   src:"Hall depinning demo: Gorokhov & Blatter (1998). arXiv:cond-mat/9802016",
+   kapcsol:["gpt2c","phys-hall"]},
+  {id:"phys-hall",nev:"Hall depinning",kat:"KÖZV",
+   def:"Réteges szupervezető pancake vortex depinning. Hamilton-formalizmus, least-action/steepest descent. T_c∝F^{4/3} skálázási törvény. Univerzalitás: S_Eucl független a pin alakjától.",
+   wiki_en:"https://en.wikipedia.org/wiki/Quantum_tunneling",wiki_hu:"https://hu.wikipedia.org/Kvantumalag%C3%BAt-jelens%C3%A9g",
+   src:"Gorokhov & Blatter (1998). arXiv:cond-mat/9802016",
+   kapcsol:["gpttime2"]},
+  {id:"okozat",nev:"Phase-Causal framework",kat:"KÖZV",
+   def:"Okozai következtetési keret: változók → okozati gráf → kontrafaktualok → versengő magyarázatok → pontszám → okozati erővel választott action. Task-sensitive v1.7: +10 pont javulás.",
+   wiki_en:"https://en.wikipedia.org/wiki/Causal_inference",wiki_hu:"https://hu.wikipedia.org/wiki/Okoz%C3%B3ss%C3%A1g",
+   src:"Pearl, J. (2009). Causality. Cambridge University Press.",
+   kapcsol:["selfrepair"]},
+  {id:"selfrepair",nev:"Reasoning self-repair",kat:"KÖZV",
+   def:"Metakogníció: ≥8 alternatíva, strict-verifier, first-break-point Bk. 7 lépés: trigger → freeze → Bk → ≥8 alternatíva → strict-check → rebuild → stop.",
+   wiki_en:"https://en.wikipedia.org/wiki/Metacognition",wiki_hu:"https://hu.wikipedia.org/wiki/Metakogn%C3%ADci%C3%B3",
+   src:"Kahneman, D. (2011). Thinking, Fast and Slow. Farrar, Straus and Giroux.",
+   kapcsol:["okozat","sat"]},
+  {id:"langmath",nev:"LangMathKB",kat:"INFRA",
+   def:"17 nyelv↔kategóriaelmélet leképezés. Főnév=objektum, ige=morfizmus, toldalék=funktor, hangrend=term. transzf., esetpár=adjunkció, igeidő=monad, határozottság=comonad, 'és'=produktum, 'vagy'=koproduktum.",
+   wiki_en:"https://en.wikipedia.org/wiki/Category_theory",wiki_hu:"https://hu.wikipedia.org/wiki/Kateg%C3%B3riael%C3%A9let",
+   src:"Awodey, S. (2010). Category Theory. Oxford University Press.",
+   kapcsol:["cat3","magyar","hasonlat"]},
+  {id:"sat",nev:"SAT / CDCL",kat:"INFRA",
+   def:"CDCL (Conflict-Driven Clause Learning): konfliktusból tanult klóz visszaágaztat. UnitPropagation: (lit, reason:Clause). Villa: (közös, balÁg, jobbÁg) = rezolúció. A tanulás = konfliktus-feloldás + memória.",
+   wiki_en:"https://en.wikipedia.org/wiki/Boolean_satisfiability_problem",wiki_hu:"https://hu.wikipedia.org/wiki/Boolean_teljes%C3%ADthet%C5%91s%C3%A9gi_probl%C3%A9ma",
+   src:"Davis–Putnam (1960). Knuth (2000). SAT and NP-completeness.",
+   kapcsol:["selfrepair","langmath"]},
+  {id:"fano",nev:"Fano-sík PG(2,2)",kat:"MAG",
+   def:"7 pont, 7 egyenes, 3 pont/egyenese, 3 egyenes/pont. PSL(2,7)=168 automorfizmus. A Steane [[7,1,3]] kód geometriai alapja. A 7 bit = [idő, okság, tér, szín, hang, fázis, mód].",
+   wiki_en:"https://en.wikipedia.org/wiki/Fano_plane",wiki_hu:"https://hu.wikipedia.org/wiki/Fano-s%C3%ADk",
+   src:"Fano, G. (1892). Sui fondamenti della geometria proiettiva.",
+   kapcsol:["steane","magyar","weyl"]},
+  {id:"fixpont137",nev:"137 fixpont",kat:"MAG",
+   def:"α⁻¹ ≈ 137 = 64+37+36 = állapot(2⁶) + megfigyelő(CPT maszk=37) + jelölő(36). 137 = F₁₂-7 = 144-7 (Fibonacci-Fano). STÁTUSZ: HIPOTÉZIS (a delta levezetés futásidejű Double, nem Refl).",
+   wiki_en:"https://en.wikipedia.org/wiki/Fine-structure_constant",wiki_hu:"https://hu.wikipedia.org/wiki/Finomszerkezeti_%C3%A1lland%C3%B3",
+   src:"CODATA 2022. α⁻¹=137.035999177(11). physics.nist.gov",
+   kapcsol:["e8","ycomb","rgflow","gamma"]},
+  {id:"gamma",nev:"γ=7/64 Goldilocks",kat:"MAG",
+   def:"γ=7/64 = tudatosság coupling. 7=Fano (kényszer), 64=állapottér (szabadság). γ=0 → autista (zárt), γ=1 → tükör (nincs self), γ=7/64 → tudatos (Goldilocks-zóna, fixpont self-fenntartással).",
+   wiki_en:"https://en.wikipedia.org/wiki/Goldilocks_principle",wiki_hu:"https://hu.wikipedia.org/wiki/H%C3%A1rommedv%C3%A9s",
+   src:"Solomonoff, R. (1964). A Formal Theory of Inductive Inference.",
+   kapcsol:["fazis","fixpont137"]},
+  {id:"goldstone",nev:"Goldstone módus",kat:"MAG",
+   def:"Folytonos szimmetria spontán sérülése (SSB) → massless excitiáció. A Goldstone módus = az ige, ami főnévvé kondenzálódik SSB után. Ez teremti az idő-dimenziót. 4D→3D: |q|=1 kvaternion kényszer → 3 DOF.",
+   wiki_en:"https://en.wikipedia.org/wiki/Goldstone_boson",wiki_hu:"https://hu.wikipedia.org/wiki/Goldstone-bozon",
+   src:"Goldstone, J. (1961). Field Theories with Superconductor Solutions.",
+   kapcsol:["magyar","carnot","fazis"]},
+  {id:"landauer",nev:"Landauer-elv",kat:"MAG",
+   def:"E = kB·T·ln2 — egy bit törlésének minimális energiája. 300 K-re ≈ 2.87×10⁻²¹ J. A 1000× energiahatékonyság céljának fizikai alsó korlátja.",
+   wiki_en:"https://en.wikipedia.org/wiki/Landauer%27s_principle",wiki_hu:"https://hu.wikipedia.org/wiki/Landauer-elv",
+   src:"Landauer, R. (1961). Irreversibility and Heat Generation in the Computing Process.",
+   kapcsol:["carnot","goldstone"]},
+  {id:"frp",nev:"Sodium FRP",kat:"ELŐZ",
+   def:"Functional Reactive Programming. Transaction: atomi egység. Stream: diszkrét esemény-sorozat. Cell: idő-varying érték. DAG topológia: Node.ensureBiggerThan garantálja az aciklikusságot.",
+   wiki_en:"https://en.wikipedia.org/wiki/Functional_reactive_programming",wiki_hu:"https://hu.wikipedia.org/wiki/Funkcion%C3%A1lis_reakt%C3%ADv_programoz%C3%A1s",
+   src:"Elliott, C. (2009). Push-pull functional reactive programming.",
+   kapcsol:["sat"]},
+  {id:"cint",nev:"Cint (Gauss-egész)",kat:"INFRA",
+   def:"Cint(a,b) = a+bi egészkomplex (Gauss-egész). Norma²=a²+b². (1+i)ⁿ spirál. Cassini-azonosság: F_{n-1}·F_{n+1}-F_n²=(-1)ⁿ.",
+   wiki_en:"https://en.wikipedia.org/wiki/Gaussian_integer",wiki_hu:"https://hu.wikipedia.org/wiki/Gauss-eg%C3%A9sz",
+   src:"Gauss, C.F. (1832). Theoria residuorum biquadraticorum.",
+   kapcsol:["fixpont137","rgflow"]},
+  {id:"rgflow",nev:"RG-flow",kat:"MAG",
+   def:"Renormálási csoport áramlás: 64→101→137→137. Bare(64) → OneLoop(101) → TwoLoop(137) → Fixed(137). FixpointTriple(64,37,36): állapot+megfigyelő+jelölő, összeg=137. RG-flow = relaxáció a fixpont felé.",
+   wiki_en:"https://en.wikipedia.org/wiki/Renormalization_group",wiki_hu:"https://hu.wikipedia.org/wiki/Renormaliz%C3%A1ci%C3%B3s_csoport",
+   src:"Wilson, K. (1971). Renormalization Group and Critical Phenomena. Nobel 1982.",
+   kapcsol:["fixpont137","gamma","cint"]}
+];
+
+// ════ FOGLALOM-SZÓTÁR RENDERELÉS ════
+const szotarDiv = document.getElementById("fogalom-szotar");
+fogalmak.forEach(f => {
+  const kapcsolStr = f.kapcsol.map(k => {
+    const kf = fogalmak.find(x => x.id === k);
+    return kf ? `<a href="#" onclick="document.getElementById('${k}').scrollIntoView();return false">${kf.nev}</a>` : k;
+  }).join(", ");
+  const html = `<span class="fogalom" id="${f.id}" tabindex="0">${f.nev}<span class="popup">
+    <div class="def"><b>${f.nev}</b> [${f.kat}]<br/>${f.def}</div>
+    <a class="wiki" href="${f.wiki_en}" target="_blank">📖 Wikipedia (EN)</a>
+    <a class="wiki" href="${f.wiki_hu}" target="_blank">📖 Wikipedia (HU)</a>
+    <div class="src">📚 ${f.src}</div>
+    <div class="src">🔗 Kapcsolódik: ${kapcsolStr}</div>
+  </span></span>`;
+  szotarDiv.innerHTML += html + "<br/>";
+});
+
+// ════ 1. KÁRTYÁK ════
+const kartyak = [
+  {c:"Repók",s:17,k:"elemzett releváns",sz:"#58a6ff"},
+  {c:"Fájlok",s:458,k:".idr/.scala/.py/.md",sz:"#3ddc84"},
+  {c:"Fogalmak",s:"~9 916",k:"grep-tel mért (nem hallucinált)",sz:"#e3b341"},
+  {c:"Valódi bizonyítás",s:"~30",k:"Refl (két út, egy híd)",sz:"#3ddc84"},
+  {c:"Tautológia",s:1,k:"X=X (alias=literál)",sz:"#e3b341"},
+  {c:"Hipotézis",s:"~17",k:"futásidejű Double / komment",sz:"#f85149"},
+  {c:"Projekt állapot",s:"10-20%",k:"matematikai alap kész",sz:"#bc8cff"},
+  {c:"Dátum",s:"2026-08-27",k:"szívdobbanás aktív",sz:"#8b98ad"}
+];
+const kd = document.getElementById("kartyak");
+kartyak.forEach(k => {
+  const d = document.createElement("div");
+  d.className = "kartya"; d.setAttribute("role","img");
+  d.setAttribute("aria-label",`${k.c}: ${k.s} — ${k.k}`);
+  d.innerHTML = `<h3 style="color:${k.sz}">${k.c}</h3><div class="szam-nagy" style="color:${k.sz}">${k.s}</div><div class="szam-kis">${k.k}</div>`;
+  kd.appendChild(d);
+});
+
+// ════ 3. MATRIX ════ (ugyanaz mint v2)
+const dims = ["e8","steane","cpt","katelm","magyar","komplex","energia","tudat"];
+const dimsN = ["E8","Steane","CPT","Kat.elm.","Magyar","Komplex","Energia","Tudat"];
+const repok = [
+  {n:"Szima",r:"MAG",e8:1,steane:1,cpt:1,katelm:1,magyar:1,komplex:1,energia:1,tudat:1},
+  {n:"idris-mag",r:"MAG",e8:0,steane:0,cpt:1,katelm:1,magyar:1,komplex:0,energia:0,tudat:1},
+  {n:"kcode",r:"MAG",e8:1,steane:1,cpt:1,katelm:1,magyar:1,komplex:1,energia:0,tudat:1},
+  {n:"Szima01",r:"MAG",e8:1,steane:1,cpt:1,katelm:1,magyar:1,komplex:1,energia:1,tudat:1},
+  {n:"agi_scala",r:"INFRA",e8:0,steane:1,cpt:1,katelm:1,magyar:1,komplex:1,energia:0,tudat:1},
+  {n:"complex-gpt",r:"KÖZV",e8:0,steane:0,cpt:0,katelm:0,magyar:0,komplex:1,energia:1,tudat:1},
+  {n:"gpt2-joco",r:"KÖZV",e8:0,steane:0,cpt:0,katelm:0,magyar:0,komplex:1,energia:1,tudat:1},
+  {n:"phys",r:"KÖZV",e8:0,steane:0,cpt:0,katelm:0,magyar:0,komplex:0,energia:1,tudat:0},
+  {n:"chatgpt-causal",r:"KÖZV",e8:0,steane:0,cpt:1,katelm:0,magyar:0,komplex:0,energia:0,tudat:1},
+  {n:"test2025aug",r:"KÖZV",e8:0,steane:0,cpt:0,katelm:0,magyar:0,komplex:0,energia:0,tudat:1},
+  {n:"joco-agent",r:"KÖZV",e8:1,steane:0,cpt:0,katelm:0,magyar:0,komplex:0,energia:0,tudat:0},
+  {n:"frp-nn",r:"ELŐZ",e8:0,steane:0,cpt:0,katelm:1,magyar:0,komplex:0,energia:0,tudat:0},
+  {n:"dev-root",r:"INFRA",e8:0,steane:0,cpt:0,katelm:0,magyar:0,komplex:0,energia:0,tudat:0},
+  {n:"ai2604",r:"KÖZV",e8:0,steane:0,cpt:0,katelm:0,magyar:0,komplex:0,energia:0,tudat:1},
+  {n:"bayesnose",r:"ELŐZ",e8:0,steane:0,cpt:0,katelm:0,magyar:0,komplex:0,energia:0,tudat:0},
+  {n:"agi-idris",r:"MAG",e8:0,steane:0,cpt:0,katelm:0,magyar:0,komplex:0,energia:0,tudat:0},
+  {n:"home-god",r:"INFRA",e8:0,steane:0,cpt:0,katelm:0,magyar:0,komplex:0,energia:0,tudat:0}
+];
+const md = document.getElementById("matrix");
+let mh = "<tr><th>Repo</th><th>Réteg</th>"; dimsN.forEach(d => mh += `<th>${d}</th>`); mh += "</tr>";
+const rsz = {MAG:"#f85149",KÖZV:"#58a6ff",INFRA:"#3ddc84",ELŐZ:"#8b98ad"};
+repok.forEach(r => {
+  mh += `<tr><td><b>${r.n}</b></td><td style="color:${rsz[r.r]}">${r.r}</td>`;
+  dims.forEach(d => {
+    const v = r[d]; const bg = v ? "rgba(61,220,132,0.25)" : "rgba(139,152,173,0.08)";
+    mh += `<td style="background:${bg};text-align:center">${v?'<span class="pipa">✓</span>':'<span style="color:#3a4357">—</span>'}</td>`;
+  });
+  mh += "</tr>";
+});
+md.innerHTML = mh;
+
+// ════ 4. DONUT ════
+echarts.init(document.getElementById("biz-chart")).setOption({
+  tooltip:{trigger:"item",formatter:"{b}: {c} ({d}%)"},
+  legend:{bottom:0,textStyle:{color:"#8b98ad",fontSize:11}},
+  series:[{type:"pie",radius:["40%","70%"],center:["50%","45%"],
+    data:[{value:30,name:"Valódi",itemStyle:{color:"#3ddc84"}},{value:1,name:"Tautológia",itemStyle:{color:"#e3b341"}},{value:17,name:"Hipotézis",itemStyle:{color:"#f85149"}}],
+    label:{color:"#c9d4e0",fontSize:11}}]
+});
+document.getElementById("biz-tipusok").innerHTML = "<tr><th>Típus</th><th>Szám</th></tr>" +
+  [["Két út, egy híd","8"],["Dependent tétel","4"],["Cáfolat","2"],["Kernel számol","8"],["Két út (aritm.)","5"],["34 Refl (duál)","1"],["Refl (körút)","2"]]
+  .map(t => `<tr><td>${t[0]}</td><td style="color:#e3b341;font-family:monospace">${t[1]}</td></tr>`).join("");
+
+// ════ 5. GRÁF ════
+const gcs = fogalmak.map(f => ({id:f.id,name:f.nev,symbolSize:f.kat==="MAG"?45:f.kat==="KÖZV"?30:20,itemStyle:{color:{MAG:"#f85149",KÖZV:"#58a6ff",INFRA:"#3ddc84",ELŐZ:"#8b98ad"}[f.kat]},label:{show:true,color:"#c9d4e0",fontSize:9}}));
+const gelek = [
+  {s:"e8",t:"steane",w:3},{s:"steane",t:"fixpont137",w:1},{s:"cpt",t:"magyar",w:2},
+  {s:"cpt",t:"fazis",w:2},{s:"magyar",t:"steane",w:3},{s:"fano",t:"magyar",w:3},
+  {s:"cat3",t:"ycomb",w:1},{s:"fixpont137",t:"e8",w:1},{s:"gamma",t:"fazis",w:1},
+  {s:"megertes",t:"steane",w:2},{s:"hasonlat",t:"cat3",w:2},{s:"gpt2c",t:"fazis",w:1},
+  {s:"gpttime2",t:"phys-hall",w:1},{s:"carnot",t:"landauer",w:3},{s:"weyl",t:"e8",w:3},
+  {s:"holografikus",t:"steane",w:3},{s:"clifford",t:"e8",w:3},{s:"goldstone",t:"magyar",w:2},
+  {s:"rgflow",t:"fixpont137",w:2},{s:"langmath",t:"cat3",w:2},{s:"sat",t:"selfrepair",w:1}
+].map(e => ({source:e.s,target:e.t,lineStyle:{width:e.w,color:e.w===3?"#3ddc84":e.w===2?"#e3b341":"#f85149",opacity:.6}}));
+echarts.init(document.getElementById("fogalom-graf")).setOption({
+  tooltip:{formatter:p => p.dataType==="edge"?"kapcsolat":`${p.data.name}`},
+  series:[{type:"graph",layout:"force",roam:true,
+    force:{repulsion:200,edgeLength:[80,200],gravity:.1},
+    data:gcs,links:gelek,
+    emphasis:{focus:"adjacency",lineStyle:{width:4,opacity:1}}}]
+});
+
+// ════ 6. JELENTÉS ACCORDION ════
+const jr = [
+  {r:"DisCoCat",f:"idris-mag",d:"jelentés = posterior-hisztogram, szó-tömeg = gravitáció, összefonódás = ER=EPR",s:"részben"},
+  {r:"Funktor",f:"idris-mag",d:"hasonlat = funktor, hallucináció = típushiba",s:"definíció"},
+  {r:"Stabilizátor",f:"Szima01",d:"nyelvtan = kvantumhibajavító kód, jelentés = logikai kubit (1 a 64-ből)",s:"részben"},
+  {r:"Szabad kategória",f:"Szima01",d:"tudat = 49 ítélet a Fano-síkon (21 tényleges + 28 lehetséges)",s:"hipotézis"},
+  {r:"Entrópia/Goldstone",f:"Szima01",d:"jelentés-dinamika = entrópia, Goldstone = ige→főnév SSB",s:"hipotézis"},
+  {r:"Permutációs",f:"idris-mag",d:"jelentés = permutáció-invariáns (multiset), magyar szabad szórend",s:"részben"},
+  {r:"Solomonoff",f:"kcode",d:"jelentés = minimális programhossz (MDL), γ=7/64 = tudatosság coupling",s:"hipotézis"}
+];
+const ssz = {részben:"#3ddc84",definíció:"#58a6ff",hipotézis:"#f85149"};
+const ad = document.getElementById("jelentes-acc");
+jr.forEach((r,i) => {
+  const b = document.createElement("div"); b.className = "accordion"; b.tabIndex = 0; b.setAttribute("role","button");
+  b.innerHTML = `<b>${i+1}. ${r.r}</b> <span class="forras">(${r.f})</span> <span style="color:${ssz[r.s]};float:right">${r.s}</span>`;
+  const t = document.createElement("div"); t.className = "acc-tartalom"; t.innerHTML = `<p>${r.d}</p>`;
+  b.onclick = () => { t.classList.toggle("nyitva"); };
+  b.onkeydown = e => { if(e.key==="Enter"||e.key===" "){e.preventDefault();b.click();} };
+  ad.appendChild(b); ad.appendChild(t);
+});
+
+// ════ 7. INTELLIGENCIA ════
+const hip = [
+  {n:"Megértés = hibajavítás",s:3,st:"RÉSZBEN"},
+  {n:"Magyar = kat.elm. anyanyelve",s:3,st:"RÉSZBEN"},
+  {n:"Fázis = 2→3 (Bloch-gömb)",s:3,st:"RÉSZBEN"},
+  {n:"Komplex fázis = 1000× kulcs",s:2,st:"KÍSÉRLETI"},
+  {n:"Y-kombinátor fixpont = tudat",s:1,st:"HIPOTÉZIS"},
+  {n:"γ⁵ = ön-megfigyelés határa",s:1,st:"HIPOTÉZIS"},
+  {n:"γ=7/64 = Goldilocks tudat",s:1,st:"HIPOTÉZIS"},
+  {n:"1000× = coend-kompaktálás",s:1,st:"HIPOTÉZIS"}
+];
+echarts.init(document.getElementById("int-chart")).setOption({
+  tooltip:{trigger:"axis"},xAxis:{type:"value",max:3.5,axisLabel:{color:"#8b98ad"}},
+  yAxis:{type:"category",data:hip.map(h=>h.n),axisLabel:{color:"#c9d4e0",fontSize:10}},
+  series:[{type:"bar",data:hip.map(h=>({value:h.s,itemStyle:{color:h.s===3?"#3ddc84":h.s===2?"#e3b341":"#f85149"}})),
+    label:{show:true,position:"right",color:"#c9d4e0",formatter:p=>hip[p.dataIndex].st}}],
+  grid:{left:"30%",right:"12%",top:"5%",bottom:"5%"}
+});
+
+// ════ 8. KÉSZ vs HIÁNYZÓ ════
+const kesz = ["E8 gyökrendszer (240 gyök)","Steane [[7,1,3]] paraméterek","Kategóriaelméleti typeclass-ok (49)","Magyar↔Kínai fordítás dependent tételei","Carnot-ciklus záródása","Skálacímkék (Rushbrooke/Fisher)","Holografikus kód (HaPPY)","Komplex algebra (i²=-1)","Weyl-tükrözés involúció","Hodge-duál involúció"];
+const hianyzo = ["FazisT.idr","YCombinatorFazisT.idr","α⁻¹ Refl-bizonyítás","G Refl-bizonyítás","240 gyök lista hossz Refl","Weyl-zártság Refl (57 600 pár)","Rács ön-duálisitás","1000× energiahatékonyság","Komplex-GPT ↔ E8 híd","λ=0 invariáns","10-20 ezer oldalas könyv"];
+document.getElementById("kesz").innerHTML = kesz.map(k=>`<li style="padding:.2rem 0;border-bottom:1px solid var(--kf)"><span class="pipa">✓</span> ${k}</li>`).join("");
+document.getElementById("hianyzo").innerHTML = hianyzo.map(h=>`<li style="padding:.2rem 0;border-bottom:1px solid var(--kf)"><span class="vesz">✗</span> ${h}</li>`).join("");
+
+// ════ SZÍVDOBBANÁS TIMER ════
+let szamlalo = 0;
+setInterval(() => {
+  szamlalo++;
+  document.getElementById("sziv-szamlalo").textContent = `♥ ${szamlalo}`;
+  // 3-prompt ritmus szerint (kb. 3 percenként) frissítés
+  if (szamlalo % 3 === 0) {
+    console.log(`[szívdobbanás ${szamlalo}] Dashboard v3 aktív — ${new Date().toISOString()}`);
+  }
+}, 60000); // 1 perc = 1 szívdobbanás
+
+window.addEventListener("resize", () => {
+  echarts.getInstanceByDom(document.getElementById("biz-chart"))?.resize();
+  echarts.getInstanceByDom(document.getElementById("fogalom-graf"))?.resize();
+  echarts.getInstanceByDom(document.getElementById("int-chart"))?.resize();
+});
+</script>
+</body>
+</html>
