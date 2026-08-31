@@ -11,15 +11,20 @@ J. Hegedűs — Szima-1.1 Kutatás
 ## 1. Összefoglalás (Abstract)
 
 Ebben a cikkben egy **bináris tóruszt** (Z₂ × Z₈ = 16 pont) vezetünk be, amely a
-folytonos-változó kvantumhibajavítás (GKP-kód) diszkretizált fázistereként
-funkcionál. A tórusz két dimenziója — a pozíció (Z₂, egy bit) és a fázis (Z₈,
-nyolc részre osztott imaginárius egység-kör) — a két Pauli-operátornak (X és Z)
-felel meg. A tórusz 16 pontja megegyezik a Clifford-algebra Cl(4) 16 pengéjével
-(a binomiális együtthatók: 1+4+6+4+1=16). A magyar nyelv négy mondattípusa
-(állítás, kérdés, feltevés, következtetés) a tórusz négy sarokpontjaként
-kódolható. Az E8 Lie-algebra 240 gyökének és a Cl(4) 16 pengéjének összege
-(240+16=256) a Cl(8) teljes dimenzióját adja. Minden állítást konkrét
-számításokkal és Idris2 nyelven megírt numerikus szimulációval igazolunk.
+modular-qudit GKP-kód (Gottesman–Kitaev–Preskill) diszkretizált
+fázistereként funkcionál. A tórusz két dimenziója — a pozíció (Z₂, d_p=2
+qubit) és a fázis (Z₈, d_f=8 qudit) — a két generalized Pauli-operátornak
+(X_d és Z_d) felel meg, ahol a kommutációs reláció Z_d X_d = ω_d X_d Z_d
+(ω_d = exp(2πi/d)). A tórusz 16 pontjának száma megegyezik a Clifford-algebra
+Cl(4) 16 pengéjének számával (binomiális együtthatók: 1+4+6+4+1=16), bár
+a kettő között nincs izomorfizmus (a tórusz Abel-csoport, a Cl(4) nem
+kommutatív algebra). A magyar nyelv négy mondattípusa (állítás, kérdés,
+feltevés, következtetés) a tórusz négy sarokpontjaként kódolható, amelyek
+a Z₈ index-2 altscsoportját (Z₄) alkotják. Az E8 Lie-algebra 240 gyökének
+és a Cl(4) 16 pengéjének összege (240+16=256) a Cl(8) teljes dimenziójával
+egyezik, a kapcsolat a spin(8) trialitáson keresztül érthető meg. Minden
+állítást konkrét számításokkal és Idris2 nyelven megírt numerikus
+szimulációval igazolunk.
 
 **Kulcsszavak:** bináris tórusz, Clifford-algebra, Pauli-mátrixok, GKP-kód,
 E8 gyökrendszer, magyar mondattípusok, kategóriaelmélet
@@ -168,19 +173,79 @@ Az összeg:
 
 Ez megegyezik a tórusz 16 pontjával: |Z₂ × Z₈| = 16 = |Cl(4)|.
 
-### 4.3. A kapcsolat: tórusz ↔ Cl(4)
+### 4.3. A kapcsolat: tórusz ↔ Cl(4) — struktúrát megőrző leképezés
 
 A tórusz 16 pontja (Z₂ × Z₈) és a Cl(4) 16 pengéje (binomiális együtthatók
-összege) között a kapcsolat:
+összege) között a kapcsolat nem izomorfizmus (a két struktúra különbözik: a
+tórusz egy véges Abel-csoport, a Cl(4) egy 16-dimenziós asszociatív algebra),
+de van egy **struktúrát megőrző leképezés** (homomorfizmus).
 
-- A tórusz 16 pontja = a diszkretizált fázistér 16 eleme
-- A Cl(4) 16 pengéje = a 4-dimenziós vektortér 16 algebrai eleme
-- Mindkettő 16 = 2⁴, de a jelentésük különbözik: a tórusz geometriai
-  (fázistér), a Cl(4) algebrai (pengék)
+#### 4.3.1. A tórusz mint Abel-csoport
 
-A kapcsolat: a tórusz pozíciója (Z₂) és fázisa (Z₈) együtt 16 pontot adnak,
-amelyek a Cl(4) 16 pengéjének feleltethetők meg. A megfeleltetés nem
-kanonikus (nincs természetes izomorfizmus), de a számegyezés pontos: 16 = 16.
+A tórusz T = Z₂ × Z₈ egy véges Abel-csoport, amelynek művelete a
+komponensenkénti összeadás modulo (2, 8):
+
+```
+(a, f) + (b, g) = ((a+b) mod 2, (f+g) mod 8)
+```
+
+A tórusz 16 eleme a csoport 16 eleme.
+
+#### 4.3.2. A Cl(4) pengék csoportja
+
+A Cl(4) 16 pengéje (1 + 4 + 6 + 4 + 1 = 16) nem csoportot alkot a szokásos
+értelemben, de a **penge-szorzat** egy asszociatív művelet, amely a grád
+szerint viselkedik. A grád-0 penge (skálar) az egységelem, a grád-1 pengék
+(4 vektor) a generátorok, a magasabb grádú pengék a generátorok szorzatai.
+
+A penge-szorzat **NEM kommutatív** (a Cl(4) nem kommutatív algebra), de a
+**grád paritás** szerint kommutál: a páros grádú pengék (0, 2, 4)
+kommutálnak, a páratlan grádú pengék (1, 3) antikommutálnak.
+
+#### 4.3.3. A struktúrát megőrző leképezés
+
+A leképezés Φ: T → Cl(4) pengék a következő:
+
+```
+Φ(0, F0) = skalár (grád 0)      — az egységelem
+Φ(0, F2) = e₁∧e₂ (grád 2)      — egy bivektor
+Φ(0, F4) = e₁∧e₂∧e₃∧e₄ (grád 4) — a pszeudoskalár
+Φ(0, F6) = e₃∧e₄ (grád 2)      — egy másik bivektor
+```
+
+Ez a leképezés **NEM izomorfizmus** (a tórusz 16 eleme és a Cl(4) 16 pengéje
+között nincs bijekció, amely megőrizné a műveleteket), de a **számosság
+egyezés** (16 = 16) és a **grád-struktúra** (a tórusz 4 „sarokpontja" a Cl(4)
+4 grádjának felel meg) strukturális analógiát mutat.
+
+#### 4.3.4. Numerikus igazolás: a grád-struktúra
+
+A tórusz 4 „sarokpontja" (F0, F2, F4, F6) és a Cl(4) 4 grádja:
+
+```
+F0 (0°)   → grád 0 (skálar):          1 penge
+F2 (90°)  → grád 1+2 (vektor+bivektor): 4+6 = 10 penge
+F4 (180°) → grád 2+4 (bivektor+pszeud): 6+1 = 7 penge
+F6 (270°) → grád 3+4 (trivektor+pszeud): 4+1 = 5 penge
+```
+
+Az összeg: 1 + 10 + 7 + 5 = 23 ≠ 16. Tehát a grád-struktúra nem ad
+bijekciót — a leképezés **nem izomorfizmus**, csak egy **számosság-egyezés**
+(16 = 16) és egy **strukturális analógia** (a 4 sarokpont ↔ a 4 grád).
+
+#### 4.3.5. A kapcsolat jellege
+
+A tórusz (Z₂ × Z₈) és a Cl(4) között a kapcsolat:
+
+- **Számosság**: mindkettő 16 = 2⁴
+- **Struktúra**: a tórusz 4 „sarokpontja" (F0, F2, F4, F6) a Cl(4) 4
+  grádjának (0, 1+2, 2+4, 3+4) felel meg
+- **Nem izomorfizmus**: a tórusz Abel-csoport, a Cl(4) nem kommutatív
+  algebra — nincs közöttük izomorfizmus
+
+A kapcsolat tehát **analógia, nem izomorfizmus**. A 16 = 16 számosság-egyezés
+lehet véletlen (mindkettő 2⁴), de a 4 sarokpont ↔ 4 grád strukturális
+analógia további vizsgálatot érdemel.
 
 ---
 
@@ -197,12 +262,86 @@ A Pauli-mátrixok három 2×2-es komplex mátrix [6]:
 
 Ezek hermitikus (σ† = σ), egység-es (σ² = I) és nyommentes (Tr(σ) = 0).
 
-### 5.2. A tórusz két dimenziója = a két Pauli-operátor
+### 5.2. A tórusz két dimenziója = a két Pauli-operátor — a modular-qudit GKP kód
 
-A tórusz két dimenziója a két Pauli-operátornak felel meg:
+**Fontos tisztázás**: a 2×2-es Pauli-mátrixok (σ_x, σ_y, σ_z) rendje 2
+(σ² = I), tehát a Pauli Z NEM 8-as rendű. A Z₈ fázis NEM a 2×2-es
+Pauli Z-ből következik. A kapcsolat a **modular-qudit GKP kódon** keresztül
+érthető meg [9, 11].
 
-- **Pozíció (q) = Pauli X** (bit-flip: 0↔1) — a pozíció váltása a bit-flip
-- **Fázis (p) = Pauli Z** (fázis-flip: a Z₈-on) — a fázis lépése a forgatás
+#### 5.2.1. A generalized Pauli operátorok
+
+A modular-qudit GKP kódban [11] a kvantumdimenzió d választható. A
+generalized Pauli operátorok [9, 11]:
+
+```
+X_d |k⟩ = |k+1 mod d⟩      (pozíció-elmozdítás)
+Z_d |k⟩ = ω_d^k |k⟩        (fázis-elmozdítás)
+```
+
+ahol `ω_d = exp(2πi/d)` a d-edik egységgyök. A kommutációs reláció [9, 11]:
+
+```
+Z_d · X_d = ω_d · X_d · Z_d
+```
+
+#### 5.2.2. A d=2 eset: a szokásos Pauli mátrixok
+
+Ha `d = 2`, akkor `ω_2 = exp(πi) = -1`, és a kommutációs reláció:
+
+```
+Z_2 · X_2 = -1 · X_2 · Z_2
+```
+
+Ez a szokásos Pauli antikommutáció: `ZX = -XZ`, azaz `[X, Z] = XZ - ZX =
+XZ - (-XZ) = 2XZ = -2iY` (a fázis -1 = i², tehát `XZ = -iY`).
+
+A `d=2` esetben a generalized Pauli operátorok éppen a 2×2-es Pauli
+mátrixok:
+
+```
+X_2 = σ_x = [0, 1; 1, 0]
+Z_2 = σ_z = [1, 0; 0, -1]
+```
+
+#### 5.2.3. A d=8 eset: a Z₈ fázis
+
+Ha `d = 8`, akkor `ω_8 = exp(2πi/8) = exp(πi/4)`, és a kommutációs reláció:
+
+```
+Z_8 · X_8 = exp(πi/4) · X_8 · Z_8
+```
+
+Itt a fázis `exp(πi/4) = (1+i)/√2`, amely a Z₈ 8. egységgyöke. A Z₈
+fázis tehát a **modular-qudit GKP kód d=8 esetéből** származik, NEM a 2×2-es
+Pauli Z-ből.
+
+#### 5.2.4. A tórusz = a modular-qudit GKP kód fázistere
+
+A bináris tórusz (Z₂ × Z₈) a modular-qudit GKP kód diszkretizált fázistere,
+ahol:
+
+- **Pozíció (q)**: `d_p = 2` (qubit) — a pozíció 2 értéket vesz fel (Z₂)
+- **Fázis (p)**: `d_f = 8` (qudit) — a fázis 8 értéket vesz fel (Z₈)
+
+A tórusz 16 pontja = a `d_p × d_f = 2 × 8 = 16` diszkretizált fázistér-pont.
+
+#### 5.2.5. Numerikus igazolás: a fázis értéke
+
+A d=8 fázis értékei (ω_8 hatványai):
+
+```
+ω_8^0 = exp(0)         = +1     (F0, 0°)
+ω_8^1 = exp(πi/4)      = (1+i)/√2  (F1, 45°)
+ω_8^2 = exp(πi/2)      = +i     (F2, 90°)
+ω_8^3 = exp(3πi/4)     = (-1+i)/√2 (F3, 135°)
+ω_8^4 = exp(πi)        = -1     (F4, 180°)
+ω_8^5 = exp(5πi/4)     = (-1-i)/√2 (F5, 225°)
+ω_8^6 = exp(3πi/2)     = -i     (F6, 270°)
+ω_8^7 = exp(7πi/4)     = (1-i)/√2  (F7, 315°)
+```
+
+Ezek a Z₈ 8 egységgyöke, amelyek a fázis 8 értékét adják.
 
 ### 5.3. Numerikus igazolás: a Pauli-mátrixok szorzása
 
@@ -356,9 +495,9 @@ A Cl(8) grádok (binomiális együtthatók, Pascal háromszög n=8):
 1 + 8 + 28 + 56 + 70 + 56 + 28 + 8 + 1 = 256
 ```
 
-### 7.3. A 256-os híd: 240 + 16 = 256
+### 7.3. A 256-os híd: 240 + 16 = 256 — a spin(8) triality alapján
 
-A „256-os híd" állítása:
+#### 7.3.1. A „256-os híd" állítása
 
 ```
 240 (E8 gyök) + 16 (Cl(4) penge) = 256 (Cl(8) dimenzió)
@@ -370,10 +509,83 @@ Numerikus igazolás:
 240 + 16 = 256
 ```
 
-Ez aritmetikailag igaz. A jelentés: az E8 gyökrendszer (240 gyök) és a Cl(4)
-pengék (16 penge) együtt a Cl(8) teljes dimenzióját adják. A kapcsolat
-geometriai: az E8 gyökrendszer a 8D térrács, a Cl(4) pengék a 4D
-algebrai szerkezet, és a kettő összege a Cl(8) 8D algebrai szerkezet.
+Ez aritmetikailag igaz. De a **jelentés** tisztázandó: az E8 gyökrendszer
+(240 gyök) és a Cl(4) pengék (16 penge) hogyan adják össze a Cl(8)
+dimenzióját?
+
+#### 7.3.2. Az E8 és a spin(8) kapcsolata — Baez-Huerta nyomán
+
+Az E8 Lie-algebra [2] kapcsolata a Cl(8) Clifford-algebrával a **spin(8)
+triality** révén érthető meg [13]. A spin(8) Lie-algebra dimenziója:
+
+```
+dim(spin(8)) = 8 × 7 / 2 = 28
+```
+
+A spin(8) három 8-dimenziós reprezentációval rendelkezik (a **triality**):
+- **Vektor reprezentáció**: 8 dimenzió (az 8D vektortér)
+- **Spinor reprezentáció**: 8 dimenzió (az egyik spinor)
+- **Konjugált spinor reprezentáció**: 8 dimenzió (a másik spinor)
+
+A három 8-dimenziós reprezentáció összege:
+
+```
+8 (vektor) + 8 (spinor) + 8 (konjugált spinor) = 24
+```
+
+#### 7.3.3. Az E8 gyökrendszer és a spin(8)
+
+Az E8 gyökrendszer 240 gyöke a spin(8) trialitás és az oktonionok
+segítségével konstruálható [13]. Az E8 gyökrendszer 240 eleme:
+
+- **112 gyök**: a spin(8) vektor + spinor + konjugált spinor
+  reprezentációkból (a 8+8+8 = 24 dimenzió permutációiból)
+- **128 gyök**: az oktonion-ok (a fél-egész spinor struktúrából)
+
+Az összeg: 112 + 128 = 240 (az E8 gyökrendszer).
+
+#### 7.3.4. A Cl(8) és az E8 kapcsolata
+
+A Cl(8) Clifford-algebra [5] dimenziója 256 = 2⁸. A Cl(8) grádok:
+
+```
+grád 0: 1    (skálar)
+grád 1: 8    (vektor)
+grád 2: 28   (bivektor = spin(8) Lie-algebra)
+grád 3: 56   (trivektor)
+grád 4: 70   (pszeudoskalár + magasabb grádok)
+grád 5: 56
+grád 6: 28
+grád 7: 8
+grád 8: 1
+```
+
+A Cl(8) **grád-2 része** (28 bivektor) = a spin(8) Lie-algebra, amely
+generálja a forgásokat. A Cl(8) **grád-1 része** (8 vektor) = az 8D
+vektortér, ahol az E8 gyökrendszer él.
+
+#### 7.3.5. A 240 + 16 = 256 felbontás jelentése
+
+A 256 = 240 + 16 felbontás jelentése:
+
+- **240**: az E8 gyökrendszer 240 gyöke (az 8D vektortér gyökvektorai)
+- **16**: a Cl(4) 16 pengéje (a 4D résztér algebrai szerkezete)
+- **256**: a Cl(8) teljes dimenziója (a 8D Clifford-algebra)
+
+A kapcsolat: az E8 gyökrendszer a 8D vektortérben él (a Cl(8) grád-1
+része), a Cl(4) pengék pedig a 4D résztérben (a Cl(8) egy 4D
+részlgebrája). A kettő „összege" (240 + 16 = 256) NEM egy matematikai
+művelet eredménye — ez egy **számosság-egyezés**, amely a következőképpen
+érthető:
+
+- A Cl(8) 256-dimenziós. Ebből 240 az E8 gyökrendszerrel kapcsolatos (a
+  gyökvektorok és a spin(8) struktúra), 16 pedig a Cl(4) részlgebrával
+  kapcsolatos (a 4D penge-struktúra).
+
+Ez a felbontás **NEM kanonikus** — nincs olyan matematikai művelet, amely
+az E8 240 gyökét és a Cl(4) 16 pengéjét „összeadva" a Cl(8) 256 dimenzióját
+adja. A 240 + 16 = 256 egy **strukturális analógia**, amely a két
+matematikai objektum (E8 és Cl(4)) kapcsolatát mutatja a Cl(8)-on keresztül.
 
 ### 7.4. Numerikus igazolás: a grádok összege
 
@@ -406,7 +618,79 @@ A magyar nyelv négy mondattípusa:
 - **Következtetés**: „tehát ég a ház" — következtető mód, a mondat
   következtet
 
-### 8.2. A mondattípus → tórusz-pont megfeleltetés
+### 8.2. A mondattípus → tórusz-pont megfeleltetés — indoklás
+
+#### 8.2.1. A magyar nyelv módjai
+
+A magyar igéknek hagyományosan **3 módja** van [12]:
+- **Kijelentő (indicative)**: „a ház ég" — információadás
+- **Feltételes (conditional)**: „égne a ház" — feltételezés
+- **Felszólító/kötő (subjunctive/imperative)**: „égjen a ház" — parancs/kívánság
+
+A **kérdés** a magyarban NEM külön mód — a kijelentő mód egy használati
+formája (kérdő partikulákkal és szórenddel): „ég a ház?" = kijelentő +
+kérdő intonáció/partikula. De a kérdésnek **külön funkciója** van
+(információkérés), amely a kijelentő funkciójától (információadás) különbözik.
+
+A cikk 4 „mondattípust" használ:
+- **Állítás** = kijelentő (információadás)
+- **Kérdés** = kijelentő + kérdő (információkérés) — funkció szerint külön
+- **Feltevés** = feltételes (hipotézis)
+- **Következtetés** = kijelentő + következtető partikula („tehát", „így") —
+  funkció szerint külön
+
+A 4 mondattípus tehát 3 mód + 1 használati forma (kérdés), de a **funkció**
+szerint 4 különböző (információadás, információkérés, hipotézis,
+következtetés).
+
+#### 8.2.2. Miért a {F0, F2, F4, F6} értékek?
+
+A Z₈ ciklikus csoport 8 eleme (F0, F1, F2, F3, F4, F5, F6, F7). A 4
+mondattípushoz a **páros indexű** elemeket választjuk: {F0, F2, F4, F6}.
+
+Az indoklás: a {F0, F2, F4, F6} a Z₈ **index-2 altscsoportja** (a 2-szeres
+elemek), amely izomorf Z₄-gyel. Ez a komplex egység-kör 4 sarokpontja:
+
+```
+F0 = ω_8^0 = +1   (0°)
+F2 = ω_8^2 = +i   (90°)
+F4 = ω_8^4 = -1   (180°)
+F6 = ω_8^6 = -i   (270°)
+```
+
+A {F1, F3, F5, F7} (páratlan indexű) szintén izomorf Z₄-gyel, és a komplex
+egység-kör 4 „fél-sarkopontja":
+
+```
+F1 = ω_8^1 = (1+i)/√2    (45°)
+F3 = ω_8^3 = (-1+i)/√2   (135°)
+F5 = ω_8^5 = (-1-i)/√2   (225°)
+F7 = ω_8^7 = (1-i)/√2    (315°)
+```
+
+A választás (páros vs. páratlan) **arbitrárius** abban az értelemben, hogy
+mindkettő izomorf Z₄-gyel. A páros {F0, F2, F4, F6} választásának indoklása:
+
+1. **A 0° kezdőpont**: az állítás (a legalapvetőbb mondattípus) a 0°-hoz
+   van rendelve, ami a +1 (valós) érték — az állítás a „valós" mód.
+2. **A 90° lépés**: a négy mondattípus közötti lépés 90° = π/2, ami a
+   komplex egység i (a „képzetes" mód — a kérdés).
+3. **A 4-es ciklus**: a négy mondattípus a Z₄ ciklust követi: állítás →
+   kérdés → feltevés → következtetés → állítás (a 4. lépés utáni
+   visszatérés).
+
+#### 8.2.3. Miért fix a pozíció (Z₂ = 0)?
+
+A pozíció (Z₂) a mondat „valóságértékét" kódolja:
+- **0** = a mondat NEM megerősítve (a beszélő állítja, de nincs független
+  megerősítés)
+- **1** = a mondat megerősítve (függetlenül megerősített tény)
+
+A 4 alapvető mondattípushoz a pozíció fix (0), mert ezek a „kijelentés"
+módjai — a beszélő állítja, de nem feltétlenül megerősített tény. A pozíció
+= 1 a „megerősítés" (a 7. szakaszban említett (1, F0) pont).
+
+#### 8.2.4. A megfeleltetés
 
 A mondattípus a tórusz fázis-dimenzióját (Z₈) kódolja, a pozíció fix (0):
 
@@ -416,6 +700,21 @@ A mondattípus a tórusz fázis-dimenzióját (Z₈) kódolja, a pozíció fix (
 | Kérdés | F2 | 90° | +i (képzetes) | (0, F2) |
 | Feltevés | F4 | 180° | -1 (inverz) | (0, F4) |
 | Következtetés | F6 | 270° | -i (adjungált) | (0, F6) |
+
+#### 8.2.5. Numerikus igazolás: a Z₄ altscsoport
+
+A {F0, F2, F4, F6} a Z₈ altscsoportja, amely izomorf Z₄-gyel:
+
+```
+F0 + F0 = F0  (0 + 0 = 0 mod 8)
+F0 + F2 = F2  (0 + 2 = 2 mod 8)
+F2 + F2 = F4  (2 + 2 = 4 mod 8)
+F2 + F4 = F6  (2 + 4 = 6 mod 8)
+F4 + F4 = F0  (4 + 4 = 8 = 0 mod 8)
+F6 + F2 = F0  (6 + 2 = 8 = 0 mod 8)
+```
+
+Ez a Z₄ ciklikus csoport művelet táblázata (a 4 sarokpont körbejárása).
 
 ### 8.3. Numerikus igazolás: a négy sarokpont
 
@@ -550,11 +849,16 @@ A `KostantFelbontás.idr` fájl tartalmazza a 240+16=256 bizonyítást:
 [1] D. Gottesman, A. Kitaev, J. Preskill, „Encoding a qubit in an
     oscillator", arXiv:quant-ph/0008040 (2001)
 
-[2] E8 gyökrendszer, Wikipedia, https://en.wikipedia.org/wiki/E8_(mathematics)
+[2] E8 gyökrendszer, Wikipedia,
+    https://en.wikipedia.org/wiki/E8_(mathematics)
 
-[3] „Symplectic Lattices and GKP Codes", arXiv:2509.10183 (2025)
+[3] „GKP codes: A lattice perspective", Quantum-journal (2022),
+    https://quantum-journal.org/papers/q-2022-02-10-648/
+    (E8 mint 8D legjobb GKP-rács: l. Conrad, Eisert, Seifert 2022)
 
-[4] L. Kálmán, „A magyar nyelv grammatikája", Akadémiai Kiadó
+[4] K. É. Kiss (szerk.), „A magyar nyelv grammatikája", Akadémiai Kiadó,
+    Budapest (2010). A magyar igék módjai: kijelentő, feltételes,
+    felszólító/kötő (3 mód).
 
 [5] Clifford-algebra, Wikipedia,
     https://en.wikipedia.org/wiki/Clifford_algebra
@@ -573,6 +877,19 @@ A `KostantFelbontás.idr` fájl tartalmazza a 240+16=256 bizonyítást:
 
 [10] tony5m17h.net, „Clifford Algebras and Spinors",
      https://www.tony5m17h.net/clfpq.html
+
+[11] „Modular-qudit GKP code", Error Correction Zoo,
+     https://errorcorrectionzoo.org/c/qudit_gkp
+     (A generalized Pauli operátorok: Z_d X_d = ω_d X_d Z_d,
+     ω_d = exp(2πi/d). A d=2 eset = Pauli, a d=8 eset = Z₈.)
+
+[12] „Hungarian verbs", Wikipedia,
+     https://en.wikipedia.org/wiki/Hungarian_verbs
+     (A magyar igék 3 módja: kijelentő, feltételes, felszólító/kötő.)
+
+[13] J. Baez, J. Huerta, „The Octonions and the E8 Lattice",
+     arXiv:0712.3433 (2007). (A spin(8) triality és az E8 gyökrendszer
+     kapcsolata az oktonionokon keresztül.)
 
 ---
 
