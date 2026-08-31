@@ -120,13 +120,16 @@ toruszPontokSzáma = 16
 -- REFL: a tórusz pontjainak száma = 16 (a Nat-szorzás nem
 -- redukálódik a typechecker szintjén, ezért a toruszPontokSzáma direkt 16).
 -- A 16 = a Cl(4) 16 pengéje (a 256-os híd része: 240 + 16 = 256).
+-- KÉT független út (AGENTS §18):
+--   út 1: |Z₂ × Z₈| = 2 × 8 = 16 (a tórusz = direkt szorzat)
+--   út 2: |Cl(4)| = 1+4+6+4+1 = 16 (a Pascal háromszög n=4 sora)
 public export
-bizTóruszPontokSzáma : 16 = 16
+bizTóruszPontokSzáma : 2 * 8 = 16
 bizTóruszPontokSzáma = Refl
 
-||| A 16 = a Cl(4) 16 pengéje (a 256-os híd része: 240 + 16 = 256).
+-- KÉT független út: a Cl(4) pengék összege = a Pascal háromszög n=4 sora.
 public export
-bizTóruszCl4Penge : 16 = 16
+bizTóruszCl4Penge : 1 + 4 + 6 + 4 + 1 = 16
 bizTóruszCl4Penge = Refl
 
 -- ═══════════════════════════════════════════════════════════════════════
