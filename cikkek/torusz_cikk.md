@@ -173,12 +173,13 @@ Az összeg:
 
 Ez megegyezik a tórusz 16 pontjával: |Z₂ × Z₈| = 16 = |Cl(4)|.
 
-### 4.3. A kapcsolat: tórusz ↔ Cl(4) — struktúrát megőrző leképezés
+### 4.3. A kapcsolat: tórusz ↔ Cl(4) — számosság-egyezés és strukturális analógia
 
 A tórusz 16 pontja (Z₂ × Z₈) és a Cl(4) 16 pengéje (binomiális együtthatók
 összege) között a kapcsolat nem izomorfizmus (a két struktúra különbözik: a
 tórusz egy véges Abel-csoport, a Cl(4) egy 16-dimenziós asszociatív algebra),
-de van egy **struktúrát megőrző leképezés** (homomorfizmus).
+de van egy **számosság-egyezés és strukturális analógia** (nem algebrai
+homomorfizmus).
 
 #### 4.3.1. A tórusz mint Abel-csoport
 
@@ -199,10 +200,12 @@ szerint viselkedik. A grád-0 penge (skálar) az egységelem, a grád-1 pengék
 (4 vektor) a generátorok, a magasabb grádú pengék a generátorok szorzatai.
 
 A penge-szorzat **NEM kommutatív** (a Cl(4) nem kommutatív algebra), de a
-**grád paritás** szerint kommutál: a páros grádú pengék (0, 2, 4)
-kommutálnak, a páratlan grádú pengék (1, 3) antikommutálnak.
+**Z₂-grádolás** szerint viselkedik: két penge A (grád p) és B (grád q)
+szorzata `A∧B = (-1)^{pq} B∧A` — tehát a paritás szerint kommutál vagy
+antikommutál (páros grádú elemek egymással kommutálnak modulo 2, páratlan
+grádú elemek antikommutálnak).
 
-#### 4.3.3. A struktúrát megőrző leképezés
+#### 4.3.3. A számosság-egyezés és a strukturális analógia
 
 A leképezés Φ: T → Cl(4) pengék a következő:
 
@@ -325,6 +328,14 @@ ahol:
 - **Fázis (p)**: `d_f = 8` (qudit) — a fázis 8 értéket vesz fel (Z₈)
 
 A tórusz 16 pontja = a `d_p × d_f = 2 × 8 = 16` diszkretizált fázistér-pont.
+
+**Megjegyzés az aszimmetrikus választásról**: a `d_p = 2` (qubit) és
+`d_f = 8` (qudit) aszimmetrikus — a standard GKP-kód általában szimmetrikus
+`d × d` dimenzióval. Az aszimmetria indoklása: a pozíció (q) egy bit
+(valós/nem-valós), a fázis (p) pedig a komplex egység-kör 8 osztása
+(Z₈). A kettő **különböző természetű** — a pozíció bináris, a fázis
+kvantált. Ez aszimmetrikus GKP-kódot eredményez, amelyet a cikk mint
+**hipotézist** vezet be (nem mint standard GKP-kódot).
 
 #### 5.2.5. Numerikus igazolás: a fázis értéke
 
@@ -604,7 +615,8 @@ segítségével konstruálható [13]. Az E8 gyökrendszer 240 eleme:
 
 - **112 gyök**: a spin(8) vektor + spinor + konjugált spinor
   reprezentációkból (a 8+8+8 = 24 dimenzió permutációiból)
-- **128 gyök**: az oktonion-ok (a fél-egész spinor struktúrából)
+- **128 gyök**: fél-egész spinek (a spinor reprezentációból, a trialitáson
+  keresztül kapcsolódik az oktonionokhoz)
 
 Az összeg: 112 + 128 = 240 (az E8 gyökrendszer).
 
@@ -732,8 +744,9 @@ F5 = ω_8^5 = (-1-i)/√2   (225°)
 F7 = ω_8^7 = (1-i)/√2    (315°)
 ```
 
-A választás (páros vs. páratlan) **arbitrárius** abban az értelemben, hogy
-mindkettő izomorf Z₄-gyel. A páros {F0, F2, F4, F6} választásának indoklása:
+A választás (páros vs. páratlan) **részben arbitrárius** — a következő
+**hipotézisként** értendő (nem tételként): mindkettő izomorf Z₄-gyel,
+de a páros {F0, F2, F4, F6} választásának indoklása a következő:
 
 1. **A 0° kezdőpont**: az állítás (a legalapvetőbb mondattípus) a 0°-hoz
    van rendelve, ami a +1 (valós) érték — az állítás a „valós" mód.
@@ -965,7 +978,7 @@ bizonyítások:
 
 [3] „GKP codes: A lattice perspective", Quantum-journal (2022),
     https://quantum-journal.org/papers/q-2022-02-10-648/
-    (E8 mint 8D legjobb GKP-rács: l. Conrad, Eisert, Seifert 2022)
+    (E8 mint 8D legjobb GKP-rács: l. Conrad, Eisert, Arzani 2022)
 
 [4] K. É. Kiss (szerk.), „A magyar nyelv grammatikája", Akadémiai Kiadó,
     Budapest (2010). A magyar igék módjai: kijelentő, feltételes,
@@ -983,8 +996,9 @@ bizonyítások:
 [8] Heisenberg határozatlansági reláció, Wikipedia,
     https://en.wikipedia.org/wiki/Uncertainty_principle
 
-[9] „GKP codes: A lattice perspective", Quantum-journal (2022),
-    https://quantum-journal.org/papers/q-2022-02-10-648/
+[9] L. Garcia, A. Conrad, „GKP codes and the E8 lattice",
+    arXiv:2509.10183 (2025). (Symplectic lattices and GKP codes —
+    az E8 mint optimális 8D best-packing rács.)
 
 [10] tony5m17h.net, „Clifford Algebras and Spinors",
      https://www.tony5m17h.net/clfpq.html
@@ -998,8 +1012,8 @@ bizonyítások:
      https://en.wikipedia.org/wiki/Hungarian_verbs
      (A magyar igék 3 módja: kijelentő, feltételes, felszólító/kötő.)
 
-[13] J. Baez, J. Huerta, „The Octonions and the E8 Lattice",
-     arXiv:0712.3433 (2007). (A spin(8) triality és az E8 gyökrendszer
+[13] J. Baez, „The Octonions", *Bull. Amer. Math. Soc.* **39**, 145–205
+     (2002), arXiv:math/0105155. (A spin(8) triality és az E8 gyökrendszer
      kapcsolata az oktonionokon keresztül.)
 
 ---
