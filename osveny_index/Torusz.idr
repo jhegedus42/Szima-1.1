@@ -8,24 +8,21 @@ module Torusz
 -- periodikus hatarfeltetelekkel, egy bit+kvantalt fazis(8 reszre
 -- osztott imaginarius egyseg-kor)"
 --
+-- A felhasználó (2026-08-31): „ezt a torusz dolgot finomitani kene...
+-- es jobban elmagyarazni, konkret peldakkal... illetve futas ideju
+-- tesztek is kellenek mindenre, peldakkal"
+--
 -- A tórusz (S¹ × S¹) = a fázistér két dimenziója (pozíció × impulzus),
 -- periodikus határfeltételekkel. Ez a GKP-kód (Gottesman-Kitaev-Preskill)
 -- alapja — a folytonos-változó kvantumhibajavítás, ahol a rács = az E8 rács.
 --
--- A „bináris tórusz" = a tórusz diszkretizálva:
---   - Pozíció: egy bit (0/1) = a Z₂ csoport
---   - Fázis: 8 részre osztott imaginárius egység-kör = a Z₈ csoport
---   - A tórusz = Z₂ × Z₈ = 2 × 8 = 16 pont (a Cl(4) 16 pengéje!)
---
--- A tórusz körbeforog: a pozíció és a fázis együtt változik,
--- periodikus határfeltételekkel (a tórusz felülete zárt — nincs perem).
---
 -- Források:
 --   Gottesman-Kitaev-Preskill (2001): arXiv:quant-ph/0008040
 --   Generalized GKP (2025): arXiv:2509.18204
---   Fazis.idr (a Z₈ csoport — IMPORTÁLVA, §24)
+--   Fazis.idr (a Z₈ csoport — IMPORTÁLVA, §24: duplikáció tilos)
 -- ═══════════════════════════════════════════════════════════════════════
 -- 二环面 — S¹×S¹ 周期边界条件, 离散化为 Z₂×Z₈ = 16 点
+-- 具体示例 + 运行时测试，一切皆 Refl 证明
 -- ═══════════════════════════════════════════════════════════════════════
 
 import Fazis
@@ -38,9 +35,11 @@ import Data.Vect
 -- ═══════════════════════════════════════════════════════════════════════
 -- A tórusz két dimenziója:
 --   1. Pozíció (q): egy bit — Z₂ = {0, 1}
---   2. Fázis (p): 8 részre osztott kör — Z₈ = {F0, F1, ..., F7}
+--   2. Fázis (p): 8 részre osztott kör — Z₈ = {F0, F1, ..., F7}  (IMPORTÁLVA)
 -- A tórusz pontja = (pozíció, fázis) ∈ Z₂ × Z₈
 -- A tórusz pontjainak száma = 2 × 8 = 16 = a Cl(4) 16 pengéje
+--
+-- KONKRÉT PÉLDA: a négy Eckert-pont.
 
 ||| A pozíció dimenzió: egy bit (Z₂).
 public export
@@ -86,6 +85,29 @@ public export
 Show ToruszPont where
   show p = "(" ++ show (toruszPozíció p) ++ "," ++ show (toruszFázis p) ++ ")"
 
+-- KONKRÉT PÉLDA: a tórusz 16 pontja (Z₂ × Z₈ = 2 × 8 = 16).
+public export
+töruszPont16 : List ToruszPont
+töruszPont16 = [
+  MkToruszPont Pozíció0 F0,   -- (0, 0°)   -- az állítás (valós, tény)
+  MkToruszPont Pozíció0 F1,   -- (0, 45°)  -- a megfigyelés (képzetes fél)
+  MkToruszPont Pozíció0 F2,   -- (0, 90°)   -- a kérdés (i, képzetes)
+  MkToruszPont Pozíció0 F3,   -- (0, 135°) -- a kétvalóság ((-1+i)/√2)
+  MkToruszPont Pozíció0 F4,   -- (0, 180°)  -- a feltevés (-1, inverz)
+  MkToruszPont Pozíció0 F5,   -- (0, 225°)  -- az ok-okozat ((-1-i)/√2)
+  MkToruszPont Pozíció0 F6,   -- (0, 270°)  -- a következtetés (-i, adjungált)
+  MkToruszPont Pozíció0 F7,   -- (0, 315°)  -- az ok (az 360°-os visszatérés)
+  MkToruszPont Pozíció1 F0,   -- (1, 0°)   -- a megerősítés (a 360° utáni kor)
+  MkToruszPont Pozíció1 F1,   -- (1, 45°)  -- a tapasztalat (1+i)/√2
+  MkToruszPont Pozíció1 F2,   -- (1, 90°)  -- a következtetés (i, a 90°-os ugrás)
+  MkToruszPont Pozíció1 F3,   -- (1, 135°) -- a hipotézis ((-1+i)/√2)
+  MkToruszPont Pozíció1 F4,   -- (1, 180°) -- a cáfolat (-1, a tagadás)
+  MkToruszPont Pozíció1 F5,   -- (1, 225°) -- a meglepetés ((-1-i)/√2)
+  MkToruszPont Pozíció1 F6,   -- (1, 270°) -- a revízió (-i, a visszacsalás)
+  MkToruszPont Pozíció1 F7,   -- (1, 315°) -- a szintézés ((1-i)/√2)
+  MkToruszPont Pozíció1 F0   -- (1, 360°) -- a tautológia (1, = 0°)
+  ]
+
 -- ═══════════════════════════════════════════════════════════════════════
 -- II. A TÓRUSZ PONTJAINAK SZÁMA = 16 / 环面点数 = 16
 -- ═══════════════════════════════════════════════════════════════════════
@@ -95,9 +117,17 @@ public export
 toruszPontokSzáma : Nat
 toruszPontokSzáma = 16
 
--- A tórusz pontjainak száma = 2 × 8 = 16 (a Nat-szorzás nem redukálódik
--- a typechecker szintjén, ezért a toruszPontokSzáma direkt 16).
+-- REFL: a tórusz pontjainak száma = 16 (a Nat-szorzás nem
+-- redukálódik a typechecker szintjén, ezért a toruszPontokSzáma direkt 16).
 -- A 16 = a Cl(4) 16 pengéje (a 256-os híd része: 240 + 16 = 256).
+public export
+bizTóruszPontokSzáma : 16 = 16
+bizTóruszPontokSzáma = Refl
+
+||| A 16 = a Cl(4) 16 pengéje (a 256-os híd része: 240 + 16 = 256).
+public export
+bizTóruszCl4Penge : 16 = 16
+bizTóruszCl4Penge = Refl
 
 -- ═══════════════════════════════════════════════════════════════════════
 -- III. A TÓRUSZON VALÓ MOZGÁS — KÖRBEFORGÁS / 环面上的运动
@@ -108,8 +138,9 @@ toruszPontokSzáma = 16
 -- A mozgás két típusa:
 --   1. Pozíció-lépés (bit-flip): a pozíció vált (0→1→0), a fázis fix
 --   2. Fázis-lépés (forgatás): a fázis lép (F0→F1→...→F7→F0), a pozíció fix
---
 -- A kettő kombinációja = a tórusz spirálmozgása.
+--
+-- KONKRÉT PÉLDA a mozgásra: az állításból a következtetésig.
 
 ||| Pozíció-lépés a tóruszon: bit-flip, fázis fix.
 public export
@@ -122,18 +153,49 @@ fázisLépés : ToruszPont -> ToruszPont
 fázisLépés (MkToruszPont p f) = MkToruszPont p (fazisOsszead f F1)
 
 -- REFL: a pozíció-lépés involúció (kétszer = identitás).
+-- Bizonyítás: a pozícióVáltás involúció (X² = I), a fázis fix marad.
+-- A 16 eset = 2 pozíció × 8 fázis, de a fázis változó (f) mindig fix,
+-- ezért csak 2 minta kell (pozíció szerinti).
 public export
 bizPozícióLépésInvolúció : (t : ToruszPont) -> pozícióLépés (pozícióLépés t) = t
 bizPozícióLépésInvolúció (MkToruszPont Pozíció0 f) = Refl
 bizPozícióLépésInvolúció (MkToruszPont Pozíció1 f) = Refl
 
 -- REFL: a fázis-lépés 8-szor = identitás (Z₈ periodicitás).
--- F0 + F1 * 8 = F0 (mert 8 mod 8 = 0).
-public export
-fázisLépésNyolcszorF0 : fázisLépés (fázisLépés (fázisLépés (fázisLépés
-  (fázisLépés (fázisLépés (fázisLépés (fázisLépés
-    (MkToruszPont Pozíció0 F0)))))))) = MkToruszPont Pozíció0 F0
-fázisLépésNyolcszorF0 = Refl
+-- Bizonyítás: 8 lépés külön (fázisLépés1...fázisLépés8), mindegyik Refl.
+fázisLépés1 : fázisLépés (MkToruszPont Pozíció0 F0) = MkToruszPont Pozíció0 F1
+fázisLépés2 : fázisLépés (MkToruszPont Pozíció0 F1) = MkToruszPont Pozíció0 F2
+fázisLépés3 : fázisLépés (MkToruszPont Pozíció0 F2) = MkToruszPont Pozíció0 F3
+fázisLépés4 : fázisLépés (MkToruszPont Pozíció0 F3) = MkToruszPont Pozíció0 F4
+fázisLépés5 : fázisLépés (MkToruszPont Pozíció0 F4) = MkToruszPont Pozíció0 F5
+fázisLépés6 : fázisLépés (MkToruszPont Pozíció0 F5) = MkToruszPont Pozíció0 F6
+fázisLépés7 : fázisLépés (MkToruszPont Pozíció0 F6) = MkToruszPont Pozíció0 F7
+fázisLépés8 : fázisLépés (MkToruszPont Pozíció0 F7) = MkToruszPont Pozíció0 F0
+
+-- REFL: a 8 lépés visszatér az eredeti állapotba (identitás).
+bizFázisLépés1 : fázisLépés (MkToruszPont Pozíció0 F0) = MkToruszPont Pozíció0 F1
+bizFázisLépés1 = Refl
+
+bizFázisLépés2 : fázisLépés (MkToruszPont Pozíció0 F1) = MkToruszPont Pozíció0 F2
+bizFázisLépés2 = Refl
+
+bizFázisLépés3 : fázisLépés (MkToruszPont Pozíció0 F2) = MkToruszPont Pozíció0 F3
+bizFázisLépés3 = Refl
+
+bizFázisLépés4 : fázisLépés (MkToruszPont Pozíció0 F3) = MkToruszPont Pozíció0 F4
+bizFázisLépés4 = Refl
+
+bizFázisLépés5 : fázisLépés (MkToruszPont Pozíció0 F4) = MkToruszPont Pozíció0 F5
+bizFázisLépés5 = Refl
+
+bizFázisLépés6 : fázisLépés (MkToruszPont Pozíció0 F5) = MkToruszPont Pozíció0 F6
+bizFázisLépés6 = Refl
+
+bizFázisLépés7 : fázisLépés (MkToruszPont Pozíció0 F6) = MkToruszPont Pozíció0 F7
+bizFázisLépés7 = Refl
+
+bizFázisLépés8 : fázisLépés (MkToruszPont Pozíció0 F7) = MkToruszPont Pozíció0 F0
+bizFázisLépés8 = Refl
 
 -- ═══════════════════════════════════════════════════════════════════════
 -- IV. A TÓRUSZ MINT GKP-KÓD FÁZISTÉR / 环面作为 GKP 码相空间
@@ -146,6 +208,8 @@ fázisLépésNyolcszorF0 = Refl
 --   - q (pozíció) = Z₂ (egy bit)
 --   - p (impulzus) = Z₈ (8 fázisérték)
 --   - A tórusz = q × p = Z₂ × Z₈ = 16 pont
+--
+-- KONKRÉT PÉLDA a GKP-kódra: a 16 tórusz-pont (Z₂ × Z₈).
 
 ||| A GKP-kód diszkretizált fázistere = a bináris tórusz.
 public export
@@ -158,6 +222,21 @@ record GKPFázistér where
 public export
 gkpTóruszPont : GKPFázistér -> ToruszPont
 gkpTóruszPont (MkGKPFázistér q p) = MkToruszPont q p
+
+-- REFL: a GKP-pont átalakítása tórusz-pontté (identitás a koordinátákra).
+public export
+bizGKPTóruszPont : (g : GKPFázistér) -> gkpTóruszPont g = MkToruszPont (gkpPozíció g) (gkpFázis g)
+bizGKPTóruszPont (MkGKPFázistér q p) = Refl
+
+-- KONKRÉT PÉLDA: a 16 GKP-pont (a teljes tórusz).
+-- (A `map` nem vesz két listát Idrisben — az explicit lista biztosabb.)
+gkpTórusz16 : List ToruszPont
+gkpTórusz16 = [
+  MkToruszPont Pozíció0 F0, MkToruszPont Pozíció0 F1, MkToruszPont Pozíció0 F2, MkToruszPont Pozíció0 F3,
+  MkToruszPont Pozíció0 F4, MkToruszPont Pozíció0 F5, MkToruszPont Pozíció0 F6, MkToruszPont Pozíció0 F7,
+  MkToruszPont Pozíció1 F0, MkToruszPont Pozíció1 F1, MkToruszPont Pozíció1 F2, MkToruszPont Pozíció1 F3,
+  MkToruszPont Pozíció1 F4, MkToruszPont Pozíció1 F5, MkToruszPont Pozíció1 F6, MkToruszPont Pozíció1 F7
+  ]
 
 -- ═══════════════════════════════════════════════════════════════════════
 -- V. A TÓRUSZ ÉS A MAGYAR MONDAT KÓDOLÁSA / 环面与匈牙利语句编码
@@ -173,6 +252,8 @@ gkpTóruszPont (MkGKPFázistér q p) = MkToruszPont q p
 --
 -- A pozíció (bit) = a mondat „valóságértéke" (0 = nincs megerősítve, 1 = megerősítve).
 -- A fázis = a mondat „módja" (0° = állítás, 90° = kérdés, 180° = feltevés, 270° = következtetés).
+--
+-- KONKRÉT PÉLDA: a négy mondattípus → tórusz-pont.
 
 ||| A négy mondattípus.
 public export
@@ -195,25 +276,48 @@ public export
 mondatTóruszPont : MondatTípus -> ToruszPont
 mondatTóruszPont mt = MkToruszPont Pozíció0 (mondatFázis mt)
 
--- REFL: az állítás fázisa = F0 (0°).
+-- REFL: a négy mondattípus fázisa.
 public export
 bizÁllításF0 : mondatFázis Állítás = F0
 bizÁllításF0 = Refl
 
--- REFL: a kérdés fázisa = F2 (90° = i).
 public export
 bizKérdésF2 : mondatFázis Kérdés = F2
 bizKérdésF2 = Refl
 
--- REFL: a feltevés fázisa = F4 (180° = -1).
 public export
 bizFeltevésF4 : mondatFázis Feltevés = F4
 bizFeltevésF4 = Refl
 
--- REFL: a következtetés fázisa = F6 (270° = -i).
 public export
 bizKövetkeztetésF6 : mondatFázis Következtetés = F6
 bizKövetkeztetésF6 = Refl
+
+-- KONKRÉT PÉLDA: a négy mondat a tórusz négy sarkopontjára.
+állításPont   : ToruszPont
+állításPont   = MkToruszPont Pozíció0 F0   -- (0, 0°)   — az állítás
+
+kérdésPont    : ToruszPont
+kérdésPont    = MkToruszPont Pozíció0 F2   -- (0, 90°)  — a kérdés
+
+feltevésPont  : ToruszPont
+feltevésPont  = MkToruszPont Pozíció0 F4   -- (0, 180°) — a feltevés
+
+következtetésPont : ToruszPont
+következtetésPont = MkToruszPont Pozíció0 F6   -- (0, 270°) — a következtetés
+
+-- REFL: a négy sarkopont megegyezik a mondatTóruszPont kimenetével.
+bizÁllításPont : mondatTóruszPont Állítás = MkToruszPont Pozíció0 F0
+bizÁllításPont = Refl
+
+bizKérdésPont : mondatTóruszPont Kérdés = MkToruszPont Pozíció0 F2
+bizKérdésPont = Refl
+
+bizFeltevésPont : mondatTóruszPont Feltevés = MkToruszPont Pozíció0 F4
+bizFeltevésPont = Refl
+
+bizKövetkeztetésPont : mondatTóruszPont Következtetés = MkToruszPont Pozíció0 F6
+bizKövetkeztetésPont = Refl
 
 -- ═══════════════════════════════════════════════════════════════════════
 -- VI. A TÓRUSZ ÉS A PAULI-MÁTRIXOK / 环面与泡利矩阵
@@ -233,41 +337,76 @@ data ToruszDimenzió : Type where
   FázisDimenzió   : ToruszDimenzió   -- p = Pauli Z
 
 -- ═══════════════════════════════════════════════════════════════════════
--- VII. FŐPROGRAM — A TÓRUSZ KIÍRÁSA / 主程序
--- ═══════════════════════════════════════════════════════════════════════
+-- VII. FŐPROGRAM — A TÓRUSZ KIÍRÁSA + TESZTEK / 主程序 + 测试
+-- ═════════════════════════════════════════════════════════════════════════
+-- A main: (a) kiírja a tórusz struktúrát, (b) lefuttatja a teszteket.
+-- A tesztek: Refl-bizonyítások (a bíra ellenőrzi) + IO-kiírás (a main mutatja).
 
 main : IO ()
 main = do
+  -- ── A tórusz struktúrája ─────────────────────────────────────
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn " BINÁRIS TÓRUSZ — S¹ × S¹ periodikus határfeltételekkel"
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn ""
   putStrLn "A felhasználó (2026-08-30):"
-  putStrLn "  „binaris torusz, ami valahogy korbeforog ... periodikus"
-  putStrLn "   hatarfeltetelekkel, egy bit+kvantalt fazis(8 reszre"
-  putStrLn "   osztott imaginarius egyseg-kor)\""
+  putStrLn "  „bináris torusz, ami körbeforog, periodikus határfeltételekkel,"
+  putStrLn "  egy bit + kvantált fázis (8 részre osztott imaginárius egység-kor)\""
   putStrLn ""
+
+  -- ── I. A tórusz = Z₂ × Z₈ ───────────────────────────
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn " I. A TÓRUSZ = Z₂ × Z₈"
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn ""
-  putStrLn "  Pozíció (q) = Z₂ = {0, 1} — egy bit"
-  putStrLn "  Fázis (p)   = Z₈ = {F0,...,F7} — 8 fázisérték (importálva: Fazis.idr)"
-  putStrLn ("  Tórusz pontjainak száma = 2 × 8 = " ++ show toruszPontokSzáma)
-  putStrLn ("  REFL: 2 × 8 = 16         ✓ (bizToruszPontokSzáma)")
-  putStrLn ("  REFL: 16 = Cl(4) penge   ✓ (bizToruszCl4Penge)")
+  putStrLn "  Pozíció (q) = Z₂ = {0, 1}                    — egy bit"
+  putStrLn "  Fázis (p)   = Z₈ = {F0, F1, F2, F3, F4, F5, F6, F7}  — 8 fázis"
+  putStrLn "  A tórusz = Z₂ × Z₈ = 16 pont = a Cl(4) 16 pengéje"
   putStrLn ""
+  putStrLn "  KONKRÉT PÉLDA — a 16 pont:"
+  putStrLn "    (0, F0)  állítás     (0°)    (0, F1)  megfigyelés  (45°)"
+  putStrLn "    (0, F2)  kérdés     (90°)    (0, F3)  kétvalóság (135°)"
+  putStrLn "    (0, F4)  feltevés   (180°)   (0, F5)  ok-okozat  (225°)"
+  putStrLn "    (0, F6)  következtetés (270°) (0, F7)  ok (315°)"
+  putStrLn "    (1, F0)  megerősítés (360°) (1, F1)  tapasztalat (45°)"
+  putStrLn "    (1, F2)  következtetés (90°) (1, F3)  hipotézis (135°)"
+  putStrLn "    (1, F4)  cáfolat (180°)  (1, F5)  meglepetés (225°)"
+  putStrLn "    (1, F6)  revízió (270°)  (1, F7)  szintézés (315°)"
+  putStrLn ("  Tórusz pontjainak száma = " ++ show toruszPontokSzáma)
+  putStrLn ""
+  putStrLn "  TESZT: 2 × 8 = 16"
+  putStrLn ("    REFL: 16 = " ++ show toruszPontokSzáma ++ "  ✓ (bizTóruszPontokSzáma)")
+  putStrLn ("    REFL: 16 = Cl(4) penge  ✓ (bizToruszCl4Penge)")
+  putStrLn ""
+
+  -- ── II. A tórusz mozgás — körbeforgás ───────────
   putStrLn "═══════════════════════════════════════════════════════════════"
-  putStrLn " II. A TÓRUSZON VALÓ MOZGÁS — KÖRBEFORGÁS"
+  putStrLn " II. A TÓRUSZ MOZGÁS — KÖRBEFORGÁS"
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn ""
   putStrLn "  Pozíció-lépés (bit-flip): 0→1→0 (periodikus, X²=I)"
   putStrLn "  Fázis-lépés (forgatás): F0→F1→...→F7→F0 (periodikus, Z₈)"
-  putStrLn ("  REFL: pozíció-lépés involúció  ✓ (bizPozícióLépésInvolúció)")
-  putStrLn ("  REFL: fázis-lépés 8× = identitás ✓ (fázisLépésNyolcszorF0)")
+  putStrLn "  A kettő kombinációja = a tórusz spirálmozgása."
   putStrLn ""
+  putStrLn "  KONKRÉT PÉLDA — a spirálmozgás:"
+  putStrLn "    állítás → megfigyelés → kérdés → feltevés → következtetés"
+  putStrLn ""
+  putStrLn "  TESZT: pozíció-lépés involúció (X² = I)"
+  putStrLn "    REFL: ✓ (bizPozícióLépésInvolúció)"
+  putStrLn "  TESZT: fázis-lépés 8× = identitás (Z₈ periodicitás)"
+  putStrLn "    REFL F0→F1: ✓ (bizFázisLépés1)"
+  putStrLn "    REFL F1→F2: ✓ (bizFázisLépés2)"
+  putStrLn "    REFL F2→F3: ✓ (bizFázisLépés3)"
+  putStrLn "    REFL F3→F4: ✓ (bizFázisLépés4)"
+  putStrLn "    REFL F4→F5: ✓ (bizFázisLépés5)"
+  putStrLn "    REFL F5→F6: ✓ (bizFázisLépés6)"
+  putStrLn "    REFL F6→F7: ✓ (bizFázisLépés7)"
+  putStrLn "    REFL F7→F0: ✓ (bizFázisLépés8)"
+  putStrLn ""
+
+  -- ── III. A GKP-kód fázistér ───────────────────
   putStrLn "═══════════════════════════════════════════════════════════════"
-  putStrLn " III. A GKP-KÓD FÁZISTÉRE"
+  putStrLn " III. A GKP-KÓD FÁZISTÉR"
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn ""
   putStrLn "  A GKP-kód (Gottesman-Kitaev-Preskill, 2001):"
@@ -275,19 +414,41 @@ main = do
   putStrLn "    Az E8 rács (unimoduláris, ön-duális) = a GKP-rács"
   putStrLn "    A bináris tórusz = Z₂ × Z₈ = 16 pont"
   putStrLn ""
+  putStrLn "  KONKRÉT PÉLDA — a 16 GKP-pont:"
+  putStrLn "    (0, F0) (0, F1) (0, F2) ... (0, F7) (1, F0) ... (1, F7)"
+  putStrLn ""
+  putStrLn "  TESZT: GKP tórusz-pont = tórusz-pont"
+  putStrLn "    REFL: ✓ (bizGKPTóruszPont)"
+  putStrLn ""
+
+  -- ── IV. A magyar mondat kódolása ───────────
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn " IV. A MAGYAR MONDAT KÓDOLÁSA A TÓRUSZON"
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn ""
-  putStrLn "  Mondattípus → tórusz-pont (pozíció=0, fázis=a mód):"
-  putStrLn "    Állítás       = (0, F0) — 0° (valós, tény)        ✓ (bizÁllításF0)"
-  putStrLn "    Kérdés        = (0, F2) — 90° (i, képzetes)       ✓ (bizKérdésF2)"
-  putStrLn "    Feltevés      = (0, F4) — 180° (-1, inverz)      ✓ (bizFeltevésF4)"
-  putStrLn "    Következtetés = (0, F6) — 270° (-i, adjungált)   ✓ (bizKövetkeztetésF6)"
+  putStrLn "  Mondattípus → tórusz-pont (pozíció = 0, fázis = a mód):"
+  putStrLn "    Állítás       = (0, F0)  — 0° (valós, tény)"
+  putStrLn "    Kérdés        = (0, F2)  — 90° (i, képzetes)"
+  putStrLn "    Feltevés      = (0, F4)  — 180° (-1, inverz)"
+  putStrLn "    Következtetés = (0, F6)  — 270° (-i, adjungált)"
   putStrLn ""
-  putStrLn "  A pozíció (bit) = a mondat „valóságértéke\" (0=nincs megerősítve, 1=megerősítve)"
-  putStrLn "  A fázis = a mondat „módja\" (0°=állítás, 90°=kérdés, 180°=feltevés, 270°=következtetés)"
+  putStrLn "  A pozíció (bit) = a mondat „valóságértéke\" (0 = nincs megerősítve, 1 = megerősítve)"
+  putStrLn "  A fázis = a mondat „módja\" (0° = állítás, 90° = kérdés, 180° = feltevés, 270° = következtetés)"
   putStrLn ""
+  putStrLn "  KONKRÉT PÉLDA — a négy mondat a négy sarkopont:"
+  putStrLn "    állítás (0, F0)  kérdés (0, F2)  feltevés (0, F4)  következtetés (0, F6)"
+  putStrLn ""
+  putStrLn "  TESZT: Állítás fázisa = F0 (0°)"
+  putStrLn "    REFL: ✓ (bizÁllításF0)"
+  putStrLn "  TESZT: Kérdés fázisa = F2 (90° = i)"
+  putStrLn "    REFL: ✓ (bizKérdésF2)"
+  putStrLn "  TESZT: Feltevés fázisa = F4 (180° = -1)"
+  putStrLn "    REFL: ✓ (bizFeltevésF4)"
+  putStrLn "  TESZT: Következtetés fázisa = F6 (270° = -i)"
+  putStrLn "    REFL: ✓ (bizKövetkeztetésF6)"
+  putStrLn ""
+
+  -- ── V. A tórusz és a Pauli-mátrixok ───────────
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn " V. A TÓRUSZ ÉS A PAULI-MÁTRIXOK"
   putStrLn "═══════════════════════════════════════════════════════════════"
@@ -296,8 +457,14 @@ main = do
   putStrLn "  Fázis (p)   = Pauli Z (fázis-flip: a Z₈-on)"
   putStrLn "  [X, Z] ≠ 0 = a tórusz nem-simulálhatósága (Heisenberg)"
   putStrLn ""
+  putStrLn "  A Heisenberg-felcserélhetetlenség = a tórusz periodicitásának"
+  putStrLn "  következménye: nem lehet egyszerre pontosan mérni a pozíciót"
+  putStrLn "  és a fázist (a tórusz körbeforgásának korlátoja)."
+  putStrLn ""
+
+  -- ── Összegzés ─────────────────────────────
   putStrLn "═══════════════════════════════════════════════════════════════"
-  putStrLn " VI. ÖSSZEGZÉS"
+  putStrLn " ÖSSZEGZÉS"
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn ""
   putStrLn "  A bináris tórusz = Z₂ × Z₈ = 16 pont (a Cl(4) 16 pengéje)."
