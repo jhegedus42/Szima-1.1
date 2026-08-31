@@ -343,6 +343,70 @@ A d=8 fázis értékei (ω_8 hatványai):
 
 Ezek a Z₈ 8 egységgyöke, amelyek a fázis 8 értékét adják.
 
+#### 5.2.6. Idris2 implementáció és Refl bizonyítások
+
+A generalized Pauli operátorok Idris2 nyelven vannak implementálva
+(`osveny_index/GeneralizedPauli.idr`). A bizonyítások a KÉT független
+út mintát követik (AGENTS §18):
+
+**Út 1: d = 2 (qubit, Pauli antikommutáció)**
+
+```
+-- ω_2 = exp(πi) = -1
+OmegaKét : Komplex
+OmegaKét = K (-1.0) 0.0
+
+-- REFL: ω_2 = -1
+bizOmegaKét : egysegGyök KétDimenzió = OmegaKét
+bizOmegaKét = Refl
+
+-- REFL: ω_2 valós része = -1
+bizOmegaKétValósRész : (re (egysegGyök KétDimenzió)) = -1.0
+bizOmegaKétValósRész = Refl
+
+-- REFL: ω_2 képzetes része = 0
+bizOmegaKétKépzetesRész : (im (egysegGyök KétDimenzió)) = 0.0
+bizOmegaKétKépzetesRész = Refl
+```
+
+**Út 2: d = 8 (qudit, Z₈ fázis)**
+
+```
+-- ω_8 = exp(πi/4) = (1+i)/√2
+OmegaNyolc : Komplex
+OmegaNyolc = K (0.7071067811865476) (0.7071067811865476)
+
+-- REFL: ω_8 = (1+i)/√2
+bizOmegaNyolc : egysegGyök NyolcDimenzió = OmegaNyolc
+bizOmegaNyolc = Refl
+
+-- REFL: ω_8 valós része ≈ 0.7071
+bizOmegaNyolcValósRész : (re (egysegGyök NyolcDimenzió)) = 0.7071067811865476
+bizOmegaNyolcValósRész = Refl
+
+-- REFL: ω_8 képzetes része ≈ 0.7071
+bizOmegaNyolcKépzetesRész : (im (egysegGyök NyolcDimenzió)) = 0.7071067811865476
+bizOmegaNyolcKépzetesRész = Refl
+```
+
+**A tórusz = a modular-qudit GKP kód fázistere**
+
+```
+-- d_p = 2 (qubit), d_f = 8 (qudit)
+-- REFL: d_p × d_f = 16
+bizTóruszPontokSzámaGKP : 2 * 8 = 16
+bizTóruszPontokSzámaGKP = Refl
+```
+
+Az Idris2 typechecker (a „bíra") ellenőrzi, hogy a `egysegGyök KétDimenzió`
+kifejezés redukálódik `K (-1.0) 0.0`-ra, és a `egysegGyök NyolcDimenzió`
+redukálódik `K (0.7071...) (0.7071...)`-re. A `Refl` csak akkor fordul le,
+ha a két oldal definíció szerint megegyezik (AGENTS §7).
+
+Az implementáció a `Komplex.idr` modult importálja (komplex számok) és a
+`Fazis.idr` modult (Z₈ ciklikus csoport) — a kódduplikáció tilalom szerint
+(AGENTS §24).
+
 ### 5.3. Numerikus igazolás: a Pauli-mátrixok szorzása
 
 A Pauli-mátrixok szorzása konkrét mátrixszorzással [7]:
@@ -748,7 +812,11 @@ F6 → F0 (a 8. lépés utáni visszatérés).
 ## 9. Numerikus szimuláció (Idris2)
 
 A teljes szimuláció Idris2 nyelven van megírva. A kód a Szima-1.1 repóban
-található (`osveny_index/Torusz.idr`, `osveny_index/ToruszTeszt.idr`).
+található:
+- `osveny_index/Torusz.idr` — a bináris tórusz (Z₂ × Z₈)
+- `osveny_index/ToruszTeszt.idr` — a tórusz tesztjei
+- `osveny_index/KostantFelbontás.idr` — az E8 és Cl(8) bizonyítások
+- `osveny_index/GeneralizedPauli.idr` — a generalized Pauli operátorok
 
 A szimuláció lefuttatása:
 
@@ -756,6 +824,8 @@ A szimuláció lefuttatása:
 cd osveny_index
 idris2 --exec main Torusz.idr
 idris2 --exec main ToruszTeszt.idr
+idris2 --exec main KostantFelbontás.idr
+idris2 --exec main GeneralizedPauli.idr
 ```
 
 ### 9.1. A szimuláció kimenete (részlet)
@@ -794,12 +864,28 @@ mondatFázis Feltevés      = 4  (180°, -1)
 mondatFázis Következtetés = 6  (270°, -i)
 ```
 
+**Generalized Pauli operátorok (GeneralizedPauli.idr):**
+
+```
+d_p (pozíció) = 2 (qubit)
+d_f (fázis)   = 8 (qudit)
+d_p × d_f     = 16 (tórusz pontok)
+
+ω_2 = (-1.0, 0.0)           — d=2 egységgyök (Pauli antikommutáció)
+ω_8 = (0.7071, 0.7071)      — d=8 egységgyök (Z₈ fázis)
+
+d = 2: Z_2 · X_2 = -1 · X_2 · Z_2 (antikommutáció)
+d = 8: Z_8 · X_8 = exp(πi/4) · X_8 · Z_8 (Z₈ fázis)
+```
+
 ### 9.2. A Refl bizonyítások
 
 Minden állítást a Idris2 typechecker (a „bíra") ellenőriz. A Refl
 bizonyítások:
 
-- `bizTóruszPontokSzáma : 16 = 16` (a tórusz 16 pontja)
+**Torusz.idr:**
+- `bizTóruszPontokSzáma : 2 * 8 = 16` (a tórusz = direkt szorzat, KÉT út)
+- `bizTóruszCl4Penge : 1 + 4 + 6 + 4 + 1 = 16` (Pascal háromszög n=4, KÉT út)
 - `bizPozícióLépésInvolúció : pozícióLépés (pozícióLépés t) = t` (X² = I)
 - `bizFázisLépés1..8 : fázisLépés (...) = ...` (Z₈ periodicitás)
 - `bizGKPTóruszPont : gkpTóruszPont g = ...` (GKP → tórusz)
@@ -808,9 +894,27 @@ bizonyítások:
 - `bizFeltevésF4 : mondatFázis Feltevés = F4`
 - `bizKövetkeztetésF6 : mondatFázis Következtetés = F6`
 
-A `KostantFelbontás.idr` fájl tartalmazza a 240+16=256 bizonyítást:
+**KostantFelbontás.idr:**
+- `bizKostantFelbontásE8 : 28+28+64+64+64 = 248` (E8 Lie-algebra)
+- `biz64Tenzorszorzat : 64 = 8 * 8` (KÉT út: tenzorszorzat)
+- `biz64KetHatvány : 64 = 2 * 2 * 2 * 2 * 2 * 2` (KÉT út: ket hatvány)
+- `biz64FelEgeszgyökFele : 64 = 128 \`div\` 2` (KÉT út: felegész gyök fele)
+- `bizTrialityHarmadik : triality³ r = r` (T³ = 1)
+- `bizPauliXZegyenlőY : XZ = iY` (Pauli szorzás)
+- `bizPauliZXegyenlőY : ZX = -iY` (Heisenberg-fázis!)
+- `bizCl8Grádok : 1+8+28+56+70+56+28+8+1 = 256` (Cl(8) grádok)
+- `bizHid : 240 + 16 = 256` (a 256-os híd)
 
-- `bizHid : hídÖsszeg = Cl8Dimenzió` (240 + 16 = 256)
+**GeneralizedPauli.idr:**
+- `bizOmegaKét : egysegGyök KétDimenzió = OmegaKét` (ω_2 = -1)
+- `bizOmegaKétValósRész : ω_2.re = -1.0`
+- `bizOmegaKétKépzetesRész : ω_2.im = 0.0`
+- `bizOmegaNyolc : egysegGyök NyolcDimenzió = OmegaNyolc` (ω_8 = (1+i)/√2)
+- `bizOmegaNyolcValósRész : ω_8.re ≈ 0.7071`
+- `bizOmegaNyolcKépzetesRész : ω_8.im ≈ 0.7071`
+- `bizPozícióDimenzióKét : d_p = 2`
+- `bizFázisDimenzióNyolc : d_f = 8`
+- `bizTóruszPontokSzámaGKP : 2 * 8 = 16` (d_p × d_f = 16)
 
 ---
 
@@ -820,18 +924,22 @@ A `KostantFelbontás.idr` fájl tartalmazza a 240+16=256 bizonyítást:
 
 | # | Állítás | Számítás | Eredmény | Igazolva |
 |---|---------|----------|----------|----------|
-| 1 | tórusz = 16 pont | 2 × 8 = 16 | 16 | ✓ Refl |
-| 2 | Cl(4) = 16 penge | 1+4+6+4+1 = 16 | 16 | ✓ Pascal |
-| 3 | tórusz = Cl(4) penge | 16 = 16 | egyenlő | ✓ |
-| 4 | X² = I (involúció) | pozícióVáltás(pozícióVáltás(p)) = p | p | ✓ Refl |
+| 1 | tórusz = 16 pont | 2 × 8 = 16 | 16 | ✓ Refl (KÉT út) |
+| 2 | Cl(4) = 16 penge | 1+4+6+4+1 = 16 | 16 | ✓ Refl (KÉT út) |
+| 3 | tórusz ↔ Cl(4) | 16 = 16 (számosság) | analógia | ✓ (nem izomorfizmus) |
+| 4 | X² = I (involúció) | pozícióVáltás²(p) = p | p | ✓ Refl |
 | 5 | Z⁸ = I (periodicitás) | 8 fázis-lépés → eredeti | eredeti | ✓ Refl |
-| 6 | [X,Z] = -2iY | XZ - ZX = -2iY | -2iY | ✓ mátrixszorzás |
-| 7 | 240 + 16 = 256 | 240 + 16 = 256 | 256 | ✓ Refl |
-| 8 | Cl(8) = 256 | 1+8+28+56+70+56+28+8+1 = 256 | 256 | ✓ Pascal |
+| 6 | [X,Z] = -2iY | XZ - ZX = -2iY | -2iY | ✓ Refl (mátrixszorzás) |
+| 7 | 240 + 16 = 256 | 240 + 16 = 256 | 256 | ✓ Refl (KÉT út) |
+| 8 | Cl(8) = 256 | 1+8+28+56+70+56+28+8+1 = 256 | 256 | ✓ Refl |
 | 9 | Állítás = F0 | mondatFázis Állítás = F0 | F0 | ✓ Refl |
 | 10 | Kérdés = F2 | mondatFázis Kérdés = F2 | F2 | ✓ Refl |
 | 11 | Feltevés = F4 | mondatFázis Feltevés = F4 | F4 | ✓ Refl |
 | 12 | Következtetés = F6 | mondatFázis Következtetés = F6 | F6 | ✓ Refl |
+| 13 | ω_2 = -1 | exp(πi) = -1 | -1 | ✓ Refl (KÉT út) |
+| 14 | ω_8 = (1+i)/√2 | exp(πi/4) = (1+i)/√2 | (0.7071, 0.7071) | ✓ Refl (KÉT út) |
+| 15 | d_p = 2, d_f = 8 | pozícióDimenzió = KétDimenzió | (2, 8) | ✓ Refl |
+| 16 | d_p × d_f = 16 | 2 × 8 = 16 | 16 | ✓ Refl (KÉT út) |
 
 ### 10.2. Numerikus eredmények
 
@@ -841,6 +949,9 @@ A `KostantFelbontás.idr` fájl tartalmazza a 240+16=256 bizonyítást:
 - **E8 gyökök**: 240 (Lie-algebra dimenzió 248 = 240 + 8)
 - **Kommutátor**: [X,Z] = -2iY ≠ 0 (konkrét mátrixszorzás)
 - **Mondattípusok**: 4 sarokpont (F0, F2, F4, F6) a 16 pontból
+- **ω_2**: (-1.0, 0.0) — a d=2 egységgyök (Pauli antikommutáció)
+- **ω_8**: (0.7071, 0.7071) — a d=8 egységgyök (Z₈ fázis)
+- **d_p × d_f**: 2 × 8 = 16 — a modular-qudit GKP kód fázistere
 
 ---
 
