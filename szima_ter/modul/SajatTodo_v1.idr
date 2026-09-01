@@ -137,8 +137,8 @@ todoLista = [
   MkFeladat "011.10" "A 43 feladat kiegészítése a §N14-gyel" Vár Magas "(a terv átszerkesztése)",
   -- B. Lexikon (a szótár alapozása):
   MkFeladat "000.01" "HungarianLexicon publikus-v2" Kész Magas "HungarianLexicon_v2_Szima.idr",
-  MkFeladat "000.02" "Szótár-generátor (teljes szótár + prozódia)" Kész Magas "SzotarHid_v2.idr",
-  MkFeladat "000.03" "Lumo-szókincs bővítés" Folyamatban Közepes "LumoSzokincs_v1.idr",
+  MkFeladat "000.02" "Szótár-generátor + GAN-kiegészítések (minimálpár-gráf, hisztogram, hangrend, szindróma)" Kész Magas "SzotarHid_v2.idr",
+  MkFeladat "000.03" "Lumo-szókincs bővítés" Vár Közepes "LumoSzokincs_v1.idr",
   MkFeladat "000.04" "Tő-keresés 22 esetrag + rekurzív" Vár Magas "SzotarHid_v2.idr",
   -- ELTÁVOLÍTVA (a felhasználó utasítására, 2026-09-01):
   --   MkFeladat "000.05" "Ékezet-normalizáció vizsgálata" ...
@@ -148,6 +148,9 @@ todoLista = [
   -- pont az ékezet nélkül bukik el). A normalizálás információvesztés.
   -- A fő út: az ékezet MEGŐRZÉSE. NINCS normalizálás.
   MkFeladat "000.06" "Bájt-egységesség (minőségi kapu a 003.x előtt)" Vár Közepes "(dokumentum)",
+  -- GAN-JAVASLAT (a 000.02 GAN-ellenőrzéséből — hard rule: figyelembe
+  -- kell venni; a gyakoriság = Bayes-prior a dekóderben ÉS fonológiai ok):
+  MkFeladat "000.07" "Gyakorisági rang mező (webcorpus/MNSZ — Bayes-prior)" Vár Közepes "(külső korpusz)",
   -- C. Mondat-réteg (tokenizálás és kódolás):
   MkFeladat "001.01" "Mondat-tokenizáló javítása" Vár Magas "(SzotarHid_v2)",
   MkFeladat "001.02" "CPT-fázis kinyerése a mondatból" Vár Magas "MondatCPT_v1.idr",
@@ -172,6 +175,9 @@ todoLista = [
   MkFeladat "003.04" "IDF-súlyozás" Vár Közepes "(SzotarHid_v2)",
   MkFeladat "003.05" "Hossz-normalizálás" Vár Közepes "(BelsoSzorzat_v1)",
   MkFeladat "003.06" "Klaszter-egyensúly" Vár Közepes "KlaszterEgyensuly_v1.idr",
+  -- GAN-JAVASLAT (a d=1 honest típusa — a korrekció Maybe, mert a
+  -- magyar szókincs kódtávolsága 1: birtok/bírtok két legális kódszó):
+  MkFeladat "003.07" "Közös dekóder (Maybe-korrekció — a CSS-szindróma: kvantitás⊕jelentés-fázis)" Vár Magas "KozosDekoder_v1.idr",
   MkFeladat "006.01" "Visszacsatolás" Vár Közepes "Visszacsatolas_v1.idr",
   MkFeladat "006.02" "Aktív tanulás" Vár Közepes "AktivTanulas_v1.idr",
   -- G. Elmélet — Markov-blanket/tétel/hiperbolikus:
@@ -185,6 +191,9 @@ todoLista = [
   MkFeladat "008.02" "Fixpont 1/φ" Vár Közepes "FixpontKereses_v1.idr",
   MkFeladat "008.04" "Carnot + reverzibilitás" Vár Közepes "(dokumentum)",
   MkFeladat "008.05" "GKP + Wadler" Vár Közepes "(dokumentum)",
+  -- GAN-JAVASLAT (a hangsúly természetessége: σ_{F(w)} = F(σ_w) —
+  -- a toldalékolás nem mozdítja; Idrisben Refl-bizonyítható):
+  MkFeladat "008.06" "A hangsúly természetességi lemmája (az append nem változtatja a fejet — Refl)" Vár Közepes "HangsulyTermeszetesseg_v1.idr",
   -- I. Integráció (a 009.05 az 010.01 előtt, mert az függ tőle):
   MkFeladat "009.01" "Fehérje-modell integrálása" Vár Közepes "(IndexBejegyzes_v2)",
   MkFeladat "009.02" "BabyAGI learnWord/sleepFilter" Vár Közepes "(IndexeloIO_v2)",

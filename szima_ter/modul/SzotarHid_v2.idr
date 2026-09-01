@@ -42,6 +42,7 @@ import SzotarHid_v1
 import Paragrafus
 import KomplexByte
 import Data.List
+import Data.List1
 
 %default total
 
@@ -252,6 +253,179 @@ teljesProzódiaSzótár =
   map (\szó => (huText szó, prozódia szó)) összesSzó
 
 -- ═══════════════════════════════════════════════════════════════════════
+-- III/C. A GAN-KIEGÉSZÍTÉSEK (a felhasználó hard rule-ja: „a gan
+-- javaslatait figyelembe kell venni es annak megfeleloen modositani a
+-- todo-t es javitania munkat" — a 000.02 GAN-ellenőrzésének mérései)
+-- ═══════════════════════════════════════════════════════════════════════
+
+||| A rendezéshez: Rövid < Hosszú (a kvantitás bit-sorrendje).
+public export
+Ord Hossz where
+  compare Rövid Rövid = EQ
+  compare Rövid Hosszú = LT
+  compare Hosszú Rövid = GT
+  compare Hosszú Hosszú = EQ
+
+-- ─── 1. A DEKVANTITÁLÁS (á→a, é→e, …) — a minimálpár-keresés kulcsa ───
+-- Ha két szó dekvantitált alakja EGYEZIK, de az eredeti ELTÉR, akkor a
+-- különbségük PONTOSAN kvantitás-párokból áll (1:1 karakter-leképezés)
+-- → ők a KOD-TÁVOLSÁG-1 (d=1) zóna lakói (a GAN felismerése).
+
+||| A hosszú magánhangzó rövid párja (a kvantitás „lefejtése").
+public export
+dekvantitáló : Char -> Char
+dekvantitáló 'á' = 'a'
+dekvantitáló 'é' = 'e'
+dekvantitáló 'í' = 'i'
+dekvantitáló 'ó' = 'o'
+dekvantitáló 'ő' = 'ö'
+dekvantitáló 'ú' = 'u'
+dekvantitáló 'ű' = 'ü'
+dekvantitáló c = c
+
+||| A szó dekvantitált alakja (a kvantitás-invariáns „törzse").
+public export
+dekvantitál : String -> String
+dekvantitál = pack . map dekvantitáló . unpack
+
+||| Minimálpár-e a két szó? (CAK kvantitásban térnek el.)
+public export
+minimálpárE : String -> String -> Bool
+minimálpárE egy másik =
+  egy /= másik && dekvantitál egy == dekvantitál másik
+
+||| A teljes lexikon szövegei.
+public export
+szövegLista : List String
+szövegLista = map huText összesSzó
+
+||| Az azonos dekvantitált törzsű szavak csoportjai (rendezés + csoport).
+public export
+dekvantitáltCsoportok : List (List String)
+dekvantitáltCsoportok =
+  map forget
+    (groupBy (\x, y => dekvantitál x == dekvantitál y)
+      (sortBy (\x, y => compare (dekvantitál x) (dekvantitál y)) szövegLista))
+
+||| Egy csoportból az összes (rendezett) párosítás — CSAK KÜLÖNBÖZŐ
+||| szövegűek (a lexikonban azonos huText-ű duplikátumok is élnek;
+||| az önmagával való pár NEM minimálpár).
+public export
+párokCsoportból : List String -> List (String, String)
+párokCsoportból [] = []
+párokCsoportból (x :: xs) =
+  map (\y => (x, y)) (filter (\y => y /= x) xs) ++ párokCsoportból xs
+
+||| A MINIMÁLPÁR-GRÁF (a confusability-gráf — a GAN 1. javaslata):
+||| a 3460 szó összes d=1 párosítása. Az élek száma = a d=1 zóna mérete.
+public export
+minimálpárGráf : List (String, String)
+minimálpárGráf =
+  concatMap párokCsoportból
+    (filter (\csoport => length csoport >= 2) dekvantitáltCsoportok)
+
+-- ─── 2. A KVANTITÁS-HISZTOGRAM (a GAN 8. javaslata — §N14/3+5) ───
+
+||| Egy elem gyakorisága a listában (a Data.List filter + length).
+public export
+gyakoriság : Eq a => a -> List a -> Nat
+gyakoriság x = length . filter (== x)
+
+||| A 3460 szó ritmus-mintázatai.
+public export
+mindenMintázat : List (List Hossz)
+mindenMintázat = map (ritmus . snd) teljesProzódiaSzótár
+
+||| A KVANTITÁS-HISZTOGRAM: (mintázat, gyakoriság) párok,
+||| gyakoriság szerint csökkenően (a leggyakoribb mintázat elöl).
+||| Ebből számolható a csatorna entrópiája (a jövő).
+public export
+ritmusHisztogram : List (List Hossz, Nat)
+ritmusHisztogram =
+  sortBy (\x, y => compare (snd y) (snd x))
+    (map (\minta => (minta, gyakoriság minta mindenMintázat))
+         (nub mindenMintázat))
+
+-- ─── 3. A HANGREND (a GAN „második ingyenes paritás-csatornája") ───
+
+||| A szó hangrendje (a toldalékolás determinizmusa — a magyar
+||| második ingyenes paritás-csatornája a GAN szerint).
+public export
+data Hangrend : Type where
+  Mély   : Hangrend    -- a á o ó u ú
+  Magas  : Hangrend    -- e é i í ö ő ü ű
+  Vegyes : Hangrend    -- mindkettő
+
+public export
+Eq Hangrend where
+  Mély == Mély = True
+  Magas == Magas = True
+  Vegyes == Vegyes = True
+  _ == _ = False
+
+public export
+Show Hangrend where
+  show Mély = "Mély"
+  show Magas = "Magas"
+  show Vegyes = "Vegyes"
+
+||| A szó hangrendjének kinyerése a magánhangzók osztályaiból.
+public export
+hangrendKinyerő : String -> Hangrend
+hangrendKinyerő szó =
+  let vanMély  = any (\c => elem c (unpack "aáoóuú")) (unpack szó)
+      vanMagas = any (\c => elem c (unpack "eéiíöőüű")) (unpack szó)
+  in case (vanMély, vanMagas) of
+       (True, False) => Mély
+       (False, True) => Magas
+       (True, True)  => Vegyes
+       (False, False) => Magas   -- magánhangzó nélkül: neutral (magas)
+
+-- ─── 4. A PROZÓDIA-SZINDRÓMA (a GAN: Bool → (MelyikSzótag, MelyikBit)) ───
+-- A «MelyikBit» egy szótagon AZ EGY kvantitás-bit (Rövid↔Hosszú),
+-- ezért a szindróma = a szótag indexe (a bit egyértelmű).
+
+||| A prozódiai szindróma: HOL üt el a kapott a tárolttól.
+||| A Hamming-szindróma szó-szintű megfelelője (a [[7,1,3]] logika).
+public export
+data ProzódiaSzindróma : Type where
+  NincsHiba       : ProzódiaSzindróma
+  HibásSzótag     : Nat -> ProzódiaSzindróma          -- az első eltérés helye
+  SzótagszámEltér : Nat -> Nat -> ProzódiaSzindróma   -- (várt, kapott)
+
+public export
+Show ProzódiaSzindróma where
+  show NincsHiba = "NincsHiba"
+  show (HibásSzótag n) = "HibásSzótag " ++ show n
+  show (SzótagszámEltér várt kapott) =
+    "SzótagszámEltér (várt: " ++ show várt ++ ", kapott: " ++ show kapott ++ ")"
+
+||| Az első eltérő pozíció megkeresése (Nothing, ha egyeznek).
+public export
+elsőEltérés : Nat -> List Hossz -> List Hossz -> Maybe Nat
+elsőEltérés _ [] [] = Nothing
+elsőEltérés n (x :: xs) (y :: ys) =
+  if x == y then elsőEltérés (S n) xs ys else Just n
+elsőEltérés n _ _ = Just n
+
+||| A szindróma kinyerése: a kapott szó vs. a tárolt prozódia.
+||| Példa: «abákusz» a «abakusz» ellen → HibásSzótag 1 (az «á» betűnél).
+public export
+prozódiaSzindróma : String -> Prozódia -> ProzódiaSzindróma
+prozódiaSzindróma kapott tárolt =
+  case elsőEltérés 0 (ritmusKinyerő kapott) (ritmus tárolt) of
+    Nothing => NincsHiba
+    Just n =>
+      if szótagszámKinyerő kapott == szótagszám tárolt
+        then HibásSzótag n
+        else SzótagszámEltér (szótagszám tárolt) (szótagszámKinyerő kapott)
+
+-- GAN-TILTVÁNY rögzítése (Siptár 1995: a mássalhangzó-kvantitásnak
+-- nagyon kevés minimálpárja van): a GEMINÁT-csatornát TILOS paritásként
+-- használni — csak a magánhangzó-kvantitás a megbízható csatorna.
+-- (A jövőbeli dekóder ezt a tiltást típus-szinten is kikényszeríti.)
+
+-- ═══════════════════════════════════════════════════════════════════════
 -- IV. REFL-BIZONYÍTÁSOK
 -- ═══════════════════════════════════════════════════════════════════════
 
@@ -317,6 +491,30 @@ main = do
   putStrLn ("  teljesSzótár mérete:     " ++ show (length teljesSzótár))
   putStrLn ("  teljesProzódiaSzótár:    " ++ show (length teljesProzódiaSzótár) ++ " szó prozódiával")
   putStrLn "   → a 000.02 kész: a teljes szótár + prozódia + hibajavítás"
+  putStrLn ""
+  putStrLn "─── II/C. A GAN-MÉRÉSEK (a javaslatok megvalósítva) ───"
+  putStrLn ""
+  putStrLn ("  minimálpár-gráf élszáma (a d=1 zóna):   "
+    ++ show (length minimálpárGráf))
+  putStrLn "  az első minimálpárok (csak kvantitásban térnek el):"
+  traverse_ (\(x, y) => putStrLn ("    «" ++ x ++ "» — «" ++ y ++ "»"))
+    (take 8 minimálpárGráf)
+  putStrLn ("  ritmus-mintázatok száma (nub):           "
+    ++ show (length (nub mindenMintázat)))
+  putStrLn "  a hisztogram eleje (mintázat → gyakoriság):"
+  traverse_ (\(minta, darab) =>
+    putStrLn ("    " ++ show minta ++ " → " ++ show darab))
+    (take 6 ritmusHisztogram)
+  putStrLn ("  hangrend-eloszlás — Mély:   "
+    ++ show (gyakoriság Mély (map (hangrendKinyerő . fst) teljesProzódiaSzótár)))
+  putStrLn ("  hangrend-eloszlás — Magas:  "
+    ++ show (gyakoriság Magas (map (hangrendKinyerő . fst) teljesProzódiaSzótár)))
+  putStrLn ("  hangrend-eloszlás — Vegyes: "
+    ++ show (gyakoriság Vegyes (map (hangrendKinyerő . fst) teljesProzódiaSzótár)))
+  putStrLn ("  szindróma: «abákusz» a «abakusz» ellen = "
+    ++ show (prozódiaSzindróma "abákusz" (prozódia n_abakusz)))
+  putStrLn ("  szindróma: «abekus» a «abakusz» ellen =   "
+    ++ show (prozódiaSzindróma "abekus" (prozódia n_abakusz)))
   putStrLn ""
   putStrLn "─── III. A HIBAJAVÍTÓ REDUNDANCIA (a [[7,1,3]] logika) ───"
   putStrLn ""
