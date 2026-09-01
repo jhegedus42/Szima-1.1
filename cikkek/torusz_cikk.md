@@ -1192,7 +1192,8 @@ bizonyítások:
      ω_d = exp(2πi/d). A d=2 eset = Pauli, a d=8 eset = Z₈.)
 
 [12] „Hungarian verbs", Wikipedia,
-     https://en.wikipedia.org/wiki/Hungarian_verbs
+     https://en.wikipedia.org/wiki/Hungarian_verbs. (A magyar igék 3
+     módja — l. még [4] a hivatalos forrás.)
      (A magyar igék 3 módja: kijelentő, feltételes, felszólító/kötő.)
 
 [13] J. Baez, „The Octonions", *Bull. Amer. Math. Soc.* **39**, 145–205
