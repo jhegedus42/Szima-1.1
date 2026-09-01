@@ -136,8 +136,8 @@ todoLista = [
   MkFeladat "011.07" "InteraktívProgram (vázlatként indul, mérföldköveknél bővül)" Vár Közepes "(getLine + putStrLn)",
   MkFeladat "011.10" "A 43 feladat kiegészítése a §N14-gyel" Vár Magas "(a terv átszerkesztése)",
   -- B. Lexikon (a szótár alapozása):
-  MkFeladat "000.01" "HungarianLexicon publikus-v2" Folyamatban Magas "HungarianLexicon_v2_Szima.idr",
-  MkFeladat "000.02" "Szótár-generátor" Vár Magas "SzotarHid_v2.idr",
+  MkFeladat "000.01" "HungarianLexicon publikus-v2" Kész Magas "HungarianLexicon_v2_Szima.idr",
+  MkFeladat "000.02" "Szótár-generátor" Folyamatban Magas "SzotarHid_v2.idr",
   MkFeladat "000.03" "Lumo-szókincs bővítés" Vár Közepes "LumoSzokincs_v1.idr",
   MkFeladat "000.04" "Tő-keresés 22 esetrag + rekurzív" Vár Magas "SzotarHid_v2.idr",
   -- ELTÁVOLÍTVA (a felhasználó utasítására, 2026-09-01):
