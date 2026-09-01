@@ -107,79 +107,95 @@ Show Feladat where
 public export
 todoLista : List Feladat
 todoLista = [
-  -- 11. fázis — a verifikációs protocol:
-  MkFeladat "11.1" "VerifikációsProtokoll typeclass" Kész Magas "VerifikaciosProtokoll_v1.idr",
-  MkFeladat "11.5" "IrodalomHivatkozás typeclass" Vár Magas "IrodalomHivatkozás_v1.idr",
-  MkFeladat "11.8" "DefinícióGenerálás (typeclass/record)" Vár Magas "(minden feladatban)",
-  MkFeladat "11.10" "A 43 feladat kiegészítése a §N14-gyel" Vár Magas "(a terv átszerkesztése)",
-  -- 0. fázis — a szótár alapozása:
-  MkFeladat "0.1" "HungarianLexicon publikus-v2" Folyamatban Magas "HungarianLexicon_v2_Szima.idr",
-  MkFeladat "0.2" "Szótár-generátor" Vár Magas "SzotarHid_v2.idr",
-  MkFeladat "0.3" "Lumo-szókincs bővítés" Vár Közepes "LumoSzokincs_v1.idr",
-  MkFeladat "0.4" "Tő-keresés 22 esetrag + rekurzív" Vár Magas "SzotarHid_v2.idr",
-  MkFeladat "0.5" "Ékezet-normalizáció vizsgálata" Vár Alacsony "EkezetNormalizalo_v1.idr",
-  MkFeladat "0.6" "Bájt-egységesség" Vár Közepes "(dokumentum)",
-  -- 1. fázis — tokenizálás és kódolás:
-  MkFeladat "1.1" "Mondat-tokenizáló javítása" Vár Magas "(SzotarHid_v2)",
-  MkFeladat "1.2" "CPT-fázis kinyerése a mondatból" Vár Magas "MondatCPT_v1.idr",
-  MkFeladat "1.3" "Steane-kód generálás ellenőrzése" Vár Közepes "(futásidejű teszt)",
-  MkFeladat "1.4" "Idris IO-réteg (readFile)" Vár Magas "IndexeloIO_v1.idr",
-  MkFeladat "1.5" "Streamelt indexelés (batch=100)" Vár Magas "StreamIndexelo_v1.idr",
-  -- 2. fázis — a tórusz és a klaszterezés:
-  MkFeladat "2.1" "Tórusz-pont mint index 0. szintje" Vár Magas "IndexBejegyzes_v1.idr",
-  MkFeladat "2.2" "16 klaszter" Vár Magas "Klaszterezes_v1.idr",
-  MkFeladat "2.3" "Lemez-alapú index (B-tree)" Vár Magas "LemezIndex_v1.idr",
-  -- 3. fázis — a távolság és a finomítás:
-  MkFeladat "3.1" "Hadamard előszűrő" Vár Magas "SteaneSzuro_v1.idr",
-  MkFeladat "3.2" "Normalizált Manhattan-távolság" Vár Magas "(LumoKereso_v2)",
-  MkFeladat "3.3" "Belső szorzat" Vár Magas "BelsoSzorzat_v1.idr",
-  MkFeladat "3.4" "IDF-súlyozás" Vár Közepes "(SzotarHid_v2)",
-  MkFeladat "3.5" "Hossz-normalizálás" Vár Közepes "(BelsoSzorzat_v1)",
-  MkFeladat "3.6" "Klaszter-egyensúly" Vár Közepes "KlaszterEgyensuly_v1.idr",
-  -- 4. fázis — a hierarchikus keresés:
-  MkFeladat "4.1" "Hierarchikus keresés" Vár Magas "HierarchikusKereses_v1.idr",
-  MkFeladat "4.2" "Könyvek indexelése" Vár Magas "(IndexeloIO_v1)",
-  -- 5. fázis — a metrikák és a tesztelés:
-  MkFeladat "5.1" "Metrikák (NDCG, MRR)" Vár Magas "KeresesiMetrikak_v1.idr",
-  MkFeladat "5.2" "Ground-truth építése" Vár Magas "tesztek/GroundTruth_v1.txt",
-  MkFeladat "5.3" "Könyvtalálatok tesztje" Vár Magas "(GroundTruth_v1)",
-  MkFeladat "5.4" "Teljesítménymérés" Vár Közepes "(futásidejű)",
-  -- 6. fázis — a visszacsatolás:
-  MkFeladat "6.1" "Visszacsatolás" Vár Közepes "Visszacsatolas_v1.idr",
-  MkFeladat "6.2" "Aktív tanulás" Vár Közepes "AktivTanulas_v1.idr",
-  -- 7. fázis — a Bergman-kernel és a hiperbolikus:
-  MkFeladat "7.1" "Markov-blanket" Vár Magas "MarkovBlanket_v1.idr",
-  MkFeladat "7.2" "Bergman-kernel" Vár Magas "BergmanKernel_v1.idr",
-  MkFeladat "7.3" "Tétel: Berg≈Manh" Vár Közepes "(dokumentum)",
-  MkFeladat "7.4" "Hiperbolikus beágyazás" Vár Magas "HiperbolikusBeagyazas_v1.idr",
-  -- 8. fázis — a matematika:
-  MkFeladat "8.1" "Yoneda" Vár Közepes "(dokumentum)",
-  MkFeladat "8.2" "Fixpont 1/φ" Vár Közepes "FixpontKereses_v1.idr",
-  MkFeladat "8.3" "Aranymetszés-spirál" Vár Közepes "AranymetszesSpiral_v1.idr",
-  MkFeladat "8.4" "Carnot + reverzibilitás" Vár Közepes "(dokumentum)",
-  MkFeladat "8.5" "GKP + Wadler" Vár Közepes "(dokumentum)",
-  -- 9. fázis — a fehérje-modell és a BabyAGI:
-  MkFeladat "9.1" "Fehérje-modell integrálása" Vár Közepes "(IndexBejegyzes_v2)",
-  MkFeladat "9.2" "BabyAGI learnWord/sleepFilter" Vár Közepes "(IndexeloIO_v2)",
-  MkFeladat "9.3" "Online tanulás" Vár Közepes "OnlineTanulas_v1.idr",
-  MkFeladat "9.4" "Hangrendszer (Fano)" Vár Közepes "HangrendszerKodolas_v1.idr",
-  MkFeladat "9.5" "Magánadatok" Vár Alacsony "Maganadatok_v1.idr",
-  -- 10. fázis — a publikáció és az élő rendszer:
-  MkFeladat "10.1" "GAN-ellenőrzés" Vár Magas "(task-alügynök)",
-  MkFeladat "10.2" "Publikáció" Vár Magas "cikkek/episodic_memory_cikk.md",
-  MkFeladat "10.3" "9. szint (élő rendszer)" Vár Magas "(főprogram)",
-  -- 11. fázis — a verifikációs protocol (a többi):
-  MkFeladat "11.2" "GAN automatizálása" Vár Közepes "(task-hívás)",
-  MkFeladat "11.3" "FordításEredménye" Vár Közepes "(idris2 exit 0)",
-  MkFeladat "11.4" "NumerikusVerifikáció" Vár Közepes "(idris2 --exec)",
-  MkFeladat "11.6" "VizualizációGenerálás" Vár Közepes "(Mermaid/táblázat)",
-  MkFeladat "11.7" "InteraktívProgram" Vár Közepes "(getLine + putStrLn)",
-  MkFeladat "11.9" "VerifikációsJelentés" Vár Közepes "(jelentésÍrása)",
-  MkFeladat "11.11" "IrodalomKeresés (MCP)" Vár Közepes "(MCP-hívás)",
-  MkFeladat "11.12" "DiagramGenerálás (MCP)" Vár Közepes "(MCP-hívás)",
-  MkFeladat "11.13" "GAN-Visszacsatolás" Vár Közepes "(beépítés)",
-  MkFeladat "11.14" "VerifikációsNapló" Vár Közepes "(kutatasi_naplo)",
-  MkFeladat "11.15" "DemonstrációsMűsor" Vár Magas "DemonstraciosMusor_v1.idr"
+  -- ═══ A GAN-AUDIT (2026-09-01, task-alügynök) EREDMÉNYE ═══
+  -- 1 élsértés: 5.1 a 5.2 előtt állt, pedig tőle függ → CSERÉVE.
+  -- 4.1 (16 feladatot blokkoló csomópont) 4 pozícióval később állt,
+  --   mint lehetséges → EMELVE a 3.2 (003.02) után.
+  -- A verifikációs eszközök (011.x) a fő vonal UTÁN álltak — a §N14
+  --   szerint ELŐBB kell elkészülniük, mint amit ellenőriznek → ELŐRE.
+  -- 011.05 + 011.08 = a 011.01 részeként már megvalósultak → KÉSZ.
+  -- ═══ A 0-PADDING HARD RULE (a felhasználó, 2026-09-01) ═══
+  -- „a sorszamozasnak 000.00-nak kell lennie, azaz 0-paddingolt,
+  --   mert a sorozat maskepp osszekeveredik" — string-össze-
+  --   hasonlítással a «2.1» > «11.1» ( ÖSSZEKEVEREDÉS!), míg
+  --   «002.01» < «011.01» ✓. A számrend = a string-rend.
+  -- ═══════════════════════════════════════════════════════════
+  -- A. Verifikációs alap (a §N14 eszközei ELŐBB, mint amit ellenőriznek):
+  MkFeladat "011.01" "VerifikációsProtokoll typeclass" Kész Magas "VerifikaciosProtokoll_v1.idr",
+  MkFeladat "011.05" "IrodalomHivatkozás (a 011.01 része: Hivatkozás record)" Kész Magas "VerifikaciosProtokoll_v1.idr",
+  MkFeladat "011.08" "DefinícióGenerálás (a 011.01 része: typeclass/record)" Kész Magas "(minden feladatban)",
+  MkFeladat "011.03" "FordításEredménye (adattípus minden verifikációhoz)" Vár Közepes "(idris2 exit 0)",
+  MkFeladat "011.04" "NumerikusVerifikáció" Vár Közepes "(idris2 --exec)",
+  MkFeladat "011.02" "GAN automatizálása" Vár Közepes "(task-hívás)",
+  MkFeladat "011.13" "GAN-Visszacsatolás" Vár Közepes "(beépítés)",
+  MkFeladat "011.06" "VizualizációGenerálás" Vár Közepes "(Mermaid/táblázat)",
+  MkFeladat "011.12" "DiagramGenerálás (MCP)" Vár Közepes "(MCP-hívás)",
+  MkFeladat "011.11" "IrodalomKeresés (MCP)" Vár Közepes "(MCP-hívás)",
+  MkFeladat "011.09" "VerifikációsJelentés" Vár Közepes "(jelentésÍrása)",
+  MkFeladat "011.14" "VerifikációsNapló" Vár Közepes "(kutatasi_naplo)",
+  MkFeladat "011.07" "InteraktívProgram (vázlatként indul, mérföldköveknél bővül)" Vár Közepes "(getLine + putStrLn)",
+  MkFeladat "011.10" "A 43 feladat kiegészítése a §N14-gyel" Vár Magas "(a terv átszerkesztése)",
+  -- B. Lexikon (a szótár alapozása):
+  MkFeladat "000.01" "HungarianLexicon publikus-v2" Folyamatban Magas "HungarianLexicon_v2_Szima.idr",
+  MkFeladat "000.02" "Szótár-generátor" Vár Magas "SzotarHid_v2.idr",
+  MkFeladat "000.03" "Lumo-szókincs bővítés" Vár Közepes "LumoSzokincs_v1.idr",
+  MkFeladat "000.04" "Tő-keresés 22 esetrag + rekurzív" Vár Magas "SzotarHid_v2.idr",
+  -- ELTÁVOLÍTVA (a felhasználó utasítására, 2026-09-01):
+  --   MkFeladat "000.05" "Ékezet-normalizáció vizsgálata" ...
+  -- Indok (a felhasználó, szó szerint): „ekeztnormalizalora miert van
+  -- szukseg ? az pont hogy elront mindent". Az ékezet INFORMÁCIÓ —
+  -- a SzotarHid_v1 tanulsága: 'hazugsagot' ≠ 'hazugság' (a keresés
+  -- pont az ékezet nélkül bukik el). A normalizálás információvesztés.
+  -- A fő út: az ékezet MEGŐRZÉSE. NINCS normalizálás.
+  MkFeladat "000.06" "Bájt-egységesség (minőségi kapu a 003.x előtt)" Vár Közepes "(dokumentum)",
+  -- C. Mondat-réteg (tokenizálás és kódolás):
+  MkFeladat "001.01" "Mondat-tokenizáló javítása" Vár Magas "(SzotarHid_v2)",
+  MkFeladat "001.02" "CPT-fázis kinyerése a mondatból" Vár Magas "MondatCPT_v1.idr",
+  MkFeladat "001.03" "Steane-kód generálás ellenőrzése" Vár Közepes "(futásidejű teszt)",
+  MkFeladat "001.04" "Idris IO-réteg (readFile)" Vár Magas "IndexeloIO_v1.idr",
+  MkFeladat "001.05" "Streamelt indexelés (batch=100)" Vár Magas "StreamIndexelo_v1.idr",
+  -- D. Tórusz/index:
+  MkFeladat "002.01" "Tórusz-pont mint index 0. szintje" Vár Magas "IndexBejegyzes_v1.idr",
+  MkFeladat "002.02" "16 klaszter" Vár Magas "Klaszterezes_v1.idr",
+  MkFeladat "002.03" "Lemez-alapú index (B-tree)" Vár Magas "LemezIndex_v1.idr",
+  -- E. Metrikák + a kritikus csomópont (a 004.01 EMELVE, az 005.02/005.01 CSERÉVE):
+  MkFeladat "003.01" "Hadamard előszűrő" Vár Magas "SteaneSzuro_v1.idr",
+  MkFeladat "003.02" "Normalizált Manhattan-távolság" Vár Magas "(LumoKereso_v2)",
+  MkFeladat "004.01" "Hierarchikus keresés (kritikus csomópont: 16 feladatot blokkol)" Vár Magas "HierarchikusKereses_v1.idr",
+  MkFeladat "004.02" "Könyvek indexelése" Vár Magas "(IndexeloIO_v1)",
+  MkFeladat "005.02" "Ground-truth építése (ELŐBB, mert a 005.01 tőle függ)" Vár Magas "tesztek/GroundTruth_v1.txt",
+  MkFeladat "005.01" "Metrikák (NDCG, MRR)" Vár Magas "KeresesiMetrikak_v1.idr",
+  MkFeladat "005.03" "Könyvtalálatok tesztje" Vár Magas "(GroundTruth_v1)",
+  MkFeladat "005.04" "Teljesítménymérés" Vár Közepes "(futásidejű)",
+  -- F. Későbbi metrikák, visszacsatolás:
+  MkFeladat "003.03" "Belső szorzat" Vár Magas "BelsoSzorzat_v1.idr",
+  MkFeladat "003.04" "IDF-súlyozás" Vár Közepes "(SzotarHid_v2)",
+  MkFeladat "003.05" "Hossz-normalizálás" Vár Közepes "(BelsoSzorzat_v1)",
+  MkFeladat "003.06" "Klaszter-egyensúly" Vár Közepes "KlaszterEgyensuly_v1.idr",
+  MkFeladat "006.01" "Visszacsatolás" Vár Közepes "Visszacsatolas_v1.idr",
+  MkFeladat "006.02" "Aktív tanulás" Vár Közepes "AktivTanulas_v1.idr",
+  -- G. Elmélet — Markov-blanket/tétel/hiperbolikus:
+  MkFeladat "007.01" "Markov-blanket" Vár Magas "MarkovBlanket_v1.idr",
+  MkFeladat "007.02" "Bergman-kernel" Vár Magas "BergmanKernel_v1.idr",
+  MkFeladat "007.03" "Tétel: Berg≈Manh" Vár Közepes "(dokumentum)",
+  MkFeladat "007.04" "Hiperbolikus beágyazás" Vár Magas "HiperbolikusBeagyazas_v1.idr",
+  MkFeladat "008.03" "Aranymetszés-spirál (a 007.04 után, mert tőle függ)" Vár Közepes "AranymetszesSpiral_v1.idr",
+  -- H. Lebegő elméleti feladatok (párhuzamosíthatók, nem blokkolnak):
+  MkFeladat "008.01" "Yoneda" Vár Közepes "(dokumentum)",
+  MkFeladat "008.02" "Fixpont 1/φ" Vár Közepes "FixpontKereses_v1.idr",
+  MkFeladat "008.04" "Carnot + reverzibilitás" Vár Közepes "(dokumentum)",
+  MkFeladat "008.05" "GKP + Wadler" Vár Közepes "(dokumentum)",
+  -- I. Integráció (a 009.05 az 010.01 előtt, mert az függ tőle):
+  MkFeladat "009.01" "Fehérje-modell integrálása" Vár Közepes "(IndexBejegyzes_v2)",
+  MkFeladat "009.02" "BabyAGI learnWord/sleepFilter" Vár Közepes "(IndexeloIO_v2)",
+  MkFeladat "009.03" "Online tanulás" Vár Közepes "OnlineTanulas_v1.idr",
+  MkFeladat "009.05" "Magánadatok (az 010.01 függ tőle)" Vár Alacsony "Maganadatok_v1.idr",
+  MkFeladat "009.04" "Hangrendszer (Fano)" Vár Közepes "HangrendszerKodolas_v1.idr",
+  -- J. Lezárás:
+  MkFeladat "010.01" "GAN-ellenőrzés" Vár Magas "(task-alügynök)",
+  MkFeladat "010.02" "Publikáció" Vár Magas "cikkek/episodic_memory_cikk.md",
+  MkFeladat "010.03" "9. szint (élő rendszer)" Vár Magas "(főprogram)",
+  MkFeladat "011.15" "DemonstrációsMűsor" Vár Magas "DemonstraciosMusor_v1.idr"
   ]
 
 -- ═══════════════════════════════════════════════════════════════════════
@@ -266,6 +282,37 @@ bizKészNemVár : Kész == Vár = False
 bizKészNemVár = Refl
 
 -- ═══════════════════════════════════════════════════════════════════════
+-- IV/B. A 0-PADDING BIZONYÍTÁSAI (a felhasználó hard rule-ja: 000.00)
+-- ═══════════════════════════════════════════════════════════════════════
+-- „a sorszamozasnak 000.00-nak kell lennie, azaz 0-paddingolt,
+--  mert a sorozat maskepp osszekeveredik"
+-- A LÉNYEG: 0-paddinggal a STRING-rendezés = a SZÁM-rendezés.
+-- A bizonyítás: páronkénti compare-ellenőrzés (futásidejű Show-teszt,
+-- mert a String-compare nem redukálódik Refl-hez — korábbi tanulság).
+
+||| A 0-padding sorkapcsolat: a fázis-rendezés string-ként HELYES.
+||| «000.01» < «001.01» (LT) — a lexikon a mondat-réteg ELŐTT.
+||| Kimenet (main): LT ✓
+public export
+paddingFázisTeszt : String
+paddingFázisTeszt = show (compare "000.01" "001.01")
+
+||| A 0-padding sorkapcsolat: a «tízes» átverés ELKERÜLVE.
+||| PADDING NÉLKÜL: «2.1» > «10.1» > «11.1» (az összekeveredés!),
+||| PADDINGGAL: «002.01» < «010.01» < «011.01» ✓.
+||| Kimenet (main): LT ✓
+public export
+paddingTízesTeszt : String
+paddingTízesTeszt = show (compare "002.01" "010.01")
+
+||| A régi (nem paddingolt) forma HIBÁJÁNAK bemutatása:
+||| «2.1» vs «10.1» string-rendezése GT (rossz!), mert '2' > '1'.
+||| Kimenet (main): GT (a régi hiba demonstrálása) ✓
+public export
+paddingNelkuliHibaTeszt : String
+paddingNelkuliHibaTeszt = show (compare "2.1" "10.1")
+
+-- ═══════════════════════════════════════════════════════════════════════
 -- V. FŐPROGRAM — A TODO INTERAKTÍV KEZELÉSE
 -- ═══════════════════════════════════════════════════════════════════════
 
@@ -334,6 +381,9 @@ main = do
   putStrLn "  REFL: Kész == Kész = True     (bizKészEq)"
   putStrLn "  REFL: Vár == Vár = True       (bizVárEq)"
   putStrLn "  REFL: Kész == Vár = False     (bizKészNemVár)"
+  putStrLn ("  PADDING: «000.01» vs «001.01» = " ++ paddingFázisTeszt ++ "  (LT = helyes ✓)")
+  putStrLn ("  PADDING: «002.01» vs «010.01» = " ++ paddingTízesTeszt ++ "  (LT = helyes ✓)")
+  putStrLn ("  PADDING NÉLKÜL: «2.1» vs «10.1» = " ++ paddingNelkuliHibaTeszt ++ "  (GT = az összekeveredés!)")
   putStrLn "  Futásidejű: a KÉSZ számláló + a FOLYAMATBAN számláló (show-val)"
   putStrLn ""
   putStrLn "═══════════════════════════════════════════════════════════════"
