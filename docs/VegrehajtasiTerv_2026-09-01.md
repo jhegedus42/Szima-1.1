@@ -465,3 +465,150 @@
 | 10.3 | 9. szint (élő) | összes | — | (főprogram) |
 
 ★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★
+---
+
+## VII. KIEGÉSZÍTÉS — a GAN által javasolt 15 új feladat (§N14 integráció)
+
+A GAN-bíráló (2026-09-01) a végrehajtási terv 43 feladatát átnézve megállapította, hogy a §N14 (a 6-szintű verifikációs protocol) gyakorlatilag hiányzik: GAN 42/43-ból, vizualizáció 43/43-ból, interaktív program 42/43-ból, irodalom 42/43-ból, Idris-definíciók 41/43-ból. A GAN CSAK hozzátesz — 15 új feladatot javasolt (11.1–11.15), amelyek a verifikációs protocol-t integrálják.
+
+**11.1. A VerifikációsProtokoll typeclass.**
+- **Feladat:** egy `VerifikációsProtokoll` typeclass, amely minden feladatnak kötelezően implementálja a 6-szintű verifikációt: `ganEllenőrzés`, `fordítás`, `numerikusVerifikáció`, `irodalom`, `vizualizáció`, `interaktívProgram`. A typeclass = a definíció (Curry-Howard): ha egy feladat NEM implementálja, a kód NEM fordul — a typechecker = a bíró.
+- **Fájl:** `VerifikaciosProtokoll_v1.idr` (az interface + a `record Hivatkozás` + a `record VerifikációsJelentés`).
+- **Siker:** a typeclass lefordul; egy minta-feladat implementálja; a `main` kiírja a 6 szint eredményét.
+
+**11.2. A GAN-ellenőrzés automatizálása — a task-hívás minden lépés után.**
+- **Feladat:** minden feladat végrehajtása után egy `task`-alügynök (general) hívása, amely KIEGÉSZÍT — új szempontokat, javításokat, korrekciókat tesz hozzá. NEM mondja, hogy „ezt nem érdemes megpróbálni" — bármiból jöhet ki eredmény. A jelentés a `kutatasi_naplo/gan_ellenorzesek/` könyvtárba kerül.
+- **Siker:** minden feladat után egy `GANJelentés` fájl; a kiegészítések száma > 0 (a GAN mindig hozzátesz).
+
+**11.3. A FordításEredménye — az idris2 exit 0 automatikus ellenőrzése.**
+- **Feladat:** minden feladat után a KÓD FORDUL — `idris2 <fájl>.idr` exit 0. A typechecker = a bíró (HOROG). Ha nem fordul, a feladat NEM kész.
+- **Siker:** minden feladat fájlja `idris2 <fájl>.idr` exit 0; a `Hiba` esetén a feladat NEM kész.
+
+**11.4. A NumerikusVerifikáció — az idris2 --exec main kimenetének dokumentálása.**
+- **Feladat:** minden feladatnak van egy `main : IO ()`-je, ami a `putStrLn (show eredmény)` formában kiírja a numerikus eredményt. A MANTRA szerint: „Kimenet: Refl (...✓)" — a Show-értékek a kódban dokumentálva.
+- **Siker:** minden feladat `idris2 --exec main <fájl>.idr` értelmes kimenetet ad; a kimenet a kódban dokumentálva.
+
+**11.5. Az IrodalomHivatkozás typeclass — a §N12 Idris-megvalósítása.**
+- **Feladat:** minden feladathoz, amely matematikai állítást tesz, kell egy IRODALMI HIVATKOZÁS (arXiv, Wikipedia, nLab, könyv). A hivatkozás a kód kommentjében ÉS a kutatási naplóban.
+- **Fájl:** `IrodalomHivatkozás_v1.idr` (a `record Hivatkozás` + az `interface IrodalomHivatkozás`).
+- **Konkrét hivatkozások:**
+  - tórusz: Hatcher „Algebraic Topology", Wikipedia „Torus";
+  - Hadamard: Nielsen & Chuang „Quantum Computation", Wikipedia „Walsh function";
+  - Manhattan: Wikipedia „Manhattan distance", Krause „Taxicab Geometry";
+  - Bergman: Wikipedia „Bergman space", Krantz „Function Theory";
+  - Yoneda: Mac Lane IV.3, Awodey 2.3;
+  - hiperbolikus: arXiv:1705.08039 (Nickel-Kiela);
+  - Carnot: Wikipedia „Carnot cycle", Carnot (1824);
+  - GKP: arXiv:0008040 (Gottesman-Kitaev-Preskill);
+  - Wadler: Wadler „Theorems for free!" (POPL 1989);
+  - Fano: Wikipedia „Fano plane".
+- **Siker:** minden matematikai állításhoz legalább 1 hivatkozás; a hivatkozások a kódban és a naplóban.
+
+**11.6. A VizualizációGenerálás — a Mermaid-diagramok és az Idris-kimenetek.**
+- **Feladat:** minden lépéshez egy VIZUÁLIS demonstráció: Mermaid-diagram (a diagrams MCP-vel), táblázat (a kimenetben), vagy Idris-generált interaktív program. A vizualizáció NEM esztétika — a MEGÉRTÉS eszköze.
+- **Konkrét vizualizációk:**
+  - 0. fázis: a szótár hierarchiája (Mermaid fa);
+  - 1. fázis: a tokenizáció folyamata (Mermaid folyamatábra);
+  - 2. fázis: a tórusz-pontok (Mermaid — a 16 pont, a klaszterek);
+  - 3. fázis: a hierarchikus szűrés (Mermaid — a 3 szint);
+  - 4. fázis: a hierarchikus keresés (Mermaid fa);
+  - 5. fázis: a metrikák táblázata (a `main` kimenete);
+  - 7. fázis: a Bergman-kernel (Mermaid — a lekérdezés → a mag → a találat);
+  - 7.4: a Poincaré-korong (Mermaid — a fa beágyazása);
+  - 8.2: a fixpont-iteráció (Mermaid — a konvergencia 1/φ-vel);
+  - 8.3: az aranymetszés-spirál (Mermaid — a 137.5°);
+  - 8.4: a Carnot-ciklus (Mermaid — a 4 lépés);
+  - 9. fázis: a fehérje (Mermaid — az 1D/2D/3D).
+- **Siker:** minden fázishoz legalább 1 Mermaid-diagram; a `main` kimenete táblázatosan olvasható.
+
+**11.7. Az InteraktívProgram — a main : IO () mint a demonstráció.**
+- **Feladat:** minden lépéshez egy INTERAKTÍV Idris-program: a felhasználó beír egy kérdést (`getLine`), a rendszer válaszol (`putStrLn`). A program NEM csak kiír — REAGÁL.
+- **Konkrét interaktív programok:**
+  - 0.1: „adj meg egy szót" → a komplex bájt;
+  - 0.4: „adj meg egy ragozott szót" → a tő;
+  - 1.1: „adj meg egy mondatot" → a tokenizált szavak;
+  - 1.2: „adj meg egy mondatot" → a CPT;
+  - 2.1: „adj meg egy mondatot" → a tórusz-pont;
+  - 3.1: „adj meg egy mondatot" → a Hadamard-szűrés;
+  - 4.1: „adj meg egy kérdést" → a top-k találatok;
+  - 7.2: „adj meg egy kérdést" → a Bergman-keresés;
+  - 8.2: „adj meg egy kérdést" → a fixpont-iteráció lépései;
+  - 10.3: „adj meg egy kérdést" → a válasz a memóriából (az ÉLŐ rendszer).
+- **Siker:** minden feladat `main`-je interaktív (a `getLine` + a `putStrLn`); a program reagál a bemenetre.
+
+**11.8. A DefinícióGenerálás — a typeclass/record mint a matematikai definíció.**
+- **Feladat:** minden feladatnak tartalmaznia kell a matematikai definíció Idris typeclass/record formáját — a kód = a definíció (Curry-Howard). A típus annyira pontos, hogy csak egy implementáció lehetséges.
+- **Konkrét definíciók:**
+  - 0.1: a `HuWord` record (kiegészítve a komplex bájt mezővel);
+  - 0.4: a `TőKeresés` typeclass;
+  - 1.2: a `CptFazis` data;
+  - 2.1: a `ToruszPont` (már van);
+  - 3.1: a `HadamardTávolság` typeclass;
+  - 3.2: a `NormalizáltTávolság` typeclass;
+  - 3.3: a `BelsőSzorzat` typeclass;
+  - 3.4: az `IDFSúlyozás` typeclass;
+  - 7.2: a `BergmanMag` typeclass;
+  - 7.4: a `PoincaréPont` record + a `PoincaréTávolság` typeclass;
+  - 8.1: a `YonedaKép` typeclass;
+  - 8.2: a `FixpontIteráció` typeclass;
+  - 8.4: a `CarnotCiklus` typeclass;
+  - 8.5: a `GKPHibatűrés` typeclass;
+  - 9.1: a `FehérjeReprezentáció` typeclass;
+  - 9.4: a `HangRend` data.
+- **Siker:** minden feladat tartalmazza a definíció Idris typeclass/record formáját; a típus annyira pontos, hogy csak egy implementáció lehetséges.
+
+**11.9. A VerifikációsJelentés — a 6-szintű jelentés generálása.**
+- **Feladat:** minden feladat után egy JELENTÉS, amely a 6 szint eredményét tartalmazza (a GAN, a fordítás, a numerikus, az irodalom, a vizualizáció, az interaktív program). A jelentés a `kutatasi_naplo/verifikacios_jelentesek/` könyvtárba kerül, commit + push (a §N13 szerint).
+- **Fájl:** `VerifikaciosJelentes_v1.idr` (a `record VerifikációsJelentés` + a `jelentésÍrása : VerifikációsJelentés → IO ()`).
+- **Siker:** minden feladat után egy `VerifikációsJelentés` fájl; a 6 szint mindegyike dokumentálva; a fájl commit + push.
+
+**11.10. A §N14-integráció minden feladatba — a meglévő 43 feladat kiegészítése.**
+- **Feladat:** a meglévő 43 feladat mindegyikének kiegészítése a 6-szintű verifikációval ÉS a definícióval. A feladat struktúra kiegészül:
+  - **Definíció (Idris):** a typeclass/record — a kód = a definíció;
+  - **Irodalom:** a hivatkozások — arXiv, Wikipedia, nLab, könyv;
+  - **GAN-ellenőrzés:** a task-alügynök hívása a feladat után;
+  - **Fordítás:** `idris2 <fájl>.idr` exit 0;
+  - **Numerikus verifikáció:** `idris2 --exec main <fájl>.idr` kimenete;
+  - **Vizualizáció:** a Mermaid-diagram vagy a táblázat;
+  - **Interaktív program:** a `main : IO ()` (a getLine + a putStrLn);
+  - **Siker:** a 6-szintű verifikáció mindegyike zöld.
+- **Siker:** a 43 feladat mindegyike tartalmazza a 6-szintű verifikációt + a definíciót; a `VerifikációsProtokoll` typeclass minden feladatnál implementálva.
+
+**11.11. Az IrodalomKeresés (§N12) — a hivatkozások MCP-vel való ellenőrzése.**
+- **Feladat:** a hivatkozásokat NEM emlékezetből írjuk — MCP-kereséssel ellenőrizzük (brave-search, exa, firecrawl, alphaxiv). A §N12 szerint: „minden cselekvés előtt keress releváns információra; a kereséseket ELŐRE TERVEZD meg".
+- **Siker:** minden matematikai állításhoz legalább 1 hivatkozás; a hivatkozások MCP-vel ellenőrizve (a DOI/arXiv-ID létezik).
+
+**11.12. A DiagramGenerálás (MCP) — a Mermaid-diagramok automatikus generálása.**
+- **Feladat:** a Mermaid-diagramokat a diagrams MCP generálja (nem kézzel). A diagram a `kutatasi_naplo/diagramok/` könyvtárba kerül.
+- **Siker:** minden fázishoz legalább 1 Mermaid-diagram; a diagram commit + push.
+
+**11.13. A GAN-VisszacsatolásIntegrálása — a GAN-kiegészítések beépítése.**
+- **Feladat:** a GAN kiegészítései NEM csak jelentésben maradnak — BEÉPÍTJÜK a feladatba. A feladat következő iterációja tartalmazza a GAN kiegészítéseit. Ez a GAN-ciklus: a feladat → a GAN-ellenőrzés → a kiegészítés → a feladat új iterációja.
+- **Siker:** a GAN kiegészítései beépülnek a feladatba; a feladat következő iterációja tartalmazza; a ciklus zár.
+
+**11.14. A VerifikációsNapló — a 6-szintű verifikáció kutatási naplója.**
+- **Feladat:** a §N4 + a §N13 + a §N14 szerint a 6-szintű verifikáció eredménye is felfedezés — pusholni kell. A napló tartalmazza: a feladat számát, a 6-szintű eredményeket, a GAN-kiegészítéseket, a javításokat.
+- **Siker:** minden feladat után a verifikációs napló frissül; a napló commit + push; a GitHubon látható.
+
+**11.15. A DemonstrációsMűsor — a végleges interaktív demonstráció.**
+- **Feladat:** a végleges interaktív demonstráció, ami a teljes rendszert mutatja: a felhasználó beír egy kérdést, a rendszer:
+  1. tokenizál (az 1.1); 2. CPT-t kinyer (az 1.2); 3. a tórusz-pontot meghatározza (a 2.1); 4. a klasztert kiválasztja (a 2.2); 5. a Hadamard-szűrést végzi (a 3.1); 6. a Manhattan-távolságot számolja (a 3.2); 7. a top-k találatokat rangsorolja (a 4.1); 8. a válasz-mondatot generálja (a 10.3); 9. a metrikákat kiírja (az 5.1); 10. a GAN-ellenőrzést hívja (az 11.2).
+  A demonstráció minden lépését KIÍRJA (a felhasználó LÁTJA a folyamatot).
+- **Fájl:** `DemonstraciosMusor_v1.idr`.
+- **Siker:** a demonstrációs műsor lefordul és fut; a kérdésre a válasz a 10 lépés kimenetével; a GAN-ellenőrzés zöld; a napló frissül; a diagram generálva.
+
+---
+
+## A SORREND-KORREKCIÓ (a GAN szerint)
+
+A 15 új feladat NEM a 43 feladat UTÁN kerül — a 11.1 (a typeclass) és a 11.10 (a kiegészítés) ELŐBBRE kerül:
+
+1. **11.1** (a VerifikációsProtokoll typeclass) — az alap, minden előtt;
+2. **11.5** (az IrodalomHivatkozás typeclass) — a 11.1 része;
+3. **11.8** (a DefinícióGenerálás) — a 11.1 része;
+4. **11.10** (a 43 feladat kiegészítése) — a 0.1 előtt;
+5. **0.1 … 10.3** (a meglévő 43 feladat, kiegészítve);
+6. **11.2–11.14** (a verifikáció — minden feladat után);
+7. **11.15** (a demonstrációs műsor — a végén).
+
+★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★
