@@ -612,3 +612,49 @@ A 15 új feladat NEM a 43 feladat UTÁN kerül — a 11.1 (a typeclass) és a 11
 7. **11.15** (a demonstrációs műsor — a végén).
 
 ★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★
+
+---
+
+## §N14-KIEGÉSZÍTÉSEK (a 011.10 feladat — a terv kiegészítve)
+
+A §N14 (a pluginban) szerint minden feladat után HAT ellenőrzés:
+1. GAN-ellenőrzés (task-alügynök, aki CSAK HOZZÁTESZ)
+2. Fordítás (idris2 --check, exit 0)
+3. Numerikus verifikáció (idris2 --exec main, Show-kiírás)
+4. Releváns irodalom (arXiv/Wikipedia/nLab/könyv — a kód kommentjében)
+5. Vizualizáció (Mermaid-diagram / táblázat / Idris-generált kimenet)
+6. Használható-demonstrálható interaktív program (getLine + putStrLn)
+
+### A GAN-javaslatok beolvasztása (a felhasználó hard rule-ja: „a gan
+### javaslatait figyelembe kell venni es annak megfeleloen modositani a
+### todo-t es javitania munkat")
+
+A 000.02 GAN-ellenőrzésének javaslatai — beolvasztva a todo-ba ÉS a munkába:
+
+| GAN-javaslat | A todo-bejegyzés | A megvalósítás |
+|---|---|---|
+| Gyakorisági rang (Bayes-prior) | 000.07 | (a jövő — webcorpus) |
+| Közös dekóder (Maybe — a d=1 honest típusa) | 003.07 | (a jövő — CSS-szindróma) |
+| A hangsúly természetességi lemmája | 008.06 | (a jövő — Refl-bizonyítás) |
+| Minimálpár-gráf + hisztogram | (a 000.02 része) | KÉSZ — 10 él, 99 mintázat |
+| Hangrend (a 2. paritás-csatorna) | (a 000.02 része) | KÉSZ — Mély 934, Magas 1160, Vegyes 1366 |
+| ProzódiaSzindróma (Bool→HOL) | (a 000.02 része) | KÉSZ — HibásSzótag Nat |
+| Geminát-tiltás (Siptár 1995) | (a 000.02 része) | KÉSZ — a kódban rögzítve |
+| **Birtokos ragok** (nem szabad elhagyni!) | **000.04.001** | **KÉSZ** — 33 rag |
+
+### Az al-feladatok formátuma (a felhasználó: „ezentul lehet beszurni al
+### feladatokat is, pl. a 000.000.000.000 -etc alakban")
+
+A sorszámozás kiterjesztve: a `000.04.001` formátum (a szülő `000.04`,
+az al-feladat `000.04.001`). A string-rendezés helyes: „000.04" < „000.04.001"
+< „000.05" ✓. A todo módosítása CSAKIS Idrissel (a `SajatTodo_v1.idr`
+`állapotMódosító` + `alFeladatBeszúró` függvényeivel — a hard rule).
+
+### A TODO módosítása CSAKIS Idrissel (a felhasználó hard rule-ja)
+
+„ezentul, csakis idrisszel lehet a feladatokat modositani" — a
+`SajatTodo_v1.idr` program interaktív parancsokat fogad (`allapot` +
+`beszur`), és kiírja a módosított listát a `MkFeladat`-formába. A
+módosítás LOGIKÁJA Idrisben van; a fájlba illesztés mechanikai.
+
+★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★

@@ -135,7 +135,7 @@ todoLista = [
   MkFeladat "011.09" "VerifikációsJelentés" Vár Közepes "(jelentésÍrása)",
   MkFeladat "011.14" "VerifikációsNapló" Vár Közepes "(kutatasi_naplo)",
   MkFeladat "011.07" "InteraktívProgram (vázlatként indul, mérföldköveknél bővül)" Vár Közepes "(getLine + putStrLn)",
-  MkFeladat "011.10" "A 43 feladat kiegészítése a §N14-gyel" Vár Magas "(a terv átszerkesztése)",
+  MkFeladat "011.10" "A 43 feladat kiegészítése a §N14-gyel (a §N14-KIEGÉSZÍTÉSEK szakasz a VegrehajtasiTerv-ben)" Kész Magas "docs/VegrehajtasiTerv_2026-09-01.md",
   -- B. Lexikon (a szótár alapozása):
   MkFeladat "000.01" "HungarianLexicon publikus-v2" Kész Magas "HungarianLexicon_v2_Szima.idr",
   MkFeladat "000.02" "Szótár-generátor + GAN-kiegészítések (minimálpár-gráf, hisztogram, hangrend, szindróma)" Kész Magas "SzotarHid_v2.idr",
