@@ -156,7 +156,7 @@ todoLista = [
   -- kell venni; a gyakoriság = Bayes-prior a dekóderben ÉS fonológiai ok):
   MkFeladat "000.07" "Gyakorisági rang mező (webcorpus/MNSZ — Bayes-prior)" Vár Közepes "(külső korpusz)",
   -- C. Mondat-réteg (tokenizálás és kódolás):
-  MkFeladat "001.01" "Mondat-tokenizáló javítása" Vár Magas "(SzotarHid_v2)",
+  MkFeladat "001.01" "Mondat-tokenizáló javítása (szavakTisztítva + mondatTövei)" Kész Magas "SzotarHid_v2.idr",
   MkFeladat "001.02" "CPT-fázis kinyerése a mondatból" Vár Magas "MondatCPT_v1.idr",
   MkFeladat "001.03" "Steane-kód generálás ellenőrzése" Vár Közepes "(futásidejű teszt)",
   MkFeladat "001.04" "Idris IO-réteg (readFile)" Vár Magas "IndexeloIO_v1.idr",

@@ -43,6 +43,7 @@ import Paragrafus
 import KomplexByte
 import Data.List
 import Data.List1
+import Data.String
 
 %default total
 
@@ -574,6 +575,47 @@ bizRekurzióMélységNulla : tőKeresésRekurzív 0 "farkasokat" teljesToldalék
 bizRekurzióMélységNulla = Refl
 
 -- ═══════════════════════════════════════════════════════════════════════
+-- III/E. A MONDAT-TOKENIZÁLÓ (001.01 — a tisztított szavak)
+-- ═══════════════════════════════════════════════════════════════════════
+-- A feladat (a VegrehajtasiTerv 1.1 szerint): az írásjelek levágása
+-- („mondott." → „mondott"), a nagybetűs kezdés kisbetűsítése (a
+-- `kisbetus` már van a Paragrafusban), a szavakra bontás (`words`).
+-- Kimenet: `szavakTisztítva : String → List String`.
+--
+-- §24: a `kisbetus` IMPORT a Paragrafus-ból; a `végírásjelekLevágása`
+-- a `Kodol.irasjelLevagas` logikájának következménye (CSAK a szó
+-- végéről vág írásjeleket — a kisbetűsítést a `kisbetus` végzi; a
+-- `Kodol.irasjelLevagas` más: az kisbetűsítést is csinál + belső go).
+
+-- A magyar írásjelek (a szó végéről levagandók).
+public export
+végírásjelek : List Char
+végírásjelek = unpack ".,!?:;„\"\"()+-–—*[]{}'"
+
+||| A szó végéről levágja az írásjeleket (a nem-betű karaktereket).
+||| A belső írásjelek (pl. kötőjel) megmaradnak — CSAK a végéről vág.
+public export
+végírásjelekLevágása : String -> String
+végírásjelekLevágása szó =
+  pack (reverse (dropWhile (\c => elem c végírásjelek) (reverse (unpack szó))))
+
+||| A mondat tisztított szavai: a `words` (Prelude) bont, a
+||| `végírásjelekLevágása` levág, a `kisbetus` (Paragrafus) kisbetűsít.
+||| Példa: „Mit mondott a farkas?" → [„mit", „mondott", „a", „farkas"]
+public export
+szavakTisztítva : String -> List String
+szavakTisztítva mondat =
+  map (kisbetus . végírásjelekLevágása) (words mondat)
+
+||| A mondat szavainak tövei: a tisztított szavakon a tő-keresés
+|||    (a 000.04 — rekurzív levágás). A `Just` találatok szűrve
+|||    (a `mapMaybe` a Data.List-ből — §24: import, nem duplikáció).
+public export
+mondatTövei : String -> List String
+mondatTövei mondat =
+  mapMaybe (\szó => map fst (tőKeresés szó)) (szavakTisztítva mondat)
+
+-- ═══════════════════════════════════════════════════════════════════════
 -- IV. REFL-BIZONYÍTÁSOK
 -- ═══════════════════════════════════════════════════════════════════════
 
@@ -689,7 +731,15 @@ main = do
   putStrLn ""
   putStrLn ("  A beírt szó prozódiája: " ++ show (prozódia (MkHu bevitel bevitel ObjectRole Additive 0 7)))
   putStrLn ""
-  putStrLn "─── V/B. A TŐ-KERESÉS (a 000.04 — rekurzív levágás) ───"
+  putStrLn "─── V/A. A MONDAT-TOKENIZÁLÓ (a 001.01) ───"
+  putStrLn ""
+  putStrLn "  A beírt mondat tisztított szavai:"
+  traverse_ (\szó => putStrLn ("    «" ++ szó ++ "»")) (szavakTisztítva bevitel)
+  putStrLn ""
+  putStrLn "  A beírt mondat szavainak tövei (a 000.04 tő-kereséssel):"
+  traverse_ (\tő => putStrLn ("    «" ++ tő ++ "»")) (mondatTövei bevitel)
+  putStrLn ""
+  putStrLn "─── V/B. A TŐ-KERESÉS (az első szóra — a 000.04 rekurzív levágás) ───"
   putStrLn ""
   case tőKeresés bevitel of
     Just (tő, levágások) => do
@@ -697,6 +747,6 @@ main = do
       putStrLn ("  levágások: " ++ show (reverse levágások))
       putStrLn ("  a tő prozódiája: " ++ show (ritmusKinyerő tő))
     Nothing => do
-      putStrLn "  (nem találtam töt — a szó nincs a szótárban, vagy túl mély a ragozás)"
+      putStrLn "  (az egész mondat nem egyetlen szótár-szó — lásd a tokenizáló fent)"
   putStrLn ""
   putStrLn "  ★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★"
