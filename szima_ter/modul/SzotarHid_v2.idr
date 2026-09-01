@@ -489,14 +489,41 @@ gyakoriKépzők = [
   "ság", "ség", "ás", "és", "atlan", "talan", "telen", "ó", "ő", "i", "s"
   ]
 
+-- ─── A BIRTOKOS RAGOK (a 000.04.001 al-feladat — a GAN-javaslat) ───
+-- A felhasználó: „birtokos ragok hianya az fontos... azokat nem szabad
+-- elhagyni, mert kesobb problemat fog okozni". Forrás: Kiefer 2011,
+-- a magyar birtokos ragozás (az agglutináció = tő ⊗ számjel ⊗ birtokjel
+-- ⊗ esetrag — a birtokjel a szám + a személy kombinációja).
+public export
+birtokosRagok : List String
+birtokosRagok = [
+  -- egyes szám 1. személy:
+  "om", "em", "öm", "m",
+  -- egyes szám 2. személy:
+  "od", "ed", "öd", "d",
+  -- egyes szám 3. személy:
+  "ja", "je", "a", "e",
+  -- többes szám 1. személy:
+  "unk", "ünk",
+  -- többes szám 2. személy:
+  "otok", "etek", "ötök", "aitok", "eitek",
+  -- többes szám 3. személy:
+  "juk", "jük", "uk", "ük",
+  -- a többes számjel (a birtokos+többes kompozit alapja):
+  "ok", "ek", "ök", "ak", "k",
+  -- a birtokos többes (az -ai/-ei a birtok többese):
+  "ai", "ei", "jai", "jei"
+  ]
+
 -- ─── A TELJES TOLDALÉK-LISTA (hossz szerint csökkenő — a specifikus/ ───
 -- hosszabb rag előbb illeszkedjen, mint a rövid/több szóra is illeszkedő).
--- A §24-kompozíció: az esetragok + a képzők + a SzotarHid_v1.gyakoriToldalékok.
+-- A §24-kompozíció: az esetragok + a képzők + a birtokos ragok +
+-- a SzotarHid_v1.gyakoriToldalékok.
 public export
 teljesToldalékLista : List String
 teljesToldalékLista =
   sortBy (\x, y => compare (length (unpack y)) (length (unpack x)))
-    (esetragAlakok22 ++ gyakoriKépzők ++ gyakoriToldalékok)
+    (esetragAlakok22 ++ gyakoriKépzők ++ birtokosRagok ++ gyakoriToldalékok)
 
 -- ─── A REKURZÍV LEVÁGÁS ───
 

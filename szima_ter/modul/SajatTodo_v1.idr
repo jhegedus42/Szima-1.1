@@ -31,6 +31,7 @@ module SajatTodo_v1
 -- ═══════════════════════════════════════════════════════════════════════
 
 import Data.List
+import Data.String
 
 %default total
 
@@ -139,7 +140,10 @@ todoLista = [
   MkFeladat "000.01" "HungarianLexicon publikus-v2" Kész Magas "HungarianLexicon_v2_Szima.idr",
   MkFeladat "000.02" "Szótár-generátor + GAN-kiegészítések (minimálpár-gráf, hisztogram, hangrend, szindróma)" Kész Magas "SzotarHid_v2.idr",
   MkFeladat "000.03" "Lumo-szókincs bővítés" Vár Közepes "LumoSzokincs_v1.idr",
-  MkFeladat "000.04" "Tő-keresés 22 esetrag + rekurzív" Kész Magas "SzotarHid_v2.idr",
+  MkFeladat "000.04" "Tő-keresés 22 esetrag + rekurzív + birtokos ragok" Kész Magas "SzotarHid_v2.idr",
+  -- AL-FELADAT (a GAN-javaslat: a birtokos ragok hiánya fontos —
+  -- „azokat nem szabad elhagyni, mert kesobb problemat fog okozni"):
+  MkFeladat "000.04.001" "Birtokos ragok hozzáadása (-om/-em/-öm/-m, -od/-ed/-öd/-d, -a/-e/-ja/-je, -unk/-ünk, -otok/-etek/-ötök, -uk/-ük/-juk/-jük, -ok/-ek/-ök/-k)" Kész Magas "SzotarHid_v2.idr",
   -- ELTÁVOLÍTVA (a felhasználó utasítására, 2026-09-01):
   --   MkFeladat "000.05" "Ékezet-normalizáció vizsgálata" ...
   -- Indok (a felhasználó, szó szerint): „ekeztnormalizalora miert van
@@ -261,6 +265,80 @@ előrehaladás lista =
   in if összes == 0
        then 0.0
        else (fromInteger (cast kész) / fromInteger (cast összes)) * 100.0
+
+-- ═══════════════════════════════════════════════════════════════════════
+-- III/B. A FELADATOK MÓDOSÍTÁSA — CSAKIS IDRISSEL (a felhasználó hard rule-ja)
+-- ═══════════════════════════════════════════════════════════════════════
+-- A felhasználó (2026-09-01, szó szerint):
+--   „ezentul, csakis idrisszel lehet a feladatokat modositani,
+--    ez legyen a kovetkezo feladat, ezentul ez egy hard rule"
+--   „ezentul lehet beszurni al feladatokat is, pl. a 000.000.000.000
+--    -etc alakban, bovitsuk igy az idrisz programot"
+--
+-- A módosítás LOGIKÁJA Idrisben van (az alábbi függvények); a fájlba
+-- illesztés mechanikai (a program kiírja a módosított listát a
+-- `MkFeladat`-formába, amit a fájlba illesztünk).
+
+||| Az Állapot konstruktor neve (a fájlformahoz — a show nagybetűs,
+||| a konstruktor-kód pedig az ékezetes kis/nagy formában van).
+public export
+állapotNév : Állapot -> String
+állapotNév Kész = "Kész"
+állapotNév Folyamatban = "Folyamatban"
+állapotNév Vár = "Vár"
+
+||| A Prioritás konstruktor neve (a fájlformahoz).
+public export
+prioritásNév : Prioritás -> String
+prioritásNév Magas = "Magas"
+prioritásNév Közepes = "Közepes"
+prioritásNév Alacsony = "Alacsony"
+
+||| Egy feladat kiírása a fájlforma `MkFeladat`-szintaxisába.
+||| A program ezt a formát generálja — a fájlba illesztéshez.
+public export
+feladatFájlForma : Feladat -> String
+feladatFájlForma f =
+  "  MkFeladat \"" ++ feladatSzáma f ++ "\" \"" ++ feladatCíme f
+  ++ "\" " ++ állapotNév (feladatÁllapota f) ++ " "
+  ++ prioritásNév (feladatPrioritása f) ++ " \"" ++ feladatFájlja f ++ "\","
+
+||| A teljes lista kiírása a fájlformába (a todoLista blokk).
+public export
+todoListaFájlForma : List Feladat -> String
+todoListaFájlForma [] = ""
+todoListaFájlForma (f :: fs) = feladatFájlForma f ++ "\n" ++ todoListaFájlForma fs
+
+||| Állapot módosító: a sorszám alapján frissíti a feladat állapotát.
+||| A módosítás tiszta Idris-függvény (nem sed, nem Python).
+public export
+állapotMódosító : String -> Állapot -> List Feladat -> List Feladat
+állapotMódosító _ _ [] = []
+állapotMódosító sorszám ujAllapot (f :: fs) =
+  if feladatSzáma f == sorszám
+    then MkFeladat (feladatSzáma f) (feladatCíme f) ujAllapot
+                   (feladatPrioritása f) (feladatFájlja f) :: fs
+    else f :: állapotMódosító sorszám ujAllapot fs
+
+||| Al-feladat beszúró: egy adott (szülő) sorszámú feladat UTÁN
+||| beszúrja az új al-feladatot. A sorszám-formátum: 000.04.001
+||| (a szülő 000.04, az al-feladat 000.04.001 — string-rendben
+||| a szülő után, a következő fázis előtt).
+public export
+alFeladatBeszúró : String -> Feladat -> List Feladat -> List Feladat
+alFeladatBeszúró _ alFeladat [] = [alFeladat]
+alFeladatBeszúró szülő alFeladat (f :: fs) =
+  if feladatSzáma f == szülő
+    then f :: alFeladat :: fs
+    else f :: alFeladatBeszúró szülő alFeladat fs
+
+||| A módosított lista fájlformába kiírása (a main-ben hívva).
+public export
+módosítottListaKiírása : List Feladat -> String
+módosítottListaKiírása lista =
+  "public export\ntodoLista : List Feladat\ntodoLista = [\n"
+  ++ todoListaFájlForma lista
+  ++ "  ]"
 
 -- ═══════════════════════════════════════════════════════════════════════
 -- IV. REFL-BIZONYÍTÁSOK
@@ -400,7 +478,56 @@ main = do
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn ""
   putStrLn "  A todo-t ez az Idris-program kezeli (nem a beépített eszköz)."
-  putStrLn "  A frissítés: a `todoLista` módosítása ebben a fájlban."
-  putStrLn "  A következő lépés: a 0.1 (HungarianLexicon v2) javítása."
+  putStrLn "  A módosítás CSAKIS Idrissel (a felhasználó hard rule-ja)."
+  putStrLn ""
+  putStrLn "─── VIII. A MÓDOSÍTÁS CSAKIS IDRISSEL (a hard rule) ───"
+  putStrLn ""
+  putStrLn "  Parancsok:"
+  putStrLn "    allapot <sorszam> <Kesz|Folyamatban|Var>"
+  putStrLn "    beszur <szulo-szam> <al-szam> <cim> <Magas|Kozepes|Alacsony> <fajl>"
+  putStrLn ""
+  putStrLn "  Írj be egy parancsot (a módosított lista kiszámolásához):"
+  parancs <- getLine
+  case words parancs of
+    ["allapot", sorszám, allapotStr] =>
+      case allapotStr of
+        "Kesz" => do
+          let módosított = állapotMódosító sorszám Kész todoLista
+          putStrLn ""
+          putStrLn "─── a módosított todoLista (másold a fájlba) ───"
+          putStrLn (módosítottListaKiírása módosított)
+        "Folyamatban" => do
+          let módosított = állapotMódosító sorszám Folyamatban todoLista
+          putStrLn ""
+          putStrLn "─── a módosított todoLista (másold a fájlba) ───"
+          putStrLn (módosítottListaKiírása módosított)
+        "Var" => do
+          let módosított = állapotMódosító sorszám Vár todoLista
+          putStrLn ""
+          putStrLn "─── a módosított todoLista (másold a fájlba) ───"
+          putStrLn (módosítottListaKiírása módosított)
+        _ => putStrLn "  (ismeretlen állapot — használd: Kesz | Folyamatban | Var)"
+    ["beszur", szülő, alSorszám, cím, prioritásStr, fájl] =>
+      case prioritásStr of
+        "Magas" => do
+          let alFeladat = MkFeladat alSorszám cím Vár Magas fájl
+          let módosított = alFeladatBeszúró szülő alFeladat todoLista
+          putStrLn ""
+          putStrLn "─── a módosított todoLista (másold a fájlba) ───"
+          putStrLn (módosítottListaKiírása módosított)
+        "Kozepes" => do
+          let alFeladat = MkFeladat alSorszám cím Vár Közepes fájl
+          let módosított = alFeladatBeszúró szülő alFeladat todoLista
+          putStrLn ""
+          putStrLn "─── a módosított todoLista (másold a fájlba) ───"
+          putStrLn (módosítottListaKiírása módosított)
+        "Alacsony" => do
+          let alFeladat = MkFeladat alSorszám cím Vár Alacsony fájl
+          let módosított = alFeladatBeszúró szülő alFeladat todoLista
+          putStrLn ""
+          putStrLn "─── a módosított todoLista (másold a fájlba) ───"
+          putStrLn (módosítottListaKiírása módosított)
+        _ => putStrLn "  (ismeretlen prioritás — használd: Magas | Kozepes | Alacsony)"
+    _ => putStrLn "  (ismeretlen parancs — lásd a parancsok listája fent)"
   putStrLn ""
   putStrLn "  ★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★"
