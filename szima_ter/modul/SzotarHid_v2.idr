@@ -184,6 +184,74 @@ ritmusKülönbözik : String -> String -> Bool
 ritmusKülönbözik egy = (==) (ritmusKinyerő egy) . ritmusKinyerő
 
 -- ═══════════════════════════════════════════════════════════════════════
+-- III/A. A v2-ES JELentÉS-KINYERÉS
+-- ═══════════════════════════════════════════════════════════════════════
+-- §24-MEGJEGYZÉS: a SzotarHid_v1.huWordToJelentes (98–112. sor) a V1-es
+-- HuWord/MathRole/Algebra típusokon dolgozik; a v2 lexikon típusain
+-- (melyek névben azonosak, de KÜLÖNBÖZŐ modulból valók) nem komponálható
+-- — «Mismatch between: HuWord and HuWord» — ezért itt a v2-es adaptáció
+-- következik, a v1 logikáját híven követve (nem duplikáció, hanem
+-- típuskövetkezmény; a v1 függvény változatlanul használható marad).
+
+||| A v2-es hangrend → a fázis (a SzotarHid_v1.hangrendFázis adaptációja).
+public export
+hangrendFázisV2 : Algebra -> Komplex
+hangrendFázisV2 Additive       = KomplexKonstruktor 1.0 0.0
+hangrendFázisV2 Multiplicative = KomplexKonstruktor 0.0 1.0
+hangrendFázisV2 Ring           = KomplexKonstruktor 1.0 1.0
+
+||| A v2-es szófaj → a kitüntetett dimenziók (a v1 adaptációja).
+||| Főnév → ter+mód; ige → idő+okság; tulajdonság → szín; módosító → hang.
+public export
+szerepDimenziókV2 : MathRole ->
+  (Komplex, Komplex, Komplex, Komplex, Komplex, Komplex)
+szerepDimenziókV2 ObjectRole =
+  (komplexZero, komplexZero, komplexEgy, komplexZero, komplexZero, komplexEgy)
+szerepDimenziókV2 MorphismRole =
+  (komplexEgy, komplexEgy, komplexZero, komplexZero, komplexZero, komplexZero)
+szerepDimenziókV2 PropertyRole =
+  (komplexZero, komplexZero, komplexZero, komplexEgy, komplexZero, komplexZero)
+szerepDimenziókV2 ModifierRole =
+  (komplexZero, komplexZero, komplexZero, komplexZero, komplexEgy, komplexZero)
+
+||| A v2-es HuWord → a Paragrafus 8-dimenziós komplex jelentésvektora.
+||| A 8 dimenzió: [idő, okság, tér, szín, hang, fázis, mód, chiralitás].
+public export
+huWordJelentés : HuWord -> SzoJelentes
+huWordJelentés (MkHu szoveg _ szerep hangrend jellemzo _) =
+  let (ido, oksag, ter, szin, hang, mod) = szerepDimenziókV2 szerep
+      fazis = hangrendFázisV2 hangrend
+      chiralitas = if jellemzo > 0
+                     then KomplexKonstruktor 1.0 0.0
+                     else KomplexKonstruktor 0.0 0.0
+  in SzoJelentesKonstruktor szoveg ido oksag ter szin hang fazis mod chiralitas
+
+-- ═══════════════════════════════════════════════════════════════════════
+-- III/B. A TELJES SZÓTÁR (a 000.02 magja — a 3460 publikus szó)
+-- ═══════════════════════════════════════════════════════════════════════
+
+||| A TELJES szótár: mind a 3460 publikus szó, jelentéssel együtt.
+||| A kompozíció: teljesSzótár = huWordJelentés ∘ összesSzó
+||| A Szotar = List SzoJelentes (Paragrafus 53–54. sor).
+public export
+teljesSzótár : Szotar
+teljesSzótár = map huWordJelentés összesSzó
+
+||| A teljes szótár mérete — a lexiconSize-val VAGYON EGYEZŐ.
+||| (A futásidejű ellenőrzés a főprogramban: length összesSzó = 3460.)
+public export
+teljesSzótárMérete : Nat
+teljesSzótárMérete = length összesSzó
+
+||| A teljes szótár prozódiával: szavanként (szó, prozódia).
+||| A ritmus + hangsúly + fonetika MINDEN szóhoz — a hibajavító
+||| redundancia (a felhasználó követelménye) a teljes szótáron.
+public export
+teljesProzódiaSzótár : List (String, Prozódia)
+teljesProzódiaSzótár =
+  map (\szó => (huText szó, prozódia szó)) összesSzó
+
+-- ═══════════════════════════════════════════════════════════════════════
 -- IV. REFL-BIZONYÍTÁSOK
 -- ═══════════════════════════════════════════════════════════════════════
 
@@ -240,6 +308,15 @@ main = do
   putStrLn ("  «abakusz»    : " ++ show (prozódia n_abakusz))
   putStrLn ("  «abisszikus»: " ++ show (prozódia n_abisszikus))
   putStrLn ("  «hazugság»  : " ++ show (prozódia n_hazugsa2g))
+  putStrLn ""
+  putStrLn "─── II/B. A TELJES SZÓTÁR (a 3460 publikus szó) ───"
+  putStrLn ""
+  putStrLn ("  összesSzó hossza:        " ++ show (length összesSzó))
+  putStrLn ("  lexiconSize (a lexikon): " ++ show lexiconSize)
+  putStrLn ("  EGYEZNEK: " ++ show (length összesSzó == lexiconSize))
+  putStrLn ("  teljesSzótár mérete:     " ++ show (length teljesSzótár))
+  putStrLn ("  teljesProzódiaSzótár:    " ++ show (length teljesProzódiaSzótár) ++ " szó prozódiával")
+  putStrLn "   → a 000.02 kész: a teljes szótár + prozódia + hibajavítás"
   putStrLn ""
   putStrLn "─── III. A HIBAJAVÍTÓ REDUNDANCIA (a [[7,1,3]] logika) ───"
   putStrLn ""
