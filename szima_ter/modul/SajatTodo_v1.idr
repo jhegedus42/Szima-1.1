@@ -144,6 +144,10 @@ todoLista = [
   -- AL-FELADAT (a GAN-javaslat: a birtokos ragok hiánya fontos —
   -- „azokat nem szabad elhagyni, mert kesobb problemat fog okozni"):
   MkFeladat "000.04.001" "Birtokos ragok hozzáadása (-om/-em/-öm/-m, -od/-ed/-öd/-d, -a/-e/-ja/-je, -unk/-ünk, -otok/-etek/-ötök, -uk/-ük/-juk/-jük, -ok/-ek/-ök/-k)" Kész Magas "SzotarHid_v2.idr",
+  -- GAN-AUDIT (2026-09-01): a felhasználó aggódása „nem-e hagyunk ki
+  -- alapvetoen fontos megalapozo munkat" — a GAN 4 KRITIKUS + 10 FONTOS
+  -- hiányosságot talált. A 4 KRITIKUS (blokkolja a későbbi fázisokat):
+  MkFeladat "000.05" "Funkciószó-lexikon (névelők, kötőszavak, kérdőszavak, segédigék, névutók) — a CPT-fázis előfeltétele" Vár Magas "SzotarHid_v2.idr",
   -- ELTÁVOLÍTVA (a felhasználó utasítására, 2026-09-01):
   --   MkFeladat "000.05" "Ékezet-normalizáció vizsgálata" ...
   -- Indok (a felhasználó, szó szerint): „ekeztnormalizalora miert van
@@ -151,17 +155,41 @@ todoLista = [
   -- a SzotarHid_v1 tanulsága: 'hazugsagot' ≠ 'hazugság' (a keresés
   -- pont az ékezet nélkül bukik el). A normalizálás információvesztés.
   -- A fő út: az ékezet MEGŐRZÉSE. NINCS normalizálás.
-  MkFeladat "000.06" "Bájt-egységesség (minőségi kapu a 003.x előtt)" Vár Közepes "(dokumentum)",
+  MkFeladat "000.06" "Bájt-kanonizálás (single source of truth — a Peldaszotar vs SzotarHid konfliktusa; KRITIKUS)" Vár Magas "Paragrafus.idr",
+  -- GAN-JAVASLAT (tőhangváltakozás — a v-bővülés, a magánhangzó-rövidülés):
+  MkFeladat "000.06.001" "Tőhangváltakozás-szabályok (v-bővülés, magánhangzó-rövidülés, tt-bővülés) — a «lovunk»→«ló»" Vár Közepes "SzotarHid_v2.idr",
+  -- GAN-JAVASLAT (build-path + a Kodol importálása — a 000.06 előfeltétele):
+  MkFeladat "000.06.002" "Build-path-korrekció + Kodol importálása a SzotarHid-ba (a §24 teljesítése)" Vár Közepes "SzotarHid_v2.idr",
+  -- GAN-JAVASLAT (képzők rekurzív levágása — a «hazugság»=hazug+ság):
+  MkFeladat "000.06.003" "Képző-levágás rekurzív (derivational morphology — -ság/-ség/-ás/-és/-atlan/-ó/-ő)" Vár Közepes "SzotarHid_v2.idr",
+  -- GAN-JAVASLAT (CPT-audit — a meglévő CPT-kód keresése §24 szerint):
+  MkFeladat "000.06.004" "CPT-audit (a meglévő CPT-kód keresése a Kodol/MagyarNyelvtan modulokban)" Vár Közepes "(audit)",
   -- GAN-JAVASLAT (a 000.02 GAN-ellenőrzéséből — hard rule: figyelembe
   -- kell venni; a gyakoriság = Bayes-prior a dekóderben ÉS fonológiai ok):
   MkFeladat "000.07" "Gyakorisági rang mező (webcorpus/MNSZ — Bayes-prior)" Vár Közepes "(külső korpusz)",
   -- C. Mondat-réteg (tokenizálás és kódolás):
+  -- GAN-JAVASLAT (mondat-szegmentáló — a bekezdés → mondatok; KRITIKUS a 001.02 előtt):
+  MkFeladat "001.00" "Mondat-szegmentáló (bekezdés → mondatok, a rövidítések kivételeivel — a CPT mondatonként)" Vár Magas "SzotarHid_v2.idr",
   MkFeladat "001.01" "Mondat-tokenizáló javítása (szavakTisztítva + mondatTövei)" Kész Magas "SzotarHid_v2.idr",
+  -- GAN-JAVASLAT (kisbetűsítés-megőrzés — a tulajdonnevek jelölése):
+  MkFeladat "001.01.001" "Kisbetűsítés-megőrzés (a tulajdonnevek jelölése — a «Kovács» vs «kovács»)" Vár Közepes "SzotarHid_v2.idr",
   MkFeladat "001.02" "CPT-fázis kinyerése a mondatból" Vár Magas "MondatCPT_v1.idr",
+  -- GAN-JAVASLAT (igei-jel-kinyerés — a T- és P-dimenziók a ragozott igéből):
+  MkFeladat "001.02.001" "Igei-jel-kinyerés (a T- és P-dimenziók olvasása a ragozott igéből — a «mentem»→1. személy múlt)" Vár Közepes "SzotarHid_v2.idr",
   MkFeladat "001.03" "Steane-kód generálás ellenőrzése" Vár Közepes "(futásidejű teszt)",
   MkFeladat "001.04" "Idris IO-réteg (readFile)" Vár Magas "IndexeloIO_v1.idr",
+  -- GAN-JAVASLAT (UTF-8-verifikáció — a readFile Unicode-dekódolásának tesztje):
+  MkFeladat "001.04.001" "UTF-8-verifikáció (a readFile Unicode-dekódolásának tesztje — a «ház» szóval)" Vár Közepes "IndexeloIO_v1.idr",
   MkFeladat "001.05" "Streamelt indexelés (batch=100)" Vár Magas "StreamIndexelo_v1.idr",
   -- D. Tórusz/index:
+  -- GAN-JAVASLAT (OOV-bájtgenerálás — a tő + képző/rag kompozíciója; KRITIKUS a 002/003 előtt):
+  MkFeladat "000.11" "OOV-bájtgenerálás (a tő + a képző/rag bájtkódjának kompozíciója — a «kutyás»=kutya+s)" Vár Magas "SzotarHid_v2.idr",
+  -- GAN-JAVASLAT (időbélyeg — az episodikus memória idő-tengelye):
+  MkFeladat "000.12" "Időbélyeg-réteg (az episodikus memória idő-tengelye — a tórusz + idő kompozíciója)" Vár Közepes "IndexBejegyzes_v1.idr",
+  -- GAN-JAVASLAT (összetett-szó-bontás — a magyar kompozíció morfológiai felbontása):
+  MkFeladat "000.13" "Összetett-szó-bontás (a «kőműves»=kő+műves morfológiai felbontása)" Vár Közepes "SzotarHid_v2.idr",
+  -- GAN-JAVASLAT (poliszémia — a «fal» több értelmű szavak kontextus-érzékeny kódolása):
+  MkFeladat "000.14" "Poliszémia-kezelés (a több értelmű szavak kontextus-érzékeny kódolása — a «fal»=építő/testrész/akadály)" Vár Közepes "SzotarHid_v2.idr",
   MkFeladat "002.01" "Tórusz-pont mint index 0. szintje" Vár Magas "IndexBejegyzes_v1.idr",
   MkFeladat "002.02" "16 klaszter" Vár Magas "Klaszterezes_v1.idr",
   MkFeladat "002.03" "Lemez-alapú index (B-tree)" Vár Magas "LemezIndex_v1.idr",
