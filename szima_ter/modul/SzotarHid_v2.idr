@@ -426,6 +426,127 @@ prozódiaSzindróma kapott tárolt =
 -- (A jövőbeli dekóder ezt a tiltást típus-szinten is kikényszeríti.)
 
 -- ═══════════════════════════════════════════════════════════════════════
+-- III/D. A TŐ-KERESÉS 22 ESETRAGRA + REKURZÍV LEVÁGÁS (000.04)
+-- ═══════════════════════════════════════════════════════════════════════
+-- A feladat (a VegrehajtasiTerv szerint): a SzotarHid_v1.gyakoriToldalékok
+-- (14 toldalék) bővítése a 22 esetragra + a gyakori képzőkre + a
+-- REKURZÍV levágás (a «farkasokat» → -at → «farkasok» → -ok → «farkas»).
+--
+-- §24: a SzotarHid_v1 gyökereit IMPORTÁLJUK (végződikToldalékkal,
+-- levágToldalékot, szótárKeresésTömesterrel, gyakoriToldalékok) — nem
+-- duplikáljuk, hanem komponáljuk őket.
+--
+-- A 22 esetrag (Kiefer 2011 szerint) konkrét alakjai: a
+-- MagyarNyelvtan.esetragAlak alapján (osveny_index/MagyarNyelvtan.idr
+-- 109–143. sor), de a modul importját ELKERÜLTÜK a Steane713-függőség
+-- és a Hangrend-típusnév-ütközés miatt — az értékeket itt felsoroljuk.
+
+-- ─── A 22 ESETRAG KONKRÉT ALAKJAI (hangrendi variánsokkal) ───
+-- Forrás: Kiefer (2011) Új magyar nyelvtan; MagyarNyelvtan.esetragAlak.
+public export
+esetragAlakok22 : List String
+esetragAlakok22 = [
+  -- akkuszatívusz (tárgyas):
+  "okat", "eket", "öket", "t", "ot", "at", "et", "öt",
+  -- datívusz:
+  "nak", "nek",
+  -- inesszívusz:
+  "ban", "ben",
+  -- illatívusz:
+  "ba", "be",
+  -- elatívusz:
+  "ból", "ből",
+  -- szuperesszívusz:
+  "on", "en", "ön", "n",
+  -- adesszívusz:
+  "nál", "nél",
+  -- delatívusz:
+  "ról", "ről",
+  -- ablatívusz:
+  "tól", "től",
+  -- szublatívusz:
+  "ra", "re",
+  -- allatívusz:
+  "hoz", "hez", "höz",
+  -- terminatívusz:
+  "ig",
+  -- instrumentális:
+  "val", "vel",
+  -- causalis-finalis:
+  "ért",
+  -- transzlatívusz-factivus:
+  "vá", "vé",
+  -- formatívusz:
+  "képp",
+  -- essivus-formalis:
+  "ként"
+  ]
+
+-- ─── A GYAKORI KÉPZŐK (a terv szerint) ───
+public export
+gyakoriKépzők : List String
+gyakoriKépzők = [
+  "ság", "ség", "ás", "és", "atlan", "talan", "telen", "ó", "ő", "i", "s"
+  ]
+
+-- ─── A TELJES TOLDALÉK-LISTA (hossz szerint csökkenő — a specifikus/ ───
+-- hosszabb rag előbb illeszkedjen, mint a rövid/több szóra is illeszkedő).
+-- A §24-kompozíció: az esetragok + a képzők + a SzotarHid_v1.gyakoriToldalékok.
+public export
+teljesToldalékLista : List String
+teljesToldalékLista =
+  sortBy (\x, y => compare (length (unpack y)) (length (unpack x)))
+    (esetragAlakok22 ++ gyakoriKépzők ++ gyakoriToldalékok)
+
+-- ─── A REKURZÍV LEVÁGÁS ───
+
+||| Az első levágható rag: ha a szó végződik a raggal,
+||| visszaadja a (levágott szó, rag) párt.
+public export
+elsőLevághatóRag : String -> List String -> Maybe (String, String)
+elsőLevághatóRag _ [] = Nothing
+elsőLevághatóRag szó (rag :: ragok) =
+  if végződikToldalékkal szó rag
+    then case levágToldalékot szó rag of
+           Just levágott => Just (levágott, rag)
+           Nothing => elsőLevághatóRag szó ragok
+    else elsőLevághatóRag szó ragok
+
+||| A rekurzív tő-keresés levágásokkal.
+||| A mélység (Nat) garantálja a totális rekurziót (a szó rövidül,
+||| a mélység csökken). A szótár = a szövegek listája (az összesSzó).
+||| Visszatérés: Just (tő, levágások-fordított-sorrendben) vagy Nothing.
+public export
+tőKeresésRekurzív : (mélység : Nat) -> String -> List String ->
+                    List String -> List String -> Maybe (String, List String)
+tőKeresésRekurzív Z _ _ _ _ = Nothing
+tőKeresésRekurzív (S n) szó ragok szótár eddigi =
+  if elem szó szótár
+    then Just (szó, eddigi)
+    else case elsőLevághatóRag szó ragok of
+           Nothing => Nothing
+           Just (levágott, rag) => tőKeresésRekurzív n levágott ragok szótár (rag :: eddigi)
+
+||| A tő-keresés a teljes szótáron (a 000.04 feladat).
+||| A mélység 10 (a maximális ragszám egy szóban).
+public export
+tőKeresés : String -> Maybe (String, List String)
+tőKeresés szó = tőKeresésRekurzív 10 szó teljesToldalékLista szövegLista []
+
+||| A talált tő szövege (vagy az eredeti szó, ha nem talált).
+public export
+tőVagyEredeti : String -> String
+tőVagyEredeti szó = case tőKeresés szó of
+  Just (tő, _) => tő
+  Nothing => szó
+
+-- REFL: a 0 mélység NEM talál (a Nothing konstans — a totális rekurzió alapja).
+-- Kimenet: Refl (Nothing ✓)
+public export
+bizRekurzióMélységNulla : tőKeresésRekurzív 0 "farkasokat" teljesToldalékLista szövegLista [] = Nothing
+bizRekurzióMélységNulla = Refl
+
+-- ═══════════════════════════════════════════════════════════════════════
 -- IV. REFL-BIZONYÍTÁSOK
 -- ═══════════════════════════════════════════════════════════════════════
 
@@ -540,5 +661,15 @@ main = do
   bevitel <- getLine
   putStrLn ""
   putStrLn ("  A beírt szó prozódiája: " ++ show (prozódia (MkHu bevitel bevitel ObjectRole Additive 0 7)))
+  putStrLn ""
+  putStrLn "─── V/B. A TŐ-KERESÉS (a 000.04 — rekurzív levágás) ───"
+  putStrLn ""
+  case tőKeresés bevitel of
+    Just (tő, levágások) => do
+      putStrLn ("  a tő:       «" ++ tő ++ "»")
+      putStrLn ("  levágások: " ++ show (reverse levágások))
+      putStrLn ("  a tő prozódiája: " ++ show (ritmusKinyerő tő))
+    Nothing => do
+      putStrLn "  (nem találtam töt — a szó nincs a szótárban, vagy túl mély a ragozás)"
   putStrLn ""
   putStrLn "  ★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★"

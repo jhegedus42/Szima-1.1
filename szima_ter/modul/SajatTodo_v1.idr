@@ -124,8 +124,8 @@ todoLista = [
   MkFeladat "011.01" "VerifikációsProtokoll typeclass" Kész Magas "VerifikaciosProtokoll_v1.idr",
   MkFeladat "011.05" "IrodalomHivatkozás (a 011.01 része: Hivatkozás record)" Kész Magas "VerifikaciosProtokoll_v1.idr",
   MkFeladat "011.08" "DefinícióGenerálás (a 011.01 része: typeclass/record)" Kész Magas "(minden feladatban)",
-  MkFeladat "011.03" "FordításEredménye (adattípus minden verifikációhoz)" Vár Közepes "(idris2 exit 0)",
-  MkFeladat "011.04" "NumerikusVerifikáció" Vár Közepes "(idris2 --exec)",
+  MkFeladat "011.03" "FordításEredménye (a 011.01 része: data FordításEredmény a VerifikaciosProtokoll_v1-ben)" Kész Közepes "(idris2 exit 0)",
+  MkFeladat "011.04" "NumerikusVerifikáció (a 011.01 része: minden lépésnél idris2 --exec)" Kész Közepes "(idris2 --exec)",
   MkFeladat "011.02" "GAN automatizálása" Vár Közepes "(task-hívás)",
   MkFeladat "011.13" "GAN-Visszacsatolás" Vár Közepes "(beépítés)",
   MkFeladat "011.06" "VizualizációGenerálás" Vár Közepes "(Mermaid/táblázat)",
@@ -139,7 +139,7 @@ todoLista = [
   MkFeladat "000.01" "HungarianLexicon publikus-v2" Kész Magas "HungarianLexicon_v2_Szima.idr",
   MkFeladat "000.02" "Szótár-generátor + GAN-kiegészítések (minimálpár-gráf, hisztogram, hangrend, szindróma)" Kész Magas "SzotarHid_v2.idr",
   MkFeladat "000.03" "Lumo-szókincs bővítés" Vár Közepes "LumoSzokincs_v1.idr",
-  MkFeladat "000.04" "Tő-keresés 22 esetrag + rekurzív" Vár Magas "SzotarHid_v2.idr",
+  MkFeladat "000.04" "Tő-keresés 22 esetrag + rekurzív" Kész Magas "SzotarHid_v2.idr",
   -- ELTÁVOLÍTVA (a felhasználó utasítására, 2026-09-01):
   --   MkFeladat "000.05" "Ékezet-normalizáció vizsgálata" ...
   -- Indok (a felhasználó, szó szerint): „ekeztnormalizalora miert van
