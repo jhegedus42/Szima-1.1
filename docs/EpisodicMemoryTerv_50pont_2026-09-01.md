@@ -205,3 +205,92 @@ Cél: az episodic memory mint ÉLŐ rendszer: a keresés válaszol a kérdésekr
 - **M5 (a 41-50. pont):** az élő rendszer — a könyvek indexelve, a válasz a saját memóriából
 
 ★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★
+---
+
+## VI. KIEGÉSZÍTÉS — a GAN által javasolt új pontok (51–65)
+
+A GAN-bíráló (2026-09-01) a 50 pontos terv matematikai gerincét ERŐSNEK találta (a Bergman-kernel, a Yoneda, a hiperbolikus beágyazás, a fixpont — valódi kutatási hozzájárulások), DE a GYAKORLATI oldalt GYENGENÉK: a fájlolvasás, a metrikák, a visszacsatolás, a hibatűrés, a verziókezelés, a magánadatok és az online tanulás mind HIÁNYZNAK. A 15 új pont EZT a gyakorlati réteget pótja.
+
+**51. Az Idris IO-réteg — a fájlolvasás és az indexelés motorja.**
+Cél: a `trail_index/books/*.txt` fájlok beolvasása és mondatonkénti indexelése Idris-ből (`readFile` + `withFile`). A `KonyvAdat_E8Gyokrendszer_v1.idr:2067` már használja a `readFile`-t — ez a minta. Kimenet: `IndexeloIO_v1.idr` (`könyvBeolvasás`, `indexelésFolyamata`). Siker: egy Lumo-fájl beolvasása + indexelése + az eredmény hossza.
+
+**52. A streamelt indexelés — a memória-takarékos batch-feldolgozás.**
+Cél: a nagy fájlok (>100 KB) batch-ekben való feldolgozása: 100 mondat / batch, minden batch után a memória felszabadul. Az Awodey (364 KB) nem fér egyszerre a memóriába. Kimenet: `StreamIndexelo_v1.idr` (`batchMéret=100`, `batchIndexelés`, `indexFájlÍrás`). Siker: az Awodey batch-indexelése hiba nélkül.
+
+**53. A lemez-alapú index — a B-tree a memória helyett.**
+Cél: a 16 klaszter (13. pont) mindegyike EGY fájl a lemezen (`index/klaszter_0.idx`), a keresés csak a releváns klaszter-fájlt olvassa. 1 millió mondatnál ~125 GB — nem fér memóriába. Kimenet: `LemezIndex_v1.idr` (`KlaszterFájl`, `klaszterBeolvasás`, `keresésLemezen`). Siker: a lemezolvasás csak 1 klasztert érint (nem mind a 16-ot).
+
+**54. A keresési metrikák — az NDCG, a MAP, a recall@k, a MRR.**
+Cél: a keresés minőségének OBJEKTÍV mérése standard metrikákkal. A 46. pont „>80%"-a szubjektív — a metrikák objektívek és reprodukálhatóak. Kimenet: `KeresesiMetrikak_v1.idr` (`precisionAtK`, `recallAtK`, `MRR`, `NDCG`, `metrikákMérése`). Siker: a tesztek automatizálhatók és reprodukálhatók.
+
+**55. A ground-truth építése — az arany-standard teszt-halmaz.**
+Cél: egy DOKUMENTÁLT, REPRODUKÁLHATÓ teszt-halmaz: 50 kérdés + a várt találatok (relevanciaszintekkel). A 46. pont „ismert kérdések"-e, de KÉZI — a ground-truth fájl automatikus regressziós tesztelést tesz lehetővé. Kimenet: `tesztek/GroundTruth_v1.txt` + `GroundTruth_v1.idr` (`groundTruthBeolvasás`, `regresszióJelentés`). Siker: minden szótár-változás után a teszt újrafut.
+
+**56. A relevancia-visszacsatolás — a felhasználó pontozza a találatokat.**
+Cél: a felhasználó pontozza a találatokat (releváns/nem releváns), a rendszer ÚJRASÚLYOZZA a szófaj-súlyokat (a 17. pont IDF-súlyozása ADAPTÍVVÁ válik). Ez a „relevance feedback" — a keresés empirikus javítása. Kimenet: `Visszacsatolas_v1.idr` (`TalálatPontozás`, `súlyÚjraszámolás`, `adaptívKeresés`). Siker: a pontozás után a következő keresés relevanciája javul.
+
+**57. Az aktív tanulás — a rendszer kérdez.**
+Cél: ha két találat közti különbség kicsi (a távolságuk közel azonos), a rendszer MEGKÉRDEZI: „ez a két találat közül melyik relevánsabb?" — a válaszból a szótár finomodik. Kimenet: `AktivTanulas_v1.idr` (`bizonytalanságMérés`, `kérdésGenerálás`, `aktívCiklus`). Siker: a bizonytalanság feloldása a felhasználó válaszával.
+
+**58. A hibás indexbejegyzések detektálása és javítása.**
+Cél: a hibás bejegyzések (rosszul tokenizált mondat, hiányzó szótári bejegyzés) detektálása (az ismeretlen-szó arány > 50% → hibás) és javítása (eldobás vagy újra-indexelés). A 39. pont GKP a lekérdezés hibáját javítja, de NEM az indexét. Kimenet: `IndexHibak_v1.idr` (`ismeretlenSzóArány`, `hibásBejegyzés?`, `indexTisztítás`). Siker: a hibás bejegyzések aránya < 5%.
+
+**59. A konfliktus-feloldás — több forrásból jövő mondatok.**
+Cél: ha az Awodey és a Mac Lane UGYANARRA a fogalomról MÁST mondanak, az index KÉT bejegyzést kap — a forrás-súlyozás (Awodey=1.0, Lumo=0.8) és a forrás-jelzés segít. Kimenet: `ForrásSúlyozás_v1.idr` (`forrásSúly`, `konfliktusJelzés`, `többForrásúKeresés`). Siker: a találat jelzi a forrást és a konfliktust.
+
+**60. A szótár verziókezelése és a diff-index.**
+Cél: ha a szótár bővül (v2 → v3), a régi index komplex bájtjai ÉRVÉNYTELENNEK lesznek. A diff-index: csak a megváltozott szavakat tartalmazó mondatokat újra-indexeljük. Kimenet: `SzotarVerzió_v1.idr` (`SzotarVerzió`, `diffIndex`, `verzióEllenőrzés`). Siker: a szótár-váltás nem igényli a teljes index újraépítését.
+
+**61. A klaszter-egyensúly mérése és javítása.**
+Cél: a 11. pont „egyensúlyban" mondja, de NEM méri. Ha a mondatok 90%-a kijelentő, a 0°-os klaszter 90%-ot tartalmaz — a hierarchia DEGENERÁLÓDIK. A finom-felosztás (a túl nagy klaszter 4 al-klaszterre) megoldja. Kimenet: `KlaszterEgyensuly_v1.idr` (`klaszterMéretek`, `klaszterVariancia`, `finomFelosztás`). Siker: a variancia < 2× az átlagtól.
+
+**62. A cache-elés és a memoizáció.**
+Cél: a Bergman-mag (24. pont) és a fixpont-iteráció (33. pont) eredményeinek memoizációja. Ugyanaz a kérdés → ugyanaz a mag → cache-ből. Kimenet: `KeresesiCache_v1.idr` (`CacheBejegyzés`, `cacheKeresés`, `cacheKereső`). Siker: az ismételt kérdés < 1 ms (a cache-ből).
+
+**63. A magyar hangrendszer integrálása — a FanoParitás.**
+Cél: a magyar nyelv SPECIÁLIS a hangrendszerében (magánhangzó-harmónia: mély/magas). A `FanoParitás.idr` a projektben a Fano-paritást kódolja — a komplex bájt 5. dimenziója (hang) EZT kódolhatja. Kimenet: `HangrendszerKódolás_v1.idr` (`magánhangzóRend`, `szóHangrendje`, `FanoParitásKódolás`). Siker: a hangrend-egyezés javítja a keresést.
+
+**64. A magánadatok és az elfelejtés joga.**
+Cél: a Lumo-beszélgetések SZEMÉLYESEK. A szenzitivitás-jelölő (a felhasználó jelöli → az index NEM tartalmazza) és a végleges-törlés (a sleepFilter mellett). Kimenet: `Maganadatok_v1.idr` (`szenzitívMondat?`, `szűrtIndexelés`, `elfelejtésJoga`). Siker: a szenzitív mondatok NEM az indexben.
+
+**65. Az online tanulás és a few-shot adaptáció.**
+Cél: a `learnWord` (43. pont) FOLYAMATOSAN tanul — ha a mondat ismeretlen szót tartalmaz, a környezetből becslést kap és hozzáadja a szótárhoz. A few-shot: 1-3 példa → a szó báltja finomodik. Kimenet: `OnlineTanulas_v1.idr` (`környezetbőlJelentés`, `learnWordOnline`, `fewShotAdaptáció`). Siker: az új szó 3 példa után releváns találatot ad.
+
+---
+
+## A JAVASOLT SORREND-KORREKCIÓ (a GAN szerint)
+
+1. A **45. pont (könyvek indexelése) ELŐBBRE** kerüljön — a 21. pont (hierarchia) UTÁN, a 22. elé. Így a könyv-index a hierarchia TESZTJE, nem az eredménye.
+2. Az **51-52. pont (IO + streamelés)** a 10. és a 11. KÖZÉ kerüljön — mielőtt a tórusz jön, a mondatoknak BE kell kerülniük.
+3. A **54-55. pont (metrikák + ground-truth)** a 45. UTÁN jöjjön — a könyv-indexen mérik a minőséget.
+
+Az új függőségi gráf (a GAN szerint):
+```
+1-10 (szótár + tokenizálás)
+    ↓
+51-52 (IO + streamelés) ← ÚJ
+    ↓
+11-20 (tórusz + kódolás)
+    ↓
+53 (lemezMindex) ← ÚJ
+    ↓
+21 (hierarchia) → 45 (könyvek, IDE!) ← MOZGATVA
+    ↓
+54-55 (metrikák + ground-truth) ← ÚJ
+    ↓
+56-57 (visszacsatolás + aktív) ← ÚJ
+    ↓
+24-30 (Bergman + hiperbolikus + O(log n))
+    ↓
+58-59 (hibák + konfliktus) ← ÚJ
+    ↓
+60-62 (verzió + egyensúly + cache) ← ÚJ
+    ↓
+41-44 (fehérje + BabyAGI) → 65 (online tanulás) ← ÚJ
+    ↓
+63 (hangrendszer) → 64 (magánadatok) ← ÚJ
+    ↓
+46-50 (teszt + GAN + cikk + élő)
+```
+
+★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★
