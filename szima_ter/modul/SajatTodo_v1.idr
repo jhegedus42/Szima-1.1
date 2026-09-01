@@ -233,13 +233,9 @@ következőFeladat [] = Nothing
 következőFeladat (f :: fs) =
   if feladatÁllapota f == Folyamatban
     then Just f
-    else
-      case következőFeladat fs of
-        Just f' => Just f'
-        Nothing =>
-          if feladatÁllapota f == Vár && feladatPrioritása f == Magas
-            then Just f
-            else Nothing
+    else if feladatÁllapota f == Vár && feladatPrioritása f == Magas
+      then Just f
+      else következőFeladat fs
 
 ||| A kész feladatok száma.
 public export
