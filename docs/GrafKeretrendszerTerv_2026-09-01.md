@@ -365,3 +365,84 @@ A 76 feladat × 6 ellenőrzés = 456 ellenőrzés-csúcs. De a gráf GENERÁLJA 
 ---
 
 ★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★
+
+---
+
+## XIII. A KATEGÓRIAELMELETI FOGALMAK TELJES KATALÓGUSA
+
+A felhasználó (szó szerint): „adjunkciot vegyuk hozza, illetve az osszes letezo kategoria elmeleti fogalmat amit tudunk bizonyitani".
+
+### A MEGLEVŐ 16 fogalom (a `KategoriaElmelet.idr`-ben, 1337 sor)
+
+| # | Fogalom | A típus | Bizonyítható? |
+|---|---|---|---|
+| 1 | Kategória | `record Kategoria` — azonos + összetétel | ✓ |
+| 2 | KategoriaT (interface) | `interface KategoriaT` — identitas + kompozicio + törvények | ✓ (Refl) |
+| 3 | Monoidális kategória | `record MonoidalisKategoria` — tenzor + egység | ✓ |
+| 4 | Duális kategória | `record DualisKategoria` — a duális objektum | ✓ |
+| 5 | Funktor | `record Funktor` — objektumKép + morfizmusKép | ✓ |
+| 6 | Természetes transzformáció | `record TermeszetesTranszformacio` — felso + also + komponens | ✓ |
+| 7 | Bifunktor | `record Bifunktor` — a szorzat-kategóriából | ✓ |
+| 8 | Span | `record Span` — két morfizmus közös forrással | ✓ |
+| 9 | Cospan | `record Cospan` — két morfizmus közös céllal | ✓ |
+| 10 | Szimmetrikus monoidális kategória | `record SzimmetrikusMonoidalisKategoria` — braiding | ✓ |
+| 11 | Szorzat kategória | `record SzorzatKategoria` — C × D | ✓ |
+| 12 | EllenMorf (C^op) | `data EllenMorf` — EllenNyil (a fordított morfizmus) | ✓ |
+| 13 | **Adjunkció** ✓ | `record Adjunkcio` — balFunktor + jobbFunktor + balEgyseg + jobbEgyseg | ✓ (Hom_D(F a, b) ≅ Hom_C(a, G b)) |
+| 14 | KettőKategória (2-kategória) | `record KettoKategoria` — 0/1/2-sejtek + összetételek | ✓ (interchange) |
+| 15 | **Yoneda-beágyazás** ✓ | `record YonedaBeagyazas` — homPresheaf + utánaTételezés + yonedaLemma | ✓ (Nat(Hom(-,a), F) ≅ F a) |
+| 16 | Csoport | `interface CsoportT` — szorzás + egység + inverz + törvények | ✓ (Refl) |
+
+### A HIÁNYZÓ 34 fogalom (a KategoriaElmelet.idr-hez kiegészítendő)
+
+#### A. Limit/Kolimit család (10 fogalom)
+17. Végződés (terminal) 18. Kezdet (initial) 19. Szorzat (product) 20. Koprodukt (coproduct) 21. Pullback 22. Pushout 23. Egyenlőség (equalizer) 24. Koegyenlőség (coequalizer) 25. Limit (általános) 26. Kolimit (általános)
+
+#### B. Monad/Comonad család (5 fogalom)
+27. Monad 28. Comonad 29. Kleisli-kategória 30. Eilenberg-Moore-kategória 31. Szabad monad
+
+#### C. Morfizmus-típusok (4 fogalom)
+32. Monomorfizmus 33. Epimorfizmus 34. Izomorfizmus 35. Retrakció
+
+#### D. Funktor-típusok (4 fogalom)
+36. Teljes funktor 37. Hűséges funktor 38. Ekvivalencia 39. Felejtő funktor
+
+#### E. Magasabb kategóriák (3 fogalom)
+40. Bikategória 41. Profunctor 42. Kan kiterjesztés
+
+#### F. Kvantum/fizika (4 fogalom — a projekt-kapcsolattal!)
+43. Dagger kategória → **CPT-buborék** (a dagger = a tükör; a CPT a tükör + az idő)
+44. Kompakt zárt kategória → **E8 × E8 × E8** (a kvantum-szimmetria)
+45. Szalagos kategória → **Fano** (a braiding + a twist)
+46. Nyom (trace) → **kvantum-mérés** (a partial trace)
+
+#### G. Toposz/zárt (4 fogalom)
+47. Toposz → **a „gondolkodási tér"**
+48. Részobjektum-osztályozó (subobject classifier)
+49. Exponenciális (belső hom: b^a)
+50. Grothendieck-konstrukció (fibred/indexed kategóriák)
+
+### A morfizmusok a kategóriaelméleti fogalmak között (a gráf élei)
+
+- Adjunkció → Monad (a bal+jobb adjunktus kompozíciója)
+- Adjunkció → Comonad (a duális)
+- Monad → Kleisli-kategória; Monad → Eilenberg-Moore-kategória
+- Szabad monad ⊣ Felejtő funktor (az adjunkció)
+- Yoneda → Kan-kiterjesztés (az általánosítás)
+- Limit → Egyenlőség; Kolimit → Koegyenlőség
+- Szorzat → Pullback; Koprodukt → Pushout
+- Végződés → Szorzat; Kezdet → Koprodukt
+- Dagger kategória → CPT-buborék
+- Kompakt zárt kategória → E8 × E8 × E8
+- Szalagos kategória → Fano
+- Nyom → kvantum-mérés
+- Toposz → „gondolkodási tér"
+
+### Irodalom (§N14/4)
+- Mac Lane, „Categories for the Working Mathematician" (1971) — a standard referencia
+- Awodey, „Category Theory" (2006) — az alapok
+- Hu & Carette, „Proof-relevant Category Theory in Agda" (arXiv:2005.07059, 2020) — a bizonyíthatóság az Idris/Agda-ban
+- nLab: „categorical semantics of dependent type theory" — a DTT mint kategória
+- Lambek-Scott (1986) — a Curry-Howard + a kategóriaelmélet
+
+★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★
