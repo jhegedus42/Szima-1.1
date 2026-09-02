@@ -36,6 +36,31 @@ Show Kubit where
   show Nulla = "0"
   show Egy   = "1"
 
+-- ─── NUM KUBIT INSTANCE (Z₂ algebra) ───────────────────────
+-- A Kubit = Z₂: 0 = Nulla, 1 = Egy, + = XOR, * = AND.
+-- Ez az instance lehetővé teszi, hogy a Kubit-eken
+-- numerikus literálokat (0, 1) és műveleteket (+, -, *)
+-- használjunk — a kategóriaelméleti kód多处 igényli.
+-- A -1 = Egy (mivel Z₂-ben -1 = 1).
+public export
+Num Kubit where
+  (+) Nulla Nulla = Nulla
+  (+) Nulla Egy   = Egy
+  (+) Egy   Nulla = Egy
+  (+) Egy   Egy   = Nulla
+  (*) Nulla _     = Nulla
+  (*) _     Nulla = Nulla
+  (*) Egy   Egy   = Egy
+  fromInteger 0 = Nulla
+  fromInteger 1 = Egy
+  fromInteger _ = Nulla
+
+public export
+Neg Kubit where
+  negate Nulla = Nulla
+  negate Egy   = Egy
+  (-) a b = a + b
+
 ||| Hetes kod a [[7,1,3]] Steane kod 7 bitjevel.
 ||| A konstruktor neve a teljes magyar kifejezes,
 ||| mert a rovidites (Mk) tiltva van.

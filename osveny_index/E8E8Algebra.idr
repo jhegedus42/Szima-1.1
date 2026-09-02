@@ -98,6 +98,19 @@ public export
 eldont : Nat -> Eldontes
 eldont o = if o >= atfedesKuszob then DobdEl else TartsdMeg
 
+-- ─── ATFEDES CLIFFORD-ELEMRE (a FazisAlgebra számára) ──────
+||| Két CliffordElem átfedése: a 3 Kubit egyezésének aránya.
+||| 1.0 = teljes átfedés (azonos), 0.0 = nincs átfedés.
+||| Ez a `FazisAlgebra.fazisOsszehasonlit` által használt függvény.
+public export
+atfedes : CliffordElem -> CliffordElem -> Double
+atfedes a b =
+  let egyezes : Nat
+      egyezes = (if kubitEgyezik a.skalar b.skalar then 1 else 0)
+              + (if kubitEgyezik a.vektor b.vektor then 1 else 0)
+              + (if kubitEgyezik a.bivektor b.bivektor then 1 else 0)
+  in cast egyezes / 3.0
+
 -- ─── 4. E8⁴ KODSZO — 4×E8 + CLIFFORD + STEANE ───────────────
 
 ||| E8⁴ kodoszo: 4 E8Pont + Clifford + Steane.

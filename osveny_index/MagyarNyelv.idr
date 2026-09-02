@@ -77,30 +77,30 @@ data EsetLogika : Eset -> Type where
 ||| kozelebb. Ez azt jelenti, hogy 1 bit hiba javithato.
 public export
 esetKod : Eset -> E8Pont
-esetKod Nominativusz   = E8PontKonstruktor 0 0 0 0 0 0 0 0
-esetKod Accusativusz   = E8PontKonstruktor 1 0 0 0 0 0 0 0
-esetKod Datívusz       = E8PontKonstruktor 0 1 0 0 0 0 0 0
-esetKod Instrumentalis = E8PontKonstruktor 0 0 1 0 0 0 0 0
-esetKod Komitativusz   = E8PontKonstruktor 0 0 0 1 0 0 0 0
-esetKod Kauzalis       = E8PontKonstruktor 1 1 0 0 0 0 0 0
-esetKod Transzativusz  = E8PontKonstruktor 1 0 1 0 0 0 0 0
-esetKod Terminativusz  = E8PontKonstruktor 1 0 0 1 0 0 0 0
-esetKod Illativusz     = E8PontKonstruktor 0 1 1 0 0 0 0 0
-esetKod Inesszivusz    = E8PontKonstruktor 0 1 0 1 0 0 0 0
-esetKod Elativusz      = E8PontKonstruktor 0 0 1 1 0 0 0 0
-esetKod Allativusz     = E8PontKonstruktor 1 1 1 0 0 0 0 0
-esetKod Adesszivusz    = E8PontKonstruktor 1 1 0 1 0 0 0 0
-esetKod Ablativusz     = E8PontKonstruktor 1 0 1 1 0 0 0 0
-esetKod Szuperesszivusz = E8PontKonstruktor 0 1 1 1 0 0 0 0
-esetKod Delativusz     = E8PontKonstruktor 1 1 1 1 0 0 0 0
-esetKod Szublativusz   = E8PontKonstruktor 0 0 0 0 1 0 0 0
-esetKod Temporalis     = E8PontKonstruktor 0 0 0 0 0 1 0 0
-esetKod Szociativusz   = E8PontKonstruktor 0 0 0 0 0 0 1 0
-esetKod Distributivus  = E8PontKonstruktor 0 0 0 0 0 0 0 1
-esetKod Esszivusz      = E8PontKonstruktor 1 0 0 0 1 0 0 0
-esetKod Modalis        = E8PontKonstruktor 1 0 0 0 0 1 0 0
-esetKod Causalis       = E8PontKonstruktor 1 0 0 0 0 0 1 0
-esetKod Formaliss      = E8PontKonstruktor 1 0 0 0 0 0 0 1
+esetKod Nominativusz   = E8PontKonstruktor Nulla Nulla Nulla Nulla Nulla Nulla Nulla Nulla
+esetKod Accusativusz   = E8PontKonstruktor Egy Nulla Nulla Nulla Nulla Nulla Nulla Nulla
+esetKod Datívusz       = E8PontKonstruktor Nulla Egy Nulla Nulla Nulla Nulla Nulla Nulla
+esetKod Instrumentalis = E8PontKonstruktor Nulla Nulla Egy Nulla Nulla Nulla Nulla Nulla
+esetKod Komitativusz   = E8PontKonstruktor Nulla Nulla Nulla Egy Nulla Nulla Nulla Nulla
+esetKod Kauzalis       = E8PontKonstruktor Egy Egy Nulla Nulla Nulla Nulla Nulla Nulla
+esetKod Transzativusz  = E8PontKonstruktor Egy Nulla Egy Nulla Nulla Nulla Nulla Nulla
+esetKod Terminativusz  = E8PontKonstruktor Egy Nulla Nulla Egy Nulla Nulla Nulla Nulla
+esetKod Illativusz     = E8PontKonstruktor Nulla Egy Egy Nulla Nulla Nulla Nulla Nulla
+esetKod Inesszivusz    = E8PontKonstruktor Nulla Egy Nulla Egy Nulla Nulla Nulla Nulla
+esetKod Elativusz      = E8PontKonstruktor Nulla Nulla Egy Egy Nulla Nulla Nulla Nulla
+esetKod Allativusz     = E8PontKonstruktor Egy Egy Egy Nulla Nulla Nulla Nulla Nulla
+esetKod Adesszivusz    = E8PontKonstruktor Egy Egy Nulla Egy Nulla Nulla Nulla Nulla
+esetKod Ablativusz     = E8PontKonstruktor Egy Nulla Egy Egy Nulla Nulla Nulla Nulla
+esetKod Szuperesszivusz = E8PontKonstruktor Nulla Egy Egy Egy Nulla Nulla Nulla Nulla
+esetKod Delativusz     = E8PontKonstruktor Egy Egy Egy Egy Nulla Nulla Nulla Nulla
+esetKod Szublativusz   = E8PontKonstruktor Nulla Nulla Nulla Nulla Egy Nulla Nulla Nulla
+esetKod Temporalis     = E8PontKonstruktor Nulla Nulla Nulla Nulla Nulla Egy Nulla Nulla
+esetKod Szociativusz   = E8PontKonstruktor Nulla Nulla Nulla Nulla Nulla Nulla Egy Nulla
+esetKod Distributivus  = E8PontKonstruktor Nulla Nulla Nulla Nulla Nulla Nulla Nulla Egy
+esetKod Esszivusz      = E8PontKonstruktor Egy Nulla Nulla Nulla Egy Nulla Nulla Nulla
+esetKod Modalis        = E8PontKonstruktor Egy Nulla Nulla Nulla Nulla Egy Nulla Nulla
+esetKod Causalis       = E8PontKonstruktor Egy Nulla Nulla Nulla Nulla Nulla Egy Nulla
+esetKod Formaliss      = E8PontKonstruktor Egy Nulla Nulla Nulla Nulla Nulla Nulla Egy
 
 ||| FogalomTipus: a fogalmak tipusai a hierarchiaban.
 ||| Itt definialva, mert a RagozottSzo es a NyelvtaniKapcsolat

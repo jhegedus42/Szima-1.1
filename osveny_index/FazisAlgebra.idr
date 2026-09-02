@@ -1,5 +1,6 @@
 module FazisAlgebra
 
+import Steane713
 import HaromKubit
 import E8E8Algebra
 
@@ -50,10 +51,10 @@ Eq Fazis where
 public export
 fazisOsszehasonlit : E8E8KodSzo -> E8E8KodSzo -> Fazis
 fazisOsszehasonlit a b =
-  let balAtfedes = atfedes (CliﬀordKonstruktor a.balE8.x1 a.balE8.x2 0)
-                           (CliﬀordKonstruktor b.balE8.x1 b.balE8.x2 0)
-      jobbAtfedes = atfedes (CliﬀordKonstruktor a.jobbE8.x1 a.jobbE8.x2 0)
-                            (CliﬀordKonstruktor b.jobbE8.x1 b.jobbE8.x2 0)
+  let balAtfedes = atfedes (CliffordKonstruktor a.balE8.x1 a.balE8.x2 Nulla)
+                           (CliffordKonstruktor b.balE8.x1 b.balE8.x2 Nulla)
+      jobbAtfedes = atfedes (CliffordKonstruktor a.jobbE8.x1 a.jobbE8.x2 Nulla)
+                            (CliffordKonstruktor b.jobbE8.x1 b.jobbE8.x2 Nulla)
   in if balAtfedes > 0.9 && jobbAtfedes > 0.9 then Azonos
   else if balAtfedes < 0.1 && jobbAtfedes < 0.1 then Ellentetes
   else if balAtfedes > 0.5 || jobbAtfedes > 0.5 then Kvantalt

@@ -200,10 +200,10 @@ public export
 data EsetMorf : Eset -> Eset -> Type where
   EsetMorfKonstruktor : EsetLogika a -> EsetMorf a a
 
-||| E8 morfizmus: CliﬀordElem wrapper.
+||| E8 morfizmus: CliffordElem wrapper.
 public export
 data E8Morf : E8Pont -> E8Pont -> Type where
-  E8MorfKonstruktor : CliﬀordElem -> E8Morf a b
+  E8MorfKonstruktor : CliffordElem -> E8Morf a b
 
 ||| HaromKubit morfizmus: fazis kapcsolat.
 public export
@@ -284,7 +284,7 @@ esetOsszetetelMorf (EsetMorfKonstruktor f) (EsetMorfKonstruktor g) =
 
 e8OsszetetelMorf : E8Morf a b -> E8Morf b c -> E8Morf a c
 e8OsszetetelMorf (E8MorfKonstruktor f) (E8MorfKonstruktor g) =
-  E8MorfKonstruktor (cliﬀordSzorzat f g)
+  E8MorfKonstruktor (cliffordSzorzat f g)
 
 kubitOsszetetelMorf : KubitMorf a b -> KubitMorf b c -> KubitMorf a c
 kubitOsszetetelMorf (KubitMorfKonstruktor f) (KubitMorfKonstruktor g) =
@@ -316,7 +316,7 @@ esetKategoria = KategoriaKonstruktor
 public export
 e8Kategoria : Kategoria E8Pont E8Morf
 e8Kategoria = KategoriaKonstruktor
-  (\a => E8MorfKonstruktor (CliﬀordKonstruktor 1 0 0))
+  (\a => E8MorfKonstruktor (CliffordKonstruktor Egy Nulla Nulla))
   e8OsszetetelMorf
 
 ||| HaromKubit mint kategoria.
@@ -487,7 +487,7 @@ e8Monoidalis = MonoidalisKategoriaKonstruktor
 public export
 e8Braiding : {a, b : E8Pont}
           -> E8Morf (e8Osszead a b) (e8Osszead b a)
-e8Braiding = E8MorfKonstruktor (CliﬀordKonstruktor 1 0 0)
+e8Braiding = E8MorfKonstruktor (CliffordKonstruktor Egy Nulla Nulla)
 
 ||| E8 szimmetrikus monoidalis kategoria.
 public export
@@ -530,11 +530,13 @@ public export
 e8e8KodSzoObj : E8E8KodSzo -> E8xE8Obj
 e8e8KodSzoObj kod = (kod.balE8, kod.jobbE8)
 
-||| E8xE8Obj → E8E8KodSzo: ures Steane koddal, azonos Cliﬀorddal.
+||| E8xE8Obj → E8E8KodSzo: ures Steane koddal, azonos Clifforddal.
 public export
 e8xE8ObjKodSzo : E8xE8Obj -> E8E8KodSzo
 e8xE8ObjKodSzo (b, j) = KodKonstruktor "" b j
-  (CliﬀordKonstruktor 1 0 0) (alapKod Nulla)
+  (E8PontKonstruktor Nulla Nulla Nulla Nulla Nulla Nulla Nulla Nulla)
+  (E8PontKonstruktor Nulla Nulla Nulla Nulla Nulla Nulla Nulla Nulla)
+  (CliffordKonstruktor Egy Nulla Nulla) (alapKod Nulla)
 
 -- ═══════════════════════════════════════════════════════════════
 -- 2-KATEGORIA + YONEDA + DUAL A FOGALMAKRA
@@ -832,7 +834,7 @@ fogalomTipusKod Sorozat = E8PontKonstruktor 1 1 1 1 0 1 0 0
 fogalomTipusKod Hatar = E8PontKonstruktor 1 1 1 1 0 1 0 1
 fogalomTipusKod Vegtelen = E8PontKonstruktor 1 1 1 1 0 1 1 0
 -- Kepzetes egyseg, ij szorzat, katernio, okternio, tukrozesek
-fogalomTipusKod KepzetesEgyseg = E8PontKonstruktor 0 1.0 0 0 0 0 0 0
+fogalomTipusKod KepzetesEgyseg = E8PontKonstruktor Nulla Egy Nulla Nulla Nulla Nulla Nulla Nulla
 fogalomTipusKod IjSzorzat = E8PontKonstruktor 1 1 1 1 1 0 0 1
 fogalomTipusKod Katernio = E8PontKonstruktor 1 1 1 1 1 0 1 0
 fogalomTipusKod Okternio = E8PontKonstruktor 1 1 1 1 1 0 1 1
@@ -843,8 +845,8 @@ fogalomTipusKod KantiKategoria = E8PontKonstruktor 1 1 1 1 1 1 1 0
 fogalomTipusKod TranszcendentalisAppercepcio = E8PontKonstruktor 1 0 0 0 1 1 0 0
 fogalomTipusKod TranszcendentalisDialektika = E8PontKonstruktor 1 0 0 0 1 1 0 1
 -- Matematikai allandok
-fogalomTipusKod EulerSzam = E8PontKonstruktor (exp 1.0) 0 0 0 0 0 0 0
-fogalomTipusKod Pi = E8PontKonstruktor pi 0 0 0 0 0 0 0
+fogalomTipusKod EulerSzam = E8PontKonstruktor Egy Nulla Nulla Nulla Nulla Nulla Nulla Nulla
+fogalomTipusKod Pi = E8PontKonstruktor Egy Nulla Nulla Nulla Nulla Nulla Nulla Nulla
 -- Operatorok
 fogalomTipusKod Osszeadas = E8PontKonstruktor 0 0 0 1 1 0 0 0
 fogalomTipusKod Kivonas = E8PontKonstruktor 0 0 0 1 1 0 1 0
@@ -870,10 +872,7 @@ kubitErtek Egy = 1.0
 public export
 haromKubitE8Kod : HaromKubit -> E8Pont
 haromKubitE8Kod v =
-  let sajatErtek = kubitErtek v.sajat
-      masikErtek = kubitErtek v.masik
-      fazisErtek = kubitErtek v.fazis
-  in E8PontKonstruktor sajatErtek masikErtek fazisErtek 0 0 0 0 0
+  E8PontKonstruktor v.sajat v.masik v.fazis Nulla Nulla Nulla Nulla Nulla
 
 ||| IgeIdo → E8Pont (6. pozicio).
 public export
@@ -1079,21 +1078,21 @@ fogalomFaKubit fa =
 -- ═══════════════════════════════════════════════════════════════
 
 esetE8MorfizmusKep : {a, b : Eset} -> EsetMorf a b -> E8Morf (esetKod a) (esetKod b)
-esetE8MorfizmusKep (EsetMorfKonstruktor _) = E8MorfKonstruktor (CliﬀordKonstruktor 1 0 0)
+esetE8MorfizmusKep (EsetMorfKonstruktor _) = E8MorfKonstruktor (CliffordKonstruktor Egy Nulla Nulla)
 
 fogalomE8MorfizmusKep : {a : FogalomTipus} -> {b : FogalomTipus}
                      -> FogalomMorf a b -> E8Morf (fogalomTipusKod a) (fogalomTipusKod b)
-fogalomE8MorfizmusKep {a} FogalomAzonos = E8MorfKonstruktor (CliﬀordKonstruktor 1 0 0)
+fogalomE8MorfizmusKep {a} FogalomAzonos = E8MorfKonstruktor (CliffordKonstruktor Egy Nulla Nulla)
 fogalomE8MorfizmusKep {a} {b} (FogalomIre _) =
   let aa = fogalomTipusKod a
       bb = fogalomTipusKod b
       -- Az E8 × E8 geometriai szorzat: aa * bb = a·b + a∧b
       -- A skalaris resz (a·b) az atfedes merteke
-      -- Hasznaljuk a CliﬀordKonstruktor-t a ket pont kulonbsegekent
+      -- Hasznaljuk a CliffordKonstruktor-t a ket pont kulonbsegekent
       xx = aa.x1 - bb.x1
       yy = aa.x2 - bb.x2
       zz = aa.x3 - bb.x3
-  in E8MorfKonstruktor (CliﬀordKonstruktor
+  in E8MorfKonstruktor (CliffordKonstruktor
     (if xx == 0 then 1 else 0)
     (if yy == 0 then 1 else 0)
     (if zz == 0 then 1 else 0))
@@ -1103,10 +1102,10 @@ fogalomE8MorfizmusKep {a} {b} (FogalomSorozat koztes f g) =
   in e8OsszetetelMorf f1 g1
 
 kubitE8MorfizmusKep : {a, b : HaromKubit} -> KubitMorf a b -> E8Morf (haromKubitE8Kod a) (haromKubitE8Kod b)
-kubitE8MorfizmusKep (KubitMorfKonstruktor _) = E8MorfKonstruktor (CliﬀordKonstruktor 1 0 0)
+kubitE8MorfizmusKep (KubitMorfKonstruktor _) = E8MorfKonstruktor (CliffordKonstruktor Egy Nulla Nulla)
 
 idoE8MorfizmusKep : {a, b : IgeIdo} -> IdoMorf a b -> E8Morf (idoE8Kod a) (idoE8Kod b)
-idoE8MorfizmusKep (IdoMorfKonstruktor _) = E8MorfKonstruktor (CliﬀordKonstruktor 1 0 0)
+idoE8MorfizmusKep (IdoMorfKonstruktor _) = E8MorfKonstruktor (CliffordKonstruktor Egy Nulla Nulla)
 
 -- ═══════════════════════════════════════════════════════════════
 -- FUNKTOROK (KATEGORIAK KAPCSOLASAI)
@@ -1156,7 +1155,9 @@ nyelvtaniKapcsolatKod kapcs =
     (fogalomNev kapcs.ige.fogalom)
     (ragozottSzoE8Pont kapcs.alany)
     (ragozottSzoE8Pont kapcs.targy)
-    (CliﬀordKonstruktor 1 0 1)
+    (E8PontKonstruktor Nulla Nulla Nulla Nulla Nulla Nulla Nulla Nulla)
+    (E8PontKonstruktor Nulla Nulla Nulla Nulla Nulla Nulla Nulla Nulla)
+    (CliffordKonstruktor Egy Nulla Egy)
     (alapKod Nulla)
 
 ||| VilagFa → ToltesParitasIdo.
@@ -1335,3 +1336,233 @@ interface CsoportT (g : Type) where
 
 -- ─── A KATEGÓRIA TYPECLASS VISSZATESZÉSE ──────────────────
 -- (A korabbi definicio itt van, az EmberiMorf es SzamitasiMorf utan)
+
+-- ═══════════════════════════════════════════════════════════════
+-- LIMIT/KOLIMIT CSALÁD (Lépés 1.1 — 10 fogalom)
+-- ═══════════════════════════════════════════════════════════════
+-- Források:
+--   nLab: https://ncatlab.org/nlab/show/limit
+--   Wikipedia: https://en.wikipedia.org/wiki/Limit_(category_theory)
+--   Awodey: Category Theory (2006), §5.1–5.4 (a szorzat, a koprodukt, az egyenlítő, a pullback)
+--   Mac Lane: Categories for the Working Mathematician, §III.4 (a limit, a kolimit)
+--   Cat_on_Coq: a setoid-alapú limit/kolimit formalizálás
+--   agda-unimath: a Limits modul (az általános limit/kolimit)
+--   Hu & Carette (2020, arXiv:2005.07059): a proof-relevant formalizálás
+--
+-- A 10 fogalom:
+--   1. Végződés (terminal)  2. Kezdet (initial)
+--   3. Szorzat (product)    4. Koprodukt (coproduct)
+--   5. Egyenlítő (equalizer) 6. Koegyenlítő (coequalizer)
+--   7. Pullback (fiber product)  8. Pushout
+--   9. ÁltalánosLimit  10. ÁltalánosKolimit
+--
+-- A MANTRA szerint: a bizonyítás kimenete kommentben a propozíció előtt.
+-- A típus annyira pontos, hogy csak egy implementáció lehetséges.
+-- Minden fogalom `public export` — a gráf-adatbázis importálja.
+
+-- ─── 1. VÉGZŐDÉS (terminal object) ─────────────────────────
+-- https://ncatlab.org/nlab/show/terminal+object
+-- Definíció (Awodey §5.1): egy T objektum végződés, ha minden A objektumhoz
+-- pontosan egy morfizmus van A-ból T-be: ∃! t : A → T.
+-- Az egyértelműség = a típusban van (a `vegzodesMorfizmus` az egyetlen).
+public export
+record Vegzodes (k : Kategoria obj hom) where
+  constructor VegzodesKonstruktor
+  vegzodesObjektum : obj
+  vegzodesMorfizmus : (a : obj) -> hom a vegzodesObjektum
+  -- Az egyértelműség törvénye: minden f : a → T egyenlő a vegzodesMorfizmus a-val.
+  vegzodesEgyertelmu : {a : obj} -> (f : hom a vegzodesObjektum)
+                     -> f = vegzodesMorfizmus a
+
+-- ─── 2. KEZDET (initial object) ────────────────────────────
+-- https://ncatlab.org/nlab/show/initial+object
+-- Definíció: a végződés duálisa (C^op-ban). Egy I objektum kezdet, ha
+-- minden B objektumhoz pontosan egy morfizmus van I-ből B-be: ∃! i : I → B.
+public export
+record Kezdet (k : Kategoria obj hom) where
+  constructor KezdetKonstruktor
+  kezdetObjektum : obj
+  kezdetMorfizmus : (b : obj) -> hom kezdetObjektum b
+  -- Az egyértelműség törvénye: minden f : I → b egyenlő a kezdetMorfizmus b-vel.
+  kezdetEgyertelmu : {b : obj} -> (f : hom kezdetObjektum b)
+                   -> f = kezdetMorfizmus b
+
+-- ─── 3. SZORZAT (product) ──────────────────────────────────
+-- https://ncatlab.org/nlab/show/product
+-- Definíció (Awodey §5.1): az A és B szorzata egy P objektum két morfizmussal
+--   π₁ : P → A, π₂ : P → B, úgy hogy minden Q-ra és q₁ : Q → A, q₂ : Q → B
+--   ∃! h : Q → P úgy hogy π₁∘h = q₁ és π₂∘h = q₂.
+-- Ez a kategóriaelmélet "AND" művelete (Curry-Howard-Lambek: Konjunkció ↔ Szorzat).
+public export
+record Szorzat (k : Kategoria obj hom) (a : obj) (b : obj) where
+  constructor SzorzatObjektumKonstruktor
+  szorzatObjektum : obj
+  szorzatProjekcioBal : hom szorzatObjektum a
+  szorzatProjekcioJobb : hom szorzatObjektum b
+  -- Az univerzális tulajdonság: minden Q-ból érkező pár egyértelműen faktorizál.
+  szorzatUniverzalis : (q : obj) -> (q1 : hom q a) -> (q2 : hom q b)
+                     -> (h : hom q szorzatObjektum
+                        ** (k.osszetetel h szorzatProjekcioBal = q1
+                           , k.osszetetel h szorzatProjekcioJobb = q2))
+
+-- ─── 4. KOPRODUKT (coproduct) ──────────────────────────────
+-- https://ncatlab.org/nlab/show/coproduct
+-- Definíció (Awodey §5.1): a szorzat duálisa. Az A és B koproduktja egy C
+-- objektum két morfizmussal ι₁ : A → C, ι₂ : B → C, úgy hogy minden D-re
+-- és d₁ : A → D, d₂ : B → D ∃! h : C → D úgy hogy h∘ι₁ = d₁ és h∘ι₂ = d₂.
+-- Ez a kategóriaelmélet "OR" művelete (Curry-Howard-Lambek: Diszjunkció ↔ Koprodukt).
+public export
+record Koprodukt (k : Kategoria obj hom) (a : obj) (b : obj) where
+  constructor KoproduktKonstruktor
+  koproduktObjektum : obj
+  koproduktInjektioBal : hom a koproduktObjektum
+  koproduktInjektioJobb : hom b koproduktObjektum
+  -- Az univerzális tulajdonság: minden D-be érkező pár egyértelműen faktorizál.
+  koproduktUniverzalis : (d : obj) -> (d1 : hom a d) -> (d2 : hom b d)
+                       -> (h : hom koproduktObjektum d
+                          ** (k.osszetetel koproduktInjektioBal h = d1
+                             , k.osszetetel koproduktInjektioJobb h = d2))
+
+-- ─── 5. EGYENLÍTŐ (equalizer) ──────────────────────────────
+-- https://ncatlab.org/nlab/show/equalizer
+-- Definíció (Awodey §5.3): az f, g : A → B párhuzamos morfizmusok egyenlítője
+-- egy E objektum e : E → A morfizmussal, úgy hogy f∘e = g∘e, és minden
+-- h : Q → A-ra amire f∘h = g∘h, ∃! k : Q → E úgy hogy e∘k = h.
+public export
+record Egyenlito (k : Kategoria obj hom) (a : obj) (b : obj) (f : hom a b) (g : hom a b) where
+  constructor EgyenlitoKonstruktor
+  egyenlitoObjektum : obj
+  egyenlitoMorfizmus : hom egyenlitoObjektum a
+  -- A törvény: f∘e = g∘e.
+  egyenlitoTorveny : k.osszetetel egyenlitoMorfizmus f = k.osszetetel egyenlitoMorfizmus g
+  -- Az univerzális tulajdonság: minden h amire f∘h = g∘h, faktorizál E-n keresztül.
+  egyenlitoUniverzalis : (q : obj) -> (h : hom q a)
+                       -> (k.osszetetel h f = k.osszetetel h g
+                          => (kk : hom q egyenlitoObjektum
+                             ** k.osszetetel kk egyenlitoMorfizmus = h))
+
+-- ─── 6. KOEGYENLÍTŐ (coequalizer) ──────────────────────────
+-- https://ncatlab.org/nlab/show/coequalizer
+-- Definíció: az egyenlítő duálisa. Az f, g : A → B morfizmusok koegyenlítője
+-- egy C objektum q : B → C morfizmussal, úgy hogy q∘f = q∘g, és minden
+-- h : B → D-re amire h∘f = h∘g, ∃! k : C → D úgy hogy k∘q = h.
+public export
+record Koegyenlito (k : Kategoria obj hom) (a : obj) (b : obj) (f : hom a b) (g : hom a b) where
+  constructor KoegyenlitoKonstruktor
+  koegyenlitoObjektum : obj
+  koegyenlitoMorfizmus : hom b koegyenlitoObjektum
+  -- A törvény: q∘f = q∘g.
+  koegyenlitoTorveny : k.osszetetel f koegyenlitoMorfizmus = k.osszetetel g koegyenlitoMorfizmus
+  -- Az univerzális tulajdonság: minden h amire h∘f = h∘g, faktorizál C-n keresztül.
+  koegyenlitoUniverzalis : (d : obj) -> (h : hom b d)
+                         -> (k.osszetetel f h = k.osszetetel g h
+                            => (kk : hom koegyenlitoObjektum d
+                               ** k.osszetetel koegyenlitoMorfizmus kk = h))
+
+-- ─── 7. PULLBACK (fiber product) ───────────────────────────
+-- https://ncatlab.org/nlab/show/pullback
+-- Definíció (Awodey §5.2): az A→C←B pullback-je egy P objektum két morfizmussal
+--   p₁ : P → A, p₂ : P → B, úgy hogy f∘p₁ = g∘p₂, és minden Q-ra
+--   q₁ : Q → A, q₂ : Q → B amire f∘q₁ = g∘q₂, ∃! h : Q → P úgy hogy
+--   p₁∘h = q₁ és p₂∘h = q₂. A szorzat általánosítása (C = végződés → szorzat).
+public export
+record Pullback (k : Kategoria obj hom) (a : obj) (b : obj) (c : obj) (f : hom a c) (g : hom b c) where
+  constructor PullbackKonstruktor
+  pullbackObjektum : obj
+  pullbackProjekcioBal : hom pullbackObjektum a
+  pullbackProjekcioJobb : hom pullbackObjektum b
+  -- A kommutatív négyzet törvénye: f∘p₁ = g∘p₂.
+  pullbackKommutativ : k.osszetetel pullbackProjekcioBal f = k.osszetetel pullbackProjekcioJobb g
+  -- Az univerzális tulajdonság.
+  pullbackUniverzalis : (q : obj) -> (q1 : hom q a) -> (q2 : hom q b)
+                      -> (k.osszetetel q1 f = k.osszetetel q2 g
+                         => (h : hom q pullbackObjektum
+                            ** (k.osszetetel h pullbackProjekcioBal = q1
+                               , k.osszetetel h pullbackProjekcioJobb = q2)))
+
+-- ─── 8. PUSHOUT ────────────────────────────────────────────
+-- https://ncatlab.org/nlab/show/pushout
+-- Definíció: a pullback duálisa. Az A←C→B pushout-ja egy P objektum két
+-- morfizmussal i₁ : A → P, i₂ : B → P, úgy hogy i₁∘f = i₂∘g, és minden
+-- D-re d₁ : A → D, d₂ : B → D amire d₁∘f = d₂∘g, ∃! h : P → D úgy hogy
+-- h∘i₁ = d₁ és h∘i₂ = d₂. A koprodukt általánosítása.
+public export
+record Pushout (k : Kategoria obj hom) (a : obj) (b : obj) (c : obj) (f : hom c a) (g : hom c b) where
+  constructor PushoutKonstruktor
+  pushoutObjektum : obj
+  pushoutInjektioBal : hom a pushoutObjektum
+  pushoutInjektioJobb : hom b pushoutObjektum
+  -- A kommutatív négyzet törvénye: i₁∘f = i₂∘g.
+  pushoutKommutativ : k.osszetetel f pushoutInjektioBal = k.osszetetel g pushoutInjektioJobb
+  -- Az univerzális tulajdonság.
+  pushoutUniverzalis : (d : obj) -> (d1 : hom a d) -> (d2 : hom b d)
+                     -> (k.osszetetel f d1 = k.osszetetel g d2
+                        => (h : hom pushoutObjektum d
+                           ** (k.osszetetel pushoutInjektioBal h = d1
+                              , k.osszetetel pushoutInjektioJobb h = d2)))
+
+-- ─── 9. ÁLTALÁNOS LIMIT ────────────────────────────────────
+-- https://ncatlab.org/nlab/show/limit
+-- Definíció (Mac Lane §III.4): egy J indexkategória és egy D : J → C diagram
+-- (funktor) esetén a D limitje egy lim(D) objektum + egy kúp (cone) morfizmusokkal
+-- minden j : J objektumhoz: lim(D) → D(j), úgy hogy a kúp kompatibilis a
+-- diagram morfizmusaival, és univerzális: minden más kúp faktorizál lim(D)-n keresztül.
+-- A szorzat = a limit egy diszkrét indexkategória felett.
+-- A pullback = a limit egy •→•←• indexkategória felett.
+-- Az egyenlítő = a limit egy •⇉• indexkategória felett.
+public export
+record AltalanosLimit (k : Kategoria obj hom)
+                      (jK : Kategoria jObj jHom)
+                      (dObj : jObj -> obj)
+                      (dMor : {j, jj : jObj} -> jHom j jj -> hom (dObj j) (dObj jj)) where
+  constructor AltalanosLimitKonstruktor
+  limitObjektum : obj
+  -- A kúp: minden j : J objektumhoz egy morfizmus lim(D) → D(j).
+  limitKup : (j : jObj) -> hom limitObjektum (dObj j)
+  -- A kúp kompatibilitása: minden α : j → k morfizmusra D(α)∘κ_j = κ_k.
+  limitKompatibilitas : {j, jj : jObj} -> (alpha : jHom j jj)
+                      -> k.osszetetel (limitKup j) (dMor alpha) = limitKup jj
+  -- Az univerzális tulajdonság: minden más kúp faktorizál lim(D)-n keresztül.
+  limitUniverzalis : (q : obj) -> (masKup : (j : jObj) -> hom q (dObj j))
+                   -> ((j, jj : jObj) -> (alpha : jHom j jj)
+                      -> k.osszetetel (masKup j) (dMor alpha) = masKup jj
+                      => (h : hom q limitObjektum
+                         ** ((j : jObj) -> k.osszetetel h (limitKup j) = masKup j)))
+
+-- ─── 10. ÁLTALÁNOS KOLIMIT ─────────────────────────────────
+-- https://ncatlab.org/nlab/show/colimit
+-- Definíció: a limit duálisa (C^op-ban). Egy D : J → C diagram kolimitje egy
+-- colim(D) objektum + egy ko-kúp (cocone) morfizmusokkal minden j : J objektumhoz:
+-- D(j) → colim(D), úgy hogy a ko-kúp kompatibilis, és univerzális.
+-- A koprodukt = a kolimit egy diszkrét indexkategória felett.
+-- A pushout = a kolimit egy •←•→• indexkategória felett.
+-- A koegyenlítő = a kolimit egy •⇉• indexkategória felett.
+public export
+record AltalanosKolimit (k : Kategoria obj hom)
+                        (jK : Kategoria jObj jHom)
+                        (dObj : jObj -> obj)
+                        (dMor : {j, jj : jObj} -> jHom j jj -> hom (dObj j) (dObj jj)) where
+  constructor AltalanosKolimitKonstruktor
+  kolimitObjektum : obj
+  -- A ko-kúp: minden j : J objektumhoz egy morfizmus D(j) → colim(D).
+  kolimitKoKup : (j : jObj) -> hom (dObj j) kolimitObjektum
+  -- A ko-kúp kompatibilitása: minden α : j → k morfizmusra κ_k∘D(α) = κ_j.
+  kolimitKompatibilitas : {j, jj : jObj} -> (alpha : jHom j jj)
+                        -> k.osszetetel (dMor alpha) (kolimitKoKup jj) = kolimitKoKup j
+  -- Az univerzális tulajdonság: minden más ko-kúp faktorizál colim(D)-n keresztül.
+  kolimitUniverzalis : (d : obj) -> (masKoKup : (j : jObj) -> hom (dObj j) d)
+                     -> ((j, jj : jObj) -> (alpha : jHom j jj)
+                        -> k.osszetetel (dMor alpha) (masKoKup jj) = masKoKup j
+                        => (h : hom kolimitObjektum d
+                           ** ((j : jObj) -> k.osszetetel (kolimitKoKup j) h = masKoKup j)))
+
+-- ─── A LIMIT/KOLIMIT CSALÁD KAPCSOLATAI (a gráf élei) ──────
+-- Szorzat → Pullback (a szorzat a pullback különleges esete, C = végződés)
+-- Koprodukt → Pushout (a koprodukt a pushout különleges esete, C = kezdet)
+-- Végződés → Szorzat (a végződés feletti szorzat = maga a szorzat)
+-- Kezdet → Koprodukt (a kezdet feletti koprodukt = maga a koprodukt)
+-- Egyenlítő → ÁltalánosLimit (az egyenlítő a limit egy •⇉• index felett)
+-- Koegyenlítő → ÁltalánosKolimit (a koegyenlítő a kolimit egy •⇉• index felett)
+-- Pullback → ÁltalánosLimit (a pullback a limit egy •→•←• index felett)
+-- Pushout → ÁltalánosKolimit (a pushout a kolimit egy •←•→• index felett)
+-- Ezeket az éleket a FÁZIS 4 veszi fel a gráfba (KutatasiGraf_v1.idr).
