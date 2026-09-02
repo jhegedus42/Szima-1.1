@@ -67,14 +67,14 @@ main = do
   putStrLn "─── A CSOMAGOLTTÍPUSOK GÉPI ELLENŐRZÉSE (000.01) ───"
   putStrLn ("7 + 1  = " ++ szövegbőlKarakterlánc (megjelenít (sorÖsszeadás sorHét sorEgy)))
   putStrLn ("2 x 5  = " ++ szövegbőlKarakterlánc (megjelenít (sorSzorzás sorKettő sorÖt)))
-  putStrLn ("esetragok szama = " ++ szövegbőlKarakterlánc (megjelenít (fűzérHossz mindA18Esetrag)))
+  putStrLn ("esetragok szama = " ++ szövegbőlKarakterlánc (megjelenít (füzérHossz mindA18Esetrag)))
   putStrLn ("'ban' vegzodik 'n'-nel: " ++ szövegbőlKarakterlánc (megjelenít (végEgyezzik
     (BetűtFűz BBetű (BetűtFűz ABetű (BetűtFűz NBetű ÜresSzöveg)))
     (BetűtFűz NBetű ÜresSzöveg))))
   putStrLn ("a 18 esetrag: " ++ szövegbőlKarakterlánc (megjelenít mindA18Esetrag))
   putStrLn ("normalizal(+[0,2,4]) = +[2,4] : " ++ szövegbőlKarakterlánc (megjelenít
     (egyenlőE (számjegyei (normalizál (SzámjegyesSzámKonstruktor PozitívElőjel
-      (Fűzés SzámjegyNulla (Fűzés SzámjegyKettő (Fűzés SzámjegyNégy FűzérVége))))))
-      (Fűzés SzámjegyKettő (Fűzés SzámjegyNégy FűzérVége)))))
+      (Fűzés SzámjegyNulla (Fűzés SzámjegyKettő (Fűzés SzámjegyNégy FüzérVége))))))
+      (Fűzés SzámjegyKettő (Fűzés SzámjegyNégy FüzérVége)))))
   putStrLn ("Pi jele: " ++ szövegbőlKarakterlánc (matematikaiKonstansJeLe PiSzimbólum))
   putStrLn "─── KESZ — a modul nemcsak fordul, hanem SZAMIT ───"

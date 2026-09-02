@@ -67,7 +67,7 @@ data MondatDarab : Type where
 ||| A mondat: darabok füzére.
 public export
 Mondat : Type
-Mondat = Fűzér MondatDarab
+Mondat = Füzér MondatDarab
 
 -- ═════════════════════════════════════════════════════════════════════════
 -- II. A BETŰ-KONVERZIÓK — a határ két fő átjárója (digráf-barát, GAN 1+8)
@@ -337,9 +337,9 @@ szóStringÉsMaradék sor = case strUncons sor of
 
 ||| A sor szavai (Szöveg-szinten; STRICT — ismeretlen karakter → Semmi).
 public export
-szavakKarakterláncból : String -> Talán (Fűzér Szöveg)
+szavakKarakterláncból : String -> Talán (Füzér Szöveg)
 szavakKarakterláncból sor = case strUncons sor of
-  Nothing => Csak FűzérVége
+  Nothing => Csak FüzérVége
   Just (első, több) =>
     case első of
       ' ' => szavakKarakterláncból (assert_smaller sor több)
@@ -355,17 +355,17 @@ szavakKarakterláncból sor = case strUncons sor of
 
 ||| Szavakból mondat: a szavak közé szóköz-jelet told (GAN 3 segéd).
 public export
-szavakbólMondat : Fűzér Szöveg -> Mondat
-szavakbólMondat FűzérVége = FűzérVége
+szavakbólMondat : Füzér Szöveg -> Mondat
+szavakbólMondat FüzérVége = FüzérVége
 szavakbólMondat (Fűzés szó tovább) =
   Fűzés (SzóDarab szó) (case tovább of
-    FűzérVége => FűzérVége
+    FüzérVége => FüzérVége
     _ => Fűzés (JelDarab SzóközJel) (szavakbólMondat tovább))
 
 ||| Mondatból karakterlánc — a kiírási irány (darabonként).
 public export
 mondatbólKarakterlánc : Mondat -> String
-mondatbólKarakterlánc FűzérVége = ""
+mondatbólKarakterlánc FüzérVége = ""
 mondatbólKarakterlánc (Fűzés darab tovább) =
   case darab of
     SzóDarab szó => szövegbőlKarakterlánc szó ++ mondatbólKarakterlánc tovább
@@ -391,15 +391,15 @@ határMondatKiírás mondat = putStrLn (mondatbólKarakterlánc mondat)
 ||| Az első szó kiválasztása (top-level; külső változó-minta + belső case —
 ||| a 0.8.0-nál a kétszintű beágyazott klauzula-minta nem számít lefedettnek).
 public export
-elsőSzóTalán : Talán (Fűzér Szöveg) -> Talán Szöveg
+elsőSzóTalán : Talán (Füzér Szöveg) -> Talán Szöveg
 elsőSzóTalán Semmi = Semmi
-elsőSzóTalán (Csak szóFűzér) = case szóFűzér of
-  FűzérVége => Csak ÜresSzöveg
+elsőSzóTalán (Csak szóFüzér) = case szóFüzér of
+  FüzérVége => Csak ÜresSzöveg
   (Fűzés elsőSzó _) => Csak elsőSzó
 
 ||| Határ-olvasás: egy sor szavai (NFC-normalizálva, STRICT).
 public export
-határSzavakOlvasás : IO (Talán (Fűzér Szöveg))
+határSzavakOlvasás : IO (Talán (Füzér Szöveg))
 határSzavakOlvasás = do
   sor <- getLine
   pure (szavakKarakterláncból (normalizáld sor))
@@ -534,14 +534,14 @@ nemSzó = BetűtFűz NBetű (BetűtFűz EBetű (BetűtFűz MBetű ÜresSzöveg))
 ||| A súgó-mondat: a parancsok nevei szóközzel.
 súgóMondat : Mondat
 súgóMondat = szavakbólMondat (Fűzés súgóSzó (Fűzés hosszSzó (Fűzés betűkSzó
-  (Fűzés ragSzó (Fűzés esetragSzó (Fűzés kilépésSzó FűzérVége))))))
+  (Fűzés ragSzó (Fűzés esetragSzó (Fűzés kilépésSzó FüzérVége))))))
 
 ||| Az esetrag-DEMO táblázat: a 18 rag felületi (hátsó hangrendű) alakja
 ||| (a 600.10-es motor kanonizálja majd; itt a demonstráció).
-esetragDemo : Fűzér (Pár Esetrag Szöveg)
+esetragDemo : Füzér (Pár Esetrag Szöveg)
 esetragDemo =
   let tizennyolcadik = Fűzés (Párosít UlÜlRag
-        (BetűtFűz UBetű (BetűtFűz LBetű ÜresSzöveg))) FűzérVége
+        (BetűtFűz UBetű (BetűtFűz LBetű ÜresSzöveg))) FüzérVége
       tizenhetedik = Fűzés (Párosít KéntRag
         (BetűtFűz KBetű (BetűtFűz ÉBetű (BetűtFűz NBetű (BetűtFűz TBetű
         ÜresSzöveg))))) tizennyolcadik
@@ -581,13 +581,13 @@ esetragDemo =
 ||| A parancs-feldolgozó TÍPUSA — előre-deklarálva, mert a fogadás hívja
 ||| és a feldolgoz is hívja a fogadást (kör; a típusdeklaráció legálissá
 ||| teszi — a definíció a fogadás után áll).
-covering feldolgoz : Fűzér Szöveg -> IO ()
+covering feldolgoz : Füzér Szöveg -> IO ()
 
 ||| A rag-tesztelő: kiírja az illeszkedő esetragok neveit
-||| (strukturális a Fűzér-re — total; a Párosít-bontás belső case-szel,
+||| (strukturális a Füzér-re — total; a Párosít-bontás belső case-szel,
 ||| mert a 0.8.0 a kétszintű klauzula-mintát nem látja lefedettnek).
-ragTeszt : Szöveg -> Fűzér (Pár Esetrag Szöveg) -> IO ()
-ragTeszt _ FűzérVége = pure ()
+ragTeszt : Szöveg -> Füzér (Pár Esetrag Szöveg) -> IO ()
+ragTeszt _ FüzérVége = pure ()
 ragTeszt szó (Fűzés pár tovább) =
   case pár of
     Párosít rag ragSzövege =>
@@ -611,16 +611,16 @@ fogadás = do
     Semmi => do
       putStrLn "ismeretlen karakter — csak magyar betűk"
       fogadás
-    Csak FűzérVége => fogadás
-    Csak szóFűzér => feldolgoz szóFűzér
+    Csak FüzérVége => fogadás
+    Csak szóFüzér => feldolgoz szóFüzér
 
 -- A parancs-feldolgozó DEFINÍCIÓJA: REAGÁL a beolvasott szavakra.
-feldolgoz FűzérVége = fogadás
+feldolgoz FüzérVége = fogadás
 feldolgoz (Fűzés parancs tovább) =
   case szövegEgyenlő parancs kilépésSzó of
     Igaz => határMondatKiírás (szavakbólMondat (Fűzés
       (BetűtFűz VBetű (BetűtFűz ÉBetű (BetűtFűz GBetű
-      (BetűtFűz EBetű ÜresSzöveg)))) FűzérVége))
+      (BetűtFűz EBetű ÜresSzöveg)))) FüzérVége))
     Hamis => case szövegEgyenlő parancs súgóSzó of
       Igaz => do határMondatKiírás súgóMondat; fogadás
       Hamis => case szövegEgyenlő parancs hosszSzó of
@@ -628,11 +628,11 @@ feldolgoz (Fűzés parancs tovább) =
           (Fűzés szó _) => do
             határKiírás (megjelenít (szövegHossz szó))
             fogadás
-          FűzérVége => do határKiírás nemSzó; fogadás
+          FüzérVége => do határKiírás nemSzó; fogadás
         Hamis => case szövegEgyenlő parancs betűkSzó of
           Igaz => case tovább of
             (Fűzés szó _) => do betűKiírás szó; fogadás
-            FűzérVége => do határKiírás nemSzó; fogadás
+            FüzérVége => do határKiírás nemSzó; fogadás
           Hamis => case szövegEgyenlő parancs ragSzó of
             Igaz => case tovább of
               (Fűzés szó (Fűzés rag _)) => do
@@ -644,7 +644,7 @@ feldolgoz (Fűzés parancs tovább) =
             Hamis => case szövegEgyenlő parancs esetragSzó of
               Igaz => case tovább of
                 (Fűzés szó _) => do ragTeszt szó esetragDemo; fogadás
-                FűzérVége => do határKiírás nemSzó; fogadás
+                FüzérVége => do határKiírás nemSzó; fogadás
               Hamis => do határMondatKiírás súgóMondat; fogadás
 
 -- A főprogram: a Határ bemutatása (interaktív — §N14/6; a loop miatt

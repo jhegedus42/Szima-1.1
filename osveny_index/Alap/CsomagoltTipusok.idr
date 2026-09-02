@@ -447,31 +447,31 @@ EgyenlőségT Előjel where
   egyenlőE NegatívElőjel NegatívElőjel = Igaz
   egyenlőE _ _ = Hamis
 
-||| A fűzér: a List becsomagolva (a GAN-felismerés — kritikus hiány pótlva).
-||| FűzérVége = [], Fűzés x xs = x :: xs.
+||| A füzér: a List becsomagolva (a GAN-felismerés — kritikus hiány pótlva).
+||| FüzérVége = [], Fűzés x xs = x :: xs.
 ||| (Idris 0.8.0: a típusparaméter EXPLICIT implicit kötése; a „tag" név
 ||| a magyar „tag" szó — az elem; nem ütközik a Prelude elem-jével.)
 public export
-data Fűzér : Type -> Type where
-  FűzérVége : {tag : Type} -> Fűzér tag
-  Fűzés     : {tag : Type} -> tag -> Fűzér tag -> Fűzér tag
+data Füzér : Type -> Type where
+  FüzérVége : {tag : Type} -> Füzér tag
+  Fűzés     : {tag : Type} -> tag -> Füzér tag -> Füzér tag
 
-||| A fűzér egyenlősége (elemenként) — teleszkópos constraint-instance.
+||| A füzér egyenlősége (elemenként) — teleszkópos constraint-instance.
 ||| (Idris 0.8.0: NÉV NÉLKÜL — a névvel ellátott instance nem auto-feloldó.)
 public export
-{tag : Type} -> EgyenlőségT tag => EgyenlőségT (Fűzér tag) where
-  egyenlőE FűzérVége FűzérVége = Igaz
+{tag : Type} -> EgyenlőségT tag => EgyenlőségT (Füzér tag) where
+  egyenlőE FüzérVége FüzérVége = Igaz
   egyenlőE (Fűzés x xs) (Fűzés y ys) = ésE (egyenlőE x y) (egyenlőE xs ys)
   egyenlőE _ _ = Hamis
 
-||| A nagy szám: előjel + számjegyfűzér (pl. 240, 2026, −31).
+||| A nagy szám: előjel + számjegyfüzér (pl. 240, 2026, −31).
 ||| Az Integer kiváltása tiszta data-struktúrával.
 ||| (Idris 0.8.0: a rekord-konstruktor MINTA helyett mező-accessorok.)
 public export
 record SzámjegyesSzám where
   constructor SzámjegyesSzámKonstruktor
   számElőjele : Előjel
-  számjegyei  : Fűzér Számjegy
+  számjegyei  : Füzér Számjegy
 
 public export
 EgyenlőségT SzámjegyesSzám where
@@ -483,23 +483,23 @@ EgyenlőségT SzámjegyesSzám where
 public export
 nullaSzám : SzámjegyesSzám
 nullaSzám = SzámjegyesSzámKonstruktor PozitívElőjel
-  (Fűzés SzámjegyNulla FűzérVége)
+  (Fűzés SzámjegyNulla FüzérVége)
 
-||| A normalizálás magja: strukturális rekurzió a számjegyfűzérre
+||| A normalizálás magja: strukturális rekurzió a számjegyfüzérre
 ||| (a rekord-accessoros rekurziót a totality-ellenőr nem látná át).
 public export
-normalizálFűzér : Előjel -> Fűzér Számjegy -> SzámjegyesSzám
-normalizálFűzér _ FűzérVége = nullaSzám
-normalizálFűzér _ (Fűzés SzámjegyNulla FűzérVége) = nullaSzám
-normalizálFűzér előjel (Fűzés SzámjegyNulla több) = normalizálFűzér előjel több
-normalizálFűzér előjel (Fűzés első több) =
+normalizálFüzér : Előjel -> Füzér Számjegy -> SzámjegyesSzám
+normalizálFüzér _ FüzérVége = nullaSzám
+normalizálFüzér _ (Fűzés SzámjegyNulla FüzérVége) = nullaSzám
+normalizálFüzér előjel (Fűzés SzámjegyNulla több) = normalizálFüzér előjel több
+normalizálFüzér előjel (Fűzés első több) =
   SzámjegyesSzámKonstruktor előjel (Fűzés első több)
 
 ||| A normalizálás: a vezető nullák ledobása, a mínusz-nulla pozitívvá.
 ||| (Accessorokkal — a rekordminta helyett; a mag strukturális.)
 public export
 normalizál : SzámjegyesSzám -> SzámjegyesSzám
-normalizál szám = normalizálFűzér (számElőjele szám) (számjegyei szám)
+normalizál szám = normalizálFüzér (számElőjele szám) (számjegyei szám)
 
 -- ─── BIZONYÍTÁS: a normalizálás idempotenciája (Refl, zárt példán) ───────
 -- Kimenet: Refl (normalizál (normalizál x) = normalizál x ✓)
@@ -510,10 +510,10 @@ public export
 normalizálIdempotens :
   normalizál (normalizál (SzámjegyesSzámKonstruktor
       PozitívElőjel (Fűzés SzámjegyNulla (Fűzés SzámjegyKettő
-      (Fűzés SzámjegyNégy FűzérVége)))))
+      (Fűzés SzámjegyNégy FüzérVége)))))
   = normalizál (SzámjegyesSzámKonstruktor
       PozitívElőjel (Fűzés SzámjegyNulla (Fűzés SzámjegyKettő
-      (Fűzés SzámjegyNégy FűzérVége))))
+      (Fűzés SzámjegyNégy FüzérVége))))
 normalizálIdempotens = Refl
 
 -- ─── GAN 7: az ÁLTALÁNOS idempotencia-tétel (indukció — nem csak tanú) ────
@@ -521,16 +521,16 @@ normalizálIdempotens = Refl
 ||| A normalizálás FIXPONT-tétele: a normalizált alak a normalizálás
 ||| fixpontja (a második menet előjele az első menet KIMENETÉBŐL jön —
 ||| ezért fixpont-formuláció, előjel-függetlenül).
-||| Indukció a számjegyfűzér szerkezetére; a vezető-nulla ág a rekurzió.
+||| Indukció a számjegyfüzér szerkezetére; a vezető-nulla ág a rekurzió.
 public export
-normalizálFixpont : (előjel : Előjel) -> (ds : Fűzér Számjegy) ->
-  normalizál (normalizálFűzér előjel ds) = normalizálFűzér előjel ds
-normalizálFixpont _ FűzérVége = Refl
+normalizálFixpont : (előjel : Előjel) -> (ds : Füzér Számjegy) ->
+  normalizál (normalizálFüzér előjel ds) = normalizálFüzér előjel ds
+normalizálFixpont _ FüzérVége = Refl
 normalizálFixpont előjel (Fűzés első több) =
   case első of
     SzámjegyNulla =>
       case több of
-        FűzérVége => Refl
+        FüzérVége => Refl
         (Fűzés második tovább) => normalizálFixpont előjel (Fűzés második tovább)
     SzámjegyEgy => Refl
     SzámjegyKettő => Refl
@@ -554,7 +554,7 @@ normalizálIdempotensTétel szám =
 public export
 mínuszNullaPozitív :
   normalizál (SzámjegyesSzámKonstruktor
-    NegatívElőjel (Fűzés SzámjegyNulla FűzérVége))
+    NegatívElőjel (Fűzés SzámjegyNulla FüzérVége))
   = Alap.CsomagoltTipusok.nullaSzám
 mínuszNullaPozitív = Refl
 
@@ -663,7 +663,7 @@ EgyenlőségT Betű where
   egyenlőE _ _ = Hamis
 
 ||| A szöveg: betűk füzére (a String kiváltása).
-||| A szóköz és az írásjelek NEM betűk — a mondat Fűzér Szöveg (későbbi réteg).
+||| A szóköz és az írásjelek NEM betűk — a mondat Füzér Szöveg (későbbi réteg).
 public export
 data Szöveg : Type where
   ÜresSzöveg : Szöveg
@@ -1215,22 +1215,22 @@ EgyenlőségT Esetrag where
   egyenlőE UlÜlRag UlÜlRag = Igaz
   egyenlőE _ _ = Hamis
 
-||| A fűzér hossza (sorszám) — a megszámlálás alapja.
+||| A füzér hossza (sorszám) — a megszámlálás alapja.
 ||| (Idris 0.8.0: explicit implicit paraméter.)
 public export
-fűzérHossz : {tag : Type} -> Fűzér tag -> Sorszám
-fűzérHossz FűzérVége = SorNulla
-fűzérHossz (Fűzés _ tovább) = SorKövetkező (fűzérHossz tovább)
+füzérHossz : {tag : Type} -> Füzér tag -> Sorszám
+füzérHossz FüzérVége = SorNulla
+füzérHossz (Fűzés _ tovább) = SorKövetkező (füzérHossz tovább)
 
-||| Mind a 18 valódi esetrag — egy fűzérben (a gráf-motorba: 600.10).
+||| Mind a 18 valódi esetrag — egy füzérben (a gráf-motorba: 600.10).
 ||| Lépésenkénti felépítés: minden sor EGY konstruktor-morfizmus —
 ||| nincs mély zárójelfészek (a zárójelhiba gyökerének kiküszöbölése).
 ||| A magyar sorszáznevek maguk dokumentálják a kompozíciót:
 ||| az agglutináció = a morfizmusok kompozíciója.
 public export
-mindA18Esetrag : Fűzér Esetrag
+mindA18Esetrag : Füzér Esetrag
 mindA18Esetrag =
-  let tizennyolcadik = Fűzés UlÜlRag FűzérVége
+  let tizennyolcadik = Fűzés UlÜlRag FüzérVége
       tizenhetedik   = Fűzés KéntRag tizennyolcadik
       tizenhatodik   = Fűzés MeddigRag tizenhetedik
       tizenötödik    = Fűzés KözelbőlRag tizenhatodik
@@ -1253,7 +1253,7 @@ mindA18Esetrag =
 -- Kimenet: Refl (a 18 esetrag megszámlálva: 10 + 8 = 18 ✓)
 public export
 tizennyolcEsetrag :
-  fűzérHossz Alap.CsomagoltTipusok.mindA18Esetrag
+  füzérHossz Alap.CsomagoltTipusok.mindA18Esetrag
   = sorÖsszeadás Alap.CsomagoltTipusok.sorTíz Alap.CsomagoltTipusok.sorNyolc
 tizennyolcEsetrag = Refl
 
@@ -1421,11 +1421,11 @@ MegjelenítésT Előjel where
     (BetűtFűz ABetű (BetűtFűz TBetű (BetűtFűz ÍBetű
     (BetűtFűz VBetű ÜresSzöveg))))))
 
-||| A fűzér megjelenítése: az elemek szavainak összefűzése.
+||| A füzér megjelenítése: az elemek szavainak összefűzése.
 ||| (Idris 0.8.0: teleszkópos constraint-instance, NÉV NÉLKÜL.)
 public export
-{tag : Type} -> MegjelenítésT tag => MegjelenítésT (Fűzér tag) where
-  megjelenít FűzérVége = ÜresSzöveg
+{tag : Type} -> MegjelenítésT tag => MegjelenítésT (Füzér tag) where
+  megjelenít FüzérVége = ÜresSzöveg
   megjelenít (Fűzés x xs) = szövegFűzés (megjelenít x) (megjelenít xs)
 
 ||| Számjegyes szám: az előjel szava + a számjegyszavak láncolata.
@@ -1589,7 +1589,7 @@ igazMegjelenítésPélda = Refl
 -- Deutsch: Fertig — keine nackten Typen. Nächster Schritt: das Grenzmodul.
 -- עברית: הושלם — בלי טיפוסים חשופים. הצעד הבא: מודול הגבול.
 --
--- A TÍPUSOK: Igazság, Sorszám, EgészSzám, Számjegy, Előjel, Fűzér,
+-- A TÍPUSOK: Igazság, Sorszám, EgészSzám, Számjegy, Előjel, Füzér,
 --   SzámjegyesSzám, Betű (44), Szöveg, Talán, Pár, Kubit, SteaneVektor,
 --   SorIndex, E8Koordináta, MatematikaiKonstans, FizikaiKonstans,
 --   Esetrag (18), Időbélyeg, VerzióSzám, BájtláncIndex, Megbízhatóság.
