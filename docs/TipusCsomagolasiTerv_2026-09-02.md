@@ -96,8 +96,8 @@ Az idris-stilus skill szerint: «Minden szám data-ba csomagolva (0-10), a [[15,
 A magyar nyelv = a kategóriaelmélet anyanyelve:
 
 ```idris
-||| A magyar ábécé 44 betűje — data konstruktorok.
-data Betű = ABetű | ÁBetű | BBetű | CBetű | DBetű | DBetűZérej | EBetű | ÉBetű | FBetű | GBetű | HBetű | IBetű | ÍBetű | JBetű | KBetű | LBetű | MBetű | NBetű | NBetűZérej | OBetű | ÓBetű | ÖBetű | ŐBetű | PBetű | RBetű | SBetű | SBetűZérej | TBetű | TBetűZérej | UBetű | ÚBetű | ÜBetű | ŰBetű | VBetű | ZBetű | ZSBetű | FBBetű | TYBetű | GYBetű | LYBetű | NYBetű | SSZBetű | ZSZBetű | CCSBetű | DDZSBetű
+||| A magyar ábécé 44 betűje — data konstruktorok (GAN-név-audit után, a hivatalos ábécé szerint).
+data Betű = ABetű | ÁBetű | BBetű | CBetű | CsBetű | DBetű | DzBetű | DzsBetű | EBetű | ÉBetű | FBetű | GBetű | GyBetű | HBetű | IBetű | ÍBetű | JBetű | KBetű | LBetű | LyBetű | MBetű | NBetű | NyBetű | OBetű | ÓBetű | ÖBetű | ŐBetű | PBetű | QBetű | RBetű | SBetű | SzBetű | TBetű | TyBetű | UBetű | ÚBetű | ÜBetű | ŰBetű | VBetű | WBetű | XBetű | YBetű | ZBetű | ZsBetű
 
 ||| A szöveg betűk füzére.
 data Szöveg = ÜresSzöveg | BetűtFűz Betű Szöveg
@@ -162,20 +162,151 @@ Minden instance = a törvények bizonyítása (Curry–Howard), Refl-lel ellenő
 
 ---
 
-## V. A SORREND (első 10 lépés)
+## V. A VÉGSŐ TERV — EGY ALAP + HÁROM VONAL (a felhasználó kérdése nyomán: «akkor mi legyen a terv ?»)
 
-1. `Alap/CsomagoltTipusok.idr` — a kanonikus modul (data Sorszám, data Szöveg, data Betű, data Igazság, data MatematikaiKonstans, data FizikaiKonstans + typeclassok + instanceok)
-2. `LimitKolimitDemo.idr` — újraírás data-típusokkal (a newtype-verzió elvetve)
-3. A legkisebb, izolált fájlok (1–2 import): pl. `Torusz.idr` (2), `GeneralizedPauli.idr` (2), `HaromKubit.idr` (1)
-4. `KategoriaElmelet.idr` (6 meztelen) — a limit/kolimit szekció + a demo-kompatibilitás
-5. `E8E8Algebra.idr` (13) — a `Kubit` már data; a maradék `Nat`/`Double` szimbolizálása
-6. `MagyarNyelv.idr` (16)
-7. `KostantFelbontás_v2.idr` (11), `Komplex.idr` (25)
-8. `KvantumY.idr` (18) — az `aranyMetszes : Double` → `AranymetszésSzimbólum`
-9. `Geometria.idr` (37), `LawvereGodel.idr` (27)
-10. A nagy csomópontok a VÉGÉN: `Steane713.idr` (31 importáló!), `KategóriaElméletUniverzális.idr` (78)
+A kulcsbelátás: **az új kód azonnal az új alapon íródik, a régi kód lassan vándorol.** A típuscsomagolás nem blokkolja a kutatást — az alapja lesz.
 
-A `tanulsagok/` 65 próbafájlja: átírás UTOLSÓNAK (tanulási értékűek, de nem kritikusak) — a felhasználó döntése.
+### 0. AZ ALAP (most azonnal)
+
+**`Alap/CsomagoltTipusok.idr`** — a kanonikus modul (§24: a SzamT.idr + DependensSzamT.idr tartalmát IDE kanonizáljuk, nem duplikáljuk):
+- `data Sorszám = NullaS | KövetkezőS Sorszám` (Peano — de a MI típusunk)
+- `data Betű` — a 44 magyar ábécé-betű (Char nélkül)
+- `data Szöveg = ÜresSzöveg | BetűtFűz Betű Szöveg`
+- `data Igazság = Igaz | Hamis`
+- `data EgészSzám` (0–10 — a SzamT.idr-ből)
+- `data SzámjegyesSzám` (nagy számok — tizedes data-struktúra, pl. 240 az E8-gyökökhez)
+- `data MatematikaiKonstans = PiSzimbólum | EulerSzámSzimbólum | ...` (a Pi-elv)
+- `data FizikaiKonstans = FénysebességSzimbólum | PlanckKonstansSzimbólum | ...` (CODATA-szimbólumok)
+- `data Kubit = Nulla | Egy` (megvan — kanonizálva)
+- Typeclassok: `SzámsorT`, `SzövegT`, `IgazságT`, `KonstansT`, `MennyiségT` — törvényekkel, instance-ok Refl-bizonyítással
+- Saját indexelt struktúrák: `SteaneVektor : Sorszám -> Type` (Nat-index NÉLKÜL)
+
+**A PILOT:** `LimitKolimitDemo` újraírása data-típusokkal (a newtype-verzió elvetése). Ha fordul + fut → a minta áll.
+
+### 1. VONAL — az új kód csak az új alapon (párhuzamosan, nem blokkolódik)
+
+A FÁZIS 1 maradék 24 kategóriaelméleti fogalma ÚJONNAN data-típusokkal (nem kell átírni — még nem léteznek):
+- 1.2 monad/comonad család (5 fogalom)
+- 1.3 morfizmus-típusok (4)
+- 1.4 funktor-típusok (4)
+- 1.5 magasabb kategóriák (3)
+- 1.6 kvantum/fizika (4 — **dagger / kompakt zárt / szalagos / nyom = a SAJÁT hozzájárulás**)
+- 1.7 toposz (4)
+
+### 2. VONAL — a régi kód migrációja (lassan, precízen, fájlonként)
+
+- **2a. levelek** (1–2 importáló): Torusz (2), GeneralizedPauli (2), HaromKubit (1), Kerdosző (3), Hipotetikus (3), ToruszTeszt...
+- **2b. középcsomópontok**: KategoriaElmelet (6), MagyarNyelv (16), KostantFelbontás_v2 (11), Komplex (25), KvantumY (18 — az `aranyMetszes` → `AranymetszésSzimbólum`), Geometria (37), LawvereGodel (27), FogalomFa (12), Kodol (19)
+- **2c. nagy fájlok**: KategóriaElméletUniverzális (78), EpisodicMemory_v1_Szima (89), KonyvAdat_E8Gyokrendszer_v1 (124), a szima_ter/modul 138 fájlja (SzotarHid_v2 (42), E8Univerzalitas_v1 (42), E8Gyokok (41), Muszerefal_v1 (41)...)
+- **2d. a legnagyobb csomópontok a VÉGÉN, egy lépésben a teljes lánc**: E8E8Algebra (23 importáló), ModulRegisztracio (15), Steane713 (31 importáló!)
+
+Szabályok:
+- minden fájl után `idris2 --check` — a fordító a bíra (exit 0 vagy azonnali javítás)
+- három egyforma hiba → infrastruktúra-javítás (nem próbálgatás)
+- a 4 KRITIKUS blokkolt feladat (000.05 funkciószó-lexikon, 000.06 bájt-kanonizálás, 001.00 mondat-szegmentáló, 000.11 OOV) a migrációval együtt oldódik meg — mind a szótár/bájt-kódokra épül
+
+### 3. VONAL — a gráf-adatbázis (az eredeti FÁZIS 2–10) az új alapon
+
+- FÁZIS 2: `KutatasiGraf_v1.idr` — Csúcs/Él/Hiperél data-típusokkal
+- FÁZIS 5: a Yoneda-jelentés most már működik — a gazdag Hom-halmazok a típusokból jönnek
+- FÁZIS 6: a magyar 18 esetrag-keresés a `Betű`/`Szöveg` típusra épül
+- FÁZIS 8–10: a 76 feladat csúcsként, a §N14 hat ellenőrzés gyerekekként, a verifikáció
+
+### A NYITOTT KÉRDÉSEK ELDÖNTÉSE (javaslat — a felhasználó jóváhagyására)
+
+1. `Betű` független a `Char`-tól — **IGEN** (44 konstruktor, Char nélkül)
+2. `Show`-határ — String **csak a `main`-ben** (a `putStrLn` a világ határa)
+3. `tanulsagok/` 65 próbafájl — **ARCHIVÁLÁS**: megőrizzük (MANTRA: nem törlünk), de nem írjuk át (tanulási érték, nem futó kód)
+4. Nat — **ELDÖNTVE: sehol** (érték-szinten és típus-szintű indexként sem — l. III.7)
+
+### A RITMUS
+
+- minden 10. függvény: commit + push
+- minden 3. prompt: snapshot
+- minden lépés után: a §N14 hat szint (GAN, fordítás, futtatás, irodalom, vizualizáció, interaktív)
+- «ez lassú, precíz munka, semmi kapkodás»
+
+### A MÉRFÖLDKÖVEK
+
+- **M1**: CsomagoltTipusok.idr fordul + Refl-bizonyítások ✓
+- **M2**: a pilot (LimitKolimitDemo) data-típusokkal fut ✓
+- **M3**: FÁZIS 1 kész (50 kategóriaelméleti fogalom, mind az új alapon)
+- **M4**: FÁZIS 2 gráf-adatbázis kereshető (magyar 18 esetraggal)
+- **M5**: a migráció folyamatos — 4429 meztelen előfordulás → 0
+
+---
+
+## VIII. GAN-KIEGÉSZÍTÉSEK (2026-09-02 — a GAN-ellenőrzés hozzátevései, beépítve)
+
+### VIII.1. Hiányzó típusok (KRITIKUS — a MANTRA betű szerinti beteljesítéséhez)
+
+1. **`data Fűzér a = ÜresFűzér | Konz a (Fűzér a)`** — a List csomagolása! A MANTRA tiltja a csomagolatlan List-et, de a tervből kimaradt. A 4429 előfordulás nagy része List/Maybe.
+2. **`data Talán a = NincsMeg | Meg a`** — a Maybe csomagolása.
+3. **`data Pár a b = PárKonstruktor a b`** — a Pair csomagolása.
+4. **`data Időbélyeg`** — a kutatási napló és a gráf provenance-időbélyegezője.
+5. **`data VerzióSzám`** — a modulverziókhoz (Provenance, ModulRegisztracio).
+6. **`data Megbízhatóság`** — a gráf-élek súlya (FÁZIS 5 Yoneda-jelentés erőssége).
+7. **`data BájtláncIndex`** — a 000.06 bájt-kanonizáláshoz.
+8. **`data Esetrag`** — a 18 esetrag kanonizálása (a FÁZIS 6 rá épül).
+9. **`data Előjel = Pozitív | Negatív`** — a SzámjegyesSzámhoz (negatív gyökök!).
+10. **`data Számjegy = NullaJ | EgyJ | ... | KilencJ`** — a SzámjegyesSzám építőköve.
+
+### VIII.2. A SzövegT műveletei (a magyar nyelvi fájlok valós igényeiből)
+
+1. `egyezikE : Szöveg → Szöveg → Igazság` — szótárkeresés alapja
+2. `hossz : Szöveg → Sorszám`
+3. **`végEgyezikE : Szöveg → Szöveg → Igazság` — KRITIKUS**: a 18 esetrag-felismerés utótag-illesztése (FÁZIS 6)
+4. `elejeEgyezikE : Szöveg → Szöveg → Igazság` — előtag-illesztés
+5. `résztSzöveg : Sorszám → Sorszám → Szöveg → Szöveg` — a splitOnChar helyettesítője
+6. `szövegÖsszefűz : Szöveg → Szöveg → Szöveg`
+7. `BetűT`: `előbbE : Betű → Betű → Igazság` — **ábécé-rend** (a magyar ábécérend NEM ASCII-rend!)
+
+### VIII.3. A Betű-név-audit eredménye (javítva a III.5-ben)
+
+A 44 konstruktor javítva a hivatalos ábécé szerint: a `FBBetű` nem létező betű volt; hozzáadva `QBetű WBetű XBetű YBetű`; a digráfok helyesen: `CsBetű DzBetű DzsBetű GyBetű LyBetű NyBetű SzBetű TyBetű ZsBetű`.
+
+### VIII.4. A nagy számok pontos reprezentációja
+
+```idris
+data Számjegy = NullaJ | EgyJ | KettőJ | HáromJ | NégyJ | ÖtJ | HatJ | HétJ | NyolcJ | KilencJ
+data Előjel = Pozitív | Negatív
+data SzámjegyesSzám = TizesSzám Előjel (Fűzér Számjegy) Sorszám
+-- 240     = TizesSzám Pozitív (Konz KettőJ (Konz NégyJ (Konz NullaJ ÜresFűzér))) NullaS
+-- 137.036 = a RánszerkezetKonstansSzimbólum jegyei — soha nem Double
+
+||| AZ E8-GYÖKÖK KULCSA: a koordináták VÉGES értékkészletűek — {0, ±1, ±½}!
+data E8Koordináta = NullaK | EgyK | MínuszEgyK | FélK | MínuszFélK
+data E8GyökKód = GyökKód (SteaneVektor NyolcSzám)  -- 8 koordináta, Sorszám-indexelt
+```
+
+Az `E8Koordináta` a kulcs-hozzátétel: az E8 240 gyökének koordinátái végesek — NEM kell általános tizedes. A `Legendre.idr` Double-jai a határprojekció rétegébe (KonstansT kiértékelésébe) kerülnek.
+
+### VIII.5. Azonnal Refl-lel bizonyítható törvények (az M1 mérföldkőhöz)
+
+1. De Morgan: `nem (Igaz és Hamis) = (nem Igaz vagy nem Hamis)` — Refl
+2. Dupla tagadás: `nem (nem Igaz) = Igaz` — Refl
+3. Sorszám jobb-egység: `összead NullaSzámS n = n` — strukturális Refl
+4. Szöveg üres-egység: `szövegÖsszefűz s ÜresSzöveg = s` — strukturális Refl
+5. Számjegy-normalizáció (a vezető NullaJ nem megengedett) — Refl
+
+(A kommutativitás/asszociativitás indukciót igényel — azokat NEM ígérjük Refl-re.)
+
+### VIII.6. A migráció besorolási hézagai (pótolva)
+
+1. **`trail_index/` 12 fájl** → **2b** (a Provenance/Tree/Index középcsomópontok)
+2. **`szerver_hagyar/idris/` 11 fájl** → **2c**
+3. **`diagnosztika/`** (nem Idris-futó kód) → **ARCHIVÁLÁS** (mint a tanulsagok/)
+4. **`Alap/` maradék 4 fájl** (GrafT, KategoriaT, KeresoTabla, LagrangianT) — a kanonizáció után importálják a CsomagoltTipusok.idr-t
+5. **Gyökér/trail_index kettőzés** (`FaVizualizacio.idr`) → egyesítés a 2b-ben (§24)
+6. **A függőségi él**: CsomagoltTipusok → **Kodol** → MagyarNyelv (a Kodol ELŐBB a 2b-ben!)
+
+### VIII.7. Kockázat-hozzátevések
+
+1. **`Hossz` NÉVÜTKÖZÉS BIZONYÍTVA**: `data Hossz` már létezik a `SzotarHid_v2.idr:57`-ben prozódiai hosszként → a fizikai dimenzió neve `HosszMennyiség`. SZABÁLY: minden új típusnév előtt projektszintű grep (név-egyediség-audit).
+2. **Határmodul**: `Alap/Határ.idr` — `határKiírás : Szöveg → String`, `határOlvasás : String → Szöveg` — EZEN KÍVÜL sehol String (a §N14.6 interaktív programhoz kell).
+3. **Ékezet-kanonizáció**: az `Alap/SzamT.idr` ma ékezet-nélküli (`EgeszSzam`, `OsszeadasT`) — a kanonizáció EGYSZERRE átnevez ékezetesre (`EgészSzám`, `ÖsszeadásT`).
+4. **SteaneVektor-aritmetika**: a Nat-index eltüntetésével a hossz-összefűzés törvényeit MI bizonyítjuk — az M1 mérföldkőhöz felvéve.
+5. **Sorszám-mélység**: 240-elemű index Peano-mélysége — értékekre SzámjegyesSzám, indexekre Sorszám; fordítási idő mérése az M1-ben.
 
 ---
 
