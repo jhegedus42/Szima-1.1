@@ -118,13 +118,21 @@ data Hőmérséklet = ...
 
 Az értékek szimbolikus kifejezések (konstans-konstruktorok + typeclass-kompozíció); a numerika a határon.
 
-### III.7. A típus-szintű Nat-index (NYITOTT KÉRDÉS — döntésre vár)
+### III.7. Nincs Nat — se érték-szinten, se típus-szintű indexként (MEGVÁLASZOLVA)
 
-A `SteaneVektor : Nat -> Type` esetén a `Nat` típus-szintű index, nem érték-szintű meztelen típus. Két opció:
-- (a) marad a standard `Nat` index (interop: Fin, Vect), minden ÉRTÉK-szintű Nat data-ra ír
-- (b) a konzisztenciáért `SteaneVektor : Sorszám -> Type`
+A felhasználó kérdése: «Nat-ot miert nem lehet ?» — a válasz két részről:
 
-Javaslat: (a) — de a felhasználó dönt.
+**Miért nem lehet érték-szinten?** (1) A typeclass-példány a TÍPUSRA szól: `SorszámT Nat` minden Nat-ra érvényes — nincs megkülönböztetés, nincs hierarchia (a felhasználó: «különben nem lehet rajtuk type class-t írni»). (2) A fordító csak azt védi, amit a típus megkülönböztet — meztelen Nat-tel az értelmetlen kompozíció is lefordul. (3) A típus = a propozíció (Curry–Howard): a `Nat -> String` semmit sem állít. (4) A magyar nyelv analógiája: a típus a szó ragozása — a meztelen Nat ragozatlan tő.
+
+**Miért nem maradhat típus-szintű indexként?** A korábbi kivétel csalás volt («nem csalunk») — és felesleges: az Idris2-ben a dependens család BÁRMILYEN típusra indexelhető. A projekt SAJÁT kódja már bizonyítja: `FogalomMorf : FogalomTipus -> FogalomTipus -> Type`, `E8Morf : E8Pont -> E8Pont -> Type`, `KubitMorf`, `IdoMorf` — egyikkel sem Nat-indexelt. Csak a `SteaneVektor` és a `FinD` használt Nat-ot:
+
+```idris
+data SteaneVektor : Sorszám -> Type where
+  ÜresVektor      : SteaneVektor NullaS
+  KombináltVektor : KubitD -> SteaneVektor n -> SteaneVektor (KövetkezőS n)
+```
+
+Az ára: a standard `Vect`/`Fin` (Nat-indexelt) helyett saját indexelt struktúrák. A nyeresége: a hossz-aritmetika törvényeit MI bizonyítjuk (SzámsorT + Refl), nem a könyvtárból vesszük — «Minden bizonyítást az alapaxiómákból kell levezetni». Nagy számokra (240 = E8 gyökök): tizedes data-struktúra (`data SzámjegyesSzám`), nem unáris Peano.
 
 ### III.8. Egyetlen kanonikus modul (§24 — kódduplikáció tilos)
 
