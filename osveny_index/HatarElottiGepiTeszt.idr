@@ -1,10 +1,11 @@
 module HatarElottiGepiTeszt
 
 -- ─────────────────────────────────────────────────────────────────────
--- IDEIGLENES gépi ellenőrzés (a §N14/3 numerikus verifikációhoz).
--- A Határ-modul (000.02) ELŐZETESE: a Szöveg → String konverzió itt
--- él — ez az EGYETLEN hely, ahol String megjelenhet (az IO pereme).
--- A 000.02 lépésben a Hatar.idr VESZI ÁT ezt a szerepet.
+-- ELAVULT (2026-09-02, 000.02 lépés): a szerepét az Alap.Hatar vette át
+-- (digráf-barát betűKarakterlánca-val és a teljes Határ-API-val).
+-- MEGŐRIZVE a MANTRA szerint (nem törlünk) — a 500.01-es archiválási
+-- lépés során kerül a tanulsagok/ anyag közé. A regressziós kimenetek
+-- a HatarGepeiTeszt-féle új tesztbe költöztek (000.03+).
 -- ─────────────────────────────────────────────────────────────────────
 import Alap.CsomagoltTipusok
 
