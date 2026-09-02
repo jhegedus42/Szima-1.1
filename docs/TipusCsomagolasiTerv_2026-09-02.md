@@ -162,55 +162,17 @@ Minden instance = a törvények bizonyítása (Curry–Howard), Refl-lel ellenő
 
 ---
 
-## V. A VÉGSŐ TERV — EGY ALAP + HÁROM VONAL (a felhasználó kérdése nyomán: «akkor mi legyen a terv ?»)
+## V. A VÉGSŐ TERV — EGY VONAL (a felhasználó korrekciója: «1 vonal van ! semmi parhuzamositas»)
 
-A kulcsbelátás: **az új kód azonnal az új alapon íródik, a régi kód lassan vándorol.** A típuscsomagolás nem blokkolja a kutatást — az alapja lesz.
+**A terv Idrisben él: `szima_ter/modul/EgyVonalTerv_v1.idr`** — 69 lépés, `List Feladat`-ként (a `SajatTodo_v1` típusainak importálásával — §24). A program kiírja a vonalat és a következő lépést: `idris2 --exec main`. Nincs párhuzamosítás — EGY lineáris sorozat, lépésről lépésre, fájlról fájlra:
 
-### 0. AZ ALAP (most azonnal)
-
-**`Alap/CsomagoltTipusok.idr`** — a kanonikus modul (§24: a SzamT.idr + DependensSzamT.idr tartalmát IDE kanonizáljuk, nem duplikáljuk):
-- `data Sorszám = NullaS | KövetkezőS Sorszám` (Peano — de a MI típusunk)
-- `data Betű` — a 44 magyar ábécé-betű (Char nélkül)
-- `data Szöveg = ÜresSzöveg | BetűtFűz Betű Szöveg`
-- `data Igazság = Igaz | Hamis`
-- `data EgészSzám` (0–10 — a SzamT.idr-ből)
-- `data SzámjegyesSzám` (nagy számok — tizedes data-struktúra, pl. 240 az E8-gyökökhez)
-- `data MatematikaiKonstans = PiSzimbólum | EulerSzámSzimbólum | ...` (a Pi-elv)
-- `data FizikaiKonstans = FénysebességSzimbólum | PlanckKonstansSzimbólum | ...` (CODATA-szimbólumok)
-- `data Kubit = Nulla | Egy` (megvan — kanonizálva)
-- Typeclassok: `SzámsorT`, `SzövegT`, `IgazságT`, `KonstansT`, `MennyiségT` — törvényekkel, instance-ok Refl-bizonyítással
-- Saját indexelt struktúrák: `SteaneVektor : Sorszám -> Type` (Nat-index NÉLKÜL)
-
-**A PILOT:** `LimitKolimitDemo` újraírása data-típusokkal (a newtype-verzió elvetése). Ha fordul + fut → a minta áll.
-
-### 1. VONAL — az új kód csak az új alapon (párhuzamosan, nem blokkolódik)
-
-A FÁZIS 1 maradék 24 kategóriaelméleti fogalma ÚJONNAN data-típusokkal (nem kell átírni — még nem léteznek):
-- 1.2 monad/comonad család (5 fogalom)
-- 1.3 morfizmus-típusok (4)
-- 1.4 funktor-típusok (4)
-- 1.5 magasabb kategóriák (3)
-- 1.6 kvantum/fizika (4 — **dagger / kompakt zárt / szalagos / nyom = a SAJÁT hozzájárulás**)
-- 1.7 toposz (4)
-
-### 2. VONAL — a régi kód migrációja (lassan, precízen, fájlonként)
-
-- **2a. levelek** (1–2 importáló): Torusz (2), GeneralizedPauli (2), HaromKubit (1), Kerdosző (3), Hipotetikus (3), ToruszTeszt...
-- **2b. középcsomópontok**: KategoriaElmelet (6), MagyarNyelv (16), KostantFelbontás_v2 (11), Komplex (25), KvantumY (18 — az `aranyMetszes` → `AranymetszésSzimbólum`), Geometria (37), LawvereGodel (27), FogalomFa (12), Kodol (19)
-- **2c. nagy fájlok**: KategóriaElméletUniverzális (78), EpisodicMemory_v1_Szima (89), KonyvAdat_E8Gyokrendszer_v1 (124), a szima_ter/modul 138 fájlja (SzotarHid_v2 (42), E8Univerzalitas_v1 (42), E8Gyokok (41), Muszerefal_v1 (41)...)
-- **2d. a legnagyobb csomópontok a VÉGÉN, egy lépésben a teljes lánc**: E8E8Algebra (23 importáló), ModulRegisztracio (15), Steane713 (31 importáló!)
-
-Szabályok:
-- minden fájl után `idris2 --check` — a fordító a bíra (exit 0 vagy azonnali javítás)
-- három egyforma hiba → infrastruktúra-javítás (nem próbálgatás)
-- a 4 KRITIKUS blokkolt feladat (000.05 funkciószó-lexikon, 000.06 bájt-kanonizálás, 001.00 mondat-szegmentáló, 000.11 OOV) a migrációval együtt oldódik meg — mind a szótár/bájt-kódokra épül
-
-### 3. VONAL — a gráf-adatbázis (az eredeti FÁZIS 2–10) az új alapon
-
-- FÁZIS 2: `KutatasiGraf_v1.idr` — Csúcs/Él/Hiperél data-típusokkal
-- FÁZIS 5: a Yoneda-jelentés most már működik — a gazdag Hom-halmazok a típusokból jönnek
-- FÁZIS 6: a magyar 18 esetrag-keresés a `Betű`/`Szöveg` típusra épül
-- FÁZIS 8–10: a 76 feladat csúcsként, a §N14 hat ellenőrzés gyerekekként, a verifikáció
+- **000 AZ ALAP** (000.00 a terv-modul KÉSZ → 000.01 CsomagoltTipusok → 000.02 Határ → 000.03 a pilóta LimitKolimitDemo)
+- **100 LEVELEK** (100.01–100.10: HaromKubit, Torusz, GeneralizedPauli, Kérdőszó, ... — a minta gyakorlása)
+- **200 KÖZÉP** (200.01–200.33: **Kodol a MagyarNyelv ELŐTT!**, MagyarNyelv, KategóriaElmélet a limit/kolimit-megőrzéssel, Legendre 87, LegkisebbMűvelet 6 fájl, Dirac3D 20 fájl, trail_index 12, Alap/ maradék 4, ...)
+- **300 NAGY FÁJLOK** (300.01 KategóriaElméletUniverzális 78 → 300.02 szerver_hagyar 11 → 300.03 a szima_ter 138 fájl sorszámozása az alFeladatBeszúróval → 300.04–300.08 fájlról fájlra)
+- **400 CSOMÓPONTOK A VÉGÉN, EGY-EGY LÉPÉSBEN A TELJES LÁNC** (400.01 E8E8Algebra 23 importáló → 400.02 ModulRegisztráció 15 → 400.03 Steane713 31 importáló)
+- **500 ARCHIVÁLÁS** (500.01: tanulsagok/ 65 + diagnosztika/ — megőrizzük, nem átírjuk)
+- **600 A KUTATÁS FOLYTATÁSA** (600.01–600.10: a FÁZIS 1 maradék 24 fogalma a tiszta alapon → a gráf-adatbázis → Yoneda → a magyar 18 esetrag-keresés)
 
 ### A NYITOTT KÉRDÉSEK ELDÖNTÉSE (javaslat — a felhasználó jóváhagyására)
 
