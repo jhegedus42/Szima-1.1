@@ -48,8 +48,8 @@ egyVonal = [
     Kész Magas "osveny_index/Alap/Határ.idr",
   MkFeladat "000.03" "Pilóta (KÉSZ — exit 0 + interaktív teszt minden parancsra helyes): LimitKolimitPilota.idr ~760 sor — data Fogalom (10 konstruktor), fogalomSorszám/szava/duálisa, duálisInvolúció ×10 Refl + duálisNemFixpont ×10 + sorszámVisszafordít ×10 (bijekció!), EgyenlőségT/RendezésT/MegjelenítésT instance (az EgyenlőségT a bizonyítások ELŐTT — csapda #12), füzérBejárás (total), fogalomListája + duálisPárok + hossz-tanúk + 5 párTanú (minősített típusok — csapda #4), 14 szó-konstans + számNév/szókéntSor/számNévből, TANÚ-HÁLÓ 14 strCons-Körút (csapda #13: a String-literál nem redukálódik a kernelben, a strCons-építés igen), leírások/források szavakban (az idegen nevek IDEGEN maradnak — az awodej v-átírás ELVETVE a felhasználó irányelve szerint; az IdegenBetű-réteg a 200.37-es lépés), mondatVégére + Mondat-réteg, interaktív loop (számnevek egy-tíz + mind + duális + súgó + kilépés)"
     Kész Magas "osveny_index/LimitKolimitPilota.idr",
-  MkFeladat "000.04" "Füzér teljes API (GAN 2): füzérTérkép, füzérHajtás, füzérEleme, füzérElső, füzérTöbbi, füzérFűzés, füzérFordít + a Data.List-megfeleltetés kommenttáblázata (map↔füzérTérkép, …) — a migráció gépiesítéséhez; GAN 4: literál-építők (jegyek, egészbőlJegy, jegybőlSor) és nevezetes számok (szám240, kétézerHuszonhat, szám137)"
-    Vár Magas "osveny_index/Alap/CsomagoltTipusok.idr",
+  MkFeladat "000.04" "Füzér teljes API (KÉSZ — exit 0 + gépi teszt 8/8): füzérTérkép/füzérHajtás/füzérEleme/füzérElső/füzérTöbbi/füzérFűzés (a pilótából költözve — §24)/füzérFordít + Data.List-megfeleltetés-táblázat + TÖRVÉNYEK: füzérFűzésJobbEgység, füzérFűzésAsszociativitás, füzérHosszFűzés, füzérTérképFűzés, füzérFordítFűzés, füzérFordítFordít (indukció+cong+rewrite!) + literál-építők: egészbőlJegy (Talán), jegybőlSor + szám240 (E8-gyök!), kétézerHuszonhat, szám137 (α⁻¹) + jegysor-tanúk; FuzerApiGepeiTeszt fut; GAN-ellenőrzés: +10 törvény BEÉPÍTVE — füzérFűzésBalEgység (a MONOID most teljes!), füzérTérképAzon + füzérTérképÖsszetétel (a FUNKTOR két törvénye!), füzérHosszTérkép, füzérHajtásVége + füzérHajtásFűzés (katamorfizmus-fúzió), füzérHosszFűzésEgy + füzérFordítHossz, füzérElemeFűzés (with-bontással), vagyHamisBalEgység; a 000.05+ sorba: füzérÖsszefűzés/monad, füzérSzűrés, számjegyekÖsszege/jegysorbólSorszám, szám496, szám1728)"
+    Kész Magas "osveny_index/Alap/CsomagoltTipusok.idr",
 
   -- ─── 100. LEVELEK (1–2 importáló, kis fájlok — a minta gyakorlása) ───
   MkFeladat "100.01" "HaromKubit átírása (1 meztelen)"
@@ -146,8 +146,8 @@ egyVonal = [
     Vár Magas "osveny_index/Alap/CsomagoltTipusok.idr",
   MkFeladat "200.36" "Metrika-instance-ok (GAN 15): EgyenlőségT + RendezésT Időbélyeg/VerzióSzám/BájtláncIndex/SzámjegyesSzám-ra (jegyKisebbE híddal), Időbélyeg óra/perc mezők, a régebbi-előbb VerziószámT-törvény"
     Vár Közepes "osveny_index/Alap/CsomagoltTipusok.idr",
-  MkFeladat "200.37" "IdegenBetű-réteg (GAN-os tervezés): az idegen nyelvű szavak IDEGEN NYELVŰEK MARADNAK (a felhasználó irányelve, 2026-09-02; AkH: az idegen tulajdonnevek eredeti alakjukban maradnak) — WBetű/YBetű/XBetű/QBetű stb. konstruktorok egy külön data IdegenBetű típusban (a magyar 44 marad érintetlen!) + IdegenSzóDarab konstruktor a MondatDarab-ban (a Határ-rétegben) — így az Awodey/MacLane/nLab nevek torzítás nélkül hordozhatók; a magyar szöveg és az idegen betűszó típus-szinten válik szét"
-    Vár Közepes "osveny_index/Alap/Hatar.idr",
+  MkFeladat "200.37" "Görög-betű-réteg (ÚJRA-ÉRTELMEZVE 2026-09-02: a QBetű/WBetű/XBetű/YBetű MÁR LÉTEZIK a 44-ben — «idegen, de ábécébeli», az awodey/maclane/nlab nevek torzítás nélkül betűzhetők, awodeyKörút-tanúval!): ami HIÁNYZIK, az a GÖRÖG betűk (α, π, Σ, λ...) és más nem-latin jelek a matematikai jelölésekhez — GörögBetű data + tanú-körutak, csak amikor a 600-as fázis görög szimbólumot kíván; alacsony prioritású"
+    Vár Alacsony "osveny_index/Alap/Hatar.idr",
 
   -- ─── 300. NAGY FÁJLOK (a 78+ előfordulású szörnyek) ───
   MkFeladat "300.01" "KategóriaElméletUniverzális átírása (78 meztelen — a legnagyobb)"

@@ -455,10 +455,12 @@ súgóKörút = Refl
 -- Irányelv (2026-09-02, a felhasználó döntése): IDEGEN NYELVŰ SZAVAK
 -- IDEGEN NYELVŰEK MARADNAK — az idegen tulajdonnevek (Awodey, MacLane,
 -- nLab) NEM magyarosodnak (AkH-elv: idegen tulajdonnév eredeti alakjában
--- marad). A «maclane» betűzhető magyar grafémákkal = az idegen név
--- torzítás NÉLKÜL; az «awodey» w-je viszont nem betűzhető a 44-ből —
--- ezért az awodej-átírás ELVETVE, a szerző neve a KOMMENTBEN él,
--- és az IdegenBetű-réteg a 200.37-es tervezési lépés kérdése.
+-- marad). FELFEDEZÉS (ugyanazon a napon): a Betű-típus 44 konstruktora
+-- TARTALMAZZA az idegen-de-ábécébeli betűket (QBetű, WBetű, XBetű,
+-- YBetű) — a magyar ÁBÉCÉ nyomtatta alakja —, tehát az «awodey» és a
+-- «maclane» torzítás NÉLKÜL betűzhető; a mohó digráf-olvasó a gy/ly/ny/sz
+-- digráfokat ELŐBBRE veszi, így az «egy»=[E,Gy] nem sérül. Az awodej
+-- v-átírás ELVETVE; a 200.37-es lépés görög-betű-réteggé szűkült.
 
 mindenSzó : Szöveg
 mindenSzó = BetűtFűz MBetű (BetűtFűz IBetű (BetűtFűz NBetű (BetűtFűz DBetű
@@ -588,6 +590,21 @@ nlabSzó = BetűtFűz NBetű (BetűtFűz LBetű (BetűtFűz ABetű (BetűtFűz B
 ávodejSzó = BetűtFűz ÁBetű (BetűtFűz VBetű (BetűtFűz OBetű (BetűtFűz DBetű
   (BetűtFűz EBetű (BetűtFűz JBetű ÜresSzöveg)))))
 
+||| Az Awodey-név TORZÍTÁS NÉLKÜL: a-w-o-d-e-y — a WBetű és az YBetű
+||| a 44-es ábécében élnek («idegen, de ábécébeli») — az irányelv teljes
+||| teljesítése szó szerinti alakban.
+public export
+awodeySzó : Szöveg
+awodeySzó = BetűtFűz ABetű (BetűtFűz WBetű (BetűtFűz OBetű (BetűtFűz DBetű
+  (BetűtFűz EBetű (BetűtFűz YBetű ÜresSzöveg)))))
+
+||| Tanú: az awodey-körút (a mohó olvasó nem bont digráfot belőle).
+public export
+awodeyKörút : karakterláncbólSzöveg (strCons 'a' (strCons 'w' (strCons 'o'
+  (strCons 'd' (strCons 'e' (strCons 'y' ""))))))
+  = Csak LimitKolimitPilota.awodeySzó
+awodeyKörút = Refl
+
 maclaneSzó : Szöveg
 maclaneSzó = BetűtFűz MBetű (BetűtFűz ABetű (BetűtFűz CBetű (BetűtFűz LBetű
   (BetűtFűz ABetű (BetűtFűz NBetű (BetűtFűz EBetű ÜresSzöveg))))))
@@ -623,12 +640,8 @@ viszlátSzó = BetűtFűz VBetű (BetűtFűz IBetű (BetűtFűz SBetű (BetűtF�
 aSzó : Szöveg
 aSzó = BetűtFűz ABetű ÜresSzöveg
 
--- ─── A FŰZÉR-ÖSSZEFŰZÉS (a 000.04-előzetes; §24-grep: nem létezett) ──
-
-public export
-füzérFűzés : {tag : Type} -> Füzér tag -> Füzér tag -> Füzér tag
-füzérFűzés FüzérVége második = második
-füzérFűzés (Fűzés elem tovább) második = Fűzés elem (füzérFűzés tovább második)
+-- (A füzérFűzés az 000.04 lépésben az Alap.CsomagoltTipusok-ba költözött
+--  — §24: mostantól onnan importálódik; itt már csak használjuk.)
 
 -- ─── A LEÍRÁSOK (szavak füzére — írásjel a Mondat-rétegen) ────
 
@@ -664,16 +677,16 @@ fogalomLeírása ÁltalánosKolimit = Fűzés duálisaSzó (Fűzés azSzó
 -- Kolimit); nLab megfelelő szócikkek.
 
 forrásÖtEgy : Füzér Szöveg
-forrásÖtEgy = Fűzés nlabSzó (Fűzés ötSzava
-  (Fűzés pontSzó (Fűzés egySzava FüzérVége)))
+forrásÖtEgy = Fűzés nlabSzó (Fűzés awodeySzó (Fűzés ötSzava
+  (Fűzés pontSzó (Fűzés egySzava FüzérVége))))
 
 forrásÖtKettő : Füzér Szöveg
-forrásÖtKettő = Fűzés nlabSzó (Fűzés ötSzava
-  (Fűzés pontSzó (Fűzés kettőSzava FüzérVége)))
+forrásÖtKettő = Fűzés nlabSzó (Fűzés awodeySzó (Fűzés ötSzava
+  (Fűzés pontSzó (Fűzés kettőSzava FüzérVége))))
 
 forrásÖtHárom : Füzér Szöveg
-forrásÖtHárom = Fűzés nlabSzó (Fűzés ötSzava
-  (Fűzés pontSzó (Fűzés háromSzava FüzérVége)))
+forrásÖtHárom = Fűzés nlabSzó (Fűzés awodeySzó (Fűzés ötSzava
+  (Fűzés pontSzó (Fűzés háromSzava FüzérVége))))
 
 forrásMacLane : Füzér Szöveg
 forrásMacLane = Fűzés nlabSzó (Fűzés maclaneSzó (Fűzés harmadikSzó

@@ -1258,6 +1258,297 @@ tizennyolcEsetrag :
 tizennyolcEsetrag = Refl
 
 -- ═════════════════════════════════════════════════════════════════════════
+-- XIb. FÜZÉR-API (000.04) — a Data.List-megfeleltetés
+--      中文：串API——与 Data.List 的对应表 / Die Füzér-API — Data.List-Entsprechung
+-- ═════════════════════════════════════════════════════════════════════════
+-- Megfeleltetés-táblázat (a 341 fájlos migráció gépiesítéséhez):
+--   map      ↔ füzérTérkép   (leképezés elemenként)
+--   foldr    ↔ füzérHajtás   (hajtás jobbról)
+--   elem     ↔ füzérEleme    (tagság-teszt)
+--   head     ↔ füzérElső     (az első elem: Talán)
+--   tail     ↔ füzérTöbbi    (a többi füzér)
+--   (++)     ↔ füzérFűzés    (összefűzés — a pilótából KÖLTÖZÖTT, §24)
+--   reverse  ↔ füzérFordít   (fordított sorrend)
+-- A törvények Refl-bizonyításokkal (Curry-Howard: a program = a bizonyítás).
+
+||| A térkép: elemenkénti leképezés (a map megfelelője).
+public export
+füzérTérkép : {forrás : Type} -> {cél : Type} ->
+  (forrás -> cél) -> Füzér forrás -> Füzér cél
+füzérTérkép _ FüzérVége = FüzérVége
+füzérTérkép leképező (Fűzés elem tovább) =
+  Fűzés (leképező elem) (füzérTérkép leképező tovább)
+
+||| A hajtás: jobbról haladó összegzés (a foldr megfelelője).
+public export
+füzérHajtás : {elemTípus : Type} -> {összegTípus : Type} ->
+  (elemTípus -> összegTípus -> összegTípus) -> összegTípus ->
+  Füzér elemTípus -> összegTípus
+füzérHajtás _ kezdő FüzérVége = kezdő
+füzérHajtás teendő kezdő (Fűzés elem tovább) =
+  teendő elem (füzérHajtás teendő kezdő tovább)
+
+||| Az első elem — Talán-ban (a head megfelelője, üresnél Semmi).
+public export
+füzérElső : {tag : Type} -> Füzér tag -> Talán tag
+füzérElső FüzérVége = Semmi
+füzérElső (Fűzés elem _) = Csak elem
+
+||| A többi — az első elem nélküli füzér (a tail megfelelője).
+public export
+füzérTöbbi : {tag : Type} -> Füzér tag -> Füzér tag
+füzérTöbbi FüzérVége = FüzérVége
+füzérTöbbi (Fűzés _ tovább) = tovább
+
+||| Az összefűzés: két füzér egymás után (a ++ megfelelője).
+||| A LimitKolimitPilota-ból költözött ide (§24 — a kanonikus lakhely).
+public export
+füzérFűzés : {tag : Type} -> Füzér tag -> Füzér tag -> Füzér tag
+füzérFűzés FüzérVége második = második
+füzérFűzés (Fűzés elem tovább) második =
+  Fűzés elem (füzérFűzés tovább második)
+
+||| A fordítás: fordított sorrendű füzér (a reverse megfelelője).
+public export
+füzérFordít : {tag : Type} -> Füzér tag -> Füzér tag
+füzérFordít FüzérVége = FüzérVége
+füzérFordít (Fűzés elem tovább) =
+  füzérFűzés (füzérFordít tovább) (Fűzés elem FüzérVége)
+
+||| A tagság-teszt: szerepel-e az elem a füzérben (az elem megfelelője).
+||| Az egyenlőséget az EgyenlőségT instance adja (a bíra = a typechecker).
+public export
+füzérEleme : EgyenlőségT tag => tag -> Füzér tag -> Igazság
+füzérEleme _ FüzérVége = Hamis
+füzérEleme keresett (Fűzés elem tovább) =
+  case egyenlőE keresett elem of
+    Igaz => Igaz
+    Hamis => füzérEleme keresett tovább
+
+-- ─── A FÜZÉR-TÖRVÉNYEK (bizonyítások — indukció a füzér szerkezetén) ──
+
+||| Jobb-egység: az üres füzér jobb oldali identitás (indukció).
+public export
+füzérFűzésJobbEgység : {tag : Type} -> (teljes : Füzér tag) ->
+  füzérFűzés teljes FüzérVége = teljes
+füzérFűzésJobbEgység FüzérVége = Refl
+füzérFűzésJobbEgység (Fűzés elem tovább) =
+  cong (Fűzés elem) (füzérFűzésJobbEgység tovább)
+
+||| Asszociativitás: a fűzés társítása (indukció az elsőre).
+public export
+füzérFűzésAsszociativitás : {tag : Type} ->
+  (első : Füzér tag) -> (második : Füzér tag) -> (harmadik : Füzér tag) ->
+  füzérFűzés (füzérFűzés első második) harmadik
+  = füzérFűzés első (füzérFűzés második harmadik)
+füzérFűzésAsszociativitás FüzérVége második harmadik = Refl
+füzérFűzésAsszociativitás (Fűzés elem tovább) második harmadik =
+  cong (Fűzés elem) (füzérFűzésAsszociativitás tovább második harmadik)
+
+||| A hossz additív a fűzésre (indukció az elsőre; sorÖsszeadás-törvény).
+public export
+füzérHosszFűzés : {tag : Type} ->
+  (első : Füzér tag) -> (második : Füzér tag) ->
+  füzérHossz (füzérFűzés első második)
+  = sorÖsszeadás (füzérHossz első) (füzérHossz második)
+füzérHosszFűzés FüzérVége második = Refl
+füzérHosszFűzés (Fűzés elem tovább) második =
+  cong SorKövetkező (füzérHosszFűzés tovább második)
+
+||| A térkép oszlik a fűzésre (indukció az elsőre).
+public export
+füzérTérképFűzés : {forrás : Type} -> {cél : Type} ->
+  (leképező : forrás -> cél) ->
+  (első : Füzér forrás) -> (második : Füzér forrás) ->
+  füzérTérkép leképező (füzérFűzés első második)
+  = füzérFűzés (füzérTérkép leképező első) (füzérTérkép leképező második)
+füzérTérképFűzés leképező FüzérVége második = Refl
+füzérTérképFűzés leképező (Fűzés elem tovább) második =
+  cong (Fűzés (leképező elem)) (füzérTérképFűzés leképező tovább második)
+
+||| A fordítás megfordítja a fűzés sorrendjét (indukció + átirás).
+public export
+füzérFordítFűzés : {tag : Type} ->
+  (első : Füzér tag) -> (második : Füzér tag) ->
+  füzérFordít (füzérFűzés első második)
+  = füzérFűzés (füzérFordít második) (füzérFordít első)
+füzérFordítFűzés FüzérVége második =
+  rewrite füzérFűzésJobbEgység (füzérFordít második) in Refl
+füzérFordítFűzés (Fűzés elem tovább) második =
+  rewrite füzérFordítFűzés tovább második in
+  rewrite füzérFűzésAsszociativitás (füzérFordít második) (füzérFordít tovább)
+    (Fűzés elem FüzérVége) in Refl
+
+||| A fordítás involúció: kétszer fordítva az eredeti (indukció).
+public export
+füzérFordítFordít : {tag : Type} -> (teljes : Füzér tag) ->
+  füzérFordít (füzérFordít teljes) = teljes
+füzérFordítFordít FüzérVége = Refl
+füzérFordítFordít (Fűzés elem tovább) =
+  rewrite füzérFordítFűzés (füzérFordít tovább) (Fűzés elem FüzérVége) in
+  cong (Fűzés elem) (füzérFordítFordít tovább)
+
+-- ─── GAN-KIEGÉSZÍTÉS (000.04-ellenőrzés, 2026-09-02): a monoid, a
+-- ─── funktor és a katamorfizmus törvényeinek teljesebb hálója ────
+
+||| A VAGY hamis-bal-egysége: a Hamis bal identitás (GAN-felfedezés).
+||| (A vagyIgazIgazBal már létezik a végEgyezzikRefl indukciójánál — §24.)
+public export
+vagyHamisBalEgység : (második : Igazság) -> vagyIgazsággal Hamis második = második
+vagyHamisBalEgység Igaz = Refl
+vagyHamisBalEgység Hamis = Refl
+
+||| BAL-egység: az üres füzér bal oldali identitás is (a monoid teljesebb).
+public export
+füzérFűzésBalEgység : {tag : Type} -> (második : Füzér tag) ->
+  füzérFűzés FüzérVége második = második
+füzérFűzésBalEgység második = Refl
+
+||| Funktor-identitás: a térkép az identitáson identitás.
+public export
+füzérTérképAzon : {tag : Type} -> (teljes : Füzér tag) ->
+  füzérTérkép (\elem => elem) teljes = teljes
+füzérTérképAzon FüzérVége = Refl
+füzérTérképAzon (Fűzés elem tovább) =
+  cong (Fűzés elem) (füzérTérképAzon tovább)
+
+||| Funktor-kompozíció: a két térkép egymás után = az összetett térkép.
+public export
+füzérTérképÖsszetétel : {forrás : Type} -> {köztes : Type} -> {cél : Type} ->
+  (másodikLeképező : köztes -> cél) -> (elsőLeképező : forrás -> köztes) ->
+  (teljes : Füzér forrás) ->
+  füzérTérkép másodikLeképező (füzérTérkép elsőLeképező teljes)
+  = füzérTérkép (\elem => másodikLeképező (elsőLeképező elem)) teljes
+füzérTérképÖsszetétel másodikLeképező elsőLeképező FüzérVége = Refl
+füzérTérképÖsszetétel másodikLeképező elsőLeképező (Fűzés elem tovább) =
+  cong (Fűzés (másodikLeképező (elsőLeképező elem)))
+    (füzérTérképÖsszetétel másodikLeképező elsőLeképező tovább)
+
+||| A hossz változatlan a térkép alatt (a funktor mérték-megőrzése).
+public export
+füzérHosszTérkép : {forrás : Type} -> {cél : Type} ->
+  (leképező : forrás -> cél) -> (teljes : Füzér forrás) ->
+  füzérHossz (füzérTérkép leképező teljes) = füzérHossz teljes
+füzérHosszTérkép leképező FüzérVége = Refl
+füzérHosszTérkép leképező (Fűzés elem tovább) =
+  cong SorKövetkező (füzérHosszTérkép leképező tovább)
+
+||| A hajtás az üres füzérön a kezdőérték (katamorfizmus-alap).
+public export
+füzérHajtásVége : {elemTípus : Type} -> {összegTípus : Type} ->
+  (teendő : elemTípus -> összegTípus -> összegTípus) -> (kezdő : összegTípus) ->
+  füzérHajtás teendő kezdő FüzérVége = kezdő
+füzérHajtásVége teendő kezdő = Refl
+
+||| Hajtás-fúzió: a fűzésre hajtás = a másodikon előre hajtás, majd az elsőn
+||| (a foldr-append fúzió — a katamorfizmus algebrai gerince).
+public export
+füzérHajtásFűzés : {elemTípus : Type} -> {összegTípus : Type} ->
+  (teendő : elemTípus -> összegTípus -> összegTípus) -> (kezdő : összegTípus) ->
+  (első : Füzér elemTípus) -> (második : Füzér elemTípus) ->
+  füzérHajtás teendő kezdő (füzérFűzés első második)
+  = füzérHajtás teendő (füzérHajtás teendő kezdő második) első
+füzérHajtásFűzés teendő kezdő FüzérVége második = Refl
+füzérHajtásFűzés teendő kezdő (Fűzés elem tovább) második =
+  cong (teendő elem) (füzérHajtásFűzés teendő kezdő tovább második)
+
+||| Segéd: egy elem fűzése jobbra = a hossz eggyel nő (indukció).
+public export
+füzérHosszFűzésEgy : {tag : Type} -> (elem : tag) -> (teljes : Füzér tag) ->
+  füzérHossz (füzérFűzés teljes (Fűzés elem FüzérVége))
+  = SorKövetkező (füzérHossz teljes)
+füzérHosszFűzésEgy elem FüzérVége = Refl
+füzérHosszFűzésEgy elem (Fűzés első tovább) =
+  cong SorKövetkező (füzérHosszFűzésEgy elem tovább)
+
+||| A fordítás megtartja a hosszt (a tükrözés mérték-megőrzése).
+public export
+füzérFordítHossz : {tag : Type} -> (teljes : Füzér tag) ->
+  füzérHossz (füzérFordít teljes) = füzérHossz teljes
+füzérFordítHossz FüzérVége = Refl
+füzérFordítHossz (Fűzés elem tovább) =
+  rewrite füzérHosszFűzésEgy elem (füzérFordít tovább) in
+  cong SorKövetkező (füzérFordítHossz tovább)
+
+||| A tagság oszlik a fűzésre (a jobb oldalt vagy-val mérve).
+public export
+füzérElemeFűzés : EgyenlőségT tag =>
+  (keresett : tag) -> (első : Füzér tag) -> (második : Füzér tag) ->
+  füzérEleme keresett (füzérFűzés első második)
+  = vagyIgazsággal (füzérEleme keresett első) (füzérEleme keresett második)
+füzérElemeFűzés keresett FüzérVége második =
+  rewrite vagyHamisBalEgység (füzérEleme keresett második) in Refl
+füzérElemeFűzés keresett (Fűzés elem tovább) második with (egyenlőE keresett elem)
+  füzérElemeFűzés keresett (Fűzés elem tovább) második | Igaz =
+    rewrite vagyIgazIgazBal (füzérEleme keresett második) in Refl
+  füzérElemeFűzés keresett (Fűzés elem tovább) második | Hamis =
+    rewrite füzérElemeFűzés keresett tovább második in Refl
+
+-- ─── JEGY- ÉS SZÁM-LITERÁLOK (GAN 4) — a nevezetes számok ──────
+
+||| Egészből jegy: az EgészSzám 0–9 jegyekké (tíznél Semmi — nincs jegy).
+public export
+egészbőlJegy : EgészSzám -> Talán Számjegy
+egészbőlJegy EgészNulla  = Csak SzámjegyNulla
+egészbőlJegy EgészEgy    = Csak SzámjegyEgy
+egészbőlJegy EgészKettő  = Csak SzámjegyKettő
+egészbőlJegy EgészHárom  = Csak SzámjegyHárom
+egészbőlJegy EgészNégy   = Csak SzámjegyNégy
+egészbőlJegy EgészÖt     = Csak SzámjegyÖt
+egészbőlJegy EgészHat    = Csak SzámjegyHat
+egészbőlJegy EgészHét    = Csak SzámjegyHét
+egészbőlJegy EgészNyolc  = Csak SzámjegyNyolc
+egészbőlJegy EgészKilenc = Csak SzámjegyKilenc
+egészbőlJegy _           = Semmi
+
+||| Jegyből sorszám: a jegy értéke sorszámként (SzámjegyNulla → SorNulla).
+public export
+jegybőlSor : Számjegy -> Sorszám
+jegybőlSor SzámjegyNulla  = SorNulla
+jegybőlSor SzámjegyEgy    = sorEgy
+jegybőlSor SzámjegyKettő  = sorKettő
+jegybőlSor SzámjegyHárom  = sorHárom
+jegybőlSor SzámjegyNégy   = sorNégy
+jegybőlSor SzámjegyÖt     = sorÖt
+jegybőlSor SzámjegyHat    = sorHat
+jegybőlSor SzámjegyHét    = sorHét
+jegybőlSor SzámjegyNyolc  = sorNyolc
+jegybőlSor SzámjegyKilenc = sorKilenc
+
+||| 240 — az E8 gyökrendszer gyökeinek száma (E8 → 240 gyök).
+public export
+szám240 : SzámjegyesSzám
+szám240 = SzámjegyesSzámKonstruktor PozitívElőjel
+  (Fűzés SzámjegyKettő (Fűzés SzámjegyNégy (Fűzés SzámjegyNulla FüzérVége)))
+
+||| 2026 — az esztendő (két ezer huszonhat).
+public export
+kétézerHuszonhat : SzámjegyesSzám
+kétézerHuszonhat = SzámjegyesSzámKonstruktor PozitívElőjel
+  (Fűzés SzámjegyKettő (Fűzés SzámjegyNulla (Fűzés SzámjegyKettő
+  (Fűzés SzámjegyHat FüzérVége))))
+
+||| 137 — a finomszerkezet-konstans reciproka (α⁻¹ ≈ 137; Sherbon 2018b).
+public export
+szám137 : SzámjegyesSzám
+szám137 = SzámjegyesSzámKonstruktor PozitívElőjel
+  (Fűzés SzámjegyEgy (Fűzés SzámjegyHárom (Fűzés SzámjegyHét FüzérVége)))
+
+||| Tanú: a 137 jegysora dokumentálva (definicionális Refl).
+public export
+szám137Jegyei :
+  számjegyei Alap.CsomagoltTipusok.szám137
+  = Fűzés SzámjegyEgy (Fűzés SzámjegyHárom (Fűzés SzámjegyHét FüzérVége))
+szám137Jegyei = Refl
+
+||| Tanú: a 240 jegysora dokumentálva (definicionális Refl).
+public export
+szám240Jegyei :
+  számjegyei Alap.CsomagoltTipusok.szám240
+  = Fűzés SzámjegyKettő (Fűzés SzámjegyNégy (Fűzés SzámjegyNulla FüzérVége))
+szám240Jegyei = Refl
+
+-- ═════════════════════════════════════════════════════════════════════════
 -- XII. METRIKÁK — időbélyeg, verziószám, bájtlánc-index, megbízhatóság
 --      中文：度量——时间戳、版本号、字节索引、可信度
 -- ═════════════════════════════════════════════════════════════════════════
