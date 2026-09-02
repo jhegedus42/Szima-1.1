@@ -70,7 +70,7 @@ rendszerVerifikacio =
         (KodKonstruktor "pelda"
           (E8PontKonstruktor 0 0 0 0 0 0 0 0)
           (E8PontKonstruktor 0 0 0 0 0 0 0 0)
-          (CliﬀordKonstruktor 1 0 0)
+          (CliffordKonstruktor 1 0 0)
           (alapKod Nulla))
 
       _ = nyelvtaniKapcsolatKod peldaKapcs
@@ -80,12 +80,12 @@ rendszerVerifikacio =
             (KodKonstruktor "a"
               (E8PontKonstruktor 1 0 0 0 0 0 0 0)
               (E8PontKonstruktor 0 1 0 0 0 0 0 0)
-              (CliﬀordKonstruktor 1 0 0)
+              (CliffordKonstruktor 1 0 0)
               (alapKod Nulla))
             (KodKonstruktor "b"
               (E8PontKonstruktor 0 0 0 0 0 0 0 0)
               (E8PontKonstruktor 1 0 0 0 0 0 0 0)
-              (CliﬀordKonstruktor 0 1 0)
+              (CliffordKonstruktor 0 1 0)
               (alapKod Egy))
 
       -- ToltesParitasIdo
@@ -106,7 +106,7 @@ fogalomKod f = KodKonstruktor
   (fogalomNev f)
   (fogalomTipusKod f)
   (fogalomTipusKod f)
-  (CliﬀordKonstruktor 1 0 1)
+  (CliffordKonstruktor 1 0 1)
   (alapKod Nulla)
 
 ||| A [[7,1,3]] hibajavitas hasznalata egy kodon.

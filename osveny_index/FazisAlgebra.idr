@@ -3,6 +3,7 @@ module FazisAlgebra
 import Steane713
 import HaromKubit
 import E8E8Algebra
+import Alap.CsomagoltTipusok
 
 ||| Fazis algebra — a redundancia detektalasanak alapja.
 |||
@@ -51,10 +52,10 @@ Eq Fazis where
 public export
 fazisOsszehasonlit : E8E8KodSzo -> E8E8KodSzo -> Fazis
 fazisOsszehasonlit a b =
-  let balAtfedes = atfedes (CliffordKonstruktor a.balE8.x1 a.balE8.x2 Nulla)
-                           (CliffordKonstruktor b.balE8.x1 b.balE8.x2 Nulla)
-      jobbAtfedes = atfedes (CliffordKonstruktor a.jobbE8.x1 a.jobbE8.x2 Nulla)
-                            (CliffordKonstruktor b.jobbE8.x1 b.jobbE8.x2 Nulla)
+  let balAtfedes = atfedes (CliffordKonstruktor a.balE8.x1 a.balE8.x2 Steane713.Nulla)
+                           (CliffordKonstruktor b.balE8.x1 b.balE8.x2 Steane713.Nulla)
+      jobbAtfedes = atfedes (CliffordKonstruktor a.jobbE8.x1 a.jobbE8.x2 Steane713.Nulla)
+                            (CliffordKonstruktor b.jobbE8.x1 b.jobbE8.x2 Steane713.Nulla)
   in if balAtfedes > 0.9 && jobbAtfedes > 0.9 then Azonos
   else if balAtfedes < 0.1 && jobbAtfedes < 0.1 then Ellentetes
   else if balAtfedes > 0.5 || jobbAtfedes > 0.5 then Kvantalt
@@ -104,11 +105,11 @@ record ToltesParitasIdo where
   paritas : HaromKubit  -- P: masik fel (ki vagy te)
   ido     : HaromKubit  -- T: kapcsolat fazisa (hogyan kapcsolodunk)
 
-||| ToltesParitasIdo boole ertek: ha a toltes es a paritas
-||| fazisa megegyezik, akkor a rendszer sajat tudata
-||| rezonanciaban van a kulsovel — nincs informaciovesztes.
+||| ToltesParitasIdo igazság-érték (100.01: a meztelen Bool → Igazság):
+||| ha a toltes es a paritas fazisa megegyezik, akkor a rendszer sajat
+||| tudata rezonanciaban van a kulsovel — nincs informaciovesztes.
 public export
-toltesParitasIdoKoherens : ToltesParitasIdo -> Bool
+toltesParitasIdoKoherens : ToltesParitasIdo -> Igazság
 toltesParitasIdoKoherens tpi =
   azonosFazis tpi.toltes tpi.paritas
 
@@ -129,9 +130,11 @@ fazisFaktorialis : ToltesParitasIdo -> Double
 fazisFaktorialis tpi =
   let ct = azonosFazis tpi.toltes tpi.ido
       pt = azonosFazis tpi.paritas tpi.ido
-  in if ct && pt then 1.0
-  else if ct || pt then 0.5
-  else 0.0
+  in case (ct, pt) of
+    (Igaz, Igaz) => 1.0
+    (Igaz, Hamis) => 0.5
+    (Hamis, Igaz) => 0.5
+    (Hamis, Hamis) => 0.0
 
 -- ─── FÁZISHATÁR = LEGENDRE-PEREM ──────────────────────────
 -- A fazishatar az a felulet ahol ket fazis talalkozik.
