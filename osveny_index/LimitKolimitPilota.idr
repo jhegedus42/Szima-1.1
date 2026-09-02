@@ -452,8 +452,13 @@ súgóKörút : karakterláncbólSzöveg (strCons 's' (strCons '\x00FA'
 súgóKörút = Refl
 
 -- ─── A LEÍRÁS SZAVAI (mind betűződő magyar grafémákkal) ────────
--- Megjegyzés: «Awodey» w-je nem magyar betű — v-átírással ÁVODEJ
--- (mint Wagner→Vágner; a forrás szándéka egyértelmű).
+-- Irányelv (2026-09-02, a felhasználó döntése): IDEGEN NYELVŰ SZAVAK
+-- IDEGEN NYELVŰEK MARADNAK — az idegen tulajdonnevek (Awodey, MacLane,
+-- nLab) NEM magyarosodnak (AkH-elv: idegen tulajdonnév eredeti alakjában
+-- marad). A «maclane» betűzhető magyar grafémákkal = az idegen név
+-- torzítás NÉLKÜL; az «awodey» w-je viszont nem betűzhető a 44-ből —
+-- ezért az awodej-átírás ELVETVE, a szerző neve a KOMMENTBEN él,
+-- és az IdegenBetű-réteg a 200.37-es tervezési lépés kérdése.
 
 mindenSzó : Szöveg
 mindenSzó = BetűtFűz MBetű (BetűtFűz IBetű (BetűtFűz NBetű (BetűtFűz DBetű
@@ -576,6 +581,9 @@ kompatibilitásSzó = BetűtFűz KBetű (BetűtFűz OBetű (BetűtFűz MBetű (B
 nlabSzó : Szöveg
 nlabSzó = BetűtFűz NBetű (BetűtFűz LBetű (BetűtFűz ABetű (BetűtFűz BBetű ÜresSzöveg)))
 
+-- ELAVULT (2026-09-02): az awodej v-átírás ELVETVE — az idegen nevek
+-- idegenek maradnak (a felhasználó irányelve). Nincs használó; megőrizve
+-- a MANTRA szerint. A szerző neve a kommentekben él: Awodey.
 ávodejSzó : Szöveg
 ávodejSzó = BetűtFűz ÁBetű (BetűtFűz VBetű (BetűtFűz OBetű (BetűtFűz DBetű
   (BetűtFűz EBetű (BetűtFűz JBetű ÜresSzöveg)))))
@@ -649,19 +657,23 @@ fogalomLeírása ÁltalánosLimit = Fűzés kúpSzó (Fűzés kompatibilitásSz�
 fogalomLeírása ÁltalánosKolimit = Fűzés duálisaSzó (Fűzés azSzó
   (Fűzés általánoslimitnekSzó FüzérVége))
 
--- ─── A FORRÁSOK (nLab + ÁVODEJ/maclane — pontszámok szavakban) ──
+-- ─── A FORRÁSOK (nLab + a pontszámok szavakban; az idegen szerzők
+-- —— nevei — Awodey, Mac Lane — a kommentekben, torzítás nélkül) ──
+-- Awodey §5.1 (Végződés, Kezdet, Szorzat, Koprodukt), §5.2 (Pullback,
+-- Pushout), §5.3 (Egyenlítő, Koegyenlítő); Mac Lane §III.4 (Limit,
+-- Kolimit); nLab megfelelő szócikkek.
 
 forrásÖtEgy : Füzér Szöveg
-forrásÖtEgy = Fűzés nlabSzó (Fűzés ávodejSzó (Fűzés ötSzava
-  (Fűzés pontSzó (Fűzés egySzava FüzérVége))))
+forrásÖtEgy = Fűzés nlabSzó (Fűzés ötSzava
+  (Fűzés pontSzó (Fűzés egySzava FüzérVége)))
 
 forrásÖtKettő : Füzér Szöveg
-forrásÖtKettő = Fűzés nlabSzó (Fűzés ávodejSzó (Fűzés ötSzava
-  (Fűzés pontSzó (Fűzés kettőSzava FüzérVége))))
+forrásÖtKettő = Fűzés nlabSzó (Fűzés ötSzava
+  (Fűzés pontSzó (Fűzés kettőSzava FüzérVége)))
 
 forrásÖtHárom : Füzér Szöveg
-forrásÖtHárom = Fűzés nlabSzó (Fűzés ávodejSzó (Fűzés ötSzava
-  (Fűzés pontSzó (Fűzés háromSzava FüzérVége))))
+forrásÖtHárom = Fűzés nlabSzó (Fűzés ötSzava
+  (Fűzés pontSzó (Fűzés háromSzava FüzérVége)))
 
 forrásMacLane : Füzér Szöveg
 forrásMacLane = Fűzés nlabSzó (Fűzés maclaneSzó (Fűzés harmadikSzó
