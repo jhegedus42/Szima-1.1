@@ -37,7 +37,7 @@ rendszerVerifikacio =
       -- A funktorok objektum kepei
       _ = ef.objektumKep Nominativusz
       _ = ff.objektumKep Gyoker
-      _ = kef.objektumKep (VilagKonstruktor Nulla Nulla Nulla)
+      _ = kef.objektumKep (VilágKonstruktor Nulla Nulla Nulla)
 
       -- Morfizmusok
       _ = fk.azonos Gyoker
@@ -55,7 +55,7 @@ rendszerVerifikacio =
         Nulla
         Nominativusz
         (IdoBeljegyzesKonstruktor Jelen Folyamatos Kozvetlen)
-        (VilagKonstruktor Nulla Nulla Nulla)
+        (VilágKonstruktor Nulla Nulla Nulla)
 
       _ = ragozottSzoE8Pont peldaSzo
 
@@ -63,7 +63,7 @@ rendszerVerifikacio =
       peldaIge = SzoKonstruktor
         Cselekves Nulla Nulla Nominativusz
         (IdoBeljegyzesKonstruktor Jelen Folyamatos Kozvetlen)
-        (VilagKonstruktor Nulla Nulla Nulla)
+        (VilágKonstruktor Nulla Nulla Nulla)
       peldaKapcs = KapcsolatKonstruktor
         peldaSzo peldaIge peldaSzo
         []
@@ -91,9 +91,9 @@ rendszerVerifikacio =
       -- ToltesParitasIdo
       _ = fazisFaktorialis
             (ToltesParitasIdoKonstruktor
-              (VilagKonstruktor Nulla Nulla Nulla)
-              (VilagKonstruktor Nulla Nulla Nulla)
-              (VilagKonstruktor Nulla Nulla Nulla))
+              (VilágKonstruktor Nulla Nulla Nulla)
+              (VilágKonstruktor Nulla Nulla Nulla)
+              (VilágKonstruktor Nulla Nulla Nulla))
 
   in ()
 

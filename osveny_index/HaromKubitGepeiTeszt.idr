@@ -24,22 +24,22 @@ kubitEgyezésKülönbségTanú :
   HaromKubit.kubitEgyezés Steane713.Nulla Steane713.Egy = Hamis
 kubitEgyezésKülönbségTanú = Refl
 
-azonosFazisTanú :
-  HaromKubit.azonosFazis
-    (VilagKonstruktor Steane713.Nulla Steane713.Egy Steane713.Nulla)
-    (VilagKonstruktor Steane713.Egy Steane713.Nulla Steane713.Nulla) = Igaz
-azonosFazisTanú = Refl
+azonosFázisTanú :
+  HaromKubit.azonosFázis
+    (VilágKonstruktor Steane713.Nulla Steane713.Egy Steane713.Nulla)
+    (VilágKonstruktor Steane713.Egy Steane713.Nulla Steane713.Nulla) = Igaz
+azonosFázisTanú = Refl
 
-iranySajatMasikTanú :
-  HaromKubit.irany
-    (VilagKonstruktor Steane713.Egy Steane713.Egy Steane713.Nulla)
-    (VilagKonstruktor Steane713.Nulla Steane713.Nulla Steane713.Egy) = SajatMasik
-iranySajatMasikTanú = Refl
+iranySajátMásikTanú :
+  HaromKubit.irány
+    (VilágKonstruktor Steane713.Egy Steane713.Egy Steane713.Nulla)
+    (VilágKonstruktor Steane713.Nulla Steane713.Nulla Steane713.Egy) = SajátMásik
+iranySajátMásikTanú = Refl
 
 iranyNincsTanú :
-  HaromKubit.irany
-    (VilagKonstruktor Steane713.Egy Steane713.Egy Steane713.Egy)
-    (VilagKonstruktor Steane713.Nulla Steane713.Nulla Steane713.Egy) = NincsIrany
+  HaromKubit.irány
+    (VilágKonstruktor Steane713.Egy Steane713.Egy Steane713.Egy)
+    (VilágKonstruktor Steane713.Nulla Steane713.Nulla Steane713.Egy) = NincsIrány
 iranyNincsTanú = Refl
 
 -- ─── Futtatási ellenőrzés (§N14/3) ─────────────────────────────
@@ -49,8 +49,8 @@ main = do
   putStrLn ""
   putStrLn "═══ HAROMKUBIT GÉPI TESZT (100.01) ═══"
   putStrLn "azonos fázis (Nulla-Nulla):"
-  határKiírás (megjelenít (azonosFazis (VilagKonstruktor Steane713.Nulla Steane713.Egy Steane713.Nulla) (VilagKonstruktor Steane713.Egy Steane713.Nulla Steane713.Nulla)))
+  határKiírás (megjelenít (azonosFázis (VilágKonstruktor Steane713.Nulla Steane713.Egy Steane713.Nulla) (VilágKonstruktor Steane713.Egy Steane713.Nulla Steane713.Nulla)))
   putStrLn "különböző fázis (Nulla-Egy):"
-  határKiírás (megjelenít (azonosFazis (VilagKonstruktor Steane713.Nulla Steane713.Nulla Steane713.Nulla) (VilagKonstruktor Steane713.Egy Steane713.Egy Steane713.Egy)))
+  határKiírás (megjelenít (azonosFázis (VilágKonstruktor Steane713.Nulla Steane713.Nulla Steane713.Nulla) (VilágKonstruktor Steane713.Egy Steane713.Egy Steane713.Egy)))
   putStrLn "a tanúk mind Refl — a fordító bírálta el őket."
   putStrLn "═══ ═══ ═══"

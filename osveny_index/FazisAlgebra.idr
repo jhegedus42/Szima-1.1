@@ -111,7 +111,7 @@ record ToltesParitasIdo where
 public export
 toltesParitasIdoKoherens : ToltesParitasIdo -> Igazság
 toltesParitasIdoKoherens tpi =
-  azonosFazis tpi.toltes tpi.paritas
+  azonosFázis tpi.toltes tpi.paritas
 
 ||| ToltesParitasIdo irany: a toltes es paritas kozott.
 ||| Ha a toltes iranyul a paritas fele, akkor
@@ -119,8 +119,8 @@ toltesParitasIdoKoherens tpi =
 ||| Ha a paritas iranyul a toltes fele, akkor
 ||| a rendszer passziv (informaciot fogad).
 public export
-toltesParitasIdoIrany : ToltesParitasIdo -> Irany
-toltesParitasIdoIrany tpi = irany tpi.toltes tpi.paritas
+toltesParitasIdoIrany : ToltesParitasIdo -> Irány
+toltesParitasIdoIrany tpi = irány tpi.toltes tpi.paritas
 
 ||| Fazis faktorialis: egy ToltesParitasIdo fazismerteket
 ||| szamol a HaromKubit-ok osszefedesebol.
@@ -128,8 +128,8 @@ toltesParitasIdoIrany tpi = irany tpi.toltes tpi.paritas
 public export
 fazisFaktorialis : ToltesParitasIdo -> Double
 fazisFaktorialis tpi =
-  let ct = azonosFazis tpi.toltes tpi.ido
-      pt = azonosFazis tpi.paritas tpi.ido
+  let ct = azonosFázis tpi.toltes tpi.ido
+      pt = azonosFázis tpi.paritas tpi.ido
   in case (ct, pt) of
     (Igaz, Igaz) => 1.0
     (Igaz, Hamis) => 0.5

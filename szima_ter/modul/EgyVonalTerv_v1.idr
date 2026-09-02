@@ -54,8 +54,8 @@ egyVonal = [
   -- ─── 100. LEVELEK (1–2 importáló, kis fájlok — a minta gyakorlása) ───
   MkFeladat "100.01" "HaromKubit átírása (KÉSZ — a meztelen Bool kiírva: azonosFazis most Igazság-t ad, kubitEgyezéssel (mintaillesztés, nem a Prelude ==-ja); a Steane713.Kubit import-kettősség miatt minősítve; a kommentek ékezetesek; 6 Refl-tanú + futás: igaz/hamis helyes — HaromKubitGepeiTeszt; HULLÁM: FazisAlgebra is javítva (toltesParitasIdoKoherens → Igazság, fazisFaktorialis case-ágakkal, 4 Nulla minősítve); RENDSZER: előző meglévő törés (a KodKonstruktor 5-mezős lett az E8E8Algebra Lépés 1.1-ben) + 4 db U+FB00 ligatúra-javítás — a saját lépésében újraírandó; ÚJ CSAPDÁK: #15 sík folytatási sor do-blokkban layouthibát ad (beágyazott zárójel vagy egysoros bejegyzés kell), #16 U+FB00 ﬀ-ligatúra a fájlmásolásban)"
     Kész Közepes "osveny_index/HaromKubit.idr",
-  MkFeladat "100.01b" "HaromKubit ÉKEZETES átnevezés a 6 importálóval (VilágKonstruktor, saját/másik/fázis, azonosFázis, Irány/irány, időKubit/szemKubit/forrásKubit, időFázisba — Rendszer ×9, KategoriaElmelet ×5+, MagyarNyelv, FazisAlgebra ×4 érintett)"
-    Vár Közepes "osveny_index/HaromKubit.idr",
+  MkFeladat "100.01b" "HaromKubit ÉKEZETES átnevezés (KÉSZ — mind a 6 importálóval: VilágKonstruktor, saját/másik/fázis mezők, azonosFázis, Irány/SajátMásik/MásikSaját/NincsIrány, irány, időKubit/szemKubit/forrásKubit, időFázisba; a modul- és TÍPUSNÉV HaromKubit ASCII maradt — a fájlnév NFC/NFD-csapda miatt; a Steane713-béli IgeIdo/Forras konstruktorok a Steane-lépésig ékezetlenek; CSAPDA #17: a .mező-replaceAll MÁS rekordok azonos nevű mezőit is eltalálta — a KategoriaElmelet saját fazisKubit/VilagFa.fazis/VilagFa.sajat/mezőit vissza kellett állítani: előbb grep, melyik rekord tulajdonosa a hozzáférésnek!)"
+    Kész Közepes "osveny_index/HaromKubit.idr",
   MkFeladat "100.02" "Torusz átírása (2 meztelen)"
     Vár Közepes "osveny_index/Torusz.idr",
   MkFeladat "100.03" "GeneralizedPauli átírása (2 meztelen)"

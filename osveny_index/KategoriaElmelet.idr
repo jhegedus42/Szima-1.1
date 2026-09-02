@@ -872,7 +872,7 @@ kubitErtek Egy = 1.0
 public export
 haromKubitE8Kod : HaromKubit -> E8Pont
 haromKubitE8Kod v =
-  E8PontKonstruktor v.sajat v.masik v.fazis Nulla Nulla Nulla Nulla Nulla
+  E8PontKonstruktor v.saját v.másik v.fázis Nulla Nulla Nulla Nulla Nulla
 
 ||| IgeIdo → E8Pont (6. pozicio).
 public export
@@ -1068,7 +1068,7 @@ fogalomFaKubit : FogalomFa t -> HaromKubit
 fogalomFaKubit fa =
   let m = meret fa
       g = gyerekekSzama fa
-  in VilagKonstruktor
+  in VilágKonstruktor
        (if m > 5 then Egy else Nulla)
        (if g > 3 then Egy else Nulla)
        (if m + g > 8 then Egy else Nulla)
@@ -1168,7 +1168,7 @@ vilagFaToltesParitasIdo : VilagFa -> ToltesParitasIdo
 vilagFaToltesParitasIdo vf = ToltesParitasIdoKonstruktor
   (fogalomFaKubit vf.sajat)
   (fogalomFaKubit vf.masik)
-  (VilagKonstruktor
+  (VilágKonstruktor
     (if vf.fazis.bizalom > 0.5 then Egy else Nulla)
     (if vf.fazis.bizalom > 0.8 then Egy else Nulla)
       (if length vf.fazis.hivatkozasok > 2 then Egy else Nulla))

@@ -31,10 +31,10 @@ import Alap.CsomagoltTipusok
 
 public export
 record HaromKubit where
-  constructor VilagKonstruktor
-  sajat  : Steane713.Kubit
-  masik  : Steane713.Kubit
-  fazis  : Steane713.Kubit
+  constructor VilágKonstruktor
+  saját  : Steane713.Kubit
+  másik  : Steane713.Kubit
+  fázis  : Steane713.Kubit
 
 ||| Kubit-egyezés: a két Kubit értéke egyezik-e (Igazság-típusban —
 ||| a meztelen Bool kiírva; az egyenlőség mintaillesztéssel, nem
@@ -50,42 +50,42 @@ kubitEgyezés _ _ = Hamis
 ||| ugyanazt az információt hordozza a fázis szintjén.
 ||| Ez a redundancia-detektálás alapja.
 public export
-azonosFazis : HaromKubit -> HaromKubit -> Igazság
-azonosFazis a b = kubitEgyezés a.fazis b.fazis
+azonosFázis : HaromKubit -> HaromKubit -> Igazság
+azonosFázis a b = kubitEgyezés a.fázis b.fázis
 
 ||| Irány: az információátvitel iránya a fázisból.
-||| SajatMasik: én felé irányulok a másik felé.
-||| MasikSajat: a másik felé irányul felém.
-||| NincsIrany: nincs meghatározott irány (összefonódott állapot).
+||| SajátMásik: én felé irányulok a másik felé.
+||| MásikSaját: a másik felé irányul felém.
+||| NincsIrány: nincs meghatározott irány (összefonódott állapot).
 public export
-data Irany = SajatMasik | MasikSajat | NincsIrany
+data Irány = SajátMásik | MásikSaját | NincsIrány
 
 public export
-irany : HaromKubit -> HaromKubit -> Irany
-irany a b =
-  case (a.fazis, b.fazis) of
-    (Steane713.Nulla, Steane713.Egy) => SajatMasik
-    (Steane713.Egy,  Steane713.Nulla) => MasikSajat
-    _ => NincsIrany
+irány : HaromKubit -> HaromKubit -> Irány
+irány a b =
+  case (a.fázis, b.fázis) of
+    (Steane713.Nulla, Steane713.Egy) => SajátMásik
+    (Steane713.Egy,  Steane713.Nulla) => MásikSaját
+    _ => NincsIrány
 
 ||| Az egyes dimenziók külön-külön Kubit szintre.
 ||| A Nulla/Egy választás a [[7,1,3]] kód stabil állapotainak
 ||| megfelelő mintázatot követi — a Jelen és Befejezett
 ||| az «aktív» állapotok (Egy).
-idoKubit : IgeIdo -> Steane713.Kubit
-idoKubit Mult = Steane713.Nulla
-idoKubit Jelen = Steane713.Egy
-idoKubit Jovo = Steane713.Nulla
+időKubit : IgeIdo -> Steane713.Kubit
+időKubit Mult = Steane713.Nulla
+időKubit Jelen = Steane713.Egy
+időKubit Jovo = Steane713.Nulla
 
 szemKubit : IgeSzem -> Steane713.Kubit
 szemKubit Folyamatos = Steane713.Nulla
 szemKubit Befejezett = Steane713.Egy
 szemKubit Szokasos = Steane713.Nulla
 
-forrasKubit : Forras -> Steane713.Kubit
-forrasKubit Kozvetlen = Steane713.Nulla
-forrasKubit Kovetkeztetett = Steane713.Egy
-forrasKubit Jelentett = Steane713.Nulla
+forrásKubit : Forras -> Steane713.Kubit
+forrásKubit Kozvetlen = Steane713.Nulla
+forrásKubit Kovetkeztetett = Steane713.Egy
+forrásKubit Jelentett = Steane713.Nulla
 
 ||| A három idő-dimenzió leképezése a három kubit fázisára.
 ||| 0. kubit: idő → saját időbeli helyzete
@@ -98,9 +98,9 @@ forrasKubit Jelentett = Steane713.Nulla
 ||| Ez a függvény az időt «beleeszí» a kubit szerkezetbe,
 ||| így az idő minden kapcsolat résztvevője.
 public export
-idoFazisba : IdoBeljegyzes -> HaromKubit
-idoFazisba (IdoBeljegyzesKonstruktor igeIdo igeSzem forras) =
-  VilagKonstruktor (idoKubit igeIdo) (szemKubit igeSzem) (forrasKubit forras)
+időFázisba : IdoBeljegyzes -> HaromKubit
+időFázisba (IdoBeljegyzesKonstruktor igeIdo igeSzem forrás) =
+  VilágKonstruktor (időKubit igeIdo) (szemKubit igeSzem) (forrásKubit forrás)
 
 ||| HaromKubit-morfizmus: két HaromKubit közötti kapcsolat.
 public export

@@ -288,7 +288,7 @@ szoIdo _ = IdoBeljegyzesKonstruktor Jelen Folyamatos Kozvetlen
 ||| Minden SzoTipushoz tartozik egy fazis (HaromKubit).
 public export
 szoFazis : SzoTipus -> HaromKubit
-szoFazis _ = VilagKonstruktor Nulla Nulla Nulla
+szoFazis _ = VilágKonstruktor Nulla Nulla Nulla
 
 ||| Magyar szo: to + szam + birtok + eset.
 ||| Az agglutinacio sorrendje rögzitett:

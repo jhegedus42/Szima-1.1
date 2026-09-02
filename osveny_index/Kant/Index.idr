@@ -107,9 +107,9 @@ record TranszcendentalisAppercepcio where
 public export
 appercepcioLegendre : TranszcendentalisAppercepcio -> Double
 appercepcioLegendre (AppercepcioKonstruktor en masik gondolat) =
-  let p = kubitErtek en.sajat
-      qdot = kubitErtek masik.masik
-      l = kubitErtek en.fazis
+  let p = kubitErtek en.saját
+      qdot = kubitErtek masik.másik
+      l = kubitErtek en.fázis
   in perem p qdot - l
   where
     kubitErtek : Kubit -> Double
@@ -176,9 +176,9 @@ record KantiTizenotEgy where
 public export
 kantiKodol : Kubit -> KantiTizenotEgy
 kantiKodol k =
-  let en = VilagKonstruktor k k k
-      masik = VilagKonstruktor (forditKubit k) k k
-      gondolat = VilagKonstruktor k (forditKubit k) k
+  let en = VilágKonstruktor k k k
+      masik = VilágKonstruktor (forditKubit k) k k
+      gondolat = VilágKonstruktor k (forditKubit k) k
   in KantiTizenotEgyKonstruktor
        (AppercepcioKonstruktor en masik gondolat)
        (alapKod k)
