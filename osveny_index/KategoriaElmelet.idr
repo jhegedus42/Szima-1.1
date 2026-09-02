@@ -1566,3 +1566,118 @@ record AltalanosKolimit (k : Kategoria obj hom)
 -- Pullback → ÁltalánosLimit (a pullback a limit egy •→•←• index felett)
 -- Pushout → ÁltalánosKolimit (a pushout a kolimit egy •←•→• index felett)
 -- Ezeket az éleket a FÁZIS 4 veszi fel a gráfba (KutatasiGraf_v1.idr).
+
+-- ═══════════════════════════════════════════════════════════════
+-- GAN-JAVASLATOK BEÉPÍTÉSE (2026-09-02)
+-- A GAN-ellenőrzés szerint a 8 fogalomból (3–10) hiányzik az ∃!
+-- egyértelműségi fele. Ezek a rekordok kiegészítik a meglévő
+-- struktúrákat a lokalitás (!) törvénnyel.
+-- Forrás: nLab "limit" — a limit egyértelmű faktorizáció;
+--   Mac Lane §III.4; Awodey §5.
+-- ═══════════════════════════════════════════════════════════════
+
+-- ─── A.1 SZORZAT EGYÉRTELMŰSÉGE ─────────────────────────────
+public export
+record SzorzatEgyertelmu (k : Kategoria obj hom) (a : obj) (b : obj) (s : Szorzat k a b) where
+  constructor SzorzatEgyertelmuKonstruktor
+  szorzatEgyertelmuTorveny : (q : obj) -> (q1 : hom q a) -> (q2 : hom q b)
+                          -> (h1 : hom q s.szorzatObjektum) -> (h2 : hom q s.szorzatObjektum)
+                          -> (k.osszetetel h1 s.szorzatProjekcioBal = q1
+                             , k.osszetetel h1 s.szorzatProjekcioJobb = q2)
+                          -> (k.osszetetel h2 s.szorzatProjekcioBal = q1
+                             , k.osszetetel h2 s.szorzatProjekcioJobb = q2)
+                          -> h1 = h2
+
+-- ─── A.2 KOPRODUKT EGYÉRTELMŰSÉGE ────────────────────────────
+public export
+record KoproduktEgyertelmu (k : Kategoria obj hom) (a : obj) (b : obj) (c : Koprodukt k a b) where
+  constructor KoproduktEgyertelmuKonstruktor
+  koproduktEgyertelmuTorveny : (d : obj) -> (d1 : hom a d) -> (d2 : hom b d)
+                            -> (h1 : hom c.koproduktObjektum d) -> (h2 : hom c.koproduktObjektum d)
+                            -> (k.osszetetel c.koproduktInjektioBal h1 = d1
+                               , k.osszetetel c.koproduktInjektioJobb h1 = d2)
+                            -> (k.osszetetel c.koproduktInjektioBal h2 = d1
+                               , k.osszetetel c.koproduktInjektioJobb h2 = d2)
+                            -> h1 = h2
+
+-- ─── A.3 PULLBACK EGYÉRTELMŰSÉGE ─────────────────────────────
+public export
+record PullbackEgyertelmu (k : Kategoria obj hom) (a : obj) (b : obj) (c : obj)
+                          (f : hom a c) (g : hom b c) (p : Pullback k a b c f g) where
+  constructor PullbackEgyertelmuKonstruktor
+  pullbackEgyertelmuTorveny : (q : obj) -> (q1 : hom q a) -> (q2 : hom q b)
+                            -> (h1 : hom q p.pullbackObjektum) -> (h2 : hom q p.pullbackObjektum)
+                            -> (k.osszetetel h1 p.pullbackProjekcioBal = q1
+                               , k.osszetetel h1 p.pullbackProjekcioJobb = q2)
+                            -> (k.osszetetel h2 p.pullbackProjekcioBal = q1
+                               , k.osszetetel h2 p.pullbackProjekcioJobb = q2)
+                            -> h1 = h2
+
+-- ─── A.4 PUSHOUT EGYÉRTELMŰSÉGE ──────────────────────────────
+public export
+record PushoutEgyertelmu (k : Kategoria obj hom) (a : obj) (b : obj) (c : obj)
+                         (f : hom c a) (g : hom c b) (p : Pushout k a b c f g) where
+  constructor PushoutEgyertelmuKonstruktor
+  pushoutEgyertelmuTorveny : (d : obj) -> (d1 : hom a d) -> (d2 : hom b d)
+                           -> (h1 : hom p.pushoutObjektum d) -> (h2 : hom p.pushoutObjektum d)
+                           -> (k.osszetetel p.pushoutInjektioBal h1 = d1
+                              , k.osszetetel p.pushoutInjektioJobb h1 = d2)
+                           -> (k.osszetetel p.pushoutInjektioBal h2 = d1
+                              , k.osszetetel p.pushoutInjektioJobb h2 = d2)
+                           -> h1 = h2
+
+-- ─── A.5 EGYENLÍTŐ EGYÉRTELMŰSÉGE ────────────────────────────
+public export
+record EgyenlitoEgyertelmu (k : Kategoria obj hom) (a : obj) (b : obj)
+                           (f : hom a b) (g : hom a b) (e : Egyenlito k a b f g) where
+  constructor EgyenlitoEgyertelmuKonstruktor
+  egyenlitoEgyertelmuTorveny : (q : obj) -> (h : hom q a)
+                            -> (k.osszetetel h f = k.osszetetel h g)
+                            -> (k1 : hom q e.egyenlitoObjektum) -> (k2 : hom q e.egyenlitoObjektum)
+                            -> (k.osszetetel k1 e.egyenlitoMorfizmus = h)
+                            -> (k.osszetetel k2 e.egyenlitoMorfizmus = h)
+                            -> k1 = k2
+
+-- ─── A.6 KOEGYENLÍTŐ EGYÉRTELMŰSÉGE ──────────────────────────
+public export
+record KoegyenlitoEgyertelmu (k : Kategoria obj hom) (a : obj) (b : obj)
+                             (f : hom a b) (g : hom a b) (q : Koegyenlito k a b f g) where
+  constructor KoegyenlitoEgyertelmuKonstruktor
+  koegyenlitoEgyertelmuTorveny : (d : obj) -> (h : hom b d)
+                              -> (k.osszetetel f h = k.osszetetel g h)
+                              -> (k1 : hom q.koegyenlitoObjektum d) -> (k2 : hom q.koegyenlitoObjektum d)
+                              -> (k.osszetetel q.koegyenlitoMorfizmus k1 = h)
+                              -> (k.osszetetel q.koegyenlitoMorfizmus k2 = h)
+                              -> k1 = k2
+
+-- ─── A.7 ÁLTALÁNOS LIMIT EGYÉRTELMŰSÉGE ──────────────────────
+-- Megjegyzés: az általános limit/kolimit egyértelműségi rekordok
+-- a dMor implicit paraméter problémája miatt még nincsenek
+-- implementálva. A 6 bináris fogalom (Szorzat, Koprodukt, Pullback,
+-- Pushout, Egyenlítő, Koegyenlítő) egyértelműsége megvan.
+-- TODO: a dMor paraméter kürésének megoldása a későbbi lépésekben.
+
+-- ═══════════════════════════════════════════════════════════════
+-- REFL-BIZONYÍTÁSOK (GAN-javaslat, a typechecker ellenőrzi)
+-- ═══════════════════════════════════════════════════════════════
+
+-- ─── BIZONYÍTÁS 1: a végződés morfizmus önmagára = azonos ──
+-- Kimenet (MANTRA): vegzodesMorfizmus T = azonos T  (Refl ✓)
+-- Forrás: nLab "terminal object" — a végződésből önmagába egyetlen
+-- morfizmus van, és az azonos is az, tehát egyenlők.
+public export
+vegzodesAzonosBizonyitas : (v : Vegzodes k)
+                        -> v.vegzodesMorfizmus v.vegzodesObjektum = k.azonos v.vegzodesObjektum
+vegzodesAzonosBizonyitas v = sym (v.vegzodesEgyertelmu (k.azonos v.vegzodesObjektum))
+
+-- ─── DIAGONÁLIS MORFIZMUS (GAN-javaslat B) ──────────────────
+-- Δ : A → A×A, a szorzat univerzális tulajdonságának következménye.
+-- Forrás: nLab "diagonal morphism" / Awodey §5.2.
+public export
+record Diagonal (k : Kategoria obj hom) (a : obj) (s : Szorzat k a a) where
+  constructor DiagonalKonstruktor
+  diagonalMorfizmus : hom a s.szorzatObjektum
+  -- Δ∘π₁ = id (a bal projekció komponálva a diagonálissal = azonos)
+  diagonalBalTorveny : k.osszetetel diagonalMorfizmus s.szorzatProjekcioBal = k.azonos a
+  -- Δ∘π₂ = id (a jobb projekció komponálva a diagonálissal = azonos)
+  diagonalJobbTorveny : k.osszetetel diagonalMorfizmus s.szorzatProjekcioJobb = k.azonos a
