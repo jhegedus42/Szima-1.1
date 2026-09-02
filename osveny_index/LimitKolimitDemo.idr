@@ -5,6 +5,10 @@ import Steane713
 
 -- ═══════════════════════════════════════════════════════════════
 -- LIMIT/KOLIMIT INTERAKTÍV DEMO (Lépés 1.1, §N14/6)
+-- ELAVULT (2026-09-02, 000.03): a szerepét a LimitKolimitPilota.idr
+-- vette át (data-típusok + Alap-API, tanú-hálóval). MEGŐRIZVE a
+-- MANTRA szerint (nem törlünk) — az 500.01-es archiválási lépés
+-- során kerül a tanulsagok/ anyag közé.
 -- ═══════════════════════════════════════════════════════════════
 -- Ez a program bemutatja a 10 limit/kolimit fogalmat.
 -- A felhasználó beír egy számot (1–10), a program kiírja a fogalmat.
