@@ -42,12 +42,14 @@ egyVonal = [
   -- ─── 000. ZÁRADÉK: AZ ALAP (a teljes rendszer fundamentuma) ───
   MkFeladat "000.00" "Az egyvonalas terv (ez a modul) — a terv Idrisben"
     Kész Magas "EgyVonalTerv_v1.idr",
-  MkFeladat "000.01" "CsomagoltTípusok: minden data típus (Sorszám, Betű 44, Szöveg, Igazság, EgészSzám, Számjegy, Előjel, SzámjegyesSzám, MatematikaiKonstans, FizikaiKonstans, Kubit, Fűzér, Talán, Pár, E8Koordináta, Időbélyeg, VerzióSzám, Megbízhatóság, BájtláncIndex, Esetrag) + typeclassok (SzámsorT, SzövegT, IgazságT, KonstansT, MennyiségT, BetűT) + Refl-bizonyítások (De Morgan, dupla tagadás, Sorszám jobb-egység, Szöveg üres-egység, számjegy-normalizáció) + SteaneVektor : Sorszám → Type"
-    Vár Magas "osveny_index/Alap/CsomagoltTipusok.idr",
-  MkFeladat "000.02" "Határ-modul: határKiírás/határOlvasás — az EGYETLEN hely, ahol String megjelenik (a main IO határa)"
+  MkFeladat "000.01" "CsomagoltTípusok (KÉSZ + GAN-bővítés: általános normalizál-fixponttétel, Z₂-törvények, második De Morgan, kizárt harmadik, ellentmondás, és-kommutativitás, betűRefl-typo-háló 44 sor, szövegRefl, végEgyezzikRefl, végEgyezzikÜresRag, sorElőző, RendezésT/SzámsorT Sorszám-instance, számElőző, FelszínRag alapalak-javítás): minden data típus (Sorszám, Betű 44, Szöveg, Igazság, EgészSzám, Számjegy, Előjel, SzámjegyesSzám, Fűzér, Talán, Pár, Kubit, E8Koordináta, Esetrag 18, Időbélyeg, VerzióSzám, Megbízhatóság, BájtláncIndex, MatematikaiKonstans, FizikaiKonstans) + 12 typeclass + Refl-bizonyítások + SteaneVektor : Sorszám → Type — ZERO String/Nat/Bool/Double/List; fordul: exit 0; fut: a HatarElottiGepiTeszt kiírja"
+    Kész Magas "osveny_index/Alap/CsomagoltTipusok.idr",
+  MkFeladat "000.02" "Határ-modul: határKiírás/határOlvasás — az EGYETLEN hely, ahol String (és Char) megjelenik. GAN 1+10: IDE JÖNN az Írásjel (SzóközJel, PontJel, VesszőJel, GondolatJel, Zárójelek) és a Mondat (Fűzér MondatDarab) réteg; NFC-normalizálás a bejövő é/ő/ű betűkre (NFD-átjáró); a HatarElottiGepiTeszt átvevés-törlése"
     Vár Magas "osveny_index/Alap/Határ.idr",
   MkFeladat "000.03" "Pilóta: LimitKolimitDemo újraírása data-típusokkal (a newtype-változat ELVETVE)"
     Vár Magas "osveny_index/LimitKolimitDemo.idr",
+  MkFeladat "000.04" "Fűzér teljes API (GAN 2): fűzérTérkép, fűzérHajtás, fűzérEleme, fűzérElső, fűzérTöbbi, fűzérFűzés, fűzérFordít + a Data.List-megfeleltetés kommenttáblázata (map↔fűzérTérkép, …) — a migráció gépiesítéséhez; GAN 4: literál-építők (jegyek, egészbőlJegy, jegybőlSor) és nevezetes számok (szám240, kétézerHuszonhat, szám137)"
+    Vár Magas "osveny_index/Alap/CsomagoltTipusok.idr",
 
   -- ─── 100. LEVELEK (1–2 importáló, kis fájlok — a minta gyakorlása) ───
   MkFeladat "100.01" "HaromKubit átírása (1 meztelen)"
@@ -138,6 +140,12 @@ egyVonal = [
     Vár Alacsony "osveny_index/SteaneHamiltonian.idr",
   MkFeladat "200.33" "Rendszer + Vizualizációk + Könyv/KönyvKészítő átírása"
     Vár Alacsony "osveny_index/Rendszer.idr",
+  MkFeladat "200.34" "Szöveg-műveletek + hangrend-motor (GAN 3+12): elejeEgyezzik, résztSzöveg, szövegUtolsóBetűje, ragotLeválaszt (a tő visszadása — az esetrag-motor másik fele!), magánhangzóMélyE/MagasE, data Hangrend, szövegVéghangrendje — a 200.16 Szótár és a 600.10 motor elé"
+    Vár Magas "osveny_index/Alap/CsomagoltTipusok.idr",
+  MkFeladat "200.35" "SorVektor paraméterezés (GAN 5): data SorVektor elem sor általánosítás (SteaneVektor = SorVektor Kubit — §24 nem új típus, általánosítás!), vektorXOR (a Steane-szindróma magja), vektorHossz; az E8Gyökrendszer (200.11) E8Koordináta-vektoraihoz — a 240 gyök fordítási idejének mérése együtt"
+    Vár Magas "osveny_index/Alap/CsomagoltTipusok.idr",
+  MkFeladat "200.36" "Metrika-instance-ok (GAN 15): EgyenlőségT + RendezésT Időbélyeg/VerzióSzám/BájtláncIndex/SzámjegyesSzám-ra (jegyKisebbE híddal), Időbélyeg óra/perc mezők, a régebbi-előbb VerziószámT-törvény"
+    Vár Közepes "osveny_index/Alap/CsomagoltTipusok.idr",
 
   -- ─── 300. NAGY FÁJLOK (a 78+ előfordulású szörnyek) ───
   MkFeladat "300.01" "KategóriaElméletUniverzális átírása (78 meztelen — a legnagyobb)"
@@ -189,6 +197,8 @@ egyVonal = [
   MkFeladat "600.09" "FÁZIS 5: Yoneda — a jelentés (a gazdag Hom-halmazokból)"
     Vár Magas "osveny_index/KutatasiGraf_v1.idr",
   MkFeladat "600.10" "FÁZIS 6: a magyar 18 esetrag-keresés (Betű/Szöveg típusokra)"
+    Vár Magas "osveny_index/KutatasiGraf_v1.idr",
+  MkFeladat "600.11" "A 22 morfizmus LEZÁRÁSA (GAN 13+14): data Képző (MindigKépző -nként, StulKépző, AlkalomKépző -kor, MódKépző -képp(en)) + data MondatMorfizmus (EsetMorfizmus Esetrag | KépzőMorfizmus Képző) — 18 esetrag + 4 képző = 22, TÍPUSBAN; esetragVáltozatai (ban/ben, hoz/hez/höz, ...), hasonulási táblázat (-val/-vel → házzal), tárgyrag-előhang (toll+t → tollat), esetragKérdőszava (ki? mit? hová? hol? honnan? meddig? — a Yoneda-Hom nyelve, híd a Kérdőszó-modulhoz)"
     Vár Magas "osveny_index/KutatasiGraf_v1.idr"
   ]
 
