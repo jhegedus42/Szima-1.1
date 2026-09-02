@@ -8,7 +8,7 @@ module Kerdoszo
 --
 -- MIÉRT STRUCTURÁLIS TÉNY (nem költészet):
 --   1. Minden esetrag EGY KÉRDŐSZÓ válasza: ki?→nominatív,
---      kit?→akku­szativus, hol?→inessivus, miért?→causalis…
+--      kit?→akkuszativus, hol?→inessivus, miért?→causalis…
 --      A 18 rag nem lista, hanem 18 MEGVÁLASZOLT KÉRDÉS.
 --   2. Yoneda: a „ki?” pontosan Hom(–, ember) — egy objektumot
 --      teljesen meghatároznak a róla feltehető kérdések.
@@ -40,7 +40,7 @@ public export
 data KerdoszoT =
     KiKerdo       -- „ki?”    (élő, nominatív)
   | MitKerdo      -- „mi?”    (dolog, nominatív)
-  | KitKerdo      -- „kit?”   (élő, akku­szativus = PATIENS)
+  | KitKerdo      -- „kit?”   (élő, akkuszativus = PATIENS)
   | MiertKerdo    -- „miért?” (ok, causalis-finalis)
   | HolKerdo      -- „hol?”   (inessivus)
   | HovaKerdo     -- „hová?”  (illativus)
@@ -230,7 +230,7 @@ kerdoszoTablazat : String
 kerdoszoTablazat =
   "A 18 esetrag = 18 MEGVÁLASZOLT KÉRDÉS:\n"
   ++ "  ki?/mi?     → nominativus    (AGENS)\n"
-  ++ "  kit?/mit?   → akku­szativus    (PATIENS)\n"
+  ++ "  kit?/mit?   → akkuszativus    (PATIENS)\n"
   ++ "  kinek?      → dativus        (KEDVEZMÉNYEZETT)\n"
   ++ "  hol?        → inessivus      (BEN)\n"
   ++ "  hová?       → illativus      (BA)\n"

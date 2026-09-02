@@ -22,7 +22,7 @@ import Alap.CsomagoltTipusok
 ||| Ket fogalom kvantalt fazisban van → kvantum osszefonodes.
 |||   Ez a nyelvi metaforak, asszociaciok alapja.
 
-||| Fazis ertek a Cliﬀord algebraben.
+||| Fazis ertek a Clifford algebraben.
 ||| Azonos: a ket kodoszo ugyanabban a fazisban rezeg.
 |||   → redundans, eldobhato.
 ||| Ellentetes: a ket kodoszo ellentetes fazisban rezeg.
@@ -44,7 +44,7 @@ Eq Fazis where
   (/=) a b = not (a == b)
 
 ||| Ket kodoszo fazis osszehasonlitasa.
-||| A Cliﬀord atfedes alapjan dontunk:
+||| A Clifford atfedes alapjan dontunk:
 ||| >0.9 → Azonos (szinte ugyanaz)
 ||| <0.1 → Ellentetes (teljesen kulonbozo)
 ||| >0.5 → Kvantalt (reszben atfed)

@@ -193,7 +193,7 @@ e8E8AlgebraFajl : FajlBejegyzes
 e8E8AlgebraFajl = FajlBejegyzesKonstruktor
   "osveny_index/E8E8Algebra.idr"
   "E8 × E8 Clifford algebra, kvantum kódok"
-  ["E8E8KodSzo", "CliﬀordSzorzat"]
+  ["E8E8KodSzo", "CliffordSzorzat"]
   []
 
 -- ═══════════════════════════════════════════════════════════════
