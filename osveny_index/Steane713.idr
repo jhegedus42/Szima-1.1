@@ -15,17 +15,17 @@ module Steane713
 |||
 ||| Hogyan működik a hibajavítás?
 ||| 纠错如何运作？
-||| 1. Bejon egy 7 bites kod (fogalmak, nyelvtani kapcsolat)
+||| 1. Bejön egy 7 bites kód (fogalmak, nyelvtani kapcsolat)（1. 输入一个 7 位码）
 ||| 2. A szindróma megmondja, melyik bit sérült（2. 校验子指出哪一位受损）
 ||| 3. A javító függvény fordítja a sérült bitet（3. 修正函数翻转受损位）
 ||| 4. A kód újra koherens（4. 码重新相干）
 |||
-||| Mi a hiba a fogalmakban?
+||| Mi a hiba a fogalmakban？（概念中的错误是什么？）
 ||| 概念中的错误是什么？
 ||| Egy fogalom rossz esetben van。（一个概念处于错误的格。）
-||| Ket fogalom osszefonodott (kvantum osszefonodes a nyelvben).
+||| Két fogalom összefonódott (kvantum-összefonódás a nyelvben)。（纠缠。）
 ||| Az idő rossz dimenzióban van。（时间处于错误的维度。）
-||| A referencia (sajat/masik) felcserelodott.
+||| A referencia (saját/másik) felcserélődött。（参照互换。）
 ||| Ezek mind javíthatók, ha pontosan egy bit sérült。（若恰有一位受损，这些皆可纠正。）
 
 public export
@@ -72,7 +72,7 @@ Neg Kubit where
 ||| Hetes kód a [[7,1,3]] Steane-kód 7 bitjével。
 ||| Hetes kód：[[7,1,3]] Steane 码的 7 位。
 ||| A konstruktor neve a teljes magyar kifejezés,（构造器名是完整的匈牙利语表述，）
-||| mert a rovidites (Mk) tiltva van.
+||| mert a rövidítés (Mk) tiltva van。（缩写被禁止。）
 public export
 data HetesKod : Type where
   HetesKonstruktor : Kubit -> Kubit -> Kubit -> Kubit
@@ -85,8 +85,8 @@ Show HetesKod where
 
 ||| Alap állapot a 7 biten。
 ||| 7 位上的基态。
-||| A nulla (Nulla) minden bitje nulla.
-||| Az egyes (Egy) minden bitje egy.
+||| A nulla (Nulla) minden bitje nulla。（零：每位皆零。）
+||| Az egyes (Egy) minden bitje egy。（一：每位皆一。）
 ||| Ez a két stabil állapot a 16-ból。（这是 16 个稳定态中的两个。）
 public export
 alapKod : Kubit -> HetesKod
@@ -96,7 +96,7 @@ alapKod Egy   = HetesKonstruktor Egy   Egy   Egy   Egy   Egy   Egy   Egy
 ||| A fordit függvény átbillenti a kubitot:
 ||| fordit 函数翻转 kubit：
 ||| Nulla → Egy, Egy → Nulla.
-||| Ez a bitszintu javitas alapja.
+||| Ez a bitszintű javítás alapja。（这是位级纠错的基础。）
 ||| Nem rövidítés — a teljes magyar „fordit" ige。（非缩写——完整的匈牙利语动词「fordit」。）
 forditKubit : Kubit -> Kubit
 forditKubit Nulla = Egy
@@ -106,17 +106,17 @@ forditKubit Egy   = Nulla
 ||| 校验子：错在哪里？
 ||| NincsHiba = minden rendben。（NincsHiba = 一切正常。）
 ||| EgyesHiba N = az N. pozíció hibás。（EgyesHiba N = 第 N 位出错。）
-||| Tobbszoros = tobb hiba egyszerre (nem javithato, de detektalhato).
-||| A tavolsag 3 miatt tobbszoros hibanal mar nem tudjuk
-||| biztosan, hogy mely bitek serultek - csak azt tudjuk,
-||| hogy valami nincs rendben.
+||| Tobbszoros = több hiba egyszerre (nem javítható, de detektálható)。
+||| Többszörös = 多重错误（无法纠正，但可检测）。
+||| A távolság 3 miatt többszörös hibánál már nem tudjuk
+||| biztosan, mely bitek sérültek — csak azt, hogy valami nincs rendben。
+||| 因距离为 3，多重错误下已无法确定哪些位受损——只知道有误。
 public export
 data Szindroma = NincsHiba | EgyesHiba Nat | Tobbszoros (List Szindroma)
 
-||| A javito fuggveny forditja a serult bitet.
-||| Minden poziciora kulon eset.
-||| Ha a hiba tobbszoros, nem tudjuk javitani —
-||| ilyenkor a kod valtozatlan marad.
+||| A javító függvény fordítja a sérült bitet。（修正函数翻转受损位。）
+||| Ha a hiba többszörös, nem tudjuk javítani — ilyenkor a kód változatlan marad。
+||| 若错误是多重的，无法纠正——此时码保持不变。
 public export
 javitas : HetesKod -> Szindroma -> HetesKod
 javitas kod NincsHiba = kod
@@ -147,12 +147,12 @@ javitas kod _ = kod
 -- A 7 a "varazsszam" — a kvantum hibajavitas, a magyar nyelv,
 -- es a kategoriaelmelet kozos alapja.
 
-||| [[7,1,3]] dekodolas: felsorolt tobbseg szavazat (16 eset + catch-all).
-||| A 16 = 2 tiszta + 14 egy-hibas. Minden egy-hibas kod a helyes
-||| logikai erteket adja (tobbseg elv).
-||| A catch-all minden tobbszoros hibat Nulla-ra dekodol.
-||| Ez a Noether-tetel definicioja: minden szimmetria (bit) serules
-||| visszaallithato, a logikai ertek valtozatlan.
+||| [[7,1,3]] dekódolás: felsorolt többségi szavazat (16 eset + catch-all)。（解码：穷举多数表决（16 例 + 兜底）。）
+||| A 16 = 2 tiszta + 14 egy-hibás. Minden egy-hibás kód a helyes（16 = 2 纯 + 14 单错。每个单错码给出）
+||| logikai értéket adja (többség-elv)。（正确的逻辑值——多数原则。）
+||| A catch-all minden többszörös hibát Nulla-ra dekódol。（兜底把一切多重错误解码为 Nulla。）
+||| Ez a Noether-tétel definíciója: minden szimmetria (bit) sérülés（这就是诺特定理的定义：每一对称（位）的损伤）
+||| visszaállítható, a logikai érték változatlan。（皆可恢复，逻辑值不变。）
 public export
 steaneDekodol : HetesKod -> Kubit
 steaneDekodol (HetesKonstruktor Nulla Nulla Nulla Nulla Nulla Nulla Nulla) = Nulla
@@ -173,10 +173,10 @@ steaneDekodol (HetesKonstruktor Egy   Egy   Egy   Egy   Egy   Nulla Egy  ) = Egy
 steaneDekodol (HetesKonstruktor Egy   Egy   Egy   Egy   Egy   Egy   Nulla) = Egy
 steaneDekodol _ = Nulla
 
-||| Noether-tetel: minden bitforgatas (szimmetria serules) kijavithato,
-||| a dekodolt ertek (megmarado mennyiseg) valtozatlan.
-||| Mint operator a kvantumterelmeletben: a [[7,1,3]] javitas
-||| projekcio a kod szalterbe, a logikai ertek sajatertek.
+||| Noether-tétel: minden bitforgatás (szimmetria-sérülés) kijavítható,（诺特定理：每个位翻转（对称破缺）都可纠正，）
+||| a dekódolt érték (megmaradó mennyiség) változatlan。（解码值（守恒量）不变。）
+||| Mint operátor a kvantumtérelméletben: a [[7,1,3]] javítás（如量子场论中的算子：[[7,1,3]] 修正）
+||| projekció a kód alterébe, a logikai érték sajátérték。（是向码子空间的投影，逻辑值是本征值。）
 public export
 noetherTetel : (k : Kubit) -> (n : Nat) -> steaneDekodol (javitas (alapKod k) (EgyesHiba n)) = k
 noetherTetel Nulla 0 = Refl
@@ -196,23 +196,19 @@ noetherTetel Egy 6 = Refl
 noetherTetel Nulla (S (S (S (S (S (S (S n))))))) = Refl
 noetherTetel Egy   (S (S (S (S (S (S (S n))))))) = Refl
 
-||| Harom ido dimenzio.
-||| Gondolatmenet: a magyarban az ige nem csak idot hordoz,
-||| hanem aspektust (folyamat vs befejezett) es forrast
-||| (honnan tudjuk). Ez a harom dimenzio egyutt adja
-||| a teljes idobeli kepet.
+||| Harom ido dimenzio. / Három idődimenzió。（三个时间维度。）
+||| 思路：匈牙利语动词不仅承载时间，还承载体貌（持续对完成）与
+||| 来源（我们从何而知）。这三个维度合成完整的时间图景。
 |||
-||| IgeIdo: Mult, Jelen, Jovo.
-|||   A magyarban nincs pluszkvamperfekt —
-|||   a harom alap ido elegendo.
+||| IgeIdo: Mult, Jelen, Jovo. / IgeIdo：过去、现在、将来。
+|||   匈牙利语没有过去完成时——三个基本时态足矣。
 |||
-||| IgeSzem: Folyamatos, Befejezett, Szokasos.
-|||   A szokasos (pl. "jarok uszni") koti ossze
-|||   a folyamatosat es a befejezettet.
+||| IgeSzem: Folyamatos, Befejezett, Szokásos。（体貌：持续、完成、惯常。）
+||| IgeSzem：持续、完成、惯常。
+|||   惯常（如「jarok uszni / 我常去游泳」）把持续与完成连在一起。
 |||
-||| Forras: Kozvetlen ("latom"), Kovetkeztetett ("latszik"),
-|||   Jelentett ("allitolag"). Ez az evidenciassag
-|||   — honnan tudom, amit tudok.
+|||   来源：直接（「latom / 我看见」）、推得（「latszik / 看得出来」）、
+|||   转述（「allitolag / 据说」）。这是证据性——我从何而知我所知。
 public export
 data IgeIdo   = Mult | Jelen | Jovo
 
@@ -222,17 +218,17 @@ data IgeSzem  = Folyamatos | Befejezett | Szokasos
 public export
 data Forras   = Kozvetlen | Kovetkeztetett | Jelentett
 
-||| Egy ige teljes idobelyege.
-||| A harom dimenzio egyesitve egyetlen tipusba.
-||| Ez megy bele a [[7,1,3]] kod 3 poziciojaba
+||| Egy ige teljes időbélyege。（动词的完整时间标注。）
+||| A három dimenzió egyesítve egyetlen típusba。（三维度合于一个类型。）
+||| Ez megy bele a [[7,1,3]] kód 3 pozíciójába（它进入 [[7,1,3]] 码的第 3 位）
 ||| (ido, oksag, es fazis — az elso harom bit).
-||| A konstruktor neve hosszu, mert a rovidites
+||| A konstruktor neve hosszú, mert a rövidítés（构造器名很长，因为缩写）
 ||| (IdoBeljegyzesMk, stb.) tiltva van.
 public export
 data IdoBeljegyzes : Type where
   IdoBeljegyzesKonstruktor : IgeIdo -> IgeSzem -> Forras -> IdoBeljegyzes
 
-||| IdoMorfizmus: ido irany a kategoriaban.
+||| IdoMorfizmus: idő irány a kategóriában。（时间态射：范畴中的时间方向。）
 public export
 data IdoMorfizmus : IgeIdo -> IgeIdo -> Type where
   IdoMorfizmusKonstruktor : IdoMorfizmus a b
@@ -260,7 +256,7 @@ record PauliTenzor where
   tenzor : List PauliMx
 
 ||| [[15,1,3]] Reed-Muller kod.
-||| 15 fizikai kubit, 1 logikai kubit, tavolsag 3.
+||| 15 fizikai kubit, 1 logikai kubit, távolság 3。（15 物理比特、1 逻辑比特、距离 3。）
 ||| A 7 X stabilizator es 7 Z stabilizator.
 ||| Specialis: transversal T-kapu = π/8 fazis = "az ido megall".
 public export
@@ -309,7 +305,7 @@ data TGate : Type where
 -- TIPUSOSZTALYOK (INTERFESZEK) — komponalhato tipusosztalyok
 -- ═══════════════════════════════════════════════════════════════
 
-||| Inverz: egy muvelet sajat maga inverze (involucio).
+||| Inverz: egy művelet saját maga inverze (involúció)。（逆：运算是自身的逆（对合）。）
 |||   fordit : a -> a
 |||   forditTorveny : fordit ∘ fordit = id
 ||| Komponalhato: Inverz a + Inverz b → Inverz (a, b)
@@ -318,7 +314,7 @@ interface Inverz (a : Type) where
   fordit : a -> a
   forditTorveny : (x : a) -> fordit (fordit x) = x
 
-||| Kodolo: informacio megtartasa kodolassal.
+||| Kódoló: információ megtartása kódolással。（编码器：以编码保持信息。）
 |||   kodol : a -> b
 |||   dekodol : b -> a
 |||   kodTorveny : dekodol ∘ kodol = id
