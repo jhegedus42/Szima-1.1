@@ -157,6 +157,7 @@ main : IO ()
 main = do
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn " TÓRUSZ TESZT — a bináris tórusz (Z₂ × Z₈) tesztelése"
+  putStrLn " 环面测试——二元环面（Z₂ × Z₈）的测试"
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn ""
   putStrLn "A felhasználó (2026-08-31):"
@@ -164,14 +165,16 @@ main = do
   putStrLn "  'futas ideju tesztek is kellenek mindenre, peldakkal'"
   putStrLn ""
   putStrLn "§24: a Torusz.idr függvényeit IMPORTÁLJUK, nem duplikáljuk."
+  putStrLn " §24：导入 Torusz.idr 的函数，不重复。"
   putStrLn ""
 
   -- ── 1. Tórusz pontok ─────────────────────────────
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn " 1. TÓRUSZ PONTOK (16 = Z₂ × Z₈)"
+  putStrLn " 一、环面点（16 = Z₂ × Z₈）"
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn ""
-  putStrLn "  Konkrét példák (show-val kiírva):"
+  putStrLn "  Konkrét példák (show-val kiírva) / 具体示例（以 show 打印）："
   putStrLn ("    peldaÁllítás       = " ++ show peldaÁllítás ++ "  (0, 0°)")
   putStrLn ("    peldaKérdés        = " ++ show peldaKérdés ++ "  (0, 90°)")
   putStrLn ("    peldaFeltevés      = " ++ show peldaFeltevés ++ "  (0, 180°)")
@@ -187,6 +190,7 @@ main = do
   -- ── 2. Pozíció-lépés ─────────────────────────────
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn " 2. POZÍCIÓ-LÉPÉS (bit-flip: 0→1→0)"
+  putStrLn " 二、位置步（比特翻转：0→1→0）"
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn ""
   putStrLn "  Konkrét példák (importált függvény: pozícióLépés):"
@@ -203,6 +207,7 @@ main = do
   -- ── 3. Fázis-lépés ─────────────────────────────
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn " 3. FÁZIS-LÉPÉS (Z₈ forgatás: F0→F1→...→F7→F0)"
+  putStrLn " 三、相位步（Z₈ 旋转：F0→F1→…→F7→F0）"
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn ""
   putStrLn "  Konkrét példák (importált függvény: fázisLépés):"
@@ -219,6 +224,7 @@ main = do
   -- ── 4. GKP-kód ─────────────────────────────
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn " 4. GKP-KÓD FÁZISTÉR"
+  putStrLn " 四、GKP 码相空间"
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn ""
   putStrLn "  Konkrét példák (importált függvény: gkpTóruszPont):"
@@ -232,6 +238,7 @@ main = do
   -- ── 5. Mondattípus ─────────────────────────────
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn " 5. MONDATTÍPUS → FÁZIS"
+  putStrLn " 五、句型 → 相位"
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn ""
   putStrLn "  Konkrét példák (importált függvény: mondatFázis):"
@@ -249,9 +256,10 @@ main = do
   -- ── 6. Pozíció váltás ─────────────────────────────
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn " 6. POZÍCIÓ VÁLTÁS (bit-flip: 0→1→0)"
+  putStrLn " 六、位置翻转（比特翻转：0→1→0）"
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn ""
-  putStrLn "  Konkrét példák (importált függvény: pozícióVáltás):"
+  putStrLn "  Konkrét példák (importált függvény: pozícióVáltás) / 具体示例（导入的函数）："
   putStrLn ("    pozícióVáltás Pozíció0 = " ++ show (pozícióVáltás Pozíció0) ++ "  (1)")
   putStrLn ("    pozícióVáltás Pozíció1 = " ++ show (pozícióVáltás Pozíció1) ++ "  (0)")
   putStrLn ""
@@ -264,6 +272,7 @@ main = do
   -- ── Összegzés ─────────────────────────────
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn " TESZT ÖSSZEGZÉS"
+  putStrLn " 测试总结"
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn ""
   putStrLn "  1. Tórusz pontok:        4 konkrét példa + 4 Refl  ✓"
@@ -274,7 +283,9 @@ main = do
   putStrLn "  6. Pozíció váltás:       2 konkrét példa + 4 Refl  ✓"
   putStrLn ""
   putStrLn "  Összesen: 18 konkrét példa + 21 Refl bizonyítás"
+  putStrLn "  总计：18 个具体示例 + 21 条 Refl 证明"
   putStrLn "  Minden teszt lefordul — a compiler (a bíra) ellenőrzi."
+  putStrLn "  所有测试都编译通过——编译器（评审）在检验。"
   putStrLn ""
   putStrLn "  §24: a Torusz.idr függvényeit IMPORTÁLJUK, nem duplikáljuk. ✓"
   putStrLn "  A Fazis.idr (Z₈) importálva a Torusz.idr-ben. ✓"
