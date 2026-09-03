@@ -64,8 +64,8 @@ egyVonal = [
     Kész Közepes "osveny_index/GeneralizedPauli.idr",
   MkFeladat "100.04" "Kérdőszó átírása (KÉSZ — mind a 3 meztelen ékezetes + a 3 függő modul exit 0: KérdőszóT (13 konstruktor: KiKérdő…MennyiKérdő), VálaszFél (ElsőFél/MásodikFél), AlapOsztó (Élő/Dolog) + NyitottKérdés-rekord (kérdőSzava/válaszHelye) + fv-család (kérdőszóEsetT, megkérdez, megválaszol, binárisKérdésBit, kérdőszóOsztója, kérdőszóTáblázat, főJelentés, KérdésKi/Mi/Miért/Hol/Hogyan/Melyik fonetikai konstansok, KérdőszóLeírás) — a modulnév ASCII marad (csapda #6: module Kerdoszo)!; a 3 függő (Attekintes, Teszt, tanulsagok/MiértJó) szinkron-átnevezve — UTÓBBI örökoltan törött (modulnév≠fájlnév), a KérdőszóT→KérdőszóT csere ott is megtörtént; ÚJ tanulság: a Kerdoszo.idr-ban az eredeti «TÍUSBAN» elírás TÍPUSBAN-ra javítva (§N9); a 9+1 szakaszcím kétnyelvű (中文 pár) / 中文：疑问词模块改写完成——三个裸类型全部带变音符（13 个构造器、答案半、基本划分者），三个依赖模块同步改名，九个章节标题双语化）"
     Kész Közepes "osveny_index/Kerdoszo.idr",
-  MkFeladat "100.05" "Hipotetikus átírása (3 meztelen)"
-    Vár Közepes "osveny_index/Hipotetikus.idr",
+  MkFeladat "100.05" "Hipotetikus átírása (KÉSZ — a 3 meztelen csomagolva: h3 Double→PotenciálMező rekord, h5 (Double,Double)→LandauerHármas rekord, a 6 () unit→BizonyításraVár data; + az örökölt törés javítva: Eset→Esetrag (import MagyarNyelvtan) — a fájl ELŐBB nem fordult, most exit 0!; + a teljes komment-fájl ékezetesítve sed-del CSAK ^(--|\|\|) sorokon (az azonosítók védve — csapda #21 ellen); + mind a 12 H-doc (H1-H12) ékezetesen+ kínaiul (「一」…「十二」); a h2 Nat-je MARAD (a Steane713 Szindroma örökölt pereme — dokumentálva) / 中文：假说模块完成——三个裸类型包装完毕（电位势场记录、Landauer 三元组记录、待证命题类型），修复了继承性断裂（Eset→Esetrag），全部注释带变音符，十二个假说标题双语化）"
+    Kész Közepes "osveny_index/Hipotetikus.idr",
   MkFeladat "100.06" "KettőKategória átírása (3 meztelen)"
     Vár Közepes "osveny_index/KettoKategoria.idr",
   MkFeladat "100.07" "CayleyDickson átírása (5 meztelen)"
