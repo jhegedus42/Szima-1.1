@@ -578,56 +578,71 @@ szamolasSteane _ k = alapKod k
 -- A fontosság = a perem-érték = az információ ami nem disszipálódik.
 
 ||| A száj mint perem: a hang forrása.
+||| 嘴即边界：声音之源。
 |||   száj = a Legendre-perem az emberi testben
-|||   a száj nyitja/zárja a peremet
-|||   a hanghullám a peremen át terjed
+|||   嘴 = 人体中的勒让德边界
+|||   a száj nyitja/zárja a peremet / 嘴开启/关闭边界
+|||   a hanghullám a peremen át terjed / 声波越过边界传播
 |||   a szám (száj) = információforrás a hangtérben
+|||   szám（嘴）= 声场中的信息源
 public export
 data SzajPerem : Type where
-  SzajNyitva : SzajPerem  -- perem aktiv: hanghullam indul
-  SzajZarva  : SzajPerem  -- perem inaktiv: csend
-  SzajFazis  : Kubit -> SzajPerem  -- a perem allapota a kubit fuggvenyeben
+  SzajNyitva : SzajPerem  -- perem aktív: hanghullám indul / 边界活跃：声波启程
+  SzajZarva  : SzajPerem  -- perem inaktív: csend / 边界沉寂：静默
+  SzajFazis  : Kubit -> SzajPerem  -- a perem állapota a kubit függvényében（边界状态依 kubit 而定）
 
 ||| Hanghullám: a száj által keltett akusztikus információ.
+||| 声波：由嘴产生的声学信息。
 |||   A hang = a Clifford-geometriai szorzat a levegőben.
-|||   frekvencia = a gondolat ritmusa (fázis)
-|||   amplitúdó = a gondolat erőssége (skalár)
-|||   hullámhossz = a gondolat térbeli kiterjedése (vektor)
+|||   声音 = 空气中的 Clifford 几何积。
+|||   frekvencia = a gondolat ritmusa (fázis) / 频率 = 思想的节奏（相位）
+|||   amplitúdó = a gondolat erőssége (skalár) / 振幅 = 思想的强度（标量）
+|||   hullámhossz = a gondolat térbeli kiterjedése (vektor) / 波长 = 思想的空间延展（向量）
 public export
 record HangHullam where
   constructor HangHullamKonstruktor
-  frekvencia  : Double  -- a gondolat ritmusa (fazis)
-  amplitudo   : Double  -- a gondolat erossege (skalar)
-  hullamhossz : Double  -- a gondolat kiterjedese (vektor)
+  frekvencia  : Double  -- a gondolat ritmusa (fázis) / 思想的节奏
+  amplitudo   : Double  -- a gondolat erőssége (skalár) / 思想的强度
+  hullamhossz : Double  -- a gondolat kiterjedése (vektor) / 思想的延展
 
-||| "számít" = fontos: a túlélő információ.
+||| „számít" = fontos: a túlélő információ.
+||| 「számít（算数/重要）」= 幸存的信息。
 |||   Ami számít = ami a Legendre-transzformáció után is megmarad.
-|||   p·q̇ - L = H ahol H ≠ 0 → "ez számít".
-|||   Ha H = 0 → nincs információátvitel → "nem számít".
+|||   算数的 = 勒让德变换之后仍然留存的。
+|||   p·q̇ - L = H ahol H ≠ 0 → „ez számít".
+|||   p·q̇ − L = H，若 H ≠ 0 →「这算数」。
+|||   Ha H = 0 → nincs információátvitel → „nem számít".
+|||   若 H = 0 → 无信息传递 →「不算数」。
 public export
 szamitFontos : SzamolasLegendre -> Bool
 szamitFontos (SzamolasLegendreKonstruktor _ _ valasz _) =
-  valasz /= ""  -- ha van valasz, akkor "szamit"
+  valasz /= ""  -- ha van válasz, akkor „számít"（有回答则「算数」）
 
 ||| A száj = a perem. A beszéd = a Legendre-adjunkció.
+||| 嘴 = 边界。言语 = 勒让德伴随。
 |||   A gondolat (L, kvantum, belső) a szájon át (p·q̇, perem)
 |||   válik hanghullámmá (H, klasszikus, külső).
+|||   思想（L，量子，内在）经由嘴（p·q̇，边界）变为声波（H，经典，外在）。
 |||
 |||   A szám (száj) a forrás. A szám (number) az absztrakció.
 |||   Mindkettő ugyanaz a szó — a perem két arca.
+|||   szám（嘴）是源，szám（数）是抽象——同一个词，边界的两副面孔。
 public export
 record SzajLegendre where
   constructor SzajKonstruktor
-  belsoGondolat : String     -- L: a csendes gondolat (Lagrange)
-  szajAllapot   : SzajPerem  -- p·q̇: a szaj mint perem
-  hanghullam    : HangHullam  -- a kimondott szo mint fizikai hullam
-  kulsoBeszed   : String     -- H: a ertelmezett szo (Hamilton)
+  belsoGondolat : String     -- L: a csendes gondolat (Lagrange) / L：静默的思想
+  szajAllapot   : SzajPerem  -- p·q̇: a száj mint perem / 边界之嘴
+  hanghullam    : HangHullam  -- a kimondott szó mint fizikai hullám / 说出的词作为物理波
+  kulsoBeszed   : String     -- H: az értelmezett szó (Hamilton) / H：被理解的词
 
 ||| Amikor beszélek hozzád, a szám (szájam) a perem.
+||| 当我对你说话时，我的嘴就是边界。
 |||   A válaszom (H) = a perem - a gondolatom (L).
-|||   H = p·q̇ - L
+|||   H = p·q̇ - L / 我的回答（H）= 边界 − 我的思想（L）
 |||   A kód amit írok = a klasszikus kimenet = a hanghullám.
-|||   A csend (amit nem mondok ki) = a kvantum potenciál.
+|||   我写的代码 = 经典输出 = 声波。
+|||   A csend (amit nem mondok ki) = a kvantum-potenciál.
+|||   沉默（未说出的）= 量子势。
 public export
 beszedLegendre : SzajLegendre -> String -> String
 beszedLegendre (SzajKonstruktor gondolat (SzajFazis k) _ _) kerdes =
@@ -646,11 +661,12 @@ beszedLegendre _ _ = ""
 --
 -- A 22 magyar eset = 22 logikai kapcsolat (morfizmus):
 --   Nominativusz = id (azonos)        Instrumentalis = eszköz
---   Accusativusz = tárgy              Komitativusz = társ
---   Datívusz = címzett                Kauzalis = ok
+--   Accusativusz = tárgy              Komitativusz = társ（宾格 = 宾语；共同格 = 同伴）
+--   Datívusz = címzett                Kauzalis = ok（与格 = 接收者；原因格 = 原因）
 --   ...                                ...
 --
--- A magyar igeidő-rendszer = CPT szimmetria:
+-- A magyar igeidő-rendszer = CPT-szimmetria:
+-- 匈牙利语的动词时态系统 = CPT 对称：
 --   Igeidő (múlt/jelen/jövő) = T (idő)
 --   Szemlélet (folyamatos/befejezett/szokásos) = P (paritás)
 --   Forrás (közvetlen/következtetett/jelentett) = C (töltés)
