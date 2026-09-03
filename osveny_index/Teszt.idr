@@ -196,7 +196,7 @@ bizonyitasLista =
   , "bizKiElo/bizMiDolog    : ki?=élő, mi?=dolog (alap-osztó) [Refl]"
   , "bizMiertOk             : miért?→causalis (OK/CÉL) [Refl]"
   , "bizMikorNincsRag       : mikor?-ra nincs rag (T≠C,P!) [Refl]"
-  , "bizKerdesKiGauge       : „ki” IPA = [ki] [Refl]"
+  , "bizKérdésKiGauge       : „ki” IPA = [ki] [Refl]"
   , "bizHogyanDgraf         : „hogyan” gy=[ɟ] [Refl]"
   , "bizMelyikDgraf         : „melyik” ly=[j] [Refl]"
   , "bizHurwitzHuszonnegy   : a gömb (S³) 24 egysége [Refl]"
@@ -595,32 +595,32 @@ public export
 kerdoszoTipusosTesztek : List TesztEredmeny
 kerdoszoTipusosTesztek =
   [ teszt "GAUGE: „miért” kézzel == parser ([mieːrt])"
-      (ipaForma KerdesMiert == magyarIPA "miért")
+      (ipaForma KérdésMiért == magyarIPA "miért")
   , teszt "GAUGE: „hogyan” gy-digráf [ɟ]"
-      (ipaForma KerdesHogyan == magyarIPA "hogyan")
+      (ipaForma KérdésHogyan == magyarIPA "hogyan")
   , teszt "GAUGE: „melyik” ly-digráf [j]"
-      (ipaForma KerdesMelyik == magyarIPA "melyik")
+      (ipaForma KérdésMelyik == magyarIPA "melyik")
   , teszt "kérdés→eset: miért? = causalis-finalis (OK/CÉL)"
-      (kerdoszoEsetT MiertKerdo == Just CausalisFinalisE)
+      (kérdőszóEsetT MiértKérdő == Just CausalisFinalisE)
   , teszt "kérdés→eset: hol? = inessivus (BEN)"
-      (kerdoszoEsetT HolKerdo == Just InessivusE)
+      (kérdőszóEsetT HolKérdő == Just InessivusE)
   , teszt "kérdés→eset: mikor? → SEMMI (az igeidőre felel, T ≠ C,P)"
-      (kerdoszoEsetT MikorKerdo == Nothing)
+      (kérdőszóEsetT MikorKérdő == Nothing)
   , teszt "kérdés→eset: mennyi? → SEMMI (a mennyiség nem eset)"
-      (kerdoszoEsetT MennyiKerdo == Nothing)
+      (kérdőszóEsetT MennyiKérdő == Nothing)
   , teszt "alap-osztó: ki? = élő, mi? = dolog"
-      (kerdoszoOsztoja KiKerdo == Just Elo
-       && kerdoszoOsztoja MitKerdo == Just Dolog)
+      (kérdőszóOsztója KiKérdő == Just Élő
+       && kérdőszóOsztója MitKérdő == Just Dolog)
   , teszt "a friss kérdés NYITOTT (entrópia-gradiens van)"
-      (megNyitott (megkerdez MiertKerdo))
+      (megNyitott (megkérdez MiértKérdő))
   , teszt "a megválaszolt kérdés ZÁRT (a gradiens eltűnt)"
-      (not (megNyitott (megvalaszol (megkerdez MitKerdo) KerdesMi)))
+      (not (megNyitott (megválaszol (megkérdez MitKérdő) KérdésMi)))
   , teszt "a bináris válasz betölt (melyik? = felezés)"
-      (not (megNyitott (binarisKerdesBit (megkerdez MelyikKerdo) ElsoFele KerdesMi)))
+      (not (megNyitott (binárisKérdésBit (megkérdez MelyikKérdő) ElsőFél KérdésMi)))
   , teszt "a String-es és típusos kerdoszoEset EGYEZIK (miért)"
-      (kerdoszoEset "miért" == kerdoszoEsetT MiertKerdo)
+      (kerdoszoEset "miért" == kérdőszóEsetT MiértKérdő)
   , teszt "a String-es és típusos kerdoszoEset EGYEZIK (hol)"
-      (kerdoszoEset "hol" == kerdoszoEsetT HolKerdo)
+      (kerdoszoEset "hol" == kérdőszóEsetT HolKérdő)
   ]
 
 -- ═══════════════════════════════════════════════════════════════

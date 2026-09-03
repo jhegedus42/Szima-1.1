@@ -47,7 +47,7 @@ osszesRegisztraltModul : List ModulLeirasT
 osszesRegisztraltModul =
   [ FonetikaLeiras
   , FanoParitasLeiras
-  , KerdoszoLeiras
+  , KérdőszóLeírás
   , HanMagyarKodolasLeiras
   , EGyokrendszerLeiras
   , DiracGammaLeiras

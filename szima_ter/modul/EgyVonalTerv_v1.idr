@@ -62,8 +62,8 @@ egyVonal = [
     Kész Közepes "osveny_index/Torusz.idr",
   MkFeladat "100.03" "GeneralizedPauli átírása (KÉSZ — exit 0 + futás: kvantumDimenzióÉrték : KvantumDimenzió -> Sorszám (sorKettő/sorNyolc — §24 import!), kommutációsReláció : KvantumDimenzió -> KommutációsAlak (ÚJ data — a jelentés a konstruktorban él: AntikommutációAlak/ZNyolcFázisAlak, a String csak a Show-peremen!), bizTóruszPontokSzámaGKP : sorSzorzás sorKettő sorNyolc = sorTizenhat (REJTETT 3. meztelen is kiírva: a 2*8=16 Nat-literálok a TÍPUSBÓL), sorTizenhat konstans (sorTíz+6 — a GKP-tanúhoz), main: «kettő»/«nyolc»/«tizenhat» magyar szavakkal fut ✓ / 中文：广义泡利算子模块改写完成——量子维度值 Sorszám 包装、对易关系为代数数据类型（意义活在构造器中）、隐藏的第三个裸类型（类型中的 2*8=16 字面量）也已改写、主程序以匈牙利语单词输出「kettő/nyolc/tizenhat」）"
     Kész Közepes "osveny_index/GeneralizedPauli.idr",
-  MkFeladat "100.04" "Kérdőszó átírása (3 meztelen)"
-    Vár Közepes "osveny_index/Kerdoszo.idr",
+  MkFeladat "100.04" "Kérdőszó átírása (KÉSZ — mind a 3 meztelen ékezetes + a 3 függő modul exit 0: KérdőszóT (13 konstruktor: KiKérdő…MennyiKérdő), VálaszFél (ElsőFél/MásodikFél), AlapOsztó (Élő/Dolog) + NyitottKérdés-rekord (kérdőSzava/válaszHelye) + fv-család (kérdőszóEsetT, megkérdez, megválaszol, binárisKérdésBit, kérdőszóOsztója, kérdőszóTáblázat, főJelentés, KérdésKi/Mi/Miért/Hol/Hogyan/Melyik fonetikai konstansok, KérdőszóLeírás) — a modulnév ASCII marad (csapda #6: module Kerdoszo)!; a 3 függő (Attekintes, Teszt, tanulsagok/MiértJó) szinkron-átnevezve — UTÓBBI örökoltan törött (modulnév≠fájlnév), a KérdőszóT→KérdőszóT csere ott is megtörtént; ÚJ tanulság: a Kerdoszo.idr-ban az eredeti «TÍUSBAN» elírás TÍPUSBAN-ra javítva (§N9); a 9+1 szakaszcím kétnyelvű (中文 pár) / 中文：疑问词模块改写完成——三个裸类型全部带变音符（13 个构造器、答案半、基本划分者），三个依赖模块同步改名，九个章节标题双语化）"
+    Kész Közepes "osveny_index/Kerdoszo.idr",
   MkFeladat "100.05" "Hipotetikus átírása (3 meztelen)"
     Vár Közepes "osveny_index/Hipotetikus.idr",
   MkFeladat "100.06" "KettőKategória átírása (3 meztelen)"

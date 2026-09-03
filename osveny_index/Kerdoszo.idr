@@ -33,201 +33,212 @@ import ModulRegisztracio
 %default total
 
 -- ─── 1. A KÉRDŐSZÓK MINT ADATTÍPUSOK ──────────────────────
+-- 一、疑问词作为代数数据类型 ─────────────────
 -- Minden kérdőszó saját konstruktor — a szófaj- és jelentéstan
--- a TÍUSBAN van, nem kommentben.
+-- a TÍPUSBAN van, nem kommentben.
+-- 每个疑问词都是构造器——词类与语义活在类型里。
 
 public export
-data KerdoszoT =
-    KiKerdo       -- „ki?”    (élő, nominatív)
-  | MitKerdo      -- „mi?”    (dolog, nominatív)
-  | KitKerdo      -- „kit?”   (élő, akkuszativus = PATIENS)
-  | MiertKerdo    -- „miért?” (ok, causalis-finalis)
-  | HolKerdo      -- „hol?”   (inessivus)
-  | HovaKerdo     -- „hová?”  (illativus)
-  | HonnanKerdo   -- „honnan?” (elativus)
-  | MikorKerdo    -- „mikor?” (idő — az igeidő felel rá, nem rag!)
-  | HogyanKerdo   -- „hogyan?” (formativus = mód)
-  | MivelKerdo    -- „mivel?” (instrumentalis)
-  | KivelKerdo    -- „kivel?” (instrumentalis, élő)
-  | MelyikKerdo   -- „melyik?” (választás = BINÁRIS felezés!)
-  | MennyiKerdo   -- „mennyi?” (mennyiség)
+data KérdőszóT =
+    KiKérdő       -- „ki?”    (élő, nominatív)
+  | MitKérdő      -- „mi?”    (dolog, nominatív)
+  | KitKérdő      -- „kit?”   (élő, akkuszativus = PATIENS)
+  | MiértKérdő    -- „miért?” (ok, causalis-finalis)
+  | HolKérdő      -- „hol?”   (inessivus)
+  | HováKérdő     -- „hová?”  (illativus)
+  | HonnanKérdő   -- „honnan?” (elativus)
+  | MikorKérdő    -- „mikor?” (idő — az igeidő felel rá, nem rag!)
+  | HogyanKérdő   -- „hogyan?” (formativus = mód)
+  | MivelKérdő    -- „mivel?” (instrumentalis)
+  | KivelKérdő    -- „kivel?” (instrumentalis, élő)
+  | MelyikKérdő   -- „melyik?” (választás = BINÁRIS felezés!)
+  | MennyiKérdő   -- „mennyi?” (mennyiség)
 
 public export
-Show KerdoszoT where
-  show KiKerdo      = "ki?"
-  show MitKerdo     = "mi?"
-  show KitKerdo     = "kit?"
-  show MiertKerdo   = "miért?"
-  show HolKerdo     = "hol?"
-  show HovaKerdo    = "hová?"
-  show HonnanKerdo  = "honnan?"
-  show MikorKerdo   = "mikor?"
-  show HogyanKerdo  = "hogyan?"
-  show MivelKerdo   = "mivel?"
-  show KivelKerdo   = "kivel?"
-  show MelyikKerdo  = "melyik?"
-  show MennyiKerdo  = "mennyi?"
+Show KérdőszóT where
+  show KiKérdő      = "ki?"
+  show MitKérdő     = "mi?"
+  show KitKérdő     = "kit?"
+  show MiértKérdő   = "miért?"
+  show HolKérdő     = "hol?"
+  show HováKérdő    = "hová?"
+  show HonnanKérdő  = "honnan?"
+  show MikorKérdő   = "mikor?"
+  show HogyanKérdő  = "hogyan?"
+  show MivelKérdő   = "mivel?"
+  show KivelKérdő   = "kivel?"
+  show MelyikKérdő  = "melyik?"
+  show MennyiKérdő  = "mennyi?"
 
 -- ─── 2. A KÉRDŐSZAVAK FONETIKÁJA (Hang-konstruktorokból) ──
+-- 二、疑问词的语音学（音素构造器组成） ────────
 
 -- grafikusan: „ki”
 public export
-KerdesKi : Fonetika
-KerdesKi = [MassalhangzoHang Mk, MaganhangzoHang Vi]
+KérdésKi : Fonetika
+KérdésKi = [MassalhangzoHang Mk, MaganhangzoHang Vi]
 
 -- grafikusan: „mi”
 public export
-KerdesMi : Fonetika
-KerdesMi = [MassalhangzoHang Mm, MaganhangzoHang Vi]
+KérdésMi : Fonetika
+KérdésMi = [MassalhangzoHang Mm, MaganhangzoHang Vi]
 
 -- grafikusan: „miért”
 public export
-KerdesMiert : Fonetika
-KerdesMiert = [ MassalhangzoHang Mm, MaganhangzoHang Vi, MaganhangzoHang Vee
+KérdésMiért : Fonetika
+KérdésMiért = [ MassalhangzoHang Mm, MaganhangzoHang Vi, MaganhangzoHang Vee
               , MassalhangzoHang Mr, MassalhangzoHang Mt ]
 
 -- grafikusan: „hol”
 public export
-KerdesHol : Fonetika
-KerdesHol = [MassalhangzoHang Mh, MaganhangzoHang Vo, MassalhangzoHang Ml]
+KérdésHol : Fonetika
+KérdésHol = [MassalhangzoHang Mh, MaganhangzoHang Vo, MassalhangzoHang Ml]
 
 -- grafikusan: „hogyan” (gy → [ɟ] digráf!)
 public export
-KerdesHogyan : Fonetika
-KerdesHogyan =
+KérdésHogyan : Fonetika
+KérdésHogyan =
   [ MassalhangzoHang Mh, MaganhangzoHang Vo, DigrafHang Dgy
   , MaganhangzoHang Va, MassalhangzoHang Mn ]
 
 -- grafikusan: „melyik” (ly → [j] digráf!)
 public export
-KerdesMelyik : Fonetika
-KerdesMelyik =
+KérdésMelyik : Fonetika
+KérdésMelyik =
   [ MassalhangzoHang Mm, MaganhangzoHang Ve, DigrafHang Dly
   , MaganhangzoHang Vi, MassalhangzoHang Mk ]
 
 -- ─── 3. A KÉRDŐSZÓ → ESETRAG LEKÉPEZÉS (típusosan) ────────
+-- 三、疑问词→格词缀的类型化映射 ────────
 -- A CPT-kapcsolat: a kérdőszó C = FORRÁS (honnan tudom?),
 -- az esetrag a válasz P = SZEMLÉLETE (hogyan látom).
+-- CPT 关联：疑问词是 C=源（我何以知晓？），格词缀是 P=体（我如何看待）。
 
 public export
-kerdoszoEsetT : KerdoszoT -> Maybe Esetrag
-kerdoszoEsetT KiKerdo      = Just NominativusE
-kerdoszoEsetT MitKerdo     = Just NominativusE
-kerdoszoEsetT KitKerdo     = Just AccusativusE
-kerdoszoEsetT MiertKerdo   = Just CausalisFinalisE
-kerdoszoEsetT HolKerdo     = Just InessivusE
-kerdoszoEsetT HovaKerdo    = Just IllativusE
-kerdoszoEsetT HonnanKerdo  = Just ElativusE
-kerdoszoEsetT MikorKerdo   = Nothing
-kerdoszoEsetT HogyanKerdo  = Just FormativusE
-kerdoszoEsetT MivelKerdo   = Just InstrumentalisE
-kerdoszoEsetT KivelKerdo   = Just InstrumentalisE
-kerdoszoEsetT MelyikKerdo  = Just NominativusE
-kerdoszoEsetT MennyiKerdo  = Nothing
+kérdőszóEsetT : KérdőszóT -> Maybe Esetrag
+kérdőszóEsetT KiKérdő      = Just NominativusE
+kérdőszóEsetT MitKérdő     = Just NominativusE
+kérdőszóEsetT KitKérdő     = Just AccusativusE
+kérdőszóEsetT MiértKérdő   = Just CausalisFinalisE
+kérdőszóEsetT HolKérdő     = Just InessivusE
+kérdőszóEsetT HováKérdő    = Just IllativusE
+kérdőszóEsetT HonnanKérdő  = Just ElativusE
+kérdőszóEsetT MikorKérdő   = Nothing
+kérdőszóEsetT HogyanKérdő  = Just FormativusE
+kérdőszóEsetT MivelKérdő   = Just InstrumentalisE
+kérdőszóEsetT KivelKérdő   = Just InstrumentalisE
+kérdőszóEsetT MelyikKérdő  = Just NominativusE
+kérdőszóEsetT MennyiKérdő  = Nothing
 
 -- ─── 4. A KÉRDÉS MINT MORFIZMUS ÜRES CELAL ─────────────────
+-- 四、问题即目标为空的态射 ─────────────────
 -- A Yoneda-csomag: egy kérdés + a válasz helye (kezdetben üres).
 -- A válasz ADATA a céltípus; a Maybe = a nyitottság maga.
 
 public export
-record NyitottKerdes where
-  constructor NyitottKerdesKonstruktor
-  kerdoSzava   : KerdoszoT
-  valaszHelye  : Maybe Fonetika
+record NyitottKérdés where
+  constructor NyitottKérdésKonstruktor
+  kérdőSzava   : KérdőszóT
+  válaszHelye  : Maybe Fonetika
 
 -- A megkérdezés: a kérdőszóból nyitott kérdés lesz.
 public export
-megkerdez : KerdoszoT -> NyitottKerdes
-megkerdez kerdo = NyitottKerdesKonstruktor kerdo Nothing
+megkérdez : KérdőszóT -> NyitottKérdés
+megkérdez kérdő = NyitottKérdésKonstruktor kérdő Nothing
 
 -- A megválaszolás: a válasz BETÖLTI a helyet — a gradiens lecsökken.
 public export
-megvalaszol : NyitottKerdes -> Fonetika -> NyitottKerdes
-megvalaszol (NyitottKerdesKonstruktor kerdo _) valasz =
-  NyitottKerdesKonstruktor kerdo (Just valasz)
+megválaszol : NyitottKérdés -> Fonetika -> NyitottKérdés
+megválaszol (NyitottKérdésKonstruktor kérdő _) válasz =
+  NyitottKérdésKonstruktor kérdő (Just válasz)
 
 -- Nyitott-e még? (van-e entrópia-gradiens?)
 public export
-megNyitott : NyitottKerdes -> Bool
-megNyitott (NyitottKerdesKonstruktor _ Nothing)  = True
-megNyitott (NyitottKerdesKonstruktor _ (Just _)) = False
+megNyitott : NyitottKérdés -> Bool
+megNyitott (NyitottKérdésKonstruktor _ Nothing)  = True
+megNyitott (NyitottKérdésKonstruktor _ (Just _)) = False
 
 -- ─── 5. A BINÁRIS KÉRDÉS = 1 BIT (a felezés elve) ─────────
+-- 五、二元问题 = 1 比特（二分原理） ─────────
 -- A válaszfélek típusa (a felezés két ága):
 public export
-data ValaszFele = ElsoFele | MasodikFele
+data VálaszFél = ElsőFél | MásodikFél
 -- „melyik?” = a felező kérdés: minden válasz ≤ 1 bittel
 -- csökkenti az entrópiát (session_export.md:74360).
 -- A KIBONTÁS: a két fél közül melyik? — Kubit!
 
 public export
-binarisKerdesBit : NyitottKerdes -> ValaszFele -> Fonetika -> NyitottKerdes
-binarisKerdesBit (NyitottKerdesKonstruktor kerdo _) valaszFele valasz =
-  NyitottKerdesKonstruktor kerdo (Just valasz)
+binárisKérdésBit : NyitottKérdés -> VálaszFél -> Fonetika -> NyitottKérdés
+binárisKérdésBit (NyitottKérdésKonstruktor kérdő _) válaszFél válasz =
+  NyitottKérdésKonstruktor kérdő (Just válasz)
 
 -- ─── 6. A „KI? / MI?” FUNDAMENTÁLIS PÁR ────────────────────
+-- 六、「谁？/什么？」基本对 ────────────────
 -- Az első kérdés-pár: élő / dolog. Ez a legalapvetőbb osztás —
 -- a saját / másik kubit nyelvi párja.
+-- 第一问题对：生物/事物——最根本的划分，「自己/他者」比特的语言对。
 
 public export
-data AlapOszto = Elo | Dolog
+data AlapOsztó = Élő | Dolog
 
 public export
-Eq AlapOszto where
-  Elo   == Elo   = True
+Eq AlapOsztó where
+  Élő   == Élő   = True
   Dolog == Dolog = True
   _     == _     = False
 
 public export
-kerdoszoOsztoja : KerdoszoT -> Maybe AlapOszto
-kerdoszoOsztoja KiKerdo   = Just Elo
-kerdoszoOsztoja KitKerdo  = Just Elo
-kerdoszoOsztoja KivelKerdo = Just Elo
-kerdoszoOsztoja MitKerdo  = Just Dolog
-kerdoszoOsztoja MiertKerdo = Just Dolog
-kerdoszoOsztoja HolKerdo  = Just Dolog
-kerdoszoOsztoja MelyikKerdo = Just Dolog
-kerdoszoOsztoja MennyiKerdo = Just Dolog
-kerdoszoOsztoja _         = Nothing
+kérdőszóOsztója : KérdőszóT -> Maybe AlapOsztó
+kérdőszóOsztója KiKérdő   = Just Élő
+kérdőszóOsztója KitKérdő  = Just Élő
+kérdőszóOsztója KivelKérdő = Just Élő
+kérdőszóOsztója MitKérdő  = Just Dolog
+kérdőszóOsztója MiértKérdő = Just Dolog
+kérdőszóOsztója HolKérdő  = Just Dolog
+kérdőszóOsztója MelyikKérdő = Just Dolog
+kérdőszóOsztója MennyiKérdő = Just Dolog
+kérdőszóOsztója _         = Nothing
 
 -- ─── 7. BIZONYÍTÁSOK (Refl — a fordító a bírája) ──────────
+-- 七、证明（Refl——编译器即裁判） ──────────────
 
 -- Kimenet: Refl — „ki?” élő, „mi?” dolog: az alap-osztó működik
-BizKiElo : kerdoszoOsztoja KiKerdo = Just Elo
-BizKiElo = Refl
+BizKiÉlő : kérdőszóOsztója KiKérdő = Just Élő
+BizKiÉlő = Refl
 
 -- Kimenet: Refl
-BizMiDolog : kerdoszoOsztoja MitKerdo = Just Dolog
+BizMiDolog : kérdőszóOsztója MitKérdő = Just Dolog
 BizMiDolog = Refl
 
 -- Kimenet: Refl — a „miért?” a causalis-finalis (OK/CÉL) esetet kérdezi
-BizMiertOk : kerdoszoEsetT MiertKerdo = Just CausalisFinalisE
-BizMiertOk = Refl
+BizMiértOk : kérdőszóEsetT MiértKérdő = Just CausalisFinalisE
+BizMiértOk = Refl
 
 -- Kimenet: Refl — „mikor?”-ra NINCS esetrag: az idő az IGEIDŐ-re
 -- felel (T-dimenzió), nem a névszó-ragrendszerre. Ez a CPT-mappa
 -- lényege: T ≠ C ≠ P — a három dimenzió más-más nyelvi eszközt használ.
-BizMikorNincsRag : kerdoszoEsetT MikorKerdo = Nothing
+BizMikorNincsRag : kérdőszóEsetT MikorKérdő = Nothing
 BizMikorNincsRag = Refl
 
 -- Kimenet: Refl — a frissen megkérdezett kérdés NYITOTT (gradiens van)
--- A GAUGE-KAPCSOLAT: magyarHangok "ki" == KerdesKi (fent, Refl-lel)
-BizKerdesKiGauge : ipaForma KerdesKi = "[ki]"
-BizKerdesKiGauge = Refl
+-- A GAUGE-KAPCSOLAT: magyarHangok "ki" == KérdésKi (fent, Refl-lel)
+BizKérdésKiGauge : ipaForma KérdésKi = "[ki]"
+BizKérdésKiGauge = Refl
 
 -- Kimenet: Refl — „hogyan” gy-digráfja [ɟ]-ként jelenik meg
-BizHogyanDgraf : ipaForma KerdesHogyan = "[hoɟɒn]"
+BizHogyanDgraf : ipaForma KérdésHogyan = "[hoɟɒn]"
 BizHogyanDgraf = Refl
 
 -- Kimenet: Refl — „melyik” ly-digráfja [j]-ként
-BizMelyikDgraf : ipaForma KerdesMelyik = "[mɛjik]"
+BizMelyikDgraf : ipaForma KérdésMelyik = "[mɛjik]"
 BizMelyikDgraf = Refl
 
 -- ─── 8. A KÉRDŐSZÓ-ESET TÁBLA (a 18 rag = 18 kérdés) ──────
+-- 八、疑问词-格表（18 个词缀 = 18 个问题） ──────
 
 public export
-kerdoszoTablazat : String
-kerdoszoTablazat =
+kérdőszóTáblázat : String
+kérdőszóTáblázat =
   "A 18 esetrag = 18 MEGVÁLASZOLT KÉRDÉS:\n"
   ++ "  ki?/mi?     → nominativus    (AGENS)\n"
   ++ "  kit?/mit?   → akkuszativus    (PATIENS)\n"
@@ -241,28 +252,29 @@ kerdoszoTablazat =
   ++ "  mikor?      → NINCS RAG — az IGEIDŐ-re felel (T ≠ C,P!)\n"
 
 -- ─── 9. FŐ — vékony IO-burkoló ────────────────────────────
+-- 九、主程序——薄 IO 壳 ────────────────────
 
 public export
-foJelentes : String
-foJelentes =
+főJelentés : String
+főJelentés =
   "═══ KÉRDŐSZÓ — mindennek alfja és omegája ═══\n\n"
-  ++ kerdoszoTablazat ++ "\n"
-  ++ "„ki?” IPA: " ++ ipaForma KerdesKi ++ " | „hogyan?” IPA: "
-  ++ ipaForma KerdesHogyan ++ " | „melyik?” IPA: " ++ ipaForma KerdesMelyik ++ "\n\n"
+  ++ kérdőszóTáblázat ++ "\n"
+  ++ "„ki?” IPA: " ++ ipaForma KérdésKi ++ " | „hogyan?” IPA: "
+  ++ ipaForma KérdésHogyan ++ " | „melyik?” IPA: " ++ ipaForma KérdésMelyik ++ "\n\n"
   ++ "A kérdés = morfizmus üres célal; a válasz tölti ki:\n"
-  ++ "  megkerdez MiertKerdo → nyitott? "
-  ++ show (megNyitott (megkerdez MiertKerdo)) ++ "\n"
-  ++ "  megvalaszol 'mi'-vel → nyitott? "
-  ++ show (megNyitott (megvalaszol (megkerdez MitKerdo) KerdesMi)) ++ "\n\n"
+  ++ "  megkérdez MiértKérdő → nyitott? "
+  ++ show (megNyitott (megkérdez MiértKérdő)) ++ "\n"
+  ++ "  megválaszol 'mi'-vel → nyitott? "
+  ++ show (megNyitott (megválaszol (megkérdez MitKérdő) KérdésMi)) ++ "\n\n"
   ++ "A bináris kérdés ≤ 1 bit: „melyik?” = a felező (O(log n))\n"
   ++ "Yoneda: a „ki?” = Hom(–, ember) — a kérdés a meta-szint\n"
 
 main : IO ()
-main = putStrLn foJelentes
+main = putStrLn főJelentés
 
 
 -- ─── REGISZTRÁCIÓ (ModulRegisztracio) ─────────────────────
 public export
-KerdoszoLeiras : ModulLeirasT
-KerdoszoLeiras = ModulLeirasKonstruktor
-  "Kerdoszo.idr" "kérdőszó→esetrag; „mikor?”-ra nincs rag [Refl] (T≠C,P)" "a kíváncsiság TÍPUS: kérdés = morfizmus üres célal; Yoneda" "13 teszt + 7 Refl"
+KérdőszóLeírás : ModulLeirasT
+KérdőszóLeírás = ModulLeirasKonstruktor
+  "Kérdőszo.idr" "kérdőszó→esetrag; „mikor?”-ra nincs rag [Refl] (T≠C,P)" "a kíváncsiság TÍPUS: kérdés = morfizmus üres célal; Yoneda" "13 teszt + 7 Refl"
