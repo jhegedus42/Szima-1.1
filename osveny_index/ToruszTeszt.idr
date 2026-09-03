@@ -18,6 +18,8 @@ module ToruszTeszt
 
 import Torusz
 import Fazis
+import Alap.CsomagoltTipusok
+import Alap.Hatar
 
 %default total
 
@@ -179,7 +181,7 @@ main = do
   putStrLn "  REFL: mondatTóruszPont Kérdés  = peldaKérdés        ✓ (bizPeldaKérdés)"
   putStrLn "  REFL: mondatTóruszPont Feltevés = peldaFeltevés      ✓ (bizPeldaFeltevés)"
   putStrLn "  REFL: mondatTóruszPont Következtetés = peldaKövetkeztetés  ✓ (bizPeldaKövetkeztetés)"
-  putStrLn ("  Tórusz pontjainak száma = " ++ show toruszPontokSzáma)
+  putStrLn ("  Tórusz pontjainak száma = " ++ szövegbőlKarakterlánc (sorSzöveggé toruszPontokSzáma))
   putStrLn ""
 
   -- ── 2. Pozíció-lépés ─────────────────────────────

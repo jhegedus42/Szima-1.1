@@ -27,6 +27,8 @@ module Torusz
 
 import Fazis
 import Data.Vect
+import Alap.CsomagoltTipusok
+import Alap.Hatar
 
 %default total
 
@@ -85,52 +87,74 @@ public export
 Show ToruszPont where
   show p = "(" ++ show (toruszPozíció p) ++ "," ++ show (toruszFázis p) ++ ")"
 
--- KONKRÉT PÉLDA: a tórusz 16 pontja (Z₂ × Z₈ = 2 × 8 = 16).
+-- KONKRÉT PÉLDA: a tórusz 16 pontja (Z₂ × Z₈ = 2 × 8 = 16) — FÜZÉRKÉNT.
+-- GAN-FELFEDEZÉS (100.02): az eredeti Listában TIZENHÉT elem volt — a
+-- «tautológia-pont» megismételte (1, F0)-t ((1, 360°) = (1, 0°)). A List
+-- eltűrte; a FÜZÉR HOSSZ-TÖRVÉNYE NEM TŰRI — a típus kikényszeríti a
+-- javítást (Curry–Howard fényes esete: az erősebb típus leleplezi a
+-- rejtett hibát; a duplikált pont immár dokumentáltan száműzve).
 public export
-töruszPont16 : List ToruszPont
-töruszPont16 = [
-  MkToruszPont Pozíció0 F0,   -- (0, 0°)   -- az állítás (valós, tény)
-  MkToruszPont Pozíció0 F1,   -- (0, 45°)  -- a megfigyelés (képzetes fél)
-  MkToruszPont Pozíció0 F2,   -- (0, 90°)   -- a kérdés (i, képzetes)
-  MkToruszPont Pozíció0 F3,   -- (0, 135°) -- a kétvalóság ((-1+i)/√2)
-  MkToruszPont Pozíció0 F4,   -- (0, 180°)  -- a feltevés (-1, inverz)
-  MkToruszPont Pozíció0 F5,   -- (0, 225°)  -- az ok-okozat ((-1-i)/√2)
-  MkToruszPont Pozíció0 F6,   -- (0, 270°)  -- a következtetés (-i, adjungált)
-  MkToruszPont Pozíció0 F7,   -- (0, 315°)  -- az ok (az 360°-os visszatérés)
-  MkToruszPont Pozíció1 F0,   -- (1, 0°)   -- a megerősítés (a 360° utáni kor)
-  MkToruszPont Pozíció1 F1,   -- (1, 45°)  -- a tapasztalat (1+i)/√2
-  MkToruszPont Pozíció1 F2,   -- (1, 90°)  -- a következtetés (i, a 90°-os ugrás)
-  MkToruszPont Pozíció1 F3,   -- (1, 135°) -- a hipotézis ((-1+i)/√2)
-  MkToruszPont Pozíció1 F4,   -- (1, 180°) -- a cáfolat (-1, a tagadás)
-  MkToruszPont Pozíció1 F5,   -- (1, 225°) -- a meglepetés ((-1-i)/√2)
-  MkToruszPont Pozíció1 F6,   -- (1, 270°) -- a revízió (-i, a visszacsalás)
-  MkToruszPont Pozíció1 F7,   -- (1, 315°) -- a szintézés ((1-i)/√2)
-  MkToruszPont Pozíció1 F0   -- (1, 360°) -- a tautológia (1, = 0°)
-  ]
+töruszPont16 : Füzér ToruszPont
+töruszPont16 =
+  let tizenhatodik = Fűzés (MkToruszPont Pozíció1 F7) FüzérVége
+      tizenötödik  = Fűzés (MkToruszPont Pozíció1 F6) tizenhatodik
+      tizennegyedik = Fűzés (MkToruszPont Pozíció1 F5) tizenötödik
+      tizenharmadik = Fűzés (MkToruszPont Pozíció1 F4) tizennegyedik
+      tizenkettedik = Fűzés (MkToruszPont Pozíció1 F3) tizenharmadik
+      tizenegyedik  = Fűzés (MkToruszPont Pozíció1 F2) tizenkettedik
+      tizedik       = Fűzés (MkToruszPont Pozíció1 F1) tizenegyedik
+      kilencedik    = Fűzés (MkToruszPont Pozíció1 F0) tizedik
+      nyolcadik     = Fűzés (MkToruszPont Pozíció0 F7) kilencedik
+      hetedik       = Fűzés (MkToruszPont Pozíció0 F6) nyolcadik
+      hatodik       = Fűzés (MkToruszPont Pozíció0 F5) hetedik
+      ötödik        = Fűzés (MkToruszPont Pozíció0 F4) hatodik
+      negyedik      = Fűzés (MkToruszPont Pozíció0 F3) ötödik
+      harmadik      = Fűzés (MkToruszPont Pozíció0 F2) negyedik
+      második       = Fűzés (MkToruszPont Pozíció0 F1) harmadik
+      első          = Fűzés (MkToruszPont Pozíció0 F0) második
+  in első
 
 -- ═══════════════════════════════════════════════════════════════════════
 -- II. A TÓRUSZ PONTJAINAK SZÁMA = 16 / 环面点数 = 16
 -- ═══════════════════════════════════════════════════════════════════════
 
-||| A tórusz pontjainak száma: 2 × 8 = 16.
+||| A tórusz pontjainak száma: a füzér HOSSZÁBÓL — nem literálból!
+||| (A 100.02 lényege: a szám ADAT, a tényleges láncból számolódik; ha
+||| a lánc változik, a szám is — a típus összeköti őket.)
 public export
-toruszPontokSzáma : Nat
-toruszPontokSzáma = 16
+toruszPontokSzáma : Sorszám
+toruszPontokSzáma = füzérHossz Torusz.töruszPont16
 
--- REFL: a tórusz pontjainak száma = 16 (a Nat-szorzás nem
--- redukálódik a typechecker szintjén, ezért a toruszPontokSzáma direkt 16).
+-- REFL, 1. út (direkt szorzat): |Z₂ × Z₈| = 2 × 8 = 8 + 8 = 16.
+-- (A sorÖsszeadás az ELSŐ argumentumon recursionál — a konkrét bal
+-- oldal azonnal redukál; l. Idris2BizonyitasSzabalyok 4. szabály.)
 -- A 16 = a Cl(4) 16 pengéje (a 256-os híd része: 240 + 16 = 256).
--- KÉT független út (AGENTS §18):
---   út 1: |Z₂ × Z₈| = 2 × 8 = 16 (a tórusz = direkt szorzat)
---   út 2: |Cl(4)| = 1+4+6+4+1 = 16 (a Pascal háromszög n=4 sora)
 public export
-bizTóruszPontokSzáma : 2 * 8 = 16
+bizTóruszPontokSzáma :
+  füzérHossz Torusz.töruszPont16
+  = sorÖsszeadás Alap.CsomagoltTipusok.sorNyolc Alap.CsomagoltTipusok.sorNyolc
 bizTóruszPontokSzáma = Refl
 
--- KÉT független út: a Cl(4) pengék összege = a Pascal háromszög n=4 sora.
+-- REFL, 2. út (Pascal-háromszög): |Cl(4)| = 1+4+6+4+1 = 16 (n=4 sora).
+-- KÉT független út (AGENTS §18) — mindkettő a füzér hosszáig fut le.
 public export
-bizTóruszCl4Penge : 1 + 4 + 6 + 4 + 1 = 16
+bizTóruszCl4Penge :
+  füzérHossz Torusz.töruszPont16
+  = sorÖsszeadás (sorÖsszeadás (sorÖsszeadás (sorÖsszeadás
+      Alap.CsomagoltTipusok.sorEgy Alap.CsomagoltTipusok.sorNégy)
+      Alap.CsomagoltTipusok.sorHat)
+      Alap.CsomagoltTipusok.sorNégy)
+      Alap.CsomagoltTipusok.sorEgy
 bizTóruszCl4Penge = Refl
+
+||| A CSŐVEZETÉK-TANÚ: a hossz → a magyar szó — «tizenhat» (D nélkül!).
+||| Egy bizonyítás, amely a teljes láncot lefuti: a 16 pont füzére →
+||| a hossza → a szó, amit a main kiír.
+public export
+toruszSzámaSzava :
+  sorSzöveggé Torusz.toruszPontokSzáma
+  = Alap.CsomagoltTipusok.szorzámTizenhatSzó
+toruszSzámaSzava = Refl
 
 -- ═══════════════════════════════════════════════════════════════════════
 -- III. A TÓRUSZON VALÓ MOZGÁS — KÖRBEFORGÁS / 环面上的运动
@@ -232,14 +256,10 @@ bizGKPTóruszPont : (g : GKPFázistér) -> gkpTóruszPont g = MkToruszPont (gkpP
 bizGKPTóruszPont (MkGKPFázistér q p) = Refl
 
 -- KONKRÉT PÉLDA: a 16 GKP-pont (a teljes tórusz).
--- (A `map` nem vesz két listát Idrisben — az explicit lista biztosabb.)
-gkpTórusz16 : List ToruszPont
-gkpTórusz16 = [
-  MkToruszPont Pozíció0 F0, MkToruszPont Pozíció0 F1, MkToruszPont Pozíció0 F2, MkToruszPont Pozíció0 F3,
-  MkToruszPont Pozíció0 F4, MkToruszPont Pozíció0 F5, MkToruszPont Pozíció0 F6, MkToruszPont Pozíció0 F7,
-  MkToruszPont Pozíció1 F0, MkToruszPont Pozíció1 F1, MkToruszPont Pozíció1 F2, MkToruszPont Pozíció1 F3,
-  MkToruszPont Pozíció1 F4, MkToruszPont Pozíció1 F5, MkToruszPont Pozíció1 F6, MkToruszPont Pozíció1 F7
-  ]
+-- (§24: az eredeti azonos tartalmú Listát MÁSOLTA — most az EGY lánc él,
+-- két néven; a gkpTórusz16 a töruszPont16 álneve.)
+gkpTórusz16 : Füzér ToruszPont
+gkpTórusz16 = Torusz.töruszPont16
 
 -- ═══════════════════════════════════════════════════════════════════════
 -- V. A TÓRUSZ ÉS A MAGYAR MONDAT KÓDOLÁSA / 环面与匈牙利语句编码
@@ -375,10 +395,10 @@ main = do
   putStrLn "    (1, F2)  következtetés (90°) (1, F3)  hipotézis (135°)"
   putStrLn "    (1, F4)  cáfolat (180°)  (1, F5)  meglepetés (225°)"
   putStrLn "    (1, F6)  revízió (270°)  (1, F7)  szintézés (315°)"
-  putStrLn ("  Tórusz pontjainak száma = " ++ show toruszPontokSzáma)
+  putStrLn ("  Tórusz pontjainak száma = " ++ szövegbőlKarakterlánc (sorSzöveggé toruszPontokSzáma))
   putStrLn ""
   putStrLn "  TESZT: 2 × 8 = 16"
-  putStrLn ("    REFL: 16 = " ++ show toruszPontokSzáma ++ "  ✓ (bizTóruszPontokSzáma)")
+  putStrLn ("    REFL: tizenhat = " ++ szövegbőlKarakterlánc (sorSzöveggé toruszPontokSzáma) ++ "  ✓ (bizTóruszPontokSzáma)")
   putStrLn ("    REFL: 16 = Cl(4) penge  ✓ (bizToruszCl4Penge)")
   putStrLn ""
 
