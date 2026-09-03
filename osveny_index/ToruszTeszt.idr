@@ -29,32 +29,32 @@ import Alap.Hatar
 -- A 16 tórusz-pont (Z₂ × Z₈). Konkrét értékekkel, show-val kiírva.
 
 -- KONKRÉT PÉLDA: az állítás pontja = (0, F0).
-peldaÁllítás : ToruszPont
-peldaÁllítás = MkToruszPont Pozíció0 F0
+peldaÁllítás : TóruszPont
+peldaÁllítás = MkTóruszPont Pozíció0 F0
 
 -- KONKRÉT PÉLDA: a kérdés pontja = (0, F2).
-peldaKérdés : ToruszPont
-peldaKérdés = MkToruszPont Pozíció0 F2
+peldaKérdés : TóruszPont
+peldaKérdés = MkTóruszPont Pozíció0 F2
 
 -- KONKRÉT PÉLDA: a feltevés pontja = (0, F4).
-peldaFeltevés : ToruszPont
-peldaFeltevés = MkToruszPont Pozíció0 F4
+peldaFeltevés : TóruszPont
+peldaFeltevés = MkTóruszPont Pozíció0 F4
 
 -- KONKRÉT PÉLDA: a következtetés pontja = (0, F6).
-peldaKövetkeztetés : ToruszPont
-peldaKövetkeztetés = MkToruszPont Pozíció0 F6
+peldaKövetkeztetés : TóruszPont
+peldaKövetkeztetés = MkTóruszPont Pozíció0 F6
 
 -- REFL: a mondatTóruszPont (importálva) kimenete = a konkrét pont.
-bizPeldaÁllítás : mondatTóruszPont Állítás = MkToruszPont Pozíció0 F0
+bizPeldaÁllítás : mondatTóruszPont Állítás = MkTóruszPont Pozíció0 F0
 bizPeldaÁllítás = Refl
 
-bizPeldaKérdés : mondatTóruszPont Kérdés = MkToruszPont Pozíció0 F2
+bizPeldaKérdés : mondatTóruszPont Kérdés = MkTóruszPont Pozíció0 F2
 bizPeldaKérdés = Refl
 
-bizPeldaFeltevés : mondatTóruszPont Feltevés = MkToruszPont Pozíció0 F4
+bizPeldaFeltevés : mondatTóruszPont Feltevés = MkTóruszPont Pozíció0 F4
 bizPeldaFeltevés = Refl
 
-bizPeldaKövetkeztetés : mondatTóruszPont Következtetés = MkToruszPont Pozíció0 F6
+bizPeldaKövetkeztetés : mondatTóruszPont Következtetés = MkTóruszPont Pozíció0 F6
 bizPeldaKövetkeztetés = Refl
 
 -- ═══════════════════════════════════════════════════════════════════════
@@ -63,19 +63,19 @@ bizPeldaKövetkeztetés = Refl
 -- A pozícióLépés (importálva a Torusz-ból) bit-flip: 0→1, 1→0.
 
 -- KONKRÉT PÉLDA: (0, F0) → (1, F0) — az állítás pozíció-lépése.
-peldaPozícióLépés0 : pozícióLépés (MkToruszPont Pozíció0 F0) = MkToruszPont Pozíció1 F0
+peldaPozícióLépés0 : pozícióLépés (MkTóruszPont Pozíció0 F0) = MkTóruszPont Pozíció1 F0
 peldaPozícióLépés0 = Refl
 
 -- KONKRÉT PÉLDA: (1, F0) → (0, F0) — a megerősítés pozíció-lépése.
-peldaPozícióLépés1 : pozícióLépés (MkToruszPont Pozíció1 F0) = MkToruszPont Pozíció0 F0
+peldaPozícióLépés1 : pozícióLépés (MkTóruszPont Pozíció1 F0) = MkTóruszPont Pozíció0 F0
 peldaPozícióLépés1 = Refl
 
 -- KONKRÉT PÉLDA: (0, F2) → (1, F2) — a kérdés pozíció-lépése.
-peldaPozícióLépés2 : pozícióLépés (MkToruszPont Pozíció0 F2) = MkToruszPont Pozíció1 F2
+peldaPozícióLépés2 : pozícióLépés (MkTóruszPont Pozíció0 F2) = MkTóruszPont Pozíció1 F2
 peldaPozícióLépés2 = Refl
 
 -- REFL: a pozíció-lépés involúció (importálva) — (0, F0) kétszer = (0, F0).
-bizPozícióLépésInvolúcióTeszt : pozícióLépés (pozícióLépés (MkToruszPont Pozíció0 F0)) = MkToruszPont Pozíció0 F0
+bizPozícióLépésInvolúcióTeszt : pozícióLépés (pozícióLépés (MkTóruszPont Pozíció0 F0)) = MkTóruszPont Pozíció0 F0
 bizPozícióLépésInvolúcióTeszt = Refl
 
 -- ═══════════════════════════════════════════════════════════════════════
@@ -84,15 +84,15 @@ bizPozícióLépésInvolúcióTeszt = Refl
 -- A fázisLépés (importálva) Z₈ forgatás: F0→F1→...→F7→F0.
 
 -- KONKRÉT PÉLDA: (0, F0) → (0, F1) — az állítás fázis-lépése.
-peldaFázisLépés1 : fázisLépés (MkToruszPont Pozíció0 F0) = MkToruszPont Pozíció0 F1
+peldaFázisLépés1 : fázisLépés (MkTóruszPont Pozíció0 F0) = MkTóruszPont Pozíció0 F1
 peldaFázisLépés1 = Refl
 
 -- KONKRÉT PÉLDA: (0, F1) → (0, F2) — a megfigyelés fázis-lépése.
-peldaFázisLépés2 : fázisLépés (MkToruszPont Pozíció0 F1) = MkToruszPont Pozíció0 F2
+peldaFázisLépés2 : fázisLépés (MkTóruszPont Pozíció0 F1) = MkTóruszPont Pozíció0 F2
 peldaFázisLépés2 = Refl
 
 -- KONKRÉT PÉLDA: (0, F7) → (0, F0) — az ok fázis-lépése (a 8. lépés).
-peldaFázisLépés8 : fázisLépés (MkToruszPont Pozíció0 F7) = MkToruszPont Pozíció0 F0
+peldaFázisLépés8 : fázisLépés (MkTóruszPont Pozíció0 F7) = MkTóruszPont Pozíció0 F0
 peldaFázisLépés8 = Refl
 
 -- ═══════════════════════════════════════════════════════════════════════
@@ -101,11 +101,11 @@ peldaFázisLépés8 = Refl
 -- A gkpTóruszPont (importálva) átalakítja a GKP-fázistért tórusz-ponttá.
 
 -- KONKRÉT PÉLDA: GKP (0, F0) → tórusz-pont (0, F0).
-peldaGKP0 : gkpTóruszPont (MkGKPFázistér Pozíció0 F0) = MkToruszPont Pozíció0 F0
+peldaGKP0 : gkpTóruszPont (MkGKPFázistér Pozíció0 F0) = MkTóruszPont Pozíció0 F0
 peldaGKP0 = Refl
 
 -- KONKRÉT PÉLDA: GKP (1, F6) → tórusz-pont (1, F6).
-peldaGKP1 : gkpTóruszPont (MkGKPFázistér Pozíció1 F6) = MkToruszPont Pozíció1 F6
+peldaGKP1 : gkpTóruszPont (MkGKPFázistér Pozíció1 F6) = MkTóruszPont Pozíció1 F6
 peldaGKP1 = Refl
 
 -- ═══════════════════════════════════════════════════════════════════════
@@ -181,7 +181,7 @@ main = do
   putStrLn "  REFL: mondatTóruszPont Kérdés  = peldaKérdés        ✓ (bizPeldaKérdés)"
   putStrLn "  REFL: mondatTóruszPont Feltevés = peldaFeltevés      ✓ (bizPeldaFeltevés)"
   putStrLn "  REFL: mondatTóruszPont Következtetés = peldaKövetkeztetés  ✓ (bizPeldaKövetkeztetés)"
-  putStrLn ("  Tórusz pontjainak száma = " ++ szövegbőlKarakterlánc (sorSzöveggé toruszPontokSzáma))
+  putStrLn ("  Tórusz pontjainak száma = " ++ szövegbőlKarakterlánc (sorSzöveggé tóruszPontokSzáma))
   putStrLn ""
 
   -- ── 2. Pozíció-lépés ─────────────────────────────
@@ -190,9 +190,9 @@ main = do
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn ""
   putStrLn "  Konkrét példák (importált függvény: pozícióLépés):"
-  putStrLn ("    pozícióLépés (0, F0) = " ++ show (pozícióLépés (MkToruszPont Pozíció0 F0)) ++ "  (1, F0)")
-  putStrLn ("    pozícióLépés (1, F0) = " ++ show (pozícióLépés (MkToruszPont Pozíció1 F0)) ++ "  (0, F0)")
-  putStrLn ("    pozícióLépés (0, F2) = " ++ show (pozícióLépés (MkToruszPont Pozíció0 F2)) ++ "  (1, F2)")
+  putStrLn ("    pozícióLépés (0, F0) = " ++ show (pozícióLépés (MkTóruszPont Pozíció0 F0)) ++ "  (1, F0)")
+  putStrLn ("    pozícióLépés (1, F0) = " ++ show (pozícióLépés (MkTóruszPont Pozíció1 F0)) ++ "  (0, F0)")
+  putStrLn ("    pozícióLépés (0, F2) = " ++ show (pozícióLépés (MkTóruszPont Pozíció0 F2)) ++ "  (1, F2)")
   putStrLn ""
   putStrLn "  REFL: pozícióLépés (0, F0) = (1, F0)  ✓ (peldaPozícióLépés0)"
   putStrLn "  REFL: pozícióLépés (1, F0) = (0, F0)  ✓ (peldaPozícióLépés1)"
@@ -206,9 +206,9 @@ main = do
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn ""
   putStrLn "  Konkrét példák (importált függvény: fázisLépés):"
-  putStrLn ("    fázisLépés (0, F0) = " ++ show (fázisLépés (MkToruszPont Pozíció0 F0)) ++ "  (0, F1)")
-  putStrLn ("    fázisLépés (0, F1) = " ++ show (fázisLépés (MkToruszPont Pozíció0 F1)) ++ "  (0, F2)")
-  putStrLn ("    fázisLépés (0, F7) = " ++ show (fázisLépés (MkToruszPont Pozíció0 F7)) ++ "  (0, F0)")
+  putStrLn ("    fázisLépés (0, F0) = " ++ show (fázisLépés (MkTóruszPont Pozíció0 F0)) ++ "  (0, F1)")
+  putStrLn ("    fázisLépés (0, F1) = " ++ show (fázisLépés (MkTóruszPont Pozíció0 F1)) ++ "  (0, F2)")
+  putStrLn ("    fázisLépés (0, F7) = " ++ show (fázisLépés (MkTóruszPont Pozíció0 F7)) ++ "  (0, F0)")
   putStrLn ""
   putStrLn "  REFL: fázisLépés (0, F0) = (0, F1)  ✓ (peldaFázisLépés1)"
   putStrLn "  REFL: fázisLépés (0, F1) = (0, F2)  ✓ (peldaFázisLépés2)"

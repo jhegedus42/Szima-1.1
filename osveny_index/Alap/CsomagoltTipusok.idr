@@ -1610,10 +1610,10 @@ szorzámTizenSzó : Szöveg
 szorzámTizenSzó = BetűtFűz TBetű (BetűtFűz IBetű (BetűtFűz ZBetű (BetűtFűz EBetű
   (BetűtFűz NBetű ÜresSzöveg))))
 
-||| A «tizenhat» szó TANÚNAK (a sorSzöveggéTízTanú + a toruszi tanú
+||| A «tizenhat» szó TANÚNAK (a sorSzöveggéTízTanú + a tóruszi tanú
 ||| ehhez hasonlít) — a kompozicionális alak: tizen + hat
-||| (t-i-z-e-n-h-a-t — NINCS D!). PUBLIKUS: a Torusz-modul csővezeték-
-||| tanúja (toruszSzámaSzava) hivatkozik rá.
+||| (t-i-z-e-n-h-a-t — NINCS D!). PUBLIKUS: a Tórusz-modul csővezeték-
+||| tanúja (tóruszSzámaSzava) hivatkozik rá.
 public export
 szorzámTizenhatSzó : Szöveg
 szorzámTizenhatSzó = BetűtFűz TBetű (BetűtFűz IBetű (BetűtFűz ZBetű (BetűtFűz EBetű
@@ -1681,7 +1681,7 @@ tízFelett (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező
 ||| telít kapujának feloldása a tízen túli számokra.
 ||| A 21 KLAUZÚLÁS forma gépileg GENERÁLVA (a kézi mélységszámolás
 ||| csapdája #18b után) — a KLAAUZULÁK típus-szinten IS redukálnak
-||| (a case/with mély ág-mintái NEM — ezért a toruszSzámaSzava-tanú
+||| (a case/with mély ág-mintái NEM — ezért a tóruszSzámaSzava-tanú
 ||| miatt ez a forma győzött). A 11..19 kompozicionális: tizen + szó.
 ||| (A tízAlattiSzó/tízFelett maradt dokumentáltan a kompozicionális
 ||| út emlékeként; a MegjelenítésT EgészSzám szavaival való egyesítés
@@ -1714,7 +1714,7 @@ sorSzöveggé (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező (S
 sorSzöveggé _ = szorzámHúszSzó
 
 -- BIZONYÍTÁS: a híd helyes tízen (definicionális Refl); a tizenhatos
--- tanú a Torusz-modulban él (toruszSzámaSzava — a teljes csővezeték:
+-- tanú a Tórusz-modulban él (tóruszSzámaSzava — a teljes csővezeték:
 -- füzérHossz → sorSzöveggé → tizen+hat).
 public export
 sorSzöveggéTízTanú :

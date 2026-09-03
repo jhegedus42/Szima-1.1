@@ -74,18 +74,18 @@ bizPozícióVáltásInvolúció Pozíció1 = Refl
 
 ||| A tórusz pontja = (pozíció, fázis) ∈ Z₂ × Z₈.
 public export
-record ToruszPont where
-  constructor MkToruszPont
-  toruszPozíció : Pozíció     -- a bit (Z₂)
-  toruszFázis   : Fazis       -- a fázis (Z₈)
+record TóruszPont where
+  constructor MkTóruszPont
+  tóruszPozíció : Pozíció     -- a bit (Z₂)
+  tóruszFázis   : Fazis       -- a fázis (Z₈)
 
 public export
-Eq ToruszPont where
-  p == q = (toruszPozíció p == toruszPozíció q) && (toruszFázis p == toruszFázis q)
+Eq TóruszPont where
+  p == q = (tóruszPozíció p == tóruszPozíció q) && (tóruszFázis p == tóruszFázis q)
 
 public export
-Show ToruszPont where
-  show p = "(" ++ show (toruszPozíció p) ++ "," ++ show (toruszFázis p) ++ ")"
+Show TóruszPont where
+  show p = "(" ++ show (tóruszPozíció p) ++ "," ++ show (tóruszFázis p) ++ ")"
 
 -- KONKRÉT PÉLDA: a tórusz 16 pontja (Z₂ × Z₈ = 2 × 8 = 16) — FÜZÉRKÉNT.
 -- GAN-FELFEDEZÉS (100.02): az eredeti Listában TIZENHÉT elem volt — a
@@ -94,24 +94,24 @@ Show ToruszPont where
 -- javítást (Curry–Howard fényes esete: az erősebb típus leleplezi a
 -- rejtett hibát; a duplikált pont immár dokumentáltan száműzve).
 public export
-töruszPont16 : Füzér ToruszPont
-töruszPont16 =
-  let tizenhatodik = Fűzés (MkToruszPont Pozíció1 F7) FüzérVége
-      tizenötödik  = Fűzés (MkToruszPont Pozíció1 F6) tizenhatodik
-      tizennegyedik = Fűzés (MkToruszPont Pozíció1 F5) tizenötödik
-      tizenharmadik = Fűzés (MkToruszPont Pozíció1 F4) tizennegyedik
-      tizenkettedik = Fűzés (MkToruszPont Pozíció1 F3) tizenharmadik
-      tizenegyedik  = Fűzés (MkToruszPont Pozíció1 F2) tizenkettedik
-      tizedik       = Fűzés (MkToruszPont Pozíció1 F1) tizenegyedik
-      kilencedik    = Fűzés (MkToruszPont Pozíció1 F0) tizedik
-      nyolcadik     = Fűzés (MkToruszPont Pozíció0 F7) kilencedik
-      hetedik       = Fűzés (MkToruszPont Pozíció0 F6) nyolcadik
-      hatodik       = Fűzés (MkToruszPont Pozíció0 F5) hetedik
-      ötödik        = Fűzés (MkToruszPont Pozíció0 F4) hatodik
-      negyedik      = Fűzés (MkToruszPont Pozíció0 F3) ötödik
-      harmadik      = Fűzés (MkToruszPont Pozíció0 F2) negyedik
-      második       = Fűzés (MkToruszPont Pozíció0 F1) harmadik
-      első          = Fűzés (MkToruszPont Pozíció0 F0) második
+tóruszPont16 : Füzér TóruszPont
+tóruszPont16 =
+  let tizenhatodik = Fűzés (MkTóruszPont Pozíció1 F7) FüzérVége
+      tizenötödik  = Fűzés (MkTóruszPont Pozíció1 F6) tizenhatodik
+      tizennegyedik = Fűzés (MkTóruszPont Pozíció1 F5) tizenötödik
+      tizenharmadik = Fűzés (MkTóruszPont Pozíció1 F4) tizennegyedik
+      tizenkettedik = Fűzés (MkTóruszPont Pozíció1 F3) tizenharmadik
+      tizenegyedik  = Fűzés (MkTóruszPont Pozíció1 F2) tizenkettedik
+      tizedik       = Fűzés (MkTóruszPont Pozíció1 F1) tizenegyedik
+      kilencedik    = Fűzés (MkTóruszPont Pozíció1 F0) tizedik
+      nyolcadik     = Fűzés (MkTóruszPont Pozíció0 F7) kilencedik
+      hetedik       = Fűzés (MkTóruszPont Pozíció0 F6) nyolcadik
+      hatodik       = Fűzés (MkTóruszPont Pozíció0 F5) hetedik
+      ötödik        = Fűzés (MkTóruszPont Pozíció0 F4) hatodik
+      negyedik      = Fűzés (MkTóruszPont Pozíció0 F3) ötödik
+      harmadik      = Fűzés (MkTóruszPont Pozíció0 F2) negyedik
+      második       = Fűzés (MkTóruszPont Pozíció0 F1) harmadik
+      első          = Fűzés (MkTóruszPont Pozíció0 F0) második
   in első
 
 -- ═══════════════════════════════════════════════════════════════════════
@@ -122,8 +122,8 @@ töruszPont16 =
 ||| (A 100.02 lényege: a szám ADAT, a tényleges láncból számolódik; ha
 ||| a lánc változik, a szám is — a típus összeköti őket.)
 public export
-toruszPontokSzáma : Sorszám
-toruszPontokSzáma = füzérHossz Torusz.töruszPont16
+tóruszPontokSzáma : Sorszám
+tóruszPontokSzáma = füzérHossz Torusz.tóruszPont16
 
 -- REFL, 1. út (direkt szorzat): |Z₂ × Z₈| = 2 × 8 = 8 + 8 = 16.
 -- (A sorÖsszeadás az ELSŐ argumentumon recursionál — a konkrét bal
@@ -131,7 +131,7 @@ toruszPontokSzáma = füzérHossz Torusz.töruszPont16
 -- A 16 = a Cl(4) 16 pengéje (a 256-os híd része: 240 + 16 = 256).
 public export
 bizTóruszPontokSzáma :
-  füzérHossz Torusz.töruszPont16
+  füzérHossz Torusz.tóruszPont16
   = sorÖsszeadás Alap.CsomagoltTipusok.sorNyolc Alap.CsomagoltTipusok.sorNyolc
 bizTóruszPontokSzáma = Refl
 
@@ -139,7 +139,7 @@ bizTóruszPontokSzáma = Refl
 -- KÉT független út (AGENTS §18) — mindkettő a füzér hosszáig fut le.
 public export
 bizTóruszCl4Penge :
-  füzérHossz Torusz.töruszPont16
+  füzérHossz Torusz.tóruszPont16
   = sorÖsszeadás (sorÖsszeadás (sorÖsszeadás (sorÖsszeadás
       Alap.CsomagoltTipusok.sorEgy Alap.CsomagoltTipusok.sorNégy)
       Alap.CsomagoltTipusok.sorHat)
@@ -151,10 +151,10 @@ bizTóruszCl4Penge = Refl
 ||| Egy bizonyítás, amely a teljes láncot lefuti: a 16 pont füzére →
 ||| a hossza → a szó, amit a main kiír.
 public export
-toruszSzámaSzava :
-  sorSzöveggé Torusz.toruszPontokSzáma
+tóruszSzámaSzava :
+  sorSzöveggé Torusz.tóruszPontokSzáma
   = Alap.CsomagoltTipusok.szorzámTizenhatSzó
-toruszSzámaSzava = Refl
+tóruszSzámaSzava = Refl
 
 -- ═══════════════════════════════════════════════════════════════════════
 -- III. A TÓRUSZON VALÓ MOZGÁS — KÖRBEFORGÁS / 环面上的运动
@@ -171,57 +171,57 @@ toruszSzámaSzava = Refl
 
 ||| Pozíció-lépés a tóruszon: bit-flip, fázis fix.
 public export
-pozícióLépés : ToruszPont -> ToruszPont
-pozícióLépés (MkToruszPont p f) = MkToruszPont (pozícióVáltás p) f
+pozícióLépés : TóruszPont -> TóruszPont
+pozícióLépés (MkTóruszPont p f) = MkTóruszPont (pozícióVáltás p) f
 
 ||| Fázis-lépés a tóruszon: fázis +1 (Z₈), pozíció fix.
 public export
-fázisLépés : ToruszPont -> ToruszPont
-fázisLépés (MkToruszPont p f) = MkToruszPont p (fazisOsszead f F1)
+fázisLépés : TóruszPont -> TóruszPont
+fázisLépés (MkTóruszPont p f) = MkTóruszPont p (fazisOsszead f F1)
 
 -- REFL: a pozíció-lépés involúció (kétszer = identitás).
 -- Bizonyítás: a pozícióVáltás involúció (X² = I), a fázis fix marad.
 -- A 16 eset = 2 pozíció × 8 fázis, de a fázis változó (f) mindig fix,
 -- ezért csak 2 minta kell (pozíció szerinti).
 public export
-bizPozícióLépésInvolúció : (t : ToruszPont) -> pozícióLépés (pozícióLépés t) = t
-bizPozícióLépésInvolúció (MkToruszPont Pozíció0 f) = Refl
-bizPozícióLépésInvolúció (MkToruszPont Pozíció1 f) = Refl
+bizPozícióLépésInvolúció : (t : TóruszPont) -> pozícióLépés (pozícióLépés t) = t
+bizPozícióLépésInvolúció (MkTóruszPont Pozíció0 f) = Refl
+bizPozícióLépésInvolúció (MkTóruszPont Pozíció1 f) = Refl
 
 -- REFL: a fázis-lépés 8-szor = identitás (Z₈ periodicitás).
 -- Bizonyítás: 8 lépés külön (fázisLépés1...fázisLépés8), mindegyik Refl.
-fázisLépés1 : fázisLépés (MkToruszPont Pozíció0 F0) = MkToruszPont Pozíció0 F1
-fázisLépés2 : fázisLépés (MkToruszPont Pozíció0 F1) = MkToruszPont Pozíció0 F2
-fázisLépés3 : fázisLépés (MkToruszPont Pozíció0 F2) = MkToruszPont Pozíció0 F3
-fázisLépés4 : fázisLépés (MkToruszPont Pozíció0 F3) = MkToruszPont Pozíció0 F4
-fázisLépés5 : fázisLépés (MkToruszPont Pozíció0 F4) = MkToruszPont Pozíció0 F5
-fázisLépés6 : fázisLépés (MkToruszPont Pozíció0 F5) = MkToruszPont Pozíció0 F6
-fázisLépés7 : fázisLépés (MkToruszPont Pozíció0 F6) = MkToruszPont Pozíció0 F7
-fázisLépés8 : fázisLépés (MkToruszPont Pozíció0 F7) = MkToruszPont Pozíció0 F0
+fázisLépés1 : fázisLépés (MkTóruszPont Pozíció0 F0) = MkTóruszPont Pozíció0 F1
+fázisLépés2 : fázisLépés (MkTóruszPont Pozíció0 F1) = MkTóruszPont Pozíció0 F2
+fázisLépés3 : fázisLépés (MkTóruszPont Pozíció0 F2) = MkTóruszPont Pozíció0 F3
+fázisLépés4 : fázisLépés (MkTóruszPont Pozíció0 F3) = MkTóruszPont Pozíció0 F4
+fázisLépés5 : fázisLépés (MkTóruszPont Pozíció0 F4) = MkTóruszPont Pozíció0 F5
+fázisLépés6 : fázisLépés (MkTóruszPont Pozíció0 F5) = MkTóruszPont Pozíció0 F6
+fázisLépés7 : fázisLépés (MkTóruszPont Pozíció0 F6) = MkTóruszPont Pozíció0 F7
+fázisLépés8 : fázisLépés (MkTóruszPont Pozíció0 F7) = MkTóruszPont Pozíció0 F0
 
 -- REFL: a 8 lépés visszatér az eredeti állapotba (identitás).
-bizFázisLépés1 : fázisLépés (MkToruszPont Pozíció0 F0) = MkToruszPont Pozíció0 F1
+bizFázisLépés1 : fázisLépés (MkTóruszPont Pozíció0 F0) = MkTóruszPont Pozíció0 F1
 bizFázisLépés1 = Refl
 
-bizFázisLépés2 : fázisLépés (MkToruszPont Pozíció0 F1) = MkToruszPont Pozíció0 F2
+bizFázisLépés2 : fázisLépés (MkTóruszPont Pozíció0 F1) = MkTóruszPont Pozíció0 F2
 bizFázisLépés2 = Refl
 
-bizFázisLépés3 : fázisLépés (MkToruszPont Pozíció0 F2) = MkToruszPont Pozíció0 F3
+bizFázisLépés3 : fázisLépés (MkTóruszPont Pozíció0 F2) = MkTóruszPont Pozíció0 F3
 bizFázisLépés3 = Refl
 
-bizFázisLépés4 : fázisLépés (MkToruszPont Pozíció0 F3) = MkToruszPont Pozíció0 F4
+bizFázisLépés4 : fázisLépés (MkTóruszPont Pozíció0 F3) = MkTóruszPont Pozíció0 F4
 bizFázisLépés4 = Refl
 
-bizFázisLépés5 : fázisLépés (MkToruszPont Pozíció0 F4) = MkToruszPont Pozíció0 F5
+bizFázisLépés5 : fázisLépés (MkTóruszPont Pozíció0 F4) = MkTóruszPont Pozíció0 F5
 bizFázisLépés5 = Refl
 
-bizFázisLépés6 : fázisLépés (MkToruszPont Pozíció0 F5) = MkToruszPont Pozíció0 F6
+bizFázisLépés6 : fázisLépés (MkTóruszPont Pozíció0 F5) = MkTóruszPont Pozíció0 F6
 bizFázisLépés6 = Refl
 
-bizFázisLépés7 : fázisLépés (MkToruszPont Pozíció0 F6) = MkToruszPont Pozíció0 F7
+bizFázisLépés7 : fázisLépés (MkTóruszPont Pozíció0 F6) = MkTóruszPont Pozíció0 F7
 bizFázisLépés7 = Refl
 
-bizFázisLépés8 : fázisLépés (MkToruszPont Pozíció0 F7) = MkToruszPont Pozíció0 F0
+bizFázisLépés8 : fázisLépés (MkTóruszPont Pozíció0 F7) = MkTóruszPont Pozíció0 F0
 bizFázisLépés8 = Refl
 
 -- ═══════════════════════════════════════════════════════════════════════
@@ -247,19 +247,19 @@ record GKPFázistér where
 
 ||| A GKP-kód tórusz-pontja = a fázistér egy pontja.
 public export
-gkpTóruszPont : GKPFázistér -> ToruszPont
-gkpTóruszPont (MkGKPFázistér q p) = MkToruszPont q p
+gkpTóruszPont : GKPFázistér -> TóruszPont
+gkpTóruszPont (MkGKPFázistér q p) = MkTóruszPont q p
 
 -- REFL: a GKP-pont átalakítása tórusz-pontté (identitás a koordinátákra).
 public export
-bizGKPTóruszPont : (g : GKPFázistér) -> gkpTóruszPont g = MkToruszPont (gkpPozíció g) (gkpFázis g)
+bizGKPTóruszPont : (g : GKPFázistér) -> gkpTóruszPont g = MkTóruszPont (gkpPozíció g) (gkpFázis g)
 bizGKPTóruszPont (MkGKPFázistér q p) = Refl
 
 -- KONKRÉT PÉLDA: a 16 GKP-pont (a teljes tórusz).
 -- (§24: az eredeti azonos tartalmú Listát MÁSOLTA — most az EGY lánc él,
--- két néven; a gkpTórusz16 a töruszPont16 álneve.)
-gkpTórusz16 : Füzér ToruszPont
-gkpTórusz16 = Torusz.töruszPont16
+-- két néven; a gkpTórusz16 a tóruszPont16 álneve.)
+gkpTórusz16 : Füzér TóruszPont
+gkpTórusz16 = Torusz.tóruszPont16
 
 -- ═══════════════════════════════════════════════════════════════════════
 -- V. A TÓRUSZ ÉS A MAGYAR MONDAT KÓDOLÁSA / 环面与匈牙利语句编码
@@ -296,8 +296,8 @@ mondatFázis Következtetés = F6   -- 270° (-i, adjungált)
 
 ||| A mondattípus → tórusz-pont megfeleltetés (pozíció = 0, fázis = a mód).
 public export
-mondatTóruszPont : MondatTípus -> ToruszPont
-mondatTóruszPont mt = MkToruszPont Pozíció0 (mondatFázis mt)
+mondatTóruszPont : MondatTípus -> TóruszPont
+mondatTóruszPont mt = MkTóruszPont Pozíció0 (mondatFázis mt)
 
 -- REFL: a négy mondattípus fázisa.
 public export
@@ -317,29 +317,29 @@ bizKövetkeztetésF6 : mondatFázis Következtetés = F6
 bizKövetkeztetésF6 = Refl
 
 -- KONKRÉT PÉLDA: a négy mondat a tórusz négy sarkopontjára.
-állításPont   : ToruszPont
-állításPont   = MkToruszPont Pozíció0 F0   -- (0, 0°)   — az állítás
+állításPont   : TóruszPont
+állításPont   = MkTóruszPont Pozíció0 F0   -- (0, 0°)   — az állítás
 
-kérdésPont    : ToruszPont
-kérdésPont    = MkToruszPont Pozíció0 F2   -- (0, 90°)  — a kérdés
+kérdésPont    : TóruszPont
+kérdésPont    = MkTóruszPont Pozíció0 F2   -- (0, 90°)  — a kérdés
 
-feltevésPont  : ToruszPont
-feltevésPont  = MkToruszPont Pozíció0 F4   -- (0, 180°) — a feltevés
+feltevésPont  : TóruszPont
+feltevésPont  = MkTóruszPont Pozíció0 F4   -- (0, 180°) — a feltevés
 
-következtetésPont : ToruszPont
-következtetésPont = MkToruszPont Pozíció0 F6   -- (0, 270°) — a következtetés
+következtetésPont : TóruszPont
+következtetésPont = MkTóruszPont Pozíció0 F6   -- (0, 270°) — a következtetés
 
 -- REFL: a négy sarkopont megegyezik a mondatTóruszPont kimenetével.
-bizÁllításPont : mondatTóruszPont Állítás = MkToruszPont Pozíció0 F0
+bizÁllításPont : mondatTóruszPont Állítás = MkTóruszPont Pozíció0 F0
 bizÁllításPont = Refl
 
-bizKérdésPont : mondatTóruszPont Kérdés = MkToruszPont Pozíció0 F2
+bizKérdésPont : mondatTóruszPont Kérdés = MkTóruszPont Pozíció0 F2
 bizKérdésPont = Refl
 
-bizFeltevésPont : mondatTóruszPont Feltevés = MkToruszPont Pozíció0 F4
+bizFeltevésPont : mondatTóruszPont Feltevés = MkTóruszPont Pozíció0 F4
 bizFeltevésPont = Refl
 
-bizKövetkeztetésPont : mondatTóruszPont Következtetés = MkToruszPont Pozíció0 F6
+bizKövetkeztetésPont : mondatTóruszPont Következtetés = MkTóruszPont Pozíció0 F6
 bizKövetkeztetésPont = Refl
 
 -- ═══════════════════════════════════════════════════════════════════════
@@ -355,9 +355,9 @@ bizKövetkeztetésPont = Refl
 
 ||| A tórusz két dimenziója = a két Pauli-operátor.
 public export
-data ToruszDimenzió : Type where
-  PozícióDimenzió : ToruszDimenzió   -- q = Pauli X
-  FázisDimenzió   : ToruszDimenzió   -- p = Pauli Z
+data TóruszDimenzió : Type where
+  PozícióDimenzió : TóruszDimenzió   -- q = Pauli X
+  FázisDimenzió   : TóruszDimenzió   -- p = Pauli Z
 
 -- ═══════════════════════════════════════════════════════════════════════
 -- VII. FŐPROGRAM — A TÓRUSZ KIÍRÁSA + TESZTEK / 主程序 + 测试
@@ -395,11 +395,11 @@ main = do
   putStrLn "    (1, F2)  következtetés (90°) (1, F3)  hipotézis (135°)"
   putStrLn "    (1, F4)  cáfolat (180°)  (1, F5)  meglepetés (225°)"
   putStrLn "    (1, F6)  revízió (270°)  (1, F7)  szintézés (315°)"
-  putStrLn ("  Tórusz pontjainak száma = " ++ szövegbőlKarakterlánc (sorSzöveggé toruszPontokSzáma))
+  putStrLn ("  Tórusz pontjainak száma = " ++ szövegbőlKarakterlánc (sorSzöveggé tóruszPontokSzáma))
   putStrLn ""
   putStrLn "  TESZT: 2 × 8 = 16"
-  putStrLn ("    REFL: tizenhat = " ++ szövegbőlKarakterlánc (sorSzöveggé toruszPontokSzáma) ++ "  ✓ (bizTóruszPontokSzáma)")
-  putStrLn ("    REFL: 16 = Cl(4) penge  ✓ (bizToruszCl4Penge)")
+  putStrLn ("    REFL: tizenhat = " ++ szövegbőlKarakterlánc (sorSzöveggé tóruszPontokSzáma) ++ "  ✓ (bizTóruszPontokSzáma)")
+  putStrLn ("    REFL: 16 = Cl(4) penge  ✓ (bizTóruszCl4Penge)")
   putStrLn ""
 
   -- ── II. A tórusz mozgás — körbeforgás ───────────
