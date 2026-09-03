@@ -199,6 +199,12 @@ sorNyolc = SorKövetkező sorHét
 sorKilenc = SorKövetkező sorNyolc
 sorTíz = SorKövetkező sorKilenc
 
+||| A tizenhat sorszám-konstans (a Tórusz 16 pontja — a GKP-tanúhoz).
+||| Szerkezet: sorTíz + 6 (a kézi mélység-GÉPI ellenőrzéssel — csapda #18b).
+public export
+sorTizenhat : Sorszám
+sorTizenhat = SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező sorTíz)))))
+
 -- ─── SORSZÁM-ARITMETIKA (strukturális — a törvények ingyenesek) ──────────
 
 ||| Sorszám-összeadás: (m+1)+n = (m+n)+1 — bal-rekurzív, bal-egység Refl.

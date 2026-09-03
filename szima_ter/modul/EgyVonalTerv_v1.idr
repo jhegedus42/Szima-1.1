@@ -60,8 +60,8 @@ egyVonal = [
     Kész Közepes "osveny_index/Torusz.idr",
   MkFeladat "100.02b" "Torusz → TÓRUSZ ékezetes átnevezés (KÉSZ — mind a 4 érintett modul exit 0 + futás: MkToruszPont→MkTóruszPont 107×, ToruszPont→TóruszPont 30×, töruszPont16→tóruszPont16, toruszPontokSzáma→tóruszPontokSzáma, toruszSzámaSzava→tóruszSzámaSzava, toruszPozíció/tóruszFázis/TóruszDimenzió, bizTorusz*→bizTórusz* — token-páronkénti csere hosszabb→rövidebb sorrendben, a MkToruszPont ELŐBB mint ToruszPont; ÚJ tanulság: a grep-minta «orusz» kihagyta a «törusz» alakot (ö≠o) — teljes elemszámlálás kell!) + a modul-/fájlnevek ASCII-kompromissuma dokumentálva (csapda #6: module Torusz / import Torusz / Torusz. prefixek MARADNAK, csak a TÍPUS-azonosítók és kommentek ékezetesek — «Tórusz-modul») + a Dirac3D/Torusz.idr ÁRVA DUPLIKÁTUM sorsa NYITVA MARAD (nincs az ipkg-modullistában — TÖRLÉS ENGEDÉLYRE VÁR: a destruktil tilalom miatt a felhasználó dönt)"
     Kész Közepes "osveny_index/Torusz.idr",
-  MkFeladat "100.03" "GeneralizedPauli átírása (2 meztelen)"
-    Vár Közepes "osveny_index/GeneralizedPauli.idr",
+  MkFeladat "100.03" "GeneralizedPauli átírása (KÉSZ — exit 0 + futás: kvantumDimenzióÉrték : KvantumDimenzió -> Sorszám (sorKettő/sorNyolc — §24 import!), kommutációsReláció : KvantumDimenzió -> KommutációsAlak (ÚJ data — a jelentés a konstruktorban él: AntikommutációAlak/ZNyolcFázisAlak, a String csak a Show-peremen!), bizTóruszPontokSzámaGKP : sorSzorzás sorKettő sorNyolc = sorTizenhat (REJTETT 3. meztelen is kiírva: a 2*8=16 Nat-literálok a TÍPUSBÓL), sorTizenhat konstans (sorTíz+6 — a GKP-tanúhoz), main: «kettő»/«nyolc»/«tizenhat» magyar szavakkal fut ✓ / 中文：广义泡利算子模块改写完成——量子维度值 Sorszám 包装、对易关系为代数数据类型（意义活在构造器中）、隐藏的第三个裸类型（类型中的 2*8=16 字面量）也已改写、主程序以匈牙利语单词输出「kettő/nyolc/tizenhat」）"
+    Kész Közepes "osveny_index/GeneralizedPauli.idr",
   MkFeladat "100.04" "Kérdőszó átírása (3 meztelen)"
     Vár Közepes "osveny_index/Kerdoszo.idr",
   MkFeladat "100.05" "Hipotetikus átírása (3 meztelen)"
