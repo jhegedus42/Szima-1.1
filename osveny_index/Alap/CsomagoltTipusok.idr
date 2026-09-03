@@ -409,6 +409,7 @@ kilencPluszKettőTelít = Refl
 
 -- ═════════════════════════════════════════════════════════════════════════
 -- IV. SZÁMJEGY, ELŐJEL, FŰZÉR, SZÁMJEGYES SZÁM — a nagy számok
+-- 中文：四、数字、符号、链、位记数——大数
 --      (240 E8-gyök, 2026 év — az Integer kiváltása)
 --      中文：数字、符号、串列与大数——十进制结构（代替 Integer/List）
 -- ═════════════════════════════════════════════════════════════════════════
@@ -1278,6 +1279,7 @@ tizennyolcEsetrag = Refl
 -- A törvények Refl-bizonyításokkal (Curry-Howard: a program = a bizonyítás).
 
 ||| A térkép: elemenkénti leképezés (a map megfelelője).
+||| 映射：逐元素映射（map 的对应）。
 public export
 füzérTérkép : {forrás : Type} -> {cél : Type} ->
   (forrás -> cél) -> Füzér forrás -> Füzér cél
@@ -1286,6 +1288,7 @@ füzérTérkép leképező (Fűzés elem tovább) =
   Fűzés (leképező elem) (füzérTérkép leképező tovább)
 
 ||| A hajtás: jobbról haladó összegzés (a foldr megfelelője).
+||| 折叠：自右向左求和（foldr 的对应）。
 public export
 füzérHajtás : {elemTípus : Type} -> {összegTípus : Type} ->
   (elemTípus -> összegTípus -> összegTípus) -> összegTípus ->
@@ -1295,19 +1298,23 @@ füzérHajtás teendő kezdő (Fűzés elem tovább) =
   teendő elem (füzérHajtás teendő kezdő tovább)
 
 ||| Az első elem — Talán-ban (a head megfelelője, üresnél Semmi).
+||| 第一个元素——以 Talán 表示（head 的对应，空时 Semmi）。
 public export
 füzérElső : {tag : Type} -> Füzér tag -> Talán tag
 füzérElső FüzérVége = Semmi
 füzérElső (Fűzés elem _) = Csak elem
 
 ||| A többi — az első elem nélküli füzér (a tail megfelelője).
+||| 其余——去掉第一个元素后的链（tail 的对应）。
 public export
 füzérTöbbi : {tag : Type} -> Füzér tag -> Füzér tag
 füzérTöbbi FüzérVége = FüzérVége
 füzérTöbbi (Fűzés _ tovább) = tovább
 
 ||| Az összefűzés: két füzér egymás után (a ++ megfelelője).
+||| 拼接：两个链首尾相接（++ 的对应）。
 ||| A LimitKolimitPilota-ból költözött ide (§24 — a kanonikus lakhely).
+||| 从 LimitKolimitPilota 迁移至此（§24——规范住所）。
 public export
 füzérFűzés : {tag : Type} -> Füzér tag -> Füzér tag -> Füzér tag
 füzérFűzés FüzérVége második = második
@@ -1315,6 +1322,7 @@ füzérFűzés (Fűzés elem tovább) második =
   Fűzés elem (füzérFűzés tovább második)
 
 ||| A fordítás: fordított sorrendű füzér (a reverse megfelelője).
+||| 反转：逆序链（reverse 的对应）。
 public export
 füzérFordít : {tag : Type} -> Füzér tag -> Füzér tag
 füzérFordít FüzérVége = FüzérVége
@@ -1322,7 +1330,9 @@ füzérFordít (Fűzés elem tovább) =
   füzérFűzés (füzérFordít tovább) (Fűzés elem FüzérVége)
 
 ||| A tagság-teszt: szerepel-e az elem a füzérben (az elem megfelelője).
+||| 成员测试：元素是否出现在链中（elem 的对应）。
 ||| Az egyenlőséget az EgyenlőségT instance adja (a bíra = a typechecker).
+||| 相等性由 EgyenlőségT instance 给出（评审 = 类型检查器）。
 public export
 füzérEleme : EgyenlőségT tag => tag -> Füzér tag -> Igazság
 füzérEleme _ FüzérVége = Hamis
@@ -1334,6 +1344,7 @@ füzérEleme keresett (Fűzés elem tovább) =
 -- ─── A FÜZÉR-TÖRVÉNYEK (bizonyítások — indukció a füzér szerkezetén) ──
 
 ||| Jobb-egység: az üres füzér jobb oldali identitás (indukció).
+||| 右单位：空链是右侧单位元（归纳法）。
 public export
 füzérFűzésJobbEgység : {tag : Type} -> (teljes : Füzér tag) ->
   füzérFűzés teljes FüzérVége = teljes
@@ -1342,6 +1353,7 @@ füzérFűzésJobbEgység (Fűzés elem tovább) =
   cong (Fűzés elem) (füzérFűzésJobbEgység tovább)
 
 ||| Asszociativitás: a fűzés társítása (indukció az elsőre).
+||| 结合律：拼接可结合（对第一个链归纳）。
 public export
 füzérFűzésAsszociativitás : {tag : Type} ->
   (első : Füzér tag) -> (második : Füzér tag) -> (harmadik : Füzér tag) ->
@@ -1352,6 +1364,7 @@ füzérFűzésAsszociativitás (Fűzés elem tovább) második harmadik =
   cong (Fűzés elem) (füzérFűzésAsszociativitás tovább második harmadik)
 
 ||| A hossz additív a fűzésre (indukció az elsőre; sorÖsszeadás-törvény).
+||| 长度对拼接可加（对第一归纳；sorÖsszeadás 定律）。
 public export
 füzérHosszFűzés : {tag : Type} ->
   (első : Füzér tag) -> (második : Füzér tag) ->
@@ -1362,6 +1375,7 @@ füzérHosszFűzés (Fűzés elem tovább) második =
   cong SorKövetkező (füzérHosszFűzés tovább második)
 
 ||| A térkép oszlik a fűzésre (indukció az elsőre).
+||| 映射对拼接分配（对第一归纳）。
 public export
 füzérTérképFűzés : {forrás : Type} -> {cél : Type} ->
   (leképező : forrás -> cél) ->
@@ -1373,6 +1387,7 @@ füzérTérképFűzés leképező (Fűzés elem tovább) második =
   cong (Fűzés (leképező elem)) (füzérTérképFűzés leképező tovább második)
 
 ||| A fordítás megfordítja a fűzés sorrendjét (indukció + átirás).
+||| 反转颠倒拼接的顺序（归纳 + 改写）。
 public export
 füzérFordítFűzés : {tag : Type} ->
   (első : Füzér tag) -> (második : Füzér tag) ->
@@ -1386,6 +1401,7 @@ füzérFordítFűzés (Fűzés elem tovább) második =
     (Fűzés elem FüzérVége) in Refl
 
 ||| A fordítás involúció: kétszer fordítva az eredeti (indukció).
+||| 反转是对合：反转两次回到原链（归纳）。
 public export
 füzérFordítFordít : {tag : Type} -> (teljes : Füzér tag) ->
   füzérFordít (füzérFordít teljes) = teljes
@@ -1398,6 +1414,7 @@ füzérFordítFordít (Fűzés elem tovább) =
 -- ─── funktor és a katamorfizmus törvényeinek teljesebb hálója ────
 
 ||| A VAGY hamis-bal-egysége: a Hamis bal identitás (GAN-felfedezés).
+||| 析取的假-左单位：Hamis 是左单位元（GAN 发现）。
 ||| (A vagyIgazIgazBal már létezik a végEgyezzikRefl indukciójánál — §24.)
 public export
 vagyHamisBalEgység : (második : Igazság) -> vagyIgazsággal Hamis második = második
@@ -1405,12 +1422,14 @@ vagyHamisBalEgység Igaz = Refl
 vagyHamisBalEgység Hamis = Refl
 
 ||| BAL-egység: az üres füzér bal oldali identitás is (a monoid teljesebb).
+||| 左单位：空链也是左侧单位元（幺半群更完整）。
 public export
 füzérFűzésBalEgység : {tag : Type} -> (második : Füzér tag) ->
   füzérFűzés FüzérVége második = második
 füzérFűzésBalEgység második = Refl
 
 ||| Funktor-identitás: a térkép az identitáson identitás.
+||| 函子-恒等：映射在恒等函数上是恒等。
 public export
 füzérTérképAzon : {tag : Type} -> (teljes : Füzér tag) ->
   füzérTérkép (\elem => elem) teljes = teljes
@@ -1419,6 +1438,7 @@ füzérTérképAzon (Fűzés elem tovább) =
   cong (Fűzés elem) (füzérTérképAzon tovább)
 
 ||| Funktor-kompozíció: a két térkép egymás után = az összetett térkép.
+||| 函子-复合：两个映射相继 = 复合映射。
 public export
 füzérTérképÖsszetétel : {forrás : Type} -> {köztes : Type} -> {cél : Type} ->
   (másodikLeképező : köztes -> cél) -> (elsőLeképező : forrás -> köztes) ->
@@ -1631,6 +1651,8 @@ szorzámHúszSzó : Szöveg
 szorzámHúszSzó = BetűtFűz HBetű (BetűtFűz ÚBetű (BetűtFűz SzBetű ÜresSzöveg))
 
 ||| A sorSzöveggé-híd: a Sorszám MAGYAR SZÓVAL (húszig — a rúnaszámok
+||| sorSzöveggé 桥：Sorszám 以匈牙利语单词呈现（至二十——如尼数字
+||| 原则：没有数字字形，数字即单词）。
 ||| elve: számjegy-graféma nincs, a szám Szó). A megjelenítés-tíznél-
 ||| telít kapujának feloldása a tízen túli számokra.
 ||| KOMPOZICIONÁLIS terv (a magyar számnevek törvénye: 11..19 = tizen+
@@ -1683,6 +1705,8 @@ tízFelett (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező
   (SorKövetkező tovább)))))))))) = Csak tovább
 
 ||| A sorSzöveggé-híd: a Sorszám MAGYAR SZÓVAL (húszig — a rúnaszámok
+||| sorSzöveggé 桥：Sorszám 以匈牙利语单词呈现（至二十——如尼数字
+||| 原则：没有数字字形，数字即单词）。
 ||| elve: számjegy-graféma nincs, a szám Szó). A megjelenítés-tíznél-
 ||| telít kapujának feloldása a tízen túli számokra.
 ||| A 21 KLAUZÚLÁS forma gépileg GENERÁLVA (a kézi mélységszámolás
