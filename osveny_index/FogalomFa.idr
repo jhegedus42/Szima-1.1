@@ -343,7 +343,7 @@ record VilagFa where
 |||
 ||| Kategóriaelméleti értelemben ez egy funktor a
 ||| 范畴论意义上，这是一个从
-||| FogalomFa kategoriaabol a Nat monoidba.
+||| FogalomFa-kategóriából a Nat-monoidba。（FogalomFa 范畴到 Nat 幺半群。）
 public export
 meret : FogalomFa t -> Nat
 meret (Level _) = 1
@@ -352,7 +352,7 @@ meret (Ag _ gyerekek) = 1 + sum (map (\(s ** (fa, _)) => meret fa) gyerekek)
 ||| Bizalom-átlag: a fa összes csomópontjának bizalom-átlaga。
 ||| 信任均值：树中所有节点信任的平均值。
 ||| Ez a koherencia egy merteke — ha alacsony, a fa reszben
-||| megbizhatatlan (tobbszoros hiba).
+||| megbízhatatlan (többszörös hiba)。（不可信（多重错误）。）
 public export
 bizalomAtlag : FogalomFa t -> Double
 bizalomAtlag (Level adat) = adat.bizalom
@@ -361,7 +361,7 @@ bizalomAtlag (Ag adat gyerekek) =
       gyerekBizalom = map (\(s ** (fa, _)) => bizalomAtlag fa) gyerekek
   in (sajat + sum gyerekBizalom) / cast (1 + length gyerekek)
 
-||| Gyerekek szama egy csomopontban.
+||| Gyerekek száma egy csomópontban。（一个节点中子节点的数目。）
 public export
 gyerekekSzama : FogalomFa t -> Nat
 gyerekekSzama (Level _) = 0
@@ -371,14 +371,14 @@ gyerekekSzama (Ag _ gyerekek) = length gyerekek
 -- 7+7+1 KATEGORIA RENDSZER
 -- ═══════════════════════════════════════════════════════════════
 
-||| 7+7+1 kategoria tipus: Emberi (7 kvantum), Szamitasi (7 klasszikus), Perem (1 Legendre).
+||| 7+7+1 kategória-típus: Emberi (7 kvantum), Szamitasi (7 klasszikus), Perem (1 Legendre)。（7+7+1 范畴类型：人类（7 量子）、计算（7 经典）、边界（1 勒让德）。）
 public export
 data KategoriaTipus : Type where
   KategoriaEmberi   : EmberiKategoria -> KategoriaTipus
   KategoriaSzamitasi : SzamitasiKategoria -> KategoriaTipus
   KategoriaPerem    : KategoriaTipus
 
-||| Logikai kapcsolatok a 7+7+1 kategoriak kozott.
+||| Logikai kapcsolatok a 7+7+1 kategóriák között。（7+7+1 范畴之间的逻辑联系。）
 |||   Emberi belso: Ido → Oksag → Ter → Szin → Hang → Fazis → Mod
 |||   Szamitasi belso: Utem → Vezerles → Adat → Tipus → Kapcsolat → Allapot → Utasitas
 |||   Perem: Fazis (emberi) ↔ Allapot (szamitasi) — Legendre adjunkcio
@@ -409,7 +409,7 @@ data FogalomLogika714 : KategoriaTipus -> KategoriaTipus -> Type where
                     -> FogalomLogika714 (KategoriaEmberi emberi) (KategoriaSzamitasi szamitasi)
 
 ||| FogalomTipus → KategoriaTipus lekepezes.
-||| Minden FogalomTipus besorolhato a 7+7+1 rendszerbe.
+||| Minden FogalomTipus besorolható a 7+7+1 rendszerbe。（每个 FogalomTipus 都可归入 7+7+1 系统。）
 public export
 fogalomTipusToKategoria : FogalomTipus -> KategoriaTipus
 fogalomTipusToKategoria Gyoker = KategoriaEmberi EmberiIdo
@@ -455,7 +455,7 @@ fogalomTipusToKategoria KomplexSzam = KategoriaSzamitasi SzamAdat
 -- Minden mas
 fogalomTipusToKategoria _ = KategoriaEmberi EmberiMod
 
-||| [[15,1,3]] teljes allapot: 7 emberi + 7 szamitasi + 1 perem = 15+1 bit.
+||| [[15,1,3]] teljes állapot: 7 emberi + 7 számítási + 1 perem = 15+1 bit。（[[15,1,3]] 完整状态：7 人类 + 7 计算 + 1 边界 = 15+1 位。）
 ||| A perem a Legendre transzformacio: p·q̇ = Yoneda parositas.
 public export
 data TizenotEgyAllapot : Type where
@@ -466,9 +466,9 @@ public export
 tizenotEgyKodol : Kubit -> TizenotEgyAllapot
 tizenotEgyKodol k = TizenotEgyKonstruktor (alapKod k) (alapKod k) k
 
-||| [[15,1,3]] dekodolas: tobbseg szavazat.
-|||   Ha az emberi es szamitasi oldal egyetert, azt adjuk.
-|||   Ha nem, a perem dont (Legendre adjunkcio).
+||| [[15,1,3]] dekódolás: többségi szavazat。（[[15,1,3]] 解码：多数表决。）
+|||   Ha az emberi és számítási oldal egyetért, azt adjuk。（若人类侧与计算侧一致，则取之。）
+|||   Ha nem, a perem dönt (Legendre-adjunkció)。（否则由边界决定（勒让德伴随）。）
 public export
 tizenotEgyDekodol : TizenotEgyAllapot -> Kubit
 tizenotEgyDekodol (TizenotEgyKonstruktor e s p) =
@@ -476,7 +476,7 @@ tizenotEgyDekodol (TizenotEgyKonstruktor e s p) =
       ks = steaneDekodol s
   in if ke == ks then ke else p
 
-||| [[15,1,3]] kod torveny: kodolas majd dekodolas = azonossag.
+||| [[15,1,3]] kód-törvény: kódolás majd dekódolás = azonosság。（[[15,1,3]] 码律：编码再解码 = 恒等。）
 public export
 tizenotEgyTorveny : (k : Kubit) -> tizenotEgyDekodol (tizenotEgyKodol k) = k
 tizenotEgyTorveny Nulla = Refl

@@ -378,10 +378,10 @@ data Nevszokepzo : Type where
 
 ||| A "szám-" to teljes derivacios paradigmaja.
 |||   szám (tő) = a szám fogalma (a Perem)（szám 词干 = 数的概念（边界 Perem））
-|||   szam+ol = szamol (ember szamol: belso, folyamatos, merlegelo)
-|||   szam+it = szamit (gep szamit: kulso, diszkret, algoritmikus)
-|||   szam+olas = szamolas (az emberi folyamat)
-|||   szam+itas = szamitas (a gepi muvelet)
+|||   szám+ol = számol (ember számol: belső, folyamatos, mérlegelő)（人数：内在、持续、权衡）
+|||   szám+it = számít (gép számít: külső, diszkrét, algoritmikus)（机算：外在、离散、算法）
+|||   szám+olás = számolás (az emberi folyamat)（számolás：人的过程）
+|||   szám+ítás = számítás (a gépi művelet)（számítás：机器的运算）
 |||
 ||| A képző a Legendre-perem analógiája：（后缀是勒让德边界的类比：人的 = 连续侧，机器的 = 离散侧。）
 |||   szam (Perem) — a ket ertelmezes kozti atmenet
@@ -479,7 +479,7 @@ okToSzotar =
     ]
     Ok
 
-||| A ter- to szotari bejegyzese:
+||| A tér- tő szótári bejegyzése：（tér 词干的词典条目：）
 |||   ter+el → terel (emberi: iranyitas a terben)
 |||   ter+it → terit (szamitasi: terkep, GIS)
 |||   ter+jesz+ked+ik → terjed (emberi: kiterjedes)
@@ -540,8 +540,8 @@ data SzamolasMod : Type where
 
 ||| Legendre-perem a szamolasban: kerdes → valasz.
 |||   kerdes (prompt) = p·q̇ = a perem
-|||   gondolat (szamol) = L = a kvantum allapot
-|||   valasz (szamit) = H = a klasszikus kimenet
+|||   gondolat (számol) = L = a kvantumállapot（思想（számol）= L = 量子态）
+|||   válasz (számít) = H = a klasszikus kimenet（回答（számít）= H = 经典输出）
 public export
 record SzamolasLegendre where
   constructor SzamolasLegendreKonstruktor
@@ -550,8 +550,8 @@ record SzamolasLegendre where
   valasz   : String   -- H (a szamit, az output)
   mod      : SzamolasMod
 
-||| A szamolas a 7 biten: minden kerdes-valasz par
-|||   egy-egy Steane kodolt informacio atadas.
+||| A számolás a 7 biten: minden kérdés–válasz pár（7 位上的计算：每一对问答）
+|||   egy-egy Steane-kódolt információátadás。（都是一次 Steane 编码的信息传递。）
 public export
 szamolasSteane : SzamolasLegendre -> Kubit -> HetesKod
 szamolasSteane _ k = alapKod k
