@@ -9,7 +9,8 @@ import FazisAlgebra
 import Emberi.Index
 import Szamitasi.Index
 
-||| Kategoria: objektumok + morfizmusok + összetétel + azonos.
+||| Kategória: objektumok + morfizmusok + összetétel + azonos。
+||| 范畴：对象 + 态射 + 复合 + 恒等。
 public export
 record Kategoria (objektum : Type) (hom : objektum -> objektum -> Type) where
   constructor KategoriaKonstruktor
@@ -22,9 +23,10 @@ record Kategoria (objektum : Type) (hom : objektum -> objektum -> Type) where
 -- Az interface implementálása = a törvények bizonyítása.
 -- 接口的实现 = 定律的证明。
 -- Curry-Howard: az interface = a tetel, az implementáció = a bizonyítás.
-||| Kategoria typeclass: az azonos és összetétel torvenyeivel.
-|||   A `balAzonos` és `jobbAzonos` bizonyítják az identitás-törvényeket.
-|||   Az `asszociativBizonyitas` bizonyítja az asszociativitást.
+||| KategoriaT típusosztály: az azonos és összetétel törvényeivel。
+||| KategoriaT 类型类：连带恒等与复合的定律。
+|||   A `balAzonos` és `jobbAzonos` bizonyítják az identitás-törvényeket。（balAzonos 与 jobbAzonos 证明单位律。）
+|||   Az `asszociativBizonyitas` bizonyítja az asszociativitást。（asszociativBizonyitas 证明结合律。）
 public export
 interface KategoriaT (objektum : Type) (hom : objektum -> objektum -> Type) where
   identitas : (a : objektum) -> hom a a
@@ -34,11 +36,13 @@ interface KategoriaT (objektum : Type) (hom : objektum -> objektum -> Type) wher
   asszociativ : {a, b, c, d : objektum} -> (f : hom a b) -> (g : hom b c) -> (h : hom c d) ->
     kompozicio f (kompozicio g h) = kompozicio (kompozicio f g) h
 
-||| KategoriaT példa: az Emberi diszkret kategória.
-|||   Mivel csak EmberiAzonos morfizmusok vannak, minden törvény Refl.
+||| KategoriaT-példa: az Emberi diszkrét kategória。
+||| KategoriaT 之例：Emberi 离散范畴。
+|||   Mivel csak EmberiAzonos morfizmusok vannak, minden törvény Refl。（因只有 EmberiAzonos 态射，每条定律皆 Refl。）
 |||   FIGYELEM: a KategoriaT példanyok a file VEGEN vannak (EmberiMorf utan).
 
-||| Monoidális kategória: tenzor-szorzat + egységelem.
+||| Monoidális kategória: tenzor-szorzat + egységelem。
+||| 幺半范畴：张量积 + 单位元。
 public export
 record MonoidálisKategoria (objektum : Type) (hom : objektum -> objektum -> Type) where
   constructor MonoidálisKategoriaKonstruktor
@@ -46,14 +50,14 @@ record MonoidálisKategoria (objektum : Type) (hom : objektum -> objektum -> Typ
   tenzor : objektum -> objektum -> objektum
   egyseg : objektum
 
-||| DuálisKategória: minden objektumnak van duálisa.
+||| DuálisKategória: minden objektumnak van duálisa。（对偶范畴：每个对象都有对偶。）
 public export
 record DuálisKategória (objektum : Type) (hom : objektum -> objektum -> Type) where
   constructor DuálisKategóriaKonstruktor
   monoidális : MonoidálisKategoria objektum hom
   dualis : objektum -> objektum
 
-||| Funktor: kategória szerkezet megőrzése.
+||| Funktor: kategóriaszerkezet megőrzése。（函子：范畴结构的保持。）
 public export
 record Funktor (o1 : Type) (m1 : o1 -> o1 -> Type) (o2 : Type) (m2 : o2 -> o2 -> Type) where
   constructor FunktorKonstruktor
@@ -69,7 +73,7 @@ record TermeszetesTranszformacio
   also : Funktor o1 m1 o2 m2
   komponens : (a : o1) -> m2 (felső.objektumKep a) (also.objektumKep a)
 
-||| Bifunktor: két kategória szorzatából.
+||| Bifunktor: két kategória szorzatából。（双函子：来自两个范畴的乘积。）
 public export
 record Bifunktor (bk : Kategoria o1 m1) (jk : Kategoria o2 m2) (kk : Kategoria o3 m3) where
   constructor BifunktorKonstruktor
@@ -78,21 +82,21 @@ record Bifunktor (bk : Kategoria o1 m1) (jk : Kategoria o2 m2) (kk : Kategoria o
               -> m1 a b -> m2 c d
               -> m3 (objektumKep a c) (objektumKep b d)
 
-||| Span: két morfizmus közös forrással.
+||| Span: két morfizmus közös forrással。（Span：共源的两态射。）
 public export
 record Span (kategória : Kategoria obj hom) (célpont : obj) where
   constructor SpanKonstruktor
   balForras : obj
   jobbForras : obj
 
-||| Cospan: két morfizmus közös céllal.
+||| Cospan: két morfizmus közös céllal。（Cospan：共靶的两态射。）
 public export
 record Cospan (kategória : Kategoria obj hom) (forrás : obj) where
   constructor CospanKonstruktor
   balCel : obj
   jobbCel : obj
 
-||| Szimmetrikus monoidális kategória: tenzor + braiding.
+||| Szimmetrikus monoidális kategória: tenzor + braiding。（对称幺半范畴：张量 + 编织。）
 public export
 record SzimmetrikusMonoidálisKategoria
        (objektum : Type) (hom : objektum -> objektum -> Type) where
@@ -100,7 +104,7 @@ record SzimmetrikusMonoidálisKategoria
   monoidális : MonoidálisKategoria objektum hom
   braiding : {a, b : objektum} -> hom (monoidális.tenzor a b) (monoidális.tenzor b a)
 
-||| Szorzat kategória: ha C és D kategóriak, akkor C × D is az.
+||| Szorzat-kategória: ha C és D kategóriák, akkor C × D is az。（积范畴：若 C 与 D 是范畴，则 C × D 也是。）
 public export
 record SzorzatKategoria (o1 : Type) (m1 : o1 -> o1 -> Type)
                         (o2 : Type) (m2 : o2 -> o2 -> Type) where
@@ -108,7 +112,7 @@ record SzorzatKategoria (o1 : Type) (m1 : o1 -> o1 -> Type)
   balKategoria : Kategoria o1 m1
   jobbKategoria : Kategoria o2 m2
 
-||| EllenKategória (C^op): megfordított morfizmusok.
+||| EllenKategória (C^op): megfordított morfizmusok。（逆范畴（C^op）：翻转的态射。）
 ||| EllenNyil f : EllenMorf hom a b  ⇔  f : hom a b a C^op kategóriaban.
 public export
 data EllenMorf : {obj : Type} -> (hom : obj -> obj -> Type) -> obj -> obj -> Type where
@@ -159,25 +163,25 @@ record YonedaBeagyazas (o : Type) (m : o -> o -> Type) where
 -- MORFIZMUS TÍPUSOK (WRAPPER-EK A KATEGÓRIÁKHOZ)
 -- ═══════════════════════════════════════════════════════════════
 
-||| Fogalom morfizmus: a FogalomLogika lezárt kategóriaként.
-||| Az Azonos és Ire mellett a Sorozat épít kompozíciót.
+||| Fogalom-morfizmus: a FogalomLogika lezárt kategóriaként。（概念态射：FogalomLogika 作为封闭范畴。）
+||| Az Azonos és Ire mellett a Sorozat épít kompozíciót。（除 Azonos 与 Ire 外，Sorozat 构建复合。）
 public export
 data FogalomMorf : FogalomTipus -> FogalomTipus -> Type where
   FogalomAzonos : FogalomMorf a a
   FogalomIre : FogalomLogika a b -> FogalomMorf a b
   FogalomSorozat : (koztes : FogalomTipus) -> FogalomMorf a koztes -> FogalomMorf koztes c -> FogalomMorf a c
 
-||| Fogalom 2-morfizmus: 2-sejtek ket parhuzamos FogalomMorf között.
-||| A 2-sejt a fazis/amplitudo a ket ut között a 2-kategóriaban.
+||| Fogalom 2-morfizmus: 2-sejtek két párhuzamos FogalomMorf között。（概念的 2-态射：两条平行 FogalomMorf 间的 2-胞。）
+||| A 2-sejt a fázis/amplitúdó a két út között a 2-kategóriában。（2-胞是 2-范畴中两条路之间的相位/振幅。）
 public export
 data FogalomKetMorf : (a, b : FogalomTipus) -> FogalomMorf a b -> FogalomMorf a b -> Type where
   KetAzonos : FogalomKetMorf a b f f
   KetIre : FogalomKetMorf a b f g
 
-||| Fogalom morfizmus egyenlőség: kategória-törvények.
+||| Fogalom-morfizmus-egyenlőség: kategória-törvények。（概念态射的相等：范畴律。）
 ||| Asszociativitás: (f;g);h = f;(g;h)
-||| Bal egység: 1_a;f = f
-||| Jobb egység: f;1_b = f
+||| Bal egység: 1_a;f = f。（左单位。）
+||| Jobb egység: f;1_b = f。（右单位。）
 public export
 data FogalomMorfEgyenlo : (a, b : FogalomTipus) -> FogalomMorf a b -> FogalomMorf a b -> Type where
   -- (f ; g) ; h  ==  f ; (g ; h)
@@ -197,12 +201,12 @@ data FogalomMorfEgyenlo : (a, b : FogalomTipus) -> FogalomMorf a b -> FogalomMor
   EgyenloSzimmetria : FogalomMorfEgyenlo a b f g -> FogalomMorfEgyenlo a b g f
   EgyenloTranzitiv : FogalomMorfEgyenlo a b f g -> FogalomMorfEgyenlo a b g h -> FogalomMorfEgyenlo a b f h
 
-||| Eset morfizmus: EsetLogika wrapper — csak azonos morfizmusok.
+||| Eset-morfizmus: EsetLogika-wrapper — csak azonos morfizmusok。（格态射：EsetLogika 包装——仅恒等态射。）
 public export
 data EsetMorf : Eset -> Eset -> Type where
   EsetMorfKonstruktor : EsetLogika a -> EsetMorf a a
 
-||| E8 morfizmus: CliffordElem wrapper.
+||| E8-morfizmus: CliffordElem-wrapper。（E8 态射：CliffordElem 包装。）
 public export
 data E8Morf : E8Pont -> E8Pont -> Type where
   E8MorfKonstruktor : CliffordElem -> E8Morf a b
@@ -359,16 +363,17 @@ fogalomDuálisKategória = DuálisKategóriaKonstruktor
   fogalomDualis
 
 -- ═══════════════════════════════════════════════════════════════
--- 4 DIMENZIO KATEGORIA: TER, IDO, TOMEG, INFORMACIO
+-- 4 DIMENZIÓ KATEGÓRIA: TÉR, IDŐ, TÖMEG, INFORMÁCIÓ
+-- 四维范畴：空间、时间、质量、信息
 -- ═══════════════════════════════════════════════════════════════
 
-||| A 4 alap dimenzió.
+||| A 4 alapdimenzió。（四个基本维度。）
 public export
 data NegyDimenzio = Ter | Ido | Tomeg | Informacio
 
-||| Morfizmusok a 4 dimenzió között.
-||| A legegyszerubb nem trivialis kategória: mindegyik
-||| atalakithato a másikba.
+||| Morfizmusok a 4 dimenzió között。（四维度之间的态射。）
+||| A legegyszerűbb nemtriviális kategória: mindegyik（最简单的非平凡范畴：每一维）
+||| átalakítható a másikba。（皆可转化为另一维。）
 public export
 data DimenzioMorf : NegyDimenzio -> NegyDimenzio -> Type where
   DimAzonos  : DimenzioMorf a a
@@ -396,7 +401,7 @@ public export
 data Fenysebesseg : Type where
   FenysebessegKonstruktor : Fenysebesseg
 
-||| Lorentz transzformacio: Ter ↔ Ido
+||| Lorentz-transzformáció: Tér ↔ Idő（洛伦兹变换：空间 ↔ 时间）
 |||   t' = γ(t - v·x/c²)
 |||   x' = γ(x - v·t)
 |||   γ = 1/√(1 - v²/c²)
@@ -405,12 +410,12 @@ data LorentzTranszformacio : Type where
   LorentzKonstruktor : LorentzTranszformacio
 
 ||| Ter → Tomeg: E = m·c² (Einstein)
-|||   A tomeg és a ter közötti ekvivalencia.
+|||   A tömeg és a tér közötti ekvivalencia。（质量与空间的等价。）
 public export
 data EinsteiniEgyenlet : Type where
   EinsteinKonstruktor : EinsteiniEgyenlet
 
-||| Ter → Informacio: holografikus elv
+||| Tér → Információ: holografikus elv（空间 → 信息：全息原理）
 |||   S = A / (4·ℓp²)
 public export
 data HolografikusElv : Type where
@@ -452,7 +457,7 @@ data CptSzimmetria : Type where
 -- ═══════════════════════════════════════════════════════════════
 
 ||| Curry-Howard-Lambek megfeleltetés: Logika ↔ Tipuselmelet ↔ Kategoria.
-||| Harom oszlop, minden szinten megfeleltetéssel.
+||| Három oszlop, minden szinten megfeleltetéssel。（三列，每层皆有对应。）
 public export
 data CurryHowardLambek : Type where
   ||| Propozicio ↔ Tipus ↔ Objektum
@@ -478,7 +483,7 @@ data CurryHowardLambek : Type where
   ||| Godel befejezetlenseg ↔ Tipuselmeleti befejezetlenseg ↔ Fixpont
   GodelTipusFixpont : CurryHowardLambek
 
-||| E8 mint monoidális kategória: tenzor = pontonkenti osszeadas,
+||| E8 mint monoidális kategória: tenzor = pontonkénti összeadás,（E8 作为幺半范畴：张量 = 逐点加法，）
 ||| egység = nullapont, braiding = azonos (kommutativitás miatt)。（单位 = 零点，编织 = 恒等（因交换性）。）
 public export
 e8Monoidális : MonoidálisKategoria E8Pont E8Morf
@@ -487,36 +492,36 @@ e8Monoidális = MonoidálisKategoriaKonstruktor
   e8Osszead
   (E8PontKonstruktor 0 0 0 0 0 0 0 0)
 
-||| E8 braiding: a⊕b → b⊕a. Mivel e8Osszead kommutativ,
+||| E8-braiding: a⊕b → b⊕a. Mivel az e8Osszead kommutatív,（E8 编织：因加法交换，）
 ||| a két pont megegyezik, így az azonos morfizmus jó。（两点相同，故恒等态射即可。）
 public export
 e8Braiding : {a, b : E8Pont}
           -> E8Morf (e8Osszead a b) (e8Osszead b a)
 e8Braiding = E8MorfKonstruktor (CliffordKonstruktor Egy Nulla Nulla)
 
-||| E8 szimmetrikus monoidális kategória.
+||| E8 szimmetrikus monoidális kategória。（E8 对称幺半范畴。）
 public export
 e8Szimmetrikus : SzimmetrikusMonoidálisKategoria E8Pont E8Morf
 e8Szimmetrikus = SzimmetrikusKonstruktor e8Monoidális e8Braiding
 
-||| E8 × E8 objektum: rendezett E8 pont par.
+||| E8 × E8 objektum: rendezett E8-pontpár。（E8 × E8 的对象：有序 E8 点对。）
 public export
 E8xE8Obj : Type
 E8xE8Obj = (E8Pont, E8Pont)
 
-||| E8 × E8 morfizmus: parhuzamos E8 morfizmusok.
+||| E8 × E8 morfizmus: párhuzamos E8-morfizmusok。（E8 × E8 的态射：平行的 E8 态射。）
 public export
 data E8xE8Morf : E8xE8Obj -> E8xE8Obj -> Type where
   E8xE8Par : {a, c : E8Pont} -> {b, d : E8Pont}
           -> E8Morf a c -> E8Morf b d
           -> E8xE8Morf (a, b) (c, d)
 
-||| E8 × E8 azonos morfizmus.
+||| E8 × E8 azonos morfizmus。（E8 × E8 的恒等态射。）
 public export
 e8xE8Azonos : (x : E8xE8Obj) -> E8xE8Morf x x
 e8xE8Azonos (a, b) = E8xE8Par (e8Kategoria.azonos a) (e8Kategoria.azonos b)
 
-||| E8 × E8 összetétel.
+||| E8 × E8 összetétel。（E8 × E8 的复合。）
 public export
 e8xE8Osszetetel : E8xE8Morf x y -> E8xE8Morf y z -> E8xE8Morf x z
 e8xE8Osszetetel (E8xE8Par {a} {c = koztes} {b} {d = koztes2} f1 g1)
@@ -547,7 +552,7 @@ e8xE8ObjKodSzo (b, j) = KodKonstruktor "" b j
 -- 2-KATEGORIA + YONEDA + DUAL A FOGALMAKRA
 -- ═══════════════════════════════════════════════════════════════
 
-||| Fogalom 2-kategória: FogalomTipus mint 0-sejt, FogalomMorf mint 1-sejt,
+||| Fogalom 2-kategória: FogalomTipus mint 0-sejt, FogalomMorf mint 1-sejt,（概念的 2-范畴：FogalomTipus 为 0-胞、FogalomMorf 为 1-胞、）
 ||| FogalomKetMorf mint 2-sejt。（FogalomKetMorf 作为 2-胞。）
 ||| A 2-sejtek „kaotikusak": bármely két párhuzamos 1-morfizmus（2-胞是「混沌的」：任何两条平行的 1-态射）
 ||| között van 2-sejt (KetIre).
@@ -576,7 +581,7 @@ fogalomKettoKategoria = KettoKategoriaKonstruktor
     vizszintesOsszetetel KetIre    KetAzonos = KetIre
     vizszintesOsszetetel KetIre    KetIre    = KetIre
 
-||| Yoneda beagyazas a fogalom kategóriaban: C → [C^op, Set].
+||| Yoneda-beágyazás a fogalom-kategóriában: C → [C^op, Set]。（概念范畴中的米田嵌入。）
 ||| Minden fogalomtípushoz a Hom(-, a) prefasítás.
 |||   homPresheaf a x = FogalomMorf x a  (Hom(-, a) at x)
 |||   utanaTetelezes f x g = fogalomOsszetetelMorf g f  (posztkompozíció)（后复合）
@@ -617,14 +622,14 @@ fogalomDualisAdjunkcio =
 -- ═══════════════════════════════════════════════════════════════
 
 ||| 0. szint: típusok (objektumok)。（第 0 层：类型（对象）。）
-||| A legalso fok — puszta tipusok, meg morfizmus nelkul.
+||| A legalacsonyabb fok — puszta típusok, még morfizmus nélkül。（最底层——纯类型，尚无态射。）
 public export
 record NulladikLetra (obj : Type) where
   constructor NulladikLetraKonstruktor
   objektumok : Type
 
 ||| 1. szint: kategória (objektumok + morfizmusok + azonos + összetétel).
-||| A kategóriaba szervezett tipusok.
+||| A kategóriákba szervezett típusok。（组织成范畴的类型。）
 public export
 record ElsoLetra (obj : Type) (hom : obj -> obj -> Type) where
   constructor ElsoLetraKonstruktor
@@ -632,7 +637,7 @@ record ElsoLetra (obj : Type) (hom : obj -> obj -> Type) where
   kategória : Kategoria obj hom
 
 ||| 2. szint: funktor (kategóriak közötti leképezés).
-||| A kategóriak közötti kapcsolat.
+||| A kategóriák közötti kapcsolat。（范畴之间的联系。）
 public export
 record MasodikLetra (o1 : Type) (m1 : o1 -> o1 -> Type)
                     (o2 : Type) (m2 : o2 -> o2 -> Type) where
@@ -641,7 +646,7 @@ record MasodikLetra (o1 : Type) (m1 : o1 -> o1 -> Type)
   funktor : Funktor o1 m1 o2 m2
 
 ||| 3. szint: termeszetes transzformacio (funktorok közötti leképezés).
-||| A funktorok közötti kapcsolat.
+||| A funktorok közötti kapcsolat。（函子之间的联系。）
 public export
 record HarmadikLetra (o1 : Type) (m1 : o1 -> o1 -> Type)
                      (o2 : Type) (m2 : o2 -> o2 -> Type) where
