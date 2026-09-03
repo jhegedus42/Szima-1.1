@@ -579,7 +579,7 @@ fogalomKettoKategoria = KettoKategoriaKonstruktor
 ||| Yoneda beagyazas a fogalom kategóriaban: C → [C^op, Set].
 ||| Minden fogalomtípushoz a Hom(-, a) prefasítás.
 |||   homPresheaf a x = FogalomMorf x a  (Hom(-, a) at x)
-|||   utanaTetelezes f x g = fogalomOsszetetelMorf g f  (postkompozicio)
+|||   utanaTetelezes f x g = fogalomOsszetetelMorf g f  (posztkompozíció)（后复合）
 |||   yonedaLemma nat = nat a (fogalomKategoria.azonos a)  (1_a-re alkalmazva)
 public export
 fogalomYoneda : YonedaBeagyazas FogalomTipus FogalomMorf
@@ -589,7 +589,7 @@ fogalomYoneda = YonedaKonstruktor
   (\f, x, g => fogalomOsszetetelMorf g f)
   (\nat => nat _ (fogalomKategoria.azonos _))
 
-||| Dual adjunkcio: C -| C^op.
+||| Duális adjunkció: C -| C^op。（对偶伴随。）
 ||| A bal és jobb funktor az azonos és az ellentett kategória között.
 |||   balFunktor : C → C^op  (f ↦ EllenNyil f)
 |||   jobbFunktor : C^op → C  (EllenNyil f ↦ f)
@@ -616,7 +616,7 @@ fogalomDualisAdjunkcio =
 -- 范畴论之梯：从对象到米田（Yoneda）
 -- ═══════════════════════════════════════════════════════════════
 
-||| 0. szint: tipusok (objektumok).
+||| 0. szint: típusok (objektumok)。（第 0 层：类型（对象）。）
 ||| A legalso fok — puszta tipusok, meg morfizmus nelkul.
 public export
 record NulladikLetra (obj : Type) where
@@ -659,14 +659,14 @@ record NegyedikLetra (obj : Type) (hom : obj -> obj -> Type)
   kettoKategoria : KettoKategoria obj hom ketHom
 
 ||| 5. szint: Yoneda beagyazas (C → [C^op, Set]).
-||| Minden objektum a Hom(-, a) presheafba van agyazva.
+||| Minden objektum a Hom(-, a) prezsíjbe van ágyazva。（每个对象都嵌入 Hom(-, a) 预层。）
 public export
 record OtodikLetra (obj : Type) (hom : obj -> obj -> Type) where
   constructor OtodikLetraKonstruktor
   első : ElsoLetra obj hom
   yoneda : YonedaBeagyazas obj hom
 
-||| 6. szint: adjunkcio (C -| D).
+||| 6. szint: adjunkció (C -| D)。（第 6 层：伴随（C -| D）。）
 ||| A duális kategóriaval alkotott adjunkcio.
 public export
 record HatodikLetra (o1 : Type) (m1 : o1 -> o1 -> Type)
@@ -676,7 +676,7 @@ record HatodikLetra (o1 : Type) (m1 : o1 -> o1 -> Type)
   adjunkcio : Adjunkcio o1 m1 o2 m2
 
 ||| Teljes letra: nulladik szinttol a Yoneda beagyazasig és adjunkciog.
-||| Minden fok epit az elozo szintre.
+||| Minden fok épít az előző szintre.（每一层都建在上一层之上。）
 public export
 record TeljesLetra (obj : Type) (hom : obj -> obj -> Type)
                    (ketHom : (a, b : obj) -> hom a b -> hom a b -> Type)
@@ -887,7 +887,7 @@ időE8Kod Mult = E8PontKonstruktor 0 0 0 0 0 1 0 0
 időE8Kod Jelen = E8PontKonstruktor 0 0 0 0 0 0 1 0
 időE8Kod Jovo = E8PontKonstruktor 0 0 0 0 0 0 0 1
 
-||| E8Pont osszeadas.
+||| E8Pont-összeadás。（E8 点加法。）
 public export
 e8PontOsszead : E8Pont -> E8Pont -> E8Pont
 e8PontOsszead a b = E8PontKonstruktor
@@ -1142,7 +1142,7 @@ időE8Funktor = FunktorKonstruktor időE8Kod időE8MorfizmusKep
 -- ═══════════════════════════════════════════════════════════════
 
 ||| RagozottSzo → E8Pont.
-||| A szo.idobol az IgeIdot emeljuk ki az IdoBeljegyzesbol.
+||| A szo.idoból az IgeIdőt emeljük ki az IdoBeljegyzesből。（从 szo.ido 提取 IgeIdo。）
 public export
 ragozottSzoE8Pont : RagozottSzo -> E8Pont
 ragozottSzoE8Pont szo =
@@ -1190,12 +1190,12 @@ data KategoriaMorf : KategoriaTipus -> KategoriaTipus -> Type where
   KategoriaIre     : FogalomLogika714 a b -> KategoriaMorf a b
   KategoriaSorozat : (koztes : KategoriaTipus) -> KategoriaMorf a koztes -> KategoriaMorf koztes c -> KategoriaMorf a c
 
-||| Azonossag: minden KategoriaTipushoz az azonos morfizmus.
+||| Azonosság: minden KategoriaTípushoz az azonos morfizmus。（恒等：每个范畴类型都有恒等态射。）
 public export
 kategóriaAzonos : (a : KategoriaTipus) -> KategoriaMorf a a
 kategóriaAzonos a = KategoriaAzonos
 
-||| Osszetetel: morfizmusok kompozicioja.
+||| Összetétel: morfizmusok kompozíciója。（复合：态射的复合。）
 public export
 kategóriaOsszetetel : {a, b, c : KategoriaTipus} -> KategoriaMorf a b -> KategoriaMorf b c -> KategoriaMorf a c
 kategóriaOsszetetel {a} {b} {c} f g = KategoriaSorozat b f g
@@ -1216,7 +1216,7 @@ data SzamitasiMorf : SzamitasiKategoria -> SzamitasiKategoria -> Type where
   SzamitasiAzonos : SzamitasiMorf a a
 
 ||| Funktor: Emberi → Kategoria714.
-||| Minden EmberiKategoria egy KategoriaEmberi.
+||| Minden EmberiKategória egy KategóriaEmberi。（每个 EmberiKategória 都是 KategóriaEmberi。）
 public export
 emberi714Funktor : Funktor EmberiKategoria EmberiMorf KategoriaTipus KategoriaMorf
 emberi714Funktor = FunktorKonstruktor
@@ -1284,7 +1284,7 @@ fazisAllapotMorf = kategóriaOsszetetel fazisPeremMorf peremAllapotMorf
 --     yonedaLemma nat = nat a (fogalomKategoria.azonos a)
 --   Ez a klasszikus Yoneda-bizonyítás: Φ(α) = α_a(id_a).
 
-||| Yoneda-lemma: a termeszetes transzformacio egyertelmu.
+||| Yoneda-lemma: a természetes transzformáció egyértelmű。（米田引理：自然变换是唯一的。）
 |||   Minden α: Hom(-,a) → F termeszetes transzformaciot
 |||   egyertelmuen meghataroz az α_a(id_a) ∈ F(a).
 public export
@@ -1322,7 +1322,7 @@ KategoriaT SzamitasiKategoria SzamitasiMorf where
 
 -- ─── CSOPORT TYPECLASS ─────────────────────────────────────
 
-||| Csoport typeclass: szorzas, egyseg, inverz + torvenyek.
+||| Csoport típusosztály: szorzás, egység, inverz + törvények。（群的类型类：乘法、单位、逆 + 定律。）
 public export
 interface CsoportT (g : Type) where
   szorzasG : g -> g -> g
