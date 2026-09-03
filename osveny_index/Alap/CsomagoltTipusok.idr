@@ -170,6 +170,7 @@ public export
 -- ═════════════════════════════════════════════════════════════════════════
 
 ||| A sorszám: nulla vagy a következő. Ez a projekt index-típusa —
+||| 序数：零或后继。这是本项目的索引类型——
 ||| a Nat sehol nem jelenik meg (sem értékként, sem típus-szintű indexként).
 public export
 data Sorszám : Type where
@@ -183,6 +184,7 @@ EgyenlőségT Sorszám where
   egyenlőE _ _ = Hamis
 
 ||| Nevezetes sorszámok (0-tól 10-ig) — olvasható nevekkel.
+||| 著名序数（0 到 10）——以可读的名字。
 public export
 sorEgy, sorKettő, sorHárom, sorNégy, sorÖt : Sorszám
 sorEgy = SorKövetkező SorNulla
@@ -201,6 +203,7 @@ sorTíz = SorKövetkező sorKilenc
 
 ||| A tizenhat sorszám-konstans (a Tórusz 16 pontja — a GKP-tanúhoz).
 ||| Szerkezet: sorTíz + 6 (a kézi mélység-GÉPI ellenőrzéssel — csapda #18b).
+||| 结构：sorTíz + 6（手工深度经机器核验——陷阱 #18b）。
 public export
 sorTizenhat : Sorszám
 sorTizenhat = SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező sorTíz)))))
@@ -208,18 +211,21 @@ sorTizenhat = SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező (So
 -- ─── SORSZÁM-ARITMETIKA (strukturális — a törvények ingyenesek) ──────────
 
 ||| Sorszám-összeadás: (m+1)+n = (m+n)+1 — bal-rekurzív, bal-egység Refl.
+||| 序数加法：(m+1)+n = (m+n)+1——左递归，左单位为 Refl。
 public export
 sorÖsszeadás : Sorszám -> Sorszám -> Sorszám
 sorÖsszeadás SorNulla n = n
 sorÖsszeadás (SorKövetkező m) n = SorKövetkező (sorÖsszeadás m n)
 
 ||| Sorszám-szorzás: (m+1)×n = m×n + n.
+||| 序数乘法：(m+1)×n = m×n + n。
 public export
 sorSzorzás : Sorszám -> Sorszám -> Sorszám
 sorSzorzás SorNulla _ = SorNulla
 sorSzorzás (SorKövetkező m) n = sorÖsszeadás (sorSzorzás m n) n
 
 ||| Sorszám-kivonás (truncált: nincs negatív sorszám).
+||| 序数减法（截断式：没有负序数）。
 public export
 sorKivonás : Sorszám -> Sorszám -> Sorszám
 sorKivonás SorNulla _ = SorNulla
@@ -227,6 +233,7 @@ sorKivonás m SorNulla = m
 sorKivonás (SorKövetkező m) (SorKövetkező n) = sorKivonás m n
 
 ||| Sorszám-rendezés: m < n ?
+||| 小于关系：m < n？
 public export
 sorKisebb : Sorszám -> Sorszám -> Igazság
 sorKisebb SorNulla SorNulla = Hamis
@@ -239,6 +246,7 @@ sorKisebb (SorKövetkező m) (SorKövetkező n) = sorKisebb m n
 -- Kimenet: Refl (0 + n = n ✓ — definicionálisan, minden n-re)
 
 ||| Bal-egység: a nulla balról az identitás (ingyen, a definícióból).
+||| 左单位：零从左侧是单位元（免费的，来自定义）。
 public export
 sorBalEgység : (n : Sorszám) -> sorÖsszeadás SorNulla n = n
 sorBalEgység _ = Refl
@@ -246,6 +254,7 @@ sorBalEgység _ = Refl
 -- Kimenet: Refl (n + 0 = n ✓ — indukcióval)
 
 ||| Jobb-egység: a nulla jobbról is identitás (indukció + cong).
+||| 右单位：零从右侧也是单位元（归纳 + cong）。
 public export
 sorJobbEgység : (n : Sorszám) -> sorÖsszeadás n SorNulla = n
 sorJobbEgység SorNulla = Refl
@@ -254,6 +263,7 @@ sorJobbEgység (SorKövetkező m) = cong SorKövetkező (sorJobbEgység m)
 -- Kimenet: Refl (7 + 1 = 8 ✓ — az oktonió nyolc alapja)
 
 ||| Hét plusz egy nyolc — a [[15,1,3]] és az oktonió kapcsolata.
+||| 七加一等于八——[[15,1,3]] 与八元数的联系。
 ||| (Idris 0.8.0: a szabad kisbetűs konstansokat a típusban MINŐSÍTVE
 ||| hivatkozzuk — különben implicit paraméterként kötődnének.)
 public export
@@ -269,7 +279,7 @@ kettőSzorÖtTízSor = Refl
 
 -- ═════════════════════════════════════════════════════════════════════════
 -- III. AZ EGÉSZ SZÁM 0-TÓL 10-IG — a [[15,1,3]] kód számai
---      中文：0 到 10 的整数——[[15,1,3]] 代码的数字
+-- 中文：三、0 到 10 的整数——[[15,1,3]] 码的数字
 -- ═════════════════════════════════════════════════════════════════════════
 
 ||| Az egész szám 0-tól 10-ig — a projekt alapszámai (kanonizálva az
@@ -409,7 +419,7 @@ kilencPluszKettőTelít = Refl
 
 -- ═════════════════════════════════════════════════════════════════════════
 -- IV. SZÁMJEGY, ELŐJEL, FŰZÉR, SZÁMJEGYES SZÁM — a nagy számok
--- 中文：四、数字、符号、链、位记数——大数
+-- 中文：四、数字、正负号、链、位记数——大数
 --      (240 E8-gyök, 2026 év — az Integer kiváltása)
 --      中文：数字、符号、串列与大数——十进制结构（代替 Integer/List）
 -- ═════════════════════════════════════════════════════════════════════════
@@ -571,9 +581,12 @@ mínuszNullaPozitív = Refl
 -- ═════════════════════════════════════════════════════════════════════════
 
 ||| A magyar ábécé 44 betűje — a digráfok (cs, dz, dzs, gy, ly, ny,
+||| 匈牙利字母表的 44 个字母——二合字母（cs、dz、dzs、gy、ly、ny、
 ||| sz, ty, zs) és az idegen q, w, x, y egyaránt saját betűk.
 ||| A betű a betűgraféma (kisbetűs megjelenítéssel); a nagybetű későbbi réteg.
+||| 字母即字母字形（以小写呈现）；大写是后续的层。
 ||| Forrás: AkH.12 — a magyar helyesírás 44 betűs ábécéje.
+||| 来源：AkH.12——匈牙利语正字法的 44 字母表。
 public export
 data Betű : Type where
   ABetű   : Betű   -- a
@@ -670,13 +683,16 @@ EgyenlőségT Betű where
   egyenlőE _ _ = Hamis
 
 ||| A szöveg: betűk füzére (a String kiváltása).
+||| 文本：字母的链（取代 String）。
 ||| A szóköz és az írásjelek NEM betűk — a mondat Füzér Szöveg (későbbi réteg).
+||| 空格与标点不是字母——句子是 Füzér Szöveg（后续的层）。
 public export
 data Szöveg : Type where
   ÜresSzöveg : Szöveg
   BetűtFűz   : Betű -> Szöveg -> Szöveg
 
 ||| Két szöveg egyezik-e (betűnként).
+||| 两个文本是否一致（逐字母）。
 public export
 szövegEgyenlő : Szöveg -> Szöveg -> Igazság
 szövegEgyenlő ÜresSzöveg ÜresSzöveg = Igaz
@@ -686,20 +702,25 @@ szövegEgyenlő (BetűtFűz b bs) (BetűtFűz c cs) =
   ésE (egyenlőE b c) (szövegEgyenlő bs cs)
 
 ||| Szöveg-összefűzés.
+||| 文本拼接。
 public export
 szövegFűzés : Szöveg -> Szöveg -> Szöveg
 szövegFűzés ÜresSzöveg folytatás = folytatás
 szövegFűzés (BetűtFűz b bs) folytatás = BetűtFűz b (szövegFűzés bs folytatás)
 
 ||| Szöveg hossza (sorszám).
+||| 文本长度（sorszám/序数）。
 public export
 szövegHossz : Szöveg -> Sorszám
 szövegHossz ÜresSzöveg = SorNulla
 szövegHossz (BetűtFűz _ tovább) = SorKövetkező (szövegHossz tovább)
 
 ||| Végződés-egyezés: a szó végződik-e a raggal?
+||| 词尾匹配：单词是否以该词缀结尾？
 ||| A 18 esetrag-keresés ALAPJA (a magyar esetragos keresés: 600.10 lépés).
+||| 18 个格词缀检索的基础（匈牙利语格词缀检索：600.10 步）。
 ||| Példa: végEgyezzik „háznál" „nál" = Igaz.
+||| 示例：végEgyezzik „háznál" „nál" = Igaz。
 public export
 végEgyezzik : Szöveg -> Szöveg -> Igazság
 végEgyezzik ÜresSzöveg ÜresSzöveg = Igaz
@@ -710,6 +731,7 @@ végEgyezzik (BetűtFűz b bs) (BetűtFűz c cs) =
         (végEgyezzik bs (BetűtFűz c cs))
 
 ||| A szövegműveletek typeclassja.
+||| 文本操作的类型类。
 public export
 interface SzövegT (típus : Type) where
   szövegHossza   : típus -> Sorszám
@@ -729,6 +751,7 @@ SzövegT Szöveg where
 -- Kimenet: Refl (ÜresSzöveg ++ s = s ✓ — definicionálisan)
 
 ||| Bal-egység: az üres szöveg balról az identitás.
+||| 左单位：空文本从左侧是单位元。
 public export
 szövegBalEgység : (s : Szöveg) -> szövegFűzés ÜresSzöveg s = s
 szövegBalEgység _ = Refl
@@ -736,12 +759,14 @@ szövegBalEgység _ = Refl
 -- Kimenet: Refl (s ++ ÜresSzöveg = s ✓ — indukcióval)
 
 ||| Jobb-egység: az üres szöveg jobbról is identitás.
+||| 右单位：空文本从右侧也是单位元。
 public export
 szövegJobbEgység : (s : Szöveg) -> szövegFűzés s ÜresSzöveg = s
 szövegJobbEgység ÜresSzöveg = Refl
 szövegJobbEgység (BetűtFűz b bs) = cong (BetűtFűz b) (szövegJobbEgység bs)
 
 ||| A Betű-egyenlőség reflexivitása — a 44 soros instance TYPO-HÁLÓJA
+||| 字母相等性的自反性——44 行 instance 的排版之网
 ||| (GAN 9.c: egy elírt konstruktor-sor itt bukik le, nem csendesen).
 ||| ELŐBB áll, mert a szövegRefl és a végEgyezzikRefl rewrite-olja.
 public export
@@ -792,12 +817,14 @@ betűRefl ZBetű = Refl
 betűRefl ZsBetű = Refl
 
 ||| A Sorszám-egyenlőség reflexivitása (GAN 9.c — indukció).
+||| 序数相等性的自反性（GAN 9.c——归纳法）。
 public export
 sorszámRefl : (n : Sorszám) -> egyenlőE n n = Igaz
 sorszámRefl SorNulla = Refl
 sorszámRefl (SorKövetkező m) = sorszámRefl m
 
 ||| A szöveg-egyenlőség reflexivitása (GAN 9.c — bizonyítvány; indukció).
+||| 文本相等性的自反性（GAN 9.c——证书；归纳法）。
 ||| A betű-reflexivitás rewrite-ja kell (a változó betű nem redukál).
 public export
 szövegRefl : (s : Szöveg) -> szövegEgyenlő s s = Igaz
@@ -813,6 +840,7 @@ vagyIgazIgazBal Igaz = Refl
 vagyIgazIgazBal Hamis = Refl
 
 ||| A végEgyezzik reflexivitása: minden szó végződik önmagával (GAN 11.b).
+||| végEgyezzik 的自反性：每个单词都以自身结尾（GAN 11.b）。
 public export
 végEgyezzikRefl : (s : Szöveg) -> végEgyezzik s s = Igaz
 végEgyezzikRefl ÜresSzöveg = Refl
@@ -840,6 +868,7 @@ végEgyezzikPélda = Refl
 
 -- ═════════════════════════════════════════════════════════════════════════
 -- VI. TALÁN ÉS PÁR — a Maybe és a Pair becsomagolva
+-- 中文：六、Talán 与 Pár——Maybe 和 Pair 的包装
 --     中文：Talán 代替 Maybe，Pár 代替 Pair
 -- ═════════════════════════════════════════════════════════════════════════
 
@@ -913,13 +942,14 @@ public export
 nullaElőttSemmi : sorElőzője EgészNulla = Semmi
 nullaElőttSemmi = Refl
 
--- Kimenet: Refl (a Sorszám-sor sosem telít: mindig van következo ✓)
+-- Kimenet: Refl (a Sorszám-sor sosem telít: mindig van következő ✓)
 public export
 sorszámMindigFolytatódik : (sor : Sorszám) -> sorKövetkezője sor = Csak (SorKövetkező sor)
 sorszámMindigFolytatódik sor = Refl
 
 -- ═════════════════════════════════════════════════════════════════════════
 -- VII. A KUBIT — a [[15,1,3]] hibajavító kód alapja (kanonikus)
+-- 中文：七、Kubit——[[15,1,3]] 纠错码的基础（典范）
 --      中文：Kubit——纠错码基础（规范定义；Steane713 稍后改为导入）
 -- ═════════════════════════════════════════════════════════════════════════
 
@@ -992,6 +1022,7 @@ kubitNullaJobbEgység Egy = Refl
 
 -- ═════════════════════════════════════════════════════════════════════════
 -- VIII. STEANE-VEKTOR — a hossz a TÍPUSBAN, Sorszám-indexelve (Nat nélkül)
+-- 中文：八、Steane 向量——长度在类型中，以 Sorszám 索引（无 Nat）
 --       中文：长度在类型里——Sorszám 索引向量（无 Nat）
 -- ═════════════════════════════════════════════════════════════════════════
 
@@ -1051,7 +1082,7 @@ vektorFűzésPélda = Refl
 
 -- ═════════════════════════════════════════════════════════════════════════
 -- IX. E8-KOORDINÁTA — a 240 gyök véges koordinátakészlete {0, ±1, ±½}
---     中文：E8 坐标——240 个根的有限坐标集 {0, ±1, ±½}
+-- 中文：九、E8 坐标——240 个根的有限坐标集 {0, ±1, ±½}
 -- ═════════════════════════════════════════════════════════════════════════
 
 ||| Az E8-gyökrendszer koordinátái pontosan ezekből az értékekből állnak
@@ -1097,6 +1128,7 @@ tükörInvolúció MínuszFélKoordináta = Refl
 
 -- ═════════════════════════════════════════════════════════════════════════
 -- X. A KONSTANSOK — SZIMBÓLUMOK, NEM DOUBLE-ök (a Pi-elv)
+-- 中文：十、常量——符号，而非 Double（Pi 原则）
 --     中文：常数是符号——Pi 就是 Pi，永远不是 Double
 -- ═════════════════════════════════════════════════════════════════════════
 
@@ -1167,6 +1199,7 @@ KonstansT FizikaiKonstans where
 
 -- ═════════════════════════════════════════════════════════════════════════
 -- XI. A 18 VALÓDI ESETRAG — a magyar nyelv kategóriaelméleti gerince
+-- 中文：十一、18 个真正的格词缀——匈牙利语的范畴论骨干
 --     中文：匈牙利语 18 个真正的格后缀
 -- ═════════════════════════════════════════════════════════════════════════
 
@@ -1460,6 +1493,7 @@ füzérHosszTérkép leképező (Fűzés elem tovább) =
   cong SorKövetkező (füzérHosszTérkép leképező tovább)
 
 ||| A hajtás az üres füzérön a kezdőérték (katamorfizmus-alap).
+||| 折叠在空链上返回起始值（catamorphism 之基）。
 public export
 füzérHajtásVége : {elemTípus : Type} -> {összegTípus : Type} ->
   (teendő : elemTípus -> összegTípus -> összegTípus) -> (kezdő : összegTípus) ->
@@ -1468,6 +1502,7 @@ füzérHajtásVége teendő kezdő = Refl
 
 ||| Hajtás-fúzió: a fűzésre hajtás = a másodikon előre hajtás, majd az elsőn
 ||| (a foldr-append fúzió — a katamorfizmus algebrai gerince).
+||| （foldr-拼接融合——catamorphism 的代数骨干。）
 public export
 füzérHajtásFűzés : {elemTípus : Type} -> {összegTípus : Type} ->
   (teendő : elemTípus -> összegTípus -> összegTípus) -> (kezdő : összegTípus) ->
@@ -1479,6 +1514,7 @@ füzérHajtásFűzés teendő kezdő (Fűzés elem tovább) második =
   cong (teendő elem) (füzérHajtásFűzés teendő kezdő tovább második)
 
 ||| Segéd: egy elem fűzése jobbra = a hossz eggyel nő (indukció).
+||| 引理：向右拼接一个元素 = 长度加一（归纳法）。
 public export
 füzérHosszFűzésEgy : {tag : Type} -> (elem : tag) -> (teljes : Füzér tag) ->
   füzérHossz (füzérFűzés teljes (Fűzés elem FüzérVége))
@@ -1488,6 +1524,7 @@ füzérHosszFűzésEgy elem (Fűzés első tovább) =
   cong SorKövetkező (füzérHosszFűzésEgy elem tovább)
 
 ||| A fordítás megtartja a hosszt (a tükrözés mérték-megőrzése).
+||| 反转保持长度（镜像的保测度性）。
 public export
 füzérFordítHossz : {tag : Type} -> (teljes : Füzér tag) ->
   füzérHossz (füzérFordít teljes) = füzérHossz teljes
@@ -1497,6 +1534,7 @@ füzérFordítHossz (Fűzés elem tovább) =
   cong SorKövetkező (füzérFordítHossz tovább)
 
 ||| A tagság oszlik a fűzésre (a jobb oldalt vagy-val mérve).
+||| 成员性对拼接分配（右侧以析取度量）。
 public export
 füzérElemeFűzés : EgyenlőségT tag =>
   (keresett : tag) -> (első : Füzér tag) -> (második : Füzér tag) ->
@@ -1651,10 +1689,10 @@ szorzámHúszSzó : Szöveg
 szorzámHúszSzó = BetűtFűz HBetű (BetűtFűz ÚBetű (BetűtFűz SzBetű ÜresSzöveg))
 
 ||| A sorSzöveggé-híd: a Sorszám MAGYAR SZÓVAL (húszig — a rúnaszámok
-||| sorSzöveggé 桥：Sorszám 以匈牙利语单词呈现（至二十——如尼数字
-||| 原则：没有数字字形，数字即单词）。
 ||| elve: számjegy-graféma nincs, a szám Szó). A megjelenítés-tíznél-
 ||| telít kapujának feloldása a tízen túli számokra.
+||| sorSzöveggé 桥：Sorszám 以匈牙利语单词呈现（至二十——如尼数字
+||| 原则：没有数字字形，数字即单词）。
 ||| KOMPOZICIONÁLIS terv (a magyar számnevek törvénye: 11..19 = tizen+
 ||| [egy..kilenc], 20 = húsz) — a 20 mély minta helyett TÍZALATTI
 ||| szótároló + TÍZFELETT érzékelő (az Idris2 dokumentáció
@@ -1705,12 +1743,12 @@ tízFelett (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező
   (SorKövetkező tovább)))))))))) = Csak tovább
 
 ||| A sorSzöveggé-híd: a Sorszám MAGYAR SZÓVAL (húszig — a rúnaszámok
-||| sorSzöveggé 桥：Sorszám 以匈牙利语单词呈现（至二十——如尼数字
-||| 原则：没有数字字形，数字即单词）。
 ||| elve: számjegy-graféma nincs, a szám Szó). A megjelenítés-tíznél-
 ||| telít kapujának feloldása a tízen túli számokra.
+||| sorSzöveggé 桥：Sorszám 以匈牙利语单词呈现（至二十——如尼数字
+||| 原则：没有数字字形，数字即单词）。
 ||| A 21 KLAUZÚLÁS forma gépileg GENERÁLVA (a kézi mélységszámolás
-||| csapdája #18b után) — a KLAAUZULÁK típus-szinten IS redukálnak
+||| csapdája #18b után) — a KLAUZULÁK típus-szinten IS redukálnak
 ||| (a case/with mély ág-mintái NEM — ezért a tóruszSzámaSzava-tanú
 ||| miatt ez a forma győzött). A 11..19 kompozicionális: tizen + szó.
 ||| (A tízAlattiSzó/tízFelett maradt dokumentáltan a kompozicionális
@@ -1753,6 +1791,7 @@ sorSzöveggéTízTanú = Refl
 
 -- ═════════════════════════════════════════════════════════════════════════
 -- XII. METRIKÁK — időbélyeg, verziószám, bájtlánc-index, megbízhatóság
+-- 中文：十二、度量——时间戳、版本号、字节串索引、可靠性
 --      中文：度量——时间戳、版本号、字节索引、可信度
 -- ═════════════════════════════════════════════════════════════════════════
 
@@ -1801,6 +1840,7 @@ interface MennyiségT (típus : Type) where
 
 -- ═════════════════════════════════════════════════════════════════════════
 -- XIII. A BETŰK TYPECLASSJA — magánhangzó-e? (a hangrend alapja)
+-- 中文：十三、字母的类型类——是否元音？（元音和谐的基础）
 --       中文：字母类型类——是否元音（元音和谐的基础）
 -- ═════════════════════════════════════════════════════════════════════════
 
@@ -1843,6 +1883,7 @@ magánhangzóBizonyítás = Refl
 
 -- ═════════════════════════════════════════════════════════════════════════
 -- XIV. A MEGJELENÍTÉS TYPECLASSJA — minden típus Szövegként
+-- 中文：十四、显示的类型类——一切类型皆可为文本
 --      中文：显示类型类——返回 Szöveg，绝不返回 String
 -- ═════════════════════════════════════════════════════════════════════════
 

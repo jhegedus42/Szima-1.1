@@ -4,9 +4,12 @@ import Data.Vect
 
 -- =====================================================================
 -- FÁZIS modul: 8 osztatú kör = komplex bináris fázis.
+-- 相位模块：八等分的圆 = 复二进制相位。
 --
 -- A kulcs felismerés: a BIT nem csak 0/1, hanem FÁZIS.
+-- 关键洞见：比特不只是 0/1，而是相位。
 -- A fázis = a bizonytalanság mértékegysége.
+-- 相位 = 不确定性的度量单位。
 --
 -- A kör 8 osztása: e^{ikπ/4}, k = 0..7
 --   0:   0°    = 1          (azonos)
@@ -19,13 +22,16 @@ import Data.Vect
 --   7: 315°    = (1-i)/√2
 --
 -- Ez a Z₈ csoport (8 elemű ciklikus csoport).
+-- 这是 Z₈ 群（8 阶循环群）。圆的 8 等分：e^{ikπ/4}，k = 0..7（180° = -1 反演 = NOT）。
 -- Kapcsolat az E8-hoz: E8 8 dimenziós, minden dimenzió hordoz egy fázist.
+-- 与 E8 的联系：E8 是 8 维的，每个维度承载一个相位。
 -- =====================================================================
 
 %default total
 
 -- =====================================================================
 -- 1. A 8 fázis: Z₈ ciklikus csoport.
+-- 一、8 个相位：Z₈ 循环群。
 -- =====================================================================
 
 public export
@@ -55,6 +61,7 @@ Eq Fazis where
   _ == _ = False
 
 ||| Fázis → Nat index (0–7).
+||| 相位 → Nat 索引（0–7）。
 public export
 fazisIndex : Fazis -> Nat
 fazisIndex F0 = 0
@@ -67,6 +74,7 @@ fazisIndex F6 = 6
 fazisIndex F7 = 7
 
 ||| Nat → Fázis (mod 8, kézi pattern matching).
+||| Nat → 相位（模 8，手写模式匹配——模=modulo）。
 public export
 indexFazis : Nat -> Fazis
 indexFazis 0 = F0
@@ -89,6 +97,7 @@ indexFazis _ = F0
 
 -- =====================================================================
 -- 2. Fázis összeadás: Z₈ csoportművelet.
+-- 二、相位加法：Z₈ 群运算。
 -- =====================================================================
 
 public export
@@ -108,6 +117,7 @@ fazisInverz F7 = F1
 
 -- =====================================================================
 -- 3. Fázis komponens: magnitúdó + fázis.
+-- 三、相位分量：幅值 + 相位。
 -- =====================================================================
 
 public export
@@ -128,6 +138,7 @@ fazisSzorzat a b = MkFazisKomponens
 
 -- =====================================================================
 -- 4. E8 fázispont: 8 dimenziós fázisvektor.
+-- 四、E8 相位点：8 维相位向量。
 -- =====================================================================
 
 public export
@@ -156,6 +167,7 @@ Show E8FazisPont where
 
 -- =====================================================================
 -- 5. Fázis hiba és javítás.
+-- 五、相位错误与纠正。
 -- =====================================================================
 
 public export
@@ -168,6 +180,7 @@ fazisJavitas javitas = fazisHiba (fazisInverz javitas)
 
 -- =====================================================================
 -- 6. "Lehetséges mód": fázisszuperpozíció.
+-- 六、「可能模式」：相位叠加。
 -- =====================================================================
 
 public export
@@ -181,6 +194,7 @@ Show LehetsegesMod where
 
 -- =====================================================================
 -- 7. Bizonyítások.
+-- 七、证明。（fazisNullaBal：左单位；fazisInverzJobb：右逆——皆 8 个 Refl）
 -- =====================================================================
 
 public export
