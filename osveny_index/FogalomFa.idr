@@ -7,16 +7,21 @@ import Emberi.Index
 import Szamitasi.Index
 import Steane713
 
-||| Fogalom hierarchia: mely tipusok lehetnek egy masik gyerekei.
-||| Egesziti ki a FogalomTipus-t a logikai kapcsolatokkal.
+||| Fogalom-hierarchia: mély típusok lehetnek egy másik gyerekei.
+||| Egészíti ki a FogalomTipust a logikai kapcsolatokkal.
+||| 概念层级：哪些类型可以是另一类型的子节点。以逻辑联系补全 FogalomTipus。
 |||
-||| Gondolat: nem minden fogalom lehet barmelyik masik gyereke.
-||| Peldaul egy Kerdes soha nem lehet gyereke egy Cselekves-nek.
-||| A 35 ervenyes kapcsolat a teljes hierarchiat irja le.
+||| Gondolat: nem minden fogalom lehet bármélyik másik gyereke.
+||| Például egy Kérdés soha nem lehet gyereke egy Cselekvésnek.
+||| A 35 érvényes kapcsolat a teljes hierarchiát írja le.
+||| 洞见：并非任何概念都能作任何概念的子节点。例如问题永远不能是
+||| 行动的子节点。35 条有效联系描述整个层级。
 |||
-||| A konstruktorok neve a ket fogalom osszefuzese:
-|||   GyokerCel = "a Gyoker gyereke lehet Cel"
-||| Ez a kategoriaelmeletben morfizmusnak felel meg.
+||| A konstruktorok neve a két fogalom összefűzése:
+|||   GyokerCel = „a Gyoker gyereke lehet Cel"
+||| Ez a kategóriaelméletben morfizmusnak felel meg.
+||| 构造器名是两个概念的缀合：GyokerCel =「Gyoker 的子节点可以是 Cel」。
+||| 这在范畴论中对应态射。
 public export
 data FogalomLogika : FogalomTipus -> FogalomTipus -> Type where
   Azonos          : FogalomLogika a a
@@ -275,16 +280,20 @@ data FogalomLogika : FogalomTipus -> FogalomTipus -> Type where
   StabilizatorKapu        : FogalomLogika Stabilizator Kapu
   TGateKapu               : FogalomLogika TGate Kapu
 
-||| Fa csomopont adatai.
-||| Minden csomopontnak van:
-|||   cimke = a csomopont neve (String, mert ez megjeleniteshez kell)
-|||   leiras = reszletes leiras (String, mert ez emberi olvasasra)
-|||   hivatkozasok = kapcsolodo referencia lista
-|||   bizalom = a csomopont megbizhatosaga 0 es 1 kozott
+||| Fa-csomópont adatai. / 树节点的数据。
+||| Minden csomópontnak van: / 每个节点都有：
+|||   címke = a csomópont neve (String, mert ez megjelenítéshez kell)
+|||   címke = 节点名（String——显示所需）
+|||   leírás = részletes leírás (String, mert ez emberi olvasásra)
+|||   leírás = 详细描述（String——供人阅读）
+|||   hivatkozások = kapcsolódó referenciák listája / 相关引用
+|||   bizalom = a csomópont megbízhatósága 0 és 1 között / 可信度介于 0 与 1 之间
 |||
-||| A String itt kivétel — a megjeleniteshez es emberi olvasashoz
-||| van, nem a logikai mag resze. A mag tipusok (FogalomTipus, eset)
-||| nem hasznalnak String-et.
+||| A String itt kivétel — a megjelenítéshez és emberi olvasáshoz
+||| van, nem a logikai mag része. A mag típusok (FogalomTipus, eset)
+||| nem használnak Stringet.
+||| 此处的 String 是例外——为显示与阅读而设，并非逻辑核心的一部分。
+||| 核心类型（FogalomTipus、格）不使用 String。
 public export
 record FogalomAdat where
   constructor AdatKonstruktor
@@ -293,15 +302,17 @@ record FogalomAdat where
   hivatkozasok : List String
   bizalom : Double
 
-||| Fogalom fa: egy csomopont, amely a FogalomTipus alapjan
-||| tartalmazza a hierarchiaban elfoglalt helyet.
+||| Fogalom-fa: egy csomópont, amély a FogalomTipus alapján
+||| 概念树：一个节点，依据 FogalomTipus 包含其在层级中的位置。
+||| tartalmazza a hierarchiában elfoglalt helyet。
 |||
-||| A fa ketfele lehet:
+||| A fa kétféle lehet：（树有两种形态：叶 Level 与枝 Ag。）
 |||   Level = levél (nincs gyereke)
-|||   Ag = ag (van gyereke, es megadja a kapcsolat tipusat is)
+|||   Ag = ág (van gyereke, és megadja a kapcsolat típusát is)（枝：有子节点并给出联系类型）
 |||
-||| Az Ag a dependens tipussal biztosítja, hogy minden gyerek
-||| kapcsolata ervenyes FogalomLogika legyen.
+||| Az Ag a dependens típussal biztosítja, hogy minden gyerek
+||| Ag 以依赖类型保证每个子节点的联系都是合法的 FogalomLogika。
+||| kapcsolata érvényes FogalomLogika legyen。
 public export
 data FogalomFa : FogalomTipus -> Type where
   Level  : FogalomAdat -> FogalomFa t
@@ -309,13 +320,14 @@ data FogalomFa : FogalomTipus -> Type where
          -> List (s : FogalomTipus ** (FogalomFa s, FogalomLogika t s))
          -> FogalomFa t
 
-||| A harom kubit kapcsolata a fa szerkezeteben.
-||| A VilagFa egyesiti a harom nezoPontot:
-|||   sajat = a rendszer sajat fogalomfaja (C = toltes)
-|||   masik = a masik fel fogalomfaja  (P = paritas)
-|||   fazis = a kapcsolat fazisa (T = ido)
+||| A három kubit kapcsolata a faszerkezetben。
+||| 三个 kubit 在树结构中的联系。VilagFa 统一三个视角：
+||| A VilagFa egyesíti a három nézőpontot:
+|||   sajat = a rendszer saját fogalomfája (C = töltés)（自己：系统自身的概念树）
+|||   masik = a másik fél fogalomfája  (P = paritás)（对方：他方的概念树）
+|||   fazis = a kapcsolat fázisa (T = idő)（相位：联系的相位）
 |||
-||| Ez a harom egyutt adja a teljes CPT szimmetriat.
+||| Ez a három együtt adja a teljes CPT-szimmetriát。（三者合成完整的 CPT 对称。）
 public export
 record VilagFa where
   constructor VilagFaKonstruktor
@@ -323,18 +335,22 @@ record VilagFa where
   masik : FogalomFa Gyoker     -- a masik fel nezoPontja (P)
   fazis : FogalomAdat          -- a kapcsolat fazisa (T)
 
-||| Fa merete: a csomopontok szama a faban.
-||| Ez egy rekurziv szamlalas: minden level 1, minden ag
-||| 1 plusz a gyerekek meretenek osszege.
+||| Faméret: a csomópontok száma a fában。
+||| 树的大小：树中节点的数目。
+||| Ez egy rekurzív számlálás: minden levél 1, minden ág
+||| 递归计数：每叶为 1，每枝为 1 加上子树大小之和。
+||| 1 plusz a gyerekek méretének összege。
 |||
-||| Kategoriaelmeleti ertelemben ez egy funktor a
+||| Kategóriaelméleti értelemben ez egy funktor a
+||| 范畴论意义上，这是一个从
 ||| FogalomFa kategoriaabol a Nat monoidba.
 public export
 meret : FogalomFa t -> Nat
 meret (Level _) = 1
 meret (Ag _ gyerekek) = 1 + sum (map (\(s ** (fa, _)) => meret fa) gyerekek)
 
-||| Bizalom atlag: a fa osszes csomopontjanak bizalom atlaga.
+||| Bizalom-átlag: a fa összes csomópontjának bizalom-átlaga。
+||| 信任均值：树中所有节点信任的平均值。
 ||| Ez a koherencia egy merteke — ha alacsony, a fa reszben
 ||| megbizhatatlan (tobbszoros hiba).
 public export

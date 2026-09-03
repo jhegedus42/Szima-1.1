@@ -7,25 +7,31 @@ import Emberi.Index
 import Szamitasi.Index
 
 ||| Magyar esetrendszer — 22 eset, mindegyik egy logikai kapcsolat.
+||| 匈牙利语格系统——22 个格，每个格是一种逻辑联系。
 |||
-||| Gondolat: a magyar nyelv agglutinativ — a toldalekok
-||| egymas utan fuzodnek a tohoz. Minden toldalek egy
-||| logikai kapcsolatot kodol. A 22 eset a logikai
-||| kapcsolatok teljes rendszeret alkotja.
+||| Gondolat: a magyar nyelv agglutinatív — a toldalékok
+||| egymás után fűződnek a tőhöz. Minden toldalék egy
+||| logikai kapcsolatot kódol. A 22 eset a logikai
+||| kapcsolatok teljes rendszerét alkotja.
+||| 洞见：匈牙利语是黏着语——词缀依次缀在词干上。每个词缀编码一种
+||| 逻辑联系。22 个格构成逻辑联系的完整系统。
 |||
-||| Az esetrendszer a [[7,1,3]] kod algebrababa van agyazva.
-||| Minden eset egy E8 pontba van kodolva.
+||| Az esetrendszer a [[7,1,3]] kód algebrájába van ágyazva.
+||| Minden eset egy E8-pontba van kódolva.
+||| 格系统嵌入 [[7,1,3]] 码的代数中。每个格编码到一个 E8 点里。
 |||
-||| Mi a kapcsolat az esetek es a logika kozott?
-|||   Nominativusz = alany (ki/mi?)
-|||   Accusativusz = targy (kit/mit?)
-|||   Dativusz = cimzett (kinek/minek?)
-|||   Instrumentalis = eszkoz (kivel/mivel?)
-|||   ... a tobbi hasonloan.
+||| Mi a kapcsolat az esetek és a logika között? / 格与逻辑之间是什么联系？
+|||   Nominativusz = alany (ki/mi?) / 主格 = 主语（谁/什么？）
+|||   Accusativusz = tárgy (kit/mit?) / 宾格 = 宾语（谁/什么？）
+|||   Dativusz = címzett (kinek/minek?) / 与格 = 接收者（给谁/什么？）
+|||   Instrumentalis = eszköz (kivel/mivel?) / 工具格 = 工具（用什么？）
+|||   ... a többi hasonlóan. / ……其余类推。
 |||
-||| A logikai kapcsolat nem a hagyomanyos arisztoteleszi logika,
-||| hanem a magyar nyelv esetrendszeren alapulo "eset logika".
-||| Ez 24 kapcsolatbol all (22 eset + 2 atmenet).
+||| A logikai kapcsolat nem a hagyományos arisztotelészi logika,
+||| hanem a magyar nyelv esetrendszerén alapuló „eset-logika".
+||| Ez 24 kapcsolatból áll (22 eset + 2 átmenet).
+||| 这里的逻辑联系不是传统的亚里士多德逻辑，而是建立在匈牙利语格系统
+||| 之上的「格逻辑」。它由 24 个联系组成（22 个格 + 2 个过渡）。
 
 public export
 data Eset = Nominativusz | Accusativusz | Datívusz | Instrumentalis
