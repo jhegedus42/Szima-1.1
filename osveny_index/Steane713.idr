@@ -1,24 +1,32 @@
 module Steane713
 
-||| Miért pont [[7,1,3]]? Mert a 7 bit minden osszetett fogalom
-||| alapszerkezete: [ido, oksag, ter, szin, hang, fazis, mod].
-||| Mind a het dimenzio egy-egy aspektusat kodolja a valosagnak.
-||| A tavolsag 3 azt jelenti, hogy 1 hibat ki tudunk javitani.
-||| A Steane kod azert jo, mert a 7 bit 16 stabil allapota
-||| pontosan lefedi a magyar nyelv 22 esetet.
+||| Miért pont [[7,1,3]]? Mert a 7 bit minden összetett fogalom
+||| 为何是 [[7,1,3]]？因为 7 位是一切复合概念的基本结构：
+||| alapszerkezete: [idő, ok-okozat, tér, szín, hang, fázis, mód].
+||| [时间、因果、空间、颜色、声音、相位、模态]。
+||| Mind a hét dimenzió egy-egy aspektusát kódolja a valóságnak。
+||| 七个维度各自编码现实的一个侧面。
+||| A távolság 3 azt jelenti, hogy 1 hibát ki tudunk javítani。
+||| 距离 3 意味着能纠正 1 位错误。
+||| A Steane-kód azért jó, mert a 7 bit 16 stabil állapota
+||| Steane 码好在：7 位的 16 个稳定态
+||| pontosan lefedi a magyar nyelv 22 esetét。
+||| 恰好覆盖匈牙利语的 22 个格。
 |||
-||| Hogyan mukodik a hibajavitas?
+||| Hogyan működik a hibajavítás?
+||| 纠错如何运作？
 ||| 1. Bejon egy 7 bites kod (fogalmak, nyelvtani kapcsolat)
-||| 2. A szindroma megmondja, melyik bit serult
-||| 3. A javito fuggveny forditja a serult bitet
-||| 4. A kod ujra koherens
+||| 2. A szindróma megmondja, melyik bit sérült（2. 校验子指出哪一位受损）
+||| 3. A javító függvény fordítja a sérült bitet（3. 修正函数翻转受损位）
+||| 4. A kód újra koherens（4. 码重新相干）
 |||
 ||| Mi a hiba a fogalmakban?
-||| Egy fogalom rossz esetben van.
+||| 概念中的错误是什么？
+||| Egy fogalom rossz esetben van。（一个概念处于错误的格。）
 ||| Ket fogalom osszefonodott (kvantum osszefonodes a nyelvben).
-||| Az ido rossz dimenzioban van.
+||| Az idő rossz dimenzióban van。（时间处于错误的维度。）
 ||| A referencia (sajat/masik) felcserelodott.
-||| Ezek mind javithatok, ha pontosan egy bit serult.
+||| Ezek mind javíthatók, ha pontosan egy bit sérült。（若恰有一位受损，这些皆可纠正。）
 
 public export
 data Kubit = Nulla | Egy
@@ -61,8 +69,9 @@ Neg Kubit where
   negate Egy   = Egy
   (-) a b = a + b
 
-||| Hetes kod a [[7,1,3]] Steane kod 7 bitjevel.
-||| A konstruktor neve a teljes magyar kifejezes,
+||| Hetes kód a [[7,1,3]] Steane-kód 7 bitjével。
+||| Hetes kód：[[7,1,3]] Steane 码的 7 位。
+||| A konstruktor neve a teljes magyar kifejezés,（构造器名是完整的匈牙利语表述，）
 ||| mert a rovidites (Mk) tiltva van.
 public export
 data HetesKod : Type where
@@ -74,26 +83,29 @@ Show HetesKod where
   show (HetesKonstruktor a b c d e f g) =
     show a ++ show b ++ show c ++ show d ++ show e ++ show f ++ show g
 
-||| Alap allapot a 7 biten.
+||| Alap állapot a 7 biten。
+||| 7 位上的基态。
 ||| A nulla (Nulla) minden bitje nulla.
 ||| Az egyes (Egy) minden bitje egy.
-||| Ez a ket stabil allapot a 16-bol.
+||| Ez a két stabil állapot a 16-ból。（这是 16 个稳定态中的两个。）
 public export
 alapKod : Kubit -> HetesKod
 alapKod Nulla = HetesKonstruktor Nulla Nulla Nulla Nulla Nulla Nulla Nulla
 alapKod Egy   = HetesKonstruktor Egy   Egy   Egy   Egy   Egy   Egy   Egy
 
-||| A fordit fuggveny atbillenti a kubitot:
+||| A fordit függvény átbillenti a kubitot:
+||| fordit 函数翻转 kubit：
 ||| Nulla → Egy, Egy → Nulla.
 ||| Ez a bitszintu javitas alapja.
-||| Nem rovidites — a teljes magyar "fordit" ige.
+||| Nem rövidítés — a teljes magyar „fordit" ige。（非缩写——完整的匈牙利语动词「fordit」。）
 forditKubit : Kubit -> Kubit
 forditKubit Nulla = Egy
 forditKubit Egy   = Nulla
 
-||| Szindroma: hol van a hiba?
-||| NincsHiba = minden rendben.
-||| EgyesHiba N = az N. pozicio hibas.
+||| Szindróma: hol van a hiba?
+||| 校验子：错在哪里？
+||| NincsHiba = minden rendben。（NincsHiba = 一切正常。）
+||| EgyesHiba N = az N. pozíció hibás。（EgyesHiba N = 第 N 位出错。）
 ||| Tobbszoros = tobb hiba egyszerre (nem javithato, de detektalhato).
 ||| A tavolsag 3 miatt tobbszoros hibanal mar nem tudjuk
 ||| biztosan, hogy mely bitek serultek - csak azt tudjuk,
@@ -226,7 +238,8 @@ data IdoMorfizmus : IgeIdo -> IgeIdo -> Type where
   IdoMorfizmusKonstruktor : IdoMorfizmus a b
 
 -- ═══════════════════════════════════════════════════════════════
--- PAULI MATRIXOK, TENZOR SZORZATOK, [[15,1,3]] ES T-KAPU
+-- PAULI-MÁTRIXOK, TENZOR-SZORZATOK, [[15,1,3]] ÉS T-KAPU
+-- 泡利矩阵、张量积、[[15,1,3]] 与 T 门
 -- ═══════════════════════════════════════════════════════════════
 
 ||| Pauli mátrixok: I, X, Y, Z.
@@ -255,7 +268,8 @@ data TizenotEgyHaromKod : Type where
   TizenotKodKonstruktor : PauliTenzor -> PauliTenzor -> TizenotEgyHaromKod
 
 -- ═══════════════════════════════════════════════════════════════
--- [[15,1,3]] REED-MULLER KOD: 2 kodbol epitve
+-- [[15,1,3]] REED-MULLER-KÓD: 2 kódból építve
+-- [[15,1,3]] Reed–Muller 码：由 2 个码构建
 -- ═══════════════════════════════════════════════════════════════
 -- A [[15,1,3]] ket reszkodbol all:
 --   1) [[7,1,3]] Steane kod (7 bit — ido, oksag, ter, szin, hang, fazis, mod)
@@ -342,7 +356,8 @@ public export
     in trans p2 p3
 
 -- ═══════════════════════════════════════════════════════════════
--- PELDAK: INSTANCE-K
+-- PÉLDÁK: INSTANCE-OK
+-- 示例：instance 们
 -- ═══════════════════════════════════════════════════════════════
 
 ||| Pauli X: Inverz Kubit (X^2 = I)
