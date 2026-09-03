@@ -3,17 +3,26 @@ module Komplex
 import ModulRegisztracio
 -- ═══════════════════════════════════════════════════════════════
 -- KOMPLEX SZÁMOK — a fázis számolásához
+-- 复数——用于相位计算
+-- ─────────────────────────────────────────────
+-- 术语表 / Szótár (rögzített — a GAN-3 javaslata):
+--   序数=sorszám  链=füzér  幺半群=monoid  函子=funktor
+--   归纳法=indukció  对合=involúció  单位根=egységgyök
+--   实部=valós rész  虚部=képzetes rész  不动点=fixpont
+--   收缩=kontrakció  螺旋=spirál  黄金角=aranyszög
 -- ═══════════════════════════════════════════════════════════════
 -- A kvantum Y-kombinátor fázisát komplex számokkal kell számolni:
+-- 量子 Y 组合子的相位须用复数计算：
 --   e^{iφ} = cos(φ) + i·sin(φ)
 --   Y_φ(f) = e^{iφ} · f(Y_φ(f))
 -- 
 -- A komplex fixpont: z* = a + bi
 --   a = Re(z*) = a valós rész (a CODATA méri)
---   b = Im(z*) = a fázis rész (a Bach-korrekcio kalkulálja)
+--   b = Im(z*) = a fázis rész (a Bach-korrekció kalkulálja)
 -- ═══════════════════════════════════════════════════════════════
 
--- ─── 1. KOMPLEX SZÁM ───────────────────────────────────────
+-- ─── 1. KOMPLEX SZÁM ───────────────────────────────
+-- ─── 一、复数 ─────────────────────────────────────────────────────────────────────
 
 public export
 record Komplex where
@@ -21,7 +30,8 @@ record Komplex where
   re : Double  -- valós rész
   im : Double  -- imaginárius rész
 
--- ─── 2. ALAP MŰVELETEK ──────────────────────────────────────
+-- ─── 2. ALAP MŰVELETEK ──────────────────────────────
+-- ─── 二、基本运算 ───────────────────────────────────────────────────────────────────
 
 public export
 kZero : Komplex
@@ -62,12 +72,14 @@ kArg (K a b) =
   else 0.0
 
 -- ─── 3. EULER-FORMULA: e^{iφ} ──────────────────────────────
+-- ─── 三、欧拉公式：e^{iφ} ──────────────────────────────
 
 public export
 euler : Double -> Komplex
 euler szog = K (cos szog) (sin szog)
 
 -- ─── 4. KOMPLEX Y-KOMBINÁTOR ───────────────────────────────
+-- ─── 四、复数 Y 组合子 ─────────────────────────────────────────────────────────────
 
 ||| A kvantum Y-kombinátor komplex számokkal:
 |||   Y_φ(f) = e^{iφ} · f(Y_φ(f))
@@ -86,11 +98,12 @@ kvantumYKomplex f fazisSzog (S k) =
       fazisSzorzo = euler (fromInteger (natToInteger k) * fazisSzog)
   in kSzoroz fazisSzorzo (f elozo)
 
--- ─── 5. BACH-KORREKCIO KOMPLEX ─────────────────────────────
+-- ─── 5. BACH-KORREKCIÓ KOMPLEX ──────────────────────────────
+-- ─── 五、Bach 修正（复数形式） ──────────────────────────────────────────────────────────
 
-||| A Bach-korrekcio komplex formában:
+||| A Bach-korrekció komplex formában:
 |||   Re(α⁻¹) = 137 + 9/250 - A4*(3/4)²/c  (valós, CODATA méri)
-|||   Im(α⁻¹) = δ (fázis, a Bach-korrekcio kalkulálja)
+|||   Im(α⁻¹) = δ (fázis, a Bach-korrekció kalkulálja)
 |||   δ = aranymetszés szög - α⁻¹ = 137.5° - 137.036 = 0.5°
 public export
 bachAlfaInverz : Double -> Double -> Komplex
@@ -100,12 +113,13 @@ bachAlfaInverz aranyMetszesSzoog alfaRe =
       deltaRad = delta * 3.141592653589793 / 180.0
   in K alfaRe (sin deltaRad)  -- a fázis komplex számként
 
-||| A Bach-korrekcio hiba (komplex abszolút érték)
+||| A Bach-korrekció hiba (komplex abszolút érték)
 public export
 bachHibaKomplex : Komplex -> Komplex -> Double
 bachHibaKomplex (K ar air) (K br bir) = sqrt ((ar-br)*(ar-br) + (air-bir)*(air-bir))
 
--- ─── 6. SPIRÁL KOMPLEX ─────────────────────────────────────
+-- ─── 6. SPIRÁL KOMPLEX ──────────────────────────────
+-- ─── 六、复数螺旋 ──────────────────────────────────────────────────────────────────
 
 ||| A spirál: minden lépésben a sugár csökken és a fázis nő.
 ||| z_{n+1} = z_n / φ * e^{i·goldenAngle}
@@ -123,14 +137,16 @@ public export
 spiralKonvergencia : Double -> Double -> Nat -> Double
 spiralKonvergencia sugar fazisSzog n = kAbs (spiralKomplex sugar fazisSzog n)
 
--- ─── 7. SHOW ────────────────────────────────────────────────
+-- ─── 7. SHOW ────────────────────────────────
+-- ─── 七、SHOW ───────────────────────────────────────────────────────────────────────────────
 
 public export
 showKomplex : Komplex -> String
 showKomplex (K a b) =
   show a ++ (if b >= 0.0 then " + " else " - ") ++ show (abs b) ++ "i"
 
--- ─── 8. ARANYMETSES FIXPONT — √(1+z) KONTRAKCIO ────────────
+-- ─── 8. ARANYMETSZÉS FIXPONT — √(1+z) KONTRAKCIÓ ────────────
+-- ─── 八、黄金分割不动点——√(1+z) 收缩 ────────────
 
 ||| Az aranymetszés fixpontja: f(z) = √(1+z)
 ||| φ = √(1+φ) → φ² = 1+φ → φ²-φ-1 = 0 → φ = (1+√5)/2
@@ -167,7 +183,7 @@ aranyMetszesKonvergencia z n =
 
 
 
--- ─── 9. KVANTUM Y = ARANYMETSES KONTRAKCIO + FAZIS ──────────
+-- ─── 9. KVANTUM Y = ARANYMETSZÉS KONTRAKCIÓ + FAZIS ──────────
 
 ||| A kvantum Y-kombinátor = aranymetszés kontrakció + fázis:
 |||   Y_φ(f) = e^{iθ} · √(1 + Y_φ(f))
@@ -348,7 +364,7 @@ komplexFom = do
   putStrLn ("  |α⁻¹|   = " ++ show (kAbs alfaKomplex))
   putStrLn ("  arg(α⁻¹) = " ++ show (kArg alfaKomplex))
   putStrLn ""
-  putStrLn "4. ARANYMETSES KONTRAKCIO (√(1+z) → φ):"
+  putStrLn "4. ARANYMETSZÉS KONTRAKCIÓ (√(1+z) → φ):"
   let z0 = K 0.0 0.0
   putStrLn ("  0 lepes: " ++ showKomplex (aranyMetszesIteracio z0 0) ++ "  |z-φ| = " ++ show (aranyMetszesKonvergencia z0 0))
   putStrLn ("  1 lepes: " ++ showKomplex (aranyMetszesIteracio z0 1) ++ "  |z-φ| = " ++ show (aranyMetszesKonvergencia z0 1))
