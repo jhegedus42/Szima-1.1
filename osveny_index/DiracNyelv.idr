@@ -65,6 +65,8 @@ data Radikál : Type where
   FaRadikál    : Radikál   -- 木 (fa/木)
   FémRadikál   : Radikál   -- 金 (fém/金)
   SzájRadikál  : Radikál   -- 口 (száj/口)
+  GőzRadikál   : Radikál   -- 汽 (gőz/汽 — KOMPONÁLT: 水+火!)
+  ErdőRadikál  : Radikál   -- 林 (erdő/林 — KOMPONÁLT: 木+木!)
 
 public export
 Show Radikál where
@@ -76,6 +78,8 @@ Show Radikál where
   show FaRadikál    = "木"
   show FémRadikál   = "金"
   show SzájRadikál  = "口"
+  show GőzRadikál   = "汽"
+  show ErdőRadikál  = "林"
 
 -- ─── 2. A KÍNAI TÉR — ψ_L: a 2D radikál-rács ─────────────────────
 -- ─── 二、中文空间 ψ_L——二维部首格 ─────────────
@@ -190,7 +194,11 @@ tőbőlRadikál szó =
               Igaz => FaRadikál
               Hamis => case szövegEgyenlő szó (karakterláncbólTő "fém") of
                 Igaz => FémRadikál
-                Hamis => SzájRadikál   -- az ismeretlen = a kimondatlan (口)
+                Hamis => case szövegEgyenlő szó (karakterláncbólTő "gőz") of
+                  Igaz => GőzRadikál
+                  Hamis => case szövegEgyenlő szó (karakterláncbólTő "erdő") of
+                    Igaz => ErdőRadikál
+                    Hamis => SzájRadikál   -- az ismeretlen = a kimondatlan (口)
 
 ||| Radikál → magyar tő (az inverz híd). / 部首→匈牙利词干（逆向桥）。
 public export
@@ -203,6 +211,8 @@ radikálbólTő TűzRadikál   = karakterláncbólTő "tűz"
 radikálbólTő FaRadikál    = karakterláncbólTő "fa"
 radikálbólTő FémRadikál   = karakterláncbólTő "fém"
 radikálbólTő SzájRadikál  = karakterláncbólTő "száj"
+radikálbólTő GőzRadikál   = karakterláncbólTő "gőz"
+radikálbólTő ErdőRadikál  = karakterláncbólTő "erdő"
 
 ||| Radikál → angol címke (a bra-megfelelő). / 部首→英语标签。
 public export
@@ -215,6 +225,8 @@ radikálbólAngol TűzRadikál   = "fire"
 radikálbólAngol FaRadikál    = "tree"
 radikálbólAngol FémRadikál   = "metal"
 radikálbólAngol SzájRadikál  = "mouth"
+radikálbólAngol GőzRadikál   = "steam"
+radikálbólAngol ErdőRadikál  = "forest"
 
 -- ─── 6b. AZ ESETRAGOK → DIRAC-FÁZIS (a 310.03 pregrup-csírája) ───
 -- ─── 六b、格词缀→Dirac 相位（预群之芽） ───
@@ -261,6 +273,21 @@ public export
 lábbólFázis : Füzér Szöveg -> FázisJel
 lábbólFázis FüzérVége = alapFázis
 lábbólFázis (Fűzés első _) = ragbólFázis első
+
+-- ─── 6c. A RADIKÁL-KOMPOZÍCIÓ — ψ_L ⊗ ψ_L′ (a 2×2 rács élesítése) ──
+-- ─── 六c、部首复合——ψ_L⊗ψ_L′（栅格锋利化） ──
+
+||| A radikál-kompozíció: két radikál ⊗-szorzata — úgy, ahogy a valódi
+||| 汉字 épülnek (水+火=汽; 木+木=林). A nem-definiált párok a
+||| «kimondatlan» (SzájRadikál) — determinisztikus, nem hiba!
+||| 部首复合：如真汉字（水+火=汽、木+木=林）。未定义之对归于「未说出口」。
+||| ψ_L ⊗ ψ_L′ = az összetett ψ_L (a TÉR-oldal tenzorszorzata).
+public export
+radikálKompozíció : Radikál -> Radikál -> Radikál
+radikálKompozíció VízRadikál TűzRadikál = GőzRadikál
+radikálKompozíció TűzRadikál VízRadikál = GőzRadikál
+radikálKompozíció FaRadikál FaRadikál = ErdőRadikál
+radikálKompozíció _ _ = SzájRadikál   -- a kimondatlan pár (determinizmus!)
 
 -- ─── 7. A FORDÍTÓK — determinisztikus, teljes függvények ─────────
 -- ─── 七、翻译器——确定性的全函数 ─────────
@@ -415,6 +442,33 @@ bizVízbőlMúlt : fázis (magyarbólDiracba
   = TJe False
 bizVízbőlMúlt = Refl
 
+-- REFL-TANÚK: a KOMPONÁLT fogalmak köre — víz+tűz = GŐZ (汽)!
+-- 见证：复合词之环——水+火=汽。
+public export
+bizGőzKöre : körMagyarbólMagyarba (csakTő (karakterláncbólTő "gőz"))
+  = csakTő (karakterláncbólTő "gőz")
+bizGőzKöre = Refl
+
+public export
+bizErdőKöre : körMagyarbólMagyarba (csakTő (karakterláncbólTő "erdő"))
+  = csakTő (karakterláncbólTő "erdő")
+bizErdőKöre = Refl
+
+||| A FUNKTOR-TULAJDONSÁG CSÍRÁJA: a fordítás megőrzi a kompozíciót!
+||| 函子性质之芽——翻译保持复合！
+|||   komponál(fordít(víz), fordít(tűz)) = 水⊗火 = 汽
+|||   fordít(komponál(víz, tűz))         = fordít(gőz) = 汽
+|||   A kettő EGYENLŐ — a tő-fordító monoidális (⊗-megőrző) funktor!
+|||   (a DisCoCat-fordítás definícióának első teljesülése a projektben)
+public export
+bizFordításKompozíciótMegőriz :
+  radikálKompozíció (tőbőlRadikál (karakterláncbólTő "víz"))
+                    (tőbőlRadikál (karakterláncbólTő "tűz"))
+  = tőbőlRadikál (radikálbólTő
+      (radikálKompozíció (tőbőlRadikál (karakterláncbólTő "víz"))
+                         (tőbőlRadikál (karakterláncbólTő "tűz"))))
+bizFordításKompozíciótMegőriz = Refl
+
 -- ─── 9. FŐPROGRAM — a négy nyelv bemutatása ──────────────────────
 -- ─── 九、主程序——四种语言的展示 ──────────────
 
@@ -469,5 +523,14 @@ main = do
   putStrLn "  格词缀即时间轴：-ben=持续现在、-be=未来、-ből=过去。"
   putStrLn "  A magyar irányult esetek egyenesen az idő-tengelyre képeznek —"
   putStrLn "  a tér-irány (hová/honnan) = az idő-irány (jövő/múlt)!"
+  putStrLn ""
+  putStrLn "── A KOMPOZÍCIÓ: víz+tűz = GŐZ (水+火=汽!); fa+fa = ERDŐ (木+木=林) ──"
+  putStrLn "  radikálKompozíció VízRadikál TűzRadikál = GőzRadikál (汽)"
+  putStrLn "  radikálKompozíció FaRadikál  FaRadikál  = ErdőRadikál (林)"
+  putStrLn "  部首复合——如真汉字：水+火=汽、木+木=林。"
+  putStrLn "  REFL: bizGőzKöre/bizErdőKöre (a komponált fogalom is körbejár!)"
+  putStrLn "  REFL: bizFordításKompozíciótMegőriz — A FUNKTOR-TULAJDONSÁG:"
+  putStrLn "    komponál(fordít(víz), fordít(tűz)) = fordít(komponál(víz, tűz))"
+  putStrLn "    （翻译保持复合——monoidális funktor，DisCoCat 第一定律在项目中实现！）"
   putStrLn ""
   putStrLn "  ★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★"

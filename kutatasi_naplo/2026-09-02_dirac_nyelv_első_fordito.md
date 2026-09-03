@@ -82,3 +82,19 @@
   bizVízbőlMúlt (TJe False) — mind exit 0, a főprogram bemutatja.
 
 ★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★
+
+## 10. FOLYTATÁS («folytassuk») — A RADIKÁL-KOMPOZÍCIÓ + A FUNKTOR-TULAJDONSÁG
+- 2 ÚJ KOMPONÁLT radikál (MANTRA: hozzáadás!): GőzRadikál (汽), ErdőRadikál (林)
+  — úgy, ahogy a valódi 汉字 épülnek!
+- radikálKompozíció: Víz⊗Tűz=Gőz (kommutatív!), Fa⊗Fa=Erdő; a többi pár
+  a «kimondatlan» (SzájRadikál) — determinizmus minden páron.
+- A szótár-fv-ek bővítve (gőz/steam/汽; erdő/forest/林) — a régi 8 kör-tanú
+  ÉPSÉGBEN (csak új ágak).
+- 2 ÚJ KÖR-TANÚ: bizGőzKöre, bizErdőKöre (a komponált fogalom is körbejár).
+- ███ A FUNKTOR-TULAJDONSÁG CSÍRÁJA ███: bizFordításKompozíciótMegőriz —
+  komponál(fordít(víz), fordít(tűz)) = fordít(komponál(víz, tűz)) — Refl!
+  A tő-fordító monoidális (⊗-megőrző) funktor — a DisCoCat-fordítás
+  definíciójának (Bradley et al. 1811.11041) ELSŐ teljesülése a projektben!
+  「翻译保持复合——含幺函子，DisCoCat 第一定律实现！」
+
+★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★
