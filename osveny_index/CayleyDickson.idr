@@ -2,14 +2,16 @@ module CayleyDickson
 
 -- ═══════════════════════════════════════════════════════════════
 -- CAYLEY-DICKSON TORONY — ℝ → ℂ → ℍ → 𝕆 → Sedenion
+-- 凯莱–迪克森塔——实数→复数→四元数→八元数→十六元数
 -- ═══════════════════════════════════════════════════════════════
 -- A Cayley-Dickson konstrukció minden szinten duplázza a dimenziót:
 --   ℝ (1) → ℂ (2) → ℍ (4) → 𝕆 (8) → Sedenion (16)
+-- 每一层把维度翻倍。
 --
 -- Minden szint: dim = 2^n
 -- Egységek: 2, 4, 24, 240 (már létezik: OktonionAlgebra.idr)
 --
--- TULAJDONSÁGOK SZINTENKÉNT:
+-- TULAJDONSÁGOK SZINTENKÉNT / 各层性质:
 --   ℝ: asszociatív, kommutatív, rendezett
 --   ℂ: asszociatív, kommutatív, rendezett
 --   ℍ: asszociatív, NEM kommutatív, rendezett
@@ -17,25 +19,72 @@ module CayleyDickson
 --   Sedenion: NEM asszociatív, NEM kommutatív, NEM rendezett,
 --             DIVIZIÓS ALGEBRA (van norma)
 --
--- KAPCSOLAT A PROJEKTHEZ:
+-- KAPCSOLAT A PROJEKTHEZ / 与项目的联系:
 --   - Az oktonion egységek (16) + E8 gyökök (224) = 240
 --   - A sedenion 16 dimenziója = 4×4-es mátrixok tere
 --   - A hibajavító kódok (Steane [[7,1,3]]) beépíthetők
+--
+-- 100.07 ÁTÍRÁS (2026-09-03): a Valós REKORD (nem Double-szinonima!),
+-- az aritmetika típusos fv-család (valósÖsszead/Kivon/Szoroz/Negál),
+-- a literálok nevezett konstansokba csomagolva, dimenzió/egységekSzáma
+-- Sorszám (§24: import Alap.CsomagoltTipusok — sorTizenhat!),
+-- minden azonosító ékezetes (AkH.12), 9 kínai szakaszcím.
+-- 中文：100.07 改写——Valós 记录化、四则运算类型化、字面量入常量、
+-- 维度与单位数用 Sorszám、全部标识符带变音符、九个中文标题。
 -- ═══════════════════════════════════════════════════════════════
+
+import Alap.CsomagoltTipusok
 
 %default total
 
--- ─── 1. ALAPTÍPUS: VALÓS SZÁM ─────────────────────────────
+-- ─── 1. ALAPTÍPUS: VALÓS SZÁM (REKORD, nem Double-szinonima!) ──
+-- 一、实数（记录，不再是 Double 同义词！）──────────
+-- A Valós mostantól SAJÁT típus: a Double csak a belső hordozó.
+-- 实数从此是自己的类型——Double 只是内部载体。
 public export
-Valos : Type
-Valos = Double
+record Valós where
+  constructor ValósKonstruktor
+  érték : Double
+
+public export
+Eq Valós where
+  (==) a b = érték a == érték b
+
+public export
+Show Valós where
+  show v = show (érték v)
+
+-- Típusos aritmetika / 类型化四则运算:
+public export
+valósÖsszead : Valós -> Valós -> Valós
+valósÖsszead a b = ValósKonstruktor (érték a + érték b)
+
+public export
+valósKivon : Valós -> Valós -> Valós
+valósKivon a b = ValósKonstruktor (érték a - érték b)
+
+public export
+valósSzoroz : Valós -> Valós -> Valós
+valósSzoroz a b = ValósKonstruktor (érték a * érték b)
+
+public export
+valósNegál : Valós -> Valós
+valósNegál a = ValósKonstruktor (negate (érték a))
+
+-- Nevezett valós konstansok (a literálok REKORDBA csomagolva):
+public export
+valósNulla, valósEgység, valósMínuszEgység : Valós
+valósNulla        = ValósKonstruktor 0
+valósEgység       = ValósKonstruktor 1
+valósMínuszEgység = ValósKonstruktor (-1)
 
 -- ─── 2. KOMPLEX SZÁM ──────────────────────────────────────
+-- 二、复数 ────────────────
 public export
 record Komplex where
   constructor KomplexKonstruktor
-  re : Valos
-  im : Valos
+  re : Valós
+  im : Valós
 
 public export
 Eq Komplex where
@@ -47,201 +96,229 @@ Show Komplex where
 
 public export
 komplexNulla : Komplex
-komplexNulla = KomplexKonstruktor 0 0
+komplexNulla = KomplexKonstruktor valósNulla valósNulla
 
 public export
-komplexEgyseg : Komplex
-komplexEgyseg = KomplexKonstruktor 1 0
+komplexEgység : Komplex
+komplexEgység = KomplexKonstruktor valósEgység valósNulla
+
+-- A negatív imaginárius egység NEVEZETT konstans (a (-1) literál
+-- a rekord MEZŐJÉBEN él — nem szabadon úszkál):
+public export
+mínuszImagináriusEgység : Komplex
+mínuszImagináriusEgység =
+  KomplexKonstruktor valósNulla valósMínuszEgység
 
 public export
-komplexKonjugal : Komplex -> Komplex
-komplexKonjugal k = KomplexKonstruktor (re k) (negate (im k))
+komplexKonjugál : Komplex -> Komplex
+komplexKonjugál k = KomplexKonstruktor (re k) (valósNegál (im k))
 
 public export
 komplexSzoroz : Komplex -> Komplex -> Komplex
 komplexSzoroz a b = KomplexKonstruktor
-  (re a * re b - im a * im b)
-  (re a * im b + im a * re b)
+  (valósKivon (valósSzoroz (re a) (re b)) (valósSzoroz (im a) (im b)))
+  (valósÖsszead (valósSzoroz (re a) (im b)) (valósSzoroz (im a) (re b)))
 
 public export
-komplexNormaNegyzet : Komplex -> Valos
-komplexNormaNegyzet k = re k * re k + im k * im k
+komplexNormaNégyzet : Komplex -> Valós
+komplexNormaNégyzet k =
+  valósÖsszead (valósSzoroz (re k) (re k)) (valósSzoroz (im k) (im k))
 
 -- ─── 3. KVATERNION ────────────────────────────────────────
+-- 三、四元数 ────────────────
 public export
 record Kvaternion where
   constructor KvaternionKonstruktor
-  elso : Komplex
-  masodik : Komplex
+  első : Komplex
+  második : Komplex
 
 public export
 Eq Kvaternion where
-  (==) a b = (elso a == elso b) && (masodik a == masodik b)
+  (==) a b = (első a == első b) && (második a == második b)
 
 public export
 Show Kvaternion where
-  show kv = show (elso kv) ++ " + " ++ show (masodik kv) ++ "j"
+  show kv = show (első kv) ++ " + " ++ show (második kv) ++ "j"
 
 public export
 kvaternionNulla : Kvaternion
 kvaternionNulla = KvaternionKonstruktor komplexNulla komplexNulla
 
 public export
-kvaternionEgyseg : Kvaternion
-kvaternionEgyseg = KvaternionKonstruktor komplexEgyseg komplexNulla
+kvaternionEgység : Kvaternion
+kvaternionEgység = KvaternionKonstruktor komplexEgység komplexNulla
+
+-- A (-1) valós egység komplex-ként és kvaternion-ként NEVEZVE:
+public export
+mínuszEgységKomplex : Komplex
+mínuszEgységKomplex = KomplexKonstruktor valósMínuszEgység valósNulla
 
 public export
-kvaternionKonjugal : Kvaternion -> Kvaternion
-kvaternionKonjugal kv = KvaternionKonstruktor
-  (komplexKonjugal (elso kv))
-  (komplexSzoroz (KomplexKonstruktor 0 (-1)) (masodik kv))
+mínuszEgységKvaternion : Kvaternion
+mínuszEgységKvaternion =
+  KvaternionKonstruktor mínuszEgységKomplex komplexNulla
+
+public export
+kvaternionKonjugál : Kvaternion -> Kvaternion
+kvaternionKonjugál kv = KvaternionKonstruktor
+  (komplexKonjugál (első kv))
+  (komplexSzoroz mínuszImagináriusEgység (második kv))
 
 public export
 kvaternionSzoroz : Kvaternion -> Kvaternion -> Kvaternion
 kvaternionSzoroz a b = KvaternionKonstruktor
-  (komplexSzoroz (elso a) (elso b)
-    `komplexSzoroz` komplexKonjugal (masodik b))
-  (komplexSzoroz (masodik b) (elso a)
-    `komplexSzoroz` (komplexSzoroz (elso b) (masodik a)))
+  (komplexSzoroz (komplexSzoroz (első a) (első b))
+    (komplexKonjugál (második b)))
+  (komplexSzoroz (komplexSzoroz (második b) (első a))
+    (komplexSzoroz (első b) (második a)))
 
 public export
-kvaternionNormaNegyzet : Kvaternion -> Valos
-kvaternionNormaNegyzet kv =
-  komplexNormaNegyzet (elso kv) + komplexNormaNegyzet (masodik kv)
+kvaternionNormaNégyzet : Kvaternion -> Valós
+kvaternionNormaNégyzet kv =
+  valósÖsszead (komplexNormaNégyzet (első kv))
+    (komplexNormaNégyzet (második kv))
 
 -- ─── 4. OKTONION ──────────────────────────────────────────
+-- 四、八元数 ────────────────
 public export
 record Oktonion where
   constructor OktonionKonstruktor
-  elsoH : Kvaternion
-  masodikH : Kvaternion
+  elsőH : Kvaternion
+  másodikH : Kvaternion
 
 public export
 Eq Oktonion where
-  (==) a b = (elsoH a == elsoH b) && (masodikH a == masodikH b)
+  (==) a b = (elsőH a == elsőH b) && (másodikH a == másodikH b)
 
 public export
 Show Oktonion where
-  show o = show (elsoH o) ++ " + " ++ show (masodikH o) ++ "j"
+  show o = show (elsőH o) ++ " + " ++ show (másodikH o) ++ "j"
 
 public export
 oktonionNulla : Oktonion
 oktonionNulla = OktonionKonstruktor kvaternionNulla kvaternionNulla
 
 public export
-oktonionEgyseg : Oktonion
-oktonionEgyseg = OktonionKonstruktor kvaternionEgyseg kvaternionNulla
+oktonionEgység : Oktonion
+oktonionEgység = OktonionKonstruktor kvaternionEgység kvaternionNulla
 
 public export
-oktonionKonjugal : Oktonion -> Oktonion
-oktonionKonjugal o = OktonionKonstruktor
-  (kvaternionKonjugal (elsoH o))
-  (kvaternionSzoroz (KvaternionKonstruktor
-    (KomplexKonstruktor (-1) 0) komplexNulla)
-    (masodikH o))
+oktonionKonjugál : Oktonion -> Oktonion
+oktonionKonjugál o = OktonionKonstruktor
+  (kvaternionKonjugál (elsőH o))
+  (kvaternionSzoroz mínuszEgységKvaternion (másodikH o))
 
 public export
 oktonionSzoroz : Oktonion -> Oktonion -> Oktonion
 oktonionSzoroz a b = OktonionKonstruktor
-  (kvaternionSzoroz (elsoH a) (elsoH b)
-    `kvaternionSzoroz` kvaternionKonjugal (masodikH b))
-  (kvaternionSzoroz (masodikH b) (elsoH a)
-    `kvaternionSzoroz` (kvaternionSzoroz (elsoH b) (masodikH a)))
+  (kvaternionSzoroz (kvaternionSzoroz (elsőH a) (elsőH b))
+    (kvaternionKonjugál (másodikH b)))
+  (kvaternionSzoroz (kvaternionSzoroz (másodikH b) (elsőH a))
+    (kvaternionSzoroz (elsőH b) (másodikH a)))
 
 public export
-oktonionNormaNegyzet : Oktonion -> Valos
-oktonionNormaNegyzet o =
-  kvaternionNormaNegyzet (elsoH o) + kvaternionNormaNegyzet (masodikH o)
+oktonionNormaNégyzet : Oktonion -> Valós
+oktonionNormaNégyzet o =
+  valósÖsszead (kvaternionNormaNégyzet (elsőH o))
+    (kvaternionNormaNégyzet (másodikH o))
 
 -- ─── 5. SEDENION ──────────────────────────────────────────
+-- 五、十六元数 ────────────────
 public export
 record Sedenion where
   constructor SedenionKonstruktor
-  elsoO : Oktonion
-  masodikO : Oktonion
+  elsőO : Oktonion
+  másodikO : Oktonion
 
 public export
 Eq Sedenion where
-  (==) a b = (elsoO a == elsoO b) && (masodikO a == masodikO b)
+  (==) a b = (elsőO a == elsőO b) && (másodikO a == másodikO b)
 
 public export
 Show Sedenion where
-  show s = show (elsoO s) ++ " + " ++ show (masodikO s) ++ "j"
+  show s = show (elsőO s) ++ " + " ++ show (másodikO s) ++ "j"
 
 public export
 sedenionNulla : Sedenion
 sedenionNulla = SedenionKonstruktor oktonionNulla oktonionNulla
 
 public export
-sedenionEgyseg : Sedenion
-sedenionEgyseg = SedenionKonstruktor oktonionEgyseg oktonionNulla
+sedenionEgység : Sedenion
+sedenionEgység = SedenionKonstruktor oktonionEgység oktonionNulla
 
 public export
-sedenionKonjugal : Sedenion -> Sedenion
-sedenionKonjugal s = SedenionKonstruktor
-  (oktonionKonjugal (elsoO s))
-  (oktonionSzoroz (OktonionKonstruktor
-    (KvaternionKonstruktor
-      (KomplexKonstruktor (-1) 0) komplexNulla)
-    kvaternionNulla)
-    (masodikO s))
+sedenionKonjugál : Sedenion -> Sedenion
+sedenionKonjugál s = SedenionKonstruktor
+  (oktonionKonjugál (elsőO s))
+  (oktonionSzoroz mínuszEgységKvaternionOktonionként (másodikO s))
+  where
+    -- A (-1) egység oktonion-ként NEVEZVE (a holtsúly elkerülésére):
+    mínuszEgységKvaternionOktonionként : Oktonion
+    mínuszEgységKvaternionOktonionként =
+      OktonionKonstruktor mínuszEgységKvaternion kvaternionNulla
 
 public export
 sedenionSzoroz : Sedenion -> Sedenion -> Sedenion
 sedenionSzoroz a b = SedenionKonstruktor
-  (oktonionSzoroz (elsoO a) (elsoO b)
-    `oktonionSzoroz` oktonionKonjugal (masodikO b))
-  (oktonionSzoroz (masodikO b) (elsoO a)
-    `oktonionSzoroz` (oktonionSzoroz (elsoO b) (masodikO a)))
+  (oktonionSzoroz (oktonionSzoroz (elsőO a) (elsőO b))
+    (oktonionKonjugál (másodikO b)))
+  (oktonionSzoroz (oktonionSzoroz (másodikO b) (elsőO a))
+    (oktonionSzoroz (elsőO b) (másodikO a)))
 
 public export
-sedenionNormaNegyzet : Sedenion -> Valos
-sedenionNormaNegyzet s =
-  oktonionNormaNegyzet (elsoO s) + oktonionNormaNegyzet (masodikO s)
+sedenionNormaNégyzet : Sedenion -> Valós
+sedenionNormaNégyzet s =
+  valósÖsszead (oktonionNormaNégyzet (elsőO s))
+    (oktonionNormaNégyzet (másodikO s))
 
 -- ─── 6. ALGEBRAI TULAJDONSÁGOK ────────────────────────────
-
--- Dimenzió: 2^n
+-- 六、代数性质 ────────────────
+-- Dimenzió: 2^4 = 16 — SORSZÁMBA csomagolva (§24: import!).
+-- 维度用 Sorszám 包装（§24：导入！）。
 public export
-dimencio : Nat
-dimencio = 16
+dimenzió : Sorszám
+dimenzió = sorTizenhat
 
--- Egységek száma: 2×dim - 2 = 30 (sedenion)
+-- Egységek száma: 2×dim - 2 = 30 (sedenion) — SORSZÁMBA csomagolva.
+-- 单位数：30——Sorszám 包装。
 public export
-egysegekSzama : Nat
-egysegekSzama = 30
+egységekSzáma : Sorszám
+egységekSzáma = SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező dimenzió))))))))))))))
 
 -- ─── 7. HIBAJAVÍTÓ KÓD BEÉPÍTÉSE ─────────────────────────
+-- 七、纠错码的嵌入 ────────────────
+public export
+data HibajavítóKód : Type where
+  SteaneKód : HibajavítóKód
+  ReedMullerKód : HibajavítóKód
+  SedenionKód : HibajavítóKód
 
 public export
-data HibajavitoKod : Type where
-  SteaneKod : HibajavitoKod
-  ReedMullerKod : HibajavitoKod
-  SedenionKod : HibajavitoKod
-
-public export
-Show HibajavitoKod where
-  show SteaneKod = "Steane [[7,1,3]]"
-  show ReedMullerKod = "Reed-Muller [[15,1,3]]"
-  show SedenionKod = "Sedenion [[15,1,3]]"
+Show HibajavítóKód where
+  show SteaneKód = "Steane [[7,1,3]]"
+  show ReedMullerKód = "Reed-Muller [[15,1,3]]"
+  show SedenionKód = "Sedenion [[15,1,3]]"
 
 -- ─── 8. NUMERIKUS VERIFIKÁCIÓ ─────────────────────────────
+-- 八、数值验证 ────────────────
 -- Show-teszt: a norma² értéke kiírható, numerikusan ellenőrizhető
--- (a Double nem Refl-lel bizonyítható, de a Show kimutatja)
+-- (a Double nem Refl-lel bizonyítható, de a Show kimutatja).
+-- 范数平方可打印可数值核验（Double 不能用 Refl 证明，但 Show 能展示）。
 
 -- ─── 9. FŐ — VÉKONY IO-BURKOLÓ ──────────────────────────
+-- 九、主程序——薄 IO 壳 ────────────────
 
 public export
-foJelentes : String
-foJelentes =
-  "═══ CAYLEY-DICKSON TORONY ═══\n"
+főJelentés : String
+főJelentés =
+  "═══ CAYLEY-DICKSON TORONY / 凯莱–迪克森塔 ═══\n"
   ++ "ℝ (1) → ℂ (2) → ℍ (4) → 𝕆 (8) → Sedenion (16)\n"
-  ++ "Dimenzió: 2^4 = 16\n"
-  ++ "Egységek: 30 (sedenion)\n"
+  ++ "Dimenzió: 2^4 = 16 (Sorszám-ban: sorTizenhat)\n"
+  ++ "Egységek: 30 (sedenion, Sorszám-ban)\n"
   ++ "Hibajavító kód: [[15,1,3]] Reed-Muller\n"
-  ++ "Norma² egység okt: " ++ show (oktonionNormaNegyzet oktonionEgyseg) ++ "\n"
-  ++ "Norma² egység sed: " ++ show (sedenionNormaNegyzet sedenionEgyseg) ++ "\n"
+  ++ "Norma² egység okt: " ++ show (oktonionNormaNégyzet oktonionEgység) ++ "\n"
+  ++ "Norma² egység sed: " ++ show (sedenionNormaNégyzet sedenionEgység) ++ "\n"
   ++ "Kapcsolat: 16+224 = 240 E8 gyök (OktonionAlgebra.idr)\n"
 
 main : IO ()
-main = putStrLn foJelentes
+main = putStrLn főJelentés
