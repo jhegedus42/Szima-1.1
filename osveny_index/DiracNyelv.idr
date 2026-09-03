@@ -216,12 +216,59 @@ radikálbólAngol FaRadikál    = "tree"
 radikálbólAngol FémRadikál   = "metal"
 radikálbólAngol SzájRadikál  = "mouth"
 
+-- ─── 6b. AZ ESETRAGOK → DIRAC-FÁZIS (a 310.03 pregrup-csírája) ───
+-- ─── 六b、格词缀→Dirac 相位（预群之芽） ───
+
+||| Az esetrag → Dirac-fázis: a nyelvtani eset = az idő-irány!
+||| 格词缀→Dirac 相位：语法格即时间轴。
+|||   «-ba/-be»  (illativusz, hová?)  → TJe True  = JÖVŐ-irány
+|||   «-ból/-ből» (elativusz, honnan?) → TJe False = MÚLT-irány
+|||   «-ban/-ben» (inesszivusz, hol?)  → PJe True  = FOLYAMATOS jelen
+|||   «-ig»      (terminativusz, meddig?) → TJe True = jövő-határ
+|||   «-tól/-től» (ablativusz, kitől?)  → TJe False = múlt-határ
+|||   egyéb (pl. többes, birtok)        → alapFázis (jelen, semleges)
+||| A MEGLEPETÉS: a magyar irányult esetek EGYenesen az idő-tengelyre
+||| képeznek — a tér-irány (hová/honnan) = az idő-irány (jövő/múlt).
+||| A Dirac-nyelvben a γ⁰ épp ezt a tengelyt billenti!
+||| 惊喜：匈牙利语的方向格直接映射到时间轴——空间方向即时间方向。
+public export
+ragbólFázis : Szöveg -> FázisJel
+ragbólFázis rag =
+  case szövegEgyenlő rag (karakterláncbólTő "ba") of
+    Igaz => TJe True
+    Hamis => case szövegEgyenlő rag (karakterláncbólTő "be") of
+      Igaz => TJe True
+      Hamis => case szövegEgyenlő rag (karakterláncbólTő "ból") of
+        Igaz => TJe False
+        Hamis => case szövegEgyenlő rag (karakterláncbólTő "ből") of
+          Igaz => TJe False
+          Hamis => case szövegEgyenlő rag (karakterláncbólTő "ban") of
+            Igaz => PJe True
+            Hamis => case szövegEgyenlő rag (karakterláncbólTő "ben") of
+              Igaz => PJe True
+              Hamis => case szövegEgyenlő rag (karakterláncbólTő "ig") of
+                Igaz => TJe True
+                Hamis => case szövegEgyenlő rag (karakterláncbólTő "tól") of
+                  Igaz => TJe False
+                  Hamis => case szövegEgyenlő rag (karakterláncbólTő "től") of
+                    Igaz => TJe False
+                    Hamis => alapFázis
+
+||| A ragLánc ELSŐ tagjának fázisa (ha van rag, az határozza meg a jelet;
+||| a többi rag a láncon marad — az agglutináció nem rövidül meg).
+||| 词缀链第一个词缀决定相位；其余缀留在链上。
+public export
+lábbólFázis : Füzér Szöveg -> FázisJel
+lábbólFázis FüzérVége = alapFázis
+lábbólFázis (Fűzés első _) = ragbólFázis első
+
 -- ─── 7. A FORDÍTÓK — determinisztikus, teljes függvények ─────────
 -- ─── 七、翻译器——确定性的全函数 ─────────
 
 ||| MAGYARBÓL DIRACBA: a magyar szó → Dirac-szó.
-||| A tőből a radikál (ψ_R → ψ_L), az angol címke a mérés.
-||| 匈牙利语→Dirac：词干取部首（ψ_R→ψ_L），英语标签为测量。
+||| A tőből a radikál (ψ_R → ψ_L), az angol címke a mérés,
+||| ÉS a ragLánc első tagjából a FÁZIS (az eset = idő-irány!).
+||| 匈牙利语→Dirac：词干取部首，英语标签为测量，首词缀定相位。
 public export
 magyarbólDiracba : MagyarIdő -> DiracSzó
 magyarbólDiracba (MagyarIdőKonstruktor tő lánc) =
@@ -229,7 +276,7 @@ magyarbólDiracba (MagyarIdőKonstruktor tő lánc) =
   in DiracSzóKonstruktor (simaTér radikál)
        (MagyarIdőKonstruktor tő lánc)
        (radikálbólAngol radikál)
-       alapFázis
+       (lábbólFázis lánc)
 
 ||| KÍNAIBÓL DIRACBA: a radikál → Dirac-szó (a magyar tő az inverz hídból).
 ||| 中文→Dirac：部首→狄拉克词（匈牙利词干来自逆向桥）。
@@ -348,6 +395,26 @@ bizKörVízben : körMagyarbólMagyarba
   = toldalékFűzés (karakterláncbólTő "ben") (csakTő (karakterláncbólTő "víz"))
 bizKörVízben = Refl
 
+-- REFL-TANÚK: az esetrag = az idő-irány (a fázis-összeköttetés!)
+-- 见证：格词缀即时间方向。
+public export
+bizVízbenFolyamatos : fázis (magyarbólDiracba
+  (toldalékFűzés (karakterláncbólTő "ben") (csakTő (karakterláncbólTő "víz"))))
+  = PJe True
+bizVízbenFolyamatos = Refl
+
+public export
+bizVízbeJövő : fázis (magyarbólDiracba
+  (toldalékFűzés (karakterláncbólTő "be") (csakTő (karakterláncbólTő "víz"))))
+  = TJe True
+bizVízbeJövő = Refl
+
+public export
+bizVízbőlMúlt : fázis (magyarbólDiracba
+  (toldalékFűzés (karakterláncbólTő "ből") (csakTő (karakterláncbólTő "víz"))))
+  = TJe False
+bizVízbőlMúlt = Refl
+
 -- ─── 9. FŐPROGRAM — a négy nyelv bemutatása ──────────────────────
 -- ─── 九、主程序——四种语言的展示 ──────────────
 
@@ -393,5 +460,14 @@ main = do
   putStrLn "── γ⁰: a fordítás aktusa ────────────────────────────────"
   putStrLn "  γ⁰(|víz⟩) fázisa: TJe (not True) = jövő→múlt (az irány váltott)"
   putStrLn "  γ⁰∘γ⁰ = id — a kétszeres keverés az identitás (involúció)"
+  putStrLn ""
+  putStrLn "── AZ ESETRAG = AZ IDŐ-IRÁNY (bizVízbenFolyamatos/bizVízbeJövő/"
+  putStrLn "   bizVízbőlMúlt — mind Refl!) ─────────────────────────"
+  putStrLn "  vízBEN (inesszivusz, hol?)  → PJe True  = FOLYAMATOS jelen"
+  putStrLn "  vízBE  (illativusz, hová?)  → TJe True  = JÖVŐ-irány"
+  putStrLn "  vízBŐL (elativusz, honnan?) → TJe False = MÚLT-irány"
+  putStrLn "  格词缀即时间轴：-ben=持续现在、-be=未来、-ből=过去。"
+  putStrLn "  A magyar irányult esetek egyenesen az idő-tengelyre képeznek —"
+  putStrLn "  a tér-irány (hová/honnan) = az idő-irány (jövő/múlt)!"
   putStrLn ""
   putStrLn "  ★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★"

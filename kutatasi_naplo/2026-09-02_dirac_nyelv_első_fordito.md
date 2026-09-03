@@ -64,3 +64,21 @@
   típushibás volt — a tiszta involúció szebb és igazabb (a legkisebb művelet!).
 
 ★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★
+
+## 9. FOLYTATÁS («folytasd») — AZ ESETRAG = AZ IDŐ-IRÁNY (310.03 csírája)
+- ÚJ FUNKTOR: ragbólFázis / lábbólFázis — a magyar esetragok EGYENESEN a
+  Dirac-fázis idő-tengelyére képeznek:
+  · «-ba/-be» (illativusz, hová?) → TJe True = JÖVŐ-irány
+  · «-ból/-ből» (elativusz, honnan?) → TJe False = MÚLT-irány
+  · «-ban/-ben» (inesszivusz, hol?) → PJe True = FOLYAMATOS jelen (ASPEKTUS!)
+  · «-ig» (terminativusz) → TJe True; «-tól/-től» (ablativusz) → TJe False
+- FIZIKAI/LINGVISZTIKAI FELFEDEZÉS: a magyar irányult esetekben a TÉR-irány
+  (hová/honnan) EGYENLŐ az IDŐ-iránnyal (jövő/múlt)! A γ⁰ épp ezt a tengelyt
+  billenti — a fordítás «időt fordít». A nyelvtani eset = a spinor-fázis.
+  「语法格即时间轴——空间方向即时间方向；γ⁰ 翻转的正是此轴。」
+- A magyarbólDiracba frissítve: a ragLánc ELSŐ tagja adja a fázist (a többi
+  rag a láncon marad — az agglutináció nem rövidül meg).
+- 3 ÚJ REFL-TANÚ: bizVízbenFolyamatos (PJe True), bizVízbeJövő (TJe True),
+  bizVízbőlMúlt (TJe False) — mind exit 0, a főprogram bemutatja.
+
+★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★
