@@ -1548,6 +1548,139 @@ szám240Jegyei :
   = Fűzés SzámjegyKettő (Fűzés SzámjegyNégy (Fűzés SzámjegyNulla FüzérVége))
 szám240Jegyei = Refl
 
+-- ─── SORSZÁM-SZAVAK + a sorSzöveggé-HÍD (100.02 — a Show-híd) ──
+-- A Sorszám-megjelenítés tíznél telít (a kapu-elv); a tízen túli
+-- számokhoz SZAVAK kellenek (a rúnaszámok elve: számjegy-graféma nincs).
+-- A magyar számnevek kompozicionálisak: tizenegy = tizen + egy — de a
+-- húszig terjedő KÉSZ szólista a legbiztosabb (minden szó graféma).
+
+szorzámNullaSzó : Szöveg
+szorzámNullaSzó = BetűtFűz NBetű (BetűtFűz UBetű (BetűtFűz LBetű (BetűtFűz LBetű
+  (BetűtFűz ABetű ÜresSzöveg))))
+
+szorzámEgySzó : Szöveg
+szorzámEgySzó = BetűtFűz EBetű (BetűtFűz GyBetű ÜresSzöveg)
+
+szorzámKettőSzó : Szöveg
+szorzámKettőSzó = BetűtFűz KBetű (BetűtFűz EBetű (BetűtFűz TBetű (BetűtFűz TBetű
+  (BetűtFűz ŐBetű ÜresSzöveg))))
+
+szorzámHáromSzó : Szöveg
+szorzámHáromSzó = BetűtFűz HBetű (BetűtFűz ÁBetű (BetűtFűz RBetű (BetűtFűz OBetű
+  (BetűtFűz MBetű ÜresSzöveg))))
+
+szorzámNégySzó : Szöveg
+szorzámNégySzó = BetűtFűz NBetű (BetűtFűz ÉBetű (BetűtFűz GyBetű ÜresSzöveg))
+
+szorzámÖtSzó : Szöveg
+szorzámÖtSzó = BetűtFűz ÖBetű (BetűtFűz TBetű ÜresSzöveg)
+
+szorzámHatSzó : Szöveg
+szorzámHatSzó = BetűtFűz HBetű (BetűtFűz ABetű (BetűtFűz TBetű ÜresSzöveg))
+
+szorzámHétSzó : Szöveg
+szorzámHétSzó = BetűtFűz HBetű (BetűtFűz ÉBetű (BetűtFűz TBetű ÜresSzöveg))
+
+szorzámNyolcSzó : Szöveg
+szorzámNyolcSzó = BetűtFűz NyBetű (BetűtFűz OBetű (BetűtFűz LBetű (BetűtFűz CBetű
+  ÜresSzöveg)))
+
+szorzámKilencSzó : Szöveg
+szorzámKilencSzó = BetűtFűz KBetű (BetűtFűz IBetű (BetűtFűz LBetű (BetűtFűz EBetű
+  (BetűtFűz NBetű (BetűtFűz CBetű ÜresSzöveg)))))
+
+szorzámTízSzó : Szöveg
+szorzámTízSzó = BetűtFűz TBetű (BetűtFűz ÍBetű (BetűtFűz ZBetű ÜresSzöveg))
+
+||| A «tizen» előtag (t-i-z-e-n — NINCS D benne! fantom-betű-csapda #18,
+||| a felhasználó szeme leplezte le: «tizen-hat, nem t i z D e n h a t»).
+szorzámTizenSzó : Szöveg
+szorzámTizenSzó = BetűtFűz TBetű (BetűtFűz IBetű (BetűtFűz ZBetű (BetűtFűz EBetű
+  (BetűtFűz NBetű ÜresSzöveg))))
+
+||| A «tizenhat» szó TANÚNAK (a sorSzöveggéTízTanú + a toruszi tanú
+||| ehhez hasonlít) — a kompozicionális alak: tizen + hat
+||| (t-i-z-e-n-h-a-t — NINCS D!).
+szorzámTizenhatSzó : Szöveg
+szorzámTizenhatSzó = BetűtFűz TBetű (BetűtFűz IBetű (BetűtFűz ZBetű (BetűtFűz EBetű
+  (BetűtFűz NBetű (BetűtFűz HBetű (BetűtFűz ABetű (BetűtFűz TBetű
+  ÜresSzöveg)))))))
+
+szorzámHúszSzó : Szöveg
+szorzámHúszSzó = BetűtFűz HBetű (BetűtFűz ÚBetű (BetűtFűz SzBetű ÜresSzöveg))
+
+||| A sorSzöveggé-híd: a Sorszám MAGYAR SZÓVAL (húszig — a rúnaszámok
+||| elve: számjegy-graféma nincs, a szám Szó). A megjelenítés-tíznél-
+||| telít kapujának feloldása a tízen túli számokra.
+||| KOMPOZICIONÁLIS terv (a magyar számnevek törvénye: 11..19 = tizen+
+||| [egy..kilenc], 20 = húsz) — a 20 mély minta helyett TÍZALATTI
+||| szótároló + TÍZFELETT érzékelő (az Idris2 dokumentáció
+||| Pattern-Matching fejezetének szellemében: bonts kicsit, olvasd a
+||| célt). (A MegjelenítésT EgészSzám szavaival való egyesítés későbbi
+||| lépés — a §24-feszültség dokumentálva.)
+
+tízAlattiSzó : Sorszám -> Szöveg
+tízAlattiSzó SorNulla = szorzámNullaSzó
+tízAlattiSzó (SorKövetkező SorNulla) = szorzámEgySzó
+tízAlattiSzó (SorKövetkező (SorKövetkező SorNulla)) = szorzámKettőSzó
+tízAlattiSzó (SorKövetkező (SorKövetkező (SorKövetkező SorNulla))) = szorzámHáromSzó
+tízAlattiSzó (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező SorNulla)))) = szorzámNégySzó
+tízAlattiSzó (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező
+  (SorKövetkező SorNulla))))) = szorzámÖtSzó
+tízAlattiSzó (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező
+  (SorKövetkező (SorKövetkező SorNulla)))))) = szorzámHatSzó
+tízAlattiSzó (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező
+  (SorKövetkező (SorKövetkező (SorKövetkező SorNulla))))))) = szorzámHétSzó
+tízAlattiSzó (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező
+  (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező SorNulla)))))))) = szorzámNyolcSzó
+tízAlattiSzó (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező
+  (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező
+  (SorKövetkező SorNulla))))))))) = szorzámKilencSzó
+tízAlattiSzó _ = szorzámKilencSzó
+
+||| Tízfelett-érzékelő: Csak (n − tíz), ha a szám legalább tíz;
+||| különben Semmi (0..9 esetenként explicit — a lefedettség látható).
+tízFelett : Sorszám -> Talán Sorszám
+tízFelett SorNulla = Semmi
+tízFelett (SorKövetkező SorNulla) = Semmi
+tízFelett (SorKövetkező (SorKövetkező SorNulla)) = Semmi
+tízFelett (SorKövetkező (SorKövetkező (SorKövetkező SorNulla))) = Semmi
+tízFelett (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező SorNulla)))) = Semmi
+tízFelett (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező
+  (SorKövetkező SorNulla))))) = Semmi
+tízFelett (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező
+  (SorKövetkező (SorKövetkező SorNulla)))))) = Semmi
+tízFelett (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező
+  (SorKövetkező (SorKövetkező (SorKövetkező SorNulla))))))) = Semmi
+tízFelett (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező
+  (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező SorNulla)))))))) = Semmi
+tízFelett (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező
+  (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező
+  (SorKövetkező SorNulla))))))))) = Semmi
+tízFelett (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező
+  (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező
+  (SorKövetkező tovább)))))))))) = Csak tovább
+
+public export
+sorSzöveggé : Sorszám -> Szöveg
+sorSzöveggé sor = case tízFelett sor of
+  Semmi => tízAlattiSzó sor
+  Csak maradó => case maradó of
+    SorNulla => szorzámTízSzó
+    (SorKövetkező tovább) => case tovább of
+      (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező
+        (SorKövetkező (SorKövetkező (SorKövetkező (SorKövetkező
+        SorNulla))))))))) => szorzámHúszSzó
+      _ => szövegFűzés szorzámTizenSzó (tízAlattiSzó (SorKövetkező tovább))
+
+-- BIZONYÍTÁS: a híd helyes tízen (definicionális Refl); a tizenhatos
+-- tanú a Torusz-modulban él (toruszSzámaSzava — a teljes csővezeték:
+-- füzérHossz → sorSzöveggé → tizen+hat).
+public export
+sorSzöveggéTízTanú :
+  sorSzöveggé Alap.CsomagoltTipusok.sorTíz = Alap.CsomagoltTipusok.szorzámTízSzó
+sorSzöveggéTízTanú = Refl
+
 -- ═════════════════════════════════════════════════════════════════════════
 -- XII. METRIKÁK — időbélyeg, verziószám, bájtlánc-index, megbízhatóság
 --      中文：度量——时间戳、版本号、字节索引、可信度
