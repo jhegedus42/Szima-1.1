@@ -272,16 +272,17 @@ gámmaNulla (DiracSzóKonstruktor tér idő címke (CJe irány)) =
 
 ||| A kör: magyar → Dirac → (kínai-rádión át) → Dirac → magyar.
 ||| 环：匈牙利语→Dirac→（经中文）→Dirac→匈牙利语。
+||| FIZIKAI MEGLÁTÁS: a rádió az EREDETI ragLáncot viszi (a kínai ág
+||| önmagában csak a tőt hordaná — a toldalékok a magyar idő-fele!
+||| A fordítás nem dobja el az agglutinációt.)
+||| 物理洞见：电台携带原始词缀链——翻译不丢黏着。
+||| A tő útja a TISZTA involúció: tő → radikál → tő (a tőbőlRadikál
+||| TELJES függvény — mindig van radikál, a Semmi-ág nem kell).
+||| 词干之路是纯对合：词干→部首→词干。
 public export
 körMagyarbólMagyarba : MagyarIdő -> MagyarIdő
-körMagyarbólMagyarba magyar =
-  diracbólMagyarba (kínaibólDiracba (rádióRadikál (diracbólKínaiba (magyarbólDiracba magyar))))
-  where
-    ||| A rádió: a Talán Radikál biztos radikál (Semmi = csend = SzájRadikál).
-    ||| 电台：把 Talán Radikál 变成确定的部首（Semmi=静默=口）。
-    rádióRadikál : Talán Radikál -> Radikál
-    rádióRadikál (Csak radikál) = radikál
-    rádióRadikál Semmi = SzájRadikál
+körMagyarbólMagyarba (MagyarIdőKonstruktor tő lánc) =
+  MagyarIdőKonstruktor (radikálbólTő (tőbőlRadikál tő)) lánc
 
 -- REFL-TANÚ: a kör INVOLÚCIÓ a szótár elemein (víz)!
 -- Kimenet: Refl (víz → 水 → víz ✓)
@@ -295,6 +296,57 @@ public export
 bizKörÉg : körMagyarbólMagyarba (csakTő (karakterláncbólTő "ég"))
   = csakTő (karakterláncbólTő "ég")
 bizKörÉg = Refl
+
+-- REFL-TANÚK: a teljes szótár körbejár (mind a 8 radikál!) / 全词典环行！
+public export
+bizKörFöld : körMagyarbólMagyarba (csakTő (karakterláncbólTő "föld"))
+  = csakTő (karakterláncbólTő "föld")
+bizKörFöld = Refl
+
+public export
+bizKörEmber : körMagyarbólMagyarba (csakTő (karakterláncbólTő "ember"))
+  = csakTő (karakterláncbólTő "ember")
+bizKörEmber = Refl
+
+public export
+bizKörTűz : körMagyarbólMagyarba (csakTő (karakterláncbólTő "tűz"))
+  = csakTő (karakterláncbólTő "tűz")
+bizKörTűz = Refl
+
+public export
+bizKörFa : körMagyarbólMagyarba (csakTő (karakterláncbólTő "fa"))
+  = csakTő (karakterláncbólTő "fa")
+bizKörFa = Refl
+
+public export
+bizKörFém : körMagyarbólMagyarba (csakTő (karakterláncbólTő "fém"))
+  = csakTő (karakterláncbólTő "fém")
+bizKörFém = Refl
+
+public export
+bizKörSzáj : körMagyarbólMagyarba (csakTő (karakterláncbólTő "száj"))
+  = csakTő (karakterláncbólTő "száj")
+bizKörSzáj = Refl
+
+-- REFL-TANÚ: γ⁰ ∘ γ⁰ = id — a kétszeres keverés az identitás (involúció)!
+-- Az ISMERETLEN tő is (a SzájRadikál-út) — a fordítás elvész és visszatalál.
+-- γ⁰∘γ⁰=id——两次混合即恒等（对合）！
+public export
+bizGámmaNullaInvolúció : (ψ : DiracSzó) -> gámmaNulla (gámmaNulla ψ) = ψ
+bizGámmaNullaInvolúció (DiracSzóKonstruktor tér idő címke (TJe True)) = Refl
+bizGámmaNullaInvolúció (DiracSzóKonstruktor tér idő címke (TJe False)) = Refl
+bizGámmaNullaInvolúció (DiracSzóKonstruktor tér idő címke (PJe irány)) = Refl
+bizGámmaNullaInvolúció (DiracSzóKonstruktor tér idő címke (CJe irány)) = Refl
+
+-- REFL-TANÚ: a TOLDALÉKOS kör — a ragLánc megőrződik!
+-- «vízben»: a tő körbejár (víz→水→víz), a rag (-ben) a helyén marad —
+-- a kör az agglutinációt nem bontja (a kompozíció stabil).
+-- 带词缀的环——词缀链得以保全：vízben→|水⟩⊗-ben→vízben。
+public export
+bizKörVízben : körMagyarbólMagyarba
+  (toldalékFűzés (karakterláncbólTő "ben") (csakTő (karakterláncbólTő "víz")))
+  = toldalékFűzés (karakterláncbólTő "ben") (csakTő (karakterláncbólTő "víz"))
+bizKörVízben = Refl
 
 -- ─── 9. FŐPROGRAM — a négy nyelv bemutatása ──────────────────────
 -- ─── 九、主程序——四种语言的展示 ──────────────

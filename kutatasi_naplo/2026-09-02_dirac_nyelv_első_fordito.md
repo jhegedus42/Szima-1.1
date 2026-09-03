@@ -50,3 +50,17 @@
 - ÚJ feladat: γ⁰∘γ⁰=id involúció-tanú + a teljes szótár kör-tanúi
 
 ★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★
+
+## 8. FOLYTATÁS («folytasd») — a tanú-háló teljesítése
+- A 8 radikál MIND körbejár: bizKörVíz/Ég/Föld/Ember/Tűz/Fa/Fém/Száj — 8 Refl.
+- γ⁰∘γ⁰=id: bizGámmaNullaInvolúció (a TJe True/False külön klauzulákkal —
+  a Bool not(not b) NEM definicionális: CSAPDA #23!).
+- TOLDALÉKOS KÖR: bizKörVízben — «vízben» → |水⟩ + a -ben lánc a helyén →
+  «vízben» (az agglutináció stabil a fordításban!).
+- FIZIKAI MEGLÁTÁS: a kínai ág önmagában CSAK a tőt hordaná — a kör az
+  EREDETI ragLáncot viszi (a toldalék a magyar idő-fele!). A tő útja a
+  TISZTA involúció: tő→radikál→tő (a tőbőlRadikál TELJES fv — nincs Semmi-ág).
+- EGY ELVETETT VÁZLAT dokumentálva: a körTőKínaiTükör-kettős (tartalék-tő)
+  típushibás volt — a tiszta involúció szebb és igazabb (a legkisebb művelet!).
+
+★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★
