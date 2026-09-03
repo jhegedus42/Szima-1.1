@@ -9,20 +9,22 @@ import FazisAlgebra
 import Emberi.Index
 import Szamitasi.Index
 
-||| Kategoria: objektumok + morfizmusok + osszetetel + azonos.
+||| Kategoria: objektumok + morfizmusok + összetétel + azonos.
 public export
 record Kategoria (objektum : Type) (hom : objektum -> objektum -> Type) where
   constructor KategoriaKonstruktor
   azonos : (a : objektum) -> hom a a
-  osszetetel : {a, b, c : objektum} -> hom a b -> hom b c -> hom a c
+  összetétel : {a, b, c : objektum} -> hom a b -> hom b c -> hom a c
 
 -- ─── KATEGÓRIA MINT TYPECLASS (TORVENYEKKEL) ──────────────
 -- A typeclass-ben a törvények is benne vannak.
--- Az interface implementalasa = a torvenyek bizonyitasa.
--- Curry-Howard: az interface = a tetel, az implementacio = a bizonyitas.
-||| Kategoria typeclass: az azonos es osszetetel torvenyeivel.
-|||   A `balAzonos` es `jobbAzonos` bizonyitjak az identitas-torvenyeket.
-|||   Az `asszociativBizonyitas` bizonyitja az asszociativitast.
+-- 类型类中包含定律。
+-- Az interface implementálása = a törvények bizonyítása.
+-- 接口的实现 = 定律的证明。
+-- Curry-Howard: az interface = a tetel, az implementáció = a bizonyítás.
+||| Kategoria typeclass: az azonos és összetétel torvenyeivel.
+|||   A `balAzonos` és `jobbAzonos` bizonyítják az identitás-törvényeket.
+|||   Az `asszociativBizonyitas` bizonyítja az asszociativitást.
 public export
 interface KategoriaT (objektum : Type) (hom : objektum -> objektum -> Type) where
   identitas : (a : objektum) -> hom a a
@@ -32,42 +34,42 @@ interface KategoriaT (objektum : Type) (hom : objektum -> objektum -> Type) wher
   asszociativ : {a, b, c, d : objektum} -> (f : hom a b) -> (g : hom b c) -> (h : hom c d) ->
     kompozicio f (kompozicio g h) = kompozicio (kompozicio f g) h
 
-||| KategoriaT pelda: az Emberi diszkret kategoria.
-|||   Mivel csak EmberiAzonos morfizmusok vannak, minden torveny Refl.
-|||   FIGYELEM: a KategoriaT peldanyok a file VEGEN vannak (EmberiMorf utan).
+||| KategoriaT példa: az Emberi diszkret kategória.
+|||   Mivel csak EmberiAzonos morfizmusok vannak, minden törvény Refl.
+|||   FIGYELEM: a KategoriaT példanyok a file VEGEN vannak (EmberiMorf utan).
 
-||| Monoidalis kategoria: tenzor szorzat + egysegelem.
+||| Monoidális kategória: tenzor-szorzat + egységelem.
 public export
-record MonoidalisKategoria (objektum : Type) (hom : objektum -> objektum -> Type) where
-  constructor MonoidalisKategoriaKonstruktor
-  kategoria : Kategoria objektum hom
+record MonoidálisKategoria (objektum : Type) (hom : objektum -> objektum -> Type) where
+  constructor MonoidálisKategoriaKonstruktor
+  kategória : Kategoria objektum hom
   tenzor : objektum -> objektum -> objektum
   egyseg : objektum
 
-||| DualisKategoria: minden objektumnak van dualisa.
+||| DuálisKategória: minden objektumnak van duálisa.
 public export
-record DualisKategoria (objektum : Type) (hom : objektum -> objektum -> Type) where
-  constructor DualisKategoriaKonstruktor
-  monoidalis : MonoidalisKategoria objektum hom
+record DuálisKategória (objektum : Type) (hom : objektum -> objektum -> Type) where
+  constructor DuálisKategóriaKonstruktor
+  monoidális : MonoidálisKategoria objektum hom
   dualis : objektum -> objektum
 
-||| Funktor: kategoria szerkezet megorzese.
+||| Funktor: kategória szerkezet megőrzése.
 public export
 record Funktor (o1 : Type) (m1 : o1 -> o1 -> Type) (o2 : Type) (m2 : o2 -> o2 -> Type) where
   constructor FunktorKonstruktor
   objektumKep : o1 -> o2
   morfizmusKep : {a, b : o1} -> m1 a b -> m2 (objektumKep a) (objektumKep b)
 
-||| Termeszetes transzformacio: ket funktor kozotti lekepezes.
+||| Termeszetes transzformacio: ket funktor közötti leképezés.
 public export
 record TermeszetesTranszformacio
        (o1 : Type) (m1 : o1 -> o1 -> Type) (o2 : Type) (m2 : o2 -> o2 -> Type) where
   constructor TermeszetesKonstruktor
-  felso : Funktor o1 m1 o2 m2
+  felső : Funktor o1 m1 o2 m2
   also : Funktor o1 m1 o2 m2
-  komponens : (a : o1) -> m2 (felso.objektumKep a) (also.objektumKep a)
+  komponens : (a : o1) -> m2 (felső.objektumKep a) (also.objektumKep a)
 
-||| Bifunktor: ket kategoria szorzatabol.
+||| Bifunktor: két kategória szorzatából.
 public export
 record Bifunktor (bk : Kategoria o1 m1) (jk : Kategoria o2 m2) (kk : Kategoria o3 m3) where
   constructor BifunktorKonstruktor
@@ -76,29 +78,29 @@ record Bifunktor (bk : Kategoria o1 m1) (jk : Kategoria o2 m2) (kk : Kategoria o
               -> m1 a b -> m2 c d
               -> m3 (objektumKep a c) (objektumKep b d)
 
-||| Span: ket morfizmus kozos forrassal.
+||| Span: két morfizmus közös forrással.
 public export
-record Span (kategoria : Kategoria obj hom) (celpont : obj) where
+record Span (kategória : Kategoria obj hom) (célpont : obj) where
   constructor SpanKonstruktor
   balForras : obj
   jobbForras : obj
 
-||| Cospan: ket morfizmus kozos cellal.
+||| Cospan: két morfizmus közös céllal.
 public export
-record Cospan (kategoria : Kategoria obj hom) (forras : obj) where
+record Cospan (kategória : Kategoria obj hom) (forrás : obj) where
   constructor CospanKonstruktor
   balCel : obj
   jobbCel : obj
 
-||| Szimmetrikus monoidalis kategoria: tenzor + braiding.
+||| Szimmetrikus monoidális kategória: tenzor + braiding.
 public export
-record SzimmetrikusMonoidalisKategoria
+record SzimmetrikusMonoidálisKategoria
        (objektum : Type) (hom : objektum -> objektum -> Type) where
   constructor SzimmetrikusKonstruktor
-  monoidalis : MonoidalisKategoria objektum hom
-  braiding : {a, b : objektum} -> hom (monoidalis.tenzor a b) (monoidalis.tenzor b a)
+  monoidális : MonoidálisKategoria objektum hom
+  braiding : {a, b : objektum} -> hom (monoidális.tenzor a b) (monoidális.tenzor b a)
 
-||| Szorzat kategoria: ha C es D kategoriak, akkor C × D is az.
+||| Szorzat kategória: ha C és D kategóriak, akkor C × D is az.
 public export
 record SzorzatKategoria (o1 : Type) (m1 : o1 -> o1 -> Type)
                         (o2 : Type) (m2 : o2 -> o2 -> Type) where
@@ -106,8 +108,8 @@ record SzorzatKategoria (o1 : Type) (m1 : o1 -> o1 -> Type)
   balKategoria : Kategoria o1 m1
   jobbKategoria : Kategoria o2 m2
 
-||| EllenKategoria (C^op): megforditott morfizmusok.
-||| EllenNyil f : EllenMorf hom a b  ⇔  f : hom a b a C^op kategoriaban.
+||| EllenKategória (C^op): megfordított morfizmusok.
+||| EllenNyil f : EllenMorf hom a b  ⇔  f : hom a b a C^op kategóriaban.
 public export
 data EllenMorf : {obj : Type} -> (hom : obj -> obj -> Type) -> obj -> obj -> Type where
   EllenNyil : {a, b : obj} -> hom a b -> EllenMorf hom a b
@@ -123,7 +125,7 @@ record Adjunkcio (o1 : Type) (m1 : o1 -> o1 -> Type)
   balEgyseg : (a : o1) -> m1 a (jobbFunktor.objektumKep (balFunktor.objektumKep a))
   jobbEgyseg : (b : o2) -> m2 (balFunktor.objektumKep (jobbFunktor.objektumKep b)) b
 
-||| KettoKategoria: 2-sejtek a morfizmusok kozott.
+||| KettőKategória: 2-sejtek a morfizmusok között.
 ||| Objektumok (0-sejtek), morfizmusok (1-sejtek), 2-morfizmusok (2-sejtek).
 public export
 record KettoKategoria (obj : Type) (hom : obj -> obj -> Type)
@@ -134,17 +136,17 @@ record KettoKategoria (obj : Type) (hom : obj -> obj -> Type)
                       -> ketHom a b f g -> ketHom a b g h -> ketHom a b f h
   vizszintesOsszetetel : {a, b, c : obj} -> {f1, f2 : hom a b} -> {g1, g2 : hom b c}
                       -> ketHom a b f1 f2 -> ketHom b c g1 g2
-                      -> ketHom a c (alapKategoria.osszetetel f1 g1)
-                                    (alapKategoria.osszetetel f2 g2)
+                      -> ketHom a c (alapKategoria.összetétel f1 g1)
+                                    (alapKategoria.összetétel f2 g2)
 
 ||| Yoneda beagyazas: C → [C^op, Set].
 ||| Minden a objektumhoz a Hom(-, a) prefasítás
-||| (tipus-értékű fuggvenykent, nem m x a ertekkent).
+||| (tipus-értékű függvénykent, nem m x a ertekkent).
 public export
 record YonedaBeagyazas (o : Type) (m : o -> o -> Type) where
   constructor YonedaKonstruktor
-  kategoria : Kategoria o m
-  -- Hom(-, a) mint tipusfuggveny: minden x-hez a Hom(x, a) tipust
+  kategória : Kategoria o m
+  -- Hom(-, a) mint tipusfüggvény: minden x-hez a Hom(x, a) tipust
   homPresheaf : (a : o) -> (x : o) -> Type
   -- Utana tetelezes: ha f: a → b, akkor Hom(-, a) → Hom(-, b)
   utanaTetelezes : {a, b : o} -> m a b
@@ -154,32 +156,32 @@ record YonedaBeagyazas (o : Type) (m : o -> o -> Type) where
              -> ((x : o) -> homPresheaf a x -> f x) -> f a
 
 -- ═══════════════════════════════════════════════════════════════
--- MORFIZMUS TIPUSOK (WRAPPER-EK A KATEGORIAKHOZ)
+-- MORFIZMUS TÍPUSOK (WRAPPER-EK A KATEGÓRIÁKHOZ)
 -- ═══════════════════════════════════════════════════════════════
 
-||| Fogalom morfizmus: a FogalomLogika lezart kategoriakent.
-||| Az Azonos es Ire mellett a Sorozat epit kompoziciot.
+||| Fogalom morfizmus: a FogalomLogika lezárt kategóriaként.
+||| Az Azonos és Ire mellett a Sorozat épít kompozíciót.
 public export
 data FogalomMorf : FogalomTipus -> FogalomTipus -> Type where
   FogalomAzonos : FogalomMorf a a
   FogalomIre : FogalomLogika a b -> FogalomMorf a b
   FogalomSorozat : (koztes : FogalomTipus) -> FogalomMorf a koztes -> FogalomMorf koztes c -> FogalomMorf a c
 
-||| Fogalom 2-morfizmus: 2-sejtek ket parhuzamos FogalomMorf kozott.
-||| A 2-sejt a fazis/amplitudo a ket ut kozott a 2-kategoriaban.
+||| Fogalom 2-morfizmus: 2-sejtek ket parhuzamos FogalomMorf között.
+||| A 2-sejt a fazis/amplitudo a ket ut között a 2-kategóriaban.
 public export
 data FogalomKetMorf : (a, b : FogalomTipus) -> FogalomMorf a b -> FogalomMorf a b -> Type where
   KetAzonos : FogalomKetMorf a b f f
   KetIre : FogalomKetMorf a b f g
 
-||| Fogalom morfizmus egyenloseg: kategoriatorvenyek.
-||| Asszociativitas: (f;g);h = f;(g;h)
-||| Bal egyseg: 1_a;f = f
-||| Jobb egyseg: f;1_b = f
+||| Fogalom morfizmus egyenlőség: kategória-törvények.
+||| Asszociativitás: (f;g);h = f;(g;h)
+||| Bal egység: 1_a;f = f
+||| Jobb egység: f;1_b = f
 public export
 data FogalomMorfEgyenlo : (a, b : FogalomTipus) -> FogalomMorf a b -> FogalomMorf a b -> Type where
   -- (f ; g) ; h  ==  f ; (g ; h)
-  Asszociativitas : {a, b, c, d : FogalomTipus}
+  Asszociativitás : {a, b, c, d : FogalomTipus}
                  -> (f : FogalomMorf a b) -> (g : FogalomMorf b c) -> (h : FogalomMorf c d)
                  -> FogalomMorfEgyenlo a d
                       (FogalomSorozat {a = a} {c = d} c (FogalomSorozat {a = a} {c = c} b f g) h)
@@ -205,21 +207,21 @@ public export
 data E8Morf : E8Pont -> E8Pont -> Type where
   E8MorfKonstruktor : CliffordElem -> E8Morf a b
 
-||| HaromKubit morfizmus: fazis kapcsolat.
+||| HaromKubit morfizmus: fázis-kapcsolat.
 public export
 data KubitMorf : HaromKubit -> HaromKubit -> Type where
   KubitMorfKonstruktor : HaromKubitMorfizmus a b -> KubitMorf a b
 
-||| Ido morfizmus: ido irany.
+||| Idő morfizmus: idő irány.
 public export
 data IdoMorf : IgeIdo -> IgeIdo -> Type where
   IdoMorfKonstruktor : IdoMorfizmus a b -> IdoMorf a b
 
 -- ═══════════════════════════════════════════════════════════════
--- AZONOSSAGOK ES OSSZETETELEK (minden kategoriahoz)
+-- AZONOSSÁGOK ÉS ÖSSZETÉTELEK (minden kategóriához)
 -- ═══════════════════════════════════════════════════════════════
 
-||| Eset azonos: minden esethez a sajat logikaja.
+||| Eset azonos: minden esethez a saját logikája.
 esetAzonos : (a : Eset) -> EsetLogika a
 esetAzonos Nominativusz = AlanyLogika
 esetAzonos Accusativusz = TargyLogika
@@ -247,31 +249,33 @@ esetAzonos Causalis = CausalLogika
 esetAzonos Formaliss = AlakLogika
 
 -- ═══════════════════════════════════════════════════════════════
--- HAROMKUBIT ES IDO SEGEDFUGGVENYEK
+-- HÁROMKUBIT ÉS IDŐ SEGÉDFÜGGVÉNYEK
+-- 三比特与时间的辅助函数
 -- ═══════════════════════════════════════════════════════════════
 public export
 haromKubitAzonos : HaromKubitMorfizmus a a
 haromKubitAzonos = HaromKubitMorfizmusKonstruktor
 
-||| HaromKubit osszetetel.
+||| HaromKubit összetétel.
 public export
 haromKubitOsszetetel : HaromKubitMorfizmus a b -> HaromKubitMorfizmus b c
                     -> HaromKubitMorfizmus a c
 haromKubitOsszetetel HaromKubitMorfizmusKonstruktor HaromKubitMorfizmusKonstruktor =
   HaromKubitMorfizmusKonstruktor
 
-||| Ido azonos.
+||| Idő azonos.
 public export
-idoAzonos : IdoMorfizmus a a
-idoAzonos = IdoMorfizmusKonstruktor
+időAzonos : IdoMorfizmus a a
+időAzonos = IdoMorfizmusKonstruktor
 
-||| Ido osszetetel.
+||| Ido összetétel.
 public export
-idoOsszetetel : IdoMorfizmus a b -> IdoMorfizmus b c -> IdoMorfizmus a c
-idoOsszetetel IdoMorfizmusKonstruktor IdoMorfizmusKonstruktor = IdoMorfizmusKonstruktor
+időOsszetetel : IdoMorfizmus a b -> IdoMorfizmus b c -> IdoMorfizmus a c
+időOsszetetel IdoMorfizmusKonstruktor IdoMorfizmusKonstruktor = IdoMorfizmusKonstruktor
 
 -- ═══════════════════════════════════════════════════════════════
--- KATEGORIA OSSZETETEL SEGEDFUGGVENYEK
+-- KATEGÓRIA ÖSSZETÉTEL SEGÉDFÜGGVÉNYEK
+-- 范畴复合的辅助函数
 -- ═══════════════════════════════════════════════════════════════
 
 fogalomOsszetetelMorf : {a : FogalomTipus} -> {b : FogalomTipus} -> {c : FogalomTipus}
@@ -290,53 +294,53 @@ kubitOsszetetelMorf : KubitMorf a b -> KubitMorf b c -> KubitMorf a c
 kubitOsszetetelMorf (KubitMorfKonstruktor f) (KubitMorfKonstruktor g) =
   KubitMorfKonstruktor (haromKubitOsszetetel f g)
 
-idoOsszetetelMorf : IdoMorf a b -> IdoMorf b c -> IdoMorf a c
-idoOsszetetelMorf (IdoMorfKonstruktor f) (IdoMorfKonstruktor g) =
-  IdoMorfKonstruktor (idoOsszetetel f g)
+időOsszetetelMorf : IdoMorf a b -> IdoMorf b c -> IdoMorf a c
+időOsszetetelMorf (IdoMorfKonstruktor f) (IdoMorfKonstruktor g) =
+  IdoMorfKonstruktor (időOsszetetel f g)
 
 -- ═══════════════════════════════════════════════════════════════
--- KATEGORIA PELDAK
+-- KATEGORIA PÉLDÁK
 -- ═══════════════════════════════════════════════════════════════
 
-||| FogalomFa mint kategoria.
+||| FogalomFa mint kategória.
 public export
 fogalomKategoria : Kategoria FogalomTipus FogalomMorf
 fogalomKategoria = KategoriaKonstruktor
   (\a => FogalomAzonos)
   fogalomOsszetetelMorf
 
-||| Eset mint kategoria (diszkret).
+||| Eset mint kategória (diszkrét).
 public export
 esetKategoria : Kategoria Eset EsetMorf
 esetKategoria = KategoriaKonstruktor
   (\a => EsetMorfKonstruktor (esetAzonos a))
   esetOsszetetelMorf
 
-||| E8 × E8 mint kategoria.
+||| E8 × E8 mint kategória.
 public export
 e8Kategoria : Kategoria E8Pont E8Morf
 e8Kategoria = KategoriaKonstruktor
   (\a => E8MorfKonstruktor (CliffordKonstruktor Egy Nulla Nulla))
   e8OsszetetelMorf
 
-||| HaromKubit mint kategoria.
+||| HaromKubit mint kategória.
 public export
 haromKubitKategoria : Kategoria HaromKubit KubitMorf
 haromKubitKategoria = KategoriaKonstruktor
   (\a => KubitMorfKonstruktor haromKubitAzonos)
   kubitOsszetetelMorf
 
-||| Ido mint kategoria.
+||| Ido mint kategória.
 public export
-idoKategoria : Kategoria IgeIdo IdoMorf
-idoKategoria = KategoriaKonstruktor
-  (\a => IdoMorfKonstruktor idoAzonos)
-  idoOsszetetelMorf
+időKategoria : Kategoria IgeIdo IdoMorf
+időKategoria = KategoriaKonstruktor
+  (\a => IdoMorfKonstruktor időAzonos)
+  időOsszetetelMorf
 
-||| FogalomFa monoidalisan.
+||| FogalomFa monoidálisan.
 public export
-fogalomMonoidalisKategoria : MonoidalisKategoria FogalomTipus FogalomMorf
-fogalomMonoidalisKategoria = MonoidalisKategoriaKonstruktor
+fogalomMonoidálisKategoria : MonoidálisKategoria FogalomTipus FogalomMorf
+fogalomMonoidálisKategoria = MonoidálisKategoriaKonstruktor
   fogalomKategoria
   (\a, b => Gyoker)
   Gyoker
@@ -349,22 +353,22 @@ fogalomDualis a = a
 
 ||| Dualis: Cel ↔ Ok, Ok ↔ Kavzatum, Kavzatum ↔ Cel.
 public export
-fogalomDualisKategoria : DualisKategoria FogalomTipus FogalomMorf
-fogalomDualisKategoria = DualisKategoriaKonstruktor
-  fogalomMonoidalisKategoria
+fogalomDuálisKategória : DuálisKategória FogalomTipus FogalomMorf
+fogalomDuálisKategória = DuálisKategóriaKonstruktor
+  fogalomMonoidálisKategoria
   fogalomDualis
 
 -- ═══════════════════════════════════════════════════════════════
 -- 4 DIMENZIO KATEGORIA: TER, IDO, TOMEG, INFORMACIO
 -- ═══════════════════════════════════════════════════════════════
 
-||| A 4 alap dimenzio.
+||| A 4 alap dimenzió.
 public export
 data NegyDimenzio = Ter | Ido | Tomeg | Informacio
 
-||| Morfizmusok a 4 dimenzio kozott.
-||| A legegyszerubb nem trivialis kategoria: mindegyik
-||| atalakithato a masikba.
+||| Morfizmusok a 4 dimenzió között.
+||| A legegyszerubb nem trivialis kategória: mindegyik
+||| atalakithato a másikba.
 public export
 data DimenzioMorf : NegyDimenzio -> NegyDimenzio -> Type where
   DimAzonos  : DimenzioMorf a a
@@ -384,10 +388,10 @@ data DimenzioMorf : NegyDimenzio -> NegyDimenzio -> Type where
   DimInfoTomeg : DimenzioMorf Informacio Tomeg
 
 -- ═══════════════════════════════════════════════════════════════
--- FIZIKAI EGYENLETEK (a 4 dimenzio kozotti kapcsolatok)
+-- FIZIKAI EGYENLETEK (a 4 dimenzió közötti kapcsolatok)
 -- ═══════════════════════════════════════════════════════════════
 
-||| c = fenysebesseg (allando)
+||| c = fénysebesség (állandó)（c = 光速（常数））
 public export
 data Fenysebesseg : Type where
   FenysebessegKonstruktor : Fenysebesseg
@@ -401,7 +405,7 @@ data LorentzTranszformacio : Type where
   LorentzKonstruktor : LorentzTranszformacio
 
 ||| Ter → Tomeg: E = m·c² (Einstein)
-|||   A tomeg es a ter kozotti ekvivalencia.
+|||   A tomeg és a ter közötti ekvivalencia.
 public export
 data EinsteiniEgyenlet : Type where
   EinsteinKonstruktor : EinsteiniEgyenlet
@@ -412,7 +416,7 @@ public export
 data HolografikusElv : Type where
   HolografikusKonstruktor : HolografikusElv
 
-||| Ido → Tomeg: tomeg okozta idodilatacio
+||| Ido → Tomeg: tomeg okozta idődilatacio
 |||   t' = t · √(1 - 2GM/(rc²))
 public export
 data IdoDilatacio : Type where
@@ -436,18 +440,19 @@ data ParitasForditas : Type where
   TukorKonstruktor : ParitasForditas
 
 ||| Ido forditas: t → -t
-|||   Amikor az ido megfordul, az osszes tobbi dimenzio is megfordul (CPT).
+|||   Amikor az idő megfordul, az összes tobbi dimenzió is megfordul (CPT).
 public export
 data CptSzimmetria : Type where
   CptKonstruktor : CptSzimmetria
 
 
 -- ═══════════════════════════════════════════════════════════════
--- CURRY-HOWARD-LAMBEK MEGFELELTETES
+-- CURRY-HOWARD-LAMBEK MEGFELELTETÉS
+-- Curry–Howard–Lambek 对应
 -- ═══════════════════════════════════════════════════════════════
 
-||| Curry-Howard-Lambek megfeleltetes: Logika ↔ Tipuselmelet ↔ Kategoria.
-||| Harom oszlop, minden szinten megfeleltetessel.
+||| Curry-Howard-Lambek megfeleltetés: Logika ↔ Tipuselmelet ↔ Kategoria.
+||| Harom oszlop, minden szinten megfeleltetéssel.
 public export
 data CurryHowardLambek : Type where
   ||| Propozicio ↔ Tipus ↔ Objektum
@@ -473,26 +478,26 @@ data CurryHowardLambek : Type where
   ||| Godel befejezetlenseg ↔ Tipuselmeleti befejezetlenseg ↔ Fixpont
   GodelTipusFixpont : CurryHowardLambek
 
-||| E8 mint monoidalis kategoria: tenzor = pontonkenti osszeadas,
-||| egyseg = nulla pont, braiding = azonos (kommutativitas miatt).
+||| E8 mint monoidális kategória: tenzor = pontonkenti osszeadas,
+||| egység = nullapont, braiding = azonos (kommutativitás miatt)。（单位 = 零点，编织 = 恒等（因交换性）。）
 public export
-e8Monoidalis : MonoidalisKategoria E8Pont E8Morf
-e8Monoidalis = MonoidalisKategoriaKonstruktor
+e8Monoidális : MonoidálisKategoria E8Pont E8Morf
+e8Monoidális = MonoidálisKategoriaKonstruktor
   e8Kategoria
   e8Osszead
   (E8PontKonstruktor 0 0 0 0 0 0 0 0)
 
 ||| E8 braiding: a⊕b → b⊕a. Mivel e8Osszead kommutativ,
-||| a ket pont megegyezik, igy az azonos morfizmus jo.
+||| a két pont megegyezik, így az azonos morfizmus jó。（两点相同，故恒等态射即可。）
 public export
 e8Braiding : {a, b : E8Pont}
           -> E8Morf (e8Osszead a b) (e8Osszead b a)
 e8Braiding = E8MorfKonstruktor (CliffordKonstruktor Egy Nulla Nulla)
 
-||| E8 szimmetrikus monoidalis kategoria.
+||| E8 szimmetrikus monoidális kategória.
 public export
-e8Szimmetrikus : SzimmetrikusMonoidalisKategoria E8Pont E8Morf
-e8Szimmetrikus = SzimmetrikusKonstruktor e8Monoidalis e8Braiding
+e8Szimmetrikus : SzimmetrikusMonoidálisKategoria E8Pont E8Morf
+e8Szimmetrikus = SzimmetrikusKonstruktor e8Monoidális e8Braiding
 
 ||| E8 × E8 objektum: rendezett E8 pont par.
 public export
@@ -511,21 +516,21 @@ public export
 e8xE8Azonos : (x : E8xE8Obj) -> E8xE8Morf x x
 e8xE8Azonos (a, b) = E8xE8Par (e8Kategoria.azonos a) (e8Kategoria.azonos b)
 
-||| E8 × E8 osszetetel.
+||| E8 × E8 összetétel.
 public export
 e8xE8Osszetetel : E8xE8Morf x y -> E8xE8Morf y z -> E8xE8Morf x z
 e8xE8Osszetetel (E8xE8Par {a} {c = koztes} {b} {d = koztes2} f1 g1)
                 (E8xE8Par {a = koztes} {c} {b = koztes2} {d} f2 g2) =
   E8xE8Par
-    (e8Kategoria.osszetetel {a = a} {b = koztes} {c = c} f1 f2)
-    (e8Kategoria.osszetetel {a = b} {b = koztes2} {c = d} g1 g2)
+    (e8Kategoria.összetétel {a = a} {b = koztes} {c = c} f1 f2)
+    (e8Kategoria.összetétel {a = b} {b = koztes2} {c = d} g1 g2)
 
-||| E8 × E8 szorzat kategoria.
+||| E8 × E8 szorzat kategória.
 public export
 e8xE8Kategoria : Kategoria E8xE8Obj E8xE8Morf
 e8xE8Kategoria = KategoriaKonstruktor e8xE8Azonos e8xE8Osszetetel
 
-||| E8E8KodSzo → E8xE8Obj: a kod szo bal es jobb E8 pontja.
+||| E8E8KodSzo → E8xE8Obj: a kod szo bal és jobb E8 pontja.
 public export
 e8e8KodSzoObj : E8E8KodSzo -> E8xE8Obj
 e8e8KodSzoObj kod = (kod.balE8, kod.jobbE8)
@@ -542,10 +547,10 @@ e8xE8ObjKodSzo (b, j) = KodKonstruktor "" b j
 -- 2-KATEGORIA + YONEDA + DUAL A FOGALMAKRA
 -- ═══════════════════════════════════════════════════════════════
 
-||| Fogalom 2-kategoria: FogalomTipus mint 0-sejt, FogalomMorf mint 1-sejt,
-||| FogalomKetMorf mint 2-sejt.
-||| A 2-sejtek "kaotikusak": barmely ket parhuzamos 1-morfizmus
-||| kozott van 2-sejt (KetIre).
+||| Fogalom 2-kategória: FogalomTipus mint 0-sejt, FogalomMorf mint 1-sejt,
+||| FogalomKetMorf mint 2-sejt。（FogalomKetMorf 作为 2-胞。）
+||| A 2-sejtek „kaotikusak": bármely két párhuzamos 1-morfizmus（2-胞是「混沌的」：任何两条平行的 1-态射）
+||| között van 2-sejt (KetIre).
 public export
 fogalomKettoKategoria : KettoKategoria FogalomTipus FogalomMorf FogalomKetMorf
 fogalomKettoKategoria = KettoKategoriaKonstruktor
@@ -571,7 +576,7 @@ fogalomKettoKategoria = KettoKategoriaKonstruktor
     vizszintesOsszetetel KetIre    KetAzonos = KetIre
     vizszintesOsszetetel KetIre    KetIre    = KetIre
 
-||| Yoneda beagyazas a fogalom kategoriaban: C → [C^op, Set].
+||| Yoneda beagyazas a fogalom kategóriaban: C → [C^op, Set].
 ||| Minden fogalomtípushoz a Hom(-, a) prefasítás.
 |||   homPresheaf a x = FogalomMorf x a  (Hom(-, a) at x)
 |||   utanaTetelezes f x g = fogalomOsszetetelMorf g f  (postkompozicio)
@@ -585,7 +590,7 @@ fogalomYoneda = YonedaKonstruktor
   (\nat => nat _ (fogalomKategoria.azonos _))
 
 ||| Dual adjunkcio: C -| C^op.
-||| A bal es jobb funktor az azonos es az ellentett kategoria kozott.
+||| A bal és jobb funktor az azonos és az ellentett kategória között.
 |||   balFunktor : C → C^op  (f ↦ EllenNyil f)
 |||   jobbFunktor : C^op → C  (EllenNyil f ↦ f)
 |||   balEgyseg : a → id(a) → id(a) = FogalomAzonos
@@ -607,7 +612,8 @@ fogalomDualisAdjunkcio =
        (\b => EllenNyil FogalomAzonos)
 
 -- ═══════════════════════════════════════════════════════════════
--- KATEGORIAELMELETI LETRA: objektumtol a Yonedaig
+-- KATEGÓRIAELMÉLETI LÉTRA: objektumtól a Yonedaig
+-- 范畴论之梯：从对象到米田（Yoneda）
 -- ═══════════════════════════════════════════════════════════════
 
 ||| 0. szint: tipusok (objektumok).
@@ -617,25 +623,25 @@ record NulladikLetra (obj : Type) where
   constructor NulladikLetraKonstruktor
   objektumok : Type
 
-||| 1. szint: kategoria (objektumok + morfizmusok + azonos + osszetetel).
-||| A kategoriaba szervezett tipusok.
+||| 1. szint: kategória (objektumok + morfizmusok + azonos + összetétel).
+||| A kategóriaba szervezett tipusok.
 public export
 record ElsoLetra (obj : Type) (hom : obj -> obj -> Type) where
   constructor ElsoLetraKonstruktor
   nulladik : NulladikLetra obj
-  kategoria : Kategoria obj hom
+  kategória : Kategoria obj hom
 
-||| 2. szint: funktor (kategoriak kozotti lekepezes).
-||| A kategoriak kozotti kapcsolat.
+||| 2. szint: funktor (kategóriak közötti leképezés).
+||| A kategóriak közötti kapcsolat.
 public export
 record MasodikLetra (o1 : Type) (m1 : o1 -> o1 -> Type)
                     (o2 : Type) (m2 : o2 -> o2 -> Type) where
   constructor MasodikLetraKonstruktor
-  elso : ElsoLetra o1 m1
+  első : ElsoLetra o1 m1
   funktor : Funktor o1 m1 o2 m2
 
-||| 3. szint: termeszetes transzformacio (funktorok kozotti lekepezes).
-||| A funktorok kozotti kapcsolat.
+||| 3. szint: termeszetes transzformacio (funktorok közötti leképezés).
+||| A funktorok közötti kapcsolat.
 public export
 record HarmadikLetra (o1 : Type) (m1 : o1 -> o1 -> Type)
                      (o2 : Type) (m2 : o2 -> o2 -> Type) where
@@ -643,13 +649,13 @@ record HarmadikLetra (o1 : Type) (m1 : o1 -> o1 -> Type)
   masodik : MasodikLetra o1 m1 o2 m2
   termeszetes : TermeszetesTranszformacio o1 m1 o2 m2
 
-||| 4. szint: 2-kategoria (2-sejtek a morfizmusok kozott).
-||| A kategoriak kategoriája.
+||| 4. szint: 2-kategória (2-sejtek a morfizmusok között).
+||| A kategóriak kategoriája.
 public export
 record NegyedikLetra (obj : Type) (hom : obj -> obj -> Type)
                      (ketHom : (a, b : obj) -> hom a b -> hom a b -> Type) where
   constructor NegyedikLetraKonstruktor
-  elso : ElsoLetra obj hom
+  első : ElsoLetra obj hom
   kettoKategoria : KettoKategoria obj hom ketHom
 
 ||| 5. szint: Yoneda beagyazas (C → [C^op, Set]).
@@ -657,19 +663,19 @@ record NegyedikLetra (obj : Type) (hom : obj -> obj -> Type)
 public export
 record OtodikLetra (obj : Type) (hom : obj -> obj -> Type) where
   constructor OtodikLetraKonstruktor
-  elso : ElsoLetra obj hom
+  első : ElsoLetra obj hom
   yoneda : YonedaBeagyazas obj hom
 
 ||| 6. szint: adjunkcio (C -| D).
-||| A duális kategoriaval alkotott adjunkcio.
+||| A duális kategóriaval alkotott adjunkcio.
 public export
 record HatodikLetra (o1 : Type) (m1 : o1 -> o1 -> Type)
                     (o2 : Type) (m2 : o2 -> o2 -> Type) where
   constructor HatodikLetraKonstruktor
-  elso : ElsoLetra o1 m1
+  első : ElsoLetra o1 m1
   adjunkcio : Adjunkcio o1 m1 o2 m2
 
-||| Teljes letra: nulladik szinttol a Yoneda beagyazasig es adjunkciog.
+||| Teljes letra: nulladik szinttol a Yoneda beagyazasig és adjunkciog.
 ||| Minden fok epit az elozo szintre.
 public export
 record TeljesLetra (obj : Type) (hom : obj -> obj -> Type)
@@ -677,7 +683,7 @@ record TeljesLetra (obj : Type) (hom : obj -> obj -> Type)
                    (o2 : Type) (m2 : o2 -> o2 -> Type) where
   constructor TeljesLetraKonstruktor
   nulladik : NulladikLetra obj
-  elso : ElsoLetra obj hom
+  első : ElsoLetra obj hom
   masodik : MasodikLetra obj hom obj hom
   harmadik : HarmadikLetra obj hom obj hom
   negyedik : NegyedikLetra obj hom ketHom
@@ -685,7 +691,7 @@ record TeljesLetra (obj : Type) (hom : obj -> obj -> Type)
   hatodik : HatodikLetra obj hom o2 m2
 
 -- ═══════════════════════════════════════════════════════════════
--- FUNKTOR SEGEDFUGGVENYEK (objektum lekepezesek)
+-- FUNKTOR SEGÉDFÜGGVÉNYEK (objektum leképezések)
 -- ═══════════════════════════════════════════════════════════════
 
 ||| FogalomTipus → E8Pont.
@@ -747,7 +753,7 @@ fogalomTipusKod KomplexFazis = E8PontKonstruktor 0 0 1 0 1 1 0 0
 fogalomTipusKod KettoMatematika = E8PontKonstruktor 0 0 1 0 1 1 0 1
 -- Curry-Howard-Lambek
 fogalomTipusKod Chl = E8PontKonstruktor 0 0 1 1 0 0 0 1
--- Halmazelmelet es axiomak
+-- Halmazelmelet és axiómák
 fogalomTipusKod Halmazelmelet = E8PontKonstruktor 0 1 0 0 0 0 0 1
 fogalomTipusKod PeanoAxiomak = E8PontKonstruktor 0 1 0 0 0 0 1 0
 fogalomTipusKod ZfcAxiomak = E8PontKonstruktor 0 1 0 0 0 0 1 1
@@ -755,7 +761,7 @@ fogalomTipusKod KivalasztasiAxioma = E8PontKonstruktor 0 1 0 0 0 1 0 0
 fogalomTipusKod UresHalmaz = E8PontKonstruktor 0 1 0 0 0 1 0 1
 fogalomTipusKod Szamossag = E8PontKonstruktor 0 1 0 0 0 1 1 0
 fogalomTipusKod FolytonossagiHipotetikus = E8PontKonstruktor 0 1 0 0 0 1 1 1
--- Fizika: 4 dimenzio
+-- Fizika: 4 dimenzió
 fogalomTipusKod FizikaiAllapot = E8PontKonstruktor 0 1 0 1 0 0 0 1
 fogalomTipusKod Mezo = E8PontKonstruktor 0 1 0 1 0 0 1 0
 fogalomTipusKod Ter = E8PontKonstruktor 0 1 0 1 0 0 1 1
@@ -833,14 +839,14 @@ fogalomTipusKod Codata = E8PontKonstruktor 1 1 1 1 0 0 1 1
 fogalomTipusKod Sorozat = E8PontKonstruktor 1 1 1 1 0 1 0 0
 fogalomTipusKod Hatar = E8PontKonstruktor 1 1 1 1 0 1 0 1
 fogalomTipusKod Vegtelen = E8PontKonstruktor 1 1 1 1 0 1 1 0
--- Kepzetes egyseg, ij szorzat, katernio, okternio, tukrozesek
+-- Kepzetes egyseg, ij szorzat, katernio, okternio, tükrözések
 fogalomTipusKod KepzetesEgyseg = E8PontKonstruktor Nulla Egy Nulla Nulla Nulla Nulla Nulla Nulla
 fogalomTipusKod IjSzorzat = E8PontKonstruktor 1 1 1 1 1 0 0 1
 fogalomTipusKod Katernio = E8PontKonstruktor 1 1 1 1 1 0 1 0
 fogalomTipusKod Okternio = E8PontKonstruktor 1 1 1 1 1 0 1 1
 fogalomTipusKod OkternioTukor = E8PontKonstruktor 1 1 1 1 1 1 0 0
 fogalomTipusKod FizikaTukor = E8PontKonstruktor 1 1 1 1 1 1 0 1
--- Kanti kategoriaelmelet
+-- Kanti kategóriaelmelet
 fogalomTipusKod KantiKategoria = E8PontKonstruktor 1 1 1 1 1 1 1 0
 fogalomTipusKod TranszcendentalisAppercepcio = E8PontKonstruktor 1 0 0 0 1 1 0 0
 fogalomTipusKod TranszcendentalisDialektika = E8PontKonstruktor 1 0 0 0 1 1 0 1
@@ -876,10 +882,10 @@ haromKubitE8Kod v =
 
 ||| IgeIdo → E8Pont (6. pozicio).
 public export
-idoE8Kod : IgeIdo -> E8Pont
-idoE8Kod Mult = E8PontKonstruktor 0 0 0 0 0 1 0 0
-idoE8Kod Jelen = E8PontKonstruktor 0 0 0 0 0 0 1 0
-idoE8Kod Jovo = E8PontKonstruktor 0 0 0 0 0 0 0 1
+időE8Kod : IgeIdo -> E8Pont
+időE8Kod Mult = E8PontKonstruktor 0 0 0 0 0 1 0 0
+időE8Kod Jelen = E8PontKonstruktor 0 0 0 0 0 0 1 0
+időE8Kod Jovo = E8PontKonstruktor 0 0 0 0 0 0 0 1
 
 ||| E8Pont osszeadas.
 public export
@@ -892,10 +898,10 @@ e8PontOsszead a b = E8PontKonstruktor
 public export
 fogalomNev : FogalomTipus -> String
 fogalomNev Gyoker = "gyoker"
-fogalomNev Cel = "cel"
-fogalomNev ReszCel = "reszcel"
+fogalomNev Cel = "cél"
+fogalomNev ReszCel = "részcél"
 fogalomNev Feladat = "feladat"
-fogalomNev ReszFeladat = "reszfeladat"
+fogalomNev ReszFeladat = "részfeladat"
 fogalomNev Cselekves = "cselekves"
 fogalomNev Dontes = "dontes"
 fogalomNev Valasztas = "valasztas"
@@ -920,24 +926,24 @@ fogalomNev Kerdes = "kerdes"
 fogalomNev Magyarazat = "magyarazat"
 fogalomNev E8xE8 = "e8xe8"
 fogalomNev Dualitas = "dualitas"
-fogalomNev Kategoria = "kategoria"
+fogalomNev Kategoria = "kategória"
 fogalomNev Szimmetria = "szimmetria"
 fogalomNev Tenzor = "tenzor"
 fogalomNev Funktor = "funktor"
 -- Szamok
-fogalomNev TermeszetesSzam = "termeszetes szam"
-fogalomNev EgeszSzam = "egesz szam"
-fogalomNev RacionalisSzam = "racionalis szam"
-fogalomNev Szam = "szam"
-fogalomNev ValosSzam = "valos szam"
-fogalomNev KomplexSzam = "komplex szam"
+fogalomNev TermeszetesSzam = "termeszetes szám"
+fogalomNev EgeszSzam = "egész szám"
+fogalomNev RacionalisSzam = "racionalis szám"
+fogalomNev Szam = "szám"
+fogalomNev ValosSzam = "valos szám"
+fogalomNev KomplexSzam = "komplex szám"
 -- Matematika logika
 fogalomNev Allitas = "allitas"
-fogalomNev Bizonyitas = "bizonyitas"
-fogalomNev GodelSzam = "godel szam"
+fogalomNev Bizonyitas = "bizonyítás"
+fogalomNev GodelSzam = "godel szám"
 fogalomNev Konzisztencia = "konzisztencia"
 fogalomNev Onhivatkozas = "onhivatkozas"
-fogalomNev GodelElsoTetel = "godel elso tetel"
+fogalomNev GodelElsoTetel = "godel első tetel"
 fogalomNev GodelMasodikTetel = "godel masodik tetel"
 fogalomNev DiagonaleLemma = "diagonalis lemma"
 fogalomNev Bizonyithatosag = "bizonyithatosag"
@@ -947,19 +953,19 @@ fogalomNev KomplexFazis = "komplex fazis"
 fogalomNev KettoMatematika = "ketto matematika"
 -- Curry-Howard-Lambek
 fogalomNev Chl = "curry howard lambek"
--- Halmazelmelet es axiomak
-fogalomNev Halmazelmelet = "halmazelmelet"
-fogalomNev PeanoAxiomak = "peano axiomak"
-fogalomNev ZfcAxiomak = "zfc axiomak"
-fogalomNev KivalasztasiAxioma = "kivalasztasi axioma"
+-- Halmazelmelet és axiómák
+fogalomNev Halmazelmelet = "halmazelmélet"
+fogalomNev PeanoAxiomak = "peano axiómák"
+fogalomNev ZfcAxiomak = "zfc axiómák"
+fogalomNev KivalasztasiAxioma = "kivalasztasi axióma"
 fogalomNev UresHalmaz = "ures halmaz"
-fogalomNev Szamossag = "szamossag"
+fogalomNev Szamossag = "számossag"
 fogalomNev FolytonossagiHipotetikus = "folytonossagi hipotetikus"
 -- Fizika
 fogalomNev FizikaiAllapot = "fizikai allapot"
 fogalomNev Mezo = "mezo"
 fogalomNev Ter = "ter"
-fogalomNev Ido = "ido"
+fogalomNev Ido = "idő"
 fogalomNev Tomeg = "tomeg"
 fogalomNev InformacioMennyiseg = "informacio mennyiseg"
 -- Szimmetriak
@@ -972,13 +978,13 @@ fogalomNev Anyag = "anyag"
 fogalomNev Antianyag = "antianyag"
 -- Mechanika
 fogalomNev KlasszikusMechanika = "klasszikus mechanika"
-fogalomNev LagrangeFuggveny = "lagrange fuggveny"
-fogalomNev HamiltonFuggveny = "hamilton fuggveny"
+fogalomNev LagrangeFuggveny = "lagrange függvény"
+fogalomNev HamiltonFuggveny = "hamilton függvény"
 fogalomNev LagrangeTranszformacio = "lagrange transzformacio"
 -- Kvantum
 fogalomNev KvantumMechanika = "kvantum mechanika"
 fogalomNev KvantumAllapot = "kvantum allapot"
-fogalomNev HullamFuggveny = "hullam fuggveny"
+fogalomNev HullamFuggveny = "hullam függvény"
 fogalomNev Operator = "operator"
 fogalomNev Megfigyelt = "megfigyelt"
 fogalomNev KvantumUgres = "kvantum ugres"
@@ -1010,7 +1016,7 @@ fogalomNev CarnotCiklus = "carnot ciklus"
 fogalomNev Entropia = "entropia"
 fogalomNev Hő = "ho"
 fogalomNev Munka = "munka"
-fogalomNev BelsőEnergia = "belso energia"
+fogalomNev BelsőEnergia = "belső energia"
 fogalomNev InformacioTorles = "informacio torles"
 -- Szinek
 fogalomNev Szin = "szin"
@@ -1033,19 +1039,19 @@ fogalomNev Codata = "codata"
 fogalomNev Sorozat = "sorozat"
 fogalomNev Hatar = "hatar"
 fogalomNev Vegtelen = "vegtelen"
--- Kepzetes egyseg, ij szorzat, katernio, okternio, tukrozesek
+-- Kepzetes egyseg, ij szorzat, katernio, okternio, tükrözések
 fogalomNev KepzetesEgyseg = "kepzetes egyseg"
 fogalomNev IjSzorzat = "ij szorzat"
 fogalomNev Katernio = "katernio"
 fogalomNev Okternio = "okternio"
 fogalomNev OkternioTukor = "okternio tukor"
 fogalomNev FizikaTukor = "fizika tukor"
--- Kanti kategoriaelmelet
-fogalomNev KantiKategoria = "kanti kategoria"
+-- Kanti kategóriaelmelet
+fogalomNev KantiKategoria = "kanti kategória"
 fogalomNev TranszcendentalisAppercepcio = "transzcendentalis appercepcio"
 fogalomNev TranszcendentalisDialektika = "transzcendentalis dialektika"
 -- Matematikai allandok
-fogalomNev EulerSzam = "euler szam"
+fogalomNev EulerSzam = "euler szám"
 fogalomNev Pi = "pi"
 -- Operatorok
 fogalomNev Osszeadas = "osszeadas"
@@ -1074,7 +1080,7 @@ fogalomFaKubit fa =
        (if m + g > 8 then Egy else Nulla)
 
 -- ═══════════════════════════════════════════════════════════════
--- FUNKTOR MORFIZMUSKEP SEGEDFUGGVENYEK
+-- FUNKTOR MORFIZMUSKÉP SEGÉDFÜGGVÉNYEK
 -- ═══════════════════════════════════════════════════════════════
 
 esetE8MorfizmusKep : {a, b : Eset} -> EsetMorf a b -> E8Morf (esetKod a) (esetKod b)
@@ -1087,7 +1093,7 @@ fogalomE8MorfizmusKep {a} {b} (FogalomIre _) =
   let aa = fogalomTipusKod a
       bb = fogalomTipusKod b
       -- Az E8 × E8 geometriai szorzat: aa * bb = a·b + a∧b
-      -- A skalaris resz (a·b) az atfedes merteke
+      -- A skalaris rész (a·b) az atfedes merteke
       -- Hasznaljuk a CliffordKonstruktor-t a ket pont kulonbsegekent
       xx = aa.x1 - bb.x1
       yy = aa.x2 - bb.x2
@@ -1104,8 +1110,8 @@ fogalomE8MorfizmusKep {a} {b} (FogalomSorozat koztes f g) =
 kubitE8MorfizmusKep : {a, b : HaromKubit} -> KubitMorf a b -> E8Morf (haromKubitE8Kod a) (haromKubitE8Kod b)
 kubitE8MorfizmusKep (KubitMorfKonstruktor _) = E8MorfKonstruktor (CliffordKonstruktor Egy Nulla Nulla)
 
-idoE8MorfizmusKep : {a, b : IgeIdo} -> IdoMorf a b -> E8Morf (idoE8Kod a) (idoE8Kod b)
-idoE8MorfizmusKep (IdoMorfKonstruktor _) = E8MorfKonstruktor (CliffordKonstruktor Egy Nulla Nulla)
+időE8MorfizmusKep : {a, b : IgeIdo} -> IdoMorf a b -> E8Morf (időE8Kod a) (időE8Kod b)
+időE8MorfizmusKep (IdoMorfKonstruktor _) = E8MorfKonstruktor (CliffordKonstruktor Egy Nulla Nulla)
 
 -- ═══════════════════════════════════════════════════════════════
 -- FUNKTOROK (KATEGORIAK KAPCSOLASAI)
@@ -1126,10 +1132,10 @@ public export
 kubitE8Funktor : Funktor HaromKubit KubitMorf E8Pont E8Morf
 kubitE8Funktor = FunktorKonstruktor haromKubitE8Kod kubitE8MorfizmusKep
 
-||| Ido → E8: ido a 6. pozicioban.
+||| Ido → E8: idő a 6. pozicioban.
 public export
-idoE8Funktor : Funktor IgeIdo IdoMorf E8Pont E8Morf
-idoE8Funktor = FunktorKonstruktor idoE8Kod idoE8MorfizmusKep
+időE8Funktor : Funktor IgeIdo IdoMorf E8Pont E8Morf
+időE8Funktor = FunktorKonstruktor időE8Kod időE8MorfizmusKep
 
 -- ═══════════════════════════════════════════════════════════════
 -- KAPCSOLATOK A MEGLEVO TIPUSOKHOZ
@@ -1143,7 +1149,7 @@ ragozottSzoE8Pont szo =
   let (IdoBeljegyzesKonstruktor igeIdo _ _) = szo.ido
       fogKod = fogalomTipusKod szo.fogalom
       eKod = esetKod szo.eset
-      iKod = idoE8Kod igeIdo
+      iKod = időE8Kod igeIdo
       fKod = haromKubitE8Kod szo.fazisKubit
   in e8PontOsszead (e8PontOsszead (e8PontOsszead fogKod eKod) iKod) fKod
 
@@ -1161,7 +1167,7 @@ nyelvtaniKapcsolatKod kapcs =
     (alapKod Nulla)
 
 ||| VilagFa → ToltesParitasIdo.
-||| A fazis (FogalomAdat) helyett a fazisKubit-ot szamoljuk
+||| A fazis (FogalomAdat) helyett a fazisKubit-ot számoljuk
 ||| a FogalomAdat bizalmabol: magas bizalom → Egy fazis.
 public export
 vilagFaToltesParitasIdo : VilagFa -> ToltesParitasIdo
@@ -1177,7 +1183,7 @@ vilagFaToltesParitasIdo vf = ToltesParitasIdoKonstruktor
 -- 7+7+1 KATEGORIA RENDSZER: Emberi (7) ↔ Perem (1) ↔ Szamitasi (7)
 -- ═══════════════════════════════════════════════════════════════
 
-||| Morfizmus a 7+7+1 kategoriak kozott.
+||| Morfizmus a 7+7+1 kategóriak között.
 public export
 data KategoriaMorf : KategoriaTipus -> KategoriaTipus -> Type where
   KategoriaAzonos  : KategoriaMorf a a
@@ -1186,25 +1192,25 @@ data KategoriaMorf : KategoriaTipus -> KategoriaTipus -> Type where
 
 ||| Azonossag: minden KategoriaTipushoz az azonos morfizmus.
 public export
-kategoriaAzonos : (a : KategoriaTipus) -> KategoriaMorf a a
-kategoriaAzonos a = KategoriaAzonos
+kategóriaAzonos : (a : KategoriaTipus) -> KategoriaMorf a a
+kategóriaAzonos a = KategoriaAzonos
 
 ||| Osszetetel: morfizmusok kompozicioja.
 public export
-kategoriaOsszetetel : {a, b, c : KategoriaTipus} -> KategoriaMorf a b -> KategoriaMorf b c -> KategoriaMorf a c
-kategoriaOsszetetel {a} {b} {c} f g = KategoriaSorozat b f g
+kategóriaOsszetetel : {a, b, c : KategoriaTipus} -> KategoriaMorf a b -> KategoriaMorf b c -> KategoriaMorf a c
+kategóriaOsszetetel {a} {b} {c} f g = KategoriaSorozat b f g
 
-||| 7+7+1 kategoria peldany.
+||| 7+7+1 kategória példany.
 public export
-kategoria714Kategoria : Kategoria KategoriaTipus KategoriaMorf
-kategoria714Kategoria = KategoriaKonstruktor kategoriaAzonos kategoriaOsszetetel
+kategória714Kategoria : Kategoria KategoriaTipus KategoriaMorf
+kategória714Kategoria = KategoriaKonstruktor kategóriaAzonos kategóriaOsszetetel
 
-||| EmberiKategoria diszkret kategoria: csak azonos morfizmusok.
+||| EmberiKategoria diszkret kategória: csak azonos morfizmusok.
 public export
 data EmberiMorf : EmberiKategoria -> EmberiKategoria -> Type where
   EmberiAzonos : EmberiMorf a a
 
-||| SzamitasiKategoria diszkret kategoria: csak azonos morfizmusok.
+||| SzamitasiKategoria diszkret kategória: csak azonos morfizmusok.
 public export
 data SzamitasiMorf : SzamitasiKategoria -> SzamitasiKategoria -> Type where
   SzamitasiAzonos : SzamitasiMorf a a
@@ -1219,14 +1225,14 @@ emberi714Funktor = FunktorKonstruktor
 
 ||| Funktor: Szamitasi → Kategoria714.
 public export
-szamitasi714Funktor : Funktor SzamitasiKategoria SzamitasiMorf KategoriaTipus KategoriaMorf
-szamitasi714Funktor = FunktorKonstruktor
+számitasi714Funktor : Funktor SzamitasiKategoria SzamitasiMorf KategoriaTipus KategoriaMorf
+számitasi714Funktor = FunktorKonstruktor
   KategoriaSzamitasi
   (\f => case f of SzamitasiAzonos => KategoriaAzonos)
 
 ||| Adjunkcio: Kategoria714 ⊣ Kategoria714 (azonos funktorokkal).
-|||   A Perem (KategoriaPerem) a ket oldal (Emberi ↔ Szamitasi) kozotti
-|||   adjunkcio fixpontja: az azonos funktor-on keresztul.
+|||   A Perem (KategoriaPerem) a ket oldal (Emberi ↔ Szamitasi) közötti
+|||   adjunkcio fixpontja: az azonos funktor-on kerésztul.
 public export
 emberiPeremSzamitasiAdjunkcio : Adjunkcio KategoriaTipus KategoriaMorf
                                         KategoriaTipus KategoriaMorf
@@ -1250,18 +1256,18 @@ peremAllapotMorf = KategoriaIre PeremAllapot
 ||| Teljes Legendre adjunkcio morfizmus: Emberi.Fazis → Szamitasi.Allapot.
 public export
 fazisAllapotMorf : KategoriaMorf (KategoriaEmberi EmberiFazis) (KategoriaSzamitasi SzamAllapot)
-fazisAllapotMorf = kategoriaOsszetetel fazisPeremMorf peremAllapotMorf
+fazisAllapotMorf = kategóriaOsszetetel fazisPeremMorf peremAllapotMorf
 
 -- ═══════════════════════════════════════════════════════════════
 -- KATEGÓRIAELMÉLETI BIZONYÍTÁSOK — MINDEN AXIÓMA REFL
 -- ═══════════════════════════════════════════════════════════════
--- Curry-Howard: minden bizonyitas = egy program ami Refl-re redukalodik.
--- A kategoriaelmelet alaptorvenyei mind Refl-lel bizonyithatok
--- mert a definiciokbol kovetkeznek.
+-- Curry-Howard: minden bizonyítás = egy program ami Refl-re redukalodik.
+-- A kategóriaelmelet alaptorvenyei mind Refl-lel bizonyithatok
+-- mert a definíciókbol kovetkeznek.
 
--- A funktor-torvenyek, kategoria-torvenyek es adjunkcios haromszog-azonossagok
--- a KategoriaT typeclass-ban vannak (lent). Nem kell kulon Refl bizonyitasok.
--- A typeclass instance implementalasa MAGA a bizonyitas (Curry-Howard).
+-- A funktor-torvenyek, kategória-torvenyek és adjunkcios haromszog-azonossagok
+-- a KategoriaT typeclass-ban vannak (lent). Nem kell kulon Refl bizonyítások.
+-- A typeclass instance implementálása MAGA a bizonyítás (Curry-Howard).
 
 -- ─── YONEDA LEMMA ─────────────────────────────────────────
 -- https://en.wikipedia.org/wiki/Yoneda_lemma
@@ -1276,7 +1282,7 @@ fazisAllapotMorf = kategoriaOsszetetel fazisPeremMorf peremAllapotMorf
 --   A fogalomYoneda eseteben:
 --     homPresheaf a x = FogalomMorf x a
 --     yonedaLemma nat = nat a (fogalomKategoria.azonos a)
---   Ez a klasszikus Yoneda-bizonyitas: Φ(α) = α_a(id_a).
+--   Ez a klasszikus Yoneda-bizonyítás: Φ(α) = α_a(id_a).
 
 ||| Yoneda-lemma: a termeszetes transzformacio egyertelmu.
 |||   Minden α: Hom(-,a) → F termeszetes transzformaciot
@@ -1290,13 +1296,14 @@ yonedaEgyertelmu a f alpha = alpha a FogalomAzonos
 -- TYPECLASS-OK MINDEN KATEGÓRIAELMÉLETI FOGALOMHOZ
 -- ═══════════════════════════════════════════════════════════════
 -- Minden typeclass tartalmazza a muveleteket ES a torvenyeket.
--- Az interface implementalasa = a torvenyek bizonyitasa.
--- Curry-Howard: typeclass = tetel, instance = bizonyitas.
+-- Az interface implementálása = a törvények bizonyítása.
+-- 接口的实现 = 定律的证明。
+-- Curry-Howard: typeclass = tetel, instance = bizonyítás.
 
 -- ─── KATEGÓRIA TYPECLASS ───────────────────────────────────
 
-||| Kategoria typeclass azonos es osszetetel torvenyekkel.
-|||   EmberiKategoria es SzamitasiKategoria peldakkal.
+||| Kategoria typeclass azonos és összetétel torvenyekkel.
+|||   EmberiKategoria és SzamitasiKategoria példákkal.
 public export
 KategoriaT EmberiKategoria EmberiMorf where
   identitas a = EmberiAzonos
@@ -1332,10 +1339,10 @@ interface CsoportT (g : Type) where
 -- A GAN javaslata szerint a szintaxis: (KategoriaT o1 m1, KategoriaT o2 m2) =>
 -- de ez Idris 2-ben nem muxik a tobb parameteres typeclass-okkal.
 -- A Funktor record (fent) mar tartalmazza a strukturat.
--- A torvenyeket a KategoriaT instance-ok bizonyitjak (Curry-Howard).
+-- A torvenyeket a KategoriaT instance-ok bizonyítják (Curry-Howard).
 
 -- ─── A KATEGÓRIA TYPECLASS VISSZATESZÉSE ──────────────────
--- (A korabbi definicio itt van, az EmberiMorf es SzamitasiMorf utan)
+-- (A korabbi definíció itt van, az EmberiMorf és SzamitasiMorf utan)
 
 -- ═══════════════════════════════════════════════════════════════
 -- LIMIT/KOLIMIT CSALÁD (Lépés 1.1 — 10 fogalom)
@@ -1402,8 +1409,8 @@ record Szorzat (k : Kategoria obj hom) (a : obj) (b : obj) where
   -- Az univerzális tulajdonság: minden Q-ból érkező pár egyértelműen faktorizál.
   szorzatUniverzalis : (q : obj) -> (q1 : hom q a) -> (q2 : hom q b)
                      -> (h : hom q szorzatObjektum
-                        ** (k.osszetetel h szorzatProjekcioBal = q1
-                           , k.osszetetel h szorzatProjekcioJobb = q2))
+                        ** (k.összetétel h szorzatProjekcioBal = q1
+                           , k.összetétel h szorzatProjekcioJobb = q2))
 
 -- ─── 4. KOPRODUKT (coproduct) ──────────────────────────────
 -- https://ncatlab.org/nlab/show/coproduct
@@ -1420,8 +1427,8 @@ record Koprodukt (k : Kategoria obj hom) (a : obj) (b : obj) where
   -- Az univerzális tulajdonság: minden D-be érkező pár egyértelműen faktorizál.
   koproduktUniverzalis : (d : obj) -> (d1 : hom a d) -> (d2 : hom b d)
                        -> (h : hom koproduktObjektum d
-                          ** (k.osszetetel koproduktInjektioBal h = d1
-                             , k.osszetetel koproduktInjektioJobb h = d2))
+                          ** (k.összetétel koproduktInjektioBal h = d1
+                             , k.összetétel koproduktInjektioJobb h = d2))
 
 -- ─── 5. EGYENLÍTŐ (equalizer) ──────────────────────────────
 -- https://ncatlab.org/nlab/show/equalizer
@@ -1434,12 +1441,12 @@ record Egyenlito (k : Kategoria obj hom) (a : obj) (b : obj) (f : hom a b) (g : 
   egyenlitoObjektum : obj
   egyenlitoMorfizmus : hom egyenlitoObjektum a
   -- A törvény: f∘e = g∘e.
-  egyenlitoTorveny : k.osszetetel egyenlitoMorfizmus f = k.osszetetel egyenlitoMorfizmus g
-  -- Az univerzális tulajdonság: minden h amire f∘h = g∘h, faktorizál E-n keresztül.
+  egyenlitoTorveny : k.összetétel egyenlitoMorfizmus f = k.összetétel egyenlitoMorfizmus g
+  -- Az univerzális tulajdonság: minden h amire f∘h = g∘h, faktorizál E-n kerésztül.
   egyenlitoUniverzalis : (q : obj) -> (h : hom q a)
-                       -> (k.osszetetel h f = k.osszetetel h g
+                       -> (k.összetétel h f = k.összetétel h g
                           => (kk : hom q egyenlitoObjektum
-                             ** k.osszetetel kk egyenlitoMorfizmus = h))
+                             ** k.összetétel kk egyenlitoMorfizmus = h))
 
 -- ─── 6. KOEGYENLÍTŐ (coequalizer) ──────────────────────────
 -- https://ncatlab.org/nlab/show/coequalizer
@@ -1452,12 +1459,12 @@ record Koegyenlito (k : Kategoria obj hom) (a : obj) (b : obj) (f : hom a b) (g 
   koegyenlitoObjektum : obj
   koegyenlitoMorfizmus : hom b koegyenlitoObjektum
   -- A törvény: q∘f = q∘g.
-  koegyenlitoTorveny : k.osszetetel f koegyenlitoMorfizmus = k.osszetetel g koegyenlitoMorfizmus
-  -- Az univerzális tulajdonság: minden h amire h∘f = h∘g, faktorizál C-n keresztül.
+  koegyenlitoTorveny : k.összetétel f koegyenlitoMorfizmus = k.összetétel g koegyenlitoMorfizmus
+  -- Az univerzális tulajdonság: minden h amire h∘f = h∘g, faktorizál C-n kerésztül.
   koegyenlitoUniverzalis : (d : obj) -> (h : hom b d)
-                         -> (k.osszetetel f h = k.osszetetel g h
+                         -> (k.összetétel f h = k.összetétel g h
                             => (kk : hom koegyenlitoObjektum d
-                               ** k.osszetetel koegyenlitoMorfizmus kk = h))
+                               ** k.összetétel koegyenlitoMorfizmus kk = h))
 
 -- ─── 7. PULLBACK (fiber product) ───────────────────────────
 -- https://ncatlab.org/nlab/show/pullback
@@ -1472,13 +1479,13 @@ record Pullback (k : Kategoria obj hom) (a : obj) (b : obj) (c : obj) (f : hom a
   pullbackProjekcioBal : hom pullbackObjektum a
   pullbackProjekcioJobb : hom pullbackObjektum b
   -- A kommutatív négyzet törvénye: f∘p₁ = g∘p₂.
-  pullbackKommutativ : k.osszetetel pullbackProjekcioBal f = k.osszetetel pullbackProjekcioJobb g
+  pullbackKommutativ : k.összetétel pullbackProjekcioBal f = k.összetétel pullbackProjekcioJobb g
   -- Az univerzális tulajdonság.
   pullbackUniverzalis : (q : obj) -> (q1 : hom q a) -> (q2 : hom q b)
-                      -> (k.osszetetel q1 f = k.osszetetel q2 g
+                      -> (k.összetétel q1 f = k.összetétel q2 g
                          => (h : hom q pullbackObjektum
-                            ** (k.osszetetel h pullbackProjekcioBal = q1
-                               , k.osszetetel h pullbackProjekcioJobb = q2)))
+                            ** (k.összetétel h pullbackProjekcioBal = q1
+                               , k.összetétel h pullbackProjekcioJobb = q2)))
 
 -- ─── 8. PUSHOUT ────────────────────────────────────────────
 -- https://ncatlab.org/nlab/show/pushout
@@ -1493,20 +1500,20 @@ record Pushout (k : Kategoria obj hom) (a : obj) (b : obj) (c : obj) (f : hom c 
   pushoutInjektioBal : hom a pushoutObjektum
   pushoutInjektioJobb : hom b pushoutObjektum
   -- A kommutatív négyzet törvénye: i₁∘f = i₂∘g.
-  pushoutKommutativ : k.osszetetel f pushoutInjektioBal = k.osszetetel g pushoutInjektioJobb
+  pushoutKommutativ : k.összetétel f pushoutInjektioBal = k.összetétel g pushoutInjektioJobb
   -- Az univerzális tulajdonság.
   pushoutUniverzalis : (d : obj) -> (d1 : hom a d) -> (d2 : hom b d)
-                     -> (k.osszetetel f d1 = k.osszetetel g d2
+                     -> (k.összetétel f d1 = k.összetétel g d2
                         => (h : hom pushoutObjektum d
-                           ** (k.osszetetel pushoutInjektioBal h = d1
-                              , k.osszetetel pushoutInjektioJobb h = d2)))
+                           ** (k.összetétel pushoutInjektioBal h = d1
+                              , k.összetétel pushoutInjektioJobb h = d2)))
 
 -- ─── 9. ÁLTALÁNOS LIMIT ────────────────────────────────────
 -- https://ncatlab.org/nlab/show/limit
 -- Definíció (Mac Lane §III.4): egy J indexkategória és egy D : J → C diagram
 -- (funktor) esetén a D limitje egy lim(D) objektum + egy kúp (cone) morfizmusokkal
 -- minden j : J objektumhoz: lim(D) → D(j), úgy hogy a kúp kompatibilis a
--- diagram morfizmusaival, és univerzális: minden más kúp faktorizál lim(D)-n keresztül.
+-- diagram morfizmusaival, és univerzális: minden más kúp faktorizál lim(D)-n kerésztül.
 -- A szorzat = a limit egy diszkrét indexkategória felett.
 -- A pullback = a limit egy •→•←• indexkategória felett.
 -- Az egyenlítő = a limit egy •⇉• indexkategória felett.
@@ -1521,13 +1528,13 @@ record AltalanosLimit (k : Kategoria obj hom)
   limitKup : (j : jObj) -> hom limitObjektum (dObj j)
   -- A kúp kompatibilitása: minden α : j → k morfizmusra D(α)∘κ_j = κ_k.
   limitKompatibilitas : {j, jj : jObj} -> (alpha : jHom j jj)
-                      -> k.osszetetel (limitKup j) (dMor alpha) = limitKup jj
-  -- Az univerzális tulajdonság: minden más kúp faktorizál lim(D)-n keresztül.
+                      -> k.összetétel (limitKup j) (dMor alpha) = limitKup jj
+  -- Az univerzális tulajdonság: minden más kúp faktorizál lim(D)-n kerésztül.
   limitUniverzalis : (q : obj) -> (masKup : (j : jObj) -> hom q (dObj j))
                    -> ((j, jj : jObj) -> (alpha : jHom j jj)
-                      -> k.osszetetel (masKup j) (dMor alpha) = masKup jj
+                      -> k.összetétel (masKup j) (dMor alpha) = masKup jj
                       => (h : hom q limitObjektum
-                         ** ((j : jObj) -> k.osszetetel h (limitKup j) = masKup j)))
+                         ** ((j : jObj) -> k.összetétel h (limitKup j) = masKup j)))
 
 -- ─── 10. ÁLTALÁNOS KOLIMIT ─────────────────────────────────
 -- https://ncatlab.org/nlab/show/colimit
@@ -1548,13 +1555,13 @@ record AltalanosKolimit (k : Kategoria obj hom)
   kolimitKoKup : (j : jObj) -> hom (dObj j) kolimitObjektum
   -- A ko-kúp kompatibilitása: minden α : j → k morfizmusra κ_k∘D(α) = κ_j.
   kolimitKompatibilitas : {j, jj : jObj} -> (alpha : jHom j jj)
-                        -> k.osszetetel (dMor alpha) (kolimitKoKup jj) = kolimitKoKup j
-  -- Az univerzális tulajdonság: minden más ko-kúp faktorizál colim(D)-n keresztül.
+                        -> k.összetétel (dMor alpha) (kolimitKoKup jj) = kolimitKoKup j
+  -- Az univerzális tulajdonság: minden más ko-kúp faktorizál colim(D)-n kerésztül.
   kolimitUniverzalis : (d : obj) -> (masKoKup : (j : jObj) -> hom (dObj j) d)
                      -> ((j, jj : jObj) -> (alpha : jHom j jj)
-                        -> k.osszetetel (dMor alpha) (masKoKup jj) = masKoKup j
+                        -> k.összetétel (dMor alpha) (masKoKup jj) = masKoKup j
                         => (h : hom kolimitObjektum d
-                           ** ((j : jObj) -> k.osszetetel (kolimitKoKup j) h = masKoKup j)))
+                           ** ((j : jObj) -> k.összetétel (kolimitKoKup j) h = masKoKup j)))
 
 -- ─── A LIMIT/KOLIMIT CSALÁD KAPCSOLATAI (a gráf élei) ──────
 -- Szorzat → Pullback (a szorzat a pullback különleges esete, C = végződés)
@@ -1582,10 +1589,10 @@ record SzorzatEgyertelmu (k : Kategoria obj hom) (a : obj) (b : obj) (s : Szorza
   constructor SzorzatEgyertelmuKonstruktor
   szorzatEgyertelmuTorveny : (q : obj) -> (q1 : hom q a) -> (q2 : hom q b)
                           -> (h1 : hom q s.szorzatObjektum) -> (h2 : hom q s.szorzatObjektum)
-                          -> (k.osszetetel h1 s.szorzatProjekcioBal = q1
-                             , k.osszetetel h1 s.szorzatProjekcioJobb = q2)
-                          -> (k.osszetetel h2 s.szorzatProjekcioBal = q1
-                             , k.osszetetel h2 s.szorzatProjekcioJobb = q2)
+                          -> (k.összetétel h1 s.szorzatProjekcioBal = q1
+                             , k.összetétel h1 s.szorzatProjekcioJobb = q2)
+                          -> (k.összetétel h2 s.szorzatProjekcioBal = q1
+                             , k.összetétel h2 s.szorzatProjekcioJobb = q2)
                           -> h1 = h2
 
 -- ─── A.2 KOPRODUKT EGYÉRTELMŰSÉGE ────────────────────────────
@@ -1594,10 +1601,10 @@ record KoproduktEgyertelmu (k : Kategoria obj hom) (a : obj) (b : obj) (c : Kopr
   constructor KoproduktEgyertelmuKonstruktor
   koproduktEgyertelmuTorveny : (d : obj) -> (d1 : hom a d) -> (d2 : hom b d)
                             -> (h1 : hom c.koproduktObjektum d) -> (h2 : hom c.koproduktObjektum d)
-                            -> (k.osszetetel c.koproduktInjektioBal h1 = d1
-                               , k.osszetetel c.koproduktInjektioJobb h1 = d2)
-                            -> (k.osszetetel c.koproduktInjektioBal h2 = d1
-                               , k.osszetetel c.koproduktInjektioJobb h2 = d2)
+                            -> (k.összetétel c.koproduktInjektioBal h1 = d1
+                               , k.összetétel c.koproduktInjektioJobb h1 = d2)
+                            -> (k.összetétel c.koproduktInjektioBal h2 = d1
+                               , k.összetétel c.koproduktInjektioJobb h2 = d2)
                             -> h1 = h2
 
 -- ─── A.3 PULLBACK EGYÉRTELMŰSÉGE ─────────────────────────────
@@ -1607,10 +1614,10 @@ record PullbackEgyertelmu (k : Kategoria obj hom) (a : obj) (b : obj) (c : obj)
   constructor PullbackEgyertelmuKonstruktor
   pullbackEgyertelmuTorveny : (q : obj) -> (q1 : hom q a) -> (q2 : hom q b)
                             -> (h1 : hom q p.pullbackObjektum) -> (h2 : hom q p.pullbackObjektum)
-                            -> (k.osszetetel h1 p.pullbackProjekcioBal = q1
-                               , k.osszetetel h1 p.pullbackProjekcioJobb = q2)
-                            -> (k.osszetetel h2 p.pullbackProjekcioBal = q1
-                               , k.osszetetel h2 p.pullbackProjekcioJobb = q2)
+                            -> (k.összetétel h1 p.pullbackProjekcioBal = q1
+                               , k.összetétel h1 p.pullbackProjekcioJobb = q2)
+                            -> (k.összetétel h2 p.pullbackProjekcioBal = q1
+                               , k.összetétel h2 p.pullbackProjekcioJobb = q2)
                             -> h1 = h2
 
 -- ─── A.4 PUSHOUT EGYÉRTELMŰSÉGE ──────────────────────────────
@@ -1620,10 +1627,10 @@ record PushoutEgyertelmu (k : Kategoria obj hom) (a : obj) (b : obj) (c : obj)
   constructor PushoutEgyertelmuKonstruktor
   pushoutEgyertelmuTorveny : (d : obj) -> (d1 : hom a d) -> (d2 : hom b d)
                            -> (h1 : hom p.pushoutObjektum d) -> (h2 : hom p.pushoutObjektum d)
-                           -> (k.osszetetel p.pushoutInjektioBal h1 = d1
-                              , k.osszetetel p.pushoutInjektioJobb h1 = d2)
-                           -> (k.osszetetel p.pushoutInjektioBal h2 = d1
-                              , k.osszetetel p.pushoutInjektioJobb h2 = d2)
+                           -> (k.összetétel p.pushoutInjektioBal h1 = d1
+                              , k.összetétel p.pushoutInjektioJobb h1 = d2)
+                           -> (k.összetétel p.pushoutInjektioBal h2 = d1
+                              , k.összetétel p.pushoutInjektioJobb h2 = d2)
                            -> h1 = h2
 
 -- ─── A.5 EGYENLÍTŐ EGYÉRTELMŰSÉGE ────────────────────────────
@@ -1632,10 +1639,10 @@ record EgyenlitoEgyertelmu (k : Kategoria obj hom) (a : obj) (b : obj)
                            (f : hom a b) (g : hom a b) (e : Egyenlito k a b f g) where
   constructor EgyenlitoEgyertelmuKonstruktor
   egyenlitoEgyertelmuTorveny : (q : obj) -> (h : hom q a)
-                            -> (k.osszetetel h f = k.osszetetel h g)
+                            -> (k.összetétel h f = k.összetétel h g)
                             -> (k1 : hom q e.egyenlitoObjektum) -> (k2 : hom q e.egyenlitoObjektum)
-                            -> (k.osszetetel k1 e.egyenlitoMorfizmus = h)
-                            -> (k.osszetetel k2 e.egyenlitoMorfizmus = h)
+                            -> (k.összetétel k1 e.egyenlitoMorfizmus = h)
+                            -> (k.összetétel k2 e.egyenlitoMorfizmus = h)
                             -> k1 = k2
 
 -- ─── A.6 KOEGYENLÍTŐ EGYÉRTELMŰSÉGE ──────────────────────────
@@ -1644,10 +1651,10 @@ record KoegyenlitoEgyertelmu (k : Kategoria obj hom) (a : obj) (b : obj)
                              (f : hom a b) (g : hom a b) (q : Koegyenlito k a b f g) where
   constructor KoegyenlitoEgyertelmuKonstruktor
   koegyenlitoEgyertelmuTorveny : (d : obj) -> (h : hom b d)
-                              -> (k.osszetetel f h = k.osszetetel g h)
+                              -> (k.összetétel f h = k.összetétel g h)
                               -> (k1 : hom q.koegyenlitoObjektum d) -> (k2 : hom q.koegyenlitoObjektum d)
-                              -> (k.osszetetel q.koegyenlitoMorfizmus k1 = h)
-                              -> (k.osszetetel q.koegyenlitoMorfizmus k2 = h)
+                              -> (k.összetétel q.koegyenlitoMorfizmus k1 = h)
+                              -> (k.összetétel q.koegyenlitoMorfizmus k2 = h)
                               -> k1 = k2
 
 -- ─── A.7 ÁLTALÁNOS LIMIT EGYÉRTELMŰSÉGE ──────────────────────
@@ -1678,6 +1685,6 @@ record Diagonal (k : Kategoria obj hom) (a : obj) (s : Szorzat k a a) where
   constructor DiagonalKonstruktor
   diagonalMorfizmus : hom a s.szorzatObjektum
   -- Δ∘π₁ = id (a bal projekció komponálva a diagonálissal = azonos)
-  diagonalBalTorveny : k.osszetetel diagonalMorfizmus s.szorzatProjekcioBal = k.azonos a
+  diagonalBalTorveny : k.összetétel diagonalMorfizmus s.szorzatProjekcioBal = k.azonos a
   -- Δ∘π₂ = id (a jobb projekció komponálva a diagonálissal = azonos)
-  diagonalJobbTorveny : k.osszetetel diagonalMorfizmus s.szorzatProjekcioJobb = k.azonos a
+  diagonalJobbTorveny : k.összetétel diagonalMorfizmus s.szorzatProjekcioJobb = k.azonos a
