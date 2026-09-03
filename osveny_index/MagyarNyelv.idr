@@ -41,11 +41,11 @@ data Eset = Nominativusz | Accusativusz | Datívusz | Instrumentalis
           | Szublativusz | Temporalis | Szociativusz | Distributivus
           | Esszivusz | Modalis | Causalis | Formaliss
 
-||| Minden esethez tartozik egy logikai kapcsolat tipus.
-||| A konstruktor neve a kapcsolat logikai nevet viseli,
+||| Minden esethez tartozik egy logikai kapcsolat típus。（每个格对应一种逻辑联系的类型。）
+||| A konstruktor neve a kapcsolat logikai nevét viseli,（构造器名承载联系的逻辑名，）
 ||| nem az eset nevet — ez a kulonbseg a grammatika
-||| es a logika kozott.
-||| A nevek magyar teljes szavak, nem roviditesek.
+||| es a logika között.
+||| A nevek magyar teljes szavak, nem rövidítések。（名字是完整的匈牙利语词，非缩写。）
 public export
 data EsetLogika : Eset -> Type where
   AlanyLogika    : EsetLogika Nominativusz
@@ -74,13 +74,13 @@ data EsetLogika : Eset -> Type where
   AlakLogika     : EsetLogika Formaliss
 
 ||| Eset → E8 kodoszo (minden eset egy egyedi 8 bites vektor az E8 racsban).
-||| A 24 eset kodolasa:
-|||   elso 5 bit: a 24 eset egyedi azonositoja
-|||   utolso 3 bit: a Steane kod 3 bitje (ido, oksag, fazis)
+||| A 24 eset kódolása：（24 个格的编码：）
+|||   első 5 bit: a 24 eset egyedi azonosítója（前 5 位：24 个格的唯一标识）
+|||   utolsó 3 bit: a Steane-kód 3 bitje (idő, ok-okozat, fázis)（后 3 位：Steane 码的 3 位（时间、因果、相位））
 |||
 ||| A kodolas a Hamming tavolsagot maximalizalja —
-||| a 24 eset kozott nincs ket egymashoz 3 bitnel
-||| kozelebb. Ez azt jelenti, hogy 1 bit hiba javithato.
+||| a 24 eset között nincs ket egymashoz 3 bitnel
+||| közelebb. Ez azt jelenti, hogy 1 bit hiba javítható。（故 1 位错误可纠正。）
 public export
 esetKod : Eset -> E8Pont
 esetKod Nominativusz   = E8PontKonstruktor Nulla Nulla Nulla Nulla Nulla Nulla Nulla Nulla
@@ -108,10 +108,10 @@ esetKod Modalis        = E8PontKonstruktor Egy Nulla Nulla Nulla Nulla Egy Nulla
 esetKod Causalis       = E8PontKonstruktor Egy Nulla Nulla Nulla Nulla Nulla Egy Nulla
 esetKod Formaliss      = E8PontKonstruktor Egy Nulla Nulla Nulla Nulla Nulla Nulla Egy
 
-||| FogalomTipus: a fogalmak tipusai a hierarchiaban.
-||| Itt definialva, mert a RagozottSzo es a NyelvtaniKapcsolat
-||| hasznalja. A FogalomFa modul ezt egesziti ki a logikai
-||| kapcsolatokkal (FogalomLogika).
+||| FogalomTipus: a fogalmak típusai a hierarchiában。（概念在层级中的类型。）
+||| Itt definiálva, mert a RagozottSzo és a NyelvtaniKapcsolat（在此定义，因为 RagozottSzo 与 NyelvtaniKapcsolat 使用它；）
+||| használja. A FogalomFa-modul ezt egészíti ki a logikai（FogalomFa 模块以逻辑联系补全它。）
+||| kapcsolatokkal (FogalomLogika)。
 public export
 data FogalomTipus = Gyoker | Cel | ReszCel | Feladat | ReszFeladat
                   | Cselekves | Dontes | Valasztas | Elutasitas
@@ -174,8 +174,8 @@ data FogalomTipus = Gyoker | Cel | ReszCel | Feladat | ReszFeladat
 
 ||| SzoTipus: minden szó egy konstruktor.
 ||| A szavak tipusként vannak reprezentálva — nincs String.
-||| A szoFogalom, szoEset fuggvenyek adjak a nyelvtani tulajdonsagokat.
-||| Eleinte a fogalomnevek (cel, ok, hiba...) maguk is magyar szavak.
+||| A szoFogalom, szoEset függvények adják a nyelvtani tulajdonságokat。（szoFogalom、szoEset 函数给出语法属性。）
+||| Eleinte a fogalomnevek (cél, ok, hiba…) maguk is magyar szavak。（起初概念名（cél、ok、hiba…）本身就是匈牙利语词。）
 public export
 data SzoTipus : Type where
   -- Fogalomnevek mint magyar szavak (alanyeset)
@@ -222,7 +222,7 @@ data SzoTipus : Type where
   EteltSzo         : SzoTipus  -- "ételt" (Etel + Acc)
   VizetSzo         : SzoTipus  -- "vizet" (Viz + Acc)
 
-||| Minden SzoTipushoz tartozik egy FogalomTipus.
+||| Minden SzoTipushoz tartozik egy FogalomTipus。（每个 SzoTipus 对应一个 FogalomTipus。）
 public export
 szoFogalom : SzoTipus -> FogalomTipus
 szoFogalom CelSzo = Cel
@@ -266,7 +266,7 @@ szoFogalom KonyvvelSzo = Eszkoz
 szoFogalom EteltSzo = Cel
 szoFogalom VizetSzo = Eszkoz
 
-||| Minden SzoTipushoz tartozik egy Eset.
+||| Minden SzoTipushoz tartozik egy Eset。（每个 SzoTipus 对应一个格。）
 public export
 szoEset : SzoTipus -> Eset
 szoEset CeltSzo = Accusativusz
@@ -286,29 +286,30 @@ szoEset EteltSzo = Accusativusz
 szoEset VizetSzo = Accusativusz
 szoEset _ = Nominativusz
 
-||| Minden SzoTipushoz tartozik egy IdoBeljegyzes.
+||| Minden SzoTipushoz tartozik egy IdoBeljegyzés。（每个 SzoTipus 对应一个时间标注。）
 public export
 szoIdo : SzoTipus -> IdoBeljegyzes
 szoIdo _ = IdoBeljegyzesKonstruktor Jelen Folyamatos Kozvetlen
 
-||| Minden SzoTipushoz tartozik egy fazis (HaromKubit).
+||| Minden SzoTipushoz tartozik egy fázis (HaromKubit)。（每个 SzoTipus 对应一个相位。）
 public export
 szoFazis : SzoTipus -> HaromKubit
 szoFazis _ = VilágKonstruktor Nulla Nulla Nulla
 
-||| Magyar szo: to + szam + birtok + eset.
+||| Magyar szó: tő + szám + birtok + eset。（匈牙利语词 = 词干 + 数 + 所有 + 格。）
 ||| Az agglutinacio sorrendje rögzitett:
-|||   to + szam + birtok + eset
-||| Ez a morfologiai struktura a kategoriaelmeletben
+|||   tő + szám + birtok + eset（词干 + 数 + 所有 + 格）
+||| Ez a morfológiai struktúra a kategóriaelméletben
+||| 这一形态学结构在范畴论中对应四元组：
 ||| egy bifunktornak felel meg: Fogalom × Eset × Ido → E8.
 |||
 ||| A mezők:
-|||   fogalom = a szo fogalmi tipusa
-|||   szam = Kubit (Nulla=egyes, Egy=tobbes)
-|||   birtok = Kubit (Nulla=nincs, Egy=van)
-|||   eset = a 24 eset egyike
-|||   ido = a harom ido dimenzio
-|||   fazisKubit = a szo fazisa a harom kubitben
+|||   fogalom = a szó fogalmi típusa（概念 = 词的概念类型）
+|||   szám = Kubit (Nulla=egyes, Egy=többes)（数 = Kubit：Nulla 单数、Egy 复数）
+|||   birtok = Kubit (Nulla=nincs, Egy=van)（所有 = Kubit：无或有）
+|||   eset = a 24 eset egyike（格 = 24 个格之一）
+|||   idő = a három idődimenzió（时间 = 三个时间维度）
+|||   fázisKubit = a szó fázisa a három kubitben（相位 = 该词在三 kubit 中的相位）
 public export
 record RagozottSzo where
   constructor SzoKonstruktor
@@ -319,15 +320,15 @@ record RagozottSzo where
   ido        : IdoBeljegyzes -- harom ido dimenzio
   fazisKubit : HaromKubit    -- a szo fazisa
 
-||| Magyar nyelvtani kapcsolat: alany + ige + targy + egyeb esetek.
-||| Minden kapcsolat a [[7,1,3]] koddal van kodolva.
+||| Magyar nyelvtani kapcsolat: alany + ige + tárgy + egyéb esetek。（主语 + 动词 + 宾语 + 其他格。）
+||| Minden kapcsolat a [[7,1,3]] kóddal van kódolva。（每个联系都用 [[7,1,3]] 码编码。）
 |||
-||| A kapcsolat egy cospan a kategoriaelmeletben:
+||| A kapcsolat egy cospan a kategóriaelméletben：（该联系在范畴论中是一个余偶（cospan）：）
 |||   alany → ige ← targy
 ||| A kozos celpont az ige — ez kot ossze mindent.
 |||
-||| Az egyeb esetek (listaban) a kapcsolat tovabbi
-||| resztvevoit tartalmazzak (pl. eszkoz, hely, ido).
+||| Az egyéb esetek (listában) a kapcsolat további（其他格（列表中）承载联系的其他参与者）
+||| résztvevőit tartalmazzák (pl. eszköz, hely, idő)。（如工具、地点、时间。）
 public export
 record NyelvtaniKapcsolat where
   constructor KapcsolatKonstruktor
@@ -346,10 +347,10 @@ record NyelvtaniKapcsolat where
 -- A kepzok a 7+7+1 kategoria-rendszerben:
 --   Emberi kepzok: cselekvo, belso folyamat, tudatos
 --   Szamitasi kepzok: muveleti, kulso eredmeny, algoritmikus
---   Perem kepzok: a ketto kozotti atmenet
+--   Perem kepzok: a ketto közötti atmenet
 
-||| Magyar igekepzok: a cselekves modjanak jelolese.
-||| A kepzo hatarozza meg, hogy a szamitas emberi vagy gepi.
+||| Magyar ige-képzők: a cselekvés módjának jelölése。（动词构词后缀：标记行动的方式。）
+||| A képző határozza meg, hogy a számítás emberi vagy gépi。（后缀决定计算是人的还是机器的。）
 public export
 data Igekepzo : Type where
   -- Emberi (szamol, tudatos):
@@ -361,12 +362,12 @@ data Igekepzo : Type where
   IgekepzoIt  : Igekepzo  -- szam+it = szamit (gep szamit: kulso muvelet)
   IgekepzoGat : Igekepzo  -- moz+gat = mozgat
 
-  -- Perem (a ketto kozotti atalakulas):
+  -- Perem (a ketto közötti atalakulas):
   IgekepzoUl  : Igekepzo  -- ford+ul = fordul (visszahato, onreferencia)
   IgekepzoOd  : Igekepzo  -- kepz+od+ik = kepzodik (onmaga altal)
   IgekepzoOzTat : Igekepzo  -- dolg+oz+tat = dolgoztat (muvelteto)
 
-||| Magyar nevszokepzok.
+||| Magyar névszó-képzők。（名词构词后缀。）
 public export
 data Nevszokepzo : Type where
   NevszokepzoAs    : Nevszokepzo  -- szam+as = szamolas (folyamat, emberi)
@@ -376,13 +377,13 @@ data Nevszokepzo : Type where
   NevszokepzoSag   : Nevszokepzo  -- szep+seg = szepseg
 
 ||| A "szám-" to teljes derivacios paradigmaja.
-|||   szam (to) = a szam fogalma (a Perem)
+|||   szám (tő) = a szám fogalma (a Perem)（szám 词干 = 数的概念（边界 Perem））
 |||   szam+ol = szamol (ember szamol: belso, folyamatos, merlegelo)
 |||   szam+it = szamit (gep szamit: kulso, diszkret, algoritmikus)
 |||   szam+olas = szamolas (az emberi folyamat)
 |||   szam+itas = szamitas (a gepi muvelet)
 |||
-||| A kepzo a Legendre-perem analogiaja:
+||| A képző a Legendre-perem analógiája：（后缀是勒让德边界的类比：人的 = 连续侧，机器的 = 离散侧。）
 |||   szam (Perem) — a ket ertelmezes kozti atmenet
 |||   szamol (Emberi) — a belso folyamat, Lagrange-szeru
 |||   szamit (Szamitasi) — a kulso muvelet, Hamilton-szeru
@@ -397,7 +398,7 @@ data SzamTo : Type where
   SzamitasNev : SzamTo  -- számítás (szamitasi eredmeny fonev)
   Szamitogep  : SzamTo  -- számítógép (szamit + gep, az eszkoz)
 
-||| Derivalt szo: to + kepzok lanca.
+||| Derivált szó: tő + képzők lánca。（派生词 = 词干 + 后缀之链。）
 public export
 record DerivaltSzo where
   constructor DerivaltSzoKonstruktor
@@ -410,14 +411,14 @@ record DerivaltSzo where
 -- SZÓTÁR: TOVEK ES DERIVACIOIK A 7+7+1 RENDSZERBEN
 -- ═══════════════════════════════════════════════════════════════
 
-||| A szo tipusa a 7+7+1 rendszerben.
+||| A szó típusa a 7+7+1 rendszerben。（词的类型在 7+7+1 系统中。）
 public export
 data Szo714Tipus : Type where
   Szo714Emberi    : EmberiKategoria -> Szo714Tipus
   Szo714Szamitasi : SzamitasiKategoria -> Szo714Tipus
   Szo714Perem     : Szo714Tipus
 
-||| Szotari bejegyzes: egy tov + a derivalt alakjai + a kategoriak.
+||| Szótári bejegyzés: egy tő + a derivált alakjai + a kategóriák。（词典条目 = 词干 + 派生形 + 范畴。）
 public export
 record SzotarBejegyzes where
   constructor BejegyzesKonstruktor
@@ -426,13 +427,13 @@ record SzotarBejegyzes where
   derivaltak  : List (String, Szo714Tipus)
   fogalomTipus : FogalomTipus
 
-||| A szam- to szotari bejegyzese:
-|||   tov = "szam"
+||| A szám- tő szótári bejegyzése：（szám 词干的词典条目：）
+|||   tő = „szam"（词干 = „szam"）
 |||   szam+ol = szamol → Emberi (emberi szamolas = idiotoltes, belso)
 |||   szam+it = szamit → Szamitasi (gepi szamitas = utemtoltes, kulso)
 |||   szam+it+o+gep = szamitogep → Szamitasi (az eszkoz)
-|||   A Legendre-perem: a -tol / -ol / -it kepzok az
-|||   atmenetek a ket vilag kozott.
+|||   A Legendre-perem: a -tol és -ol és -it képzők（勒让德边界：这些后缀是——）
+|||   atmenetek a ket vilag között.
 public export
 szamToSzotar : SzotarBejegyzes
 szamToSzotar =
@@ -447,7 +448,7 @@ szamToSzotar =
     ]
     Szam
 
-||| Az ido- to szotari bejegyzese:
+||| Az idő- tő szótári bejegyzése：（idő 词干的词典条目：）
 |||   todik → idovel valtozik (emberi: erlelodes)
 |||   tozik → idozit (szamitasi: clock)
 public export
@@ -462,7 +463,7 @@ idoToSzotar =
     ]
     Ido
 
-||| Az ok- to szotari bejegyzese:
+||| Az ok- tő szótári bejegyzése：（ok 词干的词典条目：）
 |||   ok+oz → okoz (emberi: oksagi gondolkodas)
 |||   ok+ol+hatatlan → okolhatatlan (emberi: nem ertheto)
 |||   ok+oz+at → okozat (a kovetkezmeny)
@@ -494,7 +495,7 @@ terToSzotar =
     ]
     Ter
 
-||| Szotar: a 7 alap tov a 7+7+1 rendszerben.
+||| Szótár: a 7 alap tő a 7+7+1 rendszerben。（词典：7+7+1 系统中的 7 个基本词干。）
 public export
 alapSzotar : List SzotarBejegyzes
 alapSzotar =
@@ -508,29 +509,30 @@ alapSzotar =
 -- EMBERI ÉS GÉPI SZÁMOLÁS: A LEGENDRE-PEREM LINGVISZTIKAJA
 -- ═══════════════════════════════════════════════════════════════
 
-||| A "számol" (emberi) és a "számít" (gépi) kozotti
-|||   kulonbseg a Legendre-peremben:
+||| A "számol" (emberi) és a "számít" (gépi) közötti
+|||   különbség a Legendre-peremben:（差异在勒让德边界处：）
 |||
-|||   Ember szamol:
-|||     - Folyamatos folyamat (aspektus: folyamatos)
-|||     - Belso merlegeles (forras: kovetkeztetett)
-|||     - Tobbsegi szavazat (Steane dekodolas)
-|||     - Hiba eseten korrigal (Noether-tetel)
+|||   Ember számol: / 人数：
+|||     - Folyamatos folyamat (aszpektus: folyamatos)（连续过程（体貌：持续））
+|||     - Belső mérlegelés (forrás: következtetett)（内在权衡（来源：推得））
+|||     - Többségi szavazat (Steane-dekódolás)（多数表决（Steane 解码））
+|||     - Hiba esetén korrigál (Noether-tétel)（出错时纠正（诺特定理））
 |||
-|||   Gep szamit:
-|||     - Diszkret lepesek (aspektus: befejezett)
-|||     - Kulso muvelet (forras: kozvetlen)
-|||     - Deterministicus algoritmus (clock vezerelt)
-|||     - Hiba eseten ujraindul
+|||   Gép számít: / 机器算：
+|||     - Diszkrét lépések (aszpektus: befejezett)（离散步骤（体貌：完成））
+|||     - Külső művelet (forrás: közvetlen)（外在运算（来源：直接））
+|||     - Determinisztikus algoritmus (óra-vezérelt)（确定性算法（时钟驱动））
+|||     - Hiba esetén újraindul（出错时重启）
 |||
-|||   A ketto kozott a Legendre-perem:
-|||     p·q̇ = a kerdes (prompt) — a ketto kozti atmenet
-|||     L = a gondolat (szamol) — a kvantum-potencial
-|||     H = a valasz (szamit) — a klasszikus kimenet
+|||   A kettő között a Legendre-perem: / 二者之间是勒让德边界：
+|||     p·q̇ = a kérdés (prompt) — a kettő közt átmenet（提问——二者间的过渡）
+|||     L = a gondolat (számol) — a kvantum-potenciál（思想——量子势）
+|||     H = a válasz (számít) — a klasszikus kimenet（回答——经典输出）
 |||
-|||   szamolas (emberi folyamat, L) → kérdés (perem, p·q̇) → számítás (gépi eredmény, H)
+|||   számolás (emberi folyamat, L) → kérdés (perem, p·q̇) → számítás (gépi eredmény, H)
+|||   （人的过程 L → 边界（提问）→ 机器结果 H）
 
-||| Szamolas mod: emberi vs. gepi.
+||| Számolási mód: emberi vs. gépi. / 计算模式：人的对机器的。
 public export
 data SzamolasMod : Type where
   EmberSzamol : SzamolasMod  -- -ol kepzos: belso, folyamatos, kvantum
