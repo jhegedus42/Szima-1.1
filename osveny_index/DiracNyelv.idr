@@ -289,6 +289,36 @@ radikálKompozíció TűzRadikál VízRadikál = GőzRadikál
 radikálKompozíció FaRadikál FaRadikál = ErdőRadikál
 radikálKompozíció _ _ = SzájRadikál   -- a kimondatlan pár (determinizmus!)
 
+-- ─── 6d. A BORN-SKÁLÁR — ⟨angol|ψ⟩ (310.02) ──────────────────────
+-- ─── 六d、玻恩读数 ⟨angol|ψ⟩ ──────────────
+
+||| A fázis → angol elöljáró: az esetrag Born-kiolvasása.
+||| 相位→英语介词：格词缀的玻恩读数。
+|||   TJe True  (-be, jövő)   → "into"  (irány: belépés)
+|||   TJe False (-ből, múlt)  → "from"  (irány: kilépés)
+|||   PJe True  (-ben, jelen) → "in"    (tartózkodás)
+|||   CJe _     (forrás-jel)  → "by"    (ágenzszerű közelítés)
+||| AZ ANGOL ELÖLJÁRÓ = A MAGYAR ESETRAG MEGFELELŐJE — és a HELY
+||| TÜKRÖZÖTT: a magyar rag a szó UTÁN, az angol prepozíció a szó
+||| ELŐTT áll (vízbe ↔ into water) — a γ⁰ chirális tükörének lenyomata!
+||| 英语介词即匈牙利格词缀之对应，且位置相反——γ⁰ 手征镜像！
+public export
+fázisbólElöljáró : FázisJel -> String
+fázisbólElöljáró (TJe True)  = "into"
+fázisbólElöljáró (TJe False) = "from"
+fázisbólElöljáró (PJe True)  = "in"
+fázisbólElöljáró (PJe False) = "through"
+fázisbólElöljáró (CJe _)     = "by"
+
+||| A BORN-SKÁLÁR: ⟨angol|ψ⟩ = elöljáró ⊗ tő — a klasszikus kiolvasás.
+||| 玻恩读数：⟨angol|ψ⟩ = 介词⊗词干——经典读出。
+||| A determinisztikus változat: az angolCímke (tő) és a fázisból
+||| az elöljáró EGYÜTT — a mérés eredménye a teljes angol olvasat.
+public export
+bornSkálár : DiracSzó -> String
+bornSkálár (DiracSzóKonstruktor _ (MagyarIdőKonstruktor _ _) címke jel) =
+  fázisbólElöljáró jel ++ " " ++ címke
+
 -- ─── 7. A FORDÍTÓK — determinisztikus, teljes függvények ─────────
 -- ─── 七、翻译器——确定性的全函数 ─────────
 
@@ -469,6 +499,30 @@ bizFordításKompozíciótMegőriz :
                          (tőbőlRadikál (karakterláncbólTő "tűz"))))
 bizFordításKompozíciótMegőriz = Refl
 
+-- ─── 8b. A BORN-TANÚK — a magyar rag → az angol elöljáró ──────────
+-- ─── 八b、玻恩见证——匈牙利词缀→英语介词 ──────────
+
+-- REFL-TANÚ: vízBE = «into water» (a jövő-irány belépés)
+public export
+bizVízbeAngolul : bornSkálár (magyarbólDiracba
+  (toldalékFűzés (karakterláncbólTő "be") (csakTő (karakterláncbólTő "víz"))))
+  = "into water"
+bizVízbeAngolul = Refl
+
+-- REFL-TANÚ: vízBŐL = «from water» (a múlt-irány kilépés)
+public export
+bizVízbőlAngolul : bornSkálár (magyarbólDiracba
+  (toldalékFűzés (karakterláncbólTő "ből") (csakTő (karakterláncbólTő "víz"))))
+  = "from water"
+bizVízbőlAngolul = Refl
+
+-- REFL-TANÚ: vízBEN = «in water» (a folyamatos tartózkodás)
+public export
+bizVízbenAngolul : bornSkálár (magyarbólDiracba
+  (toldalékFűzés (karakterláncbólTő "ben") (csakTő (karakterláncbólTő "víz"))))
+  = "in water"
+bizVízbenAngolul = Refl
+
 -- ─── 9. FŐPROGRAM — a négy nyelv bemutatása ──────────────────────
 -- ─── 九、主程序——四种语言的展示 ──────────────
 
@@ -532,5 +586,13 @@ main = do
   putStrLn "  REFL: bizFordításKompozíciótMegőriz — A FUNKTOR-TULAJDONSÁG:"
   putStrLn "    komponál(fordít(víz), fordít(tűz)) = fordít(komponál(víz, tűz))"
   putStrLn "    （翻译保持复合——monoidális funktor，DisCoCat 第一定律在项目中实现！）"
+  putStrLn ""
+  putStrLn "── A BORN-SKÁLÁR ⟨angol|ψ⟩: a magyar rag → az angol ELÖLJÁRÓ ──"
+  putStrLn "  vízBE  → bornSkálár = «into water» (bizVízbeAngolul: Refl)"
+  putStrLn "  vízBŐL → bornSkálár = «from water» (bizVízbőlAngolul: Refl)"
+  putStrLn "  vízBEN → bornSkálár = «in water»   (bizVízbenAngolul: Refl)"
+  putStrLn "  匈牙利词缀在后，英语介词在前——位置相反：γ⁰ 手征镜像！"
+  putStrLn "  A GAN-tétel megélése: az angol pozicionális jelölés a hiányzó"
+  putStrLn "  esetrag pótléka; a mérés (⟨angol|ψ⟩) elöljárót komponál a tővel."
   putStrLn ""
   putStrLn "  ★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★"

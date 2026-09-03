@@ -98,3 +98,19 @@
   「翻译保持复合——含幺函子，DisCoCat 第一定律实现！」
 
 ★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★
+
+## 11. FOLYTATÁS («folytassa mester!») — A BORN-SKÁLÁR (310.02 KÉSZ)
+- fázisbólElöljáró: TJe True→"into" (-be); TJe False→"from" (-ből);
+  PJe True→"in" (-ben); PJe False→"through"; CJe→"by" (ágenz).
+- bornSkálár : DiracSzó -> String — ⟨angol|ψ⟩ = elöljáró ⊗ tő.
+- ███ A GAN-TÉTEL KONKRÉT MEGÉLÉSE ███: AZ ANGOL ELÖLJÁRÓ = A MAGYAR
+  ESETRAG MEGFELELŐJE, ÉS A HELY TÜKRÖZÖTT (vízBE ↔ INTO water — a
+  magyar rag a szó UTÁN, az angol prepozíció ELŐTT) — a γ⁰ chirális
+  tükör nyelvi lenyomata! 「匈牙利后缀在后，英语介词在前——手征镜像！」
+- 3 REFL-TANÚ: bizVízbeAngolul («into water»), bizVízbőlAngolul
+  («from water»), bizVízbenAngolul («in water») — a teljes magyar→angol
+  mérési csatorna determinisztikusan ÉL!
+- A 310.02 ezzel KÉSZ; a DiracNyelv modul: 4 nyelv (magyar/kínai/angol/
+  dirac) × (kör + fázis + kompozíció + Born) — tanúhálós.
+
+★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★
