@@ -50,7 +50,7 @@ osszesRegisztraltModul =
   , KérdőszóLeírás
   , HanMagyarKodolasLeiras
   , EGyokrendszerLeiras
-  , DiracGammaLeiras
+  , DiracGammaLeírás
   , OktonionLeiras
   , SteaneHamiltonianLeiras
   , LejeuneLeiras

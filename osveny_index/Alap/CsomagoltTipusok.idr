@@ -58,10 +58,24 @@ data Igazság : Type where
   Igaz  : Igazság
   Hamis : Igazság
 
+||| A híd Igazság → Bool (a TESZT-PEREM kiszolgálására: a mag Igazság,
+||| a teszt-keret Bool-t vár — ez a kivetítés a kanonikus egyetlen helye).
+||| Igazság→Bool 之桥（服务测试边界：内核用 Igazság，测试框架要 Bool）。
+public export
+igazságÉrtéke : Igazság -> Bool
+igazságÉrtéke Igaz = True
+igazságÉrtéke Hamis = False
+
 ||| Egyenlőségvizsgálat typeclassja — Igazságot ad, nem Bool-t.
 public export
 interface EgyenlőségT (típus : Type) where
   egyenlőE : típus -> típus -> Igazság
+
+||| Az Integer (nyers hordozó) egyenlősége — Igazság-ba csomagolva.
+||| 整数（原始载体）的相等——包成 Igazság。
+public export
+EgyenlőségT Integer where
+  egyenlőE x y = if x == y then Igaz else Hamis
 
 public export
 EgyenlőségT Igazság where

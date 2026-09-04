@@ -1,6 +1,7 @@
 module DiracGammaMatricak
 
 import ModulRegisztracio
+import Alap.CsomagoltTipusok
 -- ═══════════════════════════════════════════════════════════════
 -- DIRAC GAMMA-MÁTRIXOK — Weyl-bázis, pontos Integer-aritmetikával
 -- ═══════════════════════════════════════════════════════════════
@@ -35,34 +36,35 @@ import ModulRegisztracio
 public export
 record KomplexSzam where
   constructor KomplexSzamKonstruktor
-  valosResz    : Integer
-  kepzetesResz : Integer
+  valósRész    : Integer
+  képzetesRész : Integer
 
 public export
-komplexOsszead : KomplexSzam -> KomplexSzam -> KomplexSzam
-komplexOsszead a b =
+komplexÖsszead : KomplexSzam -> KomplexSzam -> KomplexSzam
+komplexÖsszead a b =
   KomplexSzamKonstruktor
-    (valosResz a + valosResz b)
-    (kepzetesResz a + kepzetesResz b)
+    (valósRész a + valósRész b)
+    (képzetesRész a + képzetesRész b)
 
 public export
 komplexSzoroz : KomplexSzam -> KomplexSzam -> KomplexSzam
 komplexSzoroz a b =
   KomplexSzamKonstruktor
-    (valosResz a * valosResz b - kepzetesResz a * kepzetesResz b)
-    (valosResz a * kepzetesResz b + kepzetesResz a * valosResz b)
+    (valósRész a * valósRész b - képzetesRész a * képzetesRész b)
+    (valósRész a * képzetesRész b + képzetesRész a * valósRész b)
 
 public export
-komplexEgyenlo : KomplexSzam -> KomplexSzam -> Bool
-komplexEgyenlo a b =
-  valosResz a == valosResz b && kepzetesResz a == kepzetesResz b
+komplexEgyenlő : KomplexSzam -> KomplexSzam -> Igazság
+komplexEgyenlő a b =
+  ésE (egyenlőE (valósRész a) (valósRész b))
+      (egyenlőE (képzetesRész a) (képzetesRész b))
 
 public export
 Show KomplexSzam where
   show a =
-    if kepzetesResz a == 0
-      then show (valosResz a)
-      else show (valosResz a) ++ showIm (kepzetesResz a)
+    if képzetesRész a == 0
+      then show (valósRész a)
+      else show (valósRész a) ++ showIm (képzetesRész a)
     where
       showIm : Integer -> String
       showIm egy = (if egy == 1 then "+i" else
@@ -82,34 +84,34 @@ MinuszEgyKomplex : KomplexSzam
 MinuszEgyKomplex = KomplexSzamKonstruktor (-1) 0
 
 public export
-ImaginerEgyKomplex : KomplexSzam
-ImaginerEgyKomplex = KomplexSzamKonstruktor 0 1
+ImagináriusEgyKomplex : KomplexSzam
+ImagináriusEgyKomplex = KomplexSzamKonstruktor 0 1
 
 public export
-MinuszImaginerEgyKomplex : KomplexSzam
-MinuszImaginerEgyKomplex = KomplexSzamKonstruktor 0 (-1)
+MinuszImagináriusEgyKomplex : KomplexSzam
+MinuszImagináriusEgyKomplex = KomplexSzamKonstruktor 0 (-1)
 
 -- ─── 2. 4×4-ES MÁTRIX (16 KomplexSzam mező) ───────────────
 
 public export
-record NegyNegyMatrica where
-  constructor NegyNegyMatricaKonstruktor
-  mezo00 : KomplexSzam;  mezo01 : KomplexSzam;  mezo02 : KomplexSzam;  mezo03 : KomplexSzam
-  mezo10 : KomplexSzam;  mezo11 : KomplexSzam;  mezo12 : KomplexSzam;  mezo13 : KomplexSzam
-  mezo20 : KomplexSzam;  mezo21 : KomplexSzam;  mezo22 : KomplexSzam;  mezo23 : KomplexSzam
-  mezo30 : KomplexSzam;  mezo31 : KomplexSzam;  mezo32 : KomplexSzam;  mezo33 : KomplexSzam
+record NégyNégyMátrix where
+  constructor NégyNégyMátrixKonstruktor
+  mező00 : KomplexSzam;  mező01 : KomplexSzam;  mező02 : KomplexSzam;  mező03 : KomplexSzam
+  mező10 : KomplexSzam;  mező11 : KomplexSzam;  mező12 : KomplexSzam;  mező13 : KomplexSzam
+  mező20 : KomplexSzam;  mező21 : KomplexSzam;  mező22 : KomplexSzam;  mező23 : KomplexSzam
+  mező30 : KomplexSzam;  mező31 : KomplexSzam;  mező32 : KomplexSzam;  mező33 : KomplexSzam
 
 public export
-NullaMatrica : NegyNegyMatrica
-NullaMatrica = NegyNegyMatricaKonstruktor
+NullaMátrix : NégyNégyMátrix
+NullaMátrix = NégyNégyMátrixKonstruktor
   NullaKomplex NullaKomplex NullaKomplex NullaKomplex
   NullaKomplex NullaKomplex NullaKomplex NullaKomplex
   NullaKomplex NullaKomplex NullaKomplex NullaKomplex
   NullaKomplex NullaKomplex NullaKomplex NullaKomplex
 
 public export
-EgysegMatrica : NegyNegyMatrica
-EgysegMatrica = NegyNegyMatricaKonstruktor
+EgységMátrix : NégyNégyMátrix
+EgységMátrix = NégyNégyMátrixKonstruktor
   EgyKomplex NullaKomplex NullaKomplex NullaKomplex
   NullaKomplex EgyKomplex NullaKomplex NullaKomplex
   NullaKomplex NullaKomplex EgyKomplex NullaKomplex
@@ -117,64 +119,64 @@ EgysegMatrica = NegyNegyMatricaKonstruktor
 
 -- sor·oszlop skalárszorzat (4 tag pontos összege):
 public export
-sorOszlopSkalarSzorzat :
+sorOszlopSkalárSzorzat :
   KomplexSzam -> KomplexSzam -> KomplexSzam -> KomplexSzam ->
   KomplexSzam -> KomplexSzam -> KomplexSzam -> KomplexSzam ->
   KomplexSzam
-sorOszlopSkalarSzorzat a0 a1 a2 a3 b0 b1 b2 b3 =
-  komplexOsszead
-    (komplexOsszead (komplexSzoroz a0 b0) (komplexSzoroz a1 b1))
-    (komplexOsszead (komplexSzoroz a2 b2) (komplexSzoroz a3 b3))
+sorOszlopSkalárSzorzat a0 a1 a2 a3 b0 b1 b2 b3 =
+  komplexÖsszead
+    (komplexÖsszead (komplexSzoroz a0 b0) (komplexSzoroz a1 b1))
+    (komplexÖsszead (komplexSzoroz a2 b2) (komplexSzoroz a3 b3))
 
 public export
-matricaSzoroz : NegyNegyMatrica -> NegyNegyMatrica -> NegyNegyMatrica
-matricaSzoroz a b = NegyNegyMatricaKonstruktor
-  (sorOszlopSkalarSzorzat (mezo00 a) (mezo01 a) (mezo02 a) (mezo03 a) (mezo00 b) (mezo10 b) (mezo20 b) (mezo30 b))
-  (sorOszlopSkalarSzorzat (mezo00 a) (mezo01 a) (mezo02 a) (mezo03 a) (mezo01 b) (mezo11 b) (mezo21 b) (mezo31 b))
-  (sorOszlopSkalarSzorzat (mezo00 a) (mezo01 a) (mezo02 a) (mezo03 a) (mezo02 b) (mezo12 b) (mezo22 b) (mezo32 b))
-  (sorOszlopSkalarSzorzat (mezo00 a) (mezo01 a) (mezo02 a) (mezo03 a) (mezo03 b) (mezo13 b) (mezo23 b) (mezo33 b))
-  (sorOszlopSkalarSzorzat (mezo10 a) (mezo11 a) (mezo12 a) (mezo13 a) (mezo00 b) (mezo10 b) (mezo20 b) (mezo30 b))
-  (sorOszlopSkalarSzorzat (mezo10 a) (mezo11 a) (mezo12 a) (mezo13 a) (mezo01 b) (mezo11 b) (mezo21 b) (mezo31 b))
-  (sorOszlopSkalarSzorzat (mezo10 a) (mezo11 a) (mezo12 a) (mezo13 a) (mezo02 b) (mezo12 b) (mezo22 b) (mezo32 b))
-  (sorOszlopSkalarSzorzat (mezo10 a) (mezo11 a) (mezo12 a) (mezo13 a) (mezo03 b) (mezo13 b) (mezo23 b) (mezo33 b))
-  (sorOszlopSkalarSzorzat (mezo20 a) (mezo21 a) (mezo22 a) (mezo23 a) (mezo00 b) (mezo10 b) (mezo20 b) (mezo30 b))
-  (sorOszlopSkalarSzorzat (mezo20 a) (mezo21 a) (mezo22 a) (mezo23 a) (mezo01 b) (mezo11 b) (mezo21 b) (mezo31 b))
-  (sorOszlopSkalarSzorzat (mezo20 a) (mezo21 a) (mezo22 a) (mezo23 a) (mezo02 b) (mezo12 b) (mezo22 b) (mezo32 b))
-  (sorOszlopSkalarSzorzat (mezo20 a) (mezo21 a) (mezo22 a) (mezo23 a) (mezo03 b) (mezo13 b) (mezo23 b) (mezo33 b))
-  (sorOszlopSkalarSzorzat (mezo30 a) (mezo31 a) (mezo32 a) (mezo33 a) (mezo00 b) (mezo10 b) (mezo20 b) (mezo30 b))
-  (sorOszlopSkalarSzorzat (mezo30 a) (mezo31 a) (mezo32 a) (mezo33 a) (mezo01 b) (mezo11 b) (mezo21 b) (mezo31 b))
-  (sorOszlopSkalarSzorzat (mezo30 a) (mezo31 a) (mezo32 a) (mezo33 a) (mezo02 b) (mezo12 b) (mezo22 b) (mezo32 b))
-  (sorOszlopSkalarSzorzat (mezo30 a) (mezo31 a) (mezo32 a) (mezo33 a) (mezo03 b) (mezo13 b) (mezo23 b) (mezo33 b))
+mátrixSzoroz : NégyNégyMátrix -> NégyNégyMátrix -> NégyNégyMátrix
+mátrixSzoroz a b = NégyNégyMátrixKonstruktor
+  (sorOszlopSkalárSzorzat (mező00 a) (mező01 a) (mező02 a) (mező03 a) (mező00 b) (mező10 b) (mező20 b) (mező30 b))
+  (sorOszlopSkalárSzorzat (mező00 a) (mező01 a) (mező02 a) (mező03 a) (mező01 b) (mező11 b) (mező21 b) (mező31 b))
+  (sorOszlopSkalárSzorzat (mező00 a) (mező01 a) (mező02 a) (mező03 a) (mező02 b) (mező12 b) (mező22 b) (mező32 b))
+  (sorOszlopSkalárSzorzat (mező00 a) (mező01 a) (mező02 a) (mező03 a) (mező03 b) (mező13 b) (mező23 b) (mező33 b))
+  (sorOszlopSkalárSzorzat (mező10 a) (mező11 a) (mező12 a) (mező13 a) (mező00 b) (mező10 b) (mező20 b) (mező30 b))
+  (sorOszlopSkalárSzorzat (mező10 a) (mező11 a) (mező12 a) (mező13 a) (mező01 b) (mező11 b) (mező21 b) (mező31 b))
+  (sorOszlopSkalárSzorzat (mező10 a) (mező11 a) (mező12 a) (mező13 a) (mező02 b) (mező12 b) (mező22 b) (mező32 b))
+  (sorOszlopSkalárSzorzat (mező10 a) (mező11 a) (mező12 a) (mező13 a) (mező03 b) (mező13 b) (mező23 b) (mező33 b))
+  (sorOszlopSkalárSzorzat (mező20 a) (mező21 a) (mező22 a) (mező23 a) (mező00 b) (mező10 b) (mező20 b) (mező30 b))
+  (sorOszlopSkalárSzorzat (mező20 a) (mező21 a) (mező22 a) (mező23 a) (mező01 b) (mező11 b) (mező21 b) (mező31 b))
+  (sorOszlopSkalárSzorzat (mező20 a) (mező21 a) (mező22 a) (mező23 a) (mező02 b) (mező12 b) (mező22 b) (mező32 b))
+  (sorOszlopSkalárSzorzat (mező20 a) (mező21 a) (mező22 a) (mező23 a) (mező03 b) (mező13 b) (mező23 b) (mező33 b))
+  (sorOszlopSkalárSzorzat (mező30 a) (mező31 a) (mező32 a) (mező33 a) (mező00 b) (mező10 b) (mező20 b) (mező30 b))
+  (sorOszlopSkalárSzorzat (mező30 a) (mező31 a) (mező32 a) (mező33 a) (mező01 b) (mező11 b) (mező21 b) (mező31 b))
+  (sorOszlopSkalárSzorzat (mező30 a) (mező31 a) (mező32 a) (mező33 a) (mező02 b) (mező12 b) (mező22 b) (mező32 b))
+  (sorOszlopSkalárSzorzat (mező30 a) (mező31 a) (mező32 a) (mező33 a) (mező03 b) (mező13 b) (mező23 b) (mező33 b))
 
 public export
-matricaOsszead : NegyNegyMatrica -> NegyNegyMatrica -> NegyNegyMatrica
-matricaOsszead a b = NegyNegyMatricaKonstruktor
-  (komplexOsszead (mezo00 a) (mezo00 b)) (komplexOsszead (mezo01 a) (mezo01 b))
-  (komplexOsszead (mezo02 a) (mezo02 b)) (komplexOsszead (mezo03 a) (mezo03 b))
-  (komplexOsszead (mezo10 a) (mezo10 b)) (komplexOsszead (mezo11 a) (mezo11 b))
-  (komplexOsszead (mezo12 a) (mezo12 b)) (komplexOsszead (mezo13 a) (mezo13 b))
-  (komplexOsszead (mezo20 a) (mezo20 b)) (komplexOsszead (mezo21 a) (mezo21 b))
-  (komplexOsszead (mezo22 a) (mezo22 b)) (komplexOsszead (mezo23 a) (mezo23 b))
-  (komplexOsszead (mezo30 a) (mezo30 b)) (komplexOsszead (mezo31 a) (mezo31 b))
-  (komplexOsszead (mezo32 a) (mezo32 b)) (komplexOsszead (mezo33 a) (mezo33 b))
+mátrixÖsszead : NégyNégyMátrix -> NégyNégyMátrix -> NégyNégyMátrix
+mátrixÖsszead a b = NégyNégyMátrixKonstruktor
+  (komplexÖsszead (mező00 a) (mező00 b)) (komplexÖsszead (mező01 a) (mező01 b))
+  (komplexÖsszead (mező02 a) (mező02 b)) (komplexÖsszead (mező03 a) (mező03 b))
+  (komplexÖsszead (mező10 a) (mező10 b)) (komplexÖsszead (mező11 a) (mező11 b))
+  (komplexÖsszead (mező12 a) (mező12 b)) (komplexÖsszead (mező13 a) (mező13 b))
+  (komplexÖsszead (mező20 a) (mező20 b)) (komplexÖsszead (mező21 a) (mező21 b))
+  (komplexÖsszead (mező22 a) (mező22 b)) (komplexÖsszead (mező23 a) (mező23 b))
+  (komplexÖsszead (mező30 a) (mező30 b)) (komplexÖsszead (mező31 a) (mező31 b))
+  (komplexÖsszead (mező32 a) (mező32 b)) (komplexÖsszead (mező33 a) (mező33 b))
 
 public export
-skalarSzorzasMatrica : KomplexSzam -> NegyNegyMatrica -> NegyNegyMatrica
-skalarSzorzasMatrica c m = NegyNegyMatricaKonstruktor
-  (komplexSzoroz c (mezo00 m)) (komplexSzoroz c (mezo01 m))
-  (komplexSzoroz c (mezo02 m)) (komplexSzoroz c (mezo03 m))
-  (komplexSzoroz c (mezo10 m)) (komplexSzoroz c (mezo11 m))
-  (komplexSzoroz c (mezo12 m)) (komplexSzoroz c (mezo13 m))
-  (komplexSzoroz c (mezo20 m)) (komplexSzoroz c (mezo21 m))
-  (komplexSzoroz c (mezo22 m)) (komplexSzoroz c (mezo23 m))
-  (komplexSzoroz c (mezo30 m)) (komplexSzoroz c (mezo31 m))
-  (komplexSzoroz c (mezo32 m)) (komplexSzoroz c (mezo33 m))
+skalárSzorzásMátrix : KomplexSzam -> NégyNégyMátrix -> NégyNégyMátrix
+skalárSzorzásMátrix c m = NégyNégyMátrixKonstruktor
+  (komplexSzoroz c (mező00 m)) (komplexSzoroz c (mező01 m))
+  (komplexSzoroz c (mező02 m)) (komplexSzoroz c (mező03 m))
+  (komplexSzoroz c (mező10 m)) (komplexSzoroz c (mező11 m))
+  (komplexSzoroz c (mező12 m)) (komplexSzoroz c (mező13 m))
+  (komplexSzoroz c (mező20 m)) (komplexSzoroz c (mező21 m))
+  (komplexSzoroz c (mező22 m)) (komplexSzoroz c (mező23 m))
+  (komplexSzoroz c (mező30 m)) (komplexSzoroz c (mező31 m))
+  (komplexSzoroz c (mező32 m)) (komplexSzoroz c (mező33 m))
 
 -- ─── 3. A HELYES WEYL-BÁZISÚ GAMMÁK ───────────────────────
 -- γ⁰ = [[0,I],[I,0]] — off-diagonális: ψ_L(中文) ↔ ψ_R(magyar) keverés
 public export
-GammaNullaWeyl : NegyNegyMatrica
-GammaNullaWeyl = NegyNegyMatricaKonstruktor
+GammaNullaWeyl : NégyNégyMátrix
+GammaNullaWeyl = NégyNégyMátrixKonstruktor
   NullaKomplex NullaKomplex  EgyKomplex  NullaKomplex
   NullaKomplex NullaKomplex  NullaKomplex EgyKomplex
   EgyKomplex   NullaKomplex  NullaKomplex NullaKomplex
@@ -182,8 +184,8 @@ GammaNullaWeyl = NegyNegyMatricaKonstruktor
 
 -- γ¹ = [[0,σₓ],[−σₓ,0]] — 空间/x irány
 public export
-GammaEgyWeyl : NegyNegyMatrica
-GammaEgyWeyl = NegyNegyMatricaKonstruktor
+GammaEgyWeyl : NégyNégyMátrix
+GammaEgyWeyl = NégyNégyMátrixKonstruktor
   NullaKomplex NullaKomplex  NullaKomplex EgyKomplex
   NullaKomplex NullaKomplex  EgyKomplex   NullaKomplex
   NullaKomplex MinuszEgyKomplex NullaKomplex NullaKomplex
@@ -191,17 +193,17 @@ GammaEgyWeyl = NegyNegyMatricaKonstruktor
 
 -- γ² = [[0,σ_y],[−σ_y,0]] — 空间/y irány (σ_y = [[0,−i],[i,0]])
 public export
-GammaKettoWeyl : NegyNegyMatrica
-GammaKettoWeyl = NegyNegyMatricaKonstruktor
-  NullaKomplex NullaKomplex NullaKomplex           MinuszImaginerEgyKomplex
-  NullaKomplex NullaKomplex ImaginerEgyKomplex     NullaKomplex
-  NullaKomplex ImaginerEgyKomplex NullaKomplex     NullaKomplex
-  MinuszImaginerEgyKomplex NullaKomplex NullaKomplex NullaKomplex
+GammaKettőWeyl : NégyNégyMátrix
+GammaKettőWeyl = NégyNégyMátrixKonstruktor
+  NullaKomplex NullaKomplex NullaKomplex           MinuszImagináriusEgyKomplex
+  NullaKomplex NullaKomplex ImagináriusEgyKomplex     NullaKomplex
+  NullaKomplex ImagináriusEgyKomplex NullaKomplex     NullaKomplex
+  MinuszImagináriusEgyKomplex NullaKomplex NullaKomplex NullaKomplex
 
 -- γ³ = [[0,σ_z],[−σ_z,0]] — 空间/z irány (σ_z = [[1,0],[0,−1]])
 public export
-GammaHaromWeyl : NegyNegyMatrica
-GammaHaromWeyl = NegyNegyMatricaKonstruktor
+GammaHáromWeyl : NégyNégyMátrix
+GammaHáromWeyl = NégyNégyMátrixKonstruktor
   NullaKomplex NullaKomplex  EgyKomplex   NullaKomplex
   NullaKomplex NullaKomplex  NullaKomplex MinuszEgyKomplex
   MinuszEgyKomplex NullaKomplex NullaKomplex NullaKomplex
@@ -209,16 +211,16 @@ GammaHaromWeyl = NegyNegyMatricaKonstruktor
 
 -- γ⁵ = i·γ⁰γ¹γ²γ³ — a chirális szeletelő: diag(−1,−1,+1,+1)
 public export
-GammaOtWeyl : NegyNegyMatrica
-GammaOtWeyl = skalarSzorzasMatrica ImaginerEgyKomplex
-  (matricaSzoroz GammaNullaWeyl
-    (matricaSzoroz GammaEgyWeyl
-      (matricaSzoroz GammaKettoWeyl GammaHaromWeyl)))
+GammaÖtWeyl : NégyNégyMátrix
+GammaÖtWeyl = skalárSzorzásMátrix ImagináriusEgyKomplex
+  (mátrixSzoroz GammaNullaWeyl
+    (mátrixSzoroz GammaEgyWeyl
+      (mátrixSzoroz GammaKettőWeyl GammaHáromWeyl)))
 
 -- ─── 4. A SZERVERI HIBÁS γ⁰ (kron(I₂,σₓ) — blokk-diagonális!) ──
 public export
-GammaNullaSzerveriHibas : NegyNegyMatrica
-GammaNullaSzerveriHibas = NegyNegyMatricaKonstruktor
+GammaNullaSzerveriHibás : NégyNégyMátrix
+GammaNullaSzerveriHibás = NégyNégyMátrixKonstruktor
   NullaKomplex EgyKomplex   NullaKomplex NullaKomplex
   EgyKomplex   NullaKomplex NullaKomplex NullaKomplex
   NullaKomplex NullaKomplex NullaKomplex EgyKomplex
@@ -228,72 +230,72 @@ GammaNullaSzerveriHibas = NegyNegyMatricaKonstruktor
 
 -- Clifford-relációk: {γᵘ,γᵛ} = 2ηᵘᵛ; a nullára (η off-diagonális):
 -- Kimenet: Refl ({γ⁰,γ¹} = 0)
-BizAntikommutatorNullaEgy :
-  matricaOsszead (matricaSzoroz GammaNullaWeyl GammaEgyWeyl)
-                 (matricaSzoroz GammaEgyWeyl GammaNullaWeyl) = NullaMatrica
-BizAntikommutatorNullaEgy = Refl
+BizAntikommutátorNullaEgy :
+  mátrixÖsszead (mátrixSzoroz GammaNullaWeyl GammaEgyWeyl)
+                 (mátrixSzoroz GammaEgyWeyl GammaNullaWeyl) = NullaMátrix
+BizAntikommutátorNullaEgy = Refl
 
 -- Kimenet: Refl ({γ⁰,γ²} = 0)
-BizAntikommutatorNullaKetto :
-  matricaOsszead (matricaSzoroz GammaNullaWeyl GammaKettoWeyl)
-                 (matricaSzoroz GammaKettoWeyl GammaNullaWeyl) = NullaMatrica
-BizAntikommutatorNullaKetto = Refl
+BizAntikommutátorNullaKettő :
+  mátrixÖsszead (mátrixSzoroz GammaNullaWeyl GammaKettőWeyl)
+                 (mátrixSzoroz GammaKettőWeyl GammaNullaWeyl) = NullaMátrix
+BizAntikommutátorNullaKettő = Refl
 
 -- Kimenet: Refl ({γ⁰,γ³} = 0)
-BizAntikommutatorNullaHarom :
-  matricaOsszead (matricaSzoroz GammaNullaWeyl GammaHaromWeyl)
-                 (matricaSzoroz GammaHaromWeyl GammaNullaWeyl) = NullaMatrica
-BizAntikommutatorNullaHarom = Refl
+BizAntikommutátorNullaHárom :
+  mátrixÖsszead (mátrixSzoroz GammaNullaWeyl GammaHáromWeyl)
+                 (mátrixSzoroz GammaHáromWeyl GammaNullaWeyl) = NullaMátrix
+BizAntikommutátorNullaHárom = Refl
 
 -- Kimenet: Refl ({γ¹,γ²} = 0)
-BizAntikommutatorEgyKetto :
-  matricaOsszead (matricaSzoroz GammaEgyWeyl GammaKettoWeyl)
-                 (matricaSzoroz GammaKettoWeyl GammaEgyWeyl) = NullaMatrica
-BizAntikommutatorEgyKetto = Refl
+BizAntikommutátorEgyKettő :
+  mátrixÖsszead (mátrixSzoroz GammaEgyWeyl GammaKettőWeyl)
+                 (mátrixSzoroz GammaKettőWeyl GammaEgyWeyl) = NullaMátrix
+BizAntikommutátorEgyKettő = Refl
 
 -- Kimenet: Refl ({γ¹,γ³} = 0)
-BizAntikommutatorEgyHarom :
-  matricaOsszead (matricaSzoroz GammaEgyWeyl GammaHaromWeyl)
-                 (matricaSzoroz GammaHaromWeyl GammaEgyWeyl) = NullaMatrica
-BizAntikommutatorEgyHarom = Refl
+BizAntikommutátorEgyHárom :
+  mátrixÖsszead (mátrixSzoroz GammaEgyWeyl GammaHáromWeyl)
+                 (mátrixSzoroz GammaHáromWeyl GammaEgyWeyl) = NullaMátrix
+BizAntikommutátorEgyHárom = Refl
 
 -- Kimenet: Refl ({γ²,γ³} = 0)
-BizAntikommutatorKettoHarom :
-  matricaOsszead (matricaSzoroz GammaKettoWeyl GammaHaromWeyl)
-                 (matricaSzoroz GammaHaromWeyl GammaKettoWeyl) = NullaMatrica
-BizAntikommutatorKettoHarom = Refl
+BizAntikommutátorKettőHárom :
+  mátrixÖsszead (mátrixSzoroz GammaKettőWeyl GammaHáromWeyl)
+                 (mátrixSzoroz GammaHáromWeyl GammaKettőWeyl) = NullaMátrix
+BizAntikommutátorKettőHárom = Refl
 
 -- γ⁵ = diag(−1,−1,+1,+1): a TISZTA chirális szektorok
 -- Kimenet: Refl (γ⁵.mező00 = −1 — a 中文/ψ_L szebbt)
-BizGammaOtBalSzektoreMinuszEgy : mezo00 GammaOtWeyl = MinuszEgyKomplex
-BizGammaOtBalSzektoreMinuszEgy = Refl
+BizGammaÖtBalSzektorMinuszEgy : mező00 GammaÖtWeyl = MinuszEgyKomplex
+BizGammaÖtBalSzektorMinuszEgy = Refl
 
 -- Kimenet: Refl (γ⁵.mező33 = +1 — a magyar/ψ_R szebbt)
-BizGammaOtJobbSzektorePluszEgy : mezo33 GammaOtWeyl = EgyKomplex
-BizGammaOtJobbSzektorePluszEgy = Refl
+BizGammaÖtJobbSzektorPluszEgy : mező33 GammaÖtWeyl = EgyKomplex
+BizGammaÖtJobbSzektorPluszEgy = Refl
 
 -- γ⁵² = egység (involúció)
 -- Kimenet: Refl (γ⁵·γ⁵ = I)
-BizGammaOtNegyzetEgyseg :
-  matricaSzoroz GammaOtWeyl GammaOtWeyl = EgysegMatrica
-BizGammaOtNegyzetEgyseg = Refl
+BizGammaÖtNégyzetEgység :
+  mátrixSzoroz GammaÖtWeyl GammaÖtWeyl = EgységMátrix
+BizGammaÖtNégyzetEgység = Refl
 
 -- ─── 6. A SZERVERI BOGÁR BIZONYÍTÁSA ──────────────────────
--- A keverés belépője: a mezo20 (alsó-bal blokk = ψ_R → ψ_L irány).
+-- A keverés belépője: a mező20 (alsó-bal blokk = ψ_R → ψ_L irány).
 
 -- Kimenet: Refl (γ⁰(Weyl).mező20 = +1 — KEVER, a fordítás LEHETSÉGES)
-BizWeylGammaKeveri : mezo20 GammaNullaWeyl = EgyKomplex
+BizWeylGammaKeveri : mező20 GammaNullaWeyl = EgyKomplex
 BizWeylGammaKeveri = Refl
 
 -- Kimenet: Refl (γ⁰(szerveri).mező20 = 0 — SOHA nem kever: TÖRÖTT)
-BizSzerveriGammaNemKeveri : mezo20 GammaNullaSzerveriHibas = NullaKomplex
+BizSzerveriGammaNemKeveri : mező20 GammaNullaSzerveriHibás = NullaKomplex
 BizSzerveriGammaNemKeveri = Refl
 
 -- ─── 7. FŐ — vékony IO-burkoló ────────────────────────────
 
 public export
-foJelentes : String
-foJelentes =
+főJelentés : String
+főJelentés =
   "═══ DIRAC GAMMA-MÁTRIXOK (Weyl-bázis, Integer-pontosan) ═══\n"
   ++ "ψ = (ψ_L = 中文/tér, ψ_R = magyar/idő) — egyidejű reprezentáció\n"
   ++ "Clifford: mind a 6 antikommutátor = 0                [6× Refl ✓]\n"
@@ -304,11 +306,11 @@ foJelentes =
   ++ "Numerikus párja: horgony/javaslat/dirac_gamma_ellenorzes.py\n"
 
 main : IO ()
-main = putStrLn foJelentes
+main = putStrLn főJelentés
 
 
 -- ─── REGISZTRÁCIÓ (ModulRegisztracio) ─────────────────────
 public export
-DiracGammaLeiras : ModulLeirasT
-DiracGammaLeiras = ModulLeirasKonstruktor
+DiracGammaLeírás : ModulLeirasT
+DiracGammaLeírás = ModulLeirasKonstruktor
   "DiracGammaMatricak.idr" "Weyl γ⁰ keveri ψ_L↔ψ_R; szerveri sosem; γ⁵=diag [Refl]" "a kétnyelvű gondolkodás mechanizmusa: γ⁰ (idő/magyar) forgat" "6 teszt + 11 Refl"

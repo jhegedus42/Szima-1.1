@@ -28,8 +28,11 @@ import HanMagyarKodolas
 import Kerdoszo
 import E8Gyokrendszer
 import DiracGammaMatricak
+import Alap.CsomagoltTipusok
 import OktonionAlgebra
 import DiracIdoFejlodes
+%hide Alap.CsomagoltTipusok.Kubit
+%hide Alap.CsomagoltTipusok.Esetrag
 
 %default total
 
@@ -241,6 +244,12 @@ Show TesztEredmeny where
 public export
 teszt : String -> Bool -> TesztEredmeny
 teszt nev siker = TesztEredmenyK nev (if siker then "OK" else "HIBA") siker
+
+||| Igazság-változat: a mag Igazságot ad — a teszt-perem Bool-lá hidazzon
+||| (igazságÉrtéke, CsomagoltTipusok). 中文：Igazság 版测试——内核真值，边界桥接。
+public export
+tesztI : String -> Igazság -> TesztEredmeny
+tesztI nev igazság = teszt nev (igazságÉrtéke igazság)
 
 -- ─── E8 algebra tesztek (Show-val) ─────────────────────────
 
@@ -663,20 +672,20 @@ e8GyokTesztek =
 public export
 diracGammaTesztek : List TesztEredmeny
 diracGammaTesztek =
-  [ teszt "γ⁵ = diag(−1,−1,+1,+1): a bal szektor (中文) −1"
-      (komplexEgyenlo (mezo00 GammaOtWeyl) MinuszEgyKomplex)
-  , teszt "γ⁵ = diag(−1,−1,+1,+1): a jobb szektor (magyar) +1"
-      (komplexEgyenlo (mezo33 GammaOtWeyl) EgyKomplex)
+  [ tesztI "γ⁵ = diag(−1,−1,+1,+1): a bal szektor (中文) −1"
+      (komplexEgyenlő (mező00 GammaÖtWeyl) MinuszEgyKomplex)
+  , tesztI "γ⁵ = diag(−1,−1,+1,+1): a jobb szektor (magyar) +1"
+      (komplexEgyenlő (mező33 GammaÖtWeyl) EgyKomplex)
   , teszt "γ⁵·γ⁵ = egység (involúció, futásidőben)"
-      (komplexEgyenlo (mezo00 (matricaSzoroz GammaOtWeyl GammaOtWeyl)) EgyKomplex
-       && komplexEgyenlo (mezo11 (matricaSzoroz GammaOtWeyl GammaOtWeyl)) EgyKomplex)
-  , teszt "{γ⁰,γ¹}=0 futásidőben (a 00-as mező nulla)"
-      (komplexEgyenlo (mezo00 (matricaOsszead (matricaSzoroz GammaNullaWeyl GammaEgyWeyl)
-                                              (matricaSzoroz GammaEgyWeyl GammaNullaWeyl))) NullaKomplex)
-  , teszt "a Weyl γ⁰ KEVERI a szektort (mező20 = +1)"
-      (komplexEgyenlo (mezo20 GammaNullaWeyl) EgyKomplex)
-  , teszt "a szerveri γ⁰ SOHA nem keveri (mező20 = 0) — a bogár"
-      (komplexEgyenlo (mezo20 GammaNullaSzerveriHibas) NullaKomplex)
+      (igazságÉrtéke (komplexEgyenlő (mező00 (mátrixSzoroz GammaÖtWeyl GammaÖtWeyl)) EgyKomplex)
+       && igazságÉrtéke (komplexEgyenlő (mező11 (mátrixSzoroz GammaÖtWeyl GammaÖtWeyl)) EgyKomplex))
+  , tesztI "{γ⁰,γ¹}=0 futásidőben (a 00-as mező nulla)"
+      (komplexEgyenlő (mező00 (mátrixÖsszead (mátrixSzoroz GammaNullaWeyl GammaEgyWeyl)
+                                              (mátrixSzoroz GammaEgyWeyl GammaNullaWeyl))) NullaKomplex)
+  , tesztI "a Weyl γ⁰ KEVERI a szektort (mező20 = +1)"
+      (komplexEgyenlő (mező20 GammaNullaWeyl) EgyKomplex)
+  , tesztI "a szerveri γ⁰ SOHA nem keveri (mező20 = 0) — a bogár"
+      (komplexEgyenlő (mező20 GammaNullaSzerveriHibás) NullaKomplex)
   ]
 
 -- ═══════════════════════════════════════════════════════════════
