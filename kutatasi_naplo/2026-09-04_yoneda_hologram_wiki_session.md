@@ -152,3 +152,30 @@ OLVASD.md régi „egyesek nem fordulnak" megjegyzését.
   próbát mutatta → gyanú (rögzített útvonal?) → a teljes kimenet és a
   forrás szerint a main mindkét próbát futtatja sorban — az ágens ártatlan,
   a kivágás volt hibás. Tanulság: soha nem tail-lel mérünk.
+
+## Kiegészítés (2026-09-05, este) — három Idris-kódoló GAN-auditja, futás-hitelesítéssel
+
+- A felhasználó kérése (szó szerint): «ok, akkor egyszerra inditsunk 3
+  idrisz kodolot akik, GAN-nal ellenoriznek minden file-t, es mindent ami
+  szembejon, azt 3 nyelvre atirjak» — három ágens indult (A: Alap+nyelv,
+  B: Fizika, C: Nyelvi-AI+infra), mind valós idris2-futásokkal, friss
+  build-dirrel.
+- EREDMÉNYEK: A: 14/16 TISZTA (hibák: KeresoTabla csonka string a 302.
+  sorban, ZeneKategoria nem záró Refl) + ÚJ: DependensSzamT két believe_me
+  és hat explicit tautológia. B: a hét csúcs-modul MIND fordul; E8Kartan
+  3/3 Killed: 9 (gyökér: az E8Gyokok v1 kernel-robbanása; a négy saját hiba
+  szövegben igazolva); FazisAlgebra_v2 nem fordul (hiányzó modul, és az
+  EXIT=0 hazudott — CSAPDA #23 él); osveny_index/FazisAlgebra TISZTÁZVA
+  (fordul); a négy tartalmi tényhiba MIND igazolva (sedenion nem divíziós
+  algebra; 16 kevesebb mint 22 eset; SteaneHierarchia önellentmondás;
+  ZX=omegaXZ nem bizonyított). C: a 164/164 + 50 Refl ÚJRAMÉRVE IGAZ
+  (1,26 mp); 3/7 tiszta (Kereso, MagyarOntologia, ZeneiRetegek), négy hiba
+  pontos okokkal; eulerEgyenlet üres, nem hamis; AI-lánc 100 százalék angol
+  (EpisodicMemory: %default total hiányzik).
+- KERESZT-MEGERŐSÍTÉS: a KeresoTabla-csonka és a ZeneKategoria-Refl KÉT
+  ágens független lelete — a 7-1-3 többségi szavazás a gyakorlatban.
+- Jelentés-fájlok (mindhárom ágens csak ÚJ fájlt írt): docs/KodoloA_
+  AlapNyelv_GAN_2026-09-05.md, docs/KodoloB_Fizika_GAN_2026-09-05.md,
+  docs/KodoloC_NyelviAiInfra_GAN_2026-09-05.md; összesítés: docs/
+  AuditHaromAgens_Osszefoglalo_2026-09-05.md (javítási sor az Irányító
+  BFS-lépéseire bontva).
