@@ -99,4 +99,24 @@ OLVASD.md régi „egyesek nem fordulnak" megjegyzését.
 2. Könyv-hullám 1: Yoneda → Awodey (alügynök)
 3. `KonstansHitelesites.idr` + `MindenKonstans.idr` --check (Rendterv 4a)
 
+## Kiegészítés — «az is kell meg, hogy a Szimat letoltod es osszehasonlitod a Szima-1.1-el...»
+
+- A Szima letöltve az engedélyezett külső munkakönyvtárba (§1a):
+  `git clone git@github.com:jhegedus42/Szima.git` → 1375 fájl, 11 branch,
+  master `b763426`, **utolsó commit MAJ 08:57** (PR #3: a copilot/cursor/
+  probe/szerver_ox branchek uniója a masterbe).
+- **NINCS közös ős** — a Szima-1.1 friss `git init`, nem fork.
+- Fa-diff (821 fájl): **518 csak Szimában** (source/ 445 követve!, 
+  `osveny_index/FuggetlenLevezetes/` saját ipkg 10 fájl,
+  `szima_ter/modul/E8Kartan.idr` + `ProbaIdo.idr`, literatura-index,
+  Vercel/Pages-deploy), **273 csak Szima-1.1-ben** (kutatasi_naplo 84,
+  szima_ter 47, osveny_index 47, docs 20 — a Sept 1+ élő munka),
+  **30 módosult** (mindben a Szima-1.1 frissebb: pl. `komplexEgyenlo`
+  a Szimában vs `komplexEgyenlő` a Szima-1.1-ben; ipkg 56 vs 66 modul).
+- **Egyedi-kockázat:** a `FuggetlenLevezetes/`, `E8Kartan.idr`,
+  `ProbaIdo.idr`, `docs/literatura.html` a helyi fában NEM léteznek —
+  csak a GitHubon lévő Szimában; javaslat a jelentésben a átmásolásukra
+  (döntés a felhasználóé).
+- Teljes jelentés: `docs/Szima_letoltes_osszehasonlitas_2026-09-04.md`.
+
 ★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★
