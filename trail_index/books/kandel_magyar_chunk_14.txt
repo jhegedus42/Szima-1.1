@@ -1,0 +1,102 @@
+Kandel — Az Idegtudomány Alapelvei (6. kiadás) — 61. fejezet: Hangulati és szorongásos zavarok
+Magyar fordítás (az eredeti angol szövegből). Az angol szakterminusok zárójelben,
+kiejtésszerű magyarázattal. Rövidítés nem használatos.
+A fordítás a fejezet elbeszélő (prozaikus) részének első jelentős szakaszát
+(folytatásként az előző oldalról) tartalmazza, és jelzi, hol szakad meg.
+
+================================================================================
+
+[Bevezető: az antidepresszáns szerek és az idegrendszeri célpontjaik]
+
+A szelektív szerotonin-visszavétel-gátlók (selective serotonin reuptake inhibitors,
+azaz SSRI típusú szerek — a szerotonin ingerületátvivő anyag újrafelvételét
+gátló vegyületek), mint a fluoxetin, a szerteralin és a paroxetin, amelyeket az
+1980-as években engedélyeztek először, nem hatékonyabbak a régebbi triciklikus
+(azaz háromszéngyűrűs szerkezetű) antidepresszánsoknál és a monoamin-oxidáz
+(monoamine oxidase, röviden MAO — az ingerületátvivő anyagokat lebontó enzim)
+gátlóinál, de széles körben használatosak, mivel enyhébb mellékhatásaik vannak,
+és túladagolás esetén sokkal biztonságosabbak. Ahogy a nevük is jelzi, szelektíven
+gátolják a SERT (szerotonin-transzporter — a szerotonint a szinaptikus résből
+visszaszállító fehérje) működését. Hatásosak a major depressziós zavarban (a
+súlyos, klinikailag jelentős levert hangulat zavarában) és számos szorongásos
+betegségben. Nagy adagban a szelektív szerotonin-visszavétel-gátlók a kényszerbetegség
+(obsesszív-kompulzív zavar) tüneteire is hatékonyak. Szelektív noradrenalin- és
+szerotonin-noradrenalin-visszavétel-gátlókat is kifejlesztettek; ezek mellékhatás-profilja
+hasonló a szelektív szerotonin-visszavétel-gátlókéhoz, de hasznosak azoknál a betegeknél,
+akik nem alkalmazkodnak a puszta SERT-gátláshoz.
+
+Annak ellenére, hogy ismerjük az antidepresszáns szerek hatását közvetítő kezdeti
+molekuláris célpontokat — a monoamin-oxidázt, illetve a monoamin-szállítófehérjéket
+—, az a végső molekuláris mechanizmus, amellyel e szerek enyhítik a depressziót,
+ismeretlen marad. A gyógyszerek terápiás hatásának megértését egy jelentős akadály
+nehezíti: a hatás késleltetettsége. Bár az antidepresszáns szerek az első adaggal
+kötődnek a monoamin-oxidázhoz, a noradrenalin-visszavétel-transzporterhez (NET) vagy
+a SERT-hez, és gátolják azokat, a depresszív tünetek felemelkedése (a levert hangulat
+oldódása) általában több heti kezelést igényel.
+
+Több feltevés is született a késleltetés magyarázatára. Az egyik szerint az újonnan
+szintetizált fehérjék lassú felhalmozódása megváltoztatja az idegsejtek válaszkészségét
+oly módon, amely kezeli a depressziót. Egy másik szerint a szerotonin vagy a
+noradrenalin szinaptikus átvitelének (a szinapszisban, azaz az idegsejtek közti
+kapcsolatban történő továbbításának) gyors emelkedése gyorsan növeli a plaszticitást
+(a változékonyságot, azaz a kapcsolatok átalakíthatóságát) a különböző
+érzelem-feldolgozó áramkörökben, és a terápiás haszon késése azt az időt tükrözi,
+amelyre az új tapasztalatoknak szükségük van a szinaptikus súlyok (a kapcsolatok
+erejét meghatározó értékek) megváltoztatásához. Egy harmadik feltevés szerint az
+antidepresszáns hatékonyságát részben a hipokampális (az emlékezésért felelős
+agyterületen történő) neurogenezis (új idegsejtek képződése) fokozódása közvetíti.
+A lehetséges terápiás mechanizmusok leszűkítése nehéz, mert jó állatmodell híján nem
+tudható, a sok megfigyelhető molekuláris, sejtszintű és szinaptikus változás közül
+melyik okozza magát a depressziót, vagy melyik húzódik meg a hatékony antidepresszánsok
+terápiás hatásának hátterében.
+
+================================================================================
+
+[Ketamin: gyors hatású szer a major depresszió kezelésére]
+
+A ketamin, amely blokkolja az N-metil-D-aszpartát (NMDA) glutamát-receptort (az
+egyik fő gerincvelői ingerületátvivő anyag, a glutamát egyik receptorát), jelenleg
+a disszociatív élmények és az érzéstelenítés előidézésére használatos a gyermekkori
+műtéti altatásban. Vizsgálták randomizált klinikai kísérletekben major depressziós
+betegeknél is. A kísérletekben a ketamint intravénás infúzióval (vénába juttatva)
+adták be; két órán belül antidepresszáns hatást váltott ki, ami jelentős előny a
+meglévő antidepresszáns szerekkel szemben, amelyeknek általában hetekbe telik, míg
+hasznuk mutatkozik. A ketamin terápiás hatása mintegy hét napig tart, ezt követően a
+második és harmadik adag is hatékony maradhat. Ha az eredmények széles körben
+megismétlődnek, a ketamin lenne az első olyan antidepresszáns szer, amely elsődleges
+hatását nem a monoaminerg (a monoamin típusú ingerületátvivő anyagokon alapuló)
+ingerületátvitelre fejti ki. A ketamin depressziót enyhítő mechanizmusainak
+azonosítására irányuló kutatások — akárcsak a régebbi antidepresszánsok esetében —
+kihívást jelentenek, részben a jó depresszió-állatmodell hiánya miatt. Nagyobb
+adagban a ketamint rekreációs szerként élvezik a eufória (a túlzott jó közérzet),
+a disszociáció, a deperszonalizáció (az önmagától való elszakadás élménye) és a
+hallucinációk előidézésére. A ketamint laboratóriumi körülmények között is
+használták, hogy az emberi alanyokban a skizofréniára emlékeztető kognitív
+tüneteket váltsanak ki. Bár a gyorsan ható antidepresszáns előnyei jelentősek
+lennének — például az akutan öngyilkos személyek kezelésében —, a ketamin
+nemkívánatos pszichotróp (az elmére ható) mellékhatásai problémássá teszik
+alkalmazását. Olyan alternatív NMDA-receptor-blokkolók kifejlesztése folyik,
+amelyekben az antidepresszáns hatás elválasztható a pszichotróp mellékhatásoktól.
+
+================================================================================
+
+[A pszichoterápia hatékony a major depressziós és szorongásos zavarok kezelésében]
+
+A rövid távú, a tünetekre összpontosító pszichoterápiákat a depresszióra és a
+szorongásra fejlesztették ki, és klinikai kísérletekben tesztelték. A legjobban
+tanulmányozott pszichoterápiák a kognitív viselkedésterápiák (cognitive
+behavioral therapies — a gondolkodás és a viselkedés együttes módosítását célzó
+módszerek). A major depresszió kezelésére használt kognitív terápiák a túlzottan
+negatív esemény- és emberi kapcsolat-értelmezések azonosítására és helyesbítésére
+irányulnak. Például sok depressziós ember erős figyelmi torzítást (attentional
+bias) mutat a negatív információk felé: automatikusan negatívként értelmezi a
+semleges eseményeket, és mások viselkedésébe a meg nem értés (eltávolítás) jeleit
+olvassa be. Az ilyen automatikus negatív gondolkodás, amely elindíthatja vagy
+fenntarthatja a levert hangulatot, kognitív pszichoterápiával jelentősen javítható.
+
+[A fordítás ezen a ponton szakad meg — a fejezet további, még le nem fordított
+elbeszélő részei: a viselkedéses terápiák (expozíciós terápia, kioltási tanulás),
+az elektrokonvulzív terápia, az újabb neuromodulációs eljárások (TMS, DBS),
+a lítium és a hangulatstabilizáló szerek, valamint a másodgenerációs antipszichotikumok
+tárgyalása a chunk 14 eredeti szövegének 56–424. soráig. A 521. sortól kezdve a
+fájl már nem a 61. fejezet szövege, hanem a kötet név- és tárgymutatója.]

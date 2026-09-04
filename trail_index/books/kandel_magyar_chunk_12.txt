@@ -1,0 +1,102 @@
+# Kandel — Principles of Neural Science (6th ed.) — 51. fejezet: Az idegrendszer nemi különbségeinek kialakulása
+# Magyar fordítás / Hungarian translation of the narrative prose.
+# Elsődleges nyelv: MAGYAR. A kulcsfontosságú műszaki kifejezések után
+# angol szóhasználat zárójelben (English gloss). Nincsenek rövidítések.
+# A fordítás a fejezet első érdemi szakaszait öleli fel; a megállás helyét lásd alul.
+
+---
+
+## A korai tapasztalat élethosszig tartó hatása (Early Experience Shapes Lifelong Behavior)
+
+Ha születésükkor az anyjuktól egy nevelőanyához (foster mother) kerülnek át, az
+állatok anyai viselkedése és stresszválaszai inkább a nevelőanyjukéhoz, semmint a
+biológiai anyjukéhoz hasonlítanak. Így a csecsemorkori tapasztalat élethosszig tartó
+viselkedésmintázatokhoz vezethet. Mivel ezek a mintázatok az anyai viselkedést
+befolyásolják, hatásuk sok nemzedéken át is fennmaradhat.
+
+Hogyan vezet a rövid és korai tapasztalat ilyen tartós változásokhoz? Az egyik
+mechanizmus a genom kovalens módosítását foglalja magában. A stresszválaszokat a
+glükokortikoidok (glucocorticoids) irányítják, amelyek a hippokampuszban (hippocampus)
+található glükokortikoid-receptorokon (glucocorticoid receptors) hatnak. Az egész élet
+során a taktilis (tactile) ingerlés, beleértve a gondozást (grooming), a
+glükokortikoid-receptor gén transzkripciós (transcriptional) aktivációjához vezet, ami
+végső soron a stresszválaszt kiváltó hipotalamikus (hypothalamic) hormonok
+csökkent felszabadulását eredményezi.
+
+A korai életkori taktilis ingerlés a glükokortikoid-receptor gént egy második módon is
+szabályozza. A glükokortikoid-receptor gén egy kulcsfontosságú helyét a DNS-metiltranszferáz
+(DNA methyltransferase) enzim metilálja (methylated), ami a gén inaktiválódásához vezet.
+Kezdetben a génmetiláció minden kölyökben előfordul, de a magas gondozási szintű
+(high-LG) anyák által neveltekben szelektíven demetilálódik (demethylated). Így a
+magas-LG anyák által neveltekben a felnőttkori tapasztalat hatása felerősödik. Ez az
+epigenetikus módosítás (epigenetic modification) példája: a gének be- vagy kikapcsolása
+meglehetősen tartósan, de nem feltétlenül véglegesen. Ezek az állatok tompított
+(blunted) viselkedéses választ mutatnak a későbbi élet során jelentkező stresszorokra.
+
+Mik a korai tapasztalat és a viselkedési változékonyság biológiai összekötői? Egy
+peptidhormon (peptide hormone), az oxitocin (oxytocin) központi szerepet játszik. A
+klasszikus kutatások azt mutatták, hogy az oxitocin szabályozza az anya tejleadását
+(milk let-down), amely a szopás (suckling) ingerére adott reflexszerű kilökődéssel
+történik. Az oxitocin a hipotalamusz idegsejtjeiben szintetizálódik, és az
+agyalapi mirigy (posterior pituitary) nyúlványain keresztül a nagy vérkeringésbe
+jut. A tejmirigyben (mammary gland) simaizom-összehúzódást vált ki, ami a tej
+kilökődését eredményezi. Az oxitocin felszabadulását az agyalapi mirigyből a szopás
+irányítja, amely szenzoros ingert (sensory stimulus) juttat a gerincvelői
+érzőidegeken (spinal afferent nerves) keresztül a hipotalamuszba.
+
+Az oxitocin és a rokon polipeptidhormon, a vazopresszin (vasopressin) szintén fontos
+szerepet játszik az anyai kötődés (maternal bonding) és más szociális viselkedések
+szabályozásában. Ezekben az esetekben a tapasztalat úgy tűnik, hogy a viselkedést úgy
+módosítja, hogy hat mind az oxitocin felszabadulására, mind az oxitocin-receptor
+szintjére az agy meghatározott területein. Patkányokban és pockokban (voles) a nőstények
+által az utódoknak nyújtott gondozás egyéni különbségei összefüggenek az oxitocin-receptor
+szintjének változásaival az agy bizonyos területein.
+
+## Az ösztrogén felnőttkori, ciklikus újrakonfigurálása (Estrogen Reconfigures Adult Circuits)
+
+Az ösztrogén (estrogen) nemcsak a fejlődés során, hanem felnőttkorban is periodikusan
+képes újrakonfigurálni egy hipotalamikus idegi áramkör (hypothalamic neural circuit)
+preszinaptikus (presynaptic) kapcsolódását, ezzel biztosítva, hogy a nőstény egerek
+csak akkor párzanak, amikor ovulálnak és termékenyek. Ezek a vizsgálatok a női agy
+dinamikus idegi áramköreinek képét festik: a vezetékezési diagramok (wiring diagrams)
+műanyagok és válaszolnak a hormonális változásokra az ösztényciklus (estrous cycle)
+során, ami az emberi menstruációs ciklushoz (menstrual cycle) hasonló. Hasonlóképpen az
+ösztrogén a dendritikus tövis (dendritic spine) plaszticitására is ciklushoz kötött
+hatást gyakorol más agyterületeken, bár ezen esetek viselkedéses következményei
+kevésbé ismertek.
+
+## Egy közös mechanizmuskészlet (A Set of Core Mechanisms)
+
+Az előző szakaszokban leírtuk azokat az idegi áramköröket, amelyek számos nemileg
+dimorf (sexually dimorphic) viselkedést szabályoznak. Felismerhetünk-e valamilyen
+közös témát? A különféle nemileg dimorf idegi áramkörök, vagy vezetékezési diagramok
+elvben nemi különbségeket hozhatnak létre a viselkedésben. Bár kihívást jelent a
+kauzalitás (causality) láncának végigkövetése a genetikai tényezőktől a dimorf
+áramkörökön át a nemre jellemző viselkedésekig, néhány általános lehetőség adódik.
+Az egyik szerint egy idegi áramkör, az érzőbemenettől (sensory input) a motoros
+kimenetig (motor output), egyetlen nemre lehet egyedi. A gyakorlatban ez a lehetőség
+ritkán fordul elő. A legtöbb viselkedés mindkét nemnél közös, és még az olyan
+viselkedések is, mint a táplálkozás, az újszülött n Yakavétele a tarkójánál fogva, vagy
+a harapás (területi összecsapások során hímek között), hasonló állkapocsmozgásokat
+igényelnek. Ezzel a közösséggel összhangban úgy tűnik, hogy a legtöbb nemi dimorfizmus
+a viselkedésben a közös áramkörökön belüli kulcsfontosságú idegsejtpopulációk (key
+neuronal populations) nemi különbségeiből adódik. Ezen populációk aktivitása és
+kapcsolódása hím- vagy nőstény-típusú módon módosítja a viselkedési kimenetet.
+
+---
+
+# MEGÁLLÁS HELYE / WHERE THE TRANSLATION STOPS
+
+A magyar fordítás a 51. fejezet (Chapter 51: Sexual Differentiation of the Nervous
+System) nyitó szakaszait ölelte fel: a korai tapasztalat élethosszig tartó hatását, az
+epigenetikus DNS-metiláció mechanizmusát (high-LG / low-LG anyai gondozás), az oxitocin
+és vazopresszin szociális viselkedést szabályozó szerepét, valamint az ösztrogén
+felnőttkori, ciklikus preszinaptikus újrakonfigurálását és a "közös mechanizmuskészlet"
+bevezető részét (a megosztott áramkörök és a kulcs-neuronpopulációk téziséig).
+A fordítás közvetlenül a "A Set of Core Mechanisms Underlies Many Sexual Dimorphisms
+in the Brain and Spinal Cord" szakasz vége után áll meg, még a "Estrogen can act not
+only during development but also in adults..." bekezdés lezárása előtt (az eredeti szöveg
+kb. a 11–65. sorig). A további szakaszok — a moduláris genetikai irányítás, az
+organizációs/kritikus ablak, a tesztoszteron aromatizációja, az emberi BNST
+dimorfizmusa, a feromon-kutatások és a fejezet záró összefoglalója — nem lettek
+fordítva; ezek fogalmi kivonata megtalálható a kandel_extracted_chunk_12.md fájlban.

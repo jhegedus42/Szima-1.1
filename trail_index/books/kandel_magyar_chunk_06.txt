@@ -1,0 +1,123 @@
+Kandel – 23. fejezet: Köztes szintű vizuális feldolgozás és vizuális primitívek
+(Fordítás a kandel_chunk_06.txt szövegéből. A kulcsfontosságú szakmai
+kifejezések után angol szóhasználat zárójelben. A magyar szövegben
+nincsenek rövidítések. A fordítás a fejezet próza-szövegének első
+jelentős részét öleli fel; a megállási pontot lásd alul.)
+
+=====================================================================
+
+A mozgás irányának meghatározása egy tárgy esetében több jel (cue)
+együttes feloldását igényli. Ezt könnyen be lehet mutatni úgy, hogy az
+egyik rácsmintát (grating) a másikra helyezzük, és a kettőt eltérő
+irányokban mozgatjuk. Az így keletkező sakktábla-minta (checkerboard
+pattern) úgy tűnik, hogy a két rács egyedi pályája (trajectory) közötti
+köztes irányban mozog. Ez az észlelet (percept) a rácsok relatív
+kontrasztjától és a rácsok átfedésének területétől függ. Nagy relatív
+kontraszt esetén a rácsok úgy tűnnek, mintha egymáson csúsznának át,
+saját egyedi irányaikban mozogva, nem pedig együtt, közös irányban.
+
+[A mozgás észlelt irányának] egy fontos meghatározója a jelenet
+szegmentációja (scene segmentation), azaz a mozgó elemek előtérre és
+háttérre való szétválasztása. Olyan jelenetben, ahol mozgó tárgyak
+vannak, a szegmentáció nem a(z irány) helyi jelzésein alapul; ehelyett
+az irány észlelése a jelenet szegmentációjától függ. A borbélyoszlop
+illúziója (barber-pole illusion) a globális összefüggések (global
+relationships) elsőbbségének egy másik példája az egyszerű attribútumok
+észlelése felett. A forgó csíkok úgy tűnnek, mintha a rúd hosszanti
+tengelye mentén függőlegesen moognának. A látótérben (visual field) a
+mozgás észlelése egy összetett algoritmust használ, amely összevonja a
+helyi mozgásjelek (local motion signals) alsó-felől jövő (bottom-up)
+elemzését a felső-felől jövő (top-down) jelenet-szegmentációval.
+
+A majmokban a helyi mozgásjelek integrációja megfigyelhető a köztes
+temporális területen (middle temporal area, azaz terület MT vagy V5),
+amely a mozgásra specializált terület. Ennek a területnek a neuronjai
+egy egész minta meghatározott mozgásirányára szelektívek, nem a minta
+egyes komponenseire. Ez a teljes mintától való függés látható a
+válaszaiknak a borbélyoszlop-hatásban észlelt iránnyal való
+megfelelésében is.
+
+=====================================================================
+
+A KONTEXTUS HATÁROZZA MEG A VIZUÁLIS INGEREK ÉSZLELÉSÉT
+
+A fényesség- és színészlelés a kontextustól függ.
+
+A látórendszer a tárgyak felszíni jellemzőit úgy méri meg, hogy a
+látótér különböző részeiből érkező fényeket hasonlítja össze. Ennek
+következtében a fényesség és a szín észlelése erősen függ a kontextustól.
+Valójában az észlelt fényesség és szín jelentősen eltérhet attól, amit
+egy tárgy fizikai tulajdonságaiból várnánk. Ugyanakkor az észlelési
+állandóságok (perceptual constancies) miatt a tárgyak hasonlónak tűnnek
+még akkor is, ha a rájuk eső fény fényessége és hullámhossz-eloszlása
+megváltozik.
+
+Amint mozgunk, vagy amint a környezeti megvilágítás (ambient
+illumination) változik, egy tárgynak a retinára eső képe — annak
+mérete, alakja és fényessége — szintén változik. A legtöbb
+körülmény között azonban nem észleljük úgy, hogy maga a tárgy változik.
+Amikor egy fényes kertből egy gyengén megvilágított szobába lépünk, a
+retinába érkező fény intenzitása ezerszeresen is változhat. Mind a szoba
+gyenge megvilágításában, mind a nap vakító fényében mégis fehérnek
+látjuk a fehér inget és pirosnak a piros nyakkendőt. Hasonlóképpen,
+amikor egy barátunk felénk sétál, azt látjuk, hogy közelebb jön; nem
+észleljük úgy, hogy egyre nagyobbá válik, noha a retinális kép (retinal
+image) valóban tágul. Annak a képességünk, hogy egy tárgy méretét és
+színét állandónak észleljük, ismét a látórendszer egy alapvető
+elvéét illusztrálja: a rendszer nem rögzít passzívan képeket, mint egy
+fényképezőgép, hanem a retina átmeneti és változó ingerléseit
+használja fel egy stabil, háromdimenziós világ ábrázolásainak
+(felépítésére) (representation).
+
+A kontextuális befolyás egy másik példája a színindukció (color
+induction), amikor az egyik régióban lévő szín megjelenése a szomszédos
+régió színének irányába tolódik. Az alak (shape) is fontos szerepet
+játszik a felszín fényességének észlelésében. Mivel a látórendszer
+feltételezi, hogy a megvilágítás felülről jön (a Nap helyzete
+hozzánk képest), a redőn (folded surface) lévő szürke foltok egészen
+másképp tűnnek, ha a felület tetején vagy alján helyezkednek el, még
+akkor is, ha valójában ugyanolyan árnyalatú szürkék.
+
+=====================================================================
+
+A receptoros mező tulajdonságai a kontextustól függenek.
+
+Mivel a legtöbb neuron a felszíni határokra (surface boundaries)
+válaszol és nem az egységes fényességű területekre, a látórendszer a
+felszínek fényességét a felszínek széleinél (edges) lévő kontraszt
+információjából számítja ki. Az agynak a felszíni minőségeket
+határinformációból elemző művelete ismert mint a perceptuális
+kitöltés (perceptual fill-in). Ha az ember néhány másodpercig a
+fixálja a határt egy sötét korong és a környező világos terület között,
+a korong ugyanazzal a fényességgel „töltődik fel”, mint a környező
+terület. Ez azért történik, mert azok a sejtek, amelyek a szélekre
+válaszolnak, csak akkor tüzelnek, amikor a szem vagy az inger mozog.
+Fokozatosan megszűnnek válaszolni a stabilizált képre, és többé nem
+jelzik a határ jelenlétét. A receptoros mezővel rendelkező neuronok a
+korongon belül fokozatosan oly módon kezdenek válaszolni, mint a
+környező területen lévők, ami rövid távú plasticitást (short-term
+plasticity) mutat a receptoros mező tulajdonságaiban.
+
+Egy tárgy színe mindig többé-kevésbé ugyanolyan marad annak ellenére,
+hogy a különböző megvilágítási körülmények között a tárgyról
+visszavert fény hullámhossz-eloszlása széles határok között változik.
+Egy tárgy azonosításához ismernünk kell a felszín tulajdonságait, nem
+pedig a visszavert fény tulajdonságait, amelyek állandóan változnak.
+Ezért egy tárgy színének kiszámítása összetettebb, mint a visszavert
+fény spektrumának elemzése. Egy felszín színének meghatározásához
+meg kell határozni a beeső fény hullámhossz-eloszlását. Ennek az
+információnak a hiányában a felszín színe megbecsülhető a jelenet
+különböző felszíneiről érkező hullámhosszak egyensúlyának
+meghatározásával. A V4 terület egyes neuronjai hasonlóan válaszolnak a
+különböző megvilágítási hullámhosszakról, ha az észlelt szín állandó
+marad. Azzal, hogy a kiterjedt felszín fényére válaszolnak, ezek a
+neuronok a felszín színére szelektívek, nem a hullámhosszra.
+
+[A fordítás ezen a ponton áll meg: elértük a "Cortical Connections,
+Functional Architecture, and Perception Are Intimately Related"
+szakasz elejét, a chunk 23. fejezetének körülbelül felét. A további
+rész — a kéregösszeköttetések, a perceptuális tanulás, a felnőttkori
+plasticitás, a vizuális keresés (visual search) és a kognitív hatások
+— az kandel_extracted_chunk_06.md fájlban feldolgozott fogalmak
+(CN-06-007–CN-06-014) tárgyalása, és szükség esetén külön fordítási
+részletben folytatható.]

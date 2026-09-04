@@ -1,0 +1,131 @@
+# Kandel — Magyar fordítás (chunk 01) / Hungarian translation
+
+Ez a fájl a `kandel_chunk_01.txt` szövegének elbeszélő (biográfiai) részét fordítja magyarra.
+A chunk a kötet Elejét (front matter) tartalmazza; a lefordítandó próza az ajánlás
+Sarah H. Macknak és Thomas M. Jessellnek, valamint a jogi nyilatkozat. A technikai kifejezések
+angol megfelelője zárójelben (English gloss) szerepel. A fordítás a tartalomjegyzék (Contents)
+előtt áll meg — l. a záró megjegyzést.
+
+---
+
+## Ajánlás Sarah H. Macknak (fordítás)
+
+E hatodik kiadást, a *Principles of Neural Science* című művet kedves bartainknak és
+munkatársainknak, Thomas M. Jessellnek és Sarah H. Macknek ajánljuk.
+
+Sarah Mack, aki több mint harmincéves pályafutása során a könyv ábraprogramjához járult hozzá
+és annak irányítását végezte, 2020. október 2-án elhunyt. Bátran és fáradhatatlanul dolgozott
+azon, hogy a kiadás minden illusztrációja megfeleljen az általa támasztott magas követelményeknek,
+és hogy azokat még el tudja készíteni, amíg ereje engedte.
+
+Miután 1984-ben az Williams College-ban angol irodalom szakon kitüntetéssel végzett, Sarah öt
+évet dolgozott szociális munkában, miközben a Columbia Egyetemen stúdió-művészetet és számítógépes
+grafikát tanult. Először a harmadik kiadás ábraprogramjához járult hozzá, amikor 1989-ben
+képzőművészként (graphic artist) csatlakozott a Kandel laboratóriumhoz. Öt évvel később, a negyedik
+kiadás tervezési szakaszában Sarah, Jane Dodd művészeti szerkesztő társaságában teljesen újratervezte
+az ábraprogramot: százával készített és alakított át ábrákat, és vezette be a színezést. Ez a
+monumentális feladat megszámlálhatatlan esztétikai döntést igényelt, hogy a különféle ábraelemek
+stílusában a könyv egészében egységességet teremtsen. Az eredmény rendkívül világos, tanító jellegű
+és művészileg is esztétikus ábra- és képanyag lett. Sarah ezt a magas színvonalat az ötödik és
+hatodik kiadás művészeti szerkesztőjeként is megőrizte és továbbfejlesztette.
+
+Így maradandó nyomot hagyott az évek során — és az eljövendő években — azon ezernyi hallgatóban,
+akik a neurobiológiába (neuroscience) az ő munkáján keresztül nyertek bevezetést. Sarah rendkívüli
+és tehetséges művész volt, aki mély megértést és elismerést tanúsított a neurobiológia iránt az
+irántuk szerzett évek során. Az ábrákhoz való művészeti hozzájárulása mellett a hozzájuk tartozó
+szöveget és magyarázó feliratokat is szerkesztette a maximális világosság érdekében. Mivel
+hozzájárulása messze túlmutatott az ábrák előkészítésén, Saraht a jelenlegi kiadás társszerkesztőjévé
+nevezték ki.
+
+Sarahnak megdöbbentő képessége volt arra, hogy egyszerre tucatnyi szerzővel folytatott rengeteg
+tárgyalást összehangoljon, miközben finoman, de határozottan terelte őket a végső, elegáns és
+oktató jellegű képanyag felé. Ezt olyan nagylelkű szellemben tette, hogy a szerzőkkel való
+kapcsolata — még azokkal is, akiket személyesen soha nem látott — meleg barátsággá érett.
+
+Az elmúlt három kiadás során Sarah volt a hajtóerő, amely a *Principles* fejezetein végigfutó
+esztétikai egységesítő vízió alapját adta. Nagyon fog hiányozni mindannyiunknak.
+
+---
+
+## Ajánlás Thomas M. Jessellnek (fordítás)
+
+Tom Jessell rendkívüli neurobiológus (neuroscientist) volt, aki úttörő felfedezésekkel járult hozzá
+a gerincvelő fejlődésének, az érző-mozgásos (sensory-motor) áramkörnek és a mozgás szabályozásának
+megértéséhez. Tom enciklopédikus mélységű ismerettel és megértéssel rendelkezett minden iránt, ami
+az érdeklődési körébe esett. Egyformán otthonosan beszélt egy régen feledett tudományos felfedezésről,
+idézte fejből Shakespearet, vagy lelkesedett a 20. századi brit és olasz reneszánsz művészetért —
+Tom briliáns polihisztor (polymath) volt.
+
+Tom érdeklődése a neurobiológia iránt az egyetemi tanulmányaival kezdődött, a szinapszis
+farmakológiájának (synaptic pharmacology) tanulmányozásával a Londoni Egyetemen, ahol 1973-ban
+végzett. Ezután Leslie Iversen laboratóriumába lépett a Cambridge-i Orvostudományi Kutatási Tanácsnál
+(Medical Research Council), hogy doktori munkáját végezze, ahol az akkor újonnan felfedezett
+P anyag (substance P) nevű neuropeptid (neuropeptide) fájdalomérzékelést szabályozó mechanizmusát
+vizsgálta. Tom tette a kulcsfontosságú megfigyelést: az opioidok (opioids) a gerincvelőben azáltal
+gyengítik a fájdalomérzékelés továbbítását, hogy csökkentik a P anyag felszabadulását.
+
+Miután 1977-ben megszerezte doktori fokozatát, Tokióban, Masanori Otsuka posztdoktori kollégájánál
+folytatta a P anyag szerepének kutatását a fájdalom-feldolgozásban, miközben alapvető japán tudását
+is elsajátította, és ezzel megszilárdította egész életre szóló érdeklődését a gerincvelői érző
+mechanizmusok iránt. Tom ekkor felismerte, hogy a gerincvelő működésének mélyebb megértését
+leginkább annak fejlődéséből nyerheti, ezért Gerry Fischbach laboratóriumában, a Harvardon a
+klasszikus szinapszis, az izom-ideg végződés (neuromuscular junction) kialakulását kezdte kutatni.
+
+Tom ezután 1981-ben csatlakozott a Harvard Neurobiológiai Tanszékének oktatói karához adjunktusként,
+ahol az érző szinaptikus átvitel (sensory synaptic transmission) mechanizmusait és a gerincvelő
+szomatoszenzoros (somatosensory) bemenetének fejlődését vizsgálta. 1985-ben a Columbia Egyetem
+Orvos- és Sebészdoktorai Főiskolájának Neurobiológiai és Viselkedési Központjába (a későbbi
+Idegtudományi Tanszék) és a Biokémiai és Molekuláris Biofizikai Tanszékre nevezték ki egyetemi
+docensnek (Associate Professor) és a Howard Hughes Orvosi Intézet kutatójává. A következő 33 évben
+Tom, egy kiválő hallgatói és munkatársi csoporttal, többdiszciplináris sejtes, biokémiai, genetikai
+és elektrofiziológiai megközelítést alkalmazva azonosította és határozta meg azokat a gerincvelői
+mikroáramköröket (microcircuits), amelyek az érző és mozgató viselkedést irányítják.
+
+Tanulmányai feltárták a gerincvelői neuronok azon molekuláris és sejtes mechanizmusait, amelyekkel
+azonosságukat elnyerik, és amelyekkel az áramkörök felépülnek és működnek. Meghatározta az
+idegrendszeri fejlődés és a mozgásszabályozás kulcsfogalmait és alapelveit, felfedezései
+páratlan betekintést nyújtottak a mozgást összehangoló idegrendszeri elvekbe, és utat nyitottak a
+motoros neuron betegség (motor neuron disease) terápiái felé.
+
+Eric Kandel és Jimmy Schwartz, a *Principles of Neural Science* első szerkesztői, a harmadik kiadás
+tervezésének kezdetekor Tomot társszerkesztővé kérték fel, hogy bővítse a fejlődési és molekuláris
+neurobiológiai tárgyalást. Ez előremutató választásnak bizonyult: Tom ismereteinek szélessége,
+gondolatainak tisztasága és pontos, elegáns írói stílusa segített formálni és meghatározni a szöveget
+a következő három kiadásra. Mint a *Principles* fejezeteinek társszerzői Tom pályafutása idején
+tanúsíthatjuk a nyelv és próza szigorát, amelyre szerzőit biztatta.
+
+Élete utolsó éveiben Tom bátran szembenézett egy pusztító neurodegeneratív betegséggel, amely
+megakadályozta, hogy aktívan részt vegyen a jelenlegi kiadás szerkesztésében. Ennek ellenére Tom
+víziója jelen van a *Principles* egész tervezésében és annak filozófiai megközelítésében, amely a
+viselkedés és az idegrendszeri betegségek idegrendszeri alapjainak moleuláris megértését tűzi ki
+célul. Tom óriási befolyása e és a jövőbeli *Principles*-kiadásokra, és általában az idegtudomány
+területére, kétségkívül évtizedekig megmarad.
+
+---
+
+## Jogi nyilatkozat (fordítás)
+
+A gyógyászat folyamatosan változó tudomány. Ahogy az új kutatások és klinikai tapasztalatok bővítik
+ismereteinket, a kezelés és a gyógyszeres terápia módosítására is szükség van. A mű szerzői és
+kiadója megbízható forrásokat ellenőriztek azon igyekezetükben, hogy olyan információt nyújtsanak,
+amely teljes körű és a közzététel idején elfogadott szabványoknak megfelelő. Mindazonáltal az emberi
+hiba vagy az orvostudomány változásainak lehetőségére való tekintettel sem a szerzők, sem a kiadó,
+sem bármely más fél, aki a munka előkészítésében vagy közzétételében közreműködött, nem garantálja,
+hogy a műben foglalt információ minden tekintetben pontos vagy teljes, és elhárít minden
+felelősséget az esetleges hibákért vagy hiányosságokért, illetve a műben foglalt információ
+felhasználásából származó eredményekért. Az olvasókat arra ösztönzik, hogy a műben foglalt
+információt más forrásokkal is erősítsék meg. Különösen és elsősorban azt javasoljuk az olvasóknak,
+hogy ellenőrizzék minden olyan gyógyszer csomagjában található terméktájékoztatót, amelyet
+betegnek szánnak, hogy megbizonyosodjanak: a műben foglalt információ pontos, és hogy az ajánlott
+adagolásban vagy az ellenjavallatokban nem történt változás. Ez a javaslat különösen fontos az új
+vagy ritkán használt gyógyszerek esetén.
+
+---
+
+## Hol áll meg a fordítás / Where the translation stops
+
+A fordítás a jogi nyilatkozat végénél (a chunk eredeti 218. soránál) áll meg. Ezt követően a chunk a
+teljes tartalomjegyzéket (Contents in Brief, majd a részletes Contents) tartalmazza — ez fejezetcímek
+és szakaszcímek felsorolása, nem elbeszélő próza, ezért nem került lefordításra. A tényleges
+mechanizmus-leíró szöveg (amely a Szima projekt szempontjából értékes: cselekvési potenciál,
+ioncsatornák, szinapszis) a `kandel_chunk_02` és a további chunkekben található.

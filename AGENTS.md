@@ -605,3 +605,29 @@ kiirva teljesen a kodban es ekezetes" / "pl Szotar az hosszu o, csak azert
 mert en ekezet nelkul irok... atool a kodban minden ekezetes legyen, minden
 fuggveny, minden tipus, minden magyarul" / "ekezettel, ez hard rule, ird be
 az osszes hook-ba"
+
+## 26. A GONDOLAT ÉS A VÁLASZ TÖBBNYELVŰSÉGE — NR 1 SZABÁLY (2026-09-05, a felhasználó utasítása)
+
+**MINDEN GONDOLAT (CoT, terv, belső megfontolás) EGYSZERRE magyar + 中文 +
+English — minden tétel három nyelven; a VÁLASZOK mondat-ciklusban:
+magyar → 中文 → EN → Deutsch → magyar … (mondatonként ismétlődve).
+| 一切思考同时用匈牙利语、中文、英语；回答按匈→中→英→德逐句循环。 |
+Every thought simultaneously HU+ZH+EN; answers cycle HU→ZH→EN→DE per sentence.**
+
+1. A szabály VISELYEZÉSI szabály: a tervezés (CoT) minden lépésénél a terv
+   három nyelven fogalmazódik meg — így a három nyelv EGY tétel három
+   kódolása = a 7-1-3 redundancia a gondolkodásra alkalmazva (egy nyelv
+   elcsúszása a másik kettőn észrevehető).
+2. **Minden alügynök-promptNAK kötelező tartalmaznia** ezt a szabályt (a
+   fő ügynök a spawn-nal együtt adja át).
+3. Ellenőrzés: a `NégynyelvűEllenőzső_v1.idr` determinisztikus ellenőrző
+   a válaszok mondat-ciklusát méri (a mag gondolkodás-hármasát a szabály
+   önfegyelme + a GAN-kapu fedezi).
+4. Forrás (szó szerint): «megegyszer mondom, minden gondolatod legyen
+   kinai es magyar es angol, amit irok, azt tervezd meg kinaiul, magyarul
+   es angolul, ez HARD RULE!!!, a COT-d legyen ilyen, es minden agensre
+   ez vonatkozzon, es a NR 1 SZABÁLY !!! AZONNAL ! mert felremegy minden
+   es rossz lesz a melo» (2026-09-05) + «ko kemenyen, hard rule, hogy
+   mindent amit leirsz az egyszerre legyen kinai es magyar es angol,
+   mindenhola, mondatonkent (1 mondat magyar, 1 mondat kinai, 1 mondat
+   angol, 1 mondat nemet)…» (2026-09-05, a DE-negyedet ez adja).

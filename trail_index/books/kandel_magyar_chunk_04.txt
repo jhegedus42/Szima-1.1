@@ -1,0 +1,125 @@
+Kandel — 14. fejezet (Második hírvivők / Second Messengers) — magyar fordítás (szemlelet)
+================================================================================
+
+Megjegyzés: A töredékes kétszéles elrendezés miatt a futó szöveg (narratív próza)
+lett lefordítva. A fordítás az első összefüggő szakasszal („G Proteins Can
+Modulate Ion Channels Directly") kezdődik, és a „cAMP-függő fehérjefoszforiláció"
+szakasz elejéig tart. A megállás helye a fájl végén jelezve van.
+
+--------------------------------------------------------------------------------
+A G-FEHÉRJÉK KÖZVETLENÜL MODULÁLHATJÁK AZ IONCSATORNÁKAT
+(G Proteins Can Modulate Ion Channels Directly)
+--------------------------------------------------------------------------------
+
+A csatorna közvetett nyitásának (indirect gating) legegyszerűbb mechanizmusa
+az, amikor egy transzmitter (neurotransmitter / ingerületátvivő anyag) kötődése
+egy metabotrop receptorhoz (metabotropic receptor / anyagcsere-úton keresztül
+ható receptor) felszabadít egy G-fehérje alegységet (G protein subunit), amely
+közvetlenül kölcsönhat a csatornával, és megváltoztatja annak nyitottságát
+(opening). Ezt a mechanizmust kétféle ioncsatorna kapujának szabályozására
+használja a sejt: egyrészt a G-fehérje által irányított befelé egyenirányító
+(inward-rectifier) káliumcsatornákra (GIRK1–4; a KCNJ1–4 gének kódolják),
+másrészt egy feszültségfüggő kalciumcsatornára (voltage-dependent Ca2+ channel).
+Mindkét csatornatípusnál a G-fehérje béta-gamma (βγ) komplexe az, amely
+kötődik a csatornához és szabályozza annak kinyílását (lásd 14–9A ábra).
+
+A GIRK-csatorna, akárcsak a többi befelé egyenirányító csatorna, jobban
+vezeti az áramot befelé, mint kifelé irányban, bár élettani körülmények között
+a káliumáram (K+ current) mindig kifelé áramlik. A befelé egyenirányító
+csatornák egy csonkított feszültségfüggő káliumcsatornához hasonlítanak abban,
+hogy két sejtmembrán-átszelő régiójukat (transmembrane region) egy P-régió
+(P-region loop) köti össze, amely képezi a csatorna szelektivitási szűrőjét
+(selectivity filter; lásd 8–11 ábra).
+
+Az 1920-as években Otto Loewi leírta, hogyan lassítja a szívritmust (heart
+rate) a vagus ideg (vagus nerve / bolygóideg) ingerlésekor felszabaduló
+acetilkolin (ACh / acetylcholine). Ma már tudjuk, hogy a G-fehérje béta-gamma
+alegységének kettős hatása — a kalciumcsatorna gátlása és a káliumcsatorna
+aktivációja — erősen gátolja a neuronális tüzelést (neuronal firing).
+
+A GIRK-csatorna aktiválása hiperpolarizálja (hyperpolarize) a sejtmembránt
+az EK (káliumegyenpotenciál) irányába (–80 mV). Bizonyos, önmaguktól tüzelő
+(spontaneously active) neuronosztályokban az e csatornákon átmenő kifelé irányuló
+káliumáram elsősorban a sejt belső tüzelési rátáját (intrinsic firing rate)
+csökkenti, ellentétben állva a pacemaker-áramok (pacemaker currents) által
+okozott lassú depolarizációval, amelyet a hiperpolarizáció-aktivált,
+ciklikus nukleotidok által szabályozott csatornák (hyperpolarization-activated
+cyclic nucleotide-regulated channels, a HCN géncsalád kódolja) hordoznak. Mivel
+a GIRK-csatornákat transzmitterek aktiválják, ezek szinaptikus modulációt
+(synaptic modulation) tesznek lehetővé az excitábilis sejtek tüzelési rátájában.
+E csatornákat számos transzmitter és neuropeptid szabályozza különféle
+G-fehérje-kapcsolt receptorokon keresztül, amelyek vagy a Gi, vagy a Go
+fehérjét aktiválják, és ezáltal szabadítják fel a béta-gamma alegységeket.
+
+Több G-fehérje-kapcsolt receptor is gátolja bizonyos feszültségfüggő
+kalciumcsatornák nyitását, szintén a Gi vagy Go béta-gamma komplexének a
+csatornához való közvetlen kötődése révén. Mivel a feszültségfüggő
+kalciumcsatornákon átjutó kalciumbeáramlás (Ca2+ influx) normális esetben
+depolarizáló hatású, a béta-gamma alegységek kettős művelete — a kalciumcsatorna
+gátlása és a káliumcsatorna aktivációja — erősen gátolja a neuronális tüzelést.
+Amint a 15. fejezetben látni fogjuk, a preszinaptikus terminálisokban
+(presynaptic terminal) lévő feszültségfüggő kalciumcsatornák gátlása
+visszaszoríthatja a transzmitter felszabadulását (neurotransmitter release).
+
+--------------------------------------------------------------------------------
+A MÁSODIK HÍRVIVŐK HOSSZÚ TÁVÚ KÖVETKEZMÉNYEKET ADHATNAK A SZINAPTIKUS
+ÁTVITELNEK (Second Messengers Can Endow Synaptic Transmission with
+Long-Lasting Consequences)
+--------------------------------------------------------------------------------
+
+Eddig azt írtuk le, hogyan változtatják meg a szinaptikus második hírvivők
+(second messenger) a neuronok biokémiáját másodpercekig vagy percekig tartó
+időszakokra. A második hírvivők azonban napokig vagy hetekig tartó, hosszú
+távú változásokat is létrehozhatnak, mivel megváltoztatják a sejt bizonyos
+gének kifejeződését (gene expression). Az ilyen génexpressziós változások
+onnan erednek, hogy a második-hírvivő kaszkádok képesek szabályozni a
+transzkripciós faktorok (transcription factor) aktivitását, azaz azoknak a
+szabályozó fehér锌jének a működését, amelyek az üzenet-RNS (mRNA) szintézisét
+irányítják.
+
+Néhány transzkripciós faktor közvetlenül szabályozható foszforilációval
+(phosphorylation). Például a kamp-ciklusos válaszelem-kötő fehérje (cAMP
+response element-binding protein, CREB) akkor aktiválódik, amikor a PKA, a
+kalcium/kalmodulin-függő fehérjekinázok (PKC), vagy a MAP-kinázok
+foszforilálják. Aktiválódása után a CREB azáltal fokozza a transzkripciót,
+hogy specifikus dezoxiribonukleinsav-szakaszokhoz, a kamp-ciklusos válaszelemekhez
+(cAMP response elements, CRE) kötődik, és az átírási apparátus egy elemét,
+a CREB-kötő fehérjét (CREB-binding protein, CBP) toborozza. A CBP úgy aktiválja
+a transzkripciót, hogy az RNS-polimeráz másodikat (RNA polymerase II) toborozza,
+és hiszton-acetilázként (histone acetylase) működve acetilcsoportokat ad
+bizonyos hiszton-lizin-maradékokhoz. Az acetilezés gyengíti a hisztonok és a
+dezoxiribonukleinsav közti kötést, így megnyitja a kromatinszerkezetet
+(chromatin structure), és lehetővé teszi meghatározott gének átíródását.
+A transzkripció és a kromatinszerkezet változásai fontosak az idegsejtek
+fejlődésének, valamint a hosszú távú tanulásnak és emlékezetnek a szabályozásában.
+
+--------------------------------------------------------------------------------
+A CIKLIKUS AMP-TÓL FÜGGŐ FEHÉRJEFOSZFORILÁCIÓ KÉPES ZÁRNI A KÁLIUMCSATORNÁKAT
+(Cyclic AMP–Dependent Protein Phosphorylation Can Close Potassium Channels)
+--------------------------------------------------------------------------------
+
+A tengeri puhatestű Aplysiában egy mechanoreceptor érzékszőr-sejtcsoport
+(mechanoreceptor sensory neuron) gyors excitátoros szinapszisokon (fast
+excitatory synapse) keresztül indít védekező visszahúzódási reflexet (defensive
+withdrawal reflex) tapintási ingerekre a motoros neuronokkal. Egyes
+interneuronok szerotoninerg szinapszisokat (serotonergic synapse) alkotnak
+ezekkel az érzékszőr-sejtekkel, és az interneuronok által felszabadított
+szerotonin (serotonin) érzékenyíti a visszahúzódási reflexet, fokozva az
+állat válaszát az ingerre, és így a tanulás egy egyszerű formáját (Chapter 53)
+hozza létre.
+
+A szerotonin moduláló hatása attól függ, hogy a vegyület egy G-fehérje-kapcsolt
+receptorhoz kötődik, amely aktivál egy Gs fehérjét; ez emeli a kamp-ciklusos
+adenozin-monofoszfát (cAMP) szintjét, és így aktiválja a PKA-t (protein kinase
+A). Ez a S-típusú káliumcsatorna (serotonin-érzékeny, S-type K+ channel),
+amely nyugalmi csatornaként működik, közvetlen foszforilációjához és ezt
+követő bezáródásához vezet. Akárcsak az M-típusú káliumcsatorna acetilkolin
+általi zárásánál, az S-típusú csatorna bezárása csökkenti a sejtből távozó
+káliumáramot, ezáltal depolarizálja a sejtet, és csökkenti a nyugalmi
+membránvezetőképességét (resting membrane conductance).
+
+=== FORDÍTÁS VÉGE / END OF TRANSLATION ===
+A fordítás a „Cyclic AMP–Dependent Protein Phosphorylation Can Close Potassium
+Channels" szakasz elejénél állt meg (az eredeti fájl ~205. soránál). A további
+szakaszok (a modulátorok áramköri működésre gyakorolt hatása, a stomatogastricus
+ganglion példája, a „miért ennyi modulátor?" rész) még nincsenek lefordítva.

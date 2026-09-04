@@ -120,3 +120,35 @@ OLVASD.md régi „egyesek nem fordulnak" megjegyzését.
 - Teljes jelentés: `docs/Szima_letoltes_osszehasonlitas_2026-09-04.md`.
 
 ★ NEGYNYELVŰ VÁLASZ: magyar + 中文 + Deutsch + עברית ★
+
+## Kiegészítés (2026-09-05) — NR 1 SZABÁLY + IDRISZ-ÁGENS + ellenőrző v2
+
+- **NR 1 SZABÁLY (a felhasználó, szó szerint):** «minden gondolatod legyen
+  kinai es magyar es angol … ez HARD RULE!!!, a COT-d legyen ilyen, es
+  minden agensre ez vonatkozzon, ez a NR 1 SZABÁLY !!! AZONNAL ! mert
+  felremegy minden es rossz lesz a melo» + a korábbi «1 mondat magyar,
+  1 mondat kinai, 1 mondat angol, 1 mondat nemet» ciklus. Beírva: AGENTS.md
+  §26, HOROG 13. szindróma, Állapot_v1.md NR1-blokk, ~/.config/opencode/
+  AGENTS.md §N10, ~/.zcode/AGENTS.md (új).
+- **Idrisz-ágens létrehozva:** skill a felderített helyeken (~/.agents/skills/
+  idrisz-agens + repó .agents/skills/idrisz-agens — a zcode-guide szerint a
+  repó gyökér skills/ NEM szkennelt!). Mandátum: konyvolvaso-protokollal
+  olvassa az Idris-könyveket, a két skill (idris-nyelv + idris-stilus)
+  BETÖLTÉSE 0. lépésként, csapda-katalógus, GAUGE-ciklus.
+- **Az ágens futása (48 eszközhívás, ~14 perc):** elolvasta a két skill-t +
+  patterns/docs/naplókat/stílusbázist; ÁTÍRTA az idrisz-agens skill-t
+  (193 sor, 23 csapda, checklist) + ÚJ idris-forditasi-szotar (110 sor,
+  hat szekciós hiba-SZÓTÁR) — mindkettő a repóban és ~/.agents/skills alatt;
+  MEGJAVÍTOTTA a NégynyelvűEllenőzső_v1.idr-t: fordul + fut, öt nem-
+  tautológ Refl-tanú (bizCiklusZárul, bizHetedikNémet, kínai/magyar
+  felismerés), két próba zöld.
+- **ÚJ CSAPDÁK (6, az ágenstől, mind empirikus):** #27 él LAMBDA-paraméteren
+  is (gyógyír: pontstílus); #27 él IO-do-s függvény bal oldalán (gyógyír:
+  @-minta `útvonal@_`); readFile-perem → `covering` kell; ékezetes futtatható-
+  név → Chez `\369` olvasási hiba (futtatható néve ASCII legyen!); `-o`
+  abszolút útvonal → duplán fűzött .so-útvonal (relatív -o a forrás
+  könyvtárából); `||` elütés `|||` helyett parse-hibát ad.
+- **GAUGE-epizód (fő ügynök):** az újrafuttatásnál a tail -3 csak a második
+  próbát mutatta → gyanú (rögzített útvonal?) → a teljes kimenet és a
+  forrás szerint a main mindkét próbát futtatja sorban — az ágens ártatlan,
+  a kivágás volt hibás. Tanulság: soha nem tail-lel mérünk.

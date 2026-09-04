@@ -1,0 +1,90 @@
+Kandel — 19. fejezet: Az érintés (Touch) — magyar fordítás (Chunk 05)
+
+Ez a fájl a chunk_05 első önálló szakaszának magyar fordítását tartalmazza,
+angol szakmai kifejezések zárójelben (English gloss). A szöveg a Kandel
+*Principles of Neural Science* 19. fejezetének (Érintés) megnyitó narratíváját
+és az „Aktív és passzív érintés különböző célokat szolgál" (Active and Passive
+Touch Have Distinct Goals) szakaszának elejét öleli fel. Nem használunk
+kínai nyelvet és nem használunk rövidítéseket a magyar szövegben.
+
+------------------------------------------------------------------------
+
+Ebben a fejezetben, amely az érintés érzéséről (sense of touch) szól, a kézre
+(hand) összpontosítunk, mivel ez a testrész kiemelkedően fontos e modalitás
+(érzékelési csatorna) számára, különösen az objektumok tulajdonságainak
+megismerése és az ügyességi motoros feladatok (skilled motor tasks)
+végrehajtása terén. Az emberi kéz az evolúció egyik nagy alkotása. Az ujjaink
+által biztosított finom manipulációs képesség (fine manipulative capacity) a
+bennük rejlő finom érzékelőképességnek (fine sensory capacity) köszönhető; ha
+elbukjuk az ujjak taktilis érzését (tactile sensation), elveszítjük a
+kézügyességet (manual dexterity) is.
+
+Amikor egy tárgyat, például egy baseball-labdát (baseball), a kezünkbe adnak,
+azonnal felismerjük anélkül, hogy ránéznénk, mivel alakja, mérete, súlya,
+sűrűsége és textúrája (texture) alapján azonosítjuk. Nem kell végiggondolnunk
+az egyes ujjak által szolgáltatott információt, hogy kikövetkeztessük: ez egy
+baseball-labda; az információ közvetlenül az emlékezetbe (memory) áramlik, és
+azonnal egyezik a korábban eltárolt baseball-reprezentációkkal. Még ha soha
+nem is fogtunk volna baseball-labdát, egyetlen tárgyként (single object)
+észleljük, nem különálló tulajdonságok gyűjteményeként. Az agy
+szomatoszenzoros (somatosensory) pályáinak az a hatalmas feladata, hogy
+integrálják az információt a két kéz ezernyi érzékelőjéből, és olyan formává
+alakítsák, amely alkalmas a megismerésre (cognition) és a cselekvésre (action).
+
+Az érzékelő információt a motoros irányítás (motor control) és a megismerés
+céljára egyaránt nyerjük ki, és e célokra különböző fajta információt vonunk
+ki. Például elterelhetjük a figyelmünket (attention) a baseball-labda alakjáról
+annak helyére a kézben, hogy újraszabályozzuk a szorítást (grip) egy hatásos
+dobáshoz vagy vetéshez. Ez a szelektív figyelem az érzékelő információ
+különböző aspektusaira a kéregi mechanizmusok (cortical mechanisms) révén
+jön létre.
+
+Az aktív és a passzív érintés különböző célokat szolgál.
+
+Az érintést két fizikai test közvetlen érintkezéseként határozzuk meg. Az
+idegtudományban (neuroscience) az érintés az a speciális érzék (special
+sense), amellyel a testtel való érintkezést tudatosan észleljük (perceived
+consciously). Az érintés lehet aktív, amikor a kezünket vagy testünk más
+részét egy felülethez mozgatjuk, vagy passzív, amikor valaki vagy valami más
+érint meg minket.
+
+Az aktív érintés alapvetően egy felfelé-lefelé irányuló (top-down) folyamat,
+amelyben az alanynak ügynöksége (agency) van, konkrét információt keres, és
+irányítja a történteket. Az alany kiválasztja a tárgy releváns, hangsúlyos
+tulajdonságait (salient features) a további cselekvések meghatározásához;
+eldönti, melyik tárgyat fogja meg, és milyen a leghatékonyabb kézforma a
+megszerzéséhez, valamint hogyan manipulálja azt céljai elérése érdekében.
+Az aktív érintés során a szomatoszenzoros információ olyan kognitív
+jellemzőket mutat, amelyek a figyelmet és a viselkedéses célokat (behavioral
+goals) tükrözik a stimuláció időszaka alatt.
+
+Ezzel szemben a passzív érintés egy alulról-felfelé (bottom-up) folyamat,
+amelyben az alany a kísérletvezető vagy orvos által meghatározott és
+irányított külső ingerekre reagál. A kísérletvezető választja meg és irányítja
+az inger helyét, amplitúdóját, erejét, időzítését, időtartamát és térbeli
+kiterjedését; a kísérletvezető utasításai részben vezetik a későbbi
+viselkedést. A taktilis ingereket a kísérletvezető által választott
+kategóriákba sorolják, vagy egy intenzív vagy hedónikus skálán értékelik.
+
+Az aktív és passzív érintés ugyanazt a receptorpopulációt ingerli a bőrben,
+és hasonló válaszokat vált ki az afferens rostokban; csupán a kognitív
+jellemzőik térnek el némileg, ami a stimuláció alatti figyelmet és
+viselkedéses célokat tükrözi. A két mód klinikailag is fontos, ha a betegnek
+kézhasználati zavarai (deficits in hand use) vannak: a motoros deficitek —
+például gyengeség, merevség vagy ügyetlenség — származhatnak érzékelési
+veszteségből, ezért a passzív érzékeléses vizsgálat (passive sensory testing)
+eltevéségtelen a neurológiai kivizsgálásban.
+
+------------------------------------------------------------------------
+
+MEGJEGYZÉS A MEGÁLLÁSRÓL (note on stopping point):
+
+A magyar fordítás a 19. fejezet megnyitó narratívájánál és az „Aktív és
+passzív érintés különböző célokat szolgál" (Active and Passive Touch Have
+Distinct Goals) szakasz első felénél áll meg. A chunk ezen túl a következő
+szakaszokat tárgyalja (amelyek angolul maradtak az eredeti fájlban, és a
+fenti kivonatban ConceptNote-okként szerepelnek): a négy mechanoreceptor
+típusa (Meissner / Merkel / Pacinian / Ruffini), a receptív mezők, a
+kétpont-diszkrimináció, a lassan és gyorsan alkalmazkodó rostok, az
+oszlopos kéregi szerveződés, a modalitás-szegregáció, a kortikális nagyítás,
+valamint a szorítóerő-szabályozás taktilis visszacsatolással.

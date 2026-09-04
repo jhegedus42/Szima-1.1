@@ -1,0 +1,153 @@
+Kandel — 41. fejezet: A hipotalamusz (The Hypothalamus) — magyar fordítás (Chunk 10)
+
+Ez a fájl a chunk_10 narratív prózarészének magyar fordítását tartalmazza,
+angol szakmai kifejezések zárójelben (English gloss). A fordítás a 41.
+fejezet olvasható narratívájából a legterjedelmesebb szakaszokat öleli fel:
+az energiaegyensúly rövid és hosszú távú jelzéseit, a leptin történetét,
+valamint a motivációs hajtóerőkről (éhség) szóló lélektani elméleteket.
+Nem használunk kínai nyelvet és nem használunk rövidítéseket a magyar
+szövegben.
+
+------------------------------------------------------------------------
+
+A keringő amilin (circulating amylin) néhány percen belül emelkedik egy
+intenzív evés (intense hyperphagia) után, és csökkenti a későbbi
+táplálékbevitelt; emellett csökkenti a barna zsírszövet (brown fat)
+hőtermelését (thermogenesis). A ghrelin nevű hormont a gyomor
+endokrin sejtjei választják el. A fentebb leírt tényezőkkel ellentétben
+a ghrelin elválasztása az evés előtt magas, és az étkezés során csökken;
+szerepe lehet az étkezés megkezdésének (meal initiation) elindításában.
+A ghrelin valóban az egyetlen ismert olyan szisztémás (test szerte
+ható) tényező, amely növeli az éhséget és ezáltal az evést. Több helyen
+is ingereli az idegsejteket, köztük az íves magban (arcuate nucleus)
+található agouti-rokon peptid (agouti-related peptide) neuronokat. A
+ghrelin élettani jelentősége azonban nem tisztázott, mivel a génjének
+kiiktatása nem látszik befolyásolni az éhséget.
+
+A vércukor (blood glucose) és az inzulin hatással van az étvágyra.
+A glükózt érzékelő idegsejtek a periférián, az agytörzsben (hindbrain) és
+a hipotalamuszban találhatók. Bár a glükózérzékelés nem játszik szerepet a
+napi energiaegyensúly szabályozásában, a veszélyesen alacsony
+vércukorszint (glucopenia) észlelése és a rá való válasz az agy
+fontos feladata. Két adaptív válasz indul meg: (1) intenzív, glükoprivikus
+éhség, amelyet legalábbis részben az agouti-rokon peptid neuronok
+közvetett aktivációja okoz, és (2) a glukagon, az epinefrin és a
+kortikoszteroidok elválasztása, amelyek serkentik a máj glükóztermelését.
+A hormonális válaszokat a szimpatikus (sympathetic) kiáramlás növekedése
+valamint a stresszel összefüggő kortikotropin-felszabadító hormon
+(corticotropin-releasing hormone) pálya aktivációja okozza. Az aminosavak
+is érzékelhetők, és ennek következtében szabályozzák az energiaegyensúlyt
+és a táplálék megválasztását — utóbbi azért, hogy elegendő mennyiségű és
+minőségű fehérjét vegyünk magunkhoz.
+
+Az inzulin viszont a zsírraktárak növekedésének jelzésére szolgál. Az
+inzulin elsődleges feladata a vércukor szabályozása, amely az elválasztás
+ingeréül szolgál. Az inzulin csökkenti a vércukrot azáltal, hogy azt az
+izom- és zsírsejtekbe hajtja, és csökkenti a máj általi termelését. Ahogy
+a zsírraktárak nőnek, az inzulin ezen képessége csökken (e jelenséget
+inzulin-rezisztenciának nevezzük). Így a nagyobb zsírraktárak az alap- és
+az étkezés által serkentett inzulinelválasztást növelik, hogy legyőzzék a
+rezisztenciát és normalizálják a glükózt. A zsírraktár közvetítette
+inzulinszint-emelkedés gátolja a hipotalamuszi idegsejteket, különösen az
+íves magban levőket, ami csökkenti az éhséget.
+
+A zsírsejt hormonja, a leptin, jelzi az agynak a zsírraktárak állapotát,
+és hatással van az éhségre és az energiafelhasználásra. 1949-ben a maine-i
+Jackson Laboratórium tudósai megfigyelték „néhány nagyon duci kis egér"
+megjelenését. Ez az elhízás egy genetikai mutációnak tulajdonítható, amelyet
+elhízottnak (obese, röviden ob) neveztek el. Tizenhat évvel később egy
+másik elhízási mutációt, a cukorbetegséget (diabetes, röviden db) azonosították.
+Az ob/ob és db/db egerek szélsőséges elhízása abból adódott, hogy az ob/ob
+egerek hiányoznak egy keringő jóllakottsági (satiety) tényezőből, a db/db
+egerek pedig annak receptorából. Douglas Coleman parabiózisos
+(parabiasis) kísérletsorozata alapján javasolta, hogy az ob/ob egerek
+hiányoznak egy keringő jóllakottsági faktorból, a db/db egerek pedig annak
+receptorából. Jeffrey Friedman és Rudolph Leibel vezetésével egy nagy
+erőfeszítéssel végzett pozíciós klónozás (positional cloning) során az ob
+gént a 6. kromoszóma egy kis régiójára lokalizálták, majd azonosították
+magát a gént. Leptin génnek átnevezve a fehérjét, a leptint kódolja, amely
+egy 167 aminosavból álló fehérje, amelyet a zsírsejtek (adipociták)
+arányosan választanak el a zsírraktárak méretéhez. Az ob/ob egerek leptinnel
+való kezelése meggyógyítja az elhízásukat. A db gént néhány évvel később
+azonosították, és ahogy Coleman jósolta, az a leptint receptorát kódolta, és
+a hipotalamusz idegsejtjeiben fejeződött ki. Ez egy interleuk kin-6 típusú
+(osztály I citokin receptor) receptor, amely antiobezitás hatását a JAK2
+és STAT3 jelátviteli út (signaling pathway) aktiválásával fejti ki.
+
+A lélektani fogalmakat az éhséghez hasonló motivációs hajtóerők
+(motivational drives) magyarázatára használják. Egy leegyszerűsített
+ingere válasz (stimulus–response) szemléletben azt feltételezhetnénk, hogy
+a víz vagy energiahiány idegi észlelése (az inger) közvetlenül a
+motoros pályákhoz van kötve az ivás vagy evés végrehajtására (a válasz),
+ezért hasonló a térdflexiós (knee-jerk) nyújtási reflexhez. Ez azonban nem
+lehetséges, mert a hiányállapot által motivált, az étel megszerzésére
+használt válaszok rendkívül változatosak és összetettek — annyira, hogy
+nem lehetnek közvetlenül bekötve (hardwired). Valóban, az állatok képesek
+végtelen sok összetett operáns tanulási (operant learning) feladatot
+végrehajtani víz- vagy ételjutalomért.
+
+A megértés kihívása: olyan modellt alkotni, amely számol azzal, hogy a
+megvonási (deprivation) állapotok képesek rendkívül változatos és összetett,
+mégis egyetlen célra teljesen specifikus viselkedést létrehozni. Két
+meggyőző elmélet releváns. Az incentive motivation (ösztönző motiváció)
+elmélete szerint a hiány növeli az étel és a víz jutalomértékét. A drive
+reduction (hajtóerő-csökkentés) elmélete szerint a hiány egy kellemetlen
+állapotot hoz létre, amelynek megszüntetése motiválja a viselkedést.
+E két nézet nem zárja ki egymást, és egyes szempontból ugyanannak az érme
+két oldala lehet.
+
+Incentive motivation: az éhezés növeli az étel jutalomértékét. Az incentive
+motivation elmélet több évnyi elméletalkotó munkája, legutóbb Frederick
+Toates és Kent Berridge finomította. Vegyük az evést és az éhségi hajtóerőt.
+Röviden: az étel önmagában jutalmazó (inherently rewarding). A megtanult
+összefüggések (learned associations) révén az étel megszerzésével kapcsolatos
+ingerek és feladatok is jutalmazóvá válnak; így tanulható meg a változatos és
+összetett viselkedéses válasz. Az elmélet szerint a megvonási állapot
+növeli az étel, valamint a kapcsolódó ingerek és feladatok jutalomértékét
+(azaz azok incentivális hangsúlyát, incentive salience). Így éhezéskor a
+jutalomérték megnő, és minden étel, valamint az ételhez kapcsolódó inger és
+feladat rendkívül jutalmazó. Egy étkezés után a jutalomérték csökken, és
+csak a leginkább ösztönzően ízletes ételek, például a fagylalt (ice cream),
+maradnak elég jutalmazóak az elfogyasztáshoz. Az idegtudósok feladata
+megállapítani, hogyan növeli a megvonás a jutalomértéket. Az AgRP-neuronok
+mesterséges aktiválása egyébként jóllakott egérben drámaian megnöveli az étel
+jutalomértékét — figyelemre méltó módon ugyanarra az igen magas szintre, mint
+amelyet az éhezésnél látunk.
+
+Drive reduction: az AgRP éhség-neuronok aktivitása kellemetlen lehet. Amint
+azt személyes tapasztalatból tudjuk, a kiszáradás és a kalóriahiány által
+létrehozott viselkedési állapotok, nevezetesen a szomjúság és az éhség,
+kellemetlenek. Eredetileg sok évvel ezelőtt azt javasolták, hogy ezen
+állapotok csökkentése, amely enyhíti a kellemetlenséget, jutalmazó, és így
+motiválja az ivást és az evést. Nemrég Scott Sternson csoportja meggyőző
+új bizonyítékot szolgáltatott ennek a modellnek a módosított változatához.
+Helypreferencia-teszt (place preference test) nevű viselkedéses
+kondicionáló eljárással azt fedezték fel, hogy az AgRP-neuronok optogenetikai
+aktiválása jóllakott egerekben kellemetlen (aversive) volt. Amikor ugyanezeket
+az egereket élelemmegvonásban (ami az AgRP-neuronok aktivitásának emelkedésével
+jár) vizsgálták, olyan viselkedést végeztek, amely a korábbi kondicionálásban
+csökkentette az AgRP-neuron aktivitását — röviden: úgy cselekedtek, mintha
+motiválva lennének a kellemetlen állapot kikapcsolására. Hasonló eredményeket
+kaptak a szomjúság-neuronokkal az érzékelő szervi területben (subfornical
+organ). Továbbá, az AgRP-neuron aktivitásának gyors csökkenése az ételt
+előrejelző szenzoros ingerekre, és az ebből adódó kellemetlen állapot
+enyhülése jutalmazó „tanító jelzésként" (teaching signal) működhet, amely
+motiválja a cél (étel) követését.
+
+------------------------------------------------------------------------
+
+MEGJEGYZÉS A MEGÁLLÁSRÓL (note on stopping point):
+
+A magyar fordítás a 41. fejezet következő olvasható narratív szakaszainál
+áll meg: az amilin/ghrelin/glükóz/inzulin bevezető szakasz; a leptin története
+és a JAK2/STAT3 jelút; a „lélektani fogalmak a motivációs hajtóerők
+magyarázatára" (Psychological Concepts Are Used to Explain Motivational
+Drives Such as Hunger) szakasz; az incentive motivation elmélet; valamint a
+drive reduction elmélet és az AgRP aversive jellege. A chunk ezen túl az
+alábbi szakaszokat tárgyalja, amelyek a fenti kivonatban (ConceptNote-ként)
+angolul szerepelnek, és itt nem lettek lefordítva: a POMC/AgRP/MC4R
+neuronhurok pontos anatómiája és a PVH-MC4R jóllakottság-neuronok; a
+szexuálisan dimorf régiók (POA, vlVMH) és az agresszió szintfüggő váltása;
+a szülői (galanin-POA) viselkedés; valamint a fejezet záró „Highlights"
+(főbb pontok) felsorolása. Ezek fordítása szükség esetén egy későbbi
+chunk-fordításban folytatható.

@@ -1,0 +1,99 @@
+Kandel – 37. fejezet (A kisagy / The Cerebellum), 9. töredék – magyar fordítás
+================================================================================
+(Magyarázó zárójelben: az angol szakmai kifejezés / English gloss for key technical terms.
+A fordítás a töredék első érdemi szakaszát öleli fel; a megállás helye a szöveg végén
+jelezve. Rövidítések nem használatosak.)
+
+--------------------------------------------------------------------------------
+A vestibulocerebellumot (vestibulocerebellum – az egyensúlyi rendszerhez kapcsolódó
+kisagyrész) egy jóindulatú daganat, az úgynevezett hallóidegi idegvelődaganat (acoustic
+neuroma – a nyolcadik koponyidegen növő jóindulatú daganat) nyomja össze; a daganat
+azon a nyolcadik koponyidegen növekszik, amely közvetlenül a laterális
+vestibulocerebellum alatt halad el.
+
+A spinocerebellum (spinocerebellum – gerincvelői bemenetű kisagyrész) a féregképből
+(vermis – a kisagy középső, féregszerű része) és a kisagyféltekék köztes részeiből
+(intermediate parts of the cerebellar hemispheres) áll (37–4. ábra). Nevét onnan kapta,
+hogy kiterjedt bemenetet kap a gerincvelőből a hátulsó és a hasi
+gerincvelő–kisagy pályákon (dorsal and ventral spinocerebellar tracts) keresztül. Ezek
+az utak információt közvetítenek az érintésről, a nyomásról és a végtag helyzetéről,
+valamint a gerincvelői interneronok (spinal interneurons – gerincvelői közti idegsejtek)
+tüzelési tevékenységéről. E bemenetek tehát változatos információt szolgáltatnak a
+kisagynak az élőlény és környezete megváltozó állapotáról.
+
+A féregkép (vermis) látási, hallási és egyensúlyi bemenetet kap, továbbá testi
+érzőbemenetet (somatic sensory input) a fejből és a test közeli (proximális) részeiből.
+A féregkép a fastigialis magon (fastigial nucleus – a középső mély kisagyi mag) keresztül
+vetít a kéregbe és az agytörzsbe (brain stem), méghozzá azokra a területekre, amelyek a
+test és a végtagok közeli izmait irányító középvonali lefelé tartó rendszereket
+(medial descending systems) hozzák létre (37–5A. ábra). A féregkép irányítja a testtartást
+(posture) és a helyváltoztatást (locomotion), valamint a szemmozgásokat. Például a
+féregkép szemmozgás-irányító területének sérülései olyan szaggatott szemmozgásokat
+(saccadic eye movements) okoznak, amelyek túllövik a célpontjukat – nagyjából úgy, ahogy
+a kisagykárosodott betegek a karjukat túllökő mozdulatokat tesznek.
+
+A féltekék szomszédos, köztes részei szintén testi érzőbemenetet kapnak a végtagokból.
+Az itteni idegsejtek az interpozíciós magba (interposed nucleus – a közbülső mély kisagyi
+mag) vetítenek, amely bemenetet ad a kontralaterális (ellenoldali) oldal oldalsó
+corticospinalis (lateral corticospinal) és rubrospinalis (rubrospinal) rendszereknek, és
+irányítja a végtagok és az ujjak távolabbi (disztális) izmait (37–5B. ábra). Mivel a
+corticospinalis és a rubrospinalis rendszerek a középvonalat keresztezik, miközben
+lefelé szállnak a gerincvelőbe, a kisagyi sérülések az azonos oldali (ipszilaterális)
+végtagmozgást zavarják meg.
+
+A cerebrocerebellum (cerebrocerebellum – kéregkapcsolatú kisagyrész) a féltekék oldalsó
+részeit foglalja magába (37–4. ábra). Ezek a területek az evolúció során a legújabban
+keletkeztek, és az embernél és az emberszabású majmoknál sokkal nagyobb arányt
+képviselnek a kisagy többi részéhez képest, mint a makákóknál és a macskáknál. Ebbe a
+területbe és ebből ki szinte az összes be- és kimenet az agykéreggel (cerebral cortex)
+való összeköttetésen keresztül zajlik. A kimenetet a fogazott mag (dentate nucleus – a
+legkülső mély kisagyi mag) továbbítja, amely a talamuszón (thalamus) keresztül a
+kontralaterális motoros, premotoros, parietalis és prefrontális kérgekbe vetít. A fogazott
+mag a kontralaterális vörös magba (red nucleus) is vetít. Az oldalsó féltekéknek sok
+funkciójuk van, de úgy tűnik, leginkább a mozgás tervezésében és végrehajtásában vesznek
+részt. Szerepük van olyan kognitív funkciókban is, amelyek nem kapcsolódnak a mozgás
+tervezéséhez, például a vizuális-téri (visuospatial) és a nyelvi folyamatokhoz. Mára
+bizonyos együttjárási bizonyítékok (correlative evidence) utalnak arra, hogy a kisagyi
+féltekék szerepet játszanak a skizofrénia (60. fejezet), a disztónia (dystonia – 38.
+fejezet) és az autizmus (autism – 62. fejezet) egyes vonatkozásaiban.
+
+Két fontos elv (two important principles) rajzolódott ki a kisagyi működésről abból, hogy
+egyes idegsejtek cselekvési potenciáljait (action potentials) rögzítették a kisagykéregben
+és a mély kisagyi magokban karos mozgások közben, valamint bizonyos kisagyi területek
+irányított, átmeneti működését szüntették meg.
+
+Elsőként: ezeknek a területeknek az idegsejtjei élénken tüzelnek az önkéntes mozgásokkal
+összefüggésben. A kisagyi kimenet a mozgás irányához és sebességéhez kapcsolódik. A mély
+magok különböző végtagokhoz és ízületekhez tartozó szomatotópiás térképekbe
+(somatotopic maps) szerveződnek, akárcsak a motoros kéregben, bár a kisagykéreg
+szerveződését "töredezett szomatotópiának" (fractured somatotopy) nevezték el, több,
+egymástól független és részleges térképpel. Továbbá a kisagyi idegsejtek tüzelésének
+modulációja és a mozgás megkezdése közötti időköz megdöbbentően hasonló a motoros
+kéreg idegsejtjeiénél tapasztalthoz. Ez az eredmény aláhúzza a kisagy részvételét az
+agykéreggel szinkronban működő ismétlődő áramkörökben (recurrent circuits).
+
+Másodikként: a kisagy előretekintő (feedforward) szabályozást nyújt az izomösszehúzódások
+felett, hogy a mozgás időzítését szabályozza. Ahelyett, hogy az érzékszervi
+visszacsatolásra (sensory feedback) várna, a kisagyi kimenet előre jelzi azokat az
+izomösszehúzódásokat, amelyekre szükség lesz ahhoz, hogy a mozgás simán, pontosan és
+gyorsan elérje a kívánt végpontját. E mechanizmusok elégtelensége okozza a kisagyi
+betegségek szándékos remegését (intention tremor). Például egy gyors, egyszeletes
+mozgást az agonista izom (agonist muscle – a mozgást kezdő izom) összehúzódása indít
+meg, és az antagonista izom (antagonist muscle – az ellentétes izom) megfelelően
+időzített összehúzódása fejezi be. Az antagonista összehúzódása a mozgás korai szakaszában
+kezdődik, jóval azelőtt, hogy az érzékszervi visszacsatolásnak ideje lett volna elérni az
+agyat, tehát a mozgás részeként kell, hogy programozva legyen. Amikor a fogazott és az
+interpozíciós magokat kísérletileg működésképtelenné teszik, az antagonista izom
+összehúzódása késik, amíg a végtag túl nem lőtte a célpontját. A normális mozgásban
+meglévő, előre programozott antagonista-összehúzódást érzékszervi visszacsatolás által
+vezérelt korrekció váltja fel. Ez a korrekció önmagában is pontatlan (dysmetric), és újabb
+hibához vezet, ami egy újabb kiigazítást tesz szükségessé (37–7. ábra).
+
+--------------------------------------------------------------------------------
+MEGÁLLÁS HELYE / STOPPING POINT:
+A fordítás itt áll meg – a "The Cerebellar Cortex Comprises Repeating Functional Units
+Having the Same Basic Microcircuit" (A kisagykéreg ismétlődő funkcionális egységekből
+áll, amelyeknek azonos az alapvető mikroáramköre) szakasz eleje előtt. A lefordított
+szakasz a kisagy funkcionális felosztását (vestibulocerebellum, spinocerebellum,
+cerebrocerebellum), a két fontos működési elvet (szinkron cselekvési potenciálok,
+előretekintő időzítés), valamint a szándékos remegés mechanizmusát öleli fel.

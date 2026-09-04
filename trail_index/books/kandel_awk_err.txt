@@ -1,0 +1,5 @@
+awk: 36: unexpected character 0xc3
+awk: 38: unexpected character 0xc3
+awk: 43: unexpected character 0xc3
+awk: 44: unexpected character 0xc3
+awk: 47: unexpected character 0xc3

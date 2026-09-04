@@ -1,0 +1,117 @@
+# Kandel 47. fejezet — Magyar fordítás (Chunk 11, szakaszok 1–2)
+
+Az alábbi szöveg a *Principles of Neural Science* (6. kiadás) 47. fejezetének
+("The Growth and Guidance of Axons" / Az axonok növekedése és irányítása)
+nyitó elbeszélő prózáját fordítja magyarra. A kulcsfogalmak mellett zárójelben
+angol szakmai kifejezés (English gloss) szerepel. A fordítás a fejezet
+bevezetőjével és az "Axonok és dendritek különbségei" szakasszal kezdődik, és
+a "növekedési kúp (growth cone) szenzoros átalakító és motoros szerkezet"
+szakasz elejéig tart; a megállás pontját lentebb jelzem.
+
+---
+
+Az előző két fejezetben láttuk, hogyan jönnek létre a neuronok (idegsejtek)
+megfelelő számban, a helyes időpontokban és a megfelelő helyeken. Ezek a
+korai fejlődési lépések előkészítik a későbbi eseményeket, amelyek az
+idegsejteket működőképes kapcsolatok kialakítására irányítják a célsejtekkel.
+Hogy kapcsolatokat hozzanak létre, az idegsejteknek hosszú nyúlványokat —
+axonokat (axon) és dendriteket (dendrite) — kell nyújtaniuk, amelyek
+lehetővé teszik az összeköttetést a posztszinaptikus (utánköti) sejtekkel és a
+más neuronoktól érkező szinaptikus (idegközti) bemenetet. Ebben a fejezetben
+azt vizsgáljuk, hogyan fejlesztenek ki az idegsejtek axonokat és dendriteket,
+és hogyan vezéreltetnek az axonok a céljaikhoz.
+
+Azzal kezdjük a fejezetet, hogy leírjuk, hogyan válik bizonyos idegsejti
+nyúlványokból axon, másokból dendrit. Ezt követően leírjuk a növekvő axonát,
+amelynek hosszú utat kell megtennie, és számos nem megfelelő idegsejti
+partnert figyelmen kívül kell hagynia, mielőtt éppen a megfelelő régióban
+végződik és felismeri a helyes szinaptikus céljait. Szemügyre vesszük azokat
+a stratégiákat, amelyekkel az axon leküzdi ezeket a kihívásokat. Végül két
+jól tanulmányozott axonpálya fejlődésének leírásával illusztráljuk az
+axonirányítás (axonal guidance) általános jellemzőit: az egyik a retinából
+(a szemfenékből) a agyba vivő vizuális (látási) információt, a másik a
+gerincvelőből az agyba vivő kután (bőr alatti) szenzoros információt.
+
+## Az axonok és a dendritek különbségei korán, a fejlődés kezdetén jelennek meg
+
+Az idegsejtek nyúlványai hosszukban, vastagságukban, elágazási mintázatukban
+és molekuláris felépítésükben rendkívül változatosak. Ennek ellenére a
+legtöbb idegsejti nyúlvány két működési kategóriába illeszkedik: axonokba és
+dendritekbe. Több mint egy évszázaddal ezelőtt Santiago Ramón y Cajal azt
+hipotetizálta, hogy ez a megkülönböztetés teszi lehetővé az idegsejtek
+számára, hogy az információt egy meghatározott irányban továbbítsák — egy
+gondolatot, amelyet a dinamikus polarizáció (dynamic polarization) törvényeként
+fogalmazott meg. Cajal azt írta, hogy "az idegingerület továbbítása mindig a
+dendritikus ágakból és a sejttestből az axon felé történik". Az elektrofiziológiai
+módszerek megfelelővé válása előtti évtizedekben ez a törvény eszközt adott az
+idegi áramkörök szövettani elemzésére. Bár találtak kivételeket, Ramón y Cajal
+törvénye alapvető elv marad, amely összeköti a szerkezetet a működéssel az
+idegrendszerben, és rámutat a neuronok polarizált (irányított) formájának
+megismerési fontosságára.
+
+A neuronális polarizáció (sejtirányúság) megértésének előrehaladása nagyrészt
+a rágcsáló agyából kivett és szövettenyészetben (tissue culture) nevelt idegsejtek
+tanulmányozásából származik. Magányosan tenyésztett hippokampális (agykampályi)
+neuronok olyan nyúlványokat fejlesztenek, amelyek emlékeztetnek a vivo-ban
+(lélő szervezetben) látottakra: egyetlen, hosszú, hengeres axon és több rövidebb,
+elkeskenyedő dendrit. Ahogy a citoszkeletális (sejtváz-) és szinaptikus
+fehérjéket elkülönítetten irányítják ezekhez a komponensekhez, az axonok és a
+dendritek megkülönböztethető molekuláris jellemzőkre tesznek szert. Például a
+Tau fehérje egy sajátos formája az axonokban, a MAP2 fehérje a dendritekben
+helyezkedik el.
+
+A tenyésztett neuronok különösen hasznosak fejlődési tanulmányokhoz, mert
+kezdetben nem mutatnak nyilvánvaló polarizációt, és specializált jellemzőiket
+fokozatosan, egy sztereotip (állandó) sejtlépés-sorrendben szerzik meg. Ez a
+sorozat több rövid nyúlvány kinyújtásával kezdődik, amelyek mind egyenértékűek.
+Nem sokkal ezután az egyik nyúlvány axonná válik, a maradék nyúlványok pedig
+dendritikus jellemzőket öltenek magukra.
+
+Hogyan történik ez? A megnyúlt nyúlványokat fenntartó és a növekedést hajtó
+citoszkeletális fehérjék központiak ebben a folyamatban. Ha egy korai
+nyúlvány aktin-filamentumai (vékony rostjai) destabilizálódnak, a citoszkeleton
+úgy rendeződik át, hogy a nyúlványt axon fejlődésére kötelezi; másodlagosan a
+maradék nyúlványok dendritekké válva reagálnak. Ha a frissen képződő axon
+eltávolításra kerül, a maradék nyúlványok egyike gyorsan axon jelleget ölt.
+Ez a sorozat azt sugallja, hogy az axon-meghatározás a neuronális polarizáció
+kulcs eseménye, és hogy az újonnan képződött axonok jelei egyrészt elnyomják
+további axonok keletkezését, másrészt elősegítik a dendritképződést.
+
+Az axonból származó, a többi axon elnyomásáért felelős jel természete nem
+ismert, de betekintést nyertünk a citoszkeletális elrendezést irányító jelekbe
+a Par-komplex (Par complex) gének által kódolt fehérjecsoport tanulmányozása
+nyomán. Amint először a fonálféregben (Caenorhabditis elegans) mutatták ki, a
+Par-fehérjék részt vesznek a citoszkeletális átszerveződés számos aspektusában,
+beleértve az idegsejti nyúlványok polarizációját is. Az emlős előagyi neuronok,
+amelyekből hiányzik a Par3, Par4, Par6 vagy a Par1 rokonai, több, axon és
+dendrit között átmeneti hosszúságú nyúlványt növesztenek, amelyek mindkét
+folyamat markerét (jelzőjét) hordozzák.
+
+Bár a tenyészetben nevelt neuronok hasonlók az agybeliekhez, meg vannak
+fosztva a kulcs extrinzikus (külső eredetű) jelektől és szignáloktól. A
+tenyészetben nevelt neuronok egymáshoz képest véletlenszerűen helyezkednek el,
+szemben a fejlődő agy számos régiójával, ahol a neuronok sorokba rendeződnek,
+dendritjeiket ugyanabba az irányba mutatva. Ahogy a neuronok a rendeltetési
+helyükre vándorolnak, az axonok és a dendritek gyakran az őket követő, illetve
+vezető nyúlványaik meghosszabbodásaként nőnek. Ez az élőben (in vivo) és a
+tenyészetben (in vitro) tapasztalt különbség azt jelzi, hogy extrinzikus
+szignálok szabályozzák a polarizációs gépezetet. A fejlődő agyban a szemaphorin
+és más axonirányító faktorok helyi felszabadulása segíthet a dendritek
+(el)orientálásában. A Par-fehérjekomplex feladata ezeket az extracelluláris
+jeleket összekötni a citoszkeletont átrendező sejtgépezettel — egy folyamat,
+amelyet részben az aktint és a tubulint módosító fehérjék szabályozása révén
+valósítanak meg.
+
+---
+
+[MEGÁLLÁS JELZÉSE: A fordítás a 47. fejezet "Differences Between Axons and
+Dendrites Emerge Early in Development" szakaszának végéig (a Par-komplex és a
+szemaphorin-3A szerepének bemutatásáig) tart. A következő, le nem fordított
+szakaszok: "Dendrites Are Patterned by Intrinsic and Extrinsic Factors"
+(beleértve az ön-eltérítést / self-avoidance, a csempézést / tiling és a
+protokadherin/Dscam kombinatorikus kódokat), majd "The Growth Cone Is a
+Sensory Transducer and a Motor Structure", végül "Molecular Cues Guide Axons
+to Their Targets" és Sperry kísérlete. A chunk további ~600 sora (összesen
+~725 sor) eredetileg is csak az első fejezet-egység elejéig volt olvasható a
+fájlban; a teljes fordítás folytatása szükség esetén külön fájlban készíthető
+el.)

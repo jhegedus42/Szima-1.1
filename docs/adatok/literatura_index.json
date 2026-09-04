@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "generalt": "2026-08-21",
+    "ag": "cursor/literature-aaa6",
+    "terkep_markdown": "docs/Literatura_Terkep_Teljes.md"
+  },
+  "retegek": {
+    "nyers": ["source/", "trail_index/books/forras/"],
+    "feldolgozott": ["trail_index/books/", "docs/KonyvKivonat_*.md"],
+    "formalis": ["osveny_index/", "szima_ter/modul/", "trail_index/Reader.idr"]
+  },
+  "books_kategoria": {
+    "forras_nyers": {
+      "utvonal": "trail_index/books/forras/",
+      "fajl_szam": 11,
+      "osszes_sor_kb": 394000,
+      "peldak": [
+        "uj_magyar_lexikon.txt",
+        "lumo_e8_lumo.txt",
+        "lumo_qecc_lumo.txt",
+        "bajor_kiefer_magyar_nyelv.txt"
+      ]
+    },
+    "teljes_konyv_txt": {
+      "peldak": [
+        {"fajl": "awodey_category_theory.txt", "sor": 14443},
+        {"fajl": "maclane_categories.txt", "sor": 18642},
+        {"fajl": "uj_magyar_nyelvtan.txt", "sor": 14074},
+        {"fajl": "shoup_number_theory.txt", "sor": 26376}
+      ]
+    },
+    "tobbnyelvu": {
+      "peldak": [
+        {"fajl": "awodey_bilingual_ch1.txt", "sor": 2960, "nyelvek": ["HU", "EN"]},
+        {"fajl": "awodey_quadlingual_ch1.txt", "sor": 4684, "nyelvek": ["HU", "EN", "LA", "ZH"], "bekotve": "Kereso.idr"}
+      ]
+    },
+    "kivonat": [
+      "maclane_extracted.md",
+      "idris_patterns_extracted.md",
+      "magyar_esetragok.txt",
+      "magyar_igeragozas.txt"
+    ]
+  },
+  "source_szigetek": [
+    {
+      "nev": "quantum_language_engine-2",
+      "tipus": "python_prototipus",
+      "kulcs_fajlok": ["all_constants_exact.py", "hypothesis_mdl_cpt.txt", "README.md"]
+    },
+    {
+      "nev": "Kimi_Agent_Metaforikus Fizika File Request",
+      "tipus": "hanmag_archivum",
+      "kulcs_fajlok": ["hanmag_*.py", "archivum/transzkript_*.txt", "00_OLVASD_EL.txt"],
+      "dokumentacio": "docs/archivum_terkep.md"
+    },
+    {
+      "nev": "lumo",
+      "tipus": "mentett_chat_html",
+      "temak": ["E8", "QECC", "TheoryOf64", "Magyar", "Vilagegyetem"]
+    },
+    {
+      "nev": "deepseek_export",
+      "tipus": "chat_json",
+      "fajlok": ["conversations.json", "user.json"]
+    },
+    {
+      "nev": "qec_konyvek_binaries",
+      "tipus": "epub_djvu",
+      "fajlok": [
+        "ERROR-CORRECTING CODES (JOHN BAYLIS).epub",
+        "Quantum Error Correction Symmetric, Asymmetric... (La Guardia).epub",
+        "Error-Correcting Codes, Finite Geometries... (Bruen, Wehlau).djvu"
+      ],
+      "allapot": "nincs_txt_ocr"
+    }
+  ],
+  "idris_bekotes": [
+    {"modul": "osveny_index/Kereso.idr", "forras": "awodey_quadlingual_ch1.txt"},
+    {"modul": "osveny_index/MagyarNyelvtan.idr", "forras": "magyar_esetragok.txt, magyar_igeragozas.txt"},
+    {"modul": "trail_index/Reader.idr", "forras": "book_processor ConceptNote kimenet"},
+    {"modul": "szima_ter/modul/PauliAlgebra_v2.idr", "forras": "schray_manogue_clifford_triality.txt, forras/lumo_qecc_lumo.txt"},
+    {"modul": "szima_ter/modul/HolografikusKod49.idr", "forras": "forras/lumo_e8_lumo.txt"}
+  ],
+  "skill_ek": [
+    "skills/konyvolvaso/SKILL.md",
+    "skills/magyar-lexikon/SKILL.md",
+    "skills/konyv-keszito/SKILL.md"
+  ],
+  "hianyzik": [
+    "szima_ter/forras/ (bekezdes-JSON, ures)",
+    "EPUB QEC konyvek txt verzioja",
+    "Awodey 2+ fejezet bilingual",
+    "Automatikus konyv->Idris pipeline"
+  ]
+}

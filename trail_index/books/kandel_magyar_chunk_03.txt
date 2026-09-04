@@ -1,0 +1,140 @@
+Kandel – Az Idegtudomány Alapelvei (6. kiadás), 9. fejezet
+Membránpotenciál és az idegsejt passzív elektromos tulajdonságai
+(Fordítás a kandel_chunk_03.txt szövege alapján. A szakaszok a
+függőleges vonalakkal és ábraleírásokkal megszakított, de szövegként
+olvasható narratív részek magyarítása. A technikai kifejezések után
+zárójelben az angol eredeti szerepel. A fordítás a fejezet elejétől a
+nátrium-kálium pumpa (sodium-potassium pump) bemutatásának végéig
+terjed; a megállás helyét lásd a fájl végén.)
+
+================================================================
+
+Hogyan hatnak együtt a koncentrációgradiensek (concentration gradients)
+a sejt nyugalmi membránpotenciáljának (resting membrane potential)
+meghatározására? E kérdés megválaszolásához a legkönnyebb először
+csak a kálium (potassium, K+) és a nátrium (sodium, Na+) diffúzióját
+vizsgálni. Térjünk vissza azzal az egyszerű példával, amelyben egy
+sejtnek csupán kálium-, nátrium-, klorid- (chloride, Cl−) és
+szerves-anion- (A−) csatornái vannak, az 9–1. táblázatban látható
+gradiensekkel. Ezekben a körülmények között a nyugalmi membránpotenciál
+(Vr) kizárólag a kálium koncentrációsgradiensétől függ, és egyenlő az
+EK káliumegyensúly-potenciállal (−75 millivolt) (lásd az 9–4A ábrát).
+
+Vizsgáljuk meg most, mi történik, ha a membránhoz hozzáadunk néhány
+nyugalmi nátriumcsatornát, így az kissé áteresztővé válik a nátrium
+számára. Két erő hajtja a nátriumot a sejtbe: a nátrium kémiai
+koncentrációsgradiense mentén áramlik be, és a membránen átívelő
+negatív elektromos potenciálkülönbség is befelé hajtja (lásd az 9–4B
+ábrát). A nátrium beáramlása depolarizálja (depolarizes) a sejtet, de
+csak kissé a káliumegyensúly-potenciál (−75 millivolt) értékétől. Az új
+membránpotenciál nem közelíti meg a nátrium +55 millivoltos
+egyensúlypotenciálját, mert a membránban sokkal több nyugalmi
+káliumcsatorna van, mint nátriumcsatorna.
+
+Amint a membránpotenciál elkezd depolarizálódni a káliumegyensúly-
+potenciál értékétől, a káliumáram már nincs egyensúlyban a membrán
+két oldala között. A káliumot a sejtbe hajtó elektromos erő
+csökkenése azt jelenti, hogy most nettó káliumáramlás van kifelé a
+sejtből, amely igyekszik ellensúlyozni a nátrium beáramlását. Minél
+jobban depolarizálódik és távolodik el a membránpotenciál a
+káliumegyensúly-potenciáltól, annál nagyobb a káliumot kifelé hajtó
+nettó elektrokémiai erő, és ennélfogva annál nagyobb a nettó kálium-
+kiáramlás. Végül a membránpotenciál eléri az új nyugalmi szintet,
+ahol a megnövekedett káliumkiáramlás éppen egyensúlyban tartja a
+nátriumbeáramlást (lásd az 9–4C ábrát). Ez az egyensúlyi pont
+(általában körülbelül −65 millivolt) messze van a nátrium
+egyensúlypotenciáljától (+55 millivolt), és csak kissé pozitívabb a
+káliumegyensúly-potenciáljánál (−75 millivolt).
+
+Ennek az egyensúlyi pontnak a meghatározásához vegyük figyelembe,
+hogy egy ion membránon átívelő áramlásának nagysága az
+elektrokémiai hajtóerejének (az elektromos és kémiai hajtóerő összege)
+és a membrán ionra vonatkozó vezetőképességének (conductance) a
+szorzata:
+
+    ionáram = (elektromos hajtóerő + kémiai hajtóerő) × membránvezetőképesség.
+
+Egy nyugalmi idegsejtben viszonylag kevés nátriumcsatorna van nyitva,
+így a nátrium membránvezetőképessége meglehetősen alacsony. Ezért
+annak ellenére, hogy a nátriumra ható kémiai és elektromos erők
+nagyok, a nátrium beáramlása kicsi. Ezzel szemben egy nyugalmi sejt
+membránjában sok káliumcsatorna van nyitva, így a kálium
+membránvezetőképessége viszonylag nagy. A nyugalmi sejtben a kálium
+nagy vezetőképessége miatt a káliumra ható kicsi nettó kifelé irányuló
+erő is elegendő a nátriumbeáramlással egyenlő káliumkiáramlás
+előállításához.
+
+================================================================
+
+A nátrium, a kálium és a kalcium (calcium, Ca2+) elektrokémiai
+gradienseit az ionok aktív szállítása (active transport) hozza létre
+és tartja fenn.
+
+Amint láttuk, a nyugalmi sejtből a kálium passzív kiáramlása a
+nyugalmi sejtbe áramló nátrium passzív beáramlását ellensúlyozza.
+Ez az állandó ionszivárgás azonban nem folytatódhat korlátlan ideig,
+mert a nátrium és a kálium gradiensei végül lecsengenének, csökkentve
+a nyugalmi membránpotenciált. Az iongradiensek leépülését a
+nátrium-kálium pumpa (sodium-potassium pump, Na+-K+ pump) akadályozza
+meg, amely a nátriumot és a káliumot az elektrokémiai gradienseikkel
+ellentétes irányba szállítja: a sejtből kipréseli a nátriumot, miközben
+beveszi a káliumot. A pumpa tehát energiát igényel, és az energiát az
+adenozin-trifoszfát (adenosine triphosphate, ATP) hidrolízise
+szolgáltatja. Így a nyugalmi membránpotenciál mellett a sejt nincs
+egyensúlyban, hanem állandósult állapotban (steady state) van: folyamatos
+passzív nátriumbeáramlás és káliumkiáramlás történik a nyugalmi
+csatornákon keresztül, amelyet a nátrium-kálium pumpa pontosan
+ellenkező irányú szállítással ellensúlyoz.
+
+Amint az előző fejezetben láttuk, a pumpák hasonlóak az ioncsatornákhoz
+abból a szempontból, hogy mindkettő katalizálja az ionok sejtmembránon
+átjutását. Két fontos tekintetben azonban különböznek. Először: az
+ioncsatornák passzív vezetékek, amelyek lehetővé teszik az ionok
+elektrokémiai gradiensük mentén való mozgását, míg a pumpák
+kémiai energiaforrást igényelnek az ionok elektrokémiai gradienssel
+ellentétes irányú szállításához. Másodszor: az iontranszport sokkal
+gyorsabb a csatornákban – az ionok jellemzően másodpercenként 10^7
+és 10^8 közötti sebességgel áramlanak át a csatornákon, míg a pumpák
+tízezerszer lassabban működnek.
+
+A nátrium-kálium pumpa egy nagy, a membránt átívelő fehérje, amelynek
+intracelluláris felszínén katalitikus kötőhelyei vannak a nátrium és az
+ATP számára, extracelluláris felszínén pedig a kálium számára. Minden
+ciklus során a pumpa egyetlen ATP molekulát hidrolizál. (Mivel a
+nátrium-kálium pumpa hidrolizálja az ATP-t, nevezik nátrium-kálium
+ATPáz-nak is, Na+-K+ ATPase.) E hidrolízis energiáját arra használja,
+hogy három nátriumiont préseljen ki a sejtből, és két káliumiont vegyen
+be. A nátrium- és káliumionok egyenlőtlen áramlása miatt a pumpa nettó
+kifelé irányuló ionáramot hoz létre. Ezért a pumpát elektrogenikusnak
+(electrogenic) nevezzük. Ez a pumpa hajtotta pozitív töltésű
+kiáramlás a nyugalmi potenciált néhány millivoltal negatívabbra állítja
+be, mint amit a passzív mechanizmusok egyedül elérnének.
+
+Egy nyugalmi idegsejtben viszonylag kevés nátriumcsatorna van nyitva,
+így a membrán nátriumvezetőképessége alacsony. A nátrium-kálium pumpát
+az uabain (ouabain) vagy a digitalis nevű növényi alkaloidok gátolják,
+ami fontos szerepet játszik a szívelégtelenség (heart failure)
+kezelésében.
+
+A nátrium-kálium pumpa a P-típusú ATPázok (P-type ATPases) nagy
+családjának tagja (mert az ATP foszforilcsoportját átmenetileg átviszi
+a pumpára). A P-típusú ATPázok közé tartozik egy kalciumpumpa is, amely
+a kalciumot (Ca2+) szállítja a sejtmembránokon át. Minden sejt
+normálisan rendkívül alacsony, 50 és 100 nanomól közötti citoplazmatikus
+kalciumkoncentrációt tart fenn, amely több mint négy nagyságrenddel
+kisebb a külső kb. 2 millimoláris koncentrációnál.
+
+================================================================
+
+MEGÁLLÁS HELYE / STOPPING POINT:
+A fordítás a 9. fejezet narratív szövegének elejétől a nátrium-kálium
+pumpa és a P-típusú ATPázok (P-type ATPases) bemutatásáig, valamint a
+kalciumpumpa (calcium pump) rövid említéséig tart (a forráschunk
+"electrogenic" / "P-type ATPases" / "Ca2+ pump" szakaszai). A további
+részek – a szekunder aktív transzport (secondary active transport,
+Na+-Ca2+ exchanger, klorid-kotranszporterek), a klorid és a GABA
+fejlődési váltása, az akciós potenciál (action potential) regeneratív
+pozitív visszacsatolása, a Goldman-egyenlet (Goldman equation) és az
+ekvivalens áramköri modell (equivalent circuit) – nem lettek lefordítva,
+hogy a válasz hossza kezelhető maradjon. Ezek az angol eredetiben a
+kandel_chunk_03.txt további sorainál olvashatók.

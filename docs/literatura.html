@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Szima — Literatúra térkép</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --muted: #8b949e;
+    --blue: #58a6ff;
+    --green: #56d364;
+    --gold: #e3b341;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
+    line-height: 1.65;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+  h1 { color: var(--blue); font-size: 2rem; margin-bottom: 0.25rem; }
+  h2 { color: var(--gold); margin: 2.5rem 0 1rem; font-size: 1.35rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
+  h3 { color: var(--green); margin: 1.5rem 0 0.75rem; font-size: 1.1rem; }
+  p, li { margin-bottom: 0.5rem; }
+  a { color: var(--blue); }
+  .subtitle { color: var(--muted); margin-bottom: 1.5rem; }
+  .banner {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .banner strong { color: var(--gold); }
+  .links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.75rem; }
+  .links a {
+    background: #21262d;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.4rem 0.75rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .links a:hover { border-color: var(--blue); }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.92rem; }
+  th, td { border: 1px solid var(--border); padding: 0.5rem 0.65rem; text-align: left; vertical-align: top; }
+  th { background: var(--surface); color: var(--gold); }
+  tr:nth-child(even) { background: #0d111780; }
+  .mermaid {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+  }
+  code { background: #21262d; padding: 0.15rem 0.35rem; border-radius: 4px; font-size: 0.88em; }
+  ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+  .nav-top { margin-bottom: 1rem; font-size: 0.9rem; }
+</style>
+  <link rel="stylesheet" href="_preview/banner.css">
+  <script src="_preview/banner.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+  <p class="nav-top"><a href="index.html">← Szima dashboard</a> · <a href="Literatura_INDEX.md">Markdown index</a></p>
+
+  <h1>Literatúra- és forrástérkép</h1>
+  <p class="subtitle">Szima / opencode — könyvek, <code>source/</code> archívum, Idris bekötések · 2026-08-21</p>
+
+  <div class="banner">
+    <strong>Olvasás GitHubon (azonnal):</strong>
+    <div class="links">
+      <a href="https://github.com/jhegedus42/Szima/blob/cursor/literature-aaa6/docs/Literatura_Terkep_Teljes.md" target="_blank" rel="noopener">Teljes MD (GitHub)</a>
+      <a href="https://github.com/jhegedus42/Szima/tree/cursor/literature-aaa6/docs" target="_blank" rel="noopener">docs/ mappa</a>
+      <a href="https://github.com/jhegedus42/Szima/blob/cursor/literature-aaa6/docs/adatok/literatura_index.json" target="_blank" rel="noopener">JSON index</a>
+    </div>
+    <p style="margin-top:0.75rem;color:var(--muted);font-size:0.9rem;">
+      GitHub natívan rendereli a Mermaid diagramokat a .md fájlokban. Ehhez az oldalhoz (szebb layout) kapcsold be a GitHub Pages-t — lásd alul.
+    </p>
+  </div>
+
+  <h2>1. Három réteg</h2>
+  <div class="mermaid">
+flowchart TB
+  subgraph nyers ["Nyers réteg"]
+    SRC["source/ · 391 fájl"]
+    FORRAS["books/forras/ · 11 dump"]
+  end
+  subgraph feld ["Feldolgozott"]
+    BOOKS["trail_index/books/ · 66 fájl"]
+    DOCS["docs/KonyvKivonat_*.md"]
+  end
+  subgraph form ["Formális Idris"]
+    KERESO["Kereso.idr"]
+    READER["Reader.idr"]
+    MODUL["szima_ter/modul/"]
+  end
+  SRC --> FORRAS --> BOOKS
+  BOOKS --> KERESO
+  BOOKS --> READER --> MODUL
+  BOOKS --> DOCS --> MODUL
+  </div>
+
+  <table>
+    <tr><th>Réteg</th><th>Hol</th><th>Mi ez?</th></tr>
+    <tr><td><strong>Nyers</strong></td><td><code>source/</code>, <code>books/forras/</code></td><td>Chat-exportok, Lumo HTML, EPUB, korai Python</td></tr>
+    <tr><td><strong>Feldolgozott</strong></td><td><code>trail_index/books/</code>, <code>docs/</code></td><td>OCR txt, bilingual fejezetek, kivonatok</td></tr>
+    <tr><td><strong>Formális</strong></td><td><code>osveny_index/</code>, <code>szima_ter/</code></td><td>Idris, kereső, olvasó-protokoll</td></tr>
+  </table>
+
+  <h2>2. trail_index/books/</h2>
+  <div class="mermaid">
+mindmap
+  root((books/))
+    forras
+      Lumo chatek
+      Lexikon
+    teljes_konyv
+      Awodey
+      Mac Lane
+    tobbnyelvu
+      awodey ch1 HU EN LA ZH
+    kivonat
+      maclane_extracted
+      esetrag tabla
+  </div>
+
+  <table>
+    <tr><th>Kategória</th><th>Példa</th><th>Parse-olva?</th></tr>
+    <tr><td>forras/ nyers</td><td><code>lumo_e8_lumo.txt</code></td><td>Nem — nyers szöveg</td></tr>
+    <tr><td>Teljes könyv</td><td><code>maclane_categories.txt</code></td><td>OCR txt</td></tr>
+    <tr><td>Többnyelvű</td><td><code>awodey_quadlingual_ch1.txt</code></td><td><strong>Igen</strong> → Kereso.idr</td></tr>
+    <tr><td>Kivonat</td><td><code>maclane_extracted.md</code></td><td>Subagent fogalmak</td></tr>
+  </table>
+
+  <h2>3. source/ archívum</h2>
+  <div class="mermaid">
+flowchart LR
+  QLE["quantum_language_engine-2"]
+  HAN["Kimi HANMAG hanmag_*.py"]
+  LUMO["lumo/ HTML chatek"]
+  EPUB["QEC epub/djvu"]
+  QLE --> E9["E9_framework.md"]
+  HAN --> ARCH["archivum_terkep.md"]
+  LUMO --> FORRAS2["books/forras/lumo_*.txt"]
+  </div>
+
+  <table>
+    <tr><th>Mappa / fájl</th><th>Tartalom</th></tr>
+    <tr><td><code>quantum_language_engine-2/</code></td><td>Korai QLE: agy = Steane QEC, α Python</td></tr>
+    <tr><td><code>Kimi_Agent_Metaforikus Fizika…/</code></td><td>HANMAG ~29 script + <code>archivum/</code> transcriptek</td></tr>
+    <tr><td><code>lumo/</code> + root HTML</td><td>Mentett E8, QECC, TheoryOf64 beszélgetések</td></tr>
+    <tr><td><code>*.epub</code>, <code>*.djvu</code></td><td>Baylis, La Guardia QEC könyvek (nincs txt OCR)</td></tr>
+    <tr><td><code>deepseek_export/</code></td><td>DeepSeek conversations.json</td></tr>
+  </table>
+
+  <h2>4. Idris bekötések</h2>
+  <div class="mermaid">
+flowchart LR
+  AQ["awodey_quadlingual_ch1"] --> K["Kereso.idr"]
+  ES["magyar_esetragok"] --> MN["MagyarNyelvtan.idr"]
+  LE["lumo_e8_lumo"] --> HC["HolografikusKod49.idr"]
+  LQ["lumo_qecc"] --> PA["PauliAlgebra_v2.idr"]
+  </div>
+
+  <h2>5. Hol olvasd?</h2>
+  <table>
+    <tr><th>Módszer</th><th>URL / lépés</th><th>Diagramok?</th></tr>
+    <tr>
+      <td><strong>GitHub fájl</strong></td>
+      <td><a href="https://github.com/jhegedus42/Szima/blob/cursor/literature-aaa6/docs/Literatura_Terkep_Teljes.md">Literatura_Terkep_Teljes.md</a> az ágon</td>
+      <td>✓ Mermaid</td>
+    </tr>
+    <tr>
+      <td><strong>Ez az oldal</strong></td>
+      <td>GitHub Pages: <code>https://jhegedus42.github.io/Szima/literatura.html</code></td>
+      <td>✓</td>
+    </tr>
+    <tr>
+      <td><strong>Helyi</strong></td>
+      <td><code>docs/literatura.html</code> dupla kattintás böngészőben</td>
+      <td>✓ (internet kell a Mermaid CDN-hez)</td>
+    </tr>
+    <tr>
+      <td><strong>Vercel / Cloudflare</strong></td>
+      <td>Import repo → root = <code>docs</code> → deploy</td>
+      <td>✓</td>
+    </tr>
+  </table>
+
+  <h3>GitHub Pages bekapcsolása (egyszer, ~2 perc)</h3>
+  <ol>
+    <li>Repo: <a href="https://github.com/jhegedus42/Szima">github.com/jhegedus42/Szima</a></li>
+    <li><strong>Settings → Pages</strong></li>
+    <li>Source: <strong>GitHub Actions</strong> (a workflow a <code>cursor/literature-aaa6</code> ágon van)</li>
+    <li>Merge után vagy workflow futtatás után: <code>https://jhegedus42.github.io/Szima/literatura.html</code></li>
+  </ol>
+
+  <h3>Vercel (alternatíva)</h3>
+  <ol>
+    <li><a href="https://vercel.com/new">vercel.com/new</a> → Import Git Repository → Szima</li>
+    <li>Root Directory: <code>docs</code></li>
+    <li>Framework: Other (statikus)</li>
+    <li>Deploy → kapod a <code>*.vercel.app</code> URL-t</li>
+  </ol>
+
+  <h3>Cloudflare Pages (alternatíva)</h3>
+  <ol>
+    <li>Cloudflare Dashboard → Pages → Connect Git → Szima</li>
+    <li>Build output directory: <code>docs</code></li>
+    <li>No build command</li>
+  </ol>
+
+  <p style="margin-top:2rem;color:var(--muted);font-size:0.85rem;">
+    Teljes szöveg: <a href="Literatura_Terkep_Teljes.md">Literatura_Terkep_Teljes.md</a> ·
+    Index: <a href="Literatura_INDEX.md">Literatura_INDEX.md</a>
+  </p>
+</div>
+<script>
+  mermaid.initialize({ startOnLoad: true, theme: 'dark', securityLevel: 'loose' });
+</script>
+</body>
+</html>

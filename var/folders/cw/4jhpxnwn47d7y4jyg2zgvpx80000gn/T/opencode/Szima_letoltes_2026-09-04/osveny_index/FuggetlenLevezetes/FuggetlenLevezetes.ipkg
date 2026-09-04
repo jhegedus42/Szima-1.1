@@ -1,0 +1,12 @@
+package fuggetlen-levezetes
+
+modules = E8SteaneLevezetes
+        , KorabbiNumerikusEllenorzes
+        , ParitasBuborek
+        , AffinE8KarakterLevezetes
+        , MagyarTeriTetrakod
+        , FuggetlenLevezetesFoprogram
+
+main = FuggetlenLevezetesFoprogram
+
+executable = e8-steane-levezetes

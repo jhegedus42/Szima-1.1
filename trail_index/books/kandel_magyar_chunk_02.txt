@@ -1,0 +1,102 @@
+# Kandel — 4. fejezet (magyar fordítás) — chunk 02
+# Forrás / Source: Kandel et al., Principles of Neural Science (6th ed.), Chapter 4
+# "The Neuroanatomical Bases by Which Neural Circuits Mediate Behavior"
+# Fordítás / Translation: 2026-08-24, Szima kutatási projekt
+# Megjegyzés / Note: a chunk 8171 sorból áll, túlnyomórészt ASCII-art ábrákból.
+#   Ez a fordítás a SZÖVEGES PROZA első jelentős szakaszát tartalmazza
+#   (az 1. ábra magyarázata, a 2. ábra, az érző pályák bevezetése és a
+#   gerincvelőbe való belépés). A fordítás a "Somatosensory Information
+#   From the Trunk and Limbs Is Conveyed to the Spinal Cord" szakasz
+#   szövegének végénél áll meg — lásd a záró megjegyzést.
+
+---
+
+## 4–1. ábra magyarázata (a dorsális oszlop–medialis lemniskus pálya)
+
+A dorsális oszlop–medialis lemniskus pálya (dorsal column–medial
+lemniscal pathway) a szomatoszenzoros (testérzési / somatic sensory)
+információ fő bejövő (afferens / afferent) útvonala. A szomatoszenzoros
+információ a központi idegrendszerbe (central nervous system) a dorsális
+gyökér ganglion (dorsal root ganglion) sejtjein keresztül lép be. Az
+információ áramlása végül a szomatoszenzoros kéregbe (somatosensory
+cortex) vezet. A test különböző részeiről az információt továbbító
+rostok rendezett viszonyt tartanak fenn egymással, és az idegi térképét
+(neural map) alkotják a testfelszínnek az egyes szinaptikus átkapcsolási
+(synaptic relay) helyeken való végződési mintázatukban.
+
+---
+
+## 4–2. ábra magyarázata (az egyszerű viselkedést az agy sok része közvetíti)
+
+A. Egy teniszező, aki a közeledő labdát figyeli, a látókéregét (visual
+cortex) használja a labda méretének, irányának és sebességének
+megítélésére. A premotoros kéreg (premotor cortex) mozgásprogramot
+(otor program) dolgoz ki a labda visszaütésére. A mandulamag (amygdala)
+az agy más régióival együttműködve állítja be a szívritmust, a
+légzést és más homeosztatikus (homeostatic) mechanizmusokat, és
+aktiválja a hipotalamusz (hypothalamus), hogy motiválja a játékost a
+jó ütésre. A premotoros kéreg a karok és lábak izmait beidegző
+motoeuronokat (motor neurons) aktiválja és gátolja. A bazális ganglionok
+(basal ganglia) részt vesznek a mozgásminták (motor patterns) elindításában,
+és talán a megtanult mozdulatok felidézésében a labda megfelelő
+visszaütéséhez. A kisagy (cerebellum) a perifériás érző receptorokból
+(proprioceptive information) származó proprioceptív információ alapján
+igazítja a mozdulatokat. A poszteriór parietális kéreg (posterior parietal
+cortex) a játékosnak érzékét adja arról, hol helyezkedik el a teste a
+térben, és hol van az ütőkeze a testéhez képest. Az agytörzsi (brain stem)
+neuronok szabályozzák a szívritmust, a légzést és az ébrenléti állapotot
+(arousal) a mozdulat során végig. A hippokampusz (hippocampus) nincs
+benne a labda elütésében, de benne van a visszaütés emlékének
+(elméjének) tárolásában, hogy a játékos később dicsekedhessen vele.
+
+B. A ütés végrehajtásához a játékosnak az A részben ábrázolt összes
+szerkezetet, valamint másokat is használnia kell. A motoros kéreg (motor
+cortex) jeleket küld a gerincvelőbe (spinal cord), amelyek aktiválják és
+gátolják a karokban és lábakban sok izmot. A finom tapintás, nyomás és
+proprioceptió rendszere az epikritikus rendszer (epicritic system), míg a
+fájdalom és hőmérséklet rendszere a protopátiás rendszer (protopathic
+system).
+
+---
+
+## A törzs és a végtagok szomatoszenzoros információja a gerincvelőbe kerül
+
+A törzs és a végtagok minden formájú szomatoszenzoros információja a
+gerincvelőbe lép, amelynek magjában H-alakú szürkeállomány (gray matter)
+található, ahol a neuron sejttestek (neuronal cell bodies) helyezkednek
+el. A szürkeállományt fehérállomány (white matter) veszi körül, amelyet
+myelinált (myelinated) axonok alkotnak, és amelyek rövid és hosszú
+kapcsolatokat (connections) egyaránt alkotnak. A szürkeállomány a
+gerincvelő mindkét oldalán dorsális (vagy poszterior) és ventrális (vagy
+anterior) szarvakra (horns) oszlik (4–3. ábra). A dorsális szarv
+másodlagos érző neuronok csoportjait (sensory nuclei) tartalmazza,
+amelyek dendritjei a bőr, az izmok és az ízületek idegrendszerét
+beidegző elsődleges érző neuronoktól (primary sensory neurons)
+kapnak ingerületi információt. A ventrális szarv motoros neuronok
+csoportjait (motor nuclei) tartalmazza, amelyek axonjai kilépnek a
+gerincvelőből, és a vázizmokat (skeletal muscles) idegzik be. A
+gerincvelőnek olyan áramkörei (circuits) vannak, amelyek a nyújtási
+reflextől (stretch reflex) a végtagmozgások összehangolásáig terjedő
+viselkedéseket közvetítenek.
+
+Amint a 3. fejezetben, a térdreflex (knee-jerk reflex) kapcsán tárgyaltuk,
+a szürkeállomány különféle típusú interneuronjai (interneurons) szabályozzák
+a gerincvelő motoros neuronjainak kimenetét (lásd 3–5. ábra). Ezen
+interneuronok közül némelyik gerjesztő (excitatory), mások gátlók
+(inhibitory). Ezek az interneuronok mind az agy felé áramló érző
+információt, mind az agyból a gerincvelői motoros neuronokhoz lefelé
+szállító motoros parancsokat modulálják. A motoros neuronok a többi
+motoros neuron kimenetét is állíthatják az interneuronokon keresztül.
+
+---
+
+## [FORDÍTÁS ÁLLÁSA / TRANSLATION STOP]
+A magyar fordítás itt megáll. A lefordított szakasz a következő pontig
+tart: "Motor neurons can also adjust the output of other motor neurons
+via the interneurons" (a gerincvelő H-alakú szürkeállománya és az
+interneuron-moduláció leírásának vége, kb. az eredeti szöveg 160.
+soránál). A további szakaszok (a gerincvelő oszlopainak fehérállománya,
+a rostrokaudális tengely, a dorsális gyökér ganglionok pseudo-unipoláris
+sejtjei, a dorzális oszlop–medialis lemniskus és az anterolaterális
+rendszer, a thalamus, a kéreg nagyítása / homunkulus) a chunk későbbi
+soraiban találhatók, és következő fordítási egységként dolgozhatók fel.

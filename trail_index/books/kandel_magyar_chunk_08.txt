@@ -1,0 +1,76 @@
+# Kandel — Principles of Neural Science (6th ed.) — 33. fejezet: A járás (Locomotion)
+# Magyar fordítás / Hungarian translation of the narrative prose.
+# Elsődleges nyelv: MAGYAR. A kulcsfontosságú műszaki kifejezések után
+# angol szóhasználat zárójelben (English gloss). Nincsenek rövidítések.
+# A fordítás a fejezet első érdemi szakaszait (interlimb coordination,
+# szomatoszenzoros bemenetek, propriocepció) öleli fel; a megállás helyét lásd alul.
+
+---
+
+## A végtagok közötti koordináció (Interlimb Coordination)
+
+A mellső és hátsó végtagokat összekötő hálózatok felépítése nem ismert részletesen,
+de mind a léziós, mind a genetikai eltávolításos kísérletek azt sugallják, hogy ezek
+az összeköttetések mind gátló (inhibitory), mind serkentő (excitatory) jellegű
+szegmentumok közötti (intersegmental) kapcsolatokat foglalnak magukban.
+
+## A mozgó végtagokból származó szomatoszenzoros bemenetek módosítják a járást
+(Somatosensory Inputs From Moving Limbs Modulate Locomotion)
+
+Még ha a központi minta-generáló (central pattern generator, CPG) elő is tudja
+állítani a járáshoz szükséges izomaktivitás pontos időzítését és fázisait, ezt a
+központi mintát normálisan a mozgó végtagokból érkező szenzoros jelek módosítják.
+Kétféle szenzoros bemenet modulálja a központi minta-generáló működését: az egyik a
+végtag aktív mozgása által generált proprioceptív (proprioceptive) információ, a
+másik a mozgó végtag és a környezeti akadály találkozásakor keletkező taktilis
+(tactile) információ.
+
+### A propriocepció szabályozza a lépés időzítését és amplitúdóját
+(Proprioception Regulates the Timing and Amplitude of Stepping)
+
+A mozgó végtagokból származó szomatoszenzoros jelek szabályozzák a járási ciklust —
+ennek egyik legvilágosabb jelzése, hogy a gerincvelői (spinal) és az agytörzstől
+megfojtott (decerebrate) macskák járásának sebessége igazodik a mozgatott
+futószalag (motorized treadmill) szalagjának sebességéhez. Ahogy a lépések ritmusa
+nő, a támaszfázis (stance phase) rövidebbé válik, míg a lengésfázis (swing phase)
+viszonylag állandó marad. Ez a megfigyelés arra utal, hogy a mozgó végtagból
+érkező valamilyen szenzoros bemenet jelzi a támaszfázis végét, és így vezet a
+lengésfázis elindításához. A mozgó végtagból származó szenzoros információt az
+izmokban és ízületekben található proprioceptorok (proprioceptors) hozzák létre.
+Ezek a proprioceptorok közé tartoznak a csípőben lévő nyújtásérzékeny izomorsók
+(stretch-sensitive muscle spindles) és a bokában lévő erőérzékeny Golgi-féle ín
+szervek (force-sensitive Golgi tendon organs), amelyek különösen fontosak a
+járási fázisátmenet (locomotor phase transition) elősegítésében.
+
+A csípőből származó hatást már Sherrington is észrevette, aki megmutatta, hogy a
+csípőízület gyors kinyújtása (rapid extension) összehúzódásokat vált ki a krónikus
+gerincvelői macskák és kutyák csípőhajlító izmaiban. Újabb vizsgálatok azt
+találták, hogy ha egy végtag csípőkinyújtását megakadályozzuk, az elnyomja az
+abban a végtagban a lépést, míg ha egy mozgásképtelenített (immobilized) macska
+csípőjét ritmikusan mozgatjuk, az képes a járási ritmust (locomotor rhythm) magához
+igazítani (entrain); azaz a csípőizmok nyújtása a motoros kimenet időzítését az
+külsőleg kényszerített mozgások ritmusához igazítja (lásd 33–8A ábra). A nyújtás
+emellett serkenti a hajlító izomorsókat (flexor muscle spindles), és utánozza a
+támaszfázis végén bekövetkező megnyúlást, ezáltal gátolva a feszítő (extensor)
+tevékenységet és elősegítve a gerincvelőben a hajlító ritmus-generáló áramkörök
+(hipflexor rhythm-generating circuits) aktiválását (lásd 33–8B ábra). Az ín
+szervekből és izomorsókból származó szenzoros rostok aktiválása a boka
+feszítőizmaiban (ankle extensor muscles) meghosszabbítja a támaszfázist, gyakran
+késleltetve a lengésfázis kezdetét.
+
+---
+
+# MEGÁLLÁS HELYE / WHERE THE TRANSLATION STOPS
+
+A magyar fordítás a 33. fejezet (Chapter 33: Locomotion) nyitó szakaszait ölelte
+fel: az interlimb koordináció bevezetését, a szomatoszenzoros bemenetek (különösen
+a propriocepció) szerepét a lépés időzítésének és amplitúdójának szabályozásában,
+valamint a csípőkinyújtás és a Sherrington-féle megfigyelések leírását. A fordítás
+ezután áll meg, közvetlenül a boka feszítőizmainak szerepét tárgyaló bekezdés
+vége után (az eredeti szövegben a "Proprioception Regulates the Timing and
+Amplitude of Stepping" szakasz végén, még a "Mechanoreceptors in the Skin Allow
+Stepping to Adjust to Unexpected Obstacles" szakasz előtt). A további szakaszok
+(ioncsatornák, molekuláris-genetikai kódok, supraspinalis struktúrák, kisagy,
+bazális ganglionok, motoros és parietális kéreg, computacionális modellezés, valamint
+a 34. fejezet eleje) nem lettek lefordítva; ezek fogalmi kivonata megtalálható a
+kandel_extracted_chunk_08.md fájlban.

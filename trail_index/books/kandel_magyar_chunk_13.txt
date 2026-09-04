@@ -1,0 +1,115 @@
+# Kandel — Principles of Neural Science (6th ed.) — 56. fejezet: Döntéshozatal és tudatosság
+# Magyar fordítás / Hungarian translation of the narrative prose.
+# Elsődleges nyelv: MAGYAR. A kulcsfontosságú műszaki kifejezések után
+# angol szóhasználat zárójelben (English gloss). Nincsenek rövidítések.
+# A fordítás a fejezet első érdemi szakaszait öleli fel (jel–zaj–küszöb keret,
+# a Mountcastle-féle rezgési feladat, valamint a Newsome-féle véletlen pontos
+# mozgásfeladat bevezetése). A megállás helyét lásd a fájl végén.
+
+---
+
+## A jel, a zaj és a küszöb (Signal, Noise, and Criterion)
+
+Ha a küszöb (threshold, azaz a határérték, amely felett a döntéshozó „igen"-t mond)
+alacsony, a döntéshozó ritkán mulasztja el észrevenni az ingert (stimulus), de gyakran
+válaszol „igen"-t akkor is, amikor nem volt inger, mert a háttérzaj (background noise)
+meghaladja a küszöböt. Ezt a hibatípust téves riasztásnak (false alarm) nevezzük.
+Ha a kritérium (criterion, azaz a döntési szabály mértéke) konzervatívabb — azaz a küszöb
+magas —, a döntéshozó ritkán mond „igen"-t, amikor az inger hiányzik, de gyakran mond
+„nem"-et, amikor az inger jelen van. Ezt a hibát elszalasztásnak (miss) hívjuk.
+
+A megfelelő küszöb a két hibatípus relatív költségétől és magától a kísérlet felépítésétől
+függ. Ha például az inger a próbák (trials) kilencven százalékában van jelen, akkor egy
+lazább küszöb is indokolt lehet, hiszen a téves riasztások ritkák lesznek. A politikát (policy,
+azaz a döntéshozó stratégiája) egy értéknek vagy költségnek kellene irányítania, amely a
+helyes és a helytelen döntésekhez társul. Az orvosi diagnosztikában például gyakran előfordul,
+hogy egy betegség csak a népesség kis hányadát érinti, a diagnosztikai teszt azonban nem
+különbözteti meg tökéletesen a beteg és az egészséges személyeket.
+
+Ezt szemléltethetjük a mammográfiás meszesedési (calcification) pontszámok eloszlásával.
+Az értékek nagyobbak az emlőrákos, mint az egészséges nőkben, de a két értéktartomány
+átfedése részleges, ami azt jelenti, hogy a teszt nem tökéletes. Egy ilyen helyzetben a laza
+küszöb problémásnak tűnhet, mert sok téves riasztást (false alarm) eredményezne: egészséges
+betegek kapnának riasztást arról, hogy lehet, betegek. Ugyanakkor előfordulhat, hogy az
+elszalasztás (miss) életveszélyes, míg a téves riasztás csak egy stresszes hetet jelent, amíg
+a páciens egy döntőbb vizsgálatra vár. Ilyenkor ésszerű a laza küszöb alkalmazása is, még ha
+sok téves riasztást is szül.
+
+A fontos pont az, hogy a küszöb egy döntési szabályt (decision rule) valósít meg, amely
+a probléma ismeretét és azt az attitűdöt (attitude) foglalja magában, amely a helyes válasz
+pozitív értékéhez (találatok és helyes elutasítások) és a hibák negatív értékéhez (elszalasztások
+és téves riasztások) kapcsolódik. Vegyük észre: a különböző küszöbök alkalmazása nem változtatja
+meg azt az alapvető jellemzőt, amely a döntések pontosságáért felel — ezt a kék és a piros
+eloszlás átfedése tükrözi, amely nem változik, ha a döntéshozó módosítja a küszöbét.
+
+## Az idegi ábrázolások és a zaj természete
+
+A neurobiológia kihívása, hogy a jel (signal), a zaj (noise) és a küszöb (criterion) fogalmait
+a szenzoros információ idegi ábrázolásaival és az azokon végzett műveletekkel kapcsolja össze.
+Azt az alapvető felismerést kell elvetnünk, hogy a döntéshozók ugyanazt a döntést hoznák meg
+azonos tények vagy szenzoros ingerek ismétlésekor is. Valamilyen variabilitásnak (változékonyság)
+be kell szivárognia a folyamatba. A jel és a zaj megkülönböztetése nem süllyedhet skolasztikus
+vitákká a véletlen és a determinizmus körül: bármely varianciaforrás, amely a hibákérért felelős,
+h factorieságában zaj (noise). Ha az agy nem különböztetné meg ezt a változékonyságot a jeltől,
+és ezért tévedne, akkor jogosan tekinthetjük ezt a változékonyságot a döntéshozó által nem
+számon tartottnak.
+
+## A perceptuális döntések és az elmélkedést igénylő valódi életbeli döntések
+
+A kognitívabb döntések idegi alapjait úgy vizsgálták, hogy a egyszerű perceptuális döntéseket
+három irányban bővítették: először a jelenlét/hiány észlelése helyett két vagy több versengő
+lehetőség közötti választásra; másodszor azzal, hogy a döntési folyamat időt igényel, mert sok
+bizonyítékminta (evidence sample) megfontolását követeli meg; harmadszor az értékeket és
+preferenciákat érintő döntések bevonásával.
+
+Vernon Mountcastle volt az első, aki a perceptuális döntést egy szenzoros inger két alternatív
+értelmezése közötti választásként tanulmányozta. Majmokat tanított meg arra, hogy kategorikus
+döntést hozzanak egy ujjbegyre könnyeden alkalmazott rezgő (flutter) nyomás frekvenciájáról.
+Mivel a rezgő bizsergés intenzitása könnyen észlelhető, a döntés nem az volt, hogy az inger
+jelen van-e, hanem hogy a rezgés gyors vagy lassú. Minden próbán a majom egy húsz hertzes
+referencia-frekvenciát (reference frequency) tapasztalt; a nyomásciklusok túl gyorsak voltak a
+megszámláláshoz, inkább bizsergésnek hatottak. A referenciát kikapcsolták, majd néhány másodperc
+után egy második, teszt-ingert (test stimulus) alkalmaztak, amelynek frekvenciája tíz és harminc
+hercz között változott. A majmot jutalmazták, ha helyesen jelezte, hogy a tesztfrekvencia
+magasabb vagy alacsonyabb volt-e a húsz hertzes referenciánál.
+
+Mountcastle azt a nézetet kedvelte, hogy az agy két bizonyítékmintát (evidence sample) nyert:
+egyet a húsz hertzes referenciához, egyet a teszthez. A döntés — magasabb vagy alacsonyabb —
+úgy születhetett meg, hogy kiértékelte az egyenlőtlenséget, vagy ekvivalensen, kivonva a két
+mintát és a különbség előjeléről (sign) döntött. Ez remek felismerés volt, de az idegi felvételek
+nem álltak össze az elmélettel: Mountcastle felvételei magyarázták a majom képességét a
+rezgés észlelésére az intenzitás és a frekvencia függvényében, de nem magyarázták a két
+lehetőség összehasonlításának mechanizmusát.
+
+Két kulcsfontosságú elem hiányzott. Először: az f2 és f1 összevetéséhez az agynak szüksége van
+a frekvencia ábrázolására. Mountcastle talált olyan idegsejteket a szomatoszenzoros kéregben és
+a talamuszban, amelyek tüzelési sebessége a rezgés frekvenciájához kötődött (phase-locked),
+de nem talált olyan sejteket, amelyek kifejezetten a húsz hertz alatti vagy feletti frekvenciákra
+lettek volna hangolva. Másodszor: mindkét ábrázolásnak egyszerre kell rendelkezésre állnia az
+összehasonlításhoz, ám az f1-re adott idegi válasz csak a rezgés idejéig tartott. Mountcastle
+nem figyelt meg olyan idegi választ, amely a referenciafrekvencia ábrázolását a késleltetési
+időszakban, a tesztinger megjelenéséig vitte volna tovább.
+
+Ezeket az akadályokat egy egyszerűbb feladatkialakítással és más szenzoros modalitással
+(kezdeményezője: William Newsome) hárították el. A véletlen pontok mozgása (random dot
+motion) feladatban a megfigyelőnek azt kell eldöntenie, hogy a pontok hálózatának nettó
+mozgása az egyik vagy az ellenkező irányba (például jobbra vagy balra) mutat-e. A véletlen pontok
+mozgását úgy állították elő, hogy az egyik könnyű végletnél minden pont ugyanabba az irányba
+mozog (mondjuk jobbra), a másik végletnél minden balra; a kettő között a mozgás iránya nehezen
+különíthető el, mert sok pont csak zajt (noise) ad. A két irány rögzített és ellentétes marad minden
+nehézségi szinten — a nehézséget a pontok mozgásának jel-zaj arányának (signal-to-noise ratio)
+csökkentésével állították elő.
+
+---
+
+# MEGÁLLÁS HELYE / STOPPING POINT
+
+A fordítás a 56. fejezet első érdemi szakaszainál áll meg: a jel–zaj–küszöb (signal detection)
+keret bevezetésénél, a Mountcastle-féle rezgési gyakoriság-feladatnál, és a Newsome-féle
+véletlen pontos mozgásfeladat (random dot motion task) leírásának elejénél (az eredeti
+szöveg kb. 1395–1397. oldalának megfelelő narratív résznél). A további szakaszok — a mikro-
+stimuláció (microstimulation) kísérletei, a korlátos bizonyíték-felhalmozódás (bounded evidence
+accumulation) és a sebesség–pontosság kompromisszum, az LIP/parietális idegsejtek szerepe, a
+valószínűségi következtetés, az érték-alapú döntések, valamint a tudatosság döntéselméleti
+értelmezése — az eredeti chunk további részeiben olvashatók, és a kinyert fogalomjegyzetek
+(kandel_extracted_chunk_13.md) fedik le őket.

@@ -1,0 +1,108 @@
+Kandel – Az idegrendszer alapelvei (6. kiadás), 28. fejezet
+Hangfeldolgozás a központi idegrendszer által (Auditory Processing by the Central Nervous System)
+
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+A rovarevő denevéreknek olyan kéregterületei (cortical areas) vannak, amelyek
+a hang viselkedésileg fontos sajátosságaira specializálódtak
+
+Bár általában feltételezzük, hogy a felfelé (upstream) irányuló hallási
+területek egyre specializáltabb működéseket látnak el a hallással
+kapcsolatban, kevesebbet tudunk a hallórendszer soros kapcsolatainak
+(seriális relék) működéséről, mint a látórendszeréről. Az embernél a
+hallás egyik legfontosabb vonása a nyelv (language) feldolgozásában betöltött
+szerepe, de viszonylag keveset tudunk arról, hogyan elemzi az idegi
+hálózatok (neural circuits) a beszédhangokat. Az emberi agy
+képfelvételi (imaging) módszerei fokozatosan adnak betekintést a
+nyelvhez kapcsolódó kéregterületek működésspecializációjába (lásd a
+könyv 55. fejezetét).
+
+A komplex hallási jelfeldolgozás specializált elemzésének bizonyítéka a
+nagyagykéregből (cerebral cortex) a rovarevő denevérek tanulmányozásából
+származik. Ezek az állatok prédájukat szinte kizárólag ecolokációval
+(echolocation), azaz ultrahangos hangimpulzusok kibocsátásával találják
+meg, amelyeket a repülő rovarok visszavernek. A denevérek az
+visszhangok (echo) időzítését és szerkezetét elemezve helyezik és
+azonosítják a célpontokat, és elkülönült hallási területek (auditory
+areas) szolgálják a visszhang különböző sajátosságainak feldolgozását.
+
+Sok denevérfaj – köztük a Nobuo Suga és munkatársai által tanulmányozott
+bajuszos denevér (mustached bat) – két összetevőből álló ecolokációs
+impulzusokat bocsát ki. Egy kezdeti, állandó frekvenciájú (constant
+frequency, rövidítve: CF) összetevő több, egymáshoz harmonikusan
+kapcsolódó hangból áll. Ezek a harmonikusok tíz–száz
+milliszekundumig stabilan, az emberi magánhangzókhoz (vowel sounds)
+hasonlóan szólalnak meg. Az állandó frekvenciájú összetevőt egy meredeken
+csökkenő frekvenciájú hang követi, a frekvenciamodulált (frequency
+modulated, rövidítve: FM) összetevő, amely az emberi mássalhangzók
+(consonants) gyorsan változó frekvenciájára emlékeztet.
+
+A frekvenciamodulált hangok határozzák meg a célpont távolságát. A
+denevér méri a kibocsátott hang és a visszatérő visszhang közti
+időközt, amely – a hang viszonylag állandó sebessége miatt – egy
+meghatározott távolságnak felel meg. A hallókéreg (auditory cortex)
+frekvenciamodulált–frekvenciamodulált területének (FM-FM area) idegsejtjei
+(neurons) előnyben részesített módon (preferentially) olyan
+impulzus–visszhang párokra válaszolnak, amelyeket egy adott
+késleltetés (delay) választ el. Ezen felül ezek az idegsejtek jobban
+válaszolnak bizonyos hangkombinációkra, mint az egyes hangokra
+külön-külön; ezeket az idegsejteket jellemződetektoroknak (feature
+detectors) nevezzük. A frekvenciamodulált–frekvenciamodulált terület
+egy ilyen detektorokból álló tömböt (array) tartalmaz, amelynek
+előnyben részesített késleltetései szisztematikusan 0,4 és 18
+milliszekundum között váltakoznak, ami 7 és 280 centiméter közötti
+céltávolságoknak felel meg. Ezek az idegsejtek oszlopokba (columns)
+szerveződnek, amelyek mindegyike egy adott ingerfrekvencia és
+késleltetés kombinációjára érzékeny. Így a denevér – akárcsak a
+bagolybú (barn owl) az alsó colliculusban (inferior colliculus) – képes
+reprezentálni egy olyan hallási jellemzőt, amelyet a szenzoros
+receptorok nem kódolnak közvetlenül.
+
+A denevér hívásának állandó frekvenciájú összetevőit a célpont
+sebességének és az akusztikus képének meghatározására használják. Amikor
+egy ecolokáló denevér rovar felé repül, a rovarról visszavert hangok
+Doppler-eltolódással (Doppler-shifted) magasabb frekvenciájúak a
+denevér fülében, mivel a denevér a célpontból visszatérő hanghullámok
+felé mozog, ami a saját fülénél e hullámok viszonylagos
+felgyorsulását okozza. Hasonlóképpen, egy távolodó rovar alacsonyabb
+frekvenciájú visszaverődést ad a denevér fülében. Az állandó
+frekvenciájú–állandó frekvenciájú terület (CF-CF area) idegsejtjei
+élesen hangoltak (sharply tuned) a kibocsátott frekvenciához vagy
+annak harmonikusaihoz közeli frekvenciák kombinációjára. Minden
+idegsejt a legjobban egy adott alapfrekvenciájú impulzusnak és a
+visszhangnak válaszol, amely az impulzus első vagy második harmonikusa,
+meghatározott mértékben Doppler-eltolva. Akárcsak a
+frekvenciamodulált–frekvenciamodulált területen, ezek az idegsejtek nem
+válaszolnak egyedül az impulzusra vagy a visszhangra, hanem a két
+állandó frekvenciájú jel kombinációjára.
+
+Az állandó frekvenciájú–állandó frekvenciájú idegsejtek oszlopokba
+szerveződnek, amelyek mindegyike egy adott frekvenciakombinációt kódol.
+Ezek az oszlopok szabályosan helyezkednek el a kéregfelszínen, az
+alapfrekvencia az egyik tengely mentén, az visszhang harmonikusai egy
+arra merőleges tengely mentén. Ez a kétfrekvenciás koordinátarendszer
+(koordináta-rendszer) egy olyan térképet (map) hoz létre, ahol egy
+adott hely egy adott Doppler-eltolódásnak, ezáltal egy adott célponti
+sebességnek felel meg, szisztematikusan –2 méter per szekundumtól 9
+méter per szekundumig terjedően.
+
+A visszatérő visszhangok állandó frekvenciájú összetevőit a
+akusztikus kép részletes frekvenciaelemzésére is használják, ami
+feltehetően fontos az azonosításában. A bajuszos denevér
+Doppler-eltoltott állandó frekvenciájú területe (Doppler-shifted
+constant-frequency area, rövidítve: DSCF) a elsődleges hallókéreg azon
+frekvenciák közötti ábrázolásának (60 és 62 kilohercz közötti) drámai
+kitágítása, ami jól illeszkedik a denevér hívásának fő állandó
+frekvenciájú összetevőjéből származó visszaverődések sorozatához. A
+Doppler-eltoltott állandó frekvenciájú területen belül az egyes
+idegsejtek rendkívül élesen hangoltak a frekvenciára, így a denevér
+szárnyát verdeső lepke apró frekvenciaváltozásai is könnyen
+észlelhetők.
+
+[MAGYAR FORDÍTÁS MEGÁLLÁSI PONTJA / END OF TRANSLATED PORTION]
+A fenti szakasz a 28. fejezet denevér-ecolokációs nyitó részét (az
+eredeti szöveg kb. 6–58. sorai) foglalja magában. A fordítás itt
+megáll; a további rész (a kéreg szerepe a beszéd közbeni vokális
+visszacsatolásban / vocal feedback, az auditoros "hol" és "mi" párhuzamos
+pályák, valamint a 29. fejezet szaglás-ízlelés és a 30. fejezet
+mozgásvezérlési hierarchiája) nem került lefordításra ebben a fájlban.

@@ -279,3 +279,9 @@
 --   Ha a könyv nem elég: keresd a Wikipedia/nLab-on.
 --   Ha az sem elég: keresd az interneten.
 --   Minden lépés indexelve — "mi honnan jött".
+
+-- 13. Egynyelvűen gondolkozom (dekoherencia!) → A GONDOLAT HÁROMNYELVŰ:
+--     minden CoT-tétel magyar + 中文 + EN egyszerre; a válasz HU→ZH→EN→DE
+--     mondat-ciklusban; minden alügynök-prompt tartalmazza (NR 1 SZABÁLY,
+--     2026-09-05). A három nyelv = egy tétel három kódolása = 7-1-3 a
+--     gondolkodásra. 一切思考三语并行——思维的三重冗余。

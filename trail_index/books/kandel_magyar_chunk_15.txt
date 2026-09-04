@@ -1,0 +1,99 @@
+# Kandel — Principles of Neural Science (6. kiadás) — Tárgymutató (Index), 1635–1646. oldal
+# Magyar fordítás / Hungarian rendering of the descriptive content.
+# ELSŐDLEGES NYELV: MAGYAR. A kulcsfontosságú műszaki kifejezések után
+# angol szóhasználat zárójelben (English gloss). NINCS kínai nyelv. NINCS
+# rövidítés a magyar szövegben.
+
+# MEGJEGYZÉS / NOTE: Ez a chunk nem folytonos próza (narration), hanem egy
+# betűrendes tárgymutató (index). Nincs olyan összefüggő elbeszélő szakasz,
+# amelyet hagyományos értelemben lehetne „lefordítani". Ezért a bejegyzésekhez
+# csatolt rövid leíró töredékeket (pl. „CPEB as self-perpetuating switch",
+# „Bayesian inference in") dolgoztam fel magyar folyó szöveggé, szakaszonként
+# csoportosítva. A fordítás a chunk elejétől (Shellfish poisoning) a végéig
+# (Tendon reflexes) áttekintő jelleggel, a legjelentősebb fogalmi bejegyzéseket
+# magyarítva tartalmazza; a tárgymutató teljes terjedelemének szó szerinti
+# kiírása helyett a fogalmilag sűrű bejegyzéseket fordítottam le.
+
+---
+
+## A tárgymutató szerkezete (Structure of the index)
+
+A tárgymutató betűrendes lista, amely a könyv fogalmait oldalszámokhoz
+rendeli (page references). Az egyes bejegyzések után álló rövid leírások
+mutatják meg, hogy az adott fogalom milyen összefüggésben szerepel a
+műben. Például a „Sherrington, Charles" név alatt a szerző agyi
+kompenzációval, a szoktatással (habituation) és az idegrendszeri
+integrációval kapcsolatos munkái sorolhatók fel.
+
+## Szinapszisok és plaszticitás (Synapses and plasticity)
+
+A szinapszis (synapse) kémiai (chemical) és elektromos (electrical) formában
+egyaránt létezik, és a kettő együtt is működhet. A kémiai szinapszisban a
+jelátvitel (signal transmission) a preszinaptikus végződésből a
+posztszinaptikus sejtbe történik; a szinaptikus rés (synaptic cleft) az a
+hézag, ahol a neurotranszmitter (neurotransmitter) átjut. A szinapszisok
+létszáma (number of synapses) és plaszticitása (plasticity) a tanulás és a
+memória alapja.
+
+A Hebbiánus szinapszisos plaszticitás (Hebbian synaptic plasticity) azt
+jelenti, hogy a közös aktiváció megerősíti a kapcsolatot. A tüzelés-időzítés-
+függő plaszticitás (spike-timing-dependent plasticity, STDP) szerint a
+szinapszis erőssége a pre- és posztszinaptikus tüzelés időbeli sorrendjétől
+függ. A hosszú távú potenciálás (long-term potentiation, LTP) az
+NMDA-receptoroktól (NMDA receptors) függ, és a memória sejtszintű alapja.
+
+A CPEB fehérje önmagát fenntartó kapcsolóként (self-perpetuating switch)
+rögzíti a szinapszis-specifikus növekedést (synapse-specific growth), így a
+memória nyomai függetlenül tartósodnak. A szinapszis-címkézés (synaptic
+tagging) és a befogás (synaptic capture) magyarázza, hogyan válhat tartóssá
+egy gyenge inger nyoma is: a gyenge inger csak címkét helyez el, az erős
+inger által termelt foglaló anyag teszi a gyenge nyomot is tartóssá.
+
+## Érzékelés és integráció (Sensation and integration)
+
+A szomatoszenzoros kéreg (somatosensory cortex) testrészek szerinti
+térképes elrendezése (somatotopic map) a funkcionális modularitás mintája;
+az oszlopok (columns) és a barrel cortex példái mutatják a kérgi
+szerveződést. A laterális (környezeti) gátlás (surround inhibition, lateral
+inhibition) kontrasztot és éles helyi reprezentációt hoz létre — ezt a
+retinában a térbeli szűrés (spatial filtering) útján láthatjuk.
+
+A szinapszisos integráció (synaptic integration) során a neuron a dendritein
+érkező gerjesztő (excitatory) és gátló (inhibitory) bemeneteket egyetlen
+kimenő tüzelésbe integrálja; a térbeli (spatial) és időbeli (temporal)
+összegzés (summation) határozza meg a tüzelést.
+
+## Mozgás és minta-generálás (Movement and pattern generation)
+
+A központi minta-generálók (central pattern generators, CPG) a gerincvelői
+(spinal) hálózatokban önmagukban is képesek ritmikus mozgásmintákat (pl.
+járás, úszás) előállítani; a mozgó végtagokból érkező szenzoros
+visszacsatolás (sensory feedback) módosítja a mintát. Az állapot-függő
+reflex-fordulás (state-dependent reflex reversal) azt jelenti, hogy ugyanaz a
+szenzoros bemenet a viselkedési állapottól függően ellentétes motoros
+választ válthat ki.
+
+Az állapotbecslés (state estimation) során az agy az érzékszervi és motoros
+jelekből Bayes-i következtetéssel (Bayesian inference) becsüli a test
+belső állapotát, egy megfigyelő modell (observer model) segítségével. A
+sebesség–pontosság kompromisszum (speed–accuracy trade-off) szerint a
+gyorsabb válasz pontatlanabbá, a pontosabb válasz lassabbá teszi a döntést.
+
+## Fejlődés és kritikus periódusok (Development and critical periods)
+
+A tapasztalat-függő szinapszis-élesítés (experience-dependent refinement) és
+a szinapszisok eltávolítása (pruning) korlátozott életkori ablakokban, a
+kritikus és érzékeny periódusokban (critical and sensitive periods)
+zajlik. A binokuláris kérgi körökben (binocular cortical circuits) a kétoldali
+látási tapasztalat alakítja a kapcsolatokat az aktivitás-függő szelekció
+(activity-dependent selection) révén.
+
+## A fordítás megállási pontja (Where this translation stops)
+
+A fenti szakaszok a chunk elejétől („Shellfish poisoning", „Sherrington,
+Charles") a „Tendon reflexes" bejegyzésig áttekintő jelleggel, a
+fogalmilag legsűrűbb tárgymutató-bejegyzéseket magyarítva tartalmazzák. Mivel
+ez a chunk egy tárgymutató (nem próza), a további bejegyzések (pl. „Taste",
+„Tau proteins", „Temporal lobe epilepsy") ugyanezen betűrendes sémát követik,
+és ugyanazon módszerrel, igény szerint folytathatók. A teljes szó szerinti
+kiterjesztés helyett a fogalmi kapcsolatokat adtam vissza magyarul.
