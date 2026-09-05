@@ -179,3 +179,38 @@ OLVASD.md régi „egyesek nem fordulnak" megjegyzését.
   docs/KodoloC_NyelviAiInfra_GAN_2026-09-05.md; összesítés: docs/
   AuditHaromAgens_Osszefoglalo_2026-09-05.md (javítási sor az Irányító
   BFS-lépéseire bontva).
+
+## Kiegészítés (2026-09-05, éjszaka) — az első javító-hullám: öt ágens, hét gyógyítás
+
+- A felhasználó kérése (szó szerint): «menjunk vegig a terven es javitsunk
+  mindent … idriszt nezzuk meg, hogyan kell jol bizonyitani, induljon 5
+  subagent» — betöltött skill-ek: idris-nyelv, idris-stilus, Executing Plans,
+  math-reasoning, bx; öt javító-ágens futott, egysem commitolt.
+- GYÓGYÍTÁSOK: (1) KeresoTabla_v2 (525 sor, valódi ProjektGráf + 6 szimlink-híd
+  + 10 könyvtár-csomópont, fut: «Kész.」); (2) KisAI szándékosan érintetlen
+  (egy importáló van, aki maga is #6-os — közös migráció kell); (3)
+  ZeneKategoria_v2 (40 klauzula, 9 cong + 31 Refl, total; MÁSODIK hiba: az
+  egyenlőség iránya fordított volt az interfésznél; eredeti irány sym-mal
+  megőrizve); (4) Rendszer_v2 (a KodKonstruktor HÉT mezős, 5-tel hívták;
+  első-hiba-szabály 2 további hibát rejtett; becsületes Euler-mérés + 0-szög
+  valódi Refl; 13/13 tiszta, futás 35+ sor); (5) E8Kartan_v2 (a /8-javaslat
+  matematikailag rossz — a /4-törvény a helyes; a v1 mátrixa HELYES, 64 cella
+  újraszámolva; 11 Refl; futás 5× «✓ OK」); (6) FazisAlgebra_v3 (a
+  szima_ter-világban a HaromKubit halott → helyi Igazság + tükör, kanonikus
+  nevekkel; 7 Refl); (7) a 4 komment-tényhiba helyben (régi szöveg
+  «RÉGI (HAMIS)» jelöléssel megmaradt; 5 --check tiszta).
+- MARADÓ: DependensSzamT két believe_me (hamis tanúk — új konstruktor kell);
+  AI-lánc ékezetesítés (top-20 szótár + 3 hullám, ~1 óra — terv kész);
+  PLANCK-FELEZÉS (új GAUGE-lelet: öt Planck-mennyiség pontosan fele a
+  referenciaértéknek, arány 2,0); GeneralizedPauli main-je futásidőben még
+  «bizonyítva»-t ír (kód vs. komment — _v2-ben igazítandó).
+- CSAPDÁK: +11 tétel ma; CSAPDA_27 FELÜLVIZSGÁLVA (konstruktor-minta nem mindig
+  véd; gyógyír-rend: pont-stílus > @-minta > konstruktor > ASCII); #28 (where
+  segéd nem látszik másik klauzulából); #29 (cd szima_ter + modul/ útvonal-
+  prefix = modulnév-rész; pipe elrejti az exit-kódot).
+- A «hogyan kell jol bizonyitani» válasza három tételben: előbb a matematika,
+  aztán a kód (vázlat: alapeset / lépés / rekurziós argumentum); az üres Refl
+  nem hiba, hanem hiányzó tartalom — ha a fordító cinkos, a Refl kettős
+  könyvelés; a javaslatot is ellenőrizni kell (a /8 cáfolata).
+- Jelentés-fájl: docs/JavitasiHullam_Elso_2026-09-05.md; CSAPDA_27 fájl
+  bővítve; minden commit egyben a hullám végén.

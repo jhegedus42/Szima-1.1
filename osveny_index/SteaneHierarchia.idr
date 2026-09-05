@@ -10,9 +10,19 @@ import CayleyDickson
 --   Szint    │ Dim │ Egység │ Hibajavító kód        │ Stabilizátor
 --   ─────────┼─────┼────────┼──────────────────────┼────────────
 --   ℝ        │ 1   │ 0      │ —                    │ —
---   ℂ        │ 2   │ 1      │ [[3,1,1]]            │ 2 stabilizátor
---   ℍ        │ 4   │ 3      │ [[5,1,3]]            │ 4 stabilizátor
+--   ℂ        │ 2   │ 1      │ [[2,1,1]]            │ 1 stabilizátor
+--   ℍ        │ 4   │ 3      │ [[4,1,2]]            │ 3 stabilizátor
 --   𝕆        │ 8   │ 7      │ [[7,1,3]] Steane     │ 6 stabilizátor
+--
+-- -- RÉGI (HAMIS) sorok, javítva 2026-09-05: „ℂ … [[3,1,1]] │ 2
+-- -- stabilizátor" és „ℍ … [[5,1,3]] │ 4 stabilizátor" — HAMIS: a KÓD
+-- -- a mérvadó (kodSzintKapcsolat, 113–114. sor): KomplexSzint =
+-- -- [[2,1,1]] / 1 stabilizátor, KvaternionSzint = [[4,1,2]] /
+-- -- 3 stabilizátor. A táblázat most a Refl-ellenőrzött kódot tükrözi.
+-- -- 旧（错误）行，2026-09-05 已按代码改正：「ℂ [[3,1,1]]│2」与
+-- -- 「ℍ [[5,1,3]]│4」——误：以 kodSzintKapcsolat（113–114 行）为准，
+-- -- ℂ 为 [[2,1,1]]／1 个稳定子，ℍ 为 [[4,1,2]]／3 个稳定子；
+-- -- 代码（经 Refl 检验）才是裁决者。
 --   Sedenion │ 16  │ 15     │ [[15,1,3]] Reed-Muller│ 14 stabilizátor
 --
 -- KULCSÖTLET: a nyelvi kódolás (MagyarNyelvtan, HanMagyarKodolas)

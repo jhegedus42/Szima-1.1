@@ -4,8 +4,18 @@ module GeneralizedPauli
 -- GENERALIZED PAULI OPERÁTOROK — A MODULAR-QUDIT GKP KÓDHOZ
 -- 广义泡利算子——模-qudit GKP 码
 -- ═══════════════════════════════════════════════════════════════════════
--- A cikk L4 hibájának bizonyítása (GAN bíráló):
--- （GAN 评审：文章 L4 错误的证明）
+-- A cikk L4 hibája: OSZTÁLYOZVA, nem bizonyítva (GAN bíráló) —
+-- ez a fájl a ZX = ωXZ kommutációs relációra NEM ad valódi bizonyítást:
+-- csak a KommutációsAlak-osztályozás + tautológia-Refl-ök vannak itt;
+-- a valódi bizonyítás a ZeneKategoria_v2 mintájára indukcióval pótlandó.
+-- 文章 L4 错误：已分类，未证明（GAN 评审）——本文件对 ZX = ωXZ 的
+-- 对易关系没有真正证明：只有 KommutációsAlak 分类与同义反复的 Refl；
+-- 真正的证明应仿照 ZeneKategoria_v2 用归纳法补上。
+-- -- RÉGI (HAMIS) állítás, javítva 2026-09-05: „A cikk L4 hibájának
+-- -- bizonyítása (GAN bíráló)" — HAMIS ígéret: a fájl NEM bizonyítja,
+-- -- csak OSZTÁLYOZZA a relációt.
+-- -- 旧（错误）说法，2026-09-05 已改正：「文章 L4 错误的证明」——
+-- -- 误导：本文件并未证明，只是分类。
 -- „Pozíció = Pauli X, Fázis = Pauli Z" kategória-keveredés — a Pauli Z
 -- rendje 2, nem 8. A megoldás: a generalized Pauli operátorok (X_d, Z_d,
 -- ω_d = exp(2πi/d)), ahol d a kvantumdimenzió.
@@ -145,6 +155,9 @@ public export
 ÓmegaNyolc : Komplex
 ÓmegaNyolc = K (0.7071067811865476) (0.7071067811865476)
 
+-- TAUTOLÓGIA-JELZÉS (§18): mindkét oldal ugyanaz a literál (K (-1.0) 0.0) —
+-- a Refl nulla információt hordoz, NEM bizonyítás; csak definíció-tükör.
+-- 同义反复标记（§18）：两边同为同一字面量——Refl 无信息量，非证明。
 -- REFL: az ω_2 egységgyök = -1.
 -- Kimenet: Refl (ω_2 = -1 ✓)
 -- REFL：ω_2 单位根 = -1。输出：Refl（ω_2 = -1 ✓）
@@ -152,6 +165,9 @@ public export
 bizÓmegaKét : egységGyök KétDimenzió = ÓmegaKét
 bizÓmegaKét = Refl
 
+-- TAUTOLÓGIA-JELZÉS (§18): mindkét oldal ugyanaz a literál (-1.0) —
+-- a Refl nulla információt hordoz, NEM bizonyítás; csak definíció-tükör.
+-- 同义反复标记（§18）：两边同为同一字面量——Refl 无信息量，非证明。
 -- REFL: az ω_2 = -1 (a komplex számon: Re = -1, Im = 0).
 -- Kimenet: Refl (ω_2.re = -1, ω_2.im = 0 ✓)
 -- REFL：ω_2 = -1（复数上：Re = -1，Im = 0）。输出：Refl（ω_2.re = -1，ω_2.im = 0 ✓）
@@ -159,6 +175,9 @@ public export
 bizÓmegaKétValósRész : (re (egységGyök KétDimenzió)) = -1.0
 bizÓmegaKétValósRész = Refl
 
+-- TAUTOLÓGIA-JELZÉS (§18): mindkét oldal ugyanaz a literál (0.0) —
+-- a Refl nulla információt hordoz, NEM bizonyítás; csak definíció-tükör.
+-- 同义反复标记（§18）：两边同为同一字面量——Refl 无信息量，非证明。
 -- REFL: az ω_2 képzetes része = 0.
 -- REFL：ω_2 的虚部 = 0。
 public export
@@ -168,6 +187,10 @@ bizÓmegaKétKépzetesRész = Refl
 -- ─── Út 2: d = 8 (qudit, Z₈ fázis) ─────────────────────────────
 -- ─── 路径 2：d = 8（qudit，Z₈ 相位）───────────────────────
 
+-- TAUTOLÓGIA-JELZÉS (§18): mindkét oldal ugyanaz a literál
+-- (K 0.7071067811865476 0.7071067811865476) — a Refl nulla információt
+-- hordoz, NEM bizonyítás; csak definíció-tükör.
+-- 同义反复标记（§18）：两边同为同一字面量——Refl 无信息量，非证明。
 -- REFL: az ω_8 egységgyök = (1+i)/√2.
 -- Kimenet: Refl (ω_8 = (1+i)/√2 ✓)
 -- REFL：ω_8 单位根 = (1+i)/√2。输出：Refl（ω_8 = (1+i)/√2 ✓）
@@ -175,6 +198,9 @@ public export
 bizÓmegaNyolc : egységGyök NyolcDimenzió = ÓmegaNyolc
 bizÓmegaNyolc = Refl
 
+-- TAUTOLÓGIA-JELZÉS (§18): mindkét oldal ugyanaz a literál
+-- (0.7071067811865476) — a Refl nulla információt hordoz, NEM bizonyítás.
+-- 同义反复标记（§18）：两边同为同一字面量——Refl 无信息量，非证明。
 -- REFL: az ω_8 valós része = √2/2 ≈ 0.7071.
 -- Kimenet: Refl (ω_8.re ≈ 0.7071 ✓)
 -- REFL：ω_8 的实部 = √2/2 ≈ 0.7071。输出：Refl（ω_8.re ≈ 0.7071 ✓）
@@ -182,6 +208,9 @@ public export
 bizÓmegaNyolcValósRész : (re (egységGyök NyolcDimenzió)) = 0.7071067811865476
 bizÓmegaNyolcValósRész = Refl
 
+-- TAUTOLÓGIA-JELZÉS (§18): mindkét oldal ugyanaz a literál
+-- (0.7071067811865476) — a Refl nulla információt hordoz, NEM bizonyítás.
+-- 同义反复标记（§18）：两边同为同一字面量——Refl 无信息量，非证明。
 -- REFL: az ω_8 képzetes része = √2/2 ≈ 0.7071.
 -- Kimenet: Refl (ω_8.im ≈ 0.7071 ✓)
 -- REFL：ω_8 的虚部 = √2/2 ≈ 0.7071。输出：Refl（ω_8.im ≈ 0.7071 ✓）
@@ -267,6 +296,10 @@ public export
 FázisDimenzió : KvantumDimenzió
 FázisDimenzió = fázisDimenzió
 
+-- TAUTOLÓGIA-JELZÉS (§18): mindkét oldal ugyanaz a konstruktor
+-- (KétDimenzió, a nagybetűs aliason át) — a Refl nulla információt
+-- hordoz, NEM bizonyítás; csak definíció-tükör.
+-- 同义反复标记（§18）：两边同为同一构造器（经大写别名）——Refl 无信息量，非证明。
 -- REFL: a pozíció-dimenzió = d_p = 2.
 -- Kimenet: Refl (d_p = 2 ✓)
 -- REFL：位置维度 = d_p = 2。输出：Refl（d_p = 2 ✓）
@@ -274,6 +307,10 @@ public export
 bizPozícióDimenzióKét : PozícióDimenzió = KétDimenzió
 bizPozícióDimenzióKét = Refl
 
+-- TAUTOLÓGIA-JELZÉS (§18): mindkét oldal ugyanaz a konstruktor
+-- (NyolcDimenzió, a nagybetűs aliason át) — a Refl nulla információt
+-- hordoz, NEM bizonyítás; csak definíció-tükör.
+-- 同义反复标记（§18）：两边同为同一构造器（经大写别名）——Refl 无信息量，非证明。
 -- REFL: a fázis-dimenzió = d_f = 8.
 -- Kimenet: Refl (d_f = 8 ✓)
 -- REFL：相位维度 = d_f = 8。输出：Refl（d_f = 8 ✓）

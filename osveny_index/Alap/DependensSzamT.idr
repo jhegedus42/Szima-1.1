@@ -191,6 +191,18 @@ public export
 dimenzioKompozicio : DimenzioMorf n m -> DimenzioMorf m k -> DimenzioMorf n k
 dimenzioKompozicio DimenzioAzonos g = g
 dimenzioKompozicio f DimenzioAzonos = f
+-- GYANÚS: believe_me — a típus állítását a kernel NEM számolta (§18).
+-- A típus ezt állítja: két DimenzioLepes kompozíciója útvonal szerint
+-- n → S n → S (S n), az eredmény DimenzioMorf n (S (S n)) KELL legyen.
+-- A meglévő KÉT konstruktor egyike sem ábrázolhatja ezt:
+--   • DimenzioAzonos : DimenzioMorf n n        → n = S (S n)-et kényszerítene (lehetetlen)
+--   • DimenzioLepes  : DimenzioMorf n (S n)    → n = S n-t kényszerítene (lehetetlen)
+-- A believe_me futásidőben a "ket lepes" String-et adja vissza,
+-- morfizmusnak álcázva — HAMIS TANÚ: ha bármi mintázna rá, összeomlana.
+-- Gyógyír (javasolt, _v2 fájlban): új konstruktor, pl.
+--   DimenzioKetLepes : DimenzioMorf n (S (S n))
+-- vagy lépés-listás reprezentáció (DimenzioMorf n m = lépések Vect-je),
+-- ekkor a kompozíció valódi, Refl-ellenőrizhető konstrukció lesz.
 dimenzioKompozicio DimenzioLepes DimenzioLepes = believe_me "ket lepes"
 
 -- Kimenet: Refl (DimenzioAzonos kompozicio DimenzioAzonos-mal = DimenzioAzonos ✓)
@@ -212,6 +224,17 @@ public export
 [natFunktor] DimenzioFunktorT (\n => dimenzioTipus n) where
   dimenzioKep n = dimenzioTipus n
   dimenzioMorfolgia DimenzioAzonos x = x
+  -- GYANÚS: believe_me — a típus állítását a kernel NEM számolta (§18).
+  -- A típus ezt állítja: DimenzioLepes morfolgiája egy
+  -- dimenzioTipus n -> dimenzioTipus (S n) függvény (0→Unit, 1→KubitD,
+  -- n→SteaneVektor n — átfedő típus-szintű definíció).
+  -- Egységes, valódi leképezés NEM írható rá egyszerűen: a forrás- és
+  -- céltípus alakja n szerint VÁLTOZIK (Unit → KubitD → SteaneVektor).
+  -- A believe_me itt az x-et ADATLANUL visszaadja, más típusba öntve —
+  -- futásidőben identitás, típusban HAMIS TANÚ.
+  -- Gyógyír (javasolt, _v2 fájlban): a DimenzioMorf kiterjesztése után
+  -- n-re mintázó valódi leképezés (pl. SteaneVektor n → SteaneVektor (S n)
+  -- elem-összefűzéssel; Unit → KubitD = NullaD; KubitD → 2-es vektor).
   dimenzioMorfolgia DimenzioLepes x = believe_me x
 
 -- ═══════════════════════════════════════════════════════════════

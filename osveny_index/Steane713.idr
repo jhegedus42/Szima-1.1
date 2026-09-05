@@ -8,10 +8,22 @@ module Steane713
 ||| 七个维度各自编码现实的一个侧面。
 ||| A távolság 3 azt jelenti, hogy 1 hibát ki tudunk javítani。
 ||| 距离 3 意味着能纠正 1 位错误。
-||| A Steane-kód azért jó, mert a 7 bit 16 stabil állapota
-||| Steane 码好在：7 位的 16 个稳定态
-||| pontosan lefedi a magyar nyelv 22 esetét。
-||| 恰好覆盖匈牙利语的 22 个格。
+||| A Steane-kód 7 bitje 16 kódszavat különböztet meg; ez a 16 a kód
+||| Steane 码的 7 位区分出 16 个码字；这 16 个覆盖的是码自身的
+||| SAJÁT kódtérét fedi le (2⁷ = 128 állapot közül a 16 jól formált
+||| 自身码空间（2⁷ = 128 个态中恰有 16 个合法码字），并不覆盖
+||| kódszó), NEM a magyar nyelv 22 esetét — a 22-es szám MÁSIK
+||| 匈牙利语的 22 个格——22 属于另一语境（匈牙利语的格系统），
+||| kontextus (a magyar grammatika esetrendszere); a kettő
+||| 把两者相联是原来那句话的错误。
+||| összekapcsolása volt az eredeti mondat hibája。
+||| -- RÉGI (HAMIS) állítás, javítva 2026-09-05: „a 7 bit 16 stabil
+||| -- állapota pontosan lefedi a magyar nyelv 22 esetét" — HAMIS:
+||| -- 16 < 22, a 16 kódszó csak a saját kódtért fedi le; a 22 más
+||| -- kontextus (magyar esetek), a mondat tévesen kötötte össze。
+||| -- 旧（错误）说法，2026-09-05 已改正：「7 位的 16 个稳定态恰好
+||| -- 覆盖匈牙利语的 22 个格」——误：16 < 22；16 个码字只覆盖自身
+||| -- 码空间；22 属于另一语境，原句错误地把两者等同。
 |||
 ||| Hogyan működik a hibajavítás?
 ||| 纠错如何运作？

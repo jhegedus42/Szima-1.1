@@ -15,9 +15,21 @@ module CayleyDickson
 --   ℝ: asszociatív, kommutatív, rendezett
 --   ℂ: asszociatív, kommutatív, rendezett
 --   ℍ: asszociatív, NEM kommutatív, rendezett
---   𝕆: NEM asszociatív, NEM kommutatív, NEM rendezett
+--   𝕆: NEM asszociatív, NEM kommutatív, NEM rendezett —
+--      de MÉG divíziós algebra (minden nemnulla elem invertálható)
 --   Sedenion: NEM asszociatív, NEM kommutatív, NEM rendezett,
---             DIVIZIÓS ALGEBRA (van norma)
+--             MÁR NEM divíziós algebra (nulla-osztói vannak, pl.
+--             (e₃+e₁₀)(e₆−e₁₅)=0; a norma van, de NEM multiplikatív)
+--   八元数：非结合、非交换、非有序——但仍是可除代数（每个非零元可逆）。
+--   十六元数：非结合、非交换、非有序，不再是可除代数（有零因子，
+--             如 (e₃+e₁₀)(e₆−e₁₅)=0；有范数，但范数不乘性）。
+-- -- RÉGI (HAMIS) állítás, javítva 2026-09-05: „Sedenion: … DIVIZIÓS
+-- -- ALGEBRA (van norma)" — HAMIS: a sedenionnak nulla-osztói vannak;
+-- -- a Hurwitz-tétel szerint divíziós algebra pontosan ℝ, ℂ, ℍ, 𝕆 —
+-- -- a torony ℝ→ℂ→ℍ→𝕆 szakasza divíziós, a sedenion MÁR NEM.
+-- -- 旧（错误）说法，2026-09-05 已改正：「十六元数是可除代数（有范数）」
+-- -- ——误：十六元数有零因子；据 Hurwitz 定理，可除代数恰为
+-- -- ℝ、ℂ、ℍ、𝕆——塔中至此为止，十六元数已不是可除代数。
 --
 -- KAPCSOLAT A PROJEKTHEZ / 与项目的联系:
 --   - Az oktonion egységek (16) + E8 gyökök (224) = 240

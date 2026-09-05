@@ -1,0 +1,48 @@
+[[7,1,3]] kód |0> = 0000000 -> dekódol: 0
+[[7,1,3]] kód |1> = 1111111 -> dekódol: 1
+Pauli X|0> = 1
+Pauli X|1> = 0
+e^(i·π) valós része + 1 = cos(π) + 1 = 0.0  — a kerekítés miatt ez ~0, NEM pontos egyenlőség（因舍入约为 0，并非精确相等）  (rounding: ~0, NOT exact equality)
+e^(i·π) valós része 0-szögre: cos(0) + 1 = 2.0  (ez az egyenlőség Refl-lel Ellenőrizve: eulerNullaSzogEgyenlet)
+MIRŐL szól ez a mérés: a Double-cos kerekítéséről. MIRŐL NEM: az Euler-azonosság matematikai igazságáról — azt a szimbolikus morfizmus-lánc hordozza (eulerSzimbolikusLánc).
+Kategória azonos: OK
+EulerSzam E8 kódja: (1, 0, ...)
+Yoneda lemma [[7,1,3]]: steaneDekodol(steaneKodol(Nulla)) = 0
+Yoneda lemma [[7,1,3]]: Nat(Hom(-,Cel),Hom(-,Cel)) ≅ Hom(Cel,Cel) ✓
+Duális adjunkció: C -| C^op konstrukció OK
+2-kategória: KettoKategoria konstrukció OK
+Noether [[7,1,3]]: 7 bit = 7 szimmetria, minden javítható
+[[15,1,3]] = [[7,1,3]]+[[8,1,4]]: |0> dekódol = 0
+[[15,1,3]] = [[7,1,3]]+[[8,1,4]]: |1> dekódol = 1
+7+7+1 kategória: azonosak OK
+FogalomTipus → KategoriaTipus: Gyoker -> EmberiIdo
+FogalomTipus → KategoriaTipus: Ok -> SzamAllapot
+[[15,1,3]]+1 |0> = emberi(7) + számítási(7) + perem(1): 0
+[[15,1,3]]+1 |1> = emberi(7) + számítási(7) + perem(1): 1
+[[15,1,3]]+1 kódtörvény: Nulla->Nulla, Egy->Egy
+Perem Legendre adjunkció: Emberi.Fázis -| Perem -| Számítási.Allapot OK
+Emberi CPT: C (Idő), P (Okság), T (Tér) OK
+
+=== FIZIKAI ÁLLANDÓK (CODATA 2019, SI 2019) ===
+c  = 299792458.0 m/s
+h  = 6.62607015e-34 J·s
+G  = 6.6743e-11 m³/(kg·s²)
+kB = 1.380649e-23 J/K
+NA = 6.02214076e23 mol⁻¹
+e  = 1.602176634e-19 C
+alpha = 0.0072973525693
+
+=== SZÁRMAZTATOTT PLANCK EGYSÉGEK ===
+mP = 1.0882171713589492e-8 kg  (ref: 2.176e-8)
+lP = 8.081275122118526e-36 m  (ref: 1.616e-35)
+tP = 2.695623224156802e-44 s  (ref: 5.391e-44)
+TP = 7.083920810786712e31 K  (ref: 1.417e32)
+EP = 978040818.3491864 J  (ref: 1.956e9)
+
+=== KAPCSOLÓDÓ MENNYISÉGEK ===
+Foton E(10^14 Hz) = 6.62607015e-20 J
+Compton lambda(e) = 2.42631027637202e-12 m  (ref: 2.426e-12)
+Schwarzschild(NAp) = 2954.126555055405 m  (ref: 2953)
+Hubble H0 = 67.4 km/s/Mpc  (ref: 67.4)
+Lambda = 1.592570077643108e-52 m⁻²  (ref: ~1.1e-52)
+Landauer E(300K) = 2.870978885078724e-21 J/bit  (ref: 2.87e-21)
