@@ -319,3 +319,15 @@ OLVASD.md régi „egyesek nem fordulnak" megjegyzését.
 - IPKG 7-VISSZATÉRÉS: 2 szimlink + HULLAM_4 blokk → `idris2 --build
   szima.ipkg` EXIT 0, 101 modulos build-gráf; a két szimlinkes visszatérő
   külön GAUGE-ellenőrizve. A kánon 7 kihagyásból 7 visszatért.
+
+## Kiegészítés (2026-09-05, délután) — HELYZETJELENTÉS
+
+- A felhasználó kérése: «nezzuk meg, hogy mit csinaltunk eddig, hova megyunk,
+  honnan jovunk, mi a cel, hogy nez ki a repo, lehetne egy kicsit rendezni,
+  van-e benne duplikacio, ellentmodasok, kene valami rovid, attekintheto
+  helyzetjelentes» — a teljes jelentés: docs/HelyzetJelentes_2026-09-05.md.
+- Kulcsszámok: 455 .idr (59 generációs _v2+), 57 szimlink-híd, 110 docs,
+  103+11 napló, 8 commit / 2 nap, 24 javított tétel, ~38 csapda, ipkg
+  101-modulos build ZÖLD; a redundancia 5 pontja és 6 rendezési javaslat
+  (PORTÁL, .gitignore+var/folders, napló-egyesítés, ELAVULT-jelölés,
+  probe-címkék, SAJAT_TODO_v2) — mind döntésre vár.
