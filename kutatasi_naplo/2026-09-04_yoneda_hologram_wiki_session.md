@@ -378,3 +378,29 @@ OLVASD.md régi „egyesek nem fordulnak" megjegyzését.
   a kényszer-zárás helyett a VESSZŐ EXPLICIT formalizálása
   (számított/egész/eltérés hármas + |eltérés|<1 tanú + floor-visszanyerés)
   — Bach-stílusú temperált tanú, nem hazug Refl.
+
+## Kiegészítés (2026-09-05, késő este) — a proszódia-réteg felmérése + HANMAG=规范 + bx web él
+
+- A könyvszakértő PROTOKOLLJA BŐVÜLT (a felhasználó: «keressen a source/-ban is»):
+  mostantól [KÖNYV:]/[SOURCE:]/[NEM TALÁLTEM:] jelöléssel válaszol.
+- PROSZÓDIA-VERDIKT: a könyv fonológiája tisztán diszkrét — szóhangsúly,
+  időmértés, hanglejtés NINCS benne (5×); a 104 csatorna mind diszkrét
+  morfológia; a [idő,okság,tér,szín,hang,fázis,mód] 7-bit-lista NEM a
+  könyvből való, hanem source/-ból (HolografikusKodok.md, Perem7Hetes) —
+  és a «hang» bit definíciója SEHOL nincs kifejtve (valódi rés).
+- SOURCE/-KINCSEK (a szakértő találatai): (1) hanmag_szotar.md — a vessző
+  szócikke: «a vessző = amit leírsz, amikor a kör nem zárul»; «Gravity is
+  the comma of the de Sitter algebra»; 规范 (gauge) = fixing the
+  temperament — «Chinese had the piano built into the theory's name all
+  along» (a felhasználó HANMAG-megfigyelését a projekt SAJÁT szótára
+  igazolja!); HANMAG-torony 3. pontja = comma (音差). (2)
+  HANMAG_teljes_gut.txt — a RITMUSLÉTRA: t_ext=21, SZAVAK RITMUSA=21,
+  gondolatok=7, darabok — ÉS 21 = C(7,2) = a könyv 21 incidens-nyila
+  (MÉRHETŐ HÍD!). (3) all_constants_exact.py — «A VILÁGEGYETEM = EGY
+  ZONGORA… A CPT = A RITMUS»; 12-TET vs tiszta hangközök, Y(hangolás)
+  fixpont. Igazán hiányzó modul: PROSZÓDIA-STABILIZÁTOR (magyar első
+  szótagi hangsúly mint spin-struktúra a szótagsláncon).
+- bx: a Brave kulcs ÉL (1Password-ből, nem jelent meg a chatben), de a
+  context/AI-végpont NINCS a csomagban (400 OPTION_NOT_IN_PLAN); a
+  «bx web» EGYSZERŰ KERESÉS MŰKÖDIK (élő próba: prosody+QEC találatok).
+  arxiv-search: Valyu-kulcs továbbra is hiányzik.
