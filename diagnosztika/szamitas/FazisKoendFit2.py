@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN(átmeneti) — numerikus kutatás-szimuláció, Idrisbe átírandó (Komplex.idr-minta); hullám-3 nyilvántartás
 """
 FazisKoendFit2.py — A 24 Standard Modell paraméter illesztése
 a 6 mért kritikus exponenshez (3D Ising egyetemes osztály).

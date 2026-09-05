@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN(átmeneti) — numerikus kutatás-szimuláció, Idrisbe átírandó (Komplex.idr-minta); hullám-3 nyilvántartás
 """
 FazisKoendGAN2.py — A fázis-koend rendszer 3 GAN-nal való ellenőrzése
 (JAVÍTOTT: a Sigmoid eltávolítva, a kimenetek lineárisan skálázottak).

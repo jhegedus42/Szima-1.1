@@ -94,12 +94,22 @@ public export
 NodeokPrimek : 54 = 2 * 3 * 3 * 3
 NodeokPrimek = Refl
 
+-- TAUTOLÓGIA-JELZÉS (§18): mindkét oldal ugyanaz a konstrukció —
+-- a `47 = 47` nulla információ. A valódi állítás («a 47 prím»)
+-- valódi tanúja: PrimekAnalizis_v2.negyvenhétPrímTanú
+-- (a 2..46 tartomány összes tagjának osztó-keresése, Refl-lel zárul).
+-- TAUTOLOGY MARK: both sides are the same construction; the real
+-- primality witness lives in PrimekAnalizis_v2.negyvenhétPrímTanú.
 ||| 47 függőség = 47. PRÍM! A 47. prím önmaga.
 ||| Ez a 15. prímszám (2,3,5,7,11,13,17,19,23,29,31,37,41,43,47).
 public export
 FuggesekPrimek : 47 = 47
 FuggesekPrimek = Refl
 
+-- TAUTOLÓGIA-JELZÉS (§18): mindkét oldal ugyanaz a konstrukció —
+-- a `29 = 29` nulla információ. A valódi állítás («a 29 prím»)
+-- valódi tanúja: PrimekAnalizis_v2.huszonkilencPrímTanú
+-- (a 2..28 tartomány összes tagjának osztó-keresése, Refl-lel zárul).
 ||| 29 E8-kapcsolat = 29. PRÍM! A 10. prímszám.
 public export
 E8KapcsolatokPrimek : 29 = 29
@@ -115,11 +125,19 @@ OsszesElPrimek = Refl
 -- 6. STEANE KÓD: 7, 1, 3
 -- ═══════════════════════════════════════════════════════════════
 
+-- TAUTOLÓGIA-JELZÉS (§18): mindkét oldal ugyanaz a konstrukció —
+-- a `7 = 7` nulla információ. A valódi állítás («a 7 prím»)
+-- valódi tanúja: PrimekAnalizis_v2.hétPrímTanú
+-- (a 2..6 tartomány összes tagjának osztó-keresése, Refl-lel zárul).
 ||| 7 = PART. A Steane kód fizikai kubitje = a projekt 4. prímje.
 public export
 SteaneFizikaiPrimek : 7 = 7
 SteaneFizikaiPrimek = Refl
 
+-- TAUTOLÓGIA-JELZÉS (§18): mindkét oldal ugyanaz a konstrukció —
+-- a `3 = 3` nulla információ. A valódi állítás («a 3 prím»)
+-- valódi tanúja: PrimekAnalizis_v2.háromPrímTanú
+-- (az egyetlen lehetséges osztó, a 2 keresése, Refl-lel zárul).
 ||| 3 = SZÉL. A távolság = a projekt 2. prímje.
 public export
 SteaneTavolsagPrimek : 3 = 3
@@ -156,6 +174,10 @@ KapuNemPrim = Refl
 -- 9. A HTML DUPLIKÁLT ID-K ÉS A 2, 3 PRÍMEK
 -- ═══════════════════════════════════════════════════════════════
 
+-- TAUTOLÓGIA-JELZÉS (§18): mindkét oldal ugyanaz a konstrukció —
+-- a `2 = 2` nulla információ. A valódi állítás («a 2 prím»)
+-- valódi tanúja: PrimekAnalizis_v2.kettőPrímTanú
+-- (a 2-re a [2,1] jelölt-tartomány üres — a hiányos keresés TELJES).
 ||| 2 duplikált ID. A 2 = horgony prím.
 public export
 DuplikaltIdPrimek : 2 = 2

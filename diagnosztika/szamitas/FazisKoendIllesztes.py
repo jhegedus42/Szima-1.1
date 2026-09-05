@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN(átmeneti) — numerikus kutatás-szimuláció, Idrisbe átírandó (Komplex.idr-minta); hullám-3 nyilvántartás
 """
 FazisKoendIllesztes.py — A 33×33 Pauli-Hamilton ILLESZTÉSE a CODATA-ra
 scipy.optimize.least_squares (TRF) segítségével.

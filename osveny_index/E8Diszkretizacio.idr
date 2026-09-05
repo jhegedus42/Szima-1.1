@@ -1,0 +1,1 @@
+Dirac3D/E8Diszkretizacio.idr

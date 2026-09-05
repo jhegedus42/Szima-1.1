@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN(átmeneti) — numerikus kutatás-szimuláció, Idrisbe átírandó (Komplex.idr-minta); hullám-3 nyilvántartás
 """
 FazisKoendE8E9.py — Az E8 × E8 + E9 egyesített struktúra,
 komplex Pauli-mátrixos felépítésben.

@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN(átmeneti) — numerikus kutatás-szimuláció, Idrisbe átírandó (Komplex.idr-minta); hullám-3 nyilvántartás
 """
 FazisKoendKvantumMC.py
 A Standard Modell + E8 x E8 + Steane [[2^n-1, 1, 3]] hiba-

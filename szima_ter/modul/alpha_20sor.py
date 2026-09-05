@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN — DUPLIKÁTUM: az AlphaSteane.idr / AlphaE8Szigor.idr / AlphaLobaszas.idr már számolja ugyanezt (δ=(121/128)^(249+ln(9/8)), α⁻¹, G) — AGENTS §24
 import numpy as np
 r=8;d=int(np.log2(r));n=r-1;k=1;s=n-k;N=2**n;M=2**r;p=r-n
 e=N+2**d+p;t=(s+d)/(M-s);a=e+t

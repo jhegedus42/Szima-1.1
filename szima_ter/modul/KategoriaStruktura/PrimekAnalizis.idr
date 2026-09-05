@@ -1,0 +1,1 @@
+../../../osveny_index/KategoriaStruktura/PrimekAnalizis.idr

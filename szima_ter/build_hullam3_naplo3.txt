@@ -1,0 +1,110 @@
+36/99: Building Alap.Hatar (modul/Alap/Hatar.idr)
+42/99: Building EvolutivKereso_v1 (modul/EvolutivKereso_v1.idr)
+Warning: We are about to implicitly bind the following lowercase names.
+You may be unintentionally shadowing the associated global definitions:
+  e8Gyokok is shadowing E8Gyokok_v2.e8Gyokok
+
+EvolutivKereso_v1:381:1--382:71
+ 381 | bizMutációZártPélda :
+ 382 |   elem (weylReflexio (jel PéldaFélEgészSzó) KezdőGyök) e8Gyokok = True
+
+Error: While processing left hand side of útVége. Undefined name útvonal. 
+
+EvolutivKereso_v1:115:8--115:15
+ 111 | ||| Az út VÉGPONTJA: az utolsó gyök (üres útra a kezdő — a foldl
+ 112 | ||| kezdőértéke adja a totalitást; Data.List.foldl, §24).
+ 113 | public export
+ 114 | útVége : ÚtJelölt -> E8Gyok
+ 115 | útVége útvonal = foldl (\_, gyök => gyök) KezdőGyök útvonal
+              ^^^^^^^
+
+Error: While processing left hand side of útLépéseinekSzáma. Undefined name útvonal. 
+
+EvolutivKereso_v1:160:19--160:26
+ 156 | 
+ 157 | ||| Az út LÉPÉSEINEK száma: a gyökök száma mínusz a kezdő (Nat minus).
+ 158 | public export
+ 159 | útLépéseinekSzáma : ÚtJelölt -> Nat
+ 160 | útLépéseinekSzáma útvonal = minus (length útvonal) 1
+                         ^^^^^^^
+
+Error: While processing left hand side of fitnesz. Undefined name útvonal. 
+
+EvolutivKereso_v1:167:9--167:16
+ 163 | ||| lépésszám-büntetés. (Double — ellenőrzése futásidejű GAUGE,
+ 164 | ||| a Double-egyenlőség NEM Refl-tárgy, §18.)
+ 165 | public export
+ 166 | fitnesz : ÚtJelölt -> Double
+ 167 | fitnesz útvonal =
+               ^^^^^^^
+
+Error: While processing right hand side of legjobbFitnesz. Undefined name útvonal. 
+
+EvolutivKereso_v1:176:18--176:25
+ 172 | ||| állapotba; az alsó „padló" −999.0 lehetetlen érték).
+ 173 | public export
+ 174 | legjobbFitnesz : Populáció -> Double
+ 175 | legjobbFitnesz népességLista =
+ 176 |   foldl (\eddig, útvonal => max eddig (fitnesz útvonal)) (-999.0) népességLista
+                        ^^^^^^^
+
+Error: While processing left hand side of útElériACélt. Undefined name útvonal. 
+
+EvolutivKereso_v1:188:14--188:21
+ 184 | 
+ 185 | ||| Egy út eléri-e a célt (a végpont AzonosJel-e a célszóval).
+ 186 | public export
+ 187 | útElériACélt : ÚtJelölt -> Bool
+ 188 | útElériACélt útvonal =
+                    ^^^^^^^
+
+Error: While processing left hand side of kiterjeszt. Undefined name útvonal. 
+
+EvolutivKereso_v1:206:12--206:19
+ 202 | ||| végpontra alkalmazott IMPORTÁLT weylReflexio hozzáfűzve (a
+ 203 | ||| tükrözés ZÁRT a 240 gyökre — l. a kimerítő mérést alább).
+ 204 | public export
+ 205 | kiterjeszt : ÚtJelölt -> List ÚtJelölt
+ 206 | kiterjeszt útvonal =
+                  ^^^^^^^
+
+Error: While processing right hand side of bizMéretMegmarad. Can't solve constraint between: 6 and length (következőGeneráció KezdőPopulációKonst).
+
+EvolutivKereso_v1:349:20--349:24
+ 345 | -- átírása (pl. rossz szelekciós méret) automatikusan eltöri.
+ 346 | public export
+ 347 | bizMéretMegmarad :
+ 348 |   length (következőGeneráció KezdőPopulációKonst) = PopulációMéret
+ 349 | bizMéretMegmarad = Refl
+                          ^^^^
+
+Error: While processing right hand side of bizMéretMegmaradKlasszikus. Can't solve constraint between: 6 and length (klasszikusKövetkezőGeneráció KezdőPopulációKonst).
+
+EvolutivKereso_v1:357:30--357:34
+ 353 | -- kényszeríti).
+ 354 | public export
+ 355 | bizMéretMegmaradKlasszikus :
+ 356 |   length (klasszikusKövetkezőGeneráció KezdőPopulációKonst) = PopulációMéret
+ 357 | bizMéretMegmaradKlasszikus = Refl
+                                    ^^^^
+
+Error: While processing type of bizMutációZártPélda. Can't find an implementation for Foldable ?t.
+
+EvolutivKereso_v1:382:3--382:64
+ 378 | -- (σ_(1⁸)(2,2,0⁶)) eredménye gyök — a kernel az elem-keresést a
+ 379 | -- 240-es listán végigszámolja (a BizTukrozés*-család mintájára).
+ 380 | public export
+ 381 | bizMutációZártPélda :
+ 382 |   elem (weylReflexio (jel PéldaFélEgészSzó) KezdőGyök) e8Gyokok = True
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error: While processing right hand side of bizMegtaláltÚtVégeACél. Can't solve constraint between: AzonosJel and if szorzat (szóOsztályMeghatároz CélGyök) (szóOsztályMeghatároz (útVége MegtaláltÚtKonst)) (útVége MegtaláltÚtKonst) CélGyök == 8 then AzonosJel else if szorzat (szóOsztályMeghatároz CélGyök) (szóOsztályMeghatároz (útVége MegtaláltÚtKonst)) (útVége MegtaláltÚtKonst) CélGyök == 4 then SzorosanHasonló else if szorzat (szóOsztályMeghatároz CélGyök) (szóOsztályMeghatároz (útVége MegtaláltÚtKonst)) (útVége MegtaláltÚtKonst) CélGyök == 0 then Semleges else if szorzat (szóOsztályMeghatároz CélGyök) (szóOsztályMeghatároz (útVége MegtaláltÚtKonst)) (útVége MegtaláltÚtKonst) CélGyök == -4 then EllentétesRokon else Ellentett.
+
+EvolutivKereso_v1:404:26--404:30
+ 400 | -- belső szorzatot ((−1)⁸·(−1)⁸ = +8) végigszámolja.
+ 401 | public export
+ 402 | bizMegtaláltÚtVégeACél :
+ 403 |   jelentésTávolság (szóváEmel (útVége MegtaláltÚtKonst)) Célszó = AzonosJel
+ 404 | bizMegtaláltÚtVégeACél = Refl
+                                ^^^^
+

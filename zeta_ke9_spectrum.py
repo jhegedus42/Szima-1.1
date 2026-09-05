@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN — csak rajzol (matplotlib/scipy vizualizáció); a kutatási számítás Idrisben él vagy élni fog (AGENTS §3, hullám-3 nyilvántartás)
 """
 A Riemann-zeta nemtrivialis gyokei + K(E9) spektrum + Montgomery-parkorrelacio
 

@@ -1,0 +1,49 @@
+  1/101: Building Steane713 (modul/Steane713.idr)
+  2/101: Building E8E8Algebra (modul/E8E8Algebra.idr)
+  3/101: Building MagyarNyelvtan (modul/MagyarNyelvtan.idr)
+  4/101: Building ModulRegisztracio (modul/ModulRegisztracio.idr)
+  5/101: Building LawvereGodel (modul/LawvereGodel.idr)
+  6/101: Building Szotar (modul/Szotar.idr)
+  7/101: Building Fonetika (modul/Fonetika.idr)
+  8/101: Building FanoParitás (modul/FanoParitás.idr)
+  9/101: Building ErtelmezoSzotar (modul/ErtelmezoSzotar.idr)
+ 10/101: Building SteaneHamiltonian (modul/SteaneHamiltonian.idr)
+ 11/101: Building LejeuneTranszformacio (modul/LejeuneTranszformacio.idr)
+ 12/101: Building HanMagyarKodolas (modul/HanMagyarKodolas.idr)
+ 13/101: Building Kerdoszo (modul/Kerdoszo.idr)
+ 14/101: Building E8Gyokrendszer (modul/E8Gyokrendszer.idr)
+ 15/101: Building Alap.CsomagoltTipusok (modul/Alap/CsomagoltTipusok.idr)
+ 16/101: Building DiracGammaMatricak (modul/DiracGammaMatricak.idr)
+ 17/101: Building OktonionAlgebra (modul/OktonionAlgebra.idr)
+ 18/101: Building Komplex (modul/Komplex.idr)
+ 19/101: Building DiracIdoFejlodes (modul/DiracIdoFejlodes.idr)
+ 20/101: Building Teszt (modul/Teszt.idr)
+ 22/101: Building Kategoriak.ZeneKategoria (modul/Kategoriak/ZeneKategoria.idr)
+Error: While processing right hand side of zeneAsszociativ. When unifying:
+    zeneKompozicio (ZeneOsszetett _ _ _) (zeneKompozicio g h)
+and:
+    zeneKompozicio (zeneKompozicio (ZeneOsszetett _ _ _) g) h
+Mismatch between: b and c.
+
+Kategoriak.ZeneKategoria:120:45--120:49
+ 116 | zeneAsszociativ ZeneTemperalt ZeneTiszta ZeneTemperalt = Refl
+ 117 | zeneAsszociativ ZeneTemperalt ZeneTemperalt ZeneAzonos = Refl
+ 118 | zeneAsszociativ ZeneTemperalt ZeneTemperalt ZeneTiszta = Refl
+ 119 | zeneAsszociativ ZeneTemperalt ZeneTemperalt ZeneTemperalt = Refl
+ 120 | zeneAsszociativ (ZeneOsszetett _ _ _) g h = Refl
+                                                   ^^^^
+
+Error: While processing right hand side of asszociativ. When unifying:
+    zeneKompozicio (zeneKompozicio f g) h
+and:
+    zeneKompozicio f (kompozicio g h)
+Mismatch between: c and b.
+
+Kategoriak.ZeneKategoria:134:17--134:32
+ 130 |   identitas = zeneIdentitas
+ 131 |   kompozicio = zeneKompozicio
+ 132 |   balAzonos = zeneBalAzonos
+ 133 |   jobbAzonos = zeneJobbAzonos
+ 134 |   asszociativ = zeneAsszociativ
+                       ^^^^^^^^^^^^^^^
+

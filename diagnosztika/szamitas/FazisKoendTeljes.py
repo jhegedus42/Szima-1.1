@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN(átmeneti) — numerikus kutatás-szimuláció, Idrisbe átírandó (Komplex.idr-minta); hullám-3 nyilvántartás
 """
 FazisKoendTeljes.py — A TELJES FÁZIS-KOEND SZÁMÍTÁS
 A Standard Modell + E8 + hibajavító kód rendszerében.

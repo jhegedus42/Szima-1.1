@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN — csak rajzol (matplotlib/scipy vizualizáció); a kutatási számítás Idrisben él vagy élni fog (AGENTS §3, hullám-3 nyilvántartás)
 """
 Steane [[7,1,3]] kod — 3D vizualizacio, fele vagva.
 A 7 kubit stabilizator-struktura + energia-informacio csere ciklus.

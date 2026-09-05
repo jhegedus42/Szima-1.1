@@ -9,8 +9,12 @@ sourcedir = "modul"
 -- ═══════════════════════════════════════════════════════════════
 --
 -- "szethullott alapokra nehez epiteni" (a felhasználó, 2026-08-21).
--- EZ a 37 modul a leellenőrzött, forduló alap (mind egyenként
--- idris2 --check-t kapott 2026-08-21-én; l. docs/AlapJegyzek).
+-- RÉGI: «EZ a 37 modul a leellenőrzött, forduló alap (mind egyenként
+-- RÉGI: idris2 --check-t kapott 2026-08-21-én; l. docs/AlapJegyzek).»
+--   ↑ ELAVULT sor (2026-09-05, JavításiHullam_3 infra-orvos): a lista
+--   ténylegesen 67 tétel VOLT, nem 37; a hullám 12 élőben használt,
+--   hiányzó modult fűzött hozzá → 79 tétel (l. alul: «HULLAM_3
+--   HOZZÁFŰZÉS» blokk; a 12 modul szimlinkkel él a modul/ alatt).
 --
 -- A 13 NEM forduló modul SZANDÉKOSAN KIVONVA (l. AlapJegyzek:
 -- ok + sors minden egyeshez; §13/§20 — a fájlok a repóban MARADNAK):
@@ -83,10 +87,63 @@ modules = Alap.AlphaKözös
         , SzintaxisMorfizmus_v1
         , Steane713
         , HaromKubit
-        , FazisAlgebra_v2
-          , Mondat_v1
-          , Muszerefal_v1
-          , Muszerefal_v2
-           , SziamiRitmus_v1
+        -- FazisAlgebra_v2 KIHAGYVA (2026-09-05, Hullam_3 build):
+        --   NEM FORDUL — a RÉGI lista modulja, ELŐZETES hiba (nem a hullám
+        --   okozta): «Undefined name azonosFazis» (töltésParitásIdőKoherens,
+        --   fazisFaktorialis RHS), «Undefined name Irany» + «No type
+        --   declaration for FazisAlgebra_v2.töltésParitásIdőIrány» — vagyis
+        --   a fájl HIÁNYZÓ definíciókra hivatkozik. Nem triviális (§13);
+        --   a fájl megmarad: modul/FazisAlgebra_v2.idr
+        -- Mondat_v1 + Muszerefal_v1 + Muszerefal_v2 SZINTÉN KIHAGYVA
+        --   (2026-09-05, Hullam_3 build): az import-lánc Muszerefal_v2 →
+        --   Muszerefal_v1 → Mondat_v1 → FazisAlgebra_v2 miatt a három
+        --   felső tag NEM ÉPÜLHET, amíg a FazisAlgebra_v2 törött (az
+        --   importok a sourcedir FÁJLAIHOZ oldódnak, nem a listához —
+        --   a lista-ból való kihagyás önmagában nem véd). A három modul
+        --   SAJÁT hibáját ez a futás NEM tanúsítja — a lánc miatt keltek
+        --   ki. A fájlok megmaradnak: modul/Mondat_v1.idr,
+        --   modul/Muszerefal_v1.idr, modul/Muszerefal_v2.idr
+          , SziamiRitmus_v1
           , KonyvAdat_E8Gyokrendszer_v1
-          , EvolutivKereso_v1
+        -- EvolutivKereso_v1 KIHAGYVA (2026-09-05, Hullam_3 build):
+        --   NEM FORDUL — a RÉGI 67 listából való, ELŐZETES hiba (nem a
+        --   hullám okozta): «Undefined name útvonal» ×6 (a #9-es csapda:
+        --   ékezetes csupasz mintaváltozó IO-do-s függvényben: útVége,
+        --   útLépéseinekSzáma, fitnesz, legjobbFitnesz, útElériACélt,
+        --   kiterjeszt), továbbá valós bizonyítás-hibák (bizMéretMegmarad:
+        --   «Can't solve constraint between: 6 and length …», bizMutációZártPélda:
+        --   «Can't find an implementation for Foldable ?t», bizMegtaláltÚtVégeACél).
+        --   NEM triviális javítás (§13 — a fájlon nem változtatunk);
+        --   a fájl megmarad: modul/EvolutivKereso_v1.idr
+
+-- ═══════════════════════════════════════════════════════════════
+-- HULLAM_3 HOZZÁFŰZÉS (2026-09-05) — a hitelesített audit 12
+-- élőben használt, de listáról hiányzó modulja. A források az
+-- osveny_index/ alatt élnek, a modul/ alá relatív szimlinkkel
+-- csatlakoznak (az Alap.KategoriaT meglévő mintájára). A függőségeik
+-- (20 további modul, pl. MagyarNyelv, Teszt-importok) SZINTÉN
+-- szimlinkek — a build csak a listából + tranzitív importokból dolgozik.
+-- ═══════════════════════════════════════════════════════════════
+        , Alap.CsomagoltTipusok
+        , Alap.SzamT
+        , Alap.GrafT
+        , Alap.Hatar
+        -- Alap.KeresoTabla KIHAGYVA (2026-09-05, Hullam_3 build):
+        --   NEM FORDUL — a FÁJL CSONKOLT: az osveny_index/Alap/KeresoTabla.idr
+        --   302. sornál ér véget («putStrLn "Kész.» — lezáratlan idézőjel +
+        --   hiányzó záró-szerkezetek). Nincs importálója, így a kihagyása
+        --   senkit nem törik meg; a javítás = a fájl befejezése = ÚJ _v2 fájl
+        --   (§13 — az eredetin nem változtatunk). A szimlink megmarad:
+        --   modul/Alap/KeresoTabla.idr → osveny_index/Alap/KeresoTabla.idr
+        , Alap.LagrangianT
+        , Alap.DependensSzamT
+        , KategoriaElmelet
+        , KategoriaStruktura.PrimekAnalizis
+        , Kategoriak.ZeneiRetegek
+        -- Kategoriak.ZeneKategoria KIHAGYVA (2026-09-05, Hullam_3 build):
+        --   NEM FORDUL — zeneAsszociativ 120. sor: «Mismatch between: b and c»,
+        --   a ZeneOsszetett-es asszociativitás-tanú nem zár (valódi
+        --   típusprobléma, NEM triviális javítás; §13 miatt a fájlon nem
+        --   változtatunk). A fájl + a szimlink megmarad:
+        --   modul/Kategoriak/ZeneKategoria.idr → osveny_index/Kategoriak/ZeneKategoria.idr
+        , Teszt

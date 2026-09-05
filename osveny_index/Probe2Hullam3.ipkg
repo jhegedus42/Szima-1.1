@@ -1,0 +1,5 @@
+package probe2
+
+sourcedir = "Dirac3D"
+
+modules = KiszoloAI_v2

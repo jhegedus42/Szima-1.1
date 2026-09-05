@@ -245,3 +245,34 @@ OLVASD.md régi „egyesek nem fordulnak" megjegyzését.
   (hullám 3): lexikon-hossz valódi tanúja, BabyAGI v1-nyitottak, .py-k
   sora, PrimekAnalizis/SzamT tautológiák, ipkg, KisAI+Main3D.
 - Jelentés: docs/JavitasiHullam_Masodik_2026-09-05.md.
+
+## Kiegészítés (2026-09-05, reggel) — a harmadik javító-hullám: három ágens, hat tétel
+
+- A felhasználó: «toljad, 3 subagenttel» — három ágens: A (tanú-hajcsár),
+  B (infra-orvos), C (.py-sor).
+- A: a lexikon-tanú VALÓDI és GYORS (HungarianLexiconTanu_v1, awk-generált
+  cenzus — a 3460 szó-konstans PRIVÁT, szó szerint mérve; hét Refl:
+  3460 + két út + kategóriák 2073/782/416/189 + részösszeg-híd; --check
+  2,2 mp → a §2 tanulság NEM terjed ki a nagy literál-listákra);
+  6 tautológia-jelzés + PrimekAnalizis_v2 (osztó-kimerítés + 10→False
+  ellen-ellenőrzés); natMod két láb (§24-import + futásidejű Show).
+- B: az ipkg-kánon ZÖLD — szima.ipkg 72 modul (67+12−7), build-gráf 94,
+  --build EXIT 0 (7 futásos bisect); 32 relatív szimlink (az ipkg az
+  importokat sourcedir-fájlokhoz oldja!); 7 kihagyás kommenttel
+  (ZeneKategoria, KeresoTabla, EvolutivKereso_v1, FazisAlgebra_v2,
+  Mondat_v1, Muszerefal ×2); KisAI+Main3D migráció TELJES (KiszoloAI_v2 +
+  Fő3D_v2, 19 import mind él; mélység-2 név + sík importok → gyökér-ipkg
+  + 15 gyökér-szimlink → 18/18 EXIT 0).
+- C: .py-nyilvántartás 79 fájl (51 IDRISBE ÍRANDÓ / 23 ESZKÖZ / 5
+  DUPLIKÁTUM); DeltaAnalizis_v1 — a ϱ Idrisben SZÜLETIK (Newton; 3.99e-14
+  egyezés; §17: Δ/σ = 74,82 függetlenül reprodukálva); 43 hivatalos
+  marker (SZABALY0-formátum); ellenorzes.sh: «TISZTA», EXIT=0.
+- CSAPDÁK: a perl -i slurp KIÜRÍTETTE a 43 .py-t (git-checkouttal
+  veszteségmenten visszaszerezve; BSD sed a szabály); BSD sed 1i\ újsor;
+  é mintaposícióban; exit-0-hazugság ×3; length-összeg; #1 listákon;
+  total→partial tilos; név-egyezés root-függő; ipkg sourcedir-relatív;
+  #28e: a Refl elkapta az ágens saját hibáját (d=1-keresés — a «Refl csak
+  azt bizonyítja» a gép hazugságát is elkapja).
+- Jelentés: docs/JavitasiHullam_Harmadik_2026-09-05.md. Maradó (hullám 4):
+  51 fájlos Idris-átírási jegyzék, EvolutivKereso_v1 + Mondat/Muszerefal-
+  lánc, a 7 kihagyott modul _v2-i.

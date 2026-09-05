@@ -1,0 +1,39 @@
+package hullam3
+
+sourcedir = "."
+
+-- ═══════════════════════════════════════════════════════════════
+-- HULLAM_3 ELLENŐRZŐ CSOMAG (2026-09-05) — CSAK ELLENŐRZÉSRE.
+-- Nem helyettesíti a Dirac3D.ipkg-t (az VÁLTOZATLAN marad, §13).
+-- Cél: a #6-os csapdás modulok ÚJ, helyes névvel:
+--   Dirac3D.KiszoloAI_v2 (← KisAI migráció)
+--   Dirac3D.Fő3D_v2      (← Main3D migráció)
+-- A kevert mélység (sík KisAI + előtagos Dirac3D.X) egy ipkg-buildben
+-- helyesen oldódik: a modulnév = a sourcedir-hez képesti útvonal.
+-- Futtatás: idris2 --build Dirac3DHullam3.ipkg  (ebből a könyvtárból)
+-- | 波次3校验包：仅用于检查两个新模块（不改动原 ipkg）。
+--   | Wave-3 check package: verification only; the original ipkg
+--   remains untouched (§13).
+-- ═══════════════════════════════════════════════════════════════
+
+modules = Dirac3D.KiszoloAI_v2
+        , Dirac3D.Fő3D_v2
+        , Kina2D
+        , Magyar
+        , Dirac3D
+        , Fazis
+        , Lagrangian
+        , Carnot
+        , Hadmeres
+        , HadMerger
+        , HadMerTeszt
+        , FazisOsszeado
+        , CarryHoatvitel
+        , HamiltonMegmaradas
+        , E8Diszkretizacio
+        , E8Szimplektikus
+        , Steane153
+        , AktivTanulas
+        , KisAI
+        , MagasabbRendszer
+        , Main3D

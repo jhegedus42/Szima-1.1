@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN(átmeneti) — numerikus kutatás-szimuláció, Idrisbe átírandó (Komplex.idr-minta); hullám-3 nyilvántartás
 """classical_codes.py — E8 × E8 convolutional codes (numerical computation only).
 Hungarian case algebra as 5-bit sub-code within E8 lattice.
 Convolutional encoder: not static, state evolves with each step.

@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN(átmeneti) — numerikus kutatás-szimuláció, Idrisbe átírandó (Komplex.idr-minta); hullám-3 nyilvántartás
 """
 FazisKoendSzamitas.py — A 33x33 Jacobi-mátrix diagonalizálása
 a Standard Modell + E8 + hibajavító kód rendszerében.

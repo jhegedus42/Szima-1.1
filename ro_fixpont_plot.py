@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN — csak rajzol (matplotlib/scipy vizualizáció); a kutatási számítás Idrisben él vagy élni fog (AGENTS §3, hullám-3 nyilvántartás)
 """
 Komplex exponencialis fixpont (ϱ) + aranymetszes kontrakcio + fazis oszcillacio
 Forras: arXiv:2606.01668 (Bickford 2026) — Self-Referential Fixed Point of Complex Exponential

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# SZABALY0-IDRISBEN-LEHETETLEN — a felhasználó által explicit kért SQLite-kiolló eszköz (AGENTS §3-kivétel, 2026-08-21)
 # ═══════════════════════════════════════════════════════════════
 # OPENCODE NAPLÓ-KIROLLÓ — a chat SQLite-ből a kutatási naplóba
 # OPENCODE LOG EXTRACTOR — from the chat SQLite into the research log

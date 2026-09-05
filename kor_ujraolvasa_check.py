@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN — DUPLIKÁTUM: a KorOsztas.idr már bizonyítja (Gauss-Wantzel, Fermat-prímek, komma = 531441/524288 = 23,46 cent) — AGENTS §24
 """
 A KOR UJRAOLVASASA — a 440 es a korfelosztas egyuttertese.
 Numerikus ellenorzes:

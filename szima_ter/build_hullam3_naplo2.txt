@@ -1,0 +1,24 @@
+ 21/100: Building Kategoriak.ZeneiRetegek (modul/Kategoriak/ZeneiRetegek.idr)
+ 22/100: Building Alap.SzamT (modul/Alap/SzamT.idr)
+ 23/100: Building KategoriaStruktura.PrimekAnalizis (modul/KategoriaStruktura/PrimekAnalizis.idr)
+ 24/100: Building HaromKubit (modul/HaromKubit.idr)
+ 25/100: Building Emberi.Index (modul/Emberi/Index.idr)
+ 26/100: Building Szamitasi.Index (modul/Szamitasi/Index.idr)
+ 27/100: Building MagyarNyelv (modul/MagyarNyelv.idr)
+ 28/100: Building FogalomFa (modul/FogalomFa.idr)
+ 29/100: Building FazisAlgebra (modul/FazisAlgebra.idr)
+ 30/100: Building KategoriaElmelet (modul/KategoriaElmelet.idr)
+ 31/100: Building Alap.DependensSzamT (modul/Alap/DependensSzamT.idr)
+ 34/100: Building Alap.GrafT (modul/Alap/GrafT.idr)
+ 35/100: Building Alap.LagrangianT (modul/Alap/LagrangianT.idr)
+ 36/100: Building Alap.KeresoTabla (modul/Alap/KeresoTabla.idr)
+Error: Bracket is not properly closed.
+
+Alap.KeresoTabla:302:12--302:13
+ 298 |   putStrLn ("  Algebrák: " ++ show (length algebraStrukturak))
+ 299 |   putStrLn ("  Fizikai konstansok: " ++ show (length fizikaiKonstansok))
+ 300 |   putStrLn ("  Magyar lexikon: " ++ show (length magyarLexikon))
+ 301 |   putStrLn ""
+ 302 |   putStrLn "Kész.
+                  ^
+

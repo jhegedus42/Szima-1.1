@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN(átmeneti) — numerikus kutatás-szimuláció, Idrisbe átírandó (Komplex.idr-minta); hullám-3 nyilvántartás
 """
 FazisKoendPauliTeljes.py — A 33x33 Pauli-Hamilton, VALÓDI PAULI-DEKOMPOZÍCIÓVAL.
 

@@ -1,0 +1,22 @@
+package hullam3ketujmodul
+
+-- ═══════════════════════════════════════════════════════════════
+-- HULLAM_3 — A KÉT ÚJ MODUL ELLENŐRZŐ CSOMAGJA (2026-09-05).
+-- Helye: osveny_index/ gyökér — mert a modulnevek GYÖKÉR-relatívak:
+--   Dirac3D.KiszoloAI_v2  → Dirac3D/KiszoloAI_v2.idr
+--   Dirac3D.Fő3D_v2       → Dirac3D/Fő3D_v2.idr
+-- A Fő3D_v2 sík importjai (import Kina2D stb.) a gyökér alól oldódnak:
+-- a 15 hiányzó nevre szimlink él (Dirac3D/<Név>.idr → <Név>.idr),
+-- a Fazis a meglévő gyökér-iker (csak kommentben tér el a Dirac3D
+-- példánytól — szemantikusan azonos, diff-ellenőrizve 2026-09-05).
+-- Ez a csomag CSAK ELLENŐRZÉSRE készült; a Dirac3D/Dirac3D.ipkg
+-- változatlan maradt (§13). Futtatás:
+--   cd osveny_index && idris2 --build Hullam3KetUjModul.ipkg
+-- | 波次3两新模块校验包：根目录解析，仅检查用。
+--   | Wave-3 check package for the two new modules (root-resolved).
+-- ═══════════════════════════════════════════════════════════════
+
+sourcedir = "."
+
+modules = Dirac3D.KiszoloAI_v2
+        , Dirac3D.Fő3D_v2

@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN — IDRISBE ÁTÍRVA: l. osveny_index/DeltaAnalizis_v1.idr (a ϱ/δ-numerika Idrisben él; ez a .py csak mpmath-40-tizedes összevetésre marad)
 """
 Delta analízis — mi a 1 - Re(ϱ)·π = 5.604e-4 rés?
 Bickford (arXiv:2606.01668) Theorem 9 szerint a rés "kényszerített" (túldeterminált).

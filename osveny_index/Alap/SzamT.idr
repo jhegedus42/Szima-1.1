@@ -406,6 +406,18 @@ public export
 oktonioAlapokSzama : EgeszSzam
 oktonioAlapokSzama = NyolcS
 
+-- TAUTOLÓGIA-JELZÉS (§18): mindkét oldal ugyanaz a konstrukció —
+-- a `NyolcS = NyolcS` nulla információ, a «Kimenet: Refl» komment
+-- önmagát igazolja. A VALÓDI állítás már él a fájlban:
+-- `hetPluszEgyNyolc : osszead HetS EgyS = NyolcS` (fent, a 6. szakasz)
+-- — az mindkét oldalán KÜLÖNBÖZŐ konstrukció (osszead HetS EgyS
+-- számol → NyolcS; jobb oldal konstans). Ez a deklaráció annak
+-- ismétlése csupasz identitásként; megtartjuk (§20: semmi törlés),
+-- de tanú-értéke nincs. / 同义反复标记：NyolcS = NyolcS 无信息；
+-- 真实陈述是 hetPluszEgyNyolc（7+1=8，两侧构造不同）。
+-- Tautology mark: NyolcS = NyolcS carries no information; the real
+-- statement is hetPluszEgyNyolc above. Kept, but it proves nothing.
+-- Tautologie-Markierung: NyolcS = NyolcS ist inhaltsleer.
 -- Kimenet: Refl (NyolcS = NyolcS ✓)
 public export
 oktonioAlapokBizonyitas : NyolcS = NyolcS

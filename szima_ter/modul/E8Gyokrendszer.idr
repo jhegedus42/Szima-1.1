@@ -1,0 +1,1 @@
+../../osveny_index/E8Gyokrendszer.idr

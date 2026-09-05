@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN — csak rajzol (matplotlib/scipy vizualizáció); a kutatási számítás Idrisben él vagy élni fog (AGENTS §3, hullám-3 nyilvántartás)
 """
 Steane [[7,1,3]] — scipy matrix-exponential Hamiltonian dynamics -> 3D cut in half.
 |psi(t)> = expm(-i H t) |psi(0)>

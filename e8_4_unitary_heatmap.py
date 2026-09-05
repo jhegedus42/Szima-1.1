@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN — csak rajzol (matplotlib/scipy vizualizáció); a kutatási számítás Idrisben él vagy élni fog (AGENTS §3, hullám-3 nyilvántartás)
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")

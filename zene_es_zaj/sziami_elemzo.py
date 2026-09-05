@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN — Idris-generált rajzoló (a forrás Idris-modul számol, ez csak rajzol)
 # -*- coding: utf-8 -*-
 # ═══════════════════════════════════════════════════════════════
 # SZIÁMI ELEMZŐ — AZ IDRIS GENERÁLTA EZT A FÁJLT (AGENTS §1.0)

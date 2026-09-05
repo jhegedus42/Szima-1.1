@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN(átmeneti) — numerikus kutatás-szimuláció, Idrisbe átírandó (Komplex.idr-minta); hullám-3 nyilvántartás
 """
 FazisKoend2kat3kat.py — A 2-kategória és 3-kategória ábrázolása,
 a Fano-sík + 33×33 Pauli-Hamilton kontextusban.

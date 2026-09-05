@@ -1,0 +1,11 @@
+17/17: Building Fő3D_v2 (Dirac3D/Fő3D_v2.idr)
+Error: Module name Dirac3D.Fő3D_v2 does not match file name "Dirac3D/F\337\&3D_v2.idr"
+
+Fő3D_v2:1:1--35:17
+ 01 | module Dirac3D.Fő3D_v2
+ 02 | 
+ 03 | -- ═══════════════════════════════════════════════════════════════
+ 04 | -- MIGRÁCIÓ (2026-09-05, JavításiHullam_3): a Main3D.idr tartalmának
+ 05 | -- pontos átvitele ÚJ fájlba (§13 — a v1: Dirac3D/Main3D.idr megmarad).
+ 06 | -- OK: a Main3D.idr «module Main3D»-t deklarál a Dirac3D/Main3D.idr
+

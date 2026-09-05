@@ -1,0 +1,41 @@
+49/98: Building FazisAlgebra_v2 (modul/FazisAlgebra_v2.idr)
+Error: While processing right hand side of töltésParitásIdőKoherens. Undefined name azonosFazis. 
+
+FazisAlgebra_v2:64:3--64:14
+ 60 | ||| van a külsővel — nincs információvesztés.
+ 61 | public export
+ 62 | töltésParitásIdőKoherens : ToltesParitasIdo -> Bool
+ 63 | töltésParitásIdőKoherens tpi =
+ 64 |   azonosFazis tpi.töltés tpi.paritás
+        ^^^^^^^^^^^
+Did you mean: azonosFázis?
+Error: While processing type of töltésParitásIdőIrány. Undefined name Irany. 
+
+FazisAlgebra_v2:71:45--71:50
+ 67 | ||| Ha a töltés irányul a paritás felé, akkor a rendszer AKTÍV
+ 68 | ||| (információt küld). Ha a paritás irányul a töltés felé, akkor
+ 69 | ||| a rendszer PASSZÍV (információt fogad).
+ 70 | public export
+ 71 | töltésParitásIdőIrány : ToltesParitasIdo -> Irany
+                                                  ^^^^^
+
+Error: No type declaration for FazisAlgebra_v2.töltésParitásIdőIrány.
+
+FazisAlgebra_v2:72:1--72:57
+ 68 | ||| (információt küld). Ha a paritás irányul a töltés felé, akkor
+ 69 | ||| a rendszer PASSZÍV (információt fogad).
+ 70 | public export
+ 71 | töltésParitásIdőIrány : ToltesParitasIdo -> Irany
+ 72 | töltésParitásIdőIrány tpi = irany tpi.töltés tpi.paritás
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Did you mean: töltésParitásIdőKoherens?
+Error: While processing right hand side of fazisFaktorialis. Undefined name azonosFazis. 
+
+FazisAlgebra_v2:80:22--80:33
+ 76 | ||| mértéke (a kanonikus név — l. a fejléc nevekről szóló szakasza).
+ 77 | public export
+ 78 | fazisFaktorialis : ToltesParitasIdo -> Double
+ 79 | fazisFaktorialis tpi =
+ 80 |   let töltésAzonos = azonosFazis tpi.töltés tpi.idő
+                           ^^^^^^^^^^^
+Did you mean: azonosFázis?

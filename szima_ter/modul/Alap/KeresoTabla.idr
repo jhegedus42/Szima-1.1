@@ -1,0 +1,1 @@
+../../../osveny_index/Alap/KeresoTabla.idr

@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN(átmeneti) — numerikus kutatás-szimuláció, Idrisbe átírandó (Komplex.idr-minta); hullám-3 nyilvántartás
 """
 FazisKoendAlphaFix.py — A 33x33 Pauli-Hamilton α levezetésének RÖGZÍTETT ábrája.
 

@@ -1,3 +1,4 @@
+# SZABALY0-IDRISBEN-LEHETETLEN — Idris-generált rajzoló (a forrás Idris-modul számol, ez csak rajzol)
 # ═══ GRAFIKON-GENERÁTOR — F2: E8 gyökrendszer ═══
 # EZT A FÁJLT AZ IDRIS GENERÁLTA (KonyvAdat_E8Gyokrendszer_v1.main,
 # §1.0: az Idris írja a Pythont — kéz nem írt sort).

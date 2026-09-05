@@ -1,0 +1,2 @@
+22/94: Building Alap.SzamT (modul/Alap/SzamT.idr)
+23/94: Building KategoriaStruktura.PrimekAnalizis (modul/KategoriaStruktura/PrimekAnalizis.idr)
