@@ -404,3 +404,26 @@ OLVASD.md régi „egyesek nem fordulnak" megjegyzését.
   context/AI-végpont NINCS a csomagban (400 OPTION_NOT_IN_PLAN); a
   «bx web» EGYSZERŰ KERESÉS MŰKÖDIK (élő próba: prosody+QEC találatok).
   arxiv-search: Valyu-kulcs továbbra is hiányzik.
+
+## Kiegészítés (2026-09-05, éjszaka) — scite MCP beüzemelve + a hang-bit irodalma
+
+- A felhasználó: «scite-ra mar elofizettem … set it up as mcp» — a scite MCP
+  MÁR be volt állítva a ~/.zcode/cli/config.json-ben (type http,
+  api.scite.ai/mcp); az élő probe: handshake OK, névtelenül is elérhető,
+  search_literature (210M+ cikk). Új sessionben eszközként is megjelenik.
+- A 21-ről: a source/-ban (HANMAG_teljes_gut.txt 5981–82) t_ext=21 és
+  t_int1 (szavak ritmusa)=21 — a DEMÓ kimeneti konstansai (a torony-futás
+  3 mondat × 7 szó = 21 mérési tick), NEM levezetett invariáns; a C(7,2)=21
+  Fano-incidenciával való egyezés REZONANCIA (a book saját jelölése
+  szerint), nem tétel — a híd építése jövőbeli munka.
+- scite irodalom (a hang=dallam=hangvonal hipotézishez):
+  * PNAS 2018 (10.1073/pnas.1710752114): a kínai lexikális tónusok
+    KATEGORIKUS agyi feldolgozása — a 4 alakzat (konstans/emelkedő/
+    hullámozó/csökkenő) valóban kategóriák!
+  * 10.3389/fpsyg.2015.00436: a ZENEI tapasztalat MODULÁLJA a tónus-
+    kategorikus észlelést (zene↔nyelv híd!).
+  * Language 2014 (10.1353/lan.2014.0010): «The Surface-Compositional
+    Semantics of English Intonation» — az intonáció KOMPOZICIONÁLIS
+    szemantikája létezik.
+  * 10.4103/jisha.jisha_24_17: a hangmagassás kategorikus észlelése
+    (nyelvi tónus + jelentés + hangvonal).
