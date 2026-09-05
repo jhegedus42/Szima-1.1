@@ -343,8 +343,10 @@ main = do
   putStrLn " 广义泡利算子——模-qudit GKP 码"
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn ""
-  putStrLn "A cikk L4 hibájának bizonyítása (GAN bíráló):"
-  putStrLn "（GAN 评审：文章 L4 错误的证明）"
+  -- RÉGI (FÉLREVEZETŐ) kiírás, javítva 2026-09-05: „bizonyítása/证明” —
+  -- a modul csak OSZTÁLYOZza a relációt (§18: a kimenet ne hazudjon)
+  putStrLn "A cikk L4 hibája OSZTÁLYOZVA (nem bizonyítva — GAN bíráló):"
+  putStrLn "（GAN 评审：文章 L4 错误已分类——未证明）"
   putStrLn "  A Pauli Z rendje 2, nem 8. A megoldás: a generalized"
   putStrLn "  Pauli operátorok (X_d, Z_d, ω_d = exp(2πi/d))."
   putStrLn "  泡利 Z 的阶是 2，不是 8。解决方案：广义泡利算子（X_d, Z_d, ω_d = exp(2πi/d)）。"
@@ -426,8 +428,10 @@ main = do
   putStrLn " 五、总结"
   putStrLn "═══════════════════════════════════════════════════════════════"
   putStrLn ""
-  putStrLn "  A cikk L4 hibája bizonyítva:"
-  putStrLn "  文章 L4 的错误已证明："
+  -- RÉGI (FÉLREVEZETŐ) kiírás, javítva 2026-09-05: „bizonyítva/已证明” —
+  -- OSZTÁLYOZVA (§18)
+  putStrLn "  A cikk L4 hibája OSZTÁLYOZVA (nem bizonyítva):"
+  putStrLn "  文章 L4 的错误已分类（未证明）："
   putStrLn "    A Z₈ fázis a modular-qudit GKP kódból jön (d=8),"
   putStrLn "    NEM a 2×2-es Pauli Z-ből (amely rendje 2)."
   putStrLn "    Z₈ 相位来自模-qudit GKP 码（d=8），而不是 2×2 泡利 Z（其阶为 2）。"

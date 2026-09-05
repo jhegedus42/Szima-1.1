@@ -214,3 +214,34 @@ OLVASD.md régi „egyesek nem fordulnak" megjegyzését.
   könyvelés; a javaslatot is ellenőrizni kell (a /8 cáfolata).
 - Jelentés-fájl: docs/JavitasiHullam_Elso_2026-09-05.md; CSAPDA_27 fájl
   bővítve; minden commit egyben a hullám végén.
+
+## Kiegészítés (2026-09-05, hajnal) — a második javító-hullám: a maradó négy tétel
+
+- A felhasználó: «folytasd mig nincs kesz» — két tétel a fő ügynök, kettő
+  háttér-ágens munkája.
+- (1) PLANCK-FELEZÉS: a gyökérok EGYETLEN TOKEN — Fizika/Legendre.idr
+  planckHossz + planckTomeg 8π-vel osztott 2π helyett (√ alatt 4× = fele
+  értékek); helyben javítva (RÉGI (HIBÁS) jelöléssel); az Einstein-féle
+  8πG/c⁴ a 405. sorban helyes, érintetlen. ELLENŐRZÉS: mind az öt
+  Planck-érték a referencián (mP 2.1764e-8, lP 1.6163e-35, tP 5.3912e-44,
+  TP 1.4168e32, EP 1.9561e9) — az audit arány-2.0 rejtélye LEZÁRVA.
+- (2) GeneralizedPauli két putStrLn-ja: «bizonyítva» → «OSZTÁLYOZVA (nem
+  bizonyítva)» magyarul+kínaiul, RÉGI-jelöléssel; a kimenet már nem hazudik.
+- (3) DependensSzamT_v2 (Javító 7): a döntés — a v1 család nem záródik
+  kompozíció alatt; egyetlen KetLepes végtelen regresszust ad; a
+  LÉPÉS-LÁNC család a természetes megoldás; a 215-es leképezés VALÓDIAN
+  felírható (a v1 állítása igaz volt, csak a bizonyítás hiányzott);
+  v2: EXIT=0, kódban NULLA believe_me (13 komment/string); senki sem
+  importálja. Új csapdák: instance-önrekurzió, meta-invertálás, véges
+  konstruktor-készlet nem záródik.
+- (4) AI-LÁNC (Javító 6): EpisodicMemory_v2_Szima (1390 sor, 12 típus + 70
+  függvény, ~200 ékezetes azonosító, IUPAC-kódok a stringekben védve,
+  %default total az EGÉSZ fájlra — két totality-gyógyszerrel, main hozzáadva;
+  4/4 EXIT=0 + magyar demo fut) + BabyAGI_v2_Szima (264 sor, Szint/szótTanul/
+  alvásSzűr, 7 Kimenet-komment; 10/10 EXIT=0 + demo fut); a lexikon-tautológia
+  §18-szerint jelölve — a VALÓDI tanúhoz aggregált lista kell (nyitott,
+  let-lánc-kockázat miatt).
+- Összegezve: a tizenegy hitelesített javítandóból tizenegy kész; maradó
+  (hullám 3): lexikon-hossz valódi tanúja, BabyAGI v1-nyitottak, .py-k
+  sora, PrimekAnalizis/SzamT tautológiák, ipkg, KisAI+Main3D.
+- Jelentés: docs/JavitasiHullam_Masodik_2026-09-05.md.

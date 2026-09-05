@@ -588,8 +588,12 @@ feketeLyukEntropia tomeg gravitaciosAllando =
 public export
 planckHossz : Double
 planckHossz = sqrt (6.62607015e-34 * 6.67430e-11 /
-              (8.0 * pi * 299792458.0 * 299792458.0 * 299792458.0))
+              (2.0 * pi * 299792458.0 * 299792458.0 * 299792458.0))
   -- ℓ_p = √(ħG/c³)
+  -- RÉGI (HIBÁS) alak, javítva 2026-09-05: 8.0 * pi állt itt (és a
+  -- planckTomeg-ben is) — a √(8π/2π) = 2 miatt mindkét érték PONTOSAN
+  -- a referencia FELE lett (GAUGE-lelet: arány 2.0); ħ = h/(2π), tehát
+  -- a nevező 2π, nem 8π. 中文：原为 8π，应为 2π——平方根下 4 倍差即减半。
 
 public export
 planckIdo : Double
@@ -598,8 +602,9 @@ planckIdo = planckHossz / 299792458.0  -- t_p = ℓ_p/c
 public export
 planckTomeg : Double
 planckTomeg = sqrt (6.62607015e-34 * 299792458.0 /
-              (8.0 * pi * 6.67430e-11))
-  -- m_p = √(ħc/G)
+              (2.0 * pi * 6.67430e-11))
+  -- m_p = √(ħc/G) — javítva 2026-09-05: 8π → 2π (l. fent; a 405. sorbeli
+  -- Einstein-féle 8πG/c⁴ HELYES, azt nem érintette a javítás)
 
 -- ─── 2G. KVANTUMTERELMELET (mezo Legendre) ────────────────────────
 
