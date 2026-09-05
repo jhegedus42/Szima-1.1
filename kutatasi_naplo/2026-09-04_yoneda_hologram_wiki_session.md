@@ -427,3 +427,35 @@ OLVASD.md régi „egyesek nem fordulnak" megjegyzését.
     szemantikája létezik.
   * 10.4103/jisha.jisha_24_17: a hangmagassás kategorikus észlelése
     (nyelvi tónus + jelentés + hangvonal).
+
+## Kiegészítés (2026-09-05, éjféli hullám) — transzformer v2 + Yoneda-bizonyítás + könyv-index
+
+- A felhasználó: «folytassuk» — három ágens futott.
+- (1) TRANSZFORMER v2 (OptimálisTranszformer_v2.idr, ~660 sor, IMPORTÁLJA a v1-et):
+  * VESSZŐ-REKORD: hat példány (99/474/11/B/G_fény/G_hang), minden
+    |eltérés|<1 Refl-lel; a komma a monográfia Bach-temperáció-elvének
+    Idris-megvalósulása (a pow-nem-zárás explicit elismerés);
+  * Z-EXPONENS: z=1.5 (Model-H), G_hang=⌊z·δ⌉=7 (Refl), B_eff,hang=14
+    (Refl), diszkrét híd 4+3=7 (Refl) — a FÖLDI ELTÉRÉS: B_eff 8→14 ≠ h;
+  * PROSZÓDIA (Hangvonal): a 4 kínai tónus (一二三四) mint V₄≅Z₂×Z₂;
+    a v4Kompozíció=Z₂-összeadás; tanúk: 4=|V₄|, egység×4, involúció×4,
+    a V4CsoportTáblázat 16 bejegyzése; futás: kommutativitás 16/16,
+    asszociativitás 64/64, jel-homomorfizmus 16/16;
+  * TÓRUSZ-HÍD: a V₄ ≅ a tórusz {(bit,F0/F4)} részcsoportja — KÉT-ÚTAS
+    Refl-híd a NYELVI kompozíció és a GEOMETRIAI fazisOsszead közt
+    (bizHullámInverzTóruszon); a Torusz.idr import ÉL;
+  * ÚJ CSAPDA #31: a proof-típusban `Név.mező` pont-szintaxis NEM
+    elaborál — a mező-függvény-alkalmazás `(mező rekord)` viszont zár;
+  * a #30 gyógyírja MÉRVE: saját abszolútÉrték (if-then-else) +
+    Double-< + natbólValós literálra MIND redukál (VesszőReflProbe_v1).
+- (2) YONEDA-BIZONYÍTÁS (YonedaBizonyítás_v1.idr): a monográfia 4 lépése
+  (Φ/Ψ/naturalitás+Jacobi-lépcső/inverzitás) véges modellen (3 objektum,
+  8 morfizmus, KÉT párhuzamos nyíl); mindkét körút zár (True×2); a
+  bijekció nem degenerált (Ψ(piros)≠Ψ(kék)); §24: ez az első TELJES
+  Yoneda-formalizálás a repóban.
+- (3) KÖNYV-INDEX (trail_index/books/64noun_index.md, 706 sor): a teljes
+  LaTeX-forrás (11 120 sor) szerkezeti index — 98 tétel, 119 egyenlet,
+  44 definíció, 17 táblázat, 105 bizonyítás; grep-pel szűrhető; tiszta
+  awk (64noun_index_generator.awk), a Kandel-mintán.
+- GAUGE: mindhárom --check tiszta, mindhárom FUT; a v2 kimenetén a
+  FÉNY/HANG kettősség VISIBLE (G: 4→7, B_eff: 8→14).
