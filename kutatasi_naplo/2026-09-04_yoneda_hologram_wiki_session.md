@@ -331,3 +331,12 @@ OLVASD.md régi „egyesek nem fordulnak" megjegyzését.
   101-modulos build ZÖLD; a redundancia 5 pontja és 6 rendezési javaslat
   (PORTÁL, .gitignore+var/folders, napló-egyesítés, ELAVULT-jelölés,
   probe-címkék, SAJAT_TODO_v2) — mind döntésre vár.
+
+## Kiegészítés (2026-09-05) — PORTÁL elkészült
+
+- A felhasználó: «egy portal jo lenne, kezdjuk azzal» — a rendezési javaslat
+  1-es pontja ELVÉGEZVE: új gyökérfájl PORTAL.md (7 szekció: egy-mondatos
+  lényeg; hol állunk 8 gépi mutatóval; repo-térkép; a 6 szabály-mag; gyors
+  parancsok; a két nap munkája; hová megyünk + ébredési protokoll). Minden
+  szám forrásmutatással (ipkg-build, Teszt, Hullam4Teszt, DeltaAnalizis,
+  HungarianLexiconTanu). A többi 5 rendezési javaslat továbbra is döntésre vár.
