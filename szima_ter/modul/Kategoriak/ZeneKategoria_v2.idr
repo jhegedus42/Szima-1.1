@@ -1,0 +1,1 @@
+../../../osveny_index/Kategoriak/ZeneKategoria_v2.idr

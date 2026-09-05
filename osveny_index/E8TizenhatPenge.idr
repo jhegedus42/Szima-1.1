@@ -1,0 +1,1 @@
+../szima_ter/modul/E8TizenhatPenge.idr

@@ -147,3 +147,21 @@ modules = Alap.AlphaKözös
         --   változtatunk). A fájl + a szimlink megmarad:
         --   modul/Kategoriak/ZeneKategoria.idr → osveny_index/Kategoriak/ZeneKategoria.idr
         , Teszt
+
+-- ═══════════════════════════════════════════════════════════════
+-- HULLAM_4 VISSZATÉRÉS (2026-09-05) — a 7 kihagyott modul MINDJIKJÁNAK
+-- létezik tiszta forduló utódja (Javító 1: EvolutivKereso_v2, Mondat_v2,
+-- Muszerefal_v3, Muszerefal_v4; Javító 1 hullám-3: FazisAlgebra_v3;
+-- Javító 1: KeresoTabla_v2, ZeneKategoria_v2). Az öt szima_ter-es
+-- közvetlenül listázva; a két osveny_index-es Hullam_3-mintájú
+-- szimlinkkel csatlakozik. A fenti kihagyás-kommentek TÖRTÉNELEMként
+-- megmaradnak (§16 — információveszteség nélkül).
+-- 中文：第四波回归——七个被跳过模块的干净后继全部入列。
+-- ═══════════════════════════════════════════════════════════════
+        , FazisAlgebra_v3
+        , Mondat_v2
+        , Muszerefal_v4
+        , Muszerefal_v3
+        , EvolutivKereso_v2
+        , Alap.KeresoTabla_v2
+        , Kategoriak.ZeneKategoria_v2

@@ -1,0 +1,1 @@
+../szima_ter/modul/E8Gyokok_v2.idr

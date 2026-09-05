@@ -276,3 +276,46 @@ OLVASD.md régi „egyesek nem fordulnak" megjegyzését.
 - Jelentés: docs/JavitasiHullam_Harmadik_2026-09-05.md. Maradó (hullám 4):
   51 fájlos Idris-átírási jegyzék, EvolutivKereso_v1 + Mondat/Muszerefal-
   lánc, a 7 kihagyott modul _v2-i.
+
+## Kiegészítés (2026-09-05, dél) — a negyedik javító-hullám: három ágens + az ipkg 7-visszatérés
+
+- A felhasználó: «folytasd 3 profi idrisz agenttel» — mindhárman betöltött
+  idris-nyelv + idris-stilus skill-lel dolgoztak.
+- LÁNC-ORVOS: mind a 7 kihagyott modulnak tiszta utódja (EvolutivKereso_v2,
+  Mondat_v2, Muszerefal_v3, Muszerefal_v4 — mind exit 0, üres kimenet);
+  CSAPDA #30: a Data.List.sortBy a 0.8.0-ban csak `export` (base 747. sor)
+  — fordítási időben nem redukál; gyógyír: saját public export rendezés,
+  futás+bizonyítás közösen; CSAPDA #27b (13 mért pont): az ÉKEZETES
+  KEZDŐBETŰS csupasz kötőnév bukik, az ASCII-kezdésű ékezetes ÁTMEGY
+  (a §25 megőrizhető); a v1 «bizonyítás-hibái» a #27 folyományai — az
+  állítások végig IGAZAK voltak; Mondat_v2 rerouting (FazisAlgebra_v3,
+  időFázisba, minősített VilágKonstruktor, két-rekord híd).
+- KONVERTŐR: ZetaKe9Szórás_v1 + KlasszikusKódok_v1 (§24-importokkal);
+  TUDOMÁNYOS SENZÁCIÓ: a .py «E9 Cartan-mátrixa» MEGCÁFOLVA (invertálható,
+  det=−2, indefinit — nem is Cartan); a VALÓDI affin E8^(1) karjai (1,2,5),
+  Kac-jelölés [2,4,6,5,4,3,2,1,3] (Refl ✓), spektruma az ARANYMETSZÉST
+  tartalmazza: {0; 0.381966; 1; 1.381966; 2; 2.618034; 3; 3.618034; 4};
+  Berman x1 Hermitian (nem anti-); 2sin72° = √(2+φ) pontosan; ÚJ eredmények
+  a .py-soha-nem-számoltak: szindróma-injektivitás 24/24, GF(2)-invertálható,
+  a konvolúciós demó degenerációja (8 eset → 4 szó — a «javítás» FELÜLÍRJA
+  az információt); 5 új csapda (`**` = DPair értékpozícióban!; é/ú/á LHS
+  tiszta fv-ben is; @-minta klauzula-végén két mintának parszol; Horner-irány
+  gyök-reciprok ujjlenyomat; #23 + elavult .so).
+- INTEGRÁTOR: Hullam4Teszt_v1 — 12 modul importálva, 17/17 teszt ZÖLD;
+  A KÉT-VILÁG HÍD: IDRIS2_PATH a prebuilt .ttc-re → a szima_ter/modul világ
+  KERESZTVILÁG-importálható ÉS értékszámítás bizonyított (3460 külsőből);
+  Állapot_v1 frissítve (lépésszám 4→11, új BFS-sor).
+- IPKG 7-VISSZATÉRÉS (fő ügynök): 2 szimlink (KeresoTabla_v2,
+  ZeneKategoria_v2 a modul/ alá) + HULLAM_4 VISSZATÉRÉS blokk — a
+  `idris2 --build szima.ipkg` EXIT 0: **101 modulos build-gráf, a hét
+  visszatérő mind épül** (EvolutivKereso_v2 9/101, FazisAlgebra_v3 20/101,
+  Mondat_v2 21/101, Muszerefal_v4 26/101, Muszerefal_v3 35/101…).
+- Jelentés: docs/JavitasiHullam_Negyedik_2026-09-05.md.
+
+## Záró kiegészítés (2026-09-05, délután) — hullám-4 jelentés + ipkg 7-visszatérés + commit
+
+- Hullám-4 jelentés: docs/JavitasiHullam_Negyedik_2026-09-05.md (három
+  ágens + az ipkg 7-visszatérés; a négy hullám összesen 24 tétel).
+- IPKG 7-VISSZATÉRÉS: 2 szimlink + HULLAM_4 blokk → `idris2 --build
+  szima.ipkg` EXIT 0, 101 modulos build-gráf; a két szimlinkes visszatérő
+  külön GAUGE-ellenőrizve. A kánon 7 kihagyásból 7 visszatért.

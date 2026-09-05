@@ -67,22 +67,29 @@ eljárás — nem emlékezés, hanem OLVASÁS.
 
 ---
 
-## AKTUÁLIS ÁLLAPOT (2026-09-04, 4 lépés után) / CURRENT STATE
+## AKTUÁLIS ÁLLAPOT (2026-09-05, 11 lépés után) / CURRENT STATE
 
-- **Lépésszám:** 4
-- **Fázis:** 0→2 — a felmérés, a rendterv, a gráf és a wiki v1 KÉSZ; a GAN-kapu a következő
+- **Lépésszám:** 11 (a 4. lépés után a NÉGY hullám összesen 7 lépéssel
+  gyarapított: 5–7 = hullám-1…3, 8–11 = hullám-4 integrációja)
+- **Fázis:** 2→3 — a gráf és a wiki v1 készen; a NÉGY GYÓGYÍTÓ-ELLENŐRZŐ
+  HULLÁM lefutott, a zászlóshajók egy helyen, gépileg Ellenőrizve
+  (Hullam4Teszt_v1: **17/17 teszt OK**, 2026-09-05)
 - **Fázissor:** 0 Felmérés → 1 Rendterv → 2 TudásGráf → 3 BFS-hullám →
   4 Könyv-alügynökök → 5 7-1-3 tartalom-háromszögelés → 6 Wiki-lapok →
   7 Gráf-lezárás (ismétlés 3→6 amíg nincs új csomópont és nincs
   ellenőrizetlen él)
 - **BFS-sor (következő lépések sorrendben):**
-  1. GAN-alügynök a felmérés + a gráf VALÓDI-verdikű csomópontjainak
-     ellenőrzésére (VALÓDI/TAUTOLÓGIA/GYENGE) — 11 csomópont állítása
-  2. Könyv-hullám 1: Yoneda → Awodey (alügynök, AGENTS 11) — a Cat³
-     csomópont irodalom-kópiája
-  3. `kutatasi_naplo3`-beli `KonstansHitelesites.idr` + `MindenKonstans.idr`
-     `idris2 --check`-je (Rendterv 4a lépése; olvasás, jóváhagyás nem kell)
-  4. BFS 1. hullám: a 65 feladat → Feladat-csomópontok felvétele a gráfba
+  1. **Hullám 4 — integráció (ez a lépés; e frissítéssel zárul):**
+     `osveny_index/Hullam4Teszt_v1.idr` — a 12 új modul egy helyen
+     importálva + 17 Show-teszt + a NÉGYNELVŰ fájl-teszt; fordítás:
+     `cd osveny_index && IDRIS2_PATH=/Users/joco/opencode/szima_ter/modul/build/ttc idris2 Hullam4Teszt_v1.idr -o hullam4_teszt && ./build/exec/hullam4_teszt`
+  2. Hullám-5 jelölt: a 51 .py maradék JEGYZÉKE (csak jegyzék — a
+     törlés §20 szerint továbbra is tiltott; Idrisbe-írás értékelés)
+  3. Hullám-5 jelölt: lexikon-lista-optimalizálás
+     (HungarianLexicon_v1_Szima: 3460 bejegyzés List String-ben —
+     cápa-kezdet, hossz-állítások költsége; csak ÚJ `_v2` fájlban, §13)
+  4. Hullám-5 jelölt: a wiki regenerálása az új számokkal
+     (ProjektTérkép.idr → docs/projekt_terkep_wiki.html)
   5. … (a BFS a gráf lezárásáig bővíti)
 - **Elvégzett lépések (előzmény):**
   1. ✅ `docs/FajlrendszerFelmérés_v1.md` (~89 elem, 6 szimlink-tábla)
@@ -90,9 +97,36 @@ eljárás — nem emlékezés, hanem OLVASÁS.
   3. ✅ `osveny_index/TudásGráf_v1.idr` (17 csomópont: 1 cél + 8 + 8; 4 Refl)
   4. ✅ `osveny_index/ProjektTérkép.idr` → `docs/projekt_terkep_wiki.html`
      (28 755 bájt, Idris-generált, HU/ZH/EN/DIRAC fülek)
+  5. ✅ Hullám-1: GAN-auditok + 7 gyógyítás (a régi bizonyítások
+     tautológia-vadászata; §18 szigor bevezetése)
+  6. ✅ Hullám-2: 4 gyógyítás (a hibás tanúk újraírása valódi
+     konstrukciókkal)
+  7. ✅ Hullám-3: 6 tétel (PrimekAnalizis_v2, ZeneKategoria_v2,
+     Rendszer_v2 — valódi Refl/indukciós bizonyításokkal)
+  8. ✅ Hullám-4a: `osveny_index/ImportProbe_v1.idr` — ÚJ FELFEDEZÉS:
+     a szima_ter/modul világ IMPORTÁLHATÓ az osveny_index világból az
+     előre fordított .ttc állományokon át:
+     `IDRIS2_PATH=/Users/joco/opencode/szima_ter/modul/build/ttc`
+     (IDRIS2_PATH nélkül: «Module not found» — ÉS exit 0, a 23. csapda
+     ismételten igazolva: a kimenetet OLVASNI kell); a híd futásidejű
+     bizonyítéka: «lexikonCenzusHossza = 3460»
+  9. ✅ Hullám-4b: `osveny_index/Hullam4Teszt_v1.idr` megírása — a 12
+     zászlóshajó (8 osveny_index + 4 szima_ter) egy helyen; a
+     TesztEredmeny-minta helyben (a Teszt.idr 16 nehéz importja + a
+     kettős-világ Steane713-név-kettősség kockázata miatt, a feladat
+     engedélyével)
+  10. ✅ Hullám-4c: `idris2 --check` TISZTA + fordítás
+      (`-o hullam4_teszt`, ASCII név — a 19. csapda) + FUTTATÁS:
+      **17/17 teszt OK** (a teljes kimenet a kutatási naplóban)
+  11. ✅ Hullám-4d: e állapotfájl frissítése (a lépésszám 4→11, a
+      hullámok beszámítása)
 - **Közben született:** CSAPDA #27 (ékezetes csupasz mintaváltozó importok
   mellett; bisect-lánc: PróbaÉlSoraA–H; gyógyír: konstruktorba ágyazott
-  minta) — `tanulsagok/CSAPDA_27_ÉkezetesMintaváltozóImport.md`.
+  minta) — `tanulsagok/CSAPDA_27_ÉkezetesMintaváltozóImport.md`;
+  ÚJ tanulságok (hullám-4): a NégynyelvűEllenőrző_v1 útvonal-konstansa
+  (`hibátlanPróbaÚt`) PRIVATE — a perem-konstans nem importálható, a
+  literál a tesztben dokumentáltan megismételve; a `System.File`-et
+  explicit importálni KELL (a readFile nem re-exportálódik).
 - **Ismeretes akadály:** az arxiv-search skill Valyu-kulcsa nincs beállítva
   (platform.valyu.ai) — addig az irodalom-kópia WebSearch-tel áll.
 
