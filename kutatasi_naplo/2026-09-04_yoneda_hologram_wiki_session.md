@@ -340,3 +340,41 @@ OLVASD.md régi „egyesek nem fordulnak" megjegyzését.
   parancsok; a két nap munkája; hová megyünk + ébredési protokoll). Minden
   szám forrásmutatással (ipkg-build, Teszt, Hullam4Teszt, DeltaAnalizis,
   HungarianLexiconTanu). A többi 5 rendezési javaslat továbbra is döntésre vár.
+
+## Kiegészítés (2026-09-05, este) — OPTIMÁLIS TRANSZFORMER v1 + TANÍTÁS v1 + a monográfia
+
+- OPTIMÁLIS TRANSZFORMER MEGÉPÜLT (a felhasználó book.pdf-specifikációja alapján):
+  osveny_index/OptimálisTranszformer_v1.idr (kritikus exponensek; minden
+  hiperparaméter KÉPLETBŐL születik; 15+ Refl-híd — köztük
+  bizFejSzámEuklidészből : FejSzám = 8, ahol az üzemanyagos Euklidész
+  gcd-je a KERNELBEN redukál (a Data.Nat.gcd nem!); E8⁴-gyök-súlyok a
+  §24-importált E8Gyokok_v2-ből, Z₂×Z₈ tórusz-fázissal — ~35% valódi
+  nullsúly az E8-gyökök szerkezetéből; valós softmax; teljes RG-lánc
+  104→64→279→48→64) + osveny_index/OptimálisTranszformerTanítás_v1.idr
+  (József Attila: «Tudod» — az első élő memória-írás: 3 epoch, veszteség
+  MONOTON csökken, η₀ és λ importált, nem literál).
+- GAUGE: mindkettő --check tiszta (EXIT 0), fut (0,55/0,72 s), a kimenet:
+  8 ✓ 99 ✓ 474 ✓ 11 ✓ B_eff=8=h ✓, softmax-összeg 1,0, 240 gyök.
+- A KÖNYV GAN-LELETEI (a transzformer-ágens mérte): a komponens-összeg
+  1 221 188 ≠ 168 000 (7,27×; Refl-tanú!); Widom-szorzás hibás a könyvben
+  (1,237033 vs 1,2370742); W₃-skála nem reprodukálható (0,078 vs 0,164/0,094).
+- ÚJ CSAPDÁK #31–#36 (mérve): pow/gcd nem kernel-redukálók; a NAGY Nat-
+  literál-aritmetika IGEN zár (1 221 188-híd!); Prelude-take = Stream-take;
+  «No type declaration X. Did you mean: X?» = egybetűs ékezet-typo (hexdump
+  bizonyította); exit-0-hazugság újra ×2.
+- MONOGRÁFIA BEÉRKEZETT (a felhasználó csatolta): «From Algebras to Extended
+  TQFTs» (Yozó) — docs/FromAlgebrasToExtendedTQFTs_monografia_v1.tex (526
+  sor): Yoneda-rigorózus bizonyítás (Φ/Ψ, 4 lépés); Legendre–Fenchel =
+  Galois-konnekció poset-kategóriákban (Fenchel–Young = adjunkció!);
+  Poisson-tétel Jacobi-bizonyítással; Groenewold–van Hove; geometriai
+  kvantálás (Weil, polarizáció, félig-formák, Maslov); analógia-doboz:
+  anomáliák ↔ püthagoraszi vessző ↔ Bach-temperáció ↔ HANMAG_ZONGORA
+  (adatillesztés-mentes konstans-korrekciók); Atiyah–Segal → kiterjesztett
+  TQFT → Lurie kobordizmus-hipotézis.
+- A FELHASZNÁLÓ MEGFIGYELÉSE (a Refl-nem-zárás kulcsa): a pow-alapú
+  Refl-pontok nem zárnak — EZ NEM HIBA, HANDEM VESSZŐ (a monográfia
+  nyelvén): a folytonos (Double/pow) és a diszkrét (Nat/⌊·⌋) réteg közti
+  topológiai anomália (mint 12 kvint ≠ 7 oktáv). Gyógyír-prescription:
+  a kényszer-zárás helyett a VESSZŐ EXPLICIT formalizálása
+  (számított/egész/eltérés hármas + |eltérés|<1 tanú + floor-visszanyerés)
+  — Bach-stílusú temperált tanú, nem hazug Refl.
